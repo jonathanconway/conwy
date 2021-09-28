@@ -1,0 +1,15 @@
+---
+layout: layout.njk
+---
+
+{%- from '../components/article/article.njk' import article %}
+
+{{
+  article({
+    title: title,
+    date: date,
+    imageUrl: imageUrl,
+    content: content,
+    blurb: blurb
+  })
+}}

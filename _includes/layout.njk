@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  {%- from '../components/head/head.njk' import head %}
+  {{ head({ title: title }) }}
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSBT4XB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="body" box box-padding="medium" layout layout-direction="vertical">
+      {%- from '../components/header/header.njk' import header %}
+      {{ header({ tags: tags }) }}
+
+      {{ content | safe }}
+
+      {%- from '../components/footer/footer.njk' import footer %}
+      {{ footer() }}
+    </div>
+  </body>
+</html>

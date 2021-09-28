@@ -1,0 +1,20 @@
+---
+layout: layout.njk
+---
+
+<div class="intro">
+  <img class="intro-image" src="/intro.jpg" />
+
+  {% include '../intro.md' %}
+</div>
+
+<hr />
+
+{%- from '../components/article-list-item/article-list-item.njk' import articleListItem %}
+<div layout layout-direction="vertical">
+  {%- for article in collections.article | reverse -%}
+    {{ articleListItem(article) }}
+  {%- endfor -%}
+</div>
+
+<hr />

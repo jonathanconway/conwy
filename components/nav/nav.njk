@@ -1,0 +1,19 @@
+{%- macro nav(params) -%}
+  <div class="nav">
+    {%- for navItem in [
+        { key: 'articles', path: '',         label: 'home' },
+        { key: 'work',     path: 'work',     label: 'work' },
+        { key: 'links',    path: 'links',    label: 'links' }]
+    -%}
+      {% if params.tags.includes(navItem.key) %}
+        <strong>{{ navItem.label }}</strong>
+      {% else %}
+        <a href="/{{ navItem.path }}">{{ navItem.label }}</a>
+      {% endif %}
+
+      {% if not loop.last %}
+        <span class="nav-divider"> • </span>
+      {% endif %}
+    {%- endfor -%}
+  </div>
+{%- endmacro -%}

@@ -1,0 +1,18 @@
+/**
+ * Figure
+ * 
+ * An image (diagram, wireframe, screenshot, photo, etc.) with associated textual caption.
+ */
+
+figure {
+  padding: 1rem;
+
+  figcaption {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+
+    &:before {
+      content: "▲ ";
+    }
+  }
+}

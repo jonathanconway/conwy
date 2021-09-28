@@ -1,0 +1,56 @@
+/**
+ * Border
+ *
+ * Colourful, decorative border shown across the top of the page.
+ */
+
+/**
+ * Border
+ */
+
+.border {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 0.25rem;
+  left: 0;
+  top: 0;
+}
+
+@media screen and (max-width: 49.999rem) {
+  .border {
+    position: fixed;
+  }
+}
+
+
+/**
+ * Border - BorderPart
+ */
+
+.border-part {
+  height: 0.25rem;
+
+}
+
+.border-part:nth-child(1) {
+  background-color: #1CA4FC;
+  width: 20%;
+}
+
+.border-part:nth-child(2) {
+  background-color: #FD9326;
+  width: 30%;
+}
+
+.border-part:nth-child(3) {
+  background-color: #F628FC;
+  width: 15%;
+}
+
+.border-part:nth-child(4) {
+  background-color: #000000;
+  width: 35%;
+}
+

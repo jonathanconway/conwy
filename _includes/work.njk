@@ -1,0 +1,21 @@
+---
+layout: layout.njk
+---
+
+<h2>Work</h2>
+
+<h3>Clients</h3>
+
+{%- from '../components/client/client.njk' import client %}
+{%- for clientItem in collections.client | reverse -%}
+  {{
+    client(clientItem)
+  }}
+
+  {%- if not loop.last -%}
+    <hr />
+  {%- endif -%}
+{%- endfor -%}
+
+{{ content | safe }}
+

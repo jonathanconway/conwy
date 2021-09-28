@@ -1,0 +1,15 @@
+/**
+ * Header
+ *
+ * Common header of each webpage.
+ */
+
+header {
+  margin-top: 1rem !important;
+}
+
+@media screen and (max-width: 29rem) {
+  header {
+    flex-direction: column;
+  }
+}

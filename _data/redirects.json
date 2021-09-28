@@ -1,0 +1,205 @@
+[
+  { "from": "/videos", "to": "https://www.youtube.com/user/jonathanaconway" },
+  { "from": "/podcasts", "to": "https://anchor.fm/jonathan-conway" },
+  { "from": "/code", "to": "http://github.com/jonathanconway" },
+  { "from": "/traffic", "to": "https://www.openprocessing.org/sketch/434134" },
+  {
+    "from": "/research",
+    "to": "https://www.dropbox.com/s/ck9yxs1wpcotgmi/Refugee%20Connect.pdf?dl=0"
+  },
+  {
+    "from": "/refugee",
+    "to": "https://www.slideshare.net/jonathanaconway/refugee-connect"
+  },
+  {
+    "from": "/portfolio",
+    "to": "https://www.dropbox.com/s/y21vtztwspbdkkc/Portfolio.pdf?dl=0"
+  },
+  {
+    "from": "/participatory",
+    "to": "https://www.academia.edu/18862597/Comparative_Critique_-_User_Centred_and_Participatory_Design?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BmtLtXQDWT8uHVI6qutAcuA%3D%3D"
+  },
+  {
+    "from": "/predictable",
+    "to": "http://academia.edu/1999821/Death_March_-_Case_Studies_in_Predictable_Project_Failure?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BmtLtXQDWT8uHVI6qutAcuA%3D%3D"
+  },
+  {
+    "from": "/death",
+    "to": "http://academia.edu/1999821/Death_March_-_Case_Studies_in_Predictable_Project_Failure?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BmtLtXQDWT8uHVI6qutAcuA%3D%3D"
+  },
+  {
+    "from": "/deathmarch",
+    "to": "http://academia.edu/1999821/Death_March_-_Case_Studies_in_Predictable_Project_Failure?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BmtLtXQDWT8uHVI6qutAcuA%3D%3D"
+  },
+  {
+    "from": "/cleaner",
+    "to": "https://www.woolworths.com.au/shop/search/products?searchTerm=cleaner"
+  },
+  {
+    "from": "/diagramming",
+    "to": "/articles/diagramming-ts"
+  },
+  {
+    "from": "/thornhill",
+    "to": "https://www.aussiefirebug.com/coronavirus-market-crash-with-peter-thornhill/"
+  },
+  {
+    "from": "/designlife",
+    "to": "https://www.amazon.com.au/gp/product/1101875321/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=1101875321&linkCode=as2&tag=conwy19-22&linkId=6756c77cede77afb686d510046f54da9"
+  },
+  {
+    "from": "/xmltodynamic",
+    "to": "https://github.com/jonathanconway/XmlToDynamic"
+  },
+  {
+    "from": "/ReactRouterWizard",
+    "to": "https://github.com/jonathanconway/react-router-wizard"
+  },
+  {
+    "from": "/cram",
+    "to": "https://gist.github.com/jonathanconway/15271dda82b1de39e12eb938ac4a6e8d"
+  },
+  {
+    "from": "/prototype-controls",
+    "to": "https://github.com/jonathanconway/prototype-controls"
+  },
+  { "from": "/react-mvp", "to": "https://www.npmjs.com/package/react-mvp" },
+  {
+    "from": "/wrappers",
+    "to": "https://github.com/jonathanconway/react-layout-wrappers"
+  },
+  {
+    "from": "/des/ts-pipeline",
+    "to": "https://www.npmjs.com/package/ts-pipeline"
+  },
+  { "from": "/ts-pipeline", "to": "https://www.npmjs.com/package/ts-pipeline" },
+  {
+    "from": "/westpacpr",
+    "to": "http://www.zdnet.com/article/westpac-live-hits-2-7-million-people-in-digital-services-drive/"
+  },
+  {
+    "from": "/tal",
+    "to": "https://www.insuranceline.com.au/funeral-insurance"
+  },
+  {
+    "from": "/vmusic",
+    "to": "https://web.archive.org/web/20120415120320/http://www.vmusic.com.au/home"
+  },
+  {
+    "from": "/healthdirect",
+    "to": "http://www.zdnet.com/article/healthdirect-australia-looks-through-the-software-lens/"
+  },
+  {
+    "from": "/prototypecontrols",
+    "to": "https://www.slideshare.net/jonathanaconway/working-with-researchers"
+  },
+  {
+    "from": "/researchers",
+    "to": "https://www.slideshare.net/jonathanaconway/working-with-researchers"
+  },
+  {
+    "from": "/liquorsafe",
+    "to": "https://web.archive.org/web/20160318101237/http://www.mctsolutions.com.au/products/liquorsafe"
+  },
+  { "from": "/refugee-connect", "to": "http://refugee-connect.surge.sh" },
+  {
+    "from": "/crc",
+    "to": "https://www.dropbox.com/s/gmn3dwlwxigw62l/Jonathan%20Conway%20-%20UX%20Work.pdf"
+  },
+  {
+    "from": "/tech/dot-net-development-on-mac",
+    "to": "https://codementor.io/jonathanconway/net-development-on-macos-8tlwaj9g6"
+  },
+  {
+    "from": "/tech/prototyping",
+    "to": "https://www.codementor.io/jonathanconway/user-interface-prototyping-with-quality-da8w4pdjy"
+  },
+  {
+    "from": "/tech/dotnet",
+    "to": "https://codementor.io/jonathanconway/net-development-on-macos-8tlwaj9g6"
+  },
+  {
+    "from": "/tech/tests",
+    "to": "https://www.codementor.io/jonathanconway/tests-as-tools-akj9r67cp"
+  },
+  {
+    "from": "/tech/select",
+    "to": "https://www.codementor.io/jonathanconway/when-not-to-use-select-95pb8kv1g"
+  },
+  {
+    "from": "/tech/diagramming",
+    "to": "https://www.codementor.io/jonathanconway/diagramming-for-developers-gvomc4mwc"
+  },
+  { "from": "/tech/zero", "to": "http://dev.to/conw_y/towards-zero-bugs-1bop" },
+  {
+    "from": "/tech/three",
+    "to": "http://dev.to/conw_y/three-tests-for-accessibility-1hep"
+  },
+  { "from": "/tech", "to": "https://dev.to/conw_y" },
+  {
+    "from": "/dot-net-development-on-mac",
+    "to": "https://codementor.io/jonathanconway/net-development-on-macos-8tlwaj9g6"
+  },
+  {
+    "from": "/prototyping",
+    "to": "https://www.codementor.io/jonathanconway/user-interface-prototyping-with-quality-da8w4pdjy"
+  },
+  {
+    "from": "/dotnet",
+    "to": "https://codementor.io/jonathanconway/net-development-on-macos-8tlwaj9g6"
+  },
+  {
+    "from": "/tests",
+    "to": "https://www.codementor.io/jonathanconway/tests-as-tools-akj9r67cp"
+  },
+  {
+    "from": "/select",
+    "to": "https://www.codementor.io/jonathanconway/when-not-to-use-select-95pb8kv1g"
+  },
+  { "from": "/zero", "to": "http://dev.to/conw_y/towards-zero-bugs-1bop" },
+  {
+    "from": "/dta",
+    "to": "https://www.dropbox.com/s/u96uc5b9zdhxb4n/Portfolio.pdf"
+  },
+  {
+    "from": "/govpass",
+    "to": "https://www.dta.gov.au/what-we-do/platforms/govpass/"
+  },
+  {
+    "from": "/serverless",
+    "to": "https://github.com/jonathanconway/serverless-single-page-app-plugin/"
+  },
+  {
+    "from": "/snswaccount",
+    "to": "https://my.service.nsw.gov.au/MyServiceNSW/index"
+  },
+  {
+    "from": "/drivingrecord",
+    "to": "https://www.service.nsw.gov.au/transaction/request-driving-record"
+  },
+  { "from": "/epl", "to": "https://www.producthunt.com/posts/eatpaylove" },
+  { "from": "/emoji", "to": "https://www.producthunt.com/posts/emojipedia-3" },
+  { "from": "/pasta", "to": "https://www.producthunt.com/posts/pasta-2" },
+  {
+    "from": "/public",
+    "to": "https://www.dropbox.com/sh/18r8i0wu488glmk/AABav5uhcniC91WrdD_WfDWMa?dl=0"
+  },
+  { "from": "/video", "to": "https://www.youtube.com/user/jonathanaconway" },
+  {
+    "from": "/accessible",
+    "to": "https://www.youtube.com/watch?v=86PqPOQx3Co"
+  },
+  {
+    "from": "/video/accessible",
+    "to": "https://www.youtube.com/watch?v=86PqPOQx3Co"
+  },
+  {
+    "from": "/video/minimalism",
+    "to": "https://www.youtube.com/watch?v=cFOIzOdHl-c"
+  },
+  { "from": "/video/whysoftware", "to": "https://youtu.be/CaxWQD7wems" },
+  {
+    "from": "/video/interfaces-teamwork",
+    "to": "https://www.youtube.com/watch?v=gjL5qEtKCkU"
+  }
+]

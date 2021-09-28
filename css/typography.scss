@@ -1,0 +1,80 @@
+/**
+ * Typography
+ *
+ * Fonts and sizes of all textual elements.
+ */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li {
+  text-decoration: none;
+  font-weight: 400;
+  font-family: "Montserrat", "Arial", sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+h4 {
+  font-weight: 500;
+}
+
+a {
+  color: black;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+}
+
+a > code {
+  font-size: 1rem;
+}
+
+.link:after {
+  content: " →";
+}
+
+p > code {
+  font-weight: 500;
+  background: #272822;
+  color: white;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.3em;
+}
+
+a[href~="mermaid"] {
+  height: 500px;
+}
+
+hr {
+  width: 3rem;
+  height: 0px;
+  border-bottom: solid 1px #000;
+  display: block;
+  margin: 2rem 0;
+  padding: 0;
+  border-top: 0;
+}

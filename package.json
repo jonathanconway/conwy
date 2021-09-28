@@ -1,0 +1,40 @@
+{
+  "name": "conwy",
+  "version": "1.0.0",
+  "description": "Personal website of Jonathan Conway",
+  "main": "index.js",
+  "scripts": {
+    "post-install": "npx playwright install",
+    "build": "eleventy",
+    "build:watch": "eleventy --watch",
+    "serve": "live-server _site --host=localhost",
+    "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
+    "test": "jest",
+    "snapshot": "playwright test",
+    "deploy": "surge ./_site conwy.surge.sh",
+    "build-deploy": "npm run build && npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathanconway/conwyco.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathanconway/conwyco/issues"
+  },
+  "homepage": "https://github.com/jonathanconway/conwyco#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@playwright/test": "^1.15.0",
+    "concurrently": "^6.0.0",
+    "eleventy-plugin-sass": "^1.2.0",
+    "github-pages-deploy-action": "^3.5.1",
+    "jest": "^27.2.3",
+    "live-server": "^1.2.1",
+    "luxon": "^1.26.0",
+    "nunjucks": "^3.2.3",
+    "sass": "^1.42.1",
+    "surge": "^0.23.0"
+  }
+}

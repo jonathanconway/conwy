@@ -1,0 +1,7 @@
+{%- macro articleListItem(params) -%}
+  <div class="article-list-item">
+    <h3 class="article-list-item-title"><a href="{{ params.url }}">{{ params.data.title }}</a></h3>
+    <small class="article-list-item-date">{{ params.data.date | readablePostDate }}</small> • 
+    <small class="article-list-item-blurb">{{ params.data.blurb  }}</small>
+  </div>
+{%- endmacro -%}

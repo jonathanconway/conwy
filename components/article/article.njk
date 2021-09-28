@@ -1,0 +1,43 @@
+{%- macro article(params) -%}  
+  <article>
+    <div class="article-header">
+      <h2>{{ params.title }}</h2>
+
+      <p class="article-date">{{ params.date | readablePostDate }}</p>
+
+      <img
+        class="article-main-image"
+        src="{{ params.imageUrl }}"
+      />
+    </div>
+
+    <div class="article-content">
+
+      <p class="article-blurb">
+        {{ params.blurb | safe }}
+      </p>
+
+      {{ params.content | safe }}
+
+      <hr />
+    </div>
+  </article>
+
+  {# <div id="disqus_thread"></div>
+  <script>
+      var disqus_config = function () {
+        this.page.url = window.location.toString();
+        this.page.identifier = window.location.pathname;
+      };
+      
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://conwy.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  <script id="dsq-count-scr" src="//conwy.disqus.com/count.js" async></script> #}
+{%- endmacro -%}

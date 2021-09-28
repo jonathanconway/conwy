@@ -1,0 +1,19 @@
+/**
+ * Intro
+ *
+ * Image and paragraph introducing the website.
+ */
+
+img.intro-image {
+  width: calc(100% + 7rem);
+  max-width: unset;
+  margin-left: -4rem;
+  margin-right: -4rem;
+}
+
+@media screen and (max-width: 49.999rem) {
+  img.intro-image {
+    height: 5rem;
+    object-fit: cover;
+  }
+}

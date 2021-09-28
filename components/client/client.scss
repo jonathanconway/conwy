@@ -1,0 +1,32 @@
+/**
+ * Client
+ * 
+ * Details and screencast about work done for a client.
+ */
+
+.client-screencast {
+  figure {
+    padding: 0;
+  }
+
+  img {
+    border: solid 2px black;
+    border-radius: 0.5rem;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 29.999rem) {
+}
+
+@media screen and (min-width: 30rem) {
+  .client-details {
+    width: 59.999%;
+  }
+
+  .client-screencast {
+    text-align: center;
+    width: 40%;
+  }
+}
+

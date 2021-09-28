@@ -1,0 +1,25 @@
+---
+layout: layout.njk
+tags: []
+title: Redirecting
+pagination:
+    data: redirects
+    size: 1
+    alias: redirect
+permalink: "/{{ redirect.from }}/index.html"
+---
+
+<h2>Please hold your horses!</h2>
+
+<p>We are redirecting you now...</p>
+
+<img
+  src="/components/redirect/horse.gif"
+  alt="Animation of a horse jumping over obstacles"
+/>
+
+<script type="text/javascript">
+  setTimeout(() => {
+    window.location = "{{ redirect.to }}";
+  }, 1000);
+</script>
