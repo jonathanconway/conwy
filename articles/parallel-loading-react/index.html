@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78479084-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-78479084-1');
+    </script>
+
+    
+    <title>conwy • Parallel loading in React</title>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homepage of Jonathan Conway">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    
+    <link rel="stylesheet" href="/css/index.css">
+
+    
+    <link rel="stylesheet" href="/lib/prismjs/prism.css">
+    <script src="/lib/prismjs/prism.js" defer></script>
+  </head>
+
+  <body>
+    <div class="body" box box-padding="medium" layout layout-direction="vertical">
+      
+  <div class="border">
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+  </div>
+
+  <header responsive-layout responsive-layout-type="spread-out" responsive-layout-centered>
+    <div class="title" layout layout-centered>
+    <img
+      class="title-profile-photo"
+      src="/images/profile-photo-200.jpg"
+    >
+    
+    <h1 class="title-logo">
+      <a class="logo-link" href="/">
+        conwy
+        <b class="logo-layer">conwy</b>
+        <b class="logo-layer">conwy</b>
+        <b class="logo-layer">conwy</b>
+      </a>
+    </h1>
+  </div>
+    <div class="nav">
+        <a href="/">home</a>
+      
+
+      
+        <span class="nav-divider"> • </span>
+      
+        <a href="/work">work</a>
+      
+
+      
+        <span class="nav-divider"> • </span>
+      
+        <a href="/links">links</a>
+      
+
+      </div>
+  </header>
+
+      
+
+<article>
+    <div class="article-header">
+      <h2>Parallel loading in React</h2>
+
+      <p class="article-date">01/10/2021</p>
+
+      <img
+        class="article-main-image"
+        src="parallel-loading-react.jpg"
+      />
+    </div>
+
+    <div class="article-content">
+      <p class="article-blurb">
+  How to run multiple requests in parallel and combine the results.
+</p>
+<p>Recently I wanted to build a React component that would merge the results of several independent requests into one set of data and render it as a single list.</p>
+<p>The requests would look like this:</p>
+<ul>
+<li>GET to load initial list of items</li>
+<li>GET to load item 1 details</li>
+<li>GET to load item 2 details</li>
+<li>... etc for each item in the list</li>
+</ul>
+<p>I wanted the list to ultimately render like this:</p>
+<ul>
+<li>Item 1 + details</li>
+<li>Item 2 + details</li>
+<li>... etc for each item in the list</li>
+</ul>
+<p>The problem was: how to load a list of items, then load details of each item, making a separate request per item, then combine all of this information and render it to the user.</p>
+<p>The simplest way would be to simply await all the requests and then render everything together at once.</p>
+<p><a href="https://mermaid.live/edit#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgQyAtLT4gRHtOZXh0IGl0ZW0_fVxuICAgIEQgLS0-fFllc3wgQ1xuICAgIEQgLS0-fE5vfCBFKENvbWJpbmUgaXRlbXMgbGlzdCB3aXRoIGRldGFpbHMpXG4gICAgICAgIEUgLS0-IEYoUmVuZGVyIGl0ZW1zIGxpc3Qgd2l0aCBkZXRhaWxzKVxuICAgICAgICBGIC0tPiBHW0RvbmVdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgQyAtLT4gRHtOZXh0IGl0ZW0_fVxuICAgIEQgLS0-fFllc3wgQ1xuICAgIEQgLS0-fE5vfCBFKENvbWJpbmUgaXRlbXMgbGlzdCB3aXRoIGRldGFpbHMpXG4gICAgICAgIEUgLS0-IEYoUmVuZGVyIGl0ZW1zIGxpc3Qgd2l0aCBkZXRhaWxzKVxuICAgICAgICBGIC0tPiBHW0RvbmVdXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0" alt=""></a></p>
+<p>Here is an implementation which uses <code>Promise.all</code>.</p>
+<p class="codepen" data-height="300" data-default-tab="js,result" data-slug-hash="dyRQGam" data-user="jonathanconway" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/jonathanconway/pen/dyRQGam">
+  Details request all-at-once</a> by Jonathan (<a href="https://codepen.io/jonathanconway">@jonathanconway</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>The problem with this solution is: it could take a considerable amount of time for all of these additional requests to render and we don't want to have to keep the user waiting for the whole list to load before they can see anything.</p>
+<p>A far better solution would be to first load and render the list of items without the details, then render each detail for each item as it is loaded.</p>
+<p><a href="https://mermaid.live/edit/#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoUmVuZGVyIGl0ZW1zIGxpc3QpXG4gICAgICAgIEMgLS0-IEQoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgICAgIEQgLS0-IEUoUmVuZGVyIGl0ZW0gbiBkZXRhaWxzKVxuICAgIEUgLS0-IEZ7TmV4dCBpdGVtP31cbiAgICBGIC0tPnxZZXN8IERcbiAgICBGIC0tPnxOb3wgR1tGaW5pc2hdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoUmVuZGVyIGl0ZW1zIGxpc3QpXG4gICAgICAgIEMgLS0-IEQoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgICAgIEQgLS0-IEUoUmVuZGVyIGl0ZW0gbiBkZXRhaWxzKVxuICAgIEUgLS0-IEZ7TmV4dCBpdGVtP31cbiAgICBGIC0tPnxZZXN8IERcbiAgICBGIC0tPnxOb3wgR1tGaW5pc2hdXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiIifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ" alt=""></a></p>
+<p>Implementing this improved solution raised a challenge:</p>
+<p><strong>How to merge the details from all the requests together into one state variable without triggering a React refresh cycle?</strong></p>
+<p>If the React refresh cycle triggered, it would have caused the state variable to contain incomplete data, as one partial value would override another.</p>
+<p>It turns out the solution is rather simple - we just have to re-use the latest copy of our state variable each time we set it.</p>
+<p>So instead of the typical <code>setState</code> call:</p>
+<pre><code class="language-js">setUsers({
+  ...users,
+  [updatedUserId]: updatedUser
+});
+</code></pre>
+<p>We <a href="https://twitter.com/dan_abramov/status/816394376817635329">pass a state setter</a>:</p>
+<pre><code class="language-js">setUsers(currentUsers =&gt; ({
+  ...currentUsers,
+  [updatedUserId]: updatedUser
+}));
+</code></pre>
+<p>Here's the complete solution:</p>
+<p class="codepen" data-height="300" data-default-tab="js,result" data-slug-hash="dyRQMQL" data-user="jonathanconway" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/jonathanconway/pen/dyRQMQL">
+  Details request all-at-once</a> by Jonathan (<a href="https://codepen.io/jonathanconway">@jonathanconway</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p>Now go forth and parallelize all your async multiple requests! Good luck!</p>
+
+
+      <hr />
+    </div>
+  </article>
+
+  <div id="disqus_thread"></div>
+  <script>
+      var disqus_config = function () {
+        this.page.url = window.location.toString();
+        this.page.identifier = window.location.pathname;
+      };
+      
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://conwy.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  <script id="dsq-count-scr" src="//conwy.disqus.com/count.js" async></script>
+
+      <footer>
+    <p>
+      <small>
+        &copy; Jonathan Conway
+      </small>
+    </p>
+    <p>
+      <small class="acknowledgement">
+        I acknowledge the Traditional Owners of the lands on which I live, the Eora peoples, and recognise their enduring connection to land, waters, and culture. I pay my respects to their elders, past and present. 
+      </small>
+    </p>
+  </footer>
+    </div>
+  </body>
+</html>
