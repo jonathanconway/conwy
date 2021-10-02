@@ -80,3 +80,13 @@ function encodeImage(imagePath) {
   return encodedImage;
 }
 exports.encodeImage = encodeImage;
+
+async function setViewportSize(page, size) {
+  switch (size) {
+    case 'small':
+      return page.setViewportSize({ width: 200, height: 350 });
+    case 'regular':
+      return page.setViewportSize({ width: 800, height: 600 });
+  }
+}
+exports.setViewportSize = setViewportSize;

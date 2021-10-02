@@ -34,6 +34,12 @@
     
     <link rel="stylesheet" href="/lib/prismjs/prism.css">
     <script src="/lib/prismjs/prism.js" defer></script>
+
+    
+    <script type="text/javascript">
+      Image1 = new Image(150,20)
+      Image1.src = "/components/redirect/horse.gif"
+    </script>
   </head>
 
   <body>
@@ -84,50 +90,112 @@
       
 <h2>Work</h2>
 
-<h3>Clients</h3><div layout layout-type="equal">
-<div>
-<h4><a href="http://villaplus.com">Villa Plus</a></h4>
-<p><small>November 2019 – February 2020</small></p>
-<p>Built new Resort Villas reservation UI. Undertook a full-stack optimization blitz resulting in 50-75% faster loading times, higher booking rates, lower operating costs (due to lower resource usage) and delighted customers.</p>
-<p><small class="tech">jQuery • Javascript • C# • SQL • Prismic • AppInsights</small></p>
-</div>
-<div style="text-align: center;">
-<img
-  style="height: 15rem"
-  alt="Screencast of resort villas feature being used on a mobile"
-  src="/work/villa-plus/villa-plus-screencast.gif"
-/>
-</div>
-</div>
-<div layout layout-type="equal">
-<div>
-<h4><a href="http://cibc.com">Canadian Imperial Bank of Commerce</a></h4>
-<p><small>November 2017 – June 2019</small></p>
-<p>Built fast, robust applications used by traders. Engineered maintainable, self-documenting, easy-to-test code bases. Extended the UI platform with input controls, dynamic scaling, windowing and dialogs, responsive layouts. Built end-to-end tests and a component viewer.</p>
-<p><small class="tech">Typescript • Angular 7-8 • C# • SQL • Cypress</small></p>
-</div>
-<div style="text-align: center;">
-<img
-  style="height: 15rem"
-  alt="Screencast of reproduction of CIBC UI"
-  src="/work/cibc/cibc-screencast.gif"
-/>
-</div>
-</div><div layout layout-type="equal">
-<div>
-<h4><a href="http://dta.gov.au">Digital Transformation Agency</a></h4>
-<p><small>June 2016 – June 2017</small></p>
-<p>Working within the Digital Identity program, designed, prototyped and and built screens for capturing proof-of-ID documents, facial verification via webcam, managing business and access levels, and transitioning from service provider to identity verification.</p>
-<p><small class="tech">React • Typescript • GoLang • Postgres</small></p>
-</div>
-<div style="text-align: center;">
-<img
-  style="height: 15rem"
-  alt="Screencast of reproduction of DTA prototypes"
-  src="/work/dta/dta-screencast.gif"
-/>
-</div>
-</div><h3>Experiments</h3>
+<h3>Clients</h3><div class="client" responsive-layout responsive-layout-spacing="medium">
+    <div class="client-details">
+      <h4><a href="http://villaplus.com">Villa Plus</a></h4>
+
+      <small>November 2019 – February 2020</small>
+
+      <p>Built new Resort Villas reservation UI. Undertook a full-stack optimization blitz resulting in 50-75% faster loading times, higher booking rates, lower operating costs (due to lower resource usage) and delighted customers.</p>
+
+
+      <small class="tech">
+        Tech:&nbsp;jQuery
+          
+            •
+          Javascript
+          
+            •
+          C#
+          
+            •
+          SQL
+          
+            •
+          Prismic
+          
+            •
+          AppInsights
+          </small>
+    </div>
+
+    <div class="client-screencast">
+      <figure>
+        <a target="_blank" href="/work/villa-plus/villa-plus-screencast.gif">
+          <img src="/work/villa-plus/villa-plus-screencast.gif"/>
+        </a>
+
+        <figcaption>Screencast of resort villas filtering feature on mobile</figcaption>
+      </figure>
+    </div>
+  </div><div class="client" responsive-layout responsive-layout-spacing="medium">
+    <div class="client-details">
+      <h4><a href="http://dta.gov.au">Digital Transformation Agency</a></h4>
+
+      <small>June 2016 – June 2017</small>
+
+      <p>Working within the Digital Identity program, designed, prototyped and and built screens for capturing proof-of-ID documents, facial verification via webcam, managing business and access levels, and transitioning from service provider to identity verification.</p>
+
+
+      <small class="tech">
+        Tech:&nbsp;React
+          
+            •
+          Typescript
+          
+            •
+          GoLang
+          
+            •
+          Postgres
+          </small>
+    </div>
+
+    <div class="client-screencast">
+      <figure>
+        <a target="_blank" href="/work/dta/dta-screencast.gif">
+          <img src="/work/dta/dta-screencast.gif"/>
+        </a>
+
+        <figcaption>Screencast of DTA prototype</figcaption>
+      </figure>
+    </div>
+  </div><div class="client" responsive-layout responsive-layout-spacing="medium">
+    <div class="client-details">
+      <h4><a href="http://cibc.com">Canadian Imperial Bank of Commerce</a></h4>
+
+      <small>November 2017 – June 2019</small>
+
+      <p>Built fast, robust applications used by traders. Engineered maintainable, self-documenting, easy-to-test code bases. Extended the UI platform with input controls, dynamic scaling, windowing and dialogs, responsive layouts. Built end-to-end tests and a component viewer.</p>
+
+
+      <small class="tech">
+        Tech:&nbsp;Typescript
+          
+            •
+          Angular 8
+          
+            •
+          C#
+          
+            •
+          SQL
+          
+            •
+          Cypress
+          </small>
+    </div>
+
+    <div class="client-screencast">
+      <figure>
+        <a target="_blank" href="/work/cibc/cibc-screencast.gif">
+          <img src="/work/cibc/cibc-screencast.gif"/>
+        </a>
+
+        <figcaption>Screencast of CIBC UI <br />(reproduction)</figcaption>
+      </figure>
+    </div>
+  </div><h3>Experiments</h3>
 <ul>
 <li><a href="https://www.producthunt.com/posts/eatpaylove">EatPayLove</a></li>
 <li><a href="http://refugee-connect.surge.sh/">Refugee Connect</a></li>
@@ -149,6 +217,7 @@
 <li><a href="https://dev.to/conw_y">DEV.to</a></li>
 </ul>
 <hr>
+
 
 
       <footer>
