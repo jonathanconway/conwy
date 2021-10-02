@@ -121,17 +121,43 @@
 </ul>
 <p>The problem was: how to load a list of items, then load details of each item, making a separate request per item, then combine all of this information and render it to the user.</p>
 <p>The simplest way would be to simply await all the requests and then render everything together at once.</p>
-<p><a href="https://mermaid.live/edit#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgQyAtLT4gRHtOZXh0IGl0ZW0_fVxuICAgIEQgLS0-fFllc3wgQ1xuICAgIEQgLS0-fE5vfCBFKENvbWJpbmUgaXRlbXMgbGlzdCB3aXRoIGRldGFpbHMpXG4gICAgICAgIEUgLS0-IEYoUmVuZGVyIGl0ZW1zIGxpc3Qgd2l0aCBkZXRhaWxzKVxuICAgICAgICBGIC0tPiBHW0RvbmVdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgQyAtLT4gRHtOZXh0IGl0ZW0_fVxuICAgIEQgLS0-fFllc3wgQ1xuICAgIEQgLS0-fE5vfCBFKENvbWJpbmUgaXRlbXMgbGlzdCB3aXRoIGRldGFpbHMpXG4gICAgICAgIEUgLS0-IEYoUmVuZGVyIGl0ZW1zIGxpc3Qgd2l0aCBkZXRhaWxzKVxuICAgICAgICBGIC0tPiBHW0RvbmVdXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0" alt=""></a></p>
+<p><a href="https://mermaid.live/edit#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgQyAtLT4gRHtOZXh0IGl0ZW0_fVxuICAgIEQgLS0-fFllc3wgQ1xuICAgIEQgLS0-fE5vfCBFKENvbWJpbmUgaXRlbXMgbGlzdCB3aXRoIGRldGFpbHMpXG4gICAgICAgIEUgLS0-IEYoUmVuZGVyIGl0ZW1zIGxpc3Qgd2l0aCBkZXRhaWxzKVxuICAgICAgICBGIC0tPiBHW0RvbmVdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9"><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vfxqexp62yw29w5co3bf.png" alt="alt text"></a></p>
 <p>Here is an implementation which uses <code>Promise.all</code>.</p>
-<p class="codepen" data-height="300" data-default-tab="js,result" data-slug-hash="dyRQGam" data-user="jonathanconway" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/jonathanconway/pen/dyRQGam">
-  Details request all-at-once</a> by Jonathan (<a href="https://codepen.io/jonathanconway">@jonathanconway</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<p><a href="https://codepen.io/jonathanconway/pen/dyRQGam">Codepen Link</a></p>
+<pre><code class="language-jsx">function UsersAndStatuses(props) {
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(async () =&gt; {
+    const users = await mockUsers();
+    const userIds = users.map(user =&gt; user.id);
+
+    // Promise.all technique
+    const userStatuses = await Promise.all(
+      userIds.map(mockUserStatus)
+    );
+
+    const usersWithStatus =
+      users.map((user, index) =&gt; ({
+        ...user,
+        ...userStatuses[index]
+      }));
+
+    setUsers(usersWithStatus);
+  }, []);
+
+  return (
+    &lt;ul&gt;
+      {!users.length &amp;&amp; 'Loading...'}
+      {users.map(user =&gt; (
+        &lt;li&gt;{user.name} {user.status}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
 <p>The problem with this solution is: it could take a considerable amount of time for all of these additional requests to render and we don't want to have to keep the user waiting for the whole list to load before they can see anything.</p>
 <p>A far better solution would be to first load and render the list of items without the details, then render each detail for each item as it is loaded.</p>
-<p><a href="https://mermaid.live/edit/#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoUmVuZGVyIGl0ZW1zIGxpc3QpXG4gICAgICAgIEMgLS0-IEQoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgICAgIEQgLS0-IEUoUmVuZGVyIGl0ZW0gbiBkZXRhaWxzKVxuICAgIEUgLS0-IEZ7TmV4dCBpdGVtP31cbiAgICBGIC0tPnxZZXN8IERcbiAgICBGIC0tPnxOb3wgR1tGaW5pc2hdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0"><img src="https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoUmVuZGVyIGl0ZW1zIGxpc3QpXG4gICAgICAgIEMgLS0-IEQoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgICAgIEQgLS0-IEUoUmVuZGVyIGl0ZW0gbiBkZXRhaWxzKVxuICAgIEUgLS0-IEZ7TmV4dCBpdGVtP31cbiAgICBGIC0tPnxZZXN8IERcbiAgICBGIC0tPnxOb3wgR1tGaW5pc2hdXG4gICIsIm1lcm1haWQiOnsidGhlbWUiOiIifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ" alt=""></a></p>
+<p><a href="https://mermaid.live/edit/#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoUmVuZGVyIGl0ZW1zIGxpc3QpXG4gICAgICAgIEMgLS0-IEQoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgICAgIEQgLS0-IEUoUmVuZGVyIGl0ZW0gbiBkZXRhaWxzKVxuICAgIEUgLS0-IEZ7TmV4dCBpdGVtP31cbiAgICBGIC0tPnxZZXN8IERcbiAgICBGIC0tPnxOb3wgR1tGaW5pc2hdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkYXJrXCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6dHJ1ZX0"><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ohogu4cawjiyhhd7hu4i.png" alt=""></a></p>
 <p>Implementing this improved solution raised a challenge:</p>
 <p><strong>How to merge the details from all the requests together into one state variable without triggering a React refresh cycle?</strong></p>
 <p>If the React refresh cycle triggered, it would have caused the state variable to contain incomplete data, as one partial value would override another.</p>
@@ -148,14 +174,50 @@
   [updatedUserId]: updatedUser
 }));
 </code></pre>
-<p>Here's the complete solution:</p>
-<p class="codepen" data-height="300" data-default-tab="js,result" data-slug-hash="dyRQMQL" data-user="jonathanconway" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-  <span>See the Pen <a href="https://codepen.io/jonathanconway/pen/dyRQMQL">
-  Details request all-at-once</a> by Jonathan (<a href="https://codepen.io/jonathanconway">@jonathanconway</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-<p>Now go forth and parallelize all your async multiple requests! Good luck!</p>
+<p>So... here's the parallel loading solution.</p>
+<p><a href="https://codepen.io/jonathanconway/pen/dyRQMQL">Codepen Link</a></p>
+<pre><code class="language-jsx">function UsersAndStatuses(props) {
+  const [usersById, setUsersById] = React.useState({});
+  const users = React.useMemo(() =&gt; Object.values(usersById), [usersById]);
+
+  React.useEffect(async () =&gt; {
+    const usersList = await mockUsers();
+
+    setUsersById(
+      usersList.reduce((acc, user) =&gt; ({
+        ...acc,
+        [user.id]: user
+      }),
+      {}));
+
+    const userIds = usersList.map(user =&gt; user.id);
+
+    userIds.forEach(async (userId) =&gt; {
+      const userStatus = await mockUserStatus(userId);
+
+      // Async state setter technique
+      setUsersById((currentUsersById =&gt; ({
+        ...currentUsersById,
+        [userId]: {
+          ...currentUsersById[userId],
+          ...userStatus
+        }
+      })));
+    });
+  }, []);
+
+  return (
+    &lt;ul&gt;
+      {!users.length &amp;&amp; 'Loading...'}
+      {users.map(user =&gt; (
+        &lt;li&gt;{user.name} {user.status}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
+<p>Now go forth and parallelize all your async multiple requests!</p>
+<p>Good luck!</p>
 
 
       <hr />
