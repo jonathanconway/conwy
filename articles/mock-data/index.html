@@ -144,8 +144,9 @@
 </ol>
 <p>In this article I will elaborate on each of these uses.</p>
 <h2>1. Iteratively designing and documenting structures</h2>
-<p>Let's begin with an example familiar to most developers: <strong>a login form</strong>.</p>
-<p>Suppose we want the login form to capture one of three kinds of username:</p>
+<p>Let's begin with an example that should be reasonably familiar to most developers:</p>
+<p><strong>Validating a username in a sign-up form.</strong></p>
+<p>Suppose we want to capture and validate one of three kinds of username:</p>
 <ul>
 <li>an email address -or-</li>
 <li>a 9-character alpha string -or-</li>
@@ -174,7 +175,7 @@
 <p>And we've given them descriptive names. Naming them this way helps us to think clearly about the requirement and allows us to document the requirement in code.</p>
 <p>Looking at these mock values, we might also begin to ask questions. For example: does a numeric username have a lower and upper bound? Safe assumptions might be <code>0</code> and <code>Number.MAX_SAFE_INTEGER</code>, but we might want to check with a domain expert.</p>
 <p>The point is, by laying out all the expected values of this field together in one view, we give ourselves an opportunity to think more deeply about the range of possible cases and how we will deal with these cases. In this way, mock data becomes a kind of tool for concretizing requirements.</p>
-<p>It also helps us to begin to think about how we might design the validation routine.</p>
+<p>We can now begin to think about how we might design and test the validation routine.</p>
 <h2>2. Boosting unit test development</h2>
 <p>As we begin to write a username validation function, the <code>Username</code> type definition combined with <code>UsernameMocks</code> given above lead directly to four unit tests:</p>
 <pre><code class="language-typescript">describe('validateUsername', () =&gt; {
@@ -360,6 +361,7 @@
 </figure>
 <p>Notice how we are building our Foreign Accounts feature against a <code>ForeignAccountsDataSource</code>, which functions as a kind of contract between the <code>InvoicingApplication</code> (which we control) and the <code>AccountsAPI</code> (which the other team controls).</p>
 <p>This contract helps us to think more clearly about what we need from the Accounts team - the inputs and outputs and behavours. So we can communicate more clearly with the teams who we depend on about the data we depend on them for.</p>
+<p><strong>Bonus:</strong> And we're talking about more than just simulating expected (or unexpected) application states! We can also simulate large data-sets (e.g. to test scalability), error conditions (to test error handling logic), delays (to test performance under various network conditions) and... well... anything else it's possible and useful to simulate. The ability to simulate specific application states is kind of a super power.</p>
 <h2>Summary</h2>
 <p>We've looked at four interrelated benefits of treating mock data with respect and rigour, with examples / pseudo-code for each.</p>
 <ol>
