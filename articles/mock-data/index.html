@@ -132,7 +132,7 @@
 </p>
 <p>Mock data, dummy data, fake data, test data, sample data.</p>
 <p>These terms all express the same thing:</p>
-<p><strong>Data that a developer hard-codes into a software system in place of real data.</strong></p>
+<p><strong>Data that a developer hard-codes in place of real data.</strong></p>
 <p>In my observation, mock data has tended to be used in a rather loose, slipshod, careless manner. Unlike documentation, it is treated as the garbage of software material. (Sometimes even referred to as &quot;garbage data&quot;). People will try to avoid writing it by using elaborate &quot;generators&quot; such as <a href="https://github.com/Devskiller/jfairy">jFairy</a> or <a href="https://github.com/brimdata/zed">zed</a>.</p>
 <p>My argument in this article is that mock data, when treated with respect, turns out to be a supremely useful, versatile and valuable tool.</p>
 <p>I find four special uses for mock data:</p>
@@ -165,27 +165,27 @@
 <p>One way might be to write descriptive comments next to the field. Another way might be to bring in a hefty and cumbersome &quot;validation framework&quot; such as <code>zed</code> and try to twist and wrangle it to the shape of our specific requirements.</p>
 <p>Or... we could simply create a few mock values:</p>
 <pre><code class="language-typescript">const UsernameMocks = {
-  EMAIL: 'user@website.com',
-  TEXT_NINE_CHARS: 'ninechars',
-  TEXT_LONGER_THAN_NINE_CHARS: 'longerthanninechars',
+  EMAIL: &quot;user@website.com&quot;,
+  TEXT_NINE_CHARS: &quot;ninechars&quot;,
+  TEXT_LONGER_THAN_NINE_CHARS: &quot;longerthanninechars&quot;,
   NUMBER: 1234,
-}
+};
 </code></pre>
 <p>We have now enumerated the variants of the username field that we expect to deal with.</p>
 <p>And we've given them descriptive names. Naming them this way helps us to think clearly about the requirement and allows us to document the requirement in code.</p>
 <p>Looking at these mock values, we might also begin to ask questions. For example: does a numeric username have a lower and upper bound? Safe assumptions might be <code>0</code> and <code>Number.MAX_SAFE_INTEGER</code>, but we might want to check with a domain expert.</p>
-<p>The point is, by laying out all the expected values of this field together in one view, we give ourselves an opportunity to think more deeply about the range of possible cases and how we will deal with these cases. In this way, mock data becomes a kind of tool for concretizing requirements.</p>
+<p>The point is, by laying out all the expected values of this field together in one view, we give ourselves an opportunity to think more deeply about the range of possible cases and how we will deal with these cases. In this way, mock data becomes a kind of tool for concretising requirements.</p>
 <p>We can now begin to think about how we might design and test the validation routine.</p>
 <h2>2. Boosting unit test development</h2>
 <p>As we begin to write a username validation function, the <code>Username</code> type definition combined with <code>UsernameMocks</code> given above lead directly to four unit tests:</p>
-<pre><code class="language-typescript">describe('validateUsername', () =&gt; {
-  it('validates email as true', () =&gt; { });
+<pre><code class="language-typescript">describe(&quot;validateUsername&quot;, () =&gt; {
+  it(&quot;validates email as true&quot;, () =&gt; {});
 
-  it('validates text 9 chars long as true', () =&gt; { });
+  it(&quot;validates text 9 chars long as true&quot;, () =&gt; {});
 
-  it('validates text more than 9 chars long as false', () =&gt; { });
+  it(&quot;validates text more than 9 chars long as false&quot;, () =&gt; {});
 
-  it('validates number as true', () =&gt; { });
+  it(&quot;validates number as true&quot;, () =&gt; {});
 });
 </code></pre>
 <p>This isn't a coincidence – the whole point of mock data is to represent kinds of values we expect to deal with. Our unit tests need to do the same thing, to verify that the system under test behaves as we expect.</p>
@@ -193,19 +193,16 @@
 <p>Alternately / additionally, we could use this information about expected inputs to scaffold the function with comments:</p>
 <pre><code class="language-typescript">function validateUsername(username: Username): boolean {
   // If email, return true
-
   // If number, return true
-
   // If less than or equal to 9 chars, return true
-
   // Return false
 }
 </code></pre>
 <p>This is just scratching the surface!</p>
 <p>As we write the tests, we notice that we can reference the mock constants directly inside the test code, to avoid repeating ourselves.</p>
 <p>For example:</p>
-<pre><code class="language-typescript">describe('validate username', () =&gt; {
-  it('returns true for email address', () =&gt; {
+<pre><code class="language-typescript">describe(&quot;validate username&quot;, () =&gt; {
+  it(&quot;returns true for email address&quot;, () =&gt; {
     const output = validateUsername(UsernameMocks.EMAIL);
     expect(output).toBeTruthy();
   });
@@ -214,20 +211,20 @@
 <p>Notice how clean and readable this test is! The naming of the mock constant reveals the intent of the test beautifully. Rather than pollute our test code with concrete values, we can extract them to well-named constants and have the test code focus on the <em>relationships</em> between the values.</p>
 <p>The re-use can go even further. Suppose, in a different part of the code, we want to display a user profile which includes the user's username. We want to style the text differently depending on what kind of username the user has.</p>
 <p>We might extract the username type and mocks to its own module, say, <code>username.ts</code>. Then we can re-use the mock usernames in our tests, like so:</p>
-<pre><code class="language-typescript">describe('user profile', () =&gt; {
-  it('renders number username in monospace', () =&gt; {
+<pre><code class="language-typescript">describe(&quot;user profile&quot;, () =&gt; {
+  it(&quot;renders number username in monospace&quot;, () =&gt; {
     const usernameEl = renderUsername(UsernameMocks.NUMBER);
-    expect(usernameEl).toHaveClass('mono');
+    expect(usernameEl).toHaveClass(&quot;mono&quot;);
   });
 
-  it('renders email username in sans-serif', () =&gt; {
+  it(&quot;renders email username in sans-serif&quot;, () =&gt; {
     const usernameEl = renderUsername(UsernameMocks.EMAIL);
-    expect(usernameEl).toHaveClass('sans-serif');
+    expect(usernameEl).toHaveClass(&quot;sans-serif&quot;);
   });
 
-  it('renders alpha username in sans-serif', () =&gt; {
+  it(&quot;renders alpha username in sans-serif&quot;, () =&gt; {
     const usernameEl = renderUsername(UsernameMocks.TEXT_NINE_CHARS);
-    expect(usernameEl).toHaveClass('sans-serif');
+    expect(usernameEl).toHaveClass(&quot;sans-serif&quot;);
   });
 });
 </code></pre>
@@ -256,7 +253,7 @@
 <p>Imagine if our application was augmented with mock data in such a way that all of its features could be used while running purely off the mock data, without ever having to connect to any real data-source. (By 'data-source', I'm referring to things like databases, APIs, etc.)</p>
 <p>This capability would offer some unique advantages:</p>
 <ul>
-<li>We could simulate any behaviour we desired in our application (by mocking states that could trigger that behaviour)</li>
+<li>We could simulate any behavior we desired in our application (by mocking states that could trigger that behavior)</li>
 <li>We could test how the application would respond to an unexpected state (by mocking that state)</li>
 <li>We could run and develop the application entirely on mocks while the external data-source was down, e.g. during an outage or planned maintenance</li>
 <li>We could develop new features in advance of the data-source supporting them (adding mock data as needed and only substituting real data as it becomes available)</li>
@@ -294,7 +291,7 @@
   </a>
   <figcaption>UML diagram depicting application state switching between real and mock data</figcaption>
 </figure>
-<p>The &quot;switch&quot; could be activated by clicking a UI element, e.g. a small checkbox in the footer area of a web page, which is only visible to Admin users. The click handler toggles the Application state between real data-soure vs. mocks.</p>
+<p>The &quot;switch&quot; could be activated by clicking a UI element, e.g. a small checkbox in the footer area of a web page, which is only visible to Admin users. The click handler toggles the Application state between real data-source vs. mocks.</p>
 <figure class="article-image-container">
   <img
     class="article-image"
@@ -360,18 +357,18 @@
   <figcaption>UML diagram depicting mapping layout between Accounts application and data-source</figcaption>
 </figure>
 <p>Notice how we are building our Foreign Accounts feature against a <code>ForeignAccountsDataSource</code>, which functions as a kind of contract between the <code>InvoicingApplication</code> (which we control) and the <code>AccountsAPI</code> (which the other team controls).</p>
-<p>This contract helps us to think more clearly about what we need from the Accounts team - the inputs and outputs and behavours. So we can communicate more clearly with the teams who we depend on about the data we depend on them for.</p>
+<p>This contract helps us to think more clearly about what we need from the Accounts team - the inputs and outputs and behaviors. So we can communicate more clearly with the teams who we depend on about the data we depend on them for.</p>
 <p><strong>Bonus:</strong> And we're talking about more than just simulating expected (or unexpected) application states! We can also simulate large data-sets (e.g. to test scalability), error conditions (to test error handling logic), delays (to test performance under various network conditions) and... well... anything else it's possible and useful to simulate. The ability to simulate specific application states is kind of a super power.</p>
 <h2>Summary</h2>
 <p>We've looked at four interrelated benefits of treating mock data with respect and rigour, with examples / pseudo-code for each.</p>
 <ol>
 <li>It helps us to clarify our software design by thinking about examples during modelling, before diving in to implementation.</li>
 <li>It boosts our unit testing efforts by providing a ready-made set of test inputs and making test code more readable and maintainable.</li>
-<li>It gives us the poweful capability to run our application independent of external data-sources and, as such, to simulate any application behaviour we desire.</li>
-<li>Finally, it decouples us from immediate dependency on other teams while clarifying the relataionships between teams by encouraging us to model them as contracts.</li>
+<li>It gives us the powerful capability to run our application independent of external data-sources and, as such, to simulate any application behavior we desire.</li>
+<li>Finally, it decouples us from immediate dependency on other teams while clarifying the relationships between teams by encouraging us to model them as contracts.</li>
 </ol>
 <p>These benefits come at a cost. Using mock data in this way requires application code to be structured in a certain way (isolation of Application state). And it takes significant effort to augment a pre-existing application with mock data, especially if that application has complex logic.</p>
-<p>Given all of the above, mock data seems best suited to long-term software projects of moderate  complexity, where the advantages of using mock data outweigh the costs.</p>
+<p>Given all of the above, mock data seems best suited to long-term software projects of moderate complexity, where the advantages of using mock data outweigh the costs.</p>
 <h2>Further reading</h2>
 <p>Books that inspired me:</p>
 <ul>
