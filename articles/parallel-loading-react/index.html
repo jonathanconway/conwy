@@ -127,10 +127,12 @@
     </div>
 
     <div class="article-content">
+
       <p class="article-blurb">
-  How to run multiple requests in parallel and combine the results.
-</p>
-<p>Recently I wanted to build a React component that would merge the results of several independent requests into one set of data and render it as a single list.</p>
+        How to run multiple requests in parallel and combine the results.
+      </p>
+
+      <p>Recently I wanted to build a React component that would merge the results of several independent requests into one set of data and render it as a single list.</p>
 <p>The requests would look like this:</p>
 <ul>
 <li>GET to load initial list of items</li>
@@ -154,27 +156,26 @@
 
   React.useEffect(async () =&gt; {
     const users = await mockUsers();
-    const userIds = users.map(user =&gt; user.id);
+    const userIds = users.map((user) =&gt; user.id);
 
     // Promise.all technique
-    const userStatuses = await Promise.all(
-      userIds.map(mockUserStatus)
-    );
+    const userStatuses = await Promise.all(userIds.map(mockUserStatus));
 
-    const usersWithStatus =
-      users.map((user, index) =&gt; ({
-        ...user,
-        ...userStatuses[index]
-      }));
+    const usersWithStatus = users.map((user, index) =&gt; ({
+      ...user,
+      ...userStatuses[index],
+    }));
 
     setUsers(usersWithStatus);
   }, []);
 
   return (
     &lt;ul&gt;
-      {!users.length &amp;&amp; 'Loading...'}
-      {users.map(user =&gt; (
-        &lt;li&gt;{user.name} {user.status}&lt;/li&gt;
+      {!users.length &amp;&amp; &quot;Loading...&quot;}
+      {users.map((user) =&gt; (
+        &lt;li&gt;
+          {user.name} {user.status}
+        &lt;/li&gt;
       ))}
     &lt;/ul&gt;
   );
@@ -190,13 +191,13 @@
 <p>So instead of the typical <code>setState</code> call:</p>
 <pre><code class="language-js">setUsers({
   ...users,
-  [updatedUserId]: updatedUser
+  [updatedUserId]: updatedUser,
 });
 </code></pre>
 <p>We <a href="https://twitter.com/dan_abramov/status/816394376817635329">pass a state setter</a>:</p>
-<pre><code class="language-js">setUsers(currentUsers =&gt; ({
+<pre><code class="language-js">setUsers((currentUsers) =&gt; ({
   ...currentUsers,
-  [updatedUserId]: updatedUser
+  [updatedUserId]: updatedUser,
 }));
 </code></pre>
 <p>So... here's the parallel loading solution.</p>
@@ -209,33 +210,38 @@
     const usersList = await mockUsers();
 
     setUsersById(
-      usersList.reduce((acc, user) =&gt; ({
-        ...acc,
-        [user.id]: user
-      }),
-      {}));
+      usersList.reduce(
+        (acc, user) =&gt; ({
+          ...acc,
+          [user.id]: user,
+        }),
+        {}
+      )
+    );
 
-    const userIds = usersList.map(user =&gt; user.id);
+    const userIds = usersList.map((user) =&gt; user.id);
 
     userIds.forEach(async (userId) =&gt; {
       const userStatus = await mockUserStatus(userId);
 
       // Async state setter technique
-      setUsersById((currentUsersById =&gt; ({
+      setUsersById((currentUsersById) =&gt; ({
         ...currentUsersById,
         [userId]: {
           ...currentUsersById[userId],
-          ...userStatus
-        }
-      })));
+          ...userStatus,
+        },
+      }));
     });
   }, []);
 
   return (
     &lt;ul&gt;
-      {!users.length &amp;&amp; 'Loading...'}
-      {users.map(user =&gt; (
-        &lt;li&gt;{user.name} {user.status}&lt;/li&gt;
+      {!users.length &amp;&amp; &quot;Loading...&quot;}
+      {users.map((user) =&gt; (
+        &lt;li&gt;
+          {user.name} {user.status}
+        &lt;/li&gt;
       ))}
     &lt;/ul&gt;
   );

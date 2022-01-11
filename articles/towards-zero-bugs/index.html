@@ -127,10 +127,12 @@
     </div>
 
     <div class="article-content">
+
       <p class="article-blurb">
-  I am on a personal and professional mission to write bug-free code.
-</p>
-<p>Software with zero bugs may seem like an ambitious goal. Over time, defects in software have increased and have become so normalised that some developers and users even expect them.</p>
+        I am on a personal and professional mission to write bug-free code.
+      </p>
+
+      <p>Software with zero bugs may seem like an ambitious goal. Over time, defects in software have increased and have become so normalised that some developers and users even expect them.</p>
 <p>But while it's difficult to get to zero bugs, I think it's worth trying for. We shouldn't concede defeat and assume ahead-of-time that our products will be defective. Rather, we should do everything in our power to avoid inadvertently creating bugs in our software, where they could be avoided. The closer we get to zero critters, the better!</p>
 <p>Over time, I have been building up a mental checklist of things to look out for, both in the code I write and in the running application that it generates, to identify potential bugs. I now run through this checklist whenever I am about to complete work on a change or a new feature. I have also been working on building a mindset that encourages discipline, rigour and attention to detail.</p>
 <p>By running these checks and building this mindset, I aim to identify and fix bugs early, rather than having them show up in a testing environment, or worse still, in front of an end-user.</p>
@@ -181,7 +183,7 @@ For example:</p>
 <p><strong>Multiple environments.</strong> Most organisations have multiple environments into which software is deployed in a staged manner. There's the local developer machine, then a Development server, then Staging and/or QA, then Production/Release/Live. It's a good idea to run some tests on your application in every environment. This is especially important if your feature or change depends on environment-specific factors, such as configuration values, database schemas, data and other systems, services or resources. Anything might go wrong in a new environment, from a typo in a configuration value to a missing authorisation on a resource. You don't have to test everything in every environment, but it's probably a good idea to at least test the happy path.</p>
 <p><strong>Find similar bugs and fix them (and generalise the fix!).</strong> This came up recently, where a colleague discovered a bug in which the wrong property was being used to retrieve the error message from an HTTP response. Rather than merely fixing it for that one response, I tested all places in the codebase where an error message was being retrieved from an HTTP response and fixed them all where necessary. I then went a step further and generalised the fix, by extracting HTTP error handling to a common function. So not only were additional bugs eliminated, but similar bugs in the future were prevented, by improving the overall framework.</p>
 <h2>The mindset</h2>
-<p>This checklist may seem daunting, especially when working under time constraints. However, you don't have to action all of these items for every change you make. I typically give this list a quick scan and pick out only the items that are relevant to the change I'm making. For example, a change to the logic for calculating a numeric value probably doesn't necessitate checking 'Devices, screen-sizes and zoom factors'. Likewise, for a change to the layout of a dialog box, I can probably skip  'Async data dependencies'.</p>
+<p>This checklist may seem daunting, especially when working under time constraints. However, you don't have to action all of these items for every change you make. I typically give this list a quick scan and pick out only the items that are relevant to the change I'm making. For example, a change to the logic for calculating a numeric value probably doesn't necessitate checking 'Devices, screen-sizes and zoom factors'. Likewise, for a change to the layout of a dialog box, I can probably skip 'Async data dependencies'.</p>
 <p>The &quot;old&quot; mindset (that I have sometimes seen in the industry) is:</p>
 <ul>
 <li>I assume my code has no bugs by default.</li>
