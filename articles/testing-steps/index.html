@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78479084-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-78479084-1');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TSBT4XB');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://conwy.co -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2632897,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    
+    <title>conwy • Testing steps – an alternative to BDD</title>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Homepage of Jonathan Conway">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    
+    <link rel="stylesheet" href="/css/index.css">
+
+    
+    <link rel="stylesheet" href="/lib/prismjs/prism.css">
+    <script src="/lib/prismjs/prism.js" defer></script>
+
+    
+    <script type="text/javascript">
+      Image1 = new Image(150,20)
+      Image1.src = "/components/redirect/horse.gif"
+    </script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSBT4XB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="body" box box-padding="large" layout layout-direction="vertical">
+      
+  <div class="border">
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+  </div>
+
+  <header responsive-layout responsive-layout-type="spread-out" responsive-layout-centered>
+    <div class="title" layout layout-centered>
+    <img
+      class="title-profile-photo"
+      src="/components/title/profile-photo.jpg"
+    >
+    
+    <h1 class="title-logo">
+      <a class="logo-link" href="/">
+        conwy
+        <b class="logo-layer">conwy</b>
+        <b class="logo-layer">conwy</b>
+        <b class="logo-layer">conwy</b>
+      </a>
+    </h1>
+  </div>
+    <div class="nav">
+        <a href="/">home</a>
+      
+
+      
+        <span class="nav-divider"> • </span>
+      
+        <a href="/work">work</a>
+      
+
+      
+        <span class="nav-divider"> • </span>
+      
+        <a href="/links">links</a>
+      
+
+      </div>
+  </header>
+
+      
+
+<article>
+    <div class="article-header">
+      <h2>Testing steps – an alternative to BDD</h2>
+
+      <p class="article-date">14/02/2022</p>
+
+      <img
+        class="article-main-image"
+        src="testing-steps.jpg"
+      />
+    </div>
+
+    <div class="article-content">
+
+      <p class="article-blurb">
+        Is there a simpler way to write acceptance tests?
+      </p>
+
+      <h2>Introduction</h2>
+<p>Over the years several <a href="https://en.wikipedia.org/wiki/Acceptance_testing#List_of_acceptance-testing_frameworks" target="_blank">acceptance testing frameworks</a> have risen and fallen in popularity.</p>
+<p><a href="https://en.wikipedia.org/wiki/Behavior-driven_development" target="_blank">Behavior Driven Development</a> (BDD), implemented in languages such as <a href="https://en.wikipedia.org/wiki/Cucumber_(software)" target="_blank">Cucumber</a> and <a href="https://en.wikipedia.org/wiki/RSpec" target="_blank">RSpec</a>, aims provide a human-readable and machine-parsable syntax for defining requirements. Developers and business people collaborate to produce specs in a &quot;Given/When/Then&quot; structure. Developers then implement an executable test for each spec using a more standard programming language test framework, such as JUnit, XUnit, Jasmine, etc.</p>
+<p>Though it has grown in popularity, the BDD style has two disadvantages:</p>
+<ol>
+<li>The &quot;Given/When/Then&quot; syntax adds an additional learning curve for people not familiar with the language.</li>
+<li>The &quot;Given/When/Then&quot; structure (if adhered to) constrains the tests, forcing all assertions to take place after all actions, rather than allowing a sequence of interleaved actions and assertions.</li>
+</ol>
+<p>Instead of BDD, we could use a much simpler and more familiar syntax:</p>
+<p><strong>An ordered list of testing steps</strong></p>
+<p>In this <em>testing steps</em> approach, we remove the Given/When/Then structure altogether and simply list our sequence of steps and assertions. As with BDD tests, we then write code that implements each of the steps, using templating and parameterization where appropriate for reusability.</p>
+<p>Instead of:</p>
+<pre><code>GIVEN x
+WHEN y
+THEN z
+</code></pre>
+<p>We write this:</p>
+<pre><code>1. x
+2. y
+3. z
+</code></pre>
+<h2>An example</h2>
+<p>Suppose we wish to write a spec for the following requirement:</p>
+<blockquote>
+<p>Display an error if a currency conversion is over the limit for that currency, along with a Max button which resets the payment amount to the maximum amount, and then allows the user to proceed with the payment at that amount.</p>
+</blockquote>
+<p>This requirement might be captured in two BDD specs such as the following:</p>
+<h3>Validate currency limit with max button</h3>
+<pre><code>TITLE: Validate currency limit with max button
+
+SCENARIO 1: Validate currency limit
+
+GIVEN I am a registered user
+AND I have a bank balance of 100,000 GBP
+AND The maximum conversion from GBP to CAD is 50,000
+WHEN I go to the Make a Payment screen
+AND I set the Destination currency to CAD
+AND I set the Payment amount to 51,000 GBP
+THEN I will see a Currency conversion over daily payment limit error
+AND I will see a Fill max currency button
+
+SCENARIO 2: Provide Max button, which resets currency to limit value
+
+GIVEN I am a registered user
+AND I have a bank balance of 100,000 GBP
+AND The maximum conversion from GBP to CAD is 50,000
+WHEN I go to the Make a Payment screen
+AND I set the Destination currency to CAD
+AND I set the Payment amount to 51,000 GBP
+AND I click the Fill max currency button
+AND I click the Submit payment button
+THEN I will see a Payment successful screen
+AND I will see the amount paid as 50,000 GBP
+</code></pre>
+<p>Notice how cumbersome and repetitive this is.</p>
+<p>We could replace it with a single, neatly condensed sequence of steps:</p>
+<pre><code>SCENARIO: Validate currency limit with max button
+
+1. Log in as a registered user
+2. Assume a bank balance of 100,000 GBP
+3. Assume a maximum conversion from GBP to CAD of 50,000
+4. Go to the Make a Payment screen
+5. Set the Destination currency to CAD
+6. Set the Payment amount to 51,000 GBP
+7. Observe the following error is visible: Currency conversion over daily payment limit
+8. Observe the following button is visible: Fill max currency button
+9. Click the Fill max currency button
+10. Click the Submit payment button
+11. Observe the following success message: Payment successful screen
+12. Observe the following field | value: Amount paid | 50,000 GBP
+</code></pre>
+<p>Notice how this latter form conveys the same information as the BDD spec, but without the Given/When/Then structure, and as a sequence of actions/events in a single flow.</p>
+<p>Also notice that this is closer to how most human beings would manually test this kind of behavior. They wouldn't separate their testing into two sets of three distinct phases, starting over again after the first set. Rather, they would more likely perform just one sequence of steps, verifying the correctness as they go, all the way until the last step.</p>
+<p>It's true that the testing steps don't explicitly tell us which of the steps are arrangements/pre-conditions, which are actions and which are assertions/post-conditions. For example, step 8 doesn't explicitly tell us that it is an assertion. However, I would argue that this fact is implicit in the language anyway and the average reader should have no problem interpreting a statement like &quot;I will see a Fill max currency button&quot; as an expectation rather than an action for the reader to perform.</p>
+<p>From the developer's point of view, it doesn't matter either; any of these steps can have its own code block, associated via string/template matching. We don't need to specify whether a step is a Given, a When or a Then, in order to match the step to the correct code block. (If we want to make that attribute explicit in code, we can always do so with a comment, decorator, method naming convention, etc.)</p>
+<h2>Conclusion</h2>
+<p>It seems to me that the &quot;Given/When/Then&quot; way of structuring spec tests is a relic of design by contract and intended to help the code more than the user. It is unnecessary to structure tests in this way. Instead we can use a simple sequential list of steps. This is simpler, more user-friendly and more suitable to typical testing in which actions and assertions are intermingled throughout a sequence.</p>
+<p>Users don't normally think in terms of pre-conditions/post-conditions, but are much more likely to think in terms of sequence of actions they perform and responses they get from the system.</p>
+<h2>Library</h2>
+<p>During writing of this article I developed a new testing framework which applies the concept of testing steps.</p>
+<p>You can check it out here: <a href="https://github.com/jonathanconway/testing-steps" target="_blank"><code>testing-steps</code></a>.</p>
+<p>This framework is a Javascript/Typescript library which can be consumed by unit tests targeting the <a href="https://jestjs.io/" target="_blank">Jest</a> test runner.</p>
+<p>If there is enough interest, I will look at getting it ported to other languages/frameworks.</p>
+<h2>Further reading</h2>
+<p>Books that inspired me:</p>
+<ul>
+<li><em>The Cucumber Book</em> • Matt WYNNE</li>
+</ul>
+
+
+      <hr />
+    </div>
+  </article>
+
+  
+
+      <footer>
+    <p>
+      <small>
+        &copy; Jonathan Conway
+      </small>
+    </p>
+    <p>
+      <small class="acknowledgement">
+        I acknowledge the Traditional Owners of the lands on which I live, the Eora peoples, and recognise their enduring connection to land, waters, and culture. I pay my respects to their elders, past and present. 
+      </small>
+    </p>
+  </footer>
+    </div>
+  </body>
+</html>
