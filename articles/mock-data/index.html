@@ -359,7 +359,12 @@
 </figure>
 <p>Notice how we are building our Foreign Accounts feature against a <code>ForeignAccountsDataSource</code>, which functions as a kind of contract between the <code>InvoicingApplication</code> (which we control) and the <code>AccountsAPI</code> (which the other team controls).</p>
 <p>This contract helps us to think more clearly about what we need from the Accounts team - the inputs and outputs and behaviors. So we can communicate more clearly with the teams who we depend on about the data we depend on them for.</p>
-<p><strong>Bonus:</strong> And we're talking about more than just simulating expected (or unexpected) application states! We can also simulate large data-sets (e.g. to test scalability), error conditions (to test error handling logic), delays (to test performance under various network conditions) and... well... anything else it's possible and useful to simulate. The ability to simulate specific application states is kind of a super power.</p>
+<h3>Sharing mocked states with team members</h3>
+<p>With mocked data in place, we can share various configurations of our application with team members such as QA engineers / testers, product owners, usability and accessibility professionals and others.</p>
+<p>One technique applicable to web applications (which I used on a recent real-life project) is to configure the mock states via queryString parameters in the URL. The URL can then be shared with anyone who needs to see the web application in the mocked state. Rather than having the team member go through complicated sequences of steps to simulate a given state, all they need to do is to open the link.</p>
+<p>For example, if we want to simulate the state in which the user entered a credit card into a payment page, but the card has expired, we might share a URL like this: http://myapp.com/payment-details?mockCreditCardExpired=true. This URL could be used to test the error message that is displayed for expired cards.</p>
+<h3>Other uses of mock data</h3>
+<p>We're talking about more than just simulating expected (or unexpected) application states! We can also simulate large data-sets (e.g. to test scalability), error conditions (to test error handling logic), delays (to test performance under various network conditions) and... well... anything else it's possible and useful to simulate. The ability to simulate specific application states is kind of a super power.</p>
 <h2>Summary</h2>
 <p>We've looked at four interrelated benefits of treating mock data with respect and rigour, with examples / pseudo-code for each.</p>
 <ol>
@@ -370,6 +375,10 @@
 </ol>
 <p>These benefits come at a cost. Using mock data in this way requires application code to be structured in a certain way (isolation of Application state). And it takes significant effort to augment a pre-existing application with mock data, especially if that application has complex logic.</p>
 <p>Given all of the above, mock data seems best suited to long-term software projects of moderate complexity, where the advantages of using mock data outweigh the costs.</p>
+<h2>Related tools</h2>
+<ul>
+<li><a href="https://mswjs.io/">Mock Service Worker</a>, targeted at web/typescript projects, provides some infrastructure for mocking web endpoints. The application can make requests as usual, but MSW can handle the requests and provide mock responses as if the Backend was mocked. The requests will appear in the Network Tab of Developer Tools, just like a regular request.</li>
+</ul>
 <h2>Further reading</h2>
 <p>Books that inspired me:</p>
 <ul>
