@@ -1,5 +1,3 @@
-const pluginSass = require("eleventy-plugin-sass");
-
 const addFilters = require("./.eleventy.filters.js");
 
 module.exports = function (eleventyConfig) {
@@ -15,10 +13,8 @@ module.exports = function (eleventyConfig) {
     "gif",
     "png",
     "jpg",
-    "svg"
+    "svg",
   ]);
 
-  eleventyConfig.addPlugin(pluginSass, {});
-  
   addFilters(eleventyConfig);
 };

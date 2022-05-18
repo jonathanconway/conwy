@@ -1,0 +1,20 @@
+/**
+ * Nav
+ *
+ * Short list of top-level links to the major areas of the website.
+ */
+
+.nav strong {
+  color: #fd9326;
+  font-weight: normal;
+}
+
+.nav a {
+  color: black;
+}
+
+.nav a:hover,
+.nav a:focus,
+.nav a:active {
+  color: #fd9326;
+}

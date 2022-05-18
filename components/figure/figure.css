@@ -6,13 +6,13 @@
 
 figure {
   padding: 1rem;
+}
 
-  figcaption {
-    margin-top: 1rem;
-    font-size: 0.8rem;
+figure figcaption {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
 
-    &:before {
-      content: "▲ ";
-    }
-  }
+figure figcaption:before {
+  content: "▲ ";
 }

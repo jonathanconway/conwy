@@ -1,38 +1,36 @@
-const fs = require('fs');
-const nunjucks = require('nunjucks');
-const sass = require('sass');
+const fs = require("fs");
+const nunjucks = require("nunjucks");
 
 function setupNunjucks(rootPath) {
-  const addFilters = require('../.eleventy.filters.js');
+  const addFilters = require("../.eleventy.filters.js");
 
-  function MyLoader(opts) {
-  }
+  function MyLoader(opts) {}
 
-  MyLoader.prototype.getSource = function(name) {
-    const path = rootPath + '/' + name;
-    const src = fs.readFileSync(path, 'utf8')
+  MyLoader.prototype.getSource = function (name) {
+    const path = rootPath + "/" + name;
+    const src = fs.readFileSync(path, "utf8");
 
     return {
       src,
-      path
+      path,
     };
-  }
-  
-  const environment = new nunjucks.Environment(
-    new MyLoader(),
-    { autoescape: true });
+  };
+
+  const environment = new nunjucks.Environment(new MyLoader(), {
+    autoescape: true,
+  });
 
   addFilters(environment);
 
   return environment;
-};
+}
 exports.setupNunjucks = setupNunjucks;
 
 function getTemplate(templateName) {
   const templateFilename = `./components/${templateName}/${templateName}.njk`;
-  const template = fs.readFileSync(templateFilename, 'utf8');
+  const template = fs.readFileSync(templateFilename, "utf8");
   return template;
-};
+}
 exports.getTemplate = getTemplate;
 
 function renderMacro(environment, templateName, macroName, model) {
@@ -42,16 +40,14 @@ function renderMacro(environment, templateName, macroName, model) {
   const output = environment.renderString(inputString, { model });
   const outputWrapped = `<div id="test-container">${output}</div>`;
   return outputWrapped;
-};
+}
 exports.renderMacro = renderMacro;
 
 function renderStyles() {
-  const sassOutput = sass.renderSync({
-    file: process.cwd() + '/css/index.scss'
-  });
-  const cssOutput = sassOutput.css.toString();
+  const path = process.cwd() + "/css/index.css";
+  const cssOutput = fs.readFileSync(path, "utf8");
   return cssOutput;
-};
+}
 exports.renderStyles = renderStyles;
 
 function withStyles(output) {
@@ -63,29 +59,29 @@ exports.withStyles = withStyles;
 function generateSnapshotPath(dirname, suffix) {
   const path =
     dirname +
-    '/snapshots/' +
-    dirname.split('/').slice(-1)[0] +
-    '-' +
+    "/snapshots/" +
+    dirname.split("/").slice(-1)[0] +
+    "-" +
     suffix +
-    '.png';
+    ".png";
   return path;
-};
+}
 exports.generateSnapshotPath = generateSnapshotPath;
 
 function encodeImage(imagePath) {
-  const relativeImagePath = imagePath.replace('/', '');
+  const relativeImagePath = imagePath.replace("/", "");
   const imageFileBuffer = fs.readFileSync(relativeImagePath);
-  const imageContentsBase64 = imageFileBuffer.toString('base64');
-  const encodedImage = 'data:image/gif;base64,' + imageContentsBase64;
+  const imageContentsBase64 = imageFileBuffer.toString("base64");
+  const encodedImage = "data:image/gif;base64," + imageContentsBase64;
   return encodedImage;
 }
 exports.encodeImage = encodeImage;
 
 async function setViewportSize(page, size) {
   switch (size) {
-    case 'small':
+    case "small":
       return page.setViewportSize({ width: 200, height: 350 });
-    case 'regular':
+    case "regular":
       return page.setViewportSize({ width: 800, height: 600 });
   }
 }
