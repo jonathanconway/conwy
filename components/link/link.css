@@ -1,1 +1,14 @@
-a{text-decoration:none;color:#428bca}a:active,a:focus,a:hover{text-decoration:underline}
+/**
+ * Link
+ */
+
+a {
+  text-decoration: none;
+  color: #428bca;
+}
+
+a:focus,
+a:hover,
+a:active {
+  text-decoration: underline;
+}

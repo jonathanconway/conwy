@@ -1,1 +1,18 @@
-@charset "UTF-8";figure{padding:1rem}figure figcaption{margin-top:1rem;font-size:.8rem}figure figcaption:before{content:"▲ "}
+/**
+ * Figure
+ * 
+ * An image (diagram, wireframe, screenshot, photo, etc.) with associated textual caption.
+ */
+
+figure {
+  padding: 1rem;
+}
+
+figure figcaption {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
+
+figure figcaption:before {
+  content: "▲ ";
+}

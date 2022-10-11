@@ -1,1 +1,35 @@
-[box]{box-sizing:border-box}[box],[box][box-padding=small],[box][box-padding]{padding:1rem}[box][box-padding=medium]{padding:2rem}[box][box-padding=large]{padding:3rem}
+/**
+ * Box
+ *
+ * Rectangular container with various standard paddings.
+ */
+
+[box] {
+  box-sizing: border-box;
+}
+
+
+/**
+ * Padding
+ */
+
+/** Type: Small (default) */
+
+[box],
+[box][box-padding],
+[box][box-padding="small"] {
+  padding: 1rem;
+}
+
+/** Type: Medium */
+
+[box][box-padding="medium"] {
+  padding: 2rem;
+}
+
+/** Type: Large */
+
+[box][box-padding="large"] {
+  padding: 3rem;
+}
+
