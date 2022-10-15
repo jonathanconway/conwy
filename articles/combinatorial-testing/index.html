@@ -131,24 +131,12 @@
         Using a simple combinator, you can make your data-driven tests cover a wider range of scenarios while keeping test code neat and readable
       </p>
 
-      <h2>Truth tables</h2>
-<p>In his course <a href="https://www.coursera.org/learn/mathematical-thinking">Introduction to Mathematical Thinking</a>, Keith Devlin uses a truth table to represent all the possible true/false combinations of two components in a logical proposition.</p>
-<p>It looks a little like this...</p>
-<table border="1px" cellpadding="5px">
-  <tr>
-    <td><b><i>p</i></b></td>
-    <td><b><i>q</i></b></td>
-    <td><b><i>p ^ q</i></b></td>
-  </tr>
-  <tr><td>T</td><td>T</td><td>T</td></tr>
-  <tr><td>T</td><td>F</td><td>F</td></tr>
-  <tr><td>F</td><td>T</td><td>F</td></tr>
-  <tr><td>F</td><td>F</td><td>F</td></tr>
-</table>
-<p>Having all the possible combinations laid out in a table like this makes it easy for us to evaluate each and all of them, and thus verify that the proposition (in this case, <strong>p AND q</strong>) is logically correct.</p>
-<p>You may have encountered one of these before. Maybe it was sketched out on a piece of paper, or in an Excel spreadsheet, or in a course like the one mentioned above.</p>
-<h2>Data-driven testing</h2>
-<p>Tables of combinations, similar to truth tables, are actually useful when unit testing. They are the basis for <a href="https://en.wikipedia.org/wiki/Data-driven_testing">data-driven testing</a>, in which test cases are inputted as tables of data. Data-driven testing is now supported by many popular test frameworks (Jest, JUnit, NUnit to name a few).</p>
+      <p>Have you recently tried to unit test a function which has many combinations of possible inputs and expected outputs?</p>
+<p>An increasingly common way of writing such a test is to utilize a data-driven test. The problem with data-driven tests is that they can quickly grow to be large and unwieldy.</p>
+<p>In this article, I want to introduce a technique for generating data-driven tests without having to spell out every individual combination of inputs/outputs in code.</p>
+<p>But first, a quick refresher on data-driven tests...</p>
+<h2>Data-driven tests and their limitations</h2>
+<p>You may be familiar with <a href="https://en.wikipedia.org/wiki/Data-driven_testing">data-driven testing</a>. Basically you write a table of combinations of inputs and outputs in which each test case is inputted as &quot;row&quot; of data. Data-driven testing is now supported by many popular test frameworks (Jest, JUnit, NUnit to name a few).</p>
 <p>One problem with data-driven testing is: sometimes we have so many combinations to cover that a comprehensive data-driven test would be very lengthy and difficult to read or maintain.</p>
 <p>Imagine, for example, trying to write a data-driven unit test for a function which returns the <strong>number of days in a given month</strong>.</p>
 <p>The function takes two parameters: <code>year</code> and <code>month</code> and returns one <code>day</code> value. It has to deal with a range of values for each parameter. Multiplying all values that need to be tested by two parameters yields a large number of combinations.</p>
@@ -226,25 +214,15 @@
 <p>Providing a single definition object, we can get a large set of results.</p>
 <p><a href="https://mermaid.live/edit#pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw"><img src="https://mermaid.ink/img/pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw" alt=""></a></p>
 <p>Let's apply this combinator to a slightly more &quot;real world&quot; example.</p>
-<h2>Applying a combinator to an example</h2>
+<h2>Applying a combinator to an example: days in a month</h2>
 <p>For historical reasons, determining the number of days in a month in the Western calendar is complicated.</p>
 <p>The following short rhyme tries to summarize the rules in a memorable way:</p>
 <blockquote>
 <p>Thirty days have September,</p>
-</blockquote>
-<blockquote>
 <p>April, June and November.</p>
-</blockquote>
-<blockquote>
 <p>All the rest have thirty-one,</p>
-</blockquote>
-<blockquote>
 <p>except February alone, which has</p>
-</blockquote>
-<blockquote>
 <p>twenty-eight days each year</p>
-</blockquote>
-<blockquote>
 <p>and twenty-nine days each leap-year</p>
 </blockquote>
 <p>Suppose we wanted to unit-test a function, <code>getDaysInMonth</code>, which takes <code>month</code> and <code>year</code> as input and returns a number of <code>days</code>.</p>
@@ -253,8 +231,6 @@
 <p>Starting with the first two lines of the rhyme:</p>
 <blockquote>
 <p>Thirty days have September,</p>
-</blockquote>
-<blockquote>
 <p>April, June and November.</p>
 </blockquote>
 <p>We can express it programatically like this:</p>
@@ -311,10 +287,8 @@
 ... etc ...
 </code></pre>
 <blockquote>
-<p>except February alone, which has</p>
-</blockquote>
-<blockquote>
-<p>twenty-eight days each year</p>
+<p>except February alone, which has
+twenty-eight days each year</p>
 </blockquote>
 <pre><code class="language-ts">const februaryDays = combinate({
   year: [2023],
@@ -375,7 +349,8 @@
 });
 </code></pre>
 <p>Notice that we can assign meaningful names to each of the variables, increasing the readability of the test code.</p>
-<p>I'm sure you would agree that this test code, using a combinator, is more readable than a large table of numbers and strings!</p>
+<p>I'm sure you would agree that this test code, using a combinator, is more concise and readable than a large table of numbers and strings!</p>
+<p>In closing, I encourage you to use combinatorial testing to shorten and sweeten your data-driven tests, thus testing your software thoroughly and making it maximally robust.</p>
 <h2>Introducing combinator-util</h2>
 <p>If you'd like to add a little combinatorial goodness to our unit tests, please check out this re-usable, open-source NPM package:</p>
 <p><a href="https://github.com/jonathanconway/combinator">https://github.com/jonathanconway/combinator</a></p>

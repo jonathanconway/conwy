@@ -65,6 +65,17 @@ p > code {
   border-radius: 0.3em;
 }
 
+pre {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+code {
+  font-size: 0.75rem !important;
+  padding: 0;
+  margin: 0;
+}
+
 a[href~="mermaid"] {
   height: 500px;
 }
@@ -77,4 +88,13 @@ hr {
   margin: 2rem 0;
   padding: 0;
   border-top: 0;
+}
+
+blockquote {
+  border-left: solid 1rem silver;
+  padding: 0.125rem 0 0.125rem 1rem;
+}
+
+blockquote p {
+  padding: 0;
 }
