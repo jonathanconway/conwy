@@ -3,7 +3,7 @@ layout: article.njk
 tags: ["article", "tech"]
 title: Interaction wireframes
 date: 2020-12-30
-imageUrl: how-i-do-wireframes.jpg
+imageUrl: interaction-wireframes.jpg
 blurb: Using wireframes to depict elements and interactions together
 ---
 
@@ -33,8 +33,8 @@ Here's a convention to follow for shapes:
 And here's an example:
 
 <figure>
-  <a target="_blank" href="how-i-do-wireframes-image1.svg">
-    <img src="how-i-do-wireframes-image1.svg" width="500" />
+  <a target="_blank" href="interaction-wireframes-image1.svg">
+    <img src="interaction-wireframes-image1.svg" width="500" />
   </a>
   <figcaption>Wireframe showing only interface elements</figcaption>
 </figure>
@@ -50,8 +50,8 @@ For this purpose, we can drop in a <strong style="color: darkGreen;">green-colou
 Here's what it looks like:
 
 <figure>
-  <a target="_blank" href="how-i-do-wireframes-image2.svg">
-    <img src="how-i-do-wireframes-image2.svg" width="500" />
+  <a target="_blank" href="interaction-wireframes-image2.svg">
+    <img src="interaction-wireframes-image2.svg" width="500" />
   </a>
   <figcaption>Wireframe showing interface elements and component labels</figcaption>
 </figure>
@@ -73,8 +73,8 @@ We can simply add a <strong style="color: red">red arrow connector -🔺</strong
 For example, suppose we want to depict that when the user clicks a button, a modal box appears. We draw a red arrow from the button to the modal, with &lsquo;(click)&rsquo; in rounded brackets on the connector.
 
 <figure>
-  <a target="_blank" href="how-i-do-wireframes-image3.svg">
-    <img src="how-i-do-wireframes-image3.svg" width="500" />
+  <a target="_blank" href="interaction-wireframes-image3.svg">
+    <img src="interaction-wireframes-image3.svg" width="500" />
   </a>
   <figcaption>Event connector depicting a button click event</figcaption>
 </figure>
@@ -88,8 +88,8 @@ There might be some logic to these interactions. For example, if the user enters
 Here's the whole UI - elements, numbered labels and event connectors (with logic).
 
 <figure>
-  <a target="_blank" href="how-i-do-wireframes-image3.svg">
-    <img src="how-i-do-wireframes-image3.svg" />
+  <a target="_blank" href="interaction-wireframes-image3.svg">
+    <img src="interaction-wireframes-image3.svg" />
   </a>
   <figcaption>Wireframe showing interface elements, component labels and event connectors</figcaption>
 </figure>

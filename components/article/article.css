@@ -4,16 +4,16 @@
  * Layout of the article page
  */
 
-.article-main-image {
-  border: solid 2px black;
-  border-radius: 0.5rem;
-  width: 100%;
+.article-main-image-container {
+  display: flex;
+  align-items: center;
+  height: 10rem;
+  margin: 0 -2rem;
+  overflow: hidden;
 }
 
-@media screen and (min-width: 30rem) {
-  .article-main-image {
-    width: 50%;
-  }
+.article-main-image {
+  width: 100%;
 }
 
 .article-header {
