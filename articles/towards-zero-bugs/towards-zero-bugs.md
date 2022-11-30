@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: Towards zero bugs
 date: 2019-12-01
 imageUrl: towards-zero-bugs.jpg

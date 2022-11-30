@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: Testing steps – an alternative to BDD
 date: 2022-02-14
 imageUrl: testing-steps.jpg

@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: Increase your test coverage with combinatorial testing
 date: 2022-10-10
 imageUrl: combinatorial-testing.jpg
@@ -114,7 +114,9 @@ Like this:
 ];
 ```
 
-Providing a single definition object, we can get a large set of results.
+Providing a definition object as input, we can get a large set of results as output.
+
+Here's a high-level diagram:
 
 [![](https://mermaid.ink/img/pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw)](https://mermaid.live/edit#pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw)
 
@@ -142,7 +144,7 @@ Suppose we wanted to unit-test a function, `getDaysInMonth`, which takes `month`
 
 We could simply input every possible date into the unit test and assert on the month of each. As mentioned above, that could involve quite a lot of fiddling in Excel and would result in a very long and not very human-readable test file.
 
-Let's see how we would tackle this problem in Combinator.
+Instead, let's try to tackle this problem with a combinator.
 
 Starting with the first two lines of the rhyme:
 
@@ -150,7 +152,7 @@ Starting with the first two lines of the rhyme:
 >
 > April, June and November.
 
-We can express it programatically like this:
+We can express this "thirty days" combination set programmatically, like this:
 
 ```ts
 const thirtyDays = combinate({

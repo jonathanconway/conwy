@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: The many uses of mock data
 date: 2021-09-28
 imageUrl: mock-data.jpg

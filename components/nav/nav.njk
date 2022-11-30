@@ -1,9 +1,9 @@
 {%- macro nav(params) -%}
   <div class="nav">
     {%- for navItem in [
-        { key: 'articles', path: '',         label: 'home' },
-        { key: 'work',     path: 'work',     label: 'work' },
-        { key: 'links',    path: 'links',    label: 'links' }]
+        { key: 'home',     path: '',         label: 'home' },
+        { key: 'articles', path: 'articles', label: 'articles' },
+        { key: 'work',     path: 'work',     label: 'work' }]
     -%}
       {% if params.tags.includes(navItem.key) %}
         <strong>{{ navItem.label }}</strong>

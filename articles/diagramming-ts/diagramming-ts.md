@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: Diagramming Typescript
 date: 2022-01-02
 imageUrl: diagramming-ts.jpg

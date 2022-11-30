@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: Interaction wireframes
 date: 2020-12-30
 imageUrl: interaction-wireframes.jpg

@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: Why we get hired
 date: 2018-12-01
 imageUrl: why-we-get-hired.jpg

@@ -9,12 +9,3 @@ layout: layout.njk
 </div>
 
 <hr />
-
-{%- from '../components/article-list-item/article-list-item.njk' import articleListItem %}
-<div layout layout-direction="vertical">
-  {%- for article in collections.article | reverse -%}
-    {{ articleListItem(article) }}
-  {%- endfor -%}
-</div>
-
-<hr />

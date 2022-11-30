@@ -1,5 +1,5 @@
 ---
 layout: home.njk
-tags: ['articles']
+tags: ["home"]
 title: Home
 ---

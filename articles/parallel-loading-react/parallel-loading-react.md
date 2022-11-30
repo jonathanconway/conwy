@@ -1,6 +1,6 @@
 ---
 layout: article.njk
-tags: ["article", "tech"]
+tags: ["articles", "article", "tech"]
 title: Parallel loading in React
 date: 2021-04-17
 imageUrl: parallel-loading-react.jpg
