@@ -99,19 +99,23 @@
       
         <span class="nav-divider"> • </span>
       
-        <a href="/work">work</a>
+        <strong>articles</strong>
       
 
       
         <span class="nav-divider"> • </span>
       
-        <a href="/links">links</a>
+        <a href="/work">work</a>
       
 
       </div>
   </header>
 
       
+
+<p>
+  <a href="/articles">↤ Back to articles</a>
+</p>
 
 <article>
     <div class="article-header">
@@ -213,7 +217,8 @@
   },
 ];
 </code></pre>
-<p>Providing a single definition object, we can get a large set of results.</p>
+<p>Providing a definition object as input, we can get a large set of results as output.</p>
+<p>Here's a high-level diagram:</p>
 <p><a href="https://mermaid.live/edit#pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw"><img src="https://mermaid.ink/img/pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw" alt=""></a></p>
 <p>Let's apply this combinator to a slightly more &quot;real world&quot; example.</p>
 <h2>Applying a combinator to an example: days in a month</h2>
@@ -229,13 +234,13 @@
 </blockquote>
 <p>Suppose we wanted to unit-test a function, <code>getDaysInMonth</code>, which takes <code>month</code> and <code>year</code> as input and returns a number of <code>days</code>.</p>
 <p>We could simply input every possible date into the unit test and assert on the month of each. As mentioned above, that could involve quite a lot of fiddling in Excel and would result in a very long and not very human-readable test file.</p>
-<p>Let's see how we would tackle this problem in Combinator.</p>
+<p>Instead, let's try to tackle this problem with a combinator.</p>
 <p>Starting with the first two lines of the rhyme:</p>
 <blockquote>
 <p>Thirty days have September,</p>
 <p>April, June and November.</p>
 </blockquote>
-<p>We can express it programatically like this:</p>
+<p>We can express this &quot;thirty days&quot; combination set programmatically, like this:</p>
 <pre><code class="language-ts">const thirtyDays = combinate({
   year: range(2020, 2023),
   month: [&quot;april&quot;, &quot;june&quot;, &quot;september&quot;, &quot;november&quot;],
@@ -362,8 +367,6 @@ twenty-eight days each year</p>
       <hr />
     </div>
   </article>
-
-  
 
       <footer>
     <p>

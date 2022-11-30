@@ -17,3 +17,7 @@ img.intro-image {
     object-fit: cover;
   }
 }
+
+.small {
+  font-size: 0.85rem;
+}

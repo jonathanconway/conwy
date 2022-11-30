@@ -32,12 +32,12 @@
     </script>
 
     
-    <title>conwy • Redirecting</title>
+    <title>conwy • Utility of unit tests</title>
 
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Redirecting">
+    <meta name="description" content="Utility of unit tests">
 
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -99,7 +99,7 @@
       
         <span class="nav-divider"> • </span>
       
-        <a href="/articles">articles</a>
+        <strong>articles</strong>
       
 
       
@@ -112,20 +112,70 @@
   </header>
 
       
-<h2>Please hold your horses!</h2>
 
-<p>We are redirecting you now...</p>
+<p>
+  <a href="/articles">↤ Back to articles</a>
+</p>
 
-<img
-  src="/components/redirect/horse.gif"
-  alt="Animation of a horse jumping over obstacles"
-/>
+<article>
+    <div class="article-header">
+      <h2>Utility of unit tests</h2>
 
-<script type="text/javascript">
-  setTimeout(() => {
-    window.location = "https://www.youtube.com/watch?v=cFOIzOdHl-c";
-  }, 1000);
-</script>
+      <p class="article-date">08/05/2022</p>
+
+      <div class="article-main-image-container">
+        <img
+          class="article-main-image"
+          src="unit-test-usability.jpg"
+        />
+      </div>
+    </div>
+
+    <div class="article-content">
+
+      <p class="article-blurb">
+        What did the unit tests ever do for us?
+      </p>
+
+      <p>Among the various motivations for writing unit tests, I would hope that future utility would be high on the list for most developers.</p>
+<p>We devote precious and scarce time to writing tests, so it would be good if we could maximize the value we gain from them over time, aside from the initial value from the process of writing them.</p>
+<p>In this article I want to offer three examples of how existing unit tests can offer value long after they are written.</p>
+<p>Hopefully these examples will help motivate you to write unit tests and to consider the value of your test suite.</p>
+<h2>One: Visualizing the impact change</h2>
+<p>This example came to me from an interesting recent conversation in code review comments. My colleague asked me why I had re-used a mock variable in a particular unit test. I said that this would make the code more concise and avoid the test breaking when the that mock variable changed. My colleague retorted that we might <em>want</em> the test to break when we change that string, as we might want to see all the places in code which that change would impact, so we could inspect all of them to make sure there wasn't any undesirable impact. This is traditionally known as &quot;impact analysis&quot; - it means searching through a code-base to see what impact a particular change would have.</p>
+<p>So here we have an interesting and practical usage of existing unit tests - by their breakage, we can identify which parts of our code-base are going to be impacted by our change.</p>
+<p>This doesn't have to involve only logic. We can make any unit test in the whole system work as a kind of impact visualizer, simply by setting it up so that it fails whenever the impact-causing change is made.</p>
+<p>For example, suppose we declare our application name in a global variable:</p>
+<pre><code>export const APPLICATION_NAME = 'Dominos';
+</code></pre>
+<p>We then go on to re-use it across several places in the app, including a settings link:</p>
+<pre><code>import { APPLICATION_NAME } from 'app.const';
+
+...
+
+&lt;a href=&quot;/settings&quot;&gt;
+  { APPLICATION_NAME } settings
+&lt;/a&gt;
+</code></pre>
+<p>If we want to trigger a test failure pointing at our settings link whenever that string changes, we can hard-code the value into our unit-test:</p>
+<pre><code>describe('AppSettings' , () =&gt; {
+  ...
+  it('renders application name correctly', async () =&gt; {
+    await render();
+
+    expect(screen.findByText('Dominos settings')).toBeInTheDocument();
+  });
+});
+</code></pre>
+<p>Now, upon changing the app name, the test breakages will help us to see exactly where the change will be felt:</p>
+<h2>Two:</h2>
+<h2>Example three: ensuring a change doesn't break</h2>
+<h2>Conclusion</h2>
+
+
+      <hr />
+    </div>
+  </article>
 
       <footer>
     <p>
