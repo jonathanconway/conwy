@@ -3,7 +3,9 @@
     {%- for navItem in [
         { key: 'home',     path: '',         label: 'home' },
         { key: 'articles', path: 'articles', label: 'articles' },
-        { key: 'work',     path: 'work',     label: 'work' }]
+        { key: 'work',     path: 'work',     label: 'work' },
+        { key: 'contact',  path: 'contact',  label: 'contact' }
+        ]
     -%}
       {% if params.tags.includes(navItem.key) %}
         <strong>{{ navItem.label }}</strong>
