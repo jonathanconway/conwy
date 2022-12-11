@@ -2,7 +2,7 @@
 layout: page.njk
 tags: ["contact"]
 title: Contact me
-imageUrl: /intro.jpg
+imageUrl: /contact.jpg
 ---
 
 You can contact me on the following platforms:
@@ -11,3 +11,5 @@ You can contact me on the following platforms:
 - LinkedIn: [jonathanconway](https://linkedin.com/in/jonathanconway)
 - Twitter: [@conwy](https://twitter.com/conw_y)
 - Mastodon: [@conwy@mastodon.social](https://mastodon.social/@conwy)
+
+-----
