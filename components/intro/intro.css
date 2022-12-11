@@ -9,6 +9,7 @@ img.intro-image {
   max-width: unset;
   margin-left: -4rem;
   margin-right: -4rem;
+  height: 5rem;
 }
 
 @media screen and (max-width: 49.999rem) {
