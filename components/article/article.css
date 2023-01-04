@@ -36,7 +36,7 @@
   font-weight: 300;
 }
 
-article a[href^="https://mermaid.live"]
+article a[href^="https://mermaid.live"]:has(img)
 {
   width: 100%;
   display: inline-block;

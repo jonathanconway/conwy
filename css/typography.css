@@ -57,12 +57,14 @@ a > code {
   content: " →";
 }
 
-p > code {
-  font-weight: 500;
-  background: #272822;
-  color: white;
+p > code,
+li > code {
+  font-weight: bold;
+  background: #efefef;
   padding: 0.125rem 0.25rem;
   border-radius: 0.3em;
+  color: #000;
+  border: 1px solid silver;
 }
 
 pre {
@@ -71,7 +73,6 @@ pre {
 }
 
 code {
-  font-size: 0.75rem !important;
   padding: 0;
   margin: 0;
 }

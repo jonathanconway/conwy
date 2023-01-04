@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78479084-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-78479084-1');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TSBT4XB');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://conwy.co -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2632897,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    
+    <title>conwy • Visualising execution flow</title>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visualising execution flow">
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    
+    <link rel="stylesheet" href="/css/index.css">
+
+    
+    <link rel="stylesheet" href="/lib/prismjs/prism.css">
+    <script src="/lib/prismjs/prism.js" defer></script>
+
+    
+    <script type="text/javascript">
+      Image1 = new Image(150,20)
+      Image1.src = "/components/redirect/horse.gif"
+    </script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSBT4XB"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="body" box box-padding="medium" layout layout-direction="vertical">
+      
+  <div class="border">
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+    <b class="border-part"></b>
+  </div>
+
+  <header responsive-layout responsive-layout-type="spread-out" responsive-layout-centered>
+    <div class="title" layout layout-centered>
+    <img
+      class="title-profile-photo"
+      src="/components/title/profile-photo.jpg"
+    >
+    
+    <h1 class="title-logo">
+      <a class="logo-link" href="/">
+        conwy
+        <b class="logo-layer">conwy</b>
+        <b class="logo-layer">conwy</b>
+        <b class="logo-layer">conwy</b>
+      </a>
+    </h1>
+  </div>
+    <div class="nav">
+        <a href="/">home</a>
+      
+
+      
+        <span class="nav-divider"> • </span>
+      
+        <strong>articles</strong>
+      
+
+      
+        <span class="nav-divider"> • </span>
+      
+        <a href="/work">work</a>
+      
+
+      
+        <span class="nav-divider"> • </span>
+      
+        <a href="/contact">contact</a>
+      
+
+      </div>
+  </header>
+
+      
+
+<p>
+  <a href="/articles">↤ Back to articles</a>
+</p>
+
+<article>
+    <div class="article-header">
+      <h2>Visualising execution flow</h2>
+
+      <p class="article-date">01/01/2023</p>
+
+      <div class="article-main-image-container">
+        <img
+          class="article-main-image"
+          src="visualising-execution-flow.jpg"
+        />
+      </div>
+    </div>
+
+    <div class="article-content">
+
+      <p class="article-blurb">
+        Execution flowcharts can be a useful tool for visualising and understanding how our code behaves at runtime.
+      </p>
+
+      <p>Anyone who has spent some time developing software knows writing new code is but a small part of the job. At least as big, perhaps bigger, is <strong>understanding the existing code</strong>. And that includes understanding the <strong>runtime behaviour</strong> of that code!</p>
+<p>I often found myself having to understand a complex execution, entailing many function calls being made and many data types being passed and returned. In order to understand this flow, I needed to see the whole flow together at once so I could reason about it. I needed to somehow visualise it, e.g. by listing it out the function calls in a text editor.</p>
+<p>In this article I want to share with you my current technique for visualising execution flow, based on the aforementiond experience. I have been developing a format and making that format more rigorous and consistent. Additionally, the format can be instantly converted into a flowchart using a tool called Mermaid.</p>
+<p>But first some background...</p>
+<h2>What do I mean by &quot;execution flow&quot;?</h2>
+<p>It's helpful to define the concept of &quot;execution flow&quot;. By this I mean the path that the runtime will take through the code as it executes the code during a real-life use case.</p>
+<p>You should not confuse this with a more specific term: &quot;call stack&quot;. Since a flow can include multiple function calls in sequence, each producing its own distinct call stack, a flow can include multiple call stacks. Much of the complexity of an execution flow is precisely that calling of multiple functions and the passing of data to them and returning of data from them. So &quot;call stack&quot; is too narrow a term to cover what I'm trying to describe.</p>
+<p>On the other hand, you should also not confuse this with a more general term such as &quot;abstract syntax tree&quot; or &quot;code structure&quot;. We are not describing the code as a whole, but just one path of possible execution of the code. Any piece of code that has one or more conditionals (e.g. <code>if</code> or <code>switch</code> statement, etc.) will execute differently depending on how those conditionals evaluate. For the same code, different lines might execute depending on the situation (e.g. depending on external state of some kind such as a database, web-service, system clock, etc.). Thus one code base can support multiple execution flows.</p>
+<h2>Example of an execution flow</h2>
+<p>Let's use a snippet from a hypothetical code base as an example – handling a user login request on a Java backend.</p>
+<pre><code class="language-java">class LoginResource {
+  ...
+  private Response login(String username, String password) {
+    if (this.userAuthProvider.isValidUser(username, password)) {
+      this.sessionProvider.setCurrentUser(username);
+      return new Response(200, &quot;User logged in successfully.&quot;);
+    } else {
+      return new Response(401, &quot;User credentials are invalid.&quot;);
+    }
+  }
+}
+</code></pre>
+<p>Can you spot the two execution flows in this code?</p>
+<h3>Flow 1 - Logging in successfully</h3>
+<p>First, we have flow for when the user's credentials are valid.</p>
+<ol>
+<li>The framework receives a <code>POST /login</code> web request and calls the <code>LoginResource</code> class's <code>login</code> method.</li>
+<li>Inside the <code>login</code> method, an <code>if</code> block evaluates a call to the <code>UserAuthProvider</code> class's <code>checkUserCredentials</code> method. This method is called, with <code>username</code> and <code>password</code> passed as parameters, to check if the user entered correct credentials.</li>
+<li>The <code>checkUserCredentials</code> method returns <code>true</code> and execution proceeds into the <code>then</code> block of the <code>if</code> statement.</li>
+<li>In the <code>then</code> block of the above <code>if</code> statement, after retrieving the <code>User</code> object via a call to the <code>UserRepository::getUserByUsername</code> method, the <code>SessionProvider</code> class's <code>setCurrentUser</code> method is called, passing the <code>User</code> object as a parameter.</li>
+<li>We then return a new <code>Success</code> object to the framework, with a <code>status</code> of <code>200</code> and a <code>message</code> of <code>&quot;User logged in successfully.&quot;</code>.</li>
+</ol>
+<p>Here's that code example again, with the relevant lines highlighted:</p>
+<pre data-line="5-7">
+<code class="language-java">
+class LoginResource {
+  ...
+  private Response login(String username, String password) {
+    if (this.userAuthProvider.isValidUser(username, password)) {
+      this.sessionProvider.setCurrentUser(username);
+      return new Response(200, "User logged in successfully.");
+    } else {
+      return new Response(401, "User credentials are invalid.");
+    }
+  }
+}
+</code>
+</pre>
+<p>Notice that this isn't just a single call-stack, as there are actually two method calls in this flow, each of which will generate its own call stack.</p>
+<ol>
+<li><code>UserAuthProvider::checkUserCredentials</code></li>
+<li><code>SessionProvider::setCurrentUser</code></li>
+</ol>
+<p>Notice too that in this flow <code>UserAuthProvider::checkUserCredentials</code> returns <code>true</code> and that we didn't cover the <code>else</code> branch of the conditional.</p>
+<h3>Flow 2 - Failure to log in</h3>
+<p>If we wanted to describe the execution flow for when the user credentials are <em>not</em> valid, that would be a separate execution flow:</p>
+<ol>
+<li>The framework receives a <code>POST /login</code> web request and calls the <code>LoginResource</code> class's <code>login</code> method.</li>
+<li>Inside the <code>login</code> method, an <code>if</code> block evaluates a call to the <code>UserAuthProvider</code> class's <code>checkUserCredentials</code> method. This method is called, with <code>username</code> and <code>password</code> passed as parameters, to check if the user entered correct credentials.</li>
+<li>The <code>checkUserCredentials</code> method returns <code>false</code> and execution proceeds into the <code>else</code> block of the <code>if</code> statement.</li>
+<li>In the <code>else</code> block of the above <code>if</code> statement, we return a new <code>Error</code> object to the framework, with a <code>status</code> of <code>401</code> and a <code>message</code> of <code>&quot;User credentials are invalid.&quot;</code></li>
+</ol>
+<p>Here's the code example once more, with the relevant lines highlighted:</p>
+<pre data-line="5, 8-9">
+<code class="language-java">
+class LoginResource {
+  ...
+  private Response login(String username, String password) {
+    if (this.userAuthProvider.isValidUser(username, password)) {
+      this.sessionProvider.setCurrentUser(username);
+      return new Response(200, "User logged in successfully.");
+    } else {
+      return new Response(401, "User credentials are invalid.");
+    }
+  }
+}
+</code>
+</pre>
+<p>With the addition of this second flow, we have exhausted all possible flows, at least that are visible to us in this code snippet.</p>
+<h2>IDE tools for determining execution flow</h2>
+<p>So how to we figure out how our code flows in the first place?</p>
+<p>We can, of course, just read the code, open various files as needed, and try to follow along in our head.</p>
+<p>Thankfully we also have automated tools to help reduce some of the tedium. You'll likely be familiar with these:</p>
+<ul>
+<li><em><strong>Go to definition</strong></em> - we can select a reference (function, class, variable, etc) and be taken to its original definition</li>
+<li><em><strong>Find references</strong></em> - we can select a definition (function, class, variable, etc) and pull up a list of all points in the codebase which reference the definition</li>
+</ul>
+<p>Different IDEs name these differently, but most mainstream IDEs have them in one form or another, including IntelliJ IDEA, VSCode, Visual Studio and xCode.</p>
+<p>For example, in the code example given previously, we might use <em>Go to definition</em> to find out what methods <code>login</code> calls.</p>
+<ol>
+<li>Go to the <code>LoginResource</code> class and its <code>login</code> method</li>
+<li>Right-click the <code>isValidUser</code> call and select &quot;Go to definition&quot;</li>
+<li>Observe that it is defined in the <code>UserAuthProvider</code> class and its <code>isValidUser</code> method</li>
+<li>Go back the <code>LoginResource</code> class and its <code>login</code> method</li>
+<li>Right-click the <code>setCurrentUser</code> call and select &quot;Go to definition&quot;</li>
+<li>Observe that it is defined in the <code>SessionProvider</code> class and its <code>setCurrentUser</code> method</li>
+</ol>
+<p>Now we can switch to our text editor and make some notes on the flow.</p>
+<pre><code class="language-mermaid">LoginResource::login ---&gt;|userName,password| UserAuthProvider::isValidUser
+UserAuthProvider::isValidUser ---|true| LoginResource::login
+LoginResource::login ---&gt;|userName,password| SessionProvider::setCurrentUser
+SessionProvider::setCurrentUser --- LoginResource::login
+
+LoginResource::login ---&gt;|userName,password| UserAuthProvider::isValidUser
+UserAuthProvider::isValidUser ---|false| LoginResource::login
+</code></pre>
+<p>Then we might use <em>Find references</em> to find out who else calls the <code>UserAuthProvider::isValidUser</code> method.</p>
+<ol>
+<li>Go to the <code>UserAuthProvider</code> class and its <code>isValidUser</code> method</li>
+<li>Right-click the <code>login</code> method and select &quot;Find usages&quot;</li>
+<li>Observe that it is called in the <code>LoginResource</code> class, in its <code>login</code> method.</li>
+<li>Observe that it is called in the <code>LoginResource</code> class, in its <code>register</code> method.</li>
+</ol>
+<p>Now we can switch back to our text editor and add the execution flows we discovered:</p>
+<pre><code class="language-mermaid">LoginResource::login ---&gt;|userName,password| UserAuthProvider::isValidUser
+UserAuthProvider::isValidUser ---|true| LoginResource::login
+LoginResource::login ---&gt;|userName,password| SessionProvider::setCurrentUser
+SessionProvider::setCurrentUser --- LoginResource::login
+
+LoginResource::register ---&gt;|userName,password| UserAuthProvider::isValidUser
+UserAuthProvider::isValidUser ---|true| LoginResource::register
+</code></pre>
+<h2>Format for describing execution flows</h2>
+<p>Did you notice the textual format I'm using to describe the execution flows?</p>
+<p>Let's dive-deep into that.</p>
+<pre><code class="language-mermaid">Class::methodCalling ---&gt;|parameters| Class::methodBeingCalled
+Class::methodBeingCalled ---|return values| Class::methodCalling
+</code></pre>
+<ul>
+<li><code>Class::methodCalling</code> - we reference a part of the code that calls another part of the code.</li>
+<li><code>---&gt;|parameters|</code> - we reference the parameters being passed values in that call.</li>
+<li><code>Class::methodBeingCalled</code> - we reference a part of the code that is called and will subsequently execute.</li>
+</ul>
+<p>We can combine multiple of these together to describe a sequence of calls.</p>
+<pre><code class="language-mermaid">Class1::method ---&gt;|parameters| Class2::method
+Class2::method ---&gt;|parameters| Class3::method
+Class3::method ---|return values| Class2::method
+Class2::method ---|return values| Class1::method
+</code></pre>
+<p>We can also decribe multiple execution flows. Here Mermaid's &quot;subgraph/end&quot; structure can be used.</p>
+<pre><code class="language-mermaid">Class1::method ---&gt;|parameters| Class2::method
+Class2::method ---&gt;|parameters| Class3::method
+Class3::method ---|return values| Class2::method
+Class2::method ---|return values| Class1::method
+</code></pre>
+<pre><code class="language-mermaid">Class1::method ---&gt;|parameters| Class4::method
+Class4::method ---&gt;|parameters| Class1::method
+</code></pre>
+<h2>Extending the referencing format to include closures and line numbers</h2>
+<p>Thusfar we've use the <code>Class::method</code> format to describe the callers and callees. This works reasonably well for classical OO code-bases written in Java, C#, ECMASript, etc.</p>
+<p>But what if we want to reference code in other ways, such as named closures, or a row/column location?</p>
+<p>Here are some formats that could allow such structures to be referenced:</p>
+<ul>
+<li><code>foo_bar</code> - where <code>foo</code> refers to a named closure and <code>bar</code> refers to a function call within that closure</li>
+<li><code>foo-&gt;bar</code> - where <code>foo</code> refers to a named structure, such as a variable, and <code>bar</code> refers to a function call on a member of that structure</li>
+<li><code>bar:10,25</code> - where <code>bar</code> is a function call, <code>10</code> is a row number and <code>25</code> is a column number</li>
+</ul>
+<p>For example, given this Javascript code:</p>
+<pre><code class="language-javascript">function retry(action, times, count = 1) {
+  const timeout = (Math.pow(count, 2)) * 1000;
+  
+  setTimeout(function handleTimeout() {
+    if (!action() &amp;&amp; count &lt;= times) {
+      retry(action, times, count + 1);
+    }
+  }, timeout);
+}
+</code></pre>
+<p>We can describe the execution flow, including the closure, like this:</p>
+<pre><code class="language-mermaid">retry#1 ---&gt;|action, times=3| retry_handleTimeout#1
+retry_handleTimeout#1 ---&gt; action#1
+action#1 ---|false| retry_handleTimeout#2
+retry_handleTimeout#2 ---|action, times=3, 2| retry#2
+retry#2 ---&gt;|action, times=3, count=2| retry_handleTimeout#3
+retry_handleTimeout#3 ---&gt; action#3
+action#3 ---|true| retry_handleTimeout#4
+</code></pre>
+<h2>Visualising the flow with Mermaid</h2>
+<p>Now the juicy part – lets look at how this format can be instantly converted into a visual flowchat using Mermaid!</p>
+<p><a href="https://mermaid.js.org/">Mermaid</a> is a free, open-source tool, which takes code written in a specific syntax and converts it into a diagram.</p>
+<p>You can run Mermaid in the browser using <a href="https://mermaid.live/">Mermaid Live</a>, or if you prefer, you can download and run it locally using the instructions on the <a href="https://github.com/mermaid-js/mermaid-live-editor">mermaid-live-editor</a> GitHub profile.</p>
+<p>You'll need to add the keyword <code>graph</code> to the top of the text.</p>
+<p>Here's how two of our flow examples render in Mermaid:</p>
+<figure>
+  <a href="https://mermaid.live/edit#pako:eNq1UsFKxDAQ_ZUysLf2ssccBFFvIuKip1xCM9sG2kmZSRTZ7L-bsNJSd1U8eMu8N7z3ZjIHaL1FUNCxmXpN975z9ITiI7eo1FDKqmmaqxQF-cGMWE9G5M2zTdVzhq5j6B_ZvzqLrJSTFzM4WwhNP9JFNAWOmKpLnn9MskMR52lxEgw3kRkpnLL80lCEv8mhabP5Sq3KJRStQ626trPgudw8W8rY5EnOl7LWuiTC2DkJp1H-Oc52cdMENYzIo3E2X9FBU1VpCD2OqEHlp8W9iUPQoOmYW00MfvdOLajy9zXEyZqAt87k-xtB7c0gM3pnXfD8CR4_ABaC-yU">
+    <img src="https://mermaid.ink/img/pako:eNq1UsFKxDAQ_ZUysLf2ssccBFFvIuKip1xCM9sG2kmZSRTZ7L-bsNJSd1U8eMu8N7z3ZjIHaL1FUNCxmXpN975z9ITiI7eo1FDKqmmaqxQF-cGMWE9G5M2zTdVzhq5j6B_ZvzqLrJSTFzM4WwhNP9JFNAWOmKpLnn9MskMR52lxEgw3kRkpnLL80lCEv8mhabP5Sq3KJRStQ626trPgudw8W8rY5EnOl7LWuiTC2DkJp1H-Oc52cdMENYzIo3E2X9FBU1VpCD2OqEHlp8W9iUPQoOmYW00MfvdOLajy9zXEyZqAt87k-xtB7c0gM3pnXfD8CR4_ABaC-yU?type=png" />
+  </a>
+  <figcaption>Login success flow rendered by Mermaid</figcaption>
+</figure>
+<figure>
+  <a href="https://mermaid.live/edit#pako:eNqdkcFqwzAMhl8l6NRBEkKPPgwK662UsbKdfBGxkhhiO8j2xqj77rO7ldExeqhO0i_pk5CO0DtFIGBkXCZpq2w7N2r7Qt5F7kmIq7BqmuYxRU9s0VC9oPcfjlX62zSX8F_cOfOL2V9jXrO0iWF6ZveuFbEQ2r_hrFVJfPNulhRwGnD2dM9KSUJWF2c9rdZdV1dt2z5ISDdPIi3UYIgNapUPeSwjJISJDEkQ2VU0YJyDBGlPuRRjcIdP24MIHKmGuCgM9KQxv8CAOC9_UbdKB8c_4ukLcqKXyA">
+    <img src="https://mermaid.ink/img/pako:eNqdkcFqwzAMhl8l6NRBEkKPPgwK662UsbKdfBGxkhhiO8j2xqj77rO7ldExeqhO0i_pk5CO0DtFIGBkXCZpq2w7N2r7Qt5F7kmIq7BqmuYxRU9s0VC9oPcfjlX62zSX8F_cOfOL2V9jXrO0iWF6ZveuFbEQ2r_hrFVJfPNulhRwGnD2dM9KSUJWF2c9rdZdV1dt2z5ISDdPIi3UYIgNapUPeSwjJISJDEkQ2VU0YJyDBGlPuRRjcIdP24MIHKmGuCgM9KQxv8CAOC9_UbdKB8c_4ukLcqKXyA?type=png" />
+  </a>
+  <figcaption>Login failure flow rendered by Mermaid</figcaption>
+</figure>
+<h2>Why not use sequence diagrams</h2>
+<p>You might have seen diagrams similar to those described here, but laid out as sequence diagrams. Execution flows can certainly be visualised as sequence diagrams.</p>
+<p>A sequence diagram is arranged as a set of vertical columns connected by arrows, where each column represents a method and each arrow represents a call.</p>
+<p>One issue with sequenc diagrams is that, as they present each method in a column, we soon run out of horizontal space, whereas flowcharts can flow both across and down.</p>
+<p>Also, sequence diagrams can position the caller and the callee very far apart, so that the eye has to scan back and forth over a large distance to see the call, whereas flowcharts can more position the caller and callee closer together, making scanning easier.</p>
+<p>For these reasons, I find the flowchart format more appealing.</p>
+<h2>But aren't there already tools that generate these flowcharts automatically?</h2>
+<p>Yes and no. I found a <a href="https://marketplace.visualstudio.com/items?itemName=sz-p.dependencygraph">few</a> <a href="https://marketplace.visualstudio.com/items?itemName=lilinhao.vscode-pylonn">interesting</a> <a href="https://marketplace.visualstudio.com/items?itemName=CodeLogic.vscodecape">plugins</a> for VSCode, and also experimented with <a href="https://www.jetbrains.com/help/idea/dependencies-analysis.html">IDEA's dependencies analysis</a> tool.</p>
+<p>However, I found that all of these tools were focused on reporting <em><strong>compile-time dependencies</strong></em>, which are a different kind of thing to <em><strong>execution flows</strong></em>.</p>
+<p>Dependency graphs of course help us to understand how code is structured, but they don't give us the full picture of which parts of that code execute in which order at runtime. For that, we really need execution flows.</p>
+<p>Theoretically any tool that could automatically report execution flows would need to be able to analyse the code in terms of its expected execution at runtime. The tool might, like a debugger, execute the code, in order to determine the flow of control, e.g. where the flow of control depends on some state which can only be discovered at runtime. Or it could statically analyse the code to determine all possible flows and generate a report of all of them.</p>
+<p>It's beyond the scope of this article to look into how such a tool could be developed, but it's something I'm interested in looking into and perhaps even undertaking myself.</p>
+<h2>Conclusion</h2>
+<p>This article has outlined a format for describing execution flow, which can be used to visualise and understand how parts of a codebase execute at runtime (and generate diagrams). This understanding can help to diagnose bugs/errors, determine the best points at which to change the code and estimate how long changes might take.</p>
+<p>I hope you find it useful!</p>
+<h2>Further reading</h2>
+<p>These books inspired this article:</p>
+<ul>
+<li><em>The pocket guide to debugging</em> • Julia EVANS</li>
+<li><em>UML distilled</em> • Martin FOWLER</li>
+</ul>
+
+
+      <hr />
+    </div>
+  </article>
+
+      <footer>
+    <p>
+      <small>
+        &copy; Jonathan Conway
+      </small>
+    </p>
+    <p>
+      <small class="acknowledgement">
+        I acknowledge the Traditional Owners of the lands on which I live, the Eora peoples, and recognise their enduring connection to land, waters, and culture. I pay my respects to their elders, past and present. 
+      </small>
+    </p>
+  </footer>
+    </div>
+  </body>
+</html>
