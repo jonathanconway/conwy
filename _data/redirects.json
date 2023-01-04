@@ -123,6 +123,10 @@
     "to": "https://www.codementor.io/jonathanconway/tests-as-tools-akj9r67cp"
   },
   {
+    "from": "/testing-steps",
+    "to": "/articles/testing-steps"
+  },
+  {
     "from": "/tech/select",
     "to": "https://www.codementor.io/jonathanconway/when-not-to-use-select-95pb8kv1g"
   },
