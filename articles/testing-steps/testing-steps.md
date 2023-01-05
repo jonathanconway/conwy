@@ -48,56 +48,50 @@ Suppose we wish to write a spec for the following requirement:
 
 This requirement might be captured in two BDD specs such as the following:
 
-### Validate currency limit with max button
-
-```
-TITLE: Validate currency limit with max button
-
-SCENARIO 1: Validate currency limit
-
-GIVEN I am a registered user
-AND I have a bank balance of 100,000 GBP
-AND The maximum conversion from GBP to CAD is 50,000
-WHEN I go to the Make a Payment screen
-AND I set the Destination currency to CAD
-AND I set the Payment amount to 51,000 GBP
-THEN I will see a Currency conversion over daily payment limit error
-AND I will see a Fill max currency button
-
-SCENARIO 2: Provide Max button, which resets currency to limit value
-
-GIVEN I am a registered user
-AND I have a bank balance of 100,000 GBP
-AND The maximum conversion from GBP to CAD is 50,000
-WHEN I go to the Make a Payment screen
-AND I set the Destination currency to CAD
-AND I set the Payment amount to 51,000 GBP
-AND I click the Fill max currency button
-AND I click the Submit payment button
-THEN I will see a Payment successful screen
-AND I will see the amount paid as 50,000 GBP
-```
+> #### TITLE: Validate currency limit with max button
+>
+> ##### SCENARIO 1: Validate currency limit
+>
+> * **GIVEN** I am a registered user
+> * **AND** I have a bank balance of 100,000 GBP
+> * **AND** The maximum conversion from GBP to CAD is 50,000
+> * **WHEN** I go to the Make a Payment screen
+> * **AND** I set the Destination currency to CAD
+> * **AND** I set the Payment amount to 51,000 GBP
+> * **THEN** I will see a Currency conversion over daily payment limit error
+> * **AND** I will see a Fill max currency button
+>
+> ##### SCENARIO 2: Provide Max button, which resets currency to limit value
+>
+> * **GIVEN** I am a registered user
+> * **AND** I have a bank balance of 100,000 GBP
+> * **AND** The maximum conversion from GBP to CAD is 50,000
+> * **WHEN** I go to the Make a Payment screen
+> * **AND** I set the Destination currency to CAD
+> * **AND** I set the Payment amount to 51,000 GBP
+> * **AND** I click the Fill max currency button
+> * **AND** I click the Submit payment button
+> * **THEN** I will see a Payment successful screen
+> * **AND** I will see the amount paid as 50,000 GBP
 
 Notice how cumbersome and repetitive this is.
 
 We could replace it with a single, neatly condensed sequence of steps:
 
-```
-SCENARIO: Validate currency limit with max button
-
-1. Log in as a registered user
-2. Assume a bank balance of 100,000 GBP
-3. Assume a maximum conversion from GBP to CAD of 50,000
-4. Go to the Make a Payment screen
-5. Set the Destination currency to CAD
-6. Set the Payment amount to 51,000 GBP
-7. Observe the following error is visible: Currency conversion over daily payment limit
-8. Observe the following button is visible: Fill max currency button
-9. Click the Fill max currency button
-10. Click the Submit payment button
-11. Observe the following success message: Payment successful screen
-12. Observe the following field | value: Amount paid | 50,000 GBP
-```
+> #### SCENARIO: Validate currency limit with max button
+> 
+> 1. Log in as a registered user
+> 2. Assume a bank balance of 100,000 GBP
+> 3. Assume a maximum conversion from GBP to CAD of 50,000
+> 4. Go to the Make a Payment screen
+> 5. Set the Destination currency to CAD
+> 6. Set the Payment amount to 51,000 GBP
+> 7. Observe the following error is visible: Currency conversion over daily payment limit
+> 8. Observe the following button is visible: Fill max currency button
+> 9. Click the Fill max currency button
+> 10. Click the Submit payment button
+> 11. Observe the following success message: Payment successful screen
+> 12. Observe the following field | value: Amount paid | 50,000 GBP
 
 Notice how this latter form conveys the same information as the BDD spec, but without the Given/When/Then structure, and as a sequence of actions/events in a single flow.
 
