@@ -173,25 +173,29 @@ THEN z
 <blockquote>
 <h4>TITLE: Validate currency limit with max button</h4>
 <h5>SCENARIO 1: Validate currency limit</h5>
-<p>GIVEN I am a registered user
-AND I have a bank balance of 100,000 GBP
-AND The maximum conversion from GBP to CAD is 50,000
-WHEN I go to the Make a Payment screen
-AND I set the Destination currency to CAD
-AND I set the Payment amount to 51,000 GBP
-THEN I will see a Currency conversion over daily payment limit error
-AND I will see a Fill max currency button</p>
+<ul>
+<li><strong>GIVEN</strong> I am a registered user</li>
+<li><strong>AND</strong> I have a bank balance of 100,000 GBP</li>
+<li><strong>AND</strong> The maximum conversion from GBP to CAD is 50,000</li>
+<li><strong>WHEN</strong> I go to the Make a Payment screen</li>
+<li><strong>AND</strong> I set the Destination currency to CAD</li>
+<li><strong>AND</strong> I set the Payment amount to 51,000 GBP</li>
+<li><strong>THEN</strong> I will see a Currency conversion over daily payment limit error</li>
+<li><strong>AND</strong> I will see a Fill max currency button</li>
+</ul>
 <h5>SCENARIO 2: Provide Max button, which resets currency to limit value</h5>
-<p>GIVEN I am a registered user
-AND I have a bank balance of 100,000 GBP
-AND The maximum conversion from GBP to CAD is 50,000
-WHEN I go to the Make a Payment screen
-AND I set the Destination currency to CAD
-AND I set the Payment amount to 51,000 GBP
-AND I click the Fill max currency button
-AND I click the Submit payment button
-THEN I will see a Payment successful screen
-AND I will see the amount paid as 50,000 GBP</p>
+<ul>
+<li><strong>GIVEN</strong> I am a registered user</li>
+<li><strong>AND</strong> I have a bank balance of 100,000 GBP</li>
+<li><strong>AND</strong> The maximum conversion from GBP to CAD is 50,000</li>
+<li><strong>WHEN</strong> I go to the Make a Payment screen</li>
+<li><strong>AND</strong> I set the Destination currency to CAD</li>
+<li><strong>AND</strong> I set the Payment amount to 51,000 GBP</li>
+<li><strong>AND</strong> I click the Fill max currency button</li>
+<li><strong>AND</strong> I click the Submit payment button</li>
+<li><strong>THEN</strong> I will see a Payment successful screen</li>
+<li><strong>AND</strong> I will see the amount paid as 50,000 GBP</li>
+</ul>
 </blockquote>
 <p>Notice how cumbersome and repetitive this is.</p>
 <p>We could replace it with a single, neatly condensed sequence of steps:</p>
