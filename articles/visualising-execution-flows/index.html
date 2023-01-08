@@ -144,9 +144,11 @@
       </p>
 
       <p>Anyone who has spent some time developing software knows writing new code is but a small part of the job. At least as big, perhaps bigger, is <strong>understanding the existing code</strong>. And that includes understanding the <strong>runtime behaviour</strong> of that code!</p>
-<p>I often found myself having to understand a complex execution, entailing many function calls being made and many data types being passed and returned. In order to understand the behaviour of the code, I needed to see the whole flow together at once so I could reason about it. I needed to somehow visualise it, e.g. by listing it out the function calls in a text editor.</p>
-<p>In this article I want to share with you my current technique for visualising execution flow, based on the aforementiond experience. I have been developing a format for describing execution flows. Additionally, the format can be instantly converted into a flowchart using a tool called Mermaid.</p>
-<p>Execution flow descriptions could be used to help understand an existing code-base, troubleshoot bugs, communicate about the code to other team members and for solution design.</p>
+<p>I often found myself having to understand a complex cluster of code modules, entailing many function calls being made and many data types being passed and returned.</p>
+<p>To properly understand the behaviour of the code, I needed to see a whole flow together at once so I could reason about it. I needed to somehow visualise it, e.g. by listing out the function calls in a text editor or maybe drawing a diagram on a piece of paper or in a diagramming application.</p>
+<p>After doing this quite a few times, I have started to evolve a more consistent and powerful format, one which is text-based (and so, easy to work on in a standard text editor) but can also be converted to a visual flowchart using a tool called Mermaid.</p>
+<p>In this article I want to describe this format and the reasoning behind it.</p>
+<p>Execution flow notations can be useful in understanding an existing code-base, troubleshooting bugs, communicating with other team members and for solution design.</p>
 <p>But first some background...</p>
 <h2>What do I mean by &quot;execution flow&quot;?</h2>
 <p>It's helpful to define the concept of &quot;execution flow&quot;.</p>

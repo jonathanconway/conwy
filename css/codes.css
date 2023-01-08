@@ -19,6 +19,7 @@ code {
 
 :not(pre)>code[class*=language-],
 pre[class*=language-] {
+  margin: 1rem 0 !important;
   border-radius: 0.3em;
   border: 1px solid silver;
 }
