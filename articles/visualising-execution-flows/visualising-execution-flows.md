@@ -9,11 +9,15 @@ blurb: Execution flowcharts can be a useful tool for visualising and understandi
 
 Anyone who has spent some time developing software knows writing new code is but a small part of the job. At least as big, perhaps bigger, is **understanding the existing code**. And that includes understanding the **runtime behaviour** of that code!
 
-I often found myself having to understand a complex execution, entailing many function calls being made and many data types being passed and returned. In order to understand the behaviour of the code, I needed to see the whole flow together at once so I could reason about it. I needed to somehow visualise it, e.g. by listing it out the function calls in a text editor.
+I often found myself having to understand a complex cluster of code modules, entailing many function calls being made and many data types being passed and returned.
 
-In this article I want to share with you my current technique for visualising execution flow, based on the aforementiond experience. I have been developing a format for describing execution flows. Additionally, the format can be instantly converted into a flowchart using a tool called Mermaid.
+To properly understand the behaviour of the code, I needed to see a whole flow together at once so I could reason about it. I needed to somehow visualise it, e.g. by listing out the function calls in a text editor or maybe drawing a diagram on a piece of paper or in a diagramming application.
 
-Execution flow descriptions could be used to help understand an existing code-base, troubleshoot bugs, communicate about the code to other team members and for solution design. 
+After doing this quite a few times, I have started to evolve a more consistent and powerful format, one which is text-based (and so, easy to work on in a standard text editor) but can also be converted to a visual flowchart using a tool called Mermaid.
+
+In this article I want to describe this format and the reasoning behind it.
+
+Execution flow notations can be useful in understanding an existing code-base, troubleshooting bugs, communicating with other team members and for solution design. 
 
 But first some background...
 
@@ -252,7 +256,7 @@ Class1::method
 
 Thusfar we've use the `Class::method` format to reference the callers and callees. This works reasonably well for classical OO code-bases written in Java, C#, ECMASript, etc.
 
-But what if we want to reference code in other ways, such as named closures, for languages written in Javasript, Typescript, etc.?
+But what if we want to reference code in other ways, such as named closures, for languages written in Javascript, Typescript, etc.?
 
 Here are some notations that could allow such structures to be referenced:
 
@@ -260,7 +264,7 @@ Here are some notations that could allow such structures to be referenced:
 
 <code>foo_bar</code> - Reference a closure witin another closure.
 
-For example: <code>retry_handleTimeout</code> references a <code>handleTimeout</code> function nested inside a <code>retry</code> function in Javasript.</td>
+For example: <code>retry_handleTimeout</code> references a <code>handleTimeout</code> function nested inside a <code>retry</code> function in Javascript.</td>
 
 ### Multiple repeated calls
 
@@ -280,7 +284,7 @@ For example: <code>retry_handleTimeout:4</code> references the call to <code>ret
 
 ### Example in Javascript
 
-Let's use an example – a recursive Javasript function – to put all these ideas together.
+Let's use an example – a recursive Javascript function – to put all these ideas together.
 
 ```javascript
 1 function retry(action, times, count = 1) {
