@@ -49,32 +49,13 @@ a:focus {
   text-decoration: underline;
 }
 
-a > code {
-  font-size: 1rem;
-}
-
 .link:after {
   content: " →";
-}
-
-p > code,
-li > code {
-  font-weight: bold;
-  background: #efefef;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.3em;
-  color: #000;
-  border: 1px solid silver;
 }
 
 pre {
   padding: 0.5rem;
   margin: 0.5rem;
-}
-
-code {
-  padding: 0;
-  margin: 0;
 }
 
 a[href~="mermaid"] {

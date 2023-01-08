@@ -6,6 +6,8 @@
 @import "./variables.css";
 @import "./fonts.css";
 @import "./typography.css";
+@import "./codes.css";
+@import "./note.css";
 
 /** Utilities */
 @import "../utilities/utilities.css";
