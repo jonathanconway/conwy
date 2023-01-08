@@ -1,0 +1,24 @@
+a > code {
+  font-size: 1rem;
+}
+
+p > code,
+li > code {
+  font-weight: bold;
+  background: #f5f2f0;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.3em;
+  color: #000;
+  border: 1px solid silver;
+}
+
+code {
+  padding: 0;
+  margin: 0;
+}
+
+:not(pre)>code[class*=language-],
+pre[class*=language-] {
+  border-radius: 0.3em;
+  border: 1px solid silver;
+}
