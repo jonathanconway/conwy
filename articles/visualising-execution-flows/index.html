@@ -333,11 +333,11 @@ class RegisterResource {
 </code></pre>
 <h2>Repeated calls, closures, indirect calls and line numbers</h2>
 <p>Thusfar we've use the <code>Class::method</code> format to reference the callers and callees. This works reasonably well for classical OO code-bases written in Java, C#, ECMASript, etc.</p>
-<p>But what if we want to reference code in other ways, such as named closures, for languages written in Javasript, Typescript, etc.?</p>
+<p>But what if we want to reference code in other ways, such as named closures, for languages written in Javascript, Typescript, etc.?</p>
 <p>Here are some notations that could allow such structures to be referenced:</p>
 <h3>Nested closure</h3>
 <p><code>foo_bar</code> - Reference a closure witin another closure.</p>
-<p>For example: <code>retry_handleTimeout</code> references a <code>handleTimeout</code> function nested inside a <code>retry</code> function in Javasript.</td></p>
+<p>For example: <code>retry_handleTimeout</code> references a <code>handleTimeout</code> function nested inside a <code>retry</code> function in Javascript.</td></p>
 <h3>Multiple repeated calls</h3>
 <p><code>#n</code> - Reference multiple calls to the same function or method, where <code>n</code> is the current call count.</p>
 <p>For example: <code>retry_handleTimeout#2</code> references the 2nd call to <code>retry_handleTimeout</code> in the flow.</p>
@@ -347,7 +347,7 @@ class RegisterResource {
 <h3>Indirect call</h3>
 <p><code>-.-&gt;</code> - References an indirect method call - a call which our code doesn't make directly, but causes to be made, such as calling <code>setTimeout</code> on a function in Javascript. It looks like a dotted line.</p>
 <h3>Example in Javascript</h3>
-<p>Let's use an example – a recursive Javasript function – to put all these ideas together.</p>
+<p>Let's use an example – a recursive Javascript function – to put all these ideas together.</p>
 <pre><code class="language-javascript">1 function retry(action, times, count = 1) {
 2   const timeout = (Math.pow(count, 2)) * 1000;
 3   
