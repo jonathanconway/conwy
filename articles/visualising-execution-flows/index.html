@@ -127,7 +127,7 @@
     <div class="article-header">
       <h2>Visualising execution flows</h2>
 
-      <p class="article-date">01/01/2023</p>
+      <p class="article-date">08/01/2023</p>
 
       <div class="article-main-image-container">
         <img
@@ -301,7 +301,6 @@ class RegisterResource {
   ---|true| LoginResource::register
 
   ---&gt;|200,'Login succeeded.'| Response::constructor
-
 </code></pre>
 <p>Now we can step back and look at all these flows together and see the bigger picture, e.g. how login and register both check user validity using <code>UserAuthProvider</code>, and how both instantiate the Response class with various constructor parameters.</p>
 <div class="note">

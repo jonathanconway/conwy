@@ -2,10 +2,10 @@
 .note {
   margin: 1rem 0;
   padding: 0 1rem;
-  background-color: #f5f2f0;
   border-radius: 0.3em;
-  color: #000;
   border: 1px solid silver;
+  background-color: #f5f2f0;
+  color: #000;
 }
 
 .note-heading {
