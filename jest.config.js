@@ -2,7 +2,7 @@
 
 const config = {
   verbose: true,
-  testPathIgnorePatterns: ['/node_modules/', 'snapshot']
+  testPathIgnorePatterns: ["/node_modules/"],
 };
 
 module.exports = config;
