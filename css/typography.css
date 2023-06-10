@@ -80,3 +80,14 @@ blockquote {
 blockquote p {
   padding: 0;
 }
+
+.pull-quote {
+  font-size: 1.125rem;
+  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+  border-left: solid 0.5rem black;
+}
+
+.pull-quote p {
+  margin: 0;
+}
