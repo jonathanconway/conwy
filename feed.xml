@@ -414,7 +414,7 @@ class RegisterResource {
 &lt;div class=&quot;note&quot;&gt;
   &lt;h3 class=&quot;note-heading&quot;&gt;Asynchronicity and concurrency&lt;/h3&gt;
   &lt;p&gt;Though we touched on async in the Javascript example with the &lt;code&gt;setTimeout&lt;/code&gt; call, we haven&#39;t fully addressed the issue of describing asynchronicity or concurrency in execution flows.&lt;/p&gt;
-  &lt;p&gt;This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagramatically, as long as a strict convention is adhered to.&lt;/p&gt;
+  &lt;p&gt;This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagrammatically, as long as a strict convention is adhered to.&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2&gt;Isn&#39;t this just a flowchart?&lt;/h2&gt;
 &lt;p&gt;Yes, but it&#39;s a &lt;strong&gt;&lt;em&gt;specialised&lt;/em&gt;&lt;/strong&gt; form of flowchart, focussed on representing execution flow.&lt;/p&gt;
