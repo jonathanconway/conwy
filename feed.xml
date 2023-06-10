@@ -171,8 +171,8 @@
 &lt;h2&gt;What do I mean by &amp;quot;execution flow&amp;quot;?&lt;/h2&gt;
 &lt;p&gt;It&#39;s helpful to define the concept of &amp;quot;execution flow&amp;quot;.&lt;/p&gt;
 &lt;p&gt;I&#39;m referring to the path that the runtime will take through the code as it executes the code during a real-life use case.&lt;/p&gt;
-&lt;p&gt;You should not confuse this with a more specific term: &lt;em&gt;&lt;strong&gt;call stack&lt;/strong&gt;&lt;/em&gt;. Since a flow can include multiple function calls in sequence, each producing its own distinct call stack, a flow can include multiple call stacks. Much of the complexity of an execution flow is precisely that calling of multiple functions and the passing of data to them and returning of data from them. So &amp;quot;call stack&amp;quot; is too narrow a term to cover what I&#39;m trying to describe.&lt;/p&gt;
-&lt;p&gt;On the other hand, you should also not confuse this with a more general term such as &lt;em&gt;&lt;strong&gt;abstract syntax tree&lt;/strong&gt;&lt;/em&gt; or &amp;quot;code structure&amp;quot;. We are not describing the code as a whole, but just one path of possible execution of the code. Any piece of code that has one or more conditionals (e.g. &lt;code&gt;if&lt;/code&gt; or &lt;code&gt;switch&lt;/code&gt; statement, etc.) will execute differently depending on how those conditionals evaluate. For the same code, different lines might execute depending on the situation (e.g. depending on external state of some kind such as a database, web-service, system clock, etc.). Thus one code base can support multiple execution flows.&lt;/p&gt;
+&lt;p&gt;You should not confuse this with a more specific term: &lt;strong&gt;&lt;em&gt;call stack&lt;/em&gt;&lt;/strong&gt;. Since a flow can include multiple function calls in sequence, each producing its own distinct call stack, a flow can include multiple call stacks. Much of the complexity of an execution flow is precisely that calling of multiple functions and the passing of data to them and returning of data from them. So &amp;quot;call stack&amp;quot; is too narrow a term to cover what I&#39;m trying to describe.&lt;/p&gt;
+&lt;p&gt;On the other hand, you should also not confuse this with a more general term such as &lt;strong&gt;&lt;em&gt;abstract syntax tree&lt;/em&gt;&lt;/strong&gt; or &amp;quot;code structure&amp;quot;. We are not describing the code as a whole, but just one path of possible execution of the code. Any piece of code that has one or more conditionals (e.g. &lt;code&gt;if&lt;/code&gt; or &lt;code&gt;switch&lt;/code&gt; statement, etc.) will execute differently depending on how those conditionals evaluate. For the same code, different lines might execute depending on the situation (e.g. depending on external state of some kind such as a database, web-service, system clock, etc.). Thus one code base can support multiple execution flows.&lt;/p&gt;
 &lt;h2&gt;Example of an execution flow&lt;/h2&gt;
 &lt;p&gt;Let&#39;s use a hypothetical example – handling a user login on a Java backend.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class LoginResource {
@@ -248,8 +248,8 @@ class LoginResource {
 &lt;p&gt;We can, of course, just read the code, open various files as needed, and try to follow along in our head.&lt;/p&gt;
 &lt;p&gt;Thankfully we also have automated tools to help reduce some of the tedium. You&#39;ll likely be familiar with these:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;&lt;strong&gt;Go to definition&lt;/strong&gt;&lt;/em&gt; - we can select a reference (function, class, variable, etc) and be taken to its original definition&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;&lt;strong&gt;Find references&lt;/strong&gt;&lt;/em&gt; - we can select a definition (function, class, variable, etc) and pull up a list of all points in the codebase which reference the definition&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;Go to definition&lt;/em&gt;&lt;/strong&gt; - we can select a reference (function, class, variable, etc) and be taken to its original definition&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;em&gt;Find references&lt;/em&gt;&lt;/strong&gt; - we can select a definition (function, class, variable, etc) and pull up a list of all points in the codebase which reference the definition&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Different IDEs name these differently, but most mainstream IDEs have them in one form or another, including IntelliJ IDEA, VSCode, Visual Studio and xCode.&lt;/p&gt;
 &lt;figure&gt;
@@ -284,7 +284,7 @@ class RegisterResource {
 }
 &lt;/code&gt;
 &lt;/pre&gt;
-&lt;p&gt;Then we might locate this piece of code by using the  &lt;em&gt;Find references&lt;/em&gt; tool:&lt;/p&gt;
+&lt;p&gt;Then we might locate this piece of code by using the &lt;em&gt;Find references&lt;/em&gt; tool:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Go to the &lt;code&gt;UserAuthProvider&lt;/code&gt; class and its &lt;code&gt;isValidUser&lt;/code&gt; method.&lt;/li&gt;
 &lt;li&gt;Right-click the &lt;code&gt;login&lt;/code&gt; method and select &amp;quot;Find usages&amp;quot;.&lt;/li&gt;
@@ -296,7 +296,6 @@ class RegisterResource {
 &lt;p&gt;Suppose we wanted to make some notes of the execution flows we discovered. Maybe there are too many for us to easily memorise. Perhaps we want to see them all in one view rather than scattered among many files.&lt;/p&gt;
 &lt;p&gt;Let&#39;s start with the first flow – successful login:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;LoginResource::login
-
   ---&amp;gt;|userName,password| UserAuthProvider::isValidUser
   ---|true| LoginResource::login
 
@@ -349,77 +348,68 @@ class RegisterResource {
   ---|return values| Class2::method
   ---|return values| Class1::method
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2&gt;Repeated calls, closures, indirect calls and line numbers&lt;/h2&gt;
-&lt;p&gt;Thusfar we&#39;ve use the &lt;code&gt;Class::method&lt;/code&gt; format to reference the callers and callees. This works reasonably well for classical OO code-bases written in Java, C#, ECMASript, etc.&lt;/p&gt;
+&lt;h2&gt;Representing closures and indirect calls&lt;/h2&gt;
+&lt;p&gt;Thusfar we&#39;ve use the &lt;code&gt;Class::method&lt;/code&gt; format to reference the callers and callees. This should work reasonably well for classical OO code-bases written in Java, C#, Swift etc.&lt;/p&gt;
 &lt;p&gt;But what if we want to reference code in other ways, such as named closures, for languages written in Javascript, Typescript, etc.?&lt;/p&gt;
 &lt;p&gt;Here are some notations that could allow such structures to be referenced:&lt;/p&gt;
 &lt;h3&gt;Nested closure&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;foo_bar&lt;/code&gt; - Reference a closure witin another closure.&lt;/p&gt;
-&lt;p&gt;For example: &lt;code&gt;retry_handleTimeout&lt;/code&gt; references a &lt;code&gt;handleTimeout&lt;/code&gt; function nested inside a &lt;code&gt;retry&lt;/code&gt; function in Javascript.&lt;/p&gt;
-&lt;h3&gt;Multiple repeated calls&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;#n&lt;/code&gt; - Reference multiple calls to the same function or method, where &lt;code&gt;n&lt;/code&gt; is the current call count.&lt;/p&gt;
-&lt;p&gt;For example: &lt;code&gt;retry_handleTimeout#2&lt;/code&gt; references the 2nd call to &lt;code&gt;retry_handleTimeout&lt;/code&gt; in the flow.&lt;/p&gt;
-&lt;h3&gt;Row/column&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;:r,c&lt;/code&gt; - Reference a line number (and, optionally, column number) within a file.&lt;/p&gt;
-&lt;p&gt;For example: &lt;code&gt;retry_handleTimeout:4&lt;/code&gt; references the call to &lt;code&gt;retry_handleTimeout&lt;/code&gt; which occurs on line 4 of the file in which it occurs.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;foo/bar&lt;/code&gt; - Reference a closure witin another closure.&lt;/p&gt;
+&lt;p&gt;For example: &lt;code&gt;retry/handleTimeout&lt;/code&gt; references a &lt;code&gt;handleTimeout&lt;/code&gt; function nested inside a &lt;code&gt;retry&lt;/code&gt; function in Javascript.&lt;/p&gt;
 &lt;h3&gt;Indirect call&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;-.-&amp;gt;&lt;/code&gt; - References an indirect method call - a call which our code doesn&#39;t make directly, but causes to be made, such as calling &lt;code&gt;setTimeout&lt;/code&gt; on a function in Javascript. It looks like a dotted line.&lt;/p&gt;
 &lt;h3&gt;Example in Javascript&lt;/h3&gt;
 &lt;p&gt;Let&#39;s use an example – a recursive Javascript function – to put all these ideas together.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;1 function retry(action, times, count = 1) {
-2   const timeout = (Math.pow(count, 2)) * 1000;
-3   
-4   setTimeout(function handleTimeout() {
-5     if (!action() &amp;amp;&amp;amp; count &amp;lt;= times) {
-6       retry(action, times, count + 1);
-7     }
-8   }, timeout);
-9 }
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function retry(action, times, count = 1) {
+  const timeout = Math.pow(count, 2) * 1000;
+  setTimeout(function handleTimeout() {
+    if (!action() &amp;amp;&amp;amp; count &amp;lt;= times) {
+      retry(action, times, count + 1);
+    }
+  }, timeout);
+}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;code&gt;retry&lt;/code&gt; is a recursive function, which calls &lt;code&gt;setTimeout&lt;/code&gt;, passing a closure. That closure executes. Depending on the number of times &lt;code&gt;retry&lt;/code&gt; has called itself already (&lt;code&gt;time&lt;/code&gt;), it may call &lt;code&gt;retry&lt;/code&gt; again or simply do nothing, halting the recursion.&lt;/p&gt;
 &lt;p&gt;We can notate this execution flow, including the closure, using the nested closure, multiple calls, row/column and indirect call notations given above, in the following manner:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;retry
-  -.-&amp;gt;|action, times=3| retry_handleTimeout#1:4
-  ---&amp;gt; action#1:5
-  ---|false| retry_handleTimeout#1:4
-  ---&amp;gt;|action, times=3, 2| retry:6
-  -.-&amp;gt;|action, times=3, count=2| retry_handleTimeout#2:4
-  ---&amp;gt; action#2:5
-  ---|true| retry_handleTimeout#2
+  -.-&amp;gt;|action, times=3| retry/handleTimeout
+  ---&amp;gt; action
+  ---|false| retry/handleTimeout
+  ---&amp;gt;|action, times=3, 2| retry
+  -.-&amp;gt;|action, times=3, count=2| retry/handleTimeout
+  ---&amp;gt; action
+  ---|true| retry/handleTimeout
+  ---retry
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Visualising flows with Mermaid&lt;/h2&gt;
 &lt;p&gt;Now the juicy part – lets look at how this format can be instantly converted into a visual flowchat using Mermaid!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://mermaid.js.org/&quot;&gt;Mermaid&lt;/a&gt; is a free, open-source tool, which takes code written in a specific syntax and converts it into a diagram.&lt;/p&gt;
 &lt;p&gt;You can run Mermaid in the browser using &lt;a href=&quot;https://mermaid.live/&quot;&gt;Mermaid Live&lt;/a&gt;, or if you prefer, you can download and run it locally using the instructions on the &lt;a href=&quot;https://github.com/mermaid-js/mermaid-live-editor&quot;&gt;mermaid-live-editor&lt;/a&gt; GitHub profile.&lt;/p&gt;
 &lt;div class=&quot;note&quot;&gt;
-  &lt;p&gt;Note: You&#39;ll need to add the keyword &lt;code&gt;graph&lt;/code&gt; to the top of the text.&lt;/p&gt;
+  &lt;p&gt;Note: We&#39;ll need to add the keyword &lt;code&gt;graph&lt;/code&gt; to the top of the text.&lt;/p&gt;
+  &lt;p&gt;Also, in these examples, we add numbered circular nodes (e.g. &lt;code&gt;---n1((1))&lt;/code&gt;) to indicate the order of execution.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;The following is how our two earlier Java examples – login success and login failure – render in Mermaid:&lt;/p&gt;
 &lt;figure&gt;
-  &lt;a href=&quot;https://mermaid.live/edit#pako:eNqVkEFLBDEMhf9KyWUvM7J47EEQ9SaLuOipl9JkdwrTdkhaRbb7383Iop4ET01fXr-k7wShIIGFI_tlcvmxHGN-JimNA1k7r1eXjRnH8aY3Id75RMPiRd4LYzcvKt22Oj1xeYtIbG2UVz9HXBuXh71yo27-i96TSCz5hyxU7xoz5foL_jf2ersdNl8OIy0EIiS82nSj_qVkUX_QQ_cLtSgRBkjEyUfURE4rxUGdKJEDqyXSwbe5OnD5rFbfatl_5AB2_eAAbUFf6T56zTKBPfhZvtUHjDrhIp4_AZ9shW8&quot;&gt;
-    &lt;img src=&quot;https://mermaid.ink/img/pako:eNqVkEFLBDEMhf9KyWUvM7J47EEQ9SaLuOipl9JkdwrTdkhaRbb7383Iop4ET01fXr-k7wShIIGFI_tlcvmxHGN-JimNA1k7r1eXjRnH8aY3Id75RMPiRd4LYzcvKt22Oj1xeYtIbG2UVz9HXBuXh71yo27-i96TSCz5hyxU7xoz5foL_jf2ersdNl8OIy0EIiS82nSj_qVkUX_QQ_cLtSgRBkjEyUfURE4rxUGdKJEDqyXSwbe5OnD5rFbfatl_5AB2_eAAbUFf6T56zTKBPfhZvtUHjDrhIp4_AZ9shW8?type=png&quot; /&gt;
+  &lt;a href=&quot;https://mermaid.live/edit#pako:eNqNkU9LAzEQxb_KMpdOYVfa7Z9DDoKoNxGx6CmXkEy7gd1kySSKtP3uZqWuPdWeknl5837DZA_aGwIBu6D6Rronv7PuldinoEmIdiilK4qqqtwccT6dnqrbQ2IKz6qjslfMnz6YQ_GWpbsUm5fgP6yhIITld9VaMzz8xtSI9RhzibdAXFzmbYjZeveHY4r3KQRy8Zy4RFxeRVwhrs6I9WxWTn78BSetiQyZm8mhyN29d5y7dT5iSDr6EbZGXP8DgxI6Cp2yJi9-P1glxIY6kiDy1dBWpTZKkO6YrSpFv_lyGkQmUQmpNyrSg1X5yzoQW9XyqD4am0c5icdvzQeeBg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/visualising-execution-flows/login-success-mermaid-diagram.svg&quot; /&gt;
   &lt;/a&gt;
   &lt;figcaption&gt;Login success flow example rendered by Mermaid&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;figure&gt;
-  &lt;a href=&quot;https://mermaid.live/edit#pako:eNp9kDtrAzEMx7-K0ZLlLjTQyUOh0A6FUkJLM3kRli5n8OPwI6XE-e7RhXTtJOkv6afHGWwiBg3HjMts4ns6uvjJJbVsWWu_hiYqNY7jU2-F8wcGHhYs5Sdl6upbpOdW531OJ0ectXblgN7Rmrg39gl94a7-ZT8-7IbNrUJN6DzTVr3F00pSNjNxrE4o201XQlhSLEKwYmputiYZBQMEzgEdyTXnlWugzhzYgBaXeMLmqwETL1KKraav32hBC4AHaAth5ReH8ocA-rbxn_pKTibcxcsVXrFsig&quot;&gt;
-    &lt;img src=&quot;https://mermaid.ink/img/pako:eNp9kDtrAzEMx7-K0ZLlLjTQyUOh0A6FUkJLM3kRli5n8OPwI6XE-e7RhXTtJOkv6afHGWwiBg3HjMts4ns6uvjJJbVsWWu_hiYqNY7jU2-F8wcGHhYs5Sdl6upbpOdW531OJ0ectXblgN7Rmrg39gl94a7-ZT8-7IbNrUJN6DzTVr3F00pSNjNxrE4o201XQlhSLEKwYmputiYZBQMEzgEdyTXnlWugzhzYgBaXeMLmqwETL1KKraav32hBC4AHaAth5ReH8ocA-rbxn_pKTibcxcsVXrFsig?type=png&quot; /&gt;
+  &lt;a href=&quot;https://mermaid.live/edit#pako:eNp9kE9rwzAMxb-K0aUupGVpc_JhMNgOgzHGxnbyRdhKY0js4D8do-l3n1La0sPYydbz8-9JOoAJlkDBLuLYaf8Sds6_UwolGlKqn0vthVitVr6Wsl4uz9X9VBLFVxyoGjGl7xDtJD5Zeii5e4th7yxFpVz6wt7Z-eGC2Ui5ucG02CeaxH_BWym3Nz-au7panPyiRdeTXYtnv59jhIlkyWfHzPViEswbg0_MM3zkWEwO1z4aKZsr9e94qGCgOKCzvKHDbNWQOxpIg-KrpRZLnzVof2Qrlhw-frwBxUlUQRktZnp0yLsdQJ0GvahP1nErZ_H4C48Egj8&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/visualising-execution-flows/login-failure-mermaid-diagram.svg&quot; /&gt;
   &lt;/a&gt;
   &lt;figcaption&gt;Login failure flow example rendered by Mermaid&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;And here&#39;s the Javascript example:&lt;/p&gt;
 &lt;figure&gt;
-  &lt;a href=&quot;https://mermaid.live/edit#pako:eNqFkMEKwjAMhl-lxGsnOG-D7aRPoMeChDVzhbWVLj0M57tbp_MwHN7Cl_9P_uQOtdcEBVwD3lrlAnEYlBMi22bViDUb76RgY6kv96OY2pcWne7onKCPvNlN8iyrxFv-BWODXU9_TMsdUuQfx1oKKWofHZf578n5Ms4MRg5xJU0OEiwFi0anV9xfBgXckiUFRSo1NRg7VqDcI0kxsj8NrobiNVJCvGlkOhhMT7RQTGfP9KgN-_CBjye89H2M&quot;&gt;
-    &lt;img src=&quot;https://mermaid.ink/img/pako:eNqFkMEKwjAMhl-lxGsnOG-D7aRPoMeChDVzhbWVLj0M57tbp_MwHN7Cl_9P_uQOtdcEBVwD3lrlAnEYlBMi22bViDUb76RgY6kv96OY2pcWne7onKCPvNlN8iyrxFv-BWODXU9_TMsdUuQfx1oKKWofHZf578n5Ms4MRg5xJU0OEiwFi0anV9xfBgXckiUFRSo1NRg7VqDcI0kxsj8NrobiNVJCvGlkOhhMT7RQTGfP9KgN-_CBjye89H2M?type=png&quot; /&gt;
+  &lt;a href=&quot;https://mermaid.live/edit#pako:eNp9Uc1qwzAMfhWjkwrxRpP-EWhP2xNsR19MrC6G2C6ufChN331ulrQwaG7W9yN9kq_QBENQw0_Up1b5SBwvygshpfRLxOViMVRv8tDrhm3whWDr6LyvejGI31vtTUffGQyJJ2uJWI5WKQ_izzqRFWL1IPuj7s4022yFuHo2-5-jEOXonvRrxPXr3IVoQvK8L2dnbhA3LxfYIm6fC3BM8_l3iLuHfNBBAY6i09bk01_vjAJuyZGCOj8NHXXqWIHytyzVicPXxTdQ30cVkE5GM31YnT_NQT0ccEI_jeUQR_D2C9J_lug&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/visualising-execution-flows/javascript-recursive-mermaid-diagram.svg&quot; /&gt;
   &lt;/a&gt;
   &lt;figcaption&gt;Javascript recursive function example rendered by Mermaid&lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p&gt;Notice how Mermaid arranges the diagram so that calls consistently flow from top-to-bottom and left-to-right, in the order in which they&#39;re written in the diagram code. This makes the flows easy to visually scan become familiar with.&lt;/p&gt;
+&lt;p&gt;Notice that we&#39;ve added small numbered circles, indicating the order in which the calls occur. This makes the flow a bit easier to navigate.&lt;/p&gt;
 &lt;p&gt;Imagine this appearing in a Slack conversation:&lt;/p&gt;
-&lt;figure&gt;
-  &lt;img src=&quot;https://conwy.co/articles/visualising-execution-flows/visualising-execution-flows-slack.png&quot; /&gt;
-  &lt;figcaption&gt;Screenshot of an execution flow diagram posted in Slack&lt;/figcaption&gt;
-&lt;/figure&gt;
 &lt;p&gt;It could potentially be easier to read and follow an execution flow diagram than to read paragraphs of text trying to describe in plain language the complex sequence of calls.&lt;/p&gt;
 &lt;div class=&quot;note&quot;&gt;
   &lt;h3 class=&quot;note-heading&quot;&gt;Asynchronicity and concurrency&lt;/h3&gt;
@@ -427,7 +417,7 @@ class RegisterResource {
   &lt;p&gt;This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagramatically, as long as a strict convention is adhered to.&lt;/p&gt;
 &lt;/div&gt;
 &lt;h2&gt;Isn&#39;t this just a flowchart?&lt;/h2&gt;
-&lt;p&gt;Yes, but it&#39;s a &lt;em&gt;&lt;strong&gt;specialised&lt;/strong&gt;&lt;/em&gt; form of flowchart, focussed on representing execution flow.&lt;/p&gt;
+&lt;p&gt;Yes, but it&#39;s a &lt;strong&gt;&lt;em&gt;specialised&lt;/em&gt;&lt;/strong&gt; form of flowchart, focussed on representing execution flow.&lt;/p&gt;
 &lt;p&gt;The flowchart directly maps to the code it represents, so it accurately and unambiguously conveys information about that code. At the same time, because it&#39;s not actually code, but a diagram, it allows us to more easily view and reason about the code in terms of execution flows specifically. We don&#39;t have to jump around between files, scroll up and down, etc. but can see a whole execution flow in one screen.&lt;/p&gt;
 &lt;p&gt;Also by establishing and adhering to a convention in how we represent callers, callees, parameters and return values, etc. this flowchart technique is re-usable across programming languages, codebases, business domains, etc. A similar versatility is found in UML, sequence diagrams and other kinds of specialised diagram formats.&lt;/p&gt;
 &lt;h2&gt;Why not use sequence diagrams?&lt;/h2&gt;
@@ -440,17 +430,18 @@ class RegisterResource {
 &lt;/figure&gt;
 &lt;p&gt;There are weaknesses of sequence diagrams, however.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;They present each method in a column, so we may soon run out of horizontal space, whereas flowcharts can flow &lt;em&gt;&lt;strong&gt;down and across&lt;/strong&gt;&lt;/em&gt;. Also, even for lengthy flowcharts, scrolling up and down is easier on most devices than scrolling side-ways.&lt;/li&gt;
+&lt;li&gt;They present each method in a column, so we may soon run out of horizontal space, whereas flowcharts can flow &lt;strong&gt;&lt;em&gt;down and across&lt;/em&gt;&lt;/strong&gt;. Also, even for lengthy flowcharts, scrolling up and down is easier on most devices than scrolling side-ways.&lt;/li&gt;
 &lt;li&gt;They may position the caller and the callee very far apart, so that the eye has to scan back and forth over a large distance to see the call, whereas flowcharts can more position the caller and callee closer together, making scanning easier.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;For these reasons, I find the flowchart format more appealing.&lt;/p&gt;
 &lt;h2&gt;Are there tools that generate execution flowcharts automatically?&lt;/h2&gt;
 &lt;p&gt;Surprisingly, not really.&lt;/p&gt;
 &lt;p&gt;For dependency visualisation, I found a &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=sz-p.dependencygraph&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=lilinhao.vscode-pylonn&quot;&gt;interesting&lt;/a&gt; &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=CodeLogic.vscodecape&quot;&gt;plugins&lt;/a&gt; for VSCode, and also experimented with &lt;a href=&quot;https://www.jetbrains.com/help/idea/dependencies-analysis.html&quot;&gt;IDEA&#39;s dependencies analysis&lt;/a&gt; tool.&lt;/p&gt;
-&lt;p&gt;However, all of these tools are focused on reporting &lt;em&gt;&lt;strong&gt;compile-time dependencies&lt;/strong&gt;&lt;/em&gt;, which are a different kind of thing to &lt;em&gt;&lt;strong&gt;execution flows&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;However, all of these tools are focused on reporting &lt;strong&gt;&lt;em&gt;compile-time dependencies&lt;/em&gt;&lt;/strong&gt;, which are a different kind of thing to &lt;strong&gt;&lt;em&gt;execution flows&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Dependency graphs of course help us to understand how code is structured, but they don&#39;t give us the full picture of which parts of that code execute in which order at runtime. For that, we really need execution flows.&lt;/p&gt;
 &lt;p&gt;Theoretically any tool that could automatically report execution flows would need to be able to analyse the code in terms of its expected execution at runtime. The tool might, like a debugger, execute the code, in order to determine the flow of control, e.g. where the flow of control depends on some state which can only be discovered at runtime. Or it could statically analyse the code to determine all possible flows and generate a report of all of them.&lt;/p&gt;
 &lt;p&gt;It&#39;s beyond the scope of this article to look into how such a tool could be developed, but it&#39;s something I&#39;m interested in looking into and perhaps even undertaking myself.&lt;/p&gt;
+&lt;p&gt;Update (11/06/2023): Experimentation with &lt;a href=&quot;https://chat.openai.com/&quot;&gt;ChatGPT&lt;/a&gt; yielded promising results. The LLM (Large Language Model) tool was able to generate a flowchart with labels in plain-English, &lt;a href=&quot;https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492&quot;&gt;in both ASCII and Mermaid formats&lt;/a&gt;. The flowchard did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc). With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!&lt;/p&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;This article has outlined a format for describing execution flow, which can be used to visualise and understand how parts of a codebase execute at runtime (and generate diagrams).&lt;/p&gt;
 &lt;p&gt;This understanding can help to diagnose bugs/errors, determine the best points at which to change the code, estimate how long changes might take, and no doubt many other use cases.&lt;/p&gt;
