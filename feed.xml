@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="https://conwy.co/">
+  <title>conwy</title>
+  <subtitle>Blog articles by Jonathan Conway</subtitle>
+  <link href="https://conwy.co/feed.xml" rel="self"/>
+  <link href="https://conwy.co/"/>
+  <updated>2023-06-10T00:00:00Z</updated>
+  <id>https://conwy.co/</id>
+  <author>
+    <name>Jonathan Conway</name>
+    <email>jon@conwy.co</email>
+  </author>
+  <entry>
+    <title>Refactoring vs documentation</title>
+    <link href="https://conwy.co/articles/refactoring-vs-documentation/"/>
+    <updated>2023-06-10T00:00:00Z</updated>
+    <id>https://conwy.co/articles/refactoring-vs-documentation/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Most of the software projects I&#39;ve worked on involved complex and poorly structured code. This can happen for various reasons, even with the most dedicated and experienced developers. The problem space is complex, difficult to navigate and/or highly dynamic, time is limited, there is a high turn-over of developers, language and frameworks have limitations.&lt;/p&gt;
+&lt;p&gt;Refactoring is an oft-touted solution, aiming to bring order to a chaotic code-base by cleaning and improving the code without changing its functionality. Regression testing, via unit tests and end-to-end tests, allow us to verify that the code still performs its intended function.&lt;/p&gt;
+&lt;p&gt;The problem with refactoring is that almost no team (that I&#39;ve worked on) ever has time for it. There always seem to be other activities that would generate more business value, and faster, and those activities tend to be prioritised. In the professional world, at least, code only exists to achieve an outcome, not as a work of art for its own sake.&lt;/p&gt;
+&lt;aside class=&quot;pull-quote&quot;&gt;
+  &lt;p&gt;
+    In some situations, such as a rapidly growing or changing business environment, understanding and documenting existing code might be a better use of time than a lengthy refactoring.
+  &lt;/p&gt;
+&lt;/aside&gt;
+&lt;p&gt;Given the above, I&#39;ve come to think that, at least in some situations, such as a rapidly growing or changing business environment, understanding and documenting existing code might be a better use of time than a lengthy refactoring. Bad code can stay bad, but can be worked with effectively, if it is well understood by the development team so that they can work with it efficiently.&lt;/p&gt;
+&lt;p&gt;If software engineering is the art of managing complexity, software documentation is the art of managing the complexity of software.&lt;/p&gt;
+&lt;p&gt;Let me dive deeper to explain this perspective.&lt;/p&gt;
+&lt;h2&gt;Why refactoring takes so long&lt;/h2&gt;
+&lt;p&gt;Code-changes themselves are easier than ever. IDEs provide powerful tools for bulk renaming, find-and-replace, structural search, regular expression search, etc. Unit and integration tests can verify correctness of individual components and groups of components. And practices like inversion-of-control, object-oriented programming and functional programming can support decoupled, flexible code bases that are easy to modify.&lt;/p&gt;
+&lt;p&gt;The time-consuming part of refactoring is not necessarily the code changes. It can be:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Working out what changes need to be made and&lt;/li&gt;
+&lt;li&gt;Ensuring that those changes don&#39;t cause system behaviour errors&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;During a refactoring (at least, in in any non-trivial code-base) we are likely to learn a lot more about the code, frameworks, business domain than we knew beforehand. As we learn more, our refactoring moves change. This means that what started out as, for example, a simple extraction of a function, can quickly turn into a major alteration, impacting many parts of the codebase.&lt;/p&gt;
+&lt;p&gt;Additionally, as the scope of the refactoring changes, so too does the scope of the regression testing that will need to be done, to ensure that the changes do not cause breakage. Even with 100% unit test coverage, any code change may open up gaps in coverage, requiring tests to be changed or new tests to be written. The application also needs to be end-to-end tested, whether in an automated or manual manner, and the scope of the end-to-end testing is also impacted.&lt;/p&gt;
+&lt;p&gt;These factors compound, causing a seemingly small refactoring to turn into a major undertaking, with questionable justification for time spent in proportion to business value.&lt;/p&gt;
+&lt;h2&gt;We have to understand the code anyway&lt;/h2&gt;
+&lt;p&gt;For any significant refactoring to be successful, the Developer likely needs to first have a solid grasp of the code being refactored. This means understanding the structure of the code as well as the expected behaviour of the code and the business problem it is intended to solve. Gaining this understanding takes a significant amount of time, as does making the actual changes.&lt;/p&gt;
+&lt;p&gt;I would argue that such understanding is necessary anyway, not only for refactoring, but for making any changes to the code at all, such as implementing new features, making modifications or fixing bugs.&lt;/p&gt;
+&lt;p&gt;If we have to spend time understanding code, whether or not we actively perform refactoring, then that understanding itself is of value. So we might as well invest more time into understanding the code, rather than trying to refactor it, given the greater payoff of understanding.&lt;/p&gt;
+&lt;p&gt;That understanding can be converted into documentation, for future reference and to transfer the knowledge to the rest of the team.&lt;/p&gt;
+&lt;h2&gt;Documentation can be structured differently than code&lt;/h2&gt;
+&lt;p&gt;A powerful feature of documentation is that can be organised in ways that best facilitate understanding and knowledge transfer.&lt;/p&gt;
+&lt;p&gt;This is much harder to do in code itself. Code usually has to deal with a mixture of concerns at once, such as the programming language itself, software frameworks, interfacing with other modules and systems (such as databases), security, performance, etc.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/code-mixture-concerns.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/code-mixture-concerns.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Code usually has to deal with a mixture of concerns&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;For this reason, the way a code base is structured usually does not mirror the structure of the problem it is solving or the feature it is implementing. And even if some of the code could be refactored into a perfect, pure representation of the problem space, the problem space itself may be complex and multi-faceted, making it difficult to represent clearly in code.&lt;/p&gt;
+&lt;p&gt;Documentation, on the other hand, can be structured in any way or multiple ways at once. So documentation can be divided, grouped and organised in whichever way will best facilitate understanding and communication. For example, documentation can pull together information about each feature in the application into a set of &amp;quot;feature&amp;quot; pages.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/documentation-vs-code.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/documentation-vs-code.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Documentation can describe code while being structured differently, for example, by feature.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h2&gt;Documentation as a reference tool&lt;/h2&gt;
+&lt;p&gt;Documentation can serve as a handy reference to consult when a certain question needs to be answered around a particular topic.&lt;/p&gt;
+&lt;p&gt;For example, suppose a Product Owner asks a Developer about some recent problems encountered with the a &amp;quot;Minimum order free shipping notification&amp;quot; feature. The Developer could consult a feature document which contains links to various resources such as web server logs. The Developer could then follow the link to the web server logs to check if any errors were logged.&lt;/p&gt;
+&lt;p&gt;So documentation can act as a central repository in which to find pointers to various resources, such as parts of the code and other systems.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/documentation-reference.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/documentation-reference.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: Gathering relevant code, logs, databases into a single feature doc.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;This referenceability, if used correctly, can make it much easier for a Developer to navigate a complex mass of code modules, databases, services, etc. in order to achieve some goal such as answering a question or diagnosing a bug.&lt;/p&gt;
+&lt;h2&gt;Flavours of documentation&lt;/h2&gt;
+&lt;p&gt;Let&#39;s look at a few documentation &amp;quot;flavours&amp;quot; that could be applied in various scenarios, depending on the situation.&lt;/p&gt;
+&lt;h3&gt;Feature documentation&lt;/h3&gt;
+&lt;p&gt;This flavour of documentation focuses on a feature of a software product or system used by customers or other actors.&lt;/p&gt;
+&lt;p&gt;It may give a brief summary of the feature and also provide some background information such as the business case.&lt;/p&gt;
+&lt;p&gt;It might then have sub-sections detailing the parts that make up the feature. It might also list the components or systems involved in implementing the feature, including links to code repositories and/or individual code files. It might also contain diagrams depicting user flows, execution flows and/or communication between systems. And it might link to various other flavours of documentation described in this article, such as User interface documentation for the User interface components that make up the feature.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/feature-doc-example.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/feature-doc-example.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: Outline of minimum order value notification feature documentation&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h4&gt;How it helps to work with difficult code&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Clarifies how the system behaves, or at least, is intended to behave&lt;/li&gt;
+&lt;li&gt;Specifies which code or systems implement the behaviour&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Project documentation&lt;/h3&gt;
+&lt;p&gt;This flavour of documentation is similar to feature documentation, only it focuses on a project (which is time-bound), rather than a feature (which may exist indefinitely).&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/project-doc-example.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/project-doc-example.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: Outline of minimum order value notification feature documentation&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h4&gt;How it helps to work with difficult code&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Clarifies why certain code or systems are changing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;User interface documentation&lt;/h3&gt;
+&lt;p&gt;This flavour of documentation describes the various parts of a user interface. A Developer can create this kind of documentation to communicate how the user interface currently works, is intended to work and/or should work in the future.&lt;/p&gt;
+&lt;p&gt;These docs could be organised as a hierarchy, aligned with the navigation structure of the application&#39;s user interface. Each leaf in the hierarchy has a dedicated page, and that page includes screenshots of that part of the UI, along with descriptive text broken into headings.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/ui-hierarchy-example.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/ui-hierarchy-example.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: UI documentation hierarchy for a shopping cart&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/ui-doc-example.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/ui-doc-example.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: UI screen documentation&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h4&gt;How it helps to work with difficult code&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Conceptually maps user interface elements to the code that implements them, when that mapping isn&#39;t made obvious by the code itself&lt;/li&gt;
+&lt;li&gt;Clarifies how the user interface currently functions, or at least, is intended to function&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;API documentation&lt;/h3&gt;
+&lt;p&gt;This flavour of documentation describes a programming interface of an application, such as the REST API of a web backend.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/api-doc-example.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/api-doc-example.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: API documentation for a PUT Order HTTP endpoint&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h4&gt;How it helps to work with difficult code&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Conceptually maps APIs to the code that consumes them, when that mapping isn&#39;t made obvious by the code itself.&lt;/li&gt;
+&lt;li&gt;Clarifies how the APIs currently function, or at least, are intended to function.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Topic documentation&lt;/h3&gt;
+&lt;p&gt;For material which fits none of the above categories, specific &amp;quot;topic&amp;quot; documents can be created.&lt;/p&gt;
+&lt;p&gt;Suppose we are trying to describe something which isn&#39;t clearly a feature, a project, a part of the user interface or an API. For example, behaviours of an application which only apply in one particular country, for example, Australia. A topic document titled &amp;quot;Australia&amp;quot; could be created, and grouped under a heading such as &amp;quot;Country-specific behaviours&amp;quot;.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/topic-hierarchy-example.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/topic-hierarchy-example.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: Topic hierarchy&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://conwy.co/articles/refactoring-vs-documentation/topic-doc-example.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/refactoring-vs-documentation/topic-doc-example.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Example: Topic documentation&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h4&gt;How it helps to work with difficult code&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Communicates knowledge on specific topics associated with the code base, which are not clearly expressed by the code itself and don&#39;t fit into other categories of documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Suitable documentation can facilitate understanding of complex and poorly structured code, enabling developers to work with it more efficiently.&lt;/p&gt;
+&lt;p&gt;Unlike refactoring, documentation can be added without a full build-deploy cycle, without risking breakage and without having to follow the structure of the code.&lt;/p&gt;
+&lt;p&gt;Creating documentation may be a better use of time than complex refactoring, if you are dealing with a complex code base, have tight time constraints and need to minimise risk.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Visualising execution flows</title>
+    <link href="https://conwy.co/articles/visualising-execution-flows/"/>
+    <updated>2023-01-08T00:00:00Z</updated>
+    <id>https://conwy.co/articles/visualising-execution-flows/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Anyone who has spent some time developing software knows writing new code is but a small part of the job. At least as big, perhaps bigger, is &lt;strong&gt;understanding the existing code&lt;/strong&gt;. And that includes understanding the &lt;strong&gt;runtime behaviour&lt;/strong&gt; of that code!&lt;/p&gt;
+&lt;p&gt;I often found myself having to understand a complex cluster of code modules, entailing many function calls being made and many data types being passed and returned.&lt;/p&gt;
+&lt;p&gt;To properly understand the behaviour of the code, I needed to see a whole flow together at once so I could reason about it. I needed to somehow visualise it, e.g. by listing out the function calls in a text editor or maybe drawing a diagram on a piece of paper or in a diagramming application.&lt;/p&gt;
+&lt;p&gt;After doing this quite a few times, I have started to evolve a more consistent and powerful format, one which is text-based (and so, easy to work on in a standard text editor) but can also be converted to a visual flowchart using a tool called Mermaid.&lt;/p&gt;
+&lt;p&gt;In this article I want to describe this format and the reasoning behind it.&lt;/p&gt;
+&lt;p&gt;Execution flow notations can be useful in understanding an existing code-base, troubleshooting bugs, communicating with other team members and for solution design.&lt;/p&gt;
+&lt;p&gt;But first some background...&lt;/p&gt;
+&lt;h2&gt;What do I mean by &amp;quot;execution flow&amp;quot;?&lt;/h2&gt;
+&lt;p&gt;It&#39;s helpful to define the concept of &amp;quot;execution flow&amp;quot;.&lt;/p&gt;
+&lt;p&gt;I&#39;m referring to the path that the runtime will take through the code as it executes the code during a real-life use case.&lt;/p&gt;
+&lt;p&gt;You should not confuse this with a more specific term: &lt;em&gt;&lt;strong&gt;call stack&lt;/strong&gt;&lt;/em&gt;. Since a flow can include multiple function calls in sequence, each producing its own distinct call stack, a flow can include multiple call stacks. Much of the complexity of an execution flow is precisely that calling of multiple functions and the passing of data to them and returning of data from them. So &amp;quot;call stack&amp;quot; is too narrow a term to cover what I&#39;m trying to describe.&lt;/p&gt;
+&lt;p&gt;On the other hand, you should also not confuse this with a more general term such as &lt;em&gt;&lt;strong&gt;abstract syntax tree&lt;/strong&gt;&lt;/em&gt; or &amp;quot;code structure&amp;quot;. We are not describing the code as a whole, but just one path of possible execution of the code. Any piece of code that has one or more conditionals (e.g. &lt;code&gt;if&lt;/code&gt; or &lt;code&gt;switch&lt;/code&gt; statement, etc.) will execute differently depending on how those conditionals evaluate. For the same code, different lines might execute depending on the situation (e.g. depending on external state of some kind such as a database, web-service, system clock, etc.). Thus one code base can support multiple execution flows.&lt;/p&gt;
+&lt;h2&gt;Example of an execution flow&lt;/h2&gt;
+&lt;p&gt;Let&#39;s use a hypothetical example – handling a user login on a Java backend.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class LoginResource {
+  ...
+  private Response login(String username, String password) {
+    if (this.userAuthProvider.isValidUser(username, password)) {
+      this.sessionProvider.setCurrentUser(username);
+      return new Response(200, &amp;quot;Login succeeded.&amp;quot;);
+    } else {
+      return new Response(401, &amp;quot;User credentials are invalid.&amp;quot;);
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Can you spot the two execution flows in this code?&lt;/p&gt;
+&lt;h3&gt;Flow 1 - Logging in successfully&lt;/h3&gt;
+&lt;p&gt;First, we have flow when the user&#39;s credentials are valid.&lt;/p&gt;
+&lt;p&gt;Here&#39;s that code example again, with the relevant lines highlighted:&lt;/p&gt;
+&lt;pre data-line=&quot;5-7&quot;&gt;
+&lt;code class=&quot;language-java&quot;&gt;
+class LoginResource {
+  ...
+  private Response login(String username, String password) {
+    if (this.userAuthProvider.isValidUser(username, password)) {
+      this.sessionProvider.setCurrentUser(username);
+      return new Response(200, &quot;Login succeeded.&quot;);
+    } else {
+      return new Response(401, &quot;User credentials are invalid.&quot;);
+    }
+  }
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Inside &lt;code&gt;login()&lt;/code&gt;, the &lt;code&gt;if&lt;/code&gt; condition calls &lt;code&gt;UserAuthProvider::checkUserCredentials&lt;/code&gt;, passing user credentials.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UserAuthProvider::checkUserCredentials&lt;/code&gt; returns &lt;code&gt;true&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Execution proceeds into the &lt;code&gt;then&lt;/code&gt; block.&lt;/li&gt;
+&lt;li&gt;We call &lt;code&gt;SessionProvider::setCurrentUser&lt;/code&gt;, passing user credentials.&lt;/li&gt;
+&lt;li&gt;We return &lt;code&gt;Response&lt;/code&gt;, passing success parameters.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Notice that this isn&#39;t just a single call-stack, as there are actually two method calls in this flow, each of which will generate its own call stack.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;UserAuthProvider::checkUserCredentials&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SessionProvider::setCurrentUser&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Flow 2 - Failure to log in&lt;/h3&gt;
+&lt;p&gt;What if the user credentials are &lt;em&gt;not&lt;/em&gt; valid and &lt;code&gt;isValidUser&lt;/code&gt; returns &lt;code&gt;false&lt;/code&gt;?&lt;/p&gt;
+&lt;p&gt;That would be a separate execution flow.&lt;/p&gt;
+&lt;p&gt;Here&#39;s the code example once more, with the relevant lines highlighted:&lt;/p&gt;
+&lt;pre data-line=&quot;5, 8-9&quot;&gt;
+&lt;code class=&quot;language-java&quot;&gt;
+class LoginResource {
+  ...
+  private Response login(String username, String password) {
+    if (this.userAuthProvider.isValidUser(username, password)) {
+      this.sessionProvider.setCurrentUser(username);
+      return new Response(200, &quot;Login succeeded.&quot;);
+    } else {
+      return new Response(401, &quot;User credentials are invalid.&quot;);
+    }
+  }
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;Inside &lt;code&gt;login()&lt;/code&gt;, the &lt;code&gt;if&lt;/code&gt; condition calls &lt;code&gt;UserAuthProvider::checkUserCredentials&lt;/code&gt;, passing user credentials.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UserAuthProvider::checkUserCredentials&lt;/code&gt; returns &lt;code&gt;false&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Execution proceeds into the &lt;code&gt;else&lt;/code&gt; block.&lt;/li&gt;
+&lt;li&gt;We return &lt;code&gt;Response&lt;/code&gt;, passing failure parameters.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;IDE tools for determining execution flow&lt;/h2&gt;
+&lt;p&gt;So how to we figure out how our code flows in the first place?&lt;/p&gt;
+&lt;p&gt;We can, of course, just read the code, open various files as needed, and try to follow along in our head.&lt;/p&gt;
+&lt;p&gt;Thankfully we also have automated tools to help reduce some of the tedium. You&#39;ll likely be familiar with these:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Go to definition&lt;/strong&gt;&lt;/em&gt; - we can select a reference (function, class, variable, etc) and be taken to its original definition&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;&lt;strong&gt;Find references&lt;/strong&gt;&lt;/em&gt; - we can select a definition (function, class, variable, etc) and pull up a list of all points in the codebase which reference the definition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Different IDEs name these differently, but most mainstream IDEs have them in one form or another, including IntelliJ IDEA, VSCode, Visual Studio and xCode.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&quot;https://conwy.co/articles/visualising-execution-flows/visualising-execution-flows-demo-1.gif&quot; /&gt;
+  &lt;figcaption&gt;Screencast of a developer using Go to definition tool in IDEA&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;For example, in the code sample given previously, we might use &lt;em&gt;Go to definition&lt;/em&gt; to locate the class whose &lt;code&gt;login&lt;/code&gt; method is being called.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to the &lt;code&gt;LoginResource&lt;/code&gt; class and its &lt;code&gt;login&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Right-click the &lt;code&gt;isValidUser&lt;/code&gt; call and select &amp;quot;Go to definition&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Observe that it is defined in the &lt;code&gt;UserAuthProvider&lt;/code&gt; class and its &lt;code&gt;isValidUser&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Go back the &lt;code&gt;LoginResource&lt;/code&gt; class and its &lt;code&gt;login&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Right-click the &lt;code&gt;setCurrentUser&lt;/code&gt; call and select &amp;quot;Go to definition&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Observe that it is defined in the &lt;code&gt;SessionProvider&lt;/code&gt; class and its &lt;code&gt;setCurrentUser&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Go back the &lt;code&gt;LoginResource&lt;/code&gt; class and its &lt;code&gt;login&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Observe that a new &lt;code&gt;Response&lt;/code&gt; object is constructed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We might want to find out where else the &lt;code&gt;UserAuthProvider::isValidUser&lt;/code&gt; method is called.&lt;/p&gt;
+&lt;p&gt;Supposing there was a &lt;code&gt;RegisterResource&lt;/code&gt; class having a &lt;code&gt;register&lt;/code&gt; method, as shown below:&lt;/p&gt;
+&lt;pre data-line=&quot;5-7&quot;&gt;
+&lt;code class=&quot;language-java&quot;&gt;
+class RegisterResource {
+  ...
+  private Response register(String username, String password) {
+    if (this.userAuthProvider.isValidUser(username, password)) {
+      this.sessionProvider.setCurrentUser(username);
+      return new Response(200, &quot;Login succeeded.&quot;);
+    } else {
+      this.userAuthProvider.registerUser(username, password);
+    }
+  }
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;Then we might locate this piece of code by using the  &lt;em&gt;Find references&lt;/em&gt; tool:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to the &lt;code&gt;UserAuthProvider&lt;/code&gt; class and its &lt;code&gt;isValidUser&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Right-click the &lt;code&gt;login&lt;/code&gt; method and select &amp;quot;Find usages&amp;quot;.&lt;/li&gt;
+&lt;li&gt;Observe that it is called in the &lt;code&gt;LoginResource&lt;/code&gt; class, in its &lt;code&gt;login&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Observe that it is also called in the &lt;code&gt;LoginResource&lt;/code&gt; class, in its &lt;code&gt;register&lt;/code&gt; method.&lt;/li&gt;
+&lt;li&gt;Observe that a new &lt;code&gt;Response&lt;/code&gt; object is constructed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Describing execution flows with text&lt;/h2&gt;
+&lt;p&gt;Suppose we wanted to make some notes of the execution flows we discovered. Maybe there are too many for us to easily memorise. Perhaps we want to see them all in one view rather than scattered among many files.&lt;/p&gt;
+&lt;p&gt;Let&#39;s start with the first flow – successful login:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;LoginResource::login
+
+  ---&amp;gt;|userName,password| UserAuthProvider::isValidUser
+  ---|true| LoginResource::login
+
+  ---&amp;gt;|userName,password| SessionProvider::setCurrentUser
+  --- LoginResource::login
+
+  ---&amp;gt;|200,&#39;Login succeeded.&#39;| Response::constructor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then the second flow – successful login:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;LoginResource::login
+
+  ---&amp;gt;|userName,password| UserAuthProvider::isValidUser
+  ---|false| LoginResource::login
+
+  ---&amp;gt;|401,&#39;Login failed. Invalid credentials.&#39;| Response::constructor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And the final flow – register:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;LoginResource::register
+  ---&amp;gt;|userName,password| UserAuthProvider::isValidUser
+  ---|true| LoginResource::register
+
+  ---&amp;gt;|200,&#39;Login succeeded.&#39;| Response::constructor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now we can step back and look at all these flows together and see the bigger picture, e.g. how login and register both check user validity using &lt;code&gt;UserAuthProvider&lt;/code&gt;, and how both instantiate the Response class with various constructor parameters.&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+  &lt;h3 class=&quot;note-heading&quot;&gt;Sketching execution flows&lt;/h3&gt;
+  &lt;p&gt;Observe that we don&#39;t have to cover the flows exhaustively, nor do we have to limit our coverage. We can cover just the parts of code that we are concerned with, based on our current goal, e.g. to solve the current bug or to learn more about a specific part of the code-base. We can make a kind of &quot;partial sketch&quot; of the parts of the execution flows that interest us.&lt;/p&gt;
+  &lt;p&gt;For example, we don&#39;t cover how &lt;code&gt;login&lt;/code&gt; and &lt;code&gt;register&lt;/code&gt; are called, and we don&#39;t cover which further calls are made by &lt;code&gt;UserAuthProvider&lt;/code&gt;, &lt;code&gt;SessionProvider&lt;/code&gt; or &lt;code&gt;Response&lt;/code&gt;, if those parts of the code don&#39;t interest us.&lt;/p&gt;
+  &lt;p&gt;And if we are dealing with a bug in which &lt;code&gt;isValidUser&lt;/code&gt; incorrectly returns &lt;code&gt;false&lt;/code&gt;, we can focus more on &lt;code&gt;isValidUser&lt;/code&gt; and which methods it calls.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2&gt;Format for notating execution flows&lt;/h2&gt;
+&lt;p&gt;Did you notice the textual format used in the previous section to notate the execution flows?&lt;/p&gt;
+&lt;p&gt;Let&#39;s deep-dive into that.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;Class::methodCalling
+  ---&amp;gt;|parameters| Class::methodBeingCalled
+  ---|return values| Class::methodCalling
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Class::methodCalling&lt;/code&gt; - the caller&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;---&amp;gt;|parameters|&lt;/code&gt; - execution flowing from caller to callee, with the parameters being passed in the call&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Class::methodBeingCalled&lt;/code&gt; - the callee&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;---|return values|&lt;/code&gt; - execution flowing from callee back to caller, the value returned from the callee&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Class::methodCalling&lt;/code&gt; - the caller (again)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We can chain these together to notate a sequence of consecutive calls.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;Class1::method
+  ---&amp;gt;|parameters| Class2::method
+  ---&amp;gt;|parameters| Class3::method
+  ---|return values| Class2::method
+  ---|return values| Class1::method
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Repeated calls, closures, indirect calls and line numbers&lt;/h2&gt;
+&lt;p&gt;Thusfar we&#39;ve use the &lt;code&gt;Class::method&lt;/code&gt; format to reference the callers and callees. This works reasonably well for classical OO code-bases written in Java, C#, ECMASript, etc.&lt;/p&gt;
+&lt;p&gt;But what if we want to reference code in other ways, such as named closures, for languages written in Javascript, Typescript, etc.?&lt;/p&gt;
+&lt;p&gt;Here are some notations that could allow such structures to be referenced:&lt;/p&gt;
+&lt;h3&gt;Nested closure&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;foo_bar&lt;/code&gt; - Reference a closure witin another closure.&lt;/p&gt;
+&lt;p&gt;For example: &lt;code&gt;retry_handleTimeout&lt;/code&gt; references a &lt;code&gt;handleTimeout&lt;/code&gt; function nested inside a &lt;code&gt;retry&lt;/code&gt; function in Javascript.&lt;/p&gt;
+&lt;h3&gt;Multiple repeated calls&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;#n&lt;/code&gt; - Reference multiple calls to the same function or method, where &lt;code&gt;n&lt;/code&gt; is the current call count.&lt;/p&gt;
+&lt;p&gt;For example: &lt;code&gt;retry_handleTimeout#2&lt;/code&gt; references the 2nd call to &lt;code&gt;retry_handleTimeout&lt;/code&gt; in the flow.&lt;/p&gt;
+&lt;h3&gt;Row/column&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;:r,c&lt;/code&gt; - Reference a line number (and, optionally, column number) within a file.&lt;/p&gt;
+&lt;p&gt;For example: &lt;code&gt;retry_handleTimeout:4&lt;/code&gt; references the call to &lt;code&gt;retry_handleTimeout&lt;/code&gt; which occurs on line 4 of the file in which it occurs.&lt;/p&gt;
+&lt;h3&gt;Indirect call&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;-.-&amp;gt;&lt;/code&gt; - References an indirect method call - a call which our code doesn&#39;t make directly, but causes to be made, such as calling &lt;code&gt;setTimeout&lt;/code&gt; on a function in Javascript. It looks like a dotted line.&lt;/p&gt;
+&lt;h3&gt;Example in Javascript&lt;/h3&gt;
+&lt;p&gt;Let&#39;s use an example – a recursive Javascript function – to put all these ideas together.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;1 function retry(action, times, count = 1) {
+2   const timeout = (Math.pow(count, 2)) * 1000;
+3   
+4   setTimeout(function handleTimeout() {
+5     if (!action() &amp;amp;&amp;amp; count &amp;lt;= times) {
+6       retry(action, times, count + 1);
+7     }
+8   }, timeout);
+9 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;retry&lt;/code&gt; is a recursive function, which calls &lt;code&gt;setTimeout&lt;/code&gt;, passing a closure. That closure executes. Depending on the number of times &lt;code&gt;retry&lt;/code&gt; has called itself already (&lt;code&gt;time&lt;/code&gt;), it may call &lt;code&gt;retry&lt;/code&gt; again or simply do nothing, halting the recursion.&lt;/p&gt;
+&lt;p&gt;We can notate this execution flow, including the closure, using the nested closure, multiple calls, row/column and indirect call notations given above, in the following manner:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;retry
+  -.-&amp;gt;|action, times=3| retry_handleTimeout#1:4
+  ---&amp;gt; action#1:5
+  ---|false| retry_handleTimeout#1:4
+  ---&amp;gt;|action, times=3, 2| retry:6
+  -.-&amp;gt;|action, times=3, count=2| retry_handleTimeout#2:4
+  ---&amp;gt; action#2:5
+  ---|true| retry_handleTimeout#2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Visualising flows with Mermaid&lt;/h2&gt;
+&lt;p&gt;Now the juicy part – lets look at how this format can be instantly converted into a visual flowchat using Mermaid!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.js.org/&quot;&gt;Mermaid&lt;/a&gt; is a free, open-source tool, which takes code written in a specific syntax and converts it into a diagram.&lt;/p&gt;
+&lt;p&gt;You can run Mermaid in the browser using &lt;a href=&quot;https://mermaid.live/&quot;&gt;Mermaid Live&lt;/a&gt;, or if you prefer, you can download and run it locally using the instructions on the &lt;a href=&quot;https://github.com/mermaid-js/mermaid-live-editor&quot;&gt;mermaid-live-editor&lt;/a&gt; GitHub profile.&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+  &lt;p&gt;Note: You&#39;ll need to add the keyword &lt;code&gt;graph&lt;/code&gt; to the top of the text.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The following is how our two earlier Java examples – login success and login failure – render in Mermaid:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://mermaid.live/edit#pako:eNqVkEFLBDEMhf9KyWUvM7J47EEQ9SaLuOipl9JkdwrTdkhaRbb7383Iop4ET01fXr-k7wShIIGFI_tlcvmxHGN-JimNA1k7r1eXjRnH8aY3Id75RMPiRd4LYzcvKt22Oj1xeYtIbG2UVz9HXBuXh71yo27-i96TSCz5hyxU7xoz5foL_jf2ersdNl8OIy0EIiS82nSj_qVkUX_QQ_cLtSgRBkjEyUfURE4rxUGdKJEDqyXSwbe5OnD5rFbfatl_5AB2_eAAbUFf6T56zTKBPfhZvtUHjDrhIp4_AZ9shW8&quot;&gt;
+    &lt;img src=&quot;https://mermaid.ink/img/pako:eNqVkEFLBDEMhf9KyWUvM7J47EEQ9SaLuOipl9JkdwrTdkhaRbb7383Iop4ET01fXr-k7wShIIGFI_tlcvmxHGN-JimNA1k7r1eXjRnH8aY3Id75RMPiRd4LYzcvKt22Oj1xeYtIbG2UVz9HXBuXh71yo27-i96TSCz5hyxU7xoz5foL_jf2ersdNl8OIy0EIiS82nSj_qVkUX_QQ_cLtSgRBkjEyUfURE4rxUGdKJEDqyXSwbe5OnD5rFbfatl_5AB2_eAAbUFf6T56zTKBPfhZvtUHjDrhIp4_AZ9shW8?type=png&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Login success flow example rendered by Mermaid&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://mermaid.live/edit#pako:eNp9kDtrAzEMx7-K0ZLlLjTQyUOh0A6FUkJLM3kRli5n8OPwI6XE-e7RhXTtJOkv6afHGWwiBg3HjMts4ns6uvjJJbVsWWu_hiYqNY7jU2-F8wcGHhYs5Sdl6upbpOdW531OJ0ectXblgN7Rmrg39gl94a7-ZT8-7IbNrUJN6DzTVr3F00pSNjNxrE4o201XQlhSLEKwYmputiYZBQMEzgEdyTXnlWugzhzYgBaXeMLmqwETL1KKraav32hBC4AHaAth5ReH8ocA-rbxn_pKTibcxcsVXrFsig&quot;&gt;
+    &lt;img src=&quot;https://mermaid.ink/img/pako:eNp9kDtrAzEMx7-K0ZLlLjTQyUOh0A6FUkJLM3kRli5n8OPwI6XE-e7RhXTtJOkv6afHGWwiBg3HjMts4ns6uvjJJbVsWWu_hiYqNY7jU2-F8wcGHhYs5Sdl6upbpOdW531OJ0ectXblgN7Rmrg39gl94a7-ZT8-7IbNrUJN6DzTVr3F00pSNjNxrE4o201XQlhSLEKwYmputiYZBQMEzgEdyTXnlWugzhzYgBaXeMLmqwETL1KKraav32hBC4AHaAth5ReH8ocA-rbxn_pKTibcxcsVXrFsig?type=png&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Login failure flow example rendered by Mermaid&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;And here&#39;s the Javascript example:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://mermaid.live/edit#pako:eNqFkMEKwjAMhl-lxGsnOG-D7aRPoMeChDVzhbWVLj0M57tbp_MwHN7Cl_9P_uQOtdcEBVwD3lrlAnEYlBMi22bViDUb76RgY6kv96OY2pcWne7onKCPvNlN8iyrxFv-BWODXU9_TMsdUuQfx1oKKWofHZf578n5Ms4MRg5xJU0OEiwFi0anV9xfBgXckiUFRSo1NRg7VqDcI0kxsj8NrobiNVJCvGlkOhhMT7RQTGfP9KgN-_CBjye89H2M&quot;&gt;
+    &lt;img src=&quot;https://mermaid.ink/img/pako:eNqFkMEKwjAMhl-lxGsnOG-D7aRPoMeChDVzhbWVLj0M57tbp_MwHN7Cl_9P_uQOtdcEBVwD3lrlAnEYlBMi22bViDUb76RgY6kv96OY2pcWne7onKCPvNlN8iyrxFv-BWODXU9_TMsdUuQfx1oKKWofHZf578n5Ms4MRg5xJU0OEiwFi0anV9xfBgXckiUFRSo1NRg7VqDcI0kxsj8NrobiNVJCvGlkOhhMT7RQTGfP9KgN-_CBjye89H2M?type=png&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Javascript recursive function example rendered by Mermaid&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Notice how Mermaid arranges the diagram so that calls consistently flow from top-to-bottom and left-to-right, in the order in which they&#39;re written in the diagram code. This makes the flows easy to visually scan become familiar with.&lt;/p&gt;
+&lt;p&gt;Imagine this appearing in a Slack conversation:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;img src=&quot;https://conwy.co/articles/visualising-execution-flows/visualising-execution-flows-slack.png&quot; /&gt;
+  &lt;figcaption&gt;Screenshot of an execution flow diagram posted in Slack&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;It could potentially be easier to read and follow an execution flow diagram than to read paragraphs of text trying to describe in plain language the complex sequence of calls.&lt;/p&gt;
+&lt;div class=&quot;note&quot;&gt;
+  &lt;h3 class=&quot;note-heading&quot;&gt;Asynchronicity and concurrency&lt;/h3&gt;
+  &lt;p&gt;Though we touched on async in the Javascript example with the &lt;code&gt;setTimeout&lt;/code&gt; call, we haven&#39;t fully addressed the issue of describing asynchronicity or concurrency in execution flows.&lt;/p&gt;
+  &lt;p&gt;This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagramatically, as long as a strict convention is adhered to.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2&gt;Isn&#39;t this just a flowchart?&lt;/h2&gt;
+&lt;p&gt;Yes, but it&#39;s a &lt;em&gt;&lt;strong&gt;specialised&lt;/strong&gt;&lt;/em&gt; form of flowchart, focussed on representing execution flow.&lt;/p&gt;
+&lt;p&gt;The flowchart directly maps to the code it represents, so it accurately and unambiguously conveys information about that code. At the same time, because it&#39;s not actually code, but a diagram, it allows us to more easily view and reason about the code in terms of execution flows specifically. We don&#39;t have to jump around between files, scroll up and down, etc. but can see a whole execution flow in one screen.&lt;/p&gt;
+&lt;p&gt;Also by establishing and adhering to a convention in how we represent callers, callees, parameters and return values, etc. this flowchart technique is re-usable across programming languages, codebases, business domains, etc. A similar versatility is found in UML, sequence diagrams and other kinds of specialised diagram formats.&lt;/p&gt;
+&lt;h2&gt;Why not use sequence diagrams?&lt;/h2&gt;
+&lt;p&gt;You might have seen diagrams similar to those described here, but laid out as sequence diagrams. Execution flows can certainly be visualised as sequence diagrams. A sequence diagram is arranged as a set of vertical columns connected by arrows, where each column represents a method and each arrow represents a call.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a href=&quot;https://mermaid.live/edit#pako:eNqdkUFLAzEQhf_KMud1KR5zKIh68yAtesplSKZtYDdZZzKKlP53J9YWBNmDOYTJ4-XL4-UIoUQCBz4LvSnlQA8J94yTz52tp7JPeUNSlAMNYzvdrNcvQnyn9fDM5T1F4iHJK44pNt11anvGifoZRT4KxzNq6ZIx_3jJdZWVfF6KsiWRVPIVKlTvlZly_R3mzFh2_z-FCXOxBofL4Lrb1ar38G3vREMgihQHb0VDDxPxhCla78eG9VAPZBnB2RhphzrW5jyZFbWW7WcO4FqMHnSOWC-fBG6Ho1zVx5hq4R_x9AXa0Ku1&quot;&gt;
+      &lt;img src=&quot;https://mermaid.ink/img/pako:eNqdkUFLAzEQhf_KMud1KR5zKIh68yAtesplSKZtYDdZZzKKlP53J9YWBNmDOYTJ4-XL4-UIoUQCBz4LvSnlQA8J94yTz52tp7JPeUNSlAMNYzvdrNcvQnyn9fDM5T1F4iHJK44pNt11anvGifoZRT4KxzNq6ZIx_3jJdZWVfF6KsiWRVPIVKlTvlZly_R3mzFh2_z-FCXOxBofL4Lrb1ar38G3vREMgihQHb0VDDxPxhCla78eG9VAPZBnB2RhphzrW5jyZFbWW7WcO4FqMHnSOWC-fBG6Ho1zVx5hq4R_x9AXa0Ku1?type=png&quot; alt=&quot;&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Login success flow example as a sequence diagram rendered by Mermaid &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;There are weaknesses of sequence diagrams, however.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;They present each method in a column, so we may soon run out of horizontal space, whereas flowcharts can flow &lt;em&gt;&lt;strong&gt;down and across&lt;/strong&gt;&lt;/em&gt;. Also, even for lengthy flowcharts, scrolling up and down is easier on most devices than scrolling side-ways.&lt;/li&gt;
+&lt;li&gt;They may position the caller and the callee very far apart, so that the eye has to scan back and forth over a large distance to see the call, whereas flowcharts can more position the caller and callee closer together, making scanning easier.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For these reasons, I find the flowchart format more appealing.&lt;/p&gt;
+&lt;h2&gt;Are there tools that generate execution flowcharts automatically?&lt;/h2&gt;
+&lt;p&gt;Surprisingly, not really.&lt;/p&gt;
+&lt;p&gt;For dependency visualisation, I found a &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=sz-p.dependencygraph&quot;&gt;few&lt;/a&gt; &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=lilinhao.vscode-pylonn&quot;&gt;interesting&lt;/a&gt; &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=CodeLogic.vscodecape&quot;&gt;plugins&lt;/a&gt; for VSCode, and also experimented with &lt;a href=&quot;https://www.jetbrains.com/help/idea/dependencies-analysis.html&quot;&gt;IDEA&#39;s dependencies analysis&lt;/a&gt; tool.&lt;/p&gt;
+&lt;p&gt;However, all of these tools are focused on reporting &lt;em&gt;&lt;strong&gt;compile-time dependencies&lt;/strong&gt;&lt;/em&gt;, which are a different kind of thing to &lt;em&gt;&lt;strong&gt;execution flows&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Dependency graphs of course help us to understand how code is structured, but they don&#39;t give us the full picture of which parts of that code execute in which order at runtime. For that, we really need execution flows.&lt;/p&gt;
+&lt;p&gt;Theoretically any tool that could automatically report execution flows would need to be able to analyse the code in terms of its expected execution at runtime. The tool might, like a debugger, execute the code, in order to determine the flow of control, e.g. where the flow of control depends on some state which can only be discovered at runtime. Or it could statically analyse the code to determine all possible flows and generate a report of all of them.&lt;/p&gt;
+&lt;p&gt;It&#39;s beyond the scope of this article to look into how such a tool could be developed, but it&#39;s something I&#39;m interested in looking into and perhaps even undertaking myself.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;This article has outlined a format for describing execution flow, which can be used to visualise and understand how parts of a codebase execute at runtime (and generate diagrams).&lt;/p&gt;
+&lt;p&gt;This understanding can help to diagnose bugs/errors, determine the best points at which to change the code, estimate how long changes might take, and no doubt many other use cases.&lt;/p&gt;
+&lt;p&gt;I hope you find it useful!&lt;/p&gt;
+&lt;h2&gt;Further reading&lt;/h2&gt;
+&lt;p&gt;These books inspired this article:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;The pocket guide to debugging&lt;/em&gt; • Julia EVANS&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;UML distilled&lt;/em&gt; • Martin FOWLER&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Increase your test coverage with combinatorial testing</title>
+    <link href="https://conwy.co/articles/combinatorial-testing/"/>
+    <updated>2022-10-10T00:00:00Z</updated>
+    <id>https://conwy.co/articles/combinatorial-testing/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Have you recently tried to unit test a function which has many combinations of possible inputs and expected outputs?&lt;/p&gt;
+&lt;p&gt;An increasingly common way of writing such a test is to utilize a data-driven test. The problem with data-driven tests is that they can quickly grow to be large and unwieldy.&lt;/p&gt;
+&lt;p&gt;In this article, I want to introduce a technique for generating data-driven tests without having to spell out every individual combination of inputs/outputs in code.&lt;/p&gt;
+&lt;p&gt;But first, a quick refresher on data-driven tests...&lt;/p&gt;
+&lt;h2&gt;Data-driven tests and their limitations&lt;/h2&gt;
+&lt;p&gt;You may be familiar with &lt;a href=&quot;https://en.wikipedia.org/wiki/Data-driven_testing&quot;&gt;data-driven testing&lt;/a&gt;. Basically you write a table of combinations of inputs and outputs in which each test case is inputted as &amp;quot;row&amp;quot; of data. Data-driven testing is now supported by many popular test frameworks (Jest, JUnit, NUnit to name a few).&lt;/p&gt;
+&lt;p&gt;One problem with data-driven testing is: sometimes we have so many combinations to cover that a comprehensive data-driven test would be very lengthy and difficult to read or maintain.&lt;/p&gt;
+&lt;p&gt;Imagine, for example, trying to write a data-driven unit test for a function which returns the &lt;strong&gt;number of days in a given month&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The function takes two parameters: &lt;code&gt;year&lt;/code&gt; and &lt;code&gt;month&lt;/code&gt; and returns one &lt;code&gt;day&lt;/code&gt; value. It has to deal with a range of values for each parameter. Multiplying all values that need to be tested by two parameters yields a large number of combinations.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;it.each([
+  { year: 2021, month: &amp;quot;jan&amp;quot;, expectedDays: 31 },
+  { year: 2021, month: &amp;quot;feb&amp;quot;, expectedDays: 28 },
+  { year: 2021, month: &amp;quot;march&amp;quot;, expectedDays: 31 },
+  { year: 2021, month: &amp;quot;april&amp;quot;, expectedDays: 30 },
+
+  // and so on and so on ... 😓
+]);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That number of combinations, though easy for a computer to process, is not easy for us to wrap our human minds around!&lt;/p&gt;
+&lt;p&gt;Perhaps the solution is to express the combinations in a more concise manner – as grouped ranges of values – rather than spelling out every single combination.&lt;/p&gt;
+&lt;p&gt;Combinator function to the rescue!&lt;/p&gt;
+&lt;h2&gt;What is a combinator?&lt;/h2&gt;
+&lt;p&gt;In the world of functional programming, the term &amp;quot;combinator&amp;quot; informally refers to a pattern...&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;quot;where complex structures are built by defining a small set of very simple &#39;primitives&#39;, and a set of &#39;combinators&#39; for combining them into more complicated structures&amp;quot;&lt;br /&gt;
+– &lt;em&gt;Combinator Pattern&lt;/em&gt; • &lt;a href=&quot;https://wiki.haskell.org/Combinator_pattern&quot;&gt;wiki.haskell.org/Combinator_pattern&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The combinator I present in this article is more specific. It takes as input an object whose properties each have a value that is an array. Then it combines each value of each array. All of the objects generated by this means are then returned to the caller.&lt;/p&gt;
+&lt;p&gt;For example, suppose we provide an input object having a single property, &amp;quot;color&amp;quot;, whose value is an array containing elements &amp;quot;red&amp;quot; and &amp;quot;blue&amp;quot;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;{
+  color: [&amp;quot;red&amp;quot;, &amp;quot;blue&amp;quot;];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The combinator will return us an array having the following objects:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;an object having a &amp;quot;color&amp;quot; property whose value is &amp;quot;red&amp;quot; and&lt;/li&gt;
+&lt;li&gt;an object having a &amp;quot;color&amp;quot; property whose value is &amp;quot;blue&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;[
+  {
+    color: &amp;quot;red&amp;quot;,
+  },
+  {
+    color: &amp;quot;blue&amp;quot;,
+  },
+];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Suppose we provide an additional property in our input object, &amp;quot;brightness&amp;quot;, whose value is an array containing elements 100 and 200:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;{
+  color: [&#39;red&#39;, &#39;blue&#39;],
+  brightness: [100, 200]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The combinator will return us an array having every specified combination of &amp;quot;color&amp;quot; and &amp;quot;brightness&amp;quot;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;an object having a &amp;quot;color&amp;quot; property whose value is &amp;quot;red&amp;quot; and a property &amp;quot;brightness&amp;quot; whose value is 100 and&lt;/li&gt;
+&lt;li&gt;an object having a &amp;quot;color&amp;quot; property whose value is &amp;quot;red&amp;quot; and a property &amp;quot;brightness&amp;quot; whose value is 200 and&lt;/li&gt;
+&lt;li&gt;an object having a &amp;quot;color&amp;quot; property whose value is &amp;quot;blue&amp;quot; and a property &amp;quot;brightness&amp;quot; whose value is 100 and&lt;/li&gt;
+&lt;li&gt;an object having a &amp;quot;color&amp;quot; property whose value is &amp;quot;blue&amp;quot; and a property &amp;quot;brightness&amp;quot; whose value is 200&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;[
+  {
+    color: &amp;quot;red&amp;quot;,
+    brightness: 100,
+  },
+  {
+    color: &amp;quot;red&amp;quot;,
+    brightness: 200,
+  },
+  {
+    color: &amp;quot;blue&amp;quot;,
+    brightness: 100,
+  },
+  {
+    color: &amp;quot;blue&amp;quot;,
+    brightness: 200,
+  },
+];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Providing a definition object as input, we can get a large set of results as output.&lt;/p&gt;
+&lt;p&gt;Here&#39;s a high-level diagram:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit#pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/pako:eNp1kk1ugzAQha9izSqoEVJYWlGkSmkvUHZ1Fy4eWqtgo8GuhBCcveYnTknTlfG8z483Y_dQWIXAoahk2561_CBZC8PYvGdnLLXRTlsz5iPrJ4Gx4zHvGjydlt2uIdsgue6QcPZIJLvRBdmWLH-N0tt4A2f_w1mE0zT9i4XiAgxzTFu_ayMdsjQ9beMKc-0jYps2nr0pJvjSyoOK5_mt193_LdGCJWeEzpNpJyZWJyT_HSMq_Wp4lfJLrM08d9-y8nhI7kxvkbJkM6t5Wb1hDzVSLbUK1zubC3CfWKMAHj6VpC8BwgyBk97Zl84UwB153INvVGhxfQ3AS1m1sfqktLO0FocfpVfATw&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Let&#39;s apply this combinator to a slightly more &amp;quot;real world&amp;quot; example.&lt;/p&gt;
+&lt;h2&gt;Applying a combinator to an example: days in a month&lt;/h2&gt;
+&lt;p&gt;For historical reasons, determining the number of days in a month in the Western calendar is complicated.&lt;/p&gt;
+&lt;p&gt;The following short rhyme tries to summarize the rules in a memorable way:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thirty days have September,&lt;/p&gt;
+&lt;p&gt;April, June and November.&lt;/p&gt;
+&lt;p&gt;All the rest have thirty-one,&lt;/p&gt;
+&lt;p&gt;except February alone, which has&lt;/p&gt;
+&lt;p&gt;twenty-eight days each year&lt;/p&gt;
+&lt;p&gt;and twenty-nine days each leap-year&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Suppose we wanted to unit-test a function, &lt;code&gt;getDaysInMonth&lt;/code&gt;, which takes &lt;code&gt;month&lt;/code&gt; and &lt;code&gt;year&lt;/code&gt; as input and returns a number of &lt;code&gt;days&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;We could simply input every possible date into the unit test and assert on the month of each. As mentioned above, that could involve quite a lot of fiddling in Excel and would result in a very long and not very human-readable test file.&lt;/p&gt;
+&lt;p&gt;Instead, let&#39;s try to tackle this problem with a combinator.&lt;/p&gt;
+&lt;p&gt;Starting with the first two lines of the rhyme:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Thirty days have September,&lt;/p&gt;
+&lt;p&gt;April, June and November.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We can express this &amp;quot;thirty days&amp;quot; combination set programmatically, like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;const thirtyDays = combinate({
+  year: range(2020, 2023),
+  month: [&amp;quot;april&amp;quot;, &amp;quot;june&amp;quot;, &amp;quot;september&amp;quot;, &amp;quot;november&amp;quot;],
+  expectedDays: [30],
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The result can easily be passed into a data-driven test in Jest:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;it.each(thirtyDays)(
+  &amp;quot;$month in $year should have $expectedDays days&amp;quot;,
+  ({ month, year, expectedDays }) =&amp;gt; {
+    expect(getDaysInMonth(month, year)).toBe(expectedDays);
+  }
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;On running the unit test, the following test cases will be generated and executed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;✓ april in 2020 should have 30 days (3 ms)
+✓ june in 2020 should have 30 days
+✓ september in 2020 should have 30 days
+✓ november in 2020 should have 30 days
+✓ april in 2021 should have 30 days
+✓ june in 2021 should have 30 days (1 ms)
+✓ september in 2021 should have 30 days
+✓ november in 2021 should have 30 days (1 ms)
+✓ april in 2022 should have 30 days
+✓ june in 2022 should have 30 days
+✓ september in 2022 should have 30 days
+✓ november in 2022 should have 30 days
+✓ april in 2023 should have 30 days
+✓ june in 2023 should have 30 days
+✓ september in 2023 should have 30 days
+✓ november in 2023 should have 30 days
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice how we can use a small amount of code (in this example, 5 lines for the &lt;code&gt;combinate&lt;/code&gt; call) to generate a much larger set of test cases (16). This gives our test code more leverage.&lt;/p&gt;
+&lt;p&gt;Covering the remaining lines of the rhyme:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All the rest have thirty-one,&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;const thirtyOneDays = combinate({
+  year: range(2020, 2023),
+  month: [&amp;quot;january&amp;quot;, &amp;quot;march&amp;quot;, &amp;quot;may&amp;quot;, &amp;quot;july&amp;quot;, &amp;quot;august&amp;quot;, &amp;quot;october&amp;quot;, &amp;quot;december&amp;quot;],
+  expectedDays: [31],
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The following data will be generated:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;✓ january in 2020 should have 31 days (2 ms)
+✓ march in 2020 should have 31 days (1 ms)
+✓ may in 2020 should have 31 days (1 ms)
+✓ july in 2020 should have 31 days (1 ms)
+✓ august in 2020 should have 31 days
+✓ october in 2020 should have 31 days
+... etc ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;except February alone, which has
+twenty-eight days each year&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;const februaryDays = combinate({
+  year: [2023],
+  month: [&amp;quot;february&amp;quot;],
+  expectedDays: [28],
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;✓ february in 2023 should have 28 days (2 ms)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;and twenty-nine days each leap-year&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;const februaryLeapYearDays = combinate({
+  year: [2024],
+  month: [&amp;quot;february&amp;quot;],
+  expectedDays: [29],
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;✓ february in 2024 should have 29 days (2 ms)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, putting it all together, here is the complete unit test:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-ts&quot;&gt;describe(&amp;quot;getDaysInMonth&amp;quot;, () =&amp;gt; {
+  const thirtyDays = combinate({
+    year: range(2020, 2023),
+    month: [&amp;quot;april&amp;quot;, &amp;quot;june&amp;quot;, &amp;quot;september&amp;quot;, &amp;quot;november&amp;quot;],
+    expectedDays: [30],
+  });
+
+  const thirtyOneDays = combinate({
+    year: range(2020, 2023),
+    month: [&amp;quot;january&amp;quot;, &amp;quot;march&amp;quot;, &amp;quot;may&amp;quot;, &amp;quot;july&amp;quot;, &amp;quot;august&amp;quot;, &amp;quot;october&amp;quot;, &amp;quot;december&amp;quot;],
+    expectedDays: [31],
+  });
+
+  const twentyEightDays = combinate({
+    year: [2023],
+    month: [&amp;quot;february&amp;quot;],
+    expectedDays: [28],
+  });
+
+  const twentyNineDays = combinate({
+    year: [2024],
+    month: [&amp;quot;february&amp;quot;],
+    expectedDays: [29],
+  });
+
+  it.each([
+    ...thirtyDays,
+    ...thirtyOneDays,
+    ...twentyEightDays,
+    ...twentyNineDays,
+  ])(
+    &amp;quot;$month in $year should have $expectedDays days&amp;quot;,
+    ({ month, year, expectedDays }) =&amp;gt; {
+      expect(getDaysInMonth(month, year)).toBe(expectedDays);
+    }
+  );
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice that we can assign meaningful names to each of the variables, increasing the readability of the test code.&lt;/p&gt;
+&lt;p&gt;I&#39;m sure you would agree that this test code, using a combinator, is more concise and readable than a large table of numbers and strings!&lt;/p&gt;
+&lt;p&gt;In closing, I encourage you to use combinatorial testing to shorten and sweeten your data-driven tests, thus testing your software thoroughly and making it maximally robust.&lt;/p&gt;
+&lt;h2&gt;Introducing combinator-util&lt;/h2&gt;
+&lt;p&gt;If you&#39;d like to add a little combinatorial goodness to our unit tests, please check out this re-usable, open-source NPM package:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jonathanconway/combinator&quot;&gt;https://github.com/jonathanconway/combinator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Contributions welcome!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Testing steps – an alternative to BDD</title>
+    <link href="https://conwy.co/articles/testing-steps/"/>
+    <updated>2022-02-14T00:00:00Z</updated>
+    <id>https://conwy.co/articles/testing-steps/</id>
+    <content xml:lang="en" type="html">&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Over the years several &lt;a href=&quot;https://en.wikipedia.org/wiki/Acceptance_testing#List_of_acceptance-testing_frameworks&quot; target=&quot;_blank&quot;&gt;acceptance testing frameworks&lt;/a&gt; have risen and fallen in popularity.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Behavior-driven_development&quot; target=&quot;_blank&quot;&gt;Behavior Driven Development&lt;/a&gt; (BDD), implemented in languages such as &lt;a href=&quot;https://en.wikipedia.org/wiki/Cucumber_(software)&quot; target=&quot;_blank&quot;&gt;Cucumber&lt;/a&gt; and &lt;a href=&quot;https://en.wikipedia.org/wiki/RSpec&quot; target=&quot;_blank&quot;&gt;RSpec&lt;/a&gt;, aims provide a human-readable and machine-parsable syntax for defining requirements. Developers and business people collaborate to produce specs in a &amp;quot;Given/When/Then&amp;quot; structure. Developers then implement an executable test for each spec using a more standard programming language test framework, such as JUnit, XUnit, Jasmine, etc.&lt;/p&gt;
+&lt;p&gt;Though it has grown in popularity, the BDD style has two disadvantages:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The &amp;quot;Given/When/Then&amp;quot; syntax adds an additional learning curve for people not familiar with the language.&lt;/li&gt;
+&lt;li&gt;The &amp;quot;Given/When/Then&amp;quot; structure (if adhered to) constrains the tests, forcing all assertions to take place after all actions, rather than allowing a sequence of interleaved actions and assertions.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Instead of BDD, we could use a much simpler and more familiar syntax:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;An ordered list of testing steps&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In this &lt;em&gt;testing steps&lt;/em&gt; approach, we remove the Given/When/Then structure altogether and simply list our sequence of steps and assertions. As with BDD tests, we then write code that implements each of the steps, using templating and parameterization where appropriate for reusability.&lt;/p&gt;
+&lt;p&gt;Instead of:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GIVEN x
+WHEN y
+THEN z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We write this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1. x
+2. y
+3. z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;An example&lt;/h2&gt;
+&lt;p&gt;Suppose we wish to write a spec for the following requirement:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Display an error if a currency conversion is over the limit for that currency, along with a Max button which resets the payment amount to the maximum amount, and then allows the user to proceed with the payment at that amount.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This requirement might be captured in two BDD specs such as the following:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h4&gt;TITLE: Validate currency limit with max button&lt;/h4&gt;
+&lt;h5&gt;SCENARIO 1: Validate currency limit&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GIVEN&lt;/strong&gt; I am a registered user&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I have a bank balance of 100,000 GBP&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; The maximum conversion from GBP to CAD is 50,000&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WHEN&lt;/strong&gt; I go to the Make a Payment screen&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I set the Destination currency to CAD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I set the Payment amount to 51,000 GBP&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;THEN&lt;/strong&gt; I will see a Currency conversion over daily payment limit error&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I will see a Fill max currency button&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;SCENARIO 2: Provide Max button, which resets currency to limit value&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GIVEN&lt;/strong&gt; I am a registered user&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I have a bank balance of 100,000 GBP&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; The maximum conversion from GBP to CAD is 50,000&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WHEN&lt;/strong&gt; I go to the Make a Payment screen&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I set the Destination currency to CAD&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I set the Payment amount to 51,000 GBP&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I click the Fill max currency button&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I click the Submit payment button&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;THEN&lt;/strong&gt; I will see a Payment successful screen&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AND&lt;/strong&gt; I will see the amount paid as 50,000 GBP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Notice how cumbersome and repetitive this is.&lt;/p&gt;
+&lt;p&gt;We could replace it with a single, neatly condensed sequence of steps:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h4&gt;SCENARIO: Validate currency limit with max button&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;Log in as a registered user&lt;/li&gt;
+&lt;li&gt;Assume a bank balance of 100,000 GBP&lt;/li&gt;
+&lt;li&gt;Assume a maximum conversion from GBP to CAD of 50,000&lt;/li&gt;
+&lt;li&gt;Go to the Make a Payment screen&lt;/li&gt;
+&lt;li&gt;Set the Destination currency to CAD&lt;/li&gt;
+&lt;li&gt;Set the Payment amount to 51,000 GBP&lt;/li&gt;
+&lt;li&gt;Observe the following error is visible: Currency conversion over daily payment limit&lt;/li&gt;
+&lt;li&gt;Observe the following button is visible: Fill max currency button&lt;/li&gt;
+&lt;li&gt;Click the Fill max currency button&lt;/li&gt;
+&lt;li&gt;Click the Submit payment button&lt;/li&gt;
+&lt;li&gt;Observe the following success message: Payment successful screen&lt;/li&gt;
+&lt;li&gt;Observe the following field | value: Amount paid | 50,000 GBP&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Notice how this latter form conveys the same information as the BDD spec, but without the Given/When/Then structure, and as a sequence of actions/events in a single flow.&lt;/p&gt;
+&lt;p&gt;Also notice that this is closer to how most human beings would manually test this kind of behavior. They wouldn&#39;t separate their testing into two sets of three distinct phases, starting over again after the first set. Rather, they would more likely perform just one sequence of steps, verifying the correctness as they go, all the way until the last step.&lt;/p&gt;
+&lt;p&gt;It&#39;s true that the testing steps don&#39;t explicitly tell us which of the steps are arrangements/pre-conditions, which are actions and which are assertions/post-conditions. For example, step 8 doesn&#39;t explicitly tell us that it is an assertion. However, I would argue that this fact is implicit in the language anyway and the average reader should have no problem interpreting a statement like &amp;quot;I will see a Fill max currency button&amp;quot; as an expectation rather than an action for the reader to perform.&lt;/p&gt;
+&lt;p&gt;From the developer&#39;s point of view, it doesn&#39;t matter either; any of these steps can have its own code block, associated via string/template matching. We don&#39;t need to specify whether a step is a Given, a When or a Then, in order to match the step to the correct code block. (If we want to make that attribute explicit in code, we can always do so with a comment, decorator, method naming convention, etc.)&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;It seems to me that the &amp;quot;Given/When/Then&amp;quot; way of structuring spec tests is a relic of design by contract and intended to help the code more than the user. It is unnecessary to structure tests in this way. Instead we can use a simple sequential list of steps. This is simpler, more user-friendly and more suitable to typical testing in which actions and assertions are intermingled throughout a sequence.&lt;/p&gt;
+&lt;p&gt;Users don&#39;t normally think in terms of pre-conditions/post-conditions, but are much more likely to think in terms of sequence of actions they perform and responses they get from the system.&lt;/p&gt;
+&lt;h2&gt;Library&lt;/h2&gt;
+&lt;p&gt;During writing of this article I developed a new testing framework which applies the concept of testing steps.&lt;/p&gt;
+&lt;p&gt;You can check it out here: &lt;a href=&quot;https://github.com/jonathanconway/testing-steps&quot; target=&quot;_blank&quot;&gt;&lt;code&gt;testing-steps&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This framework is a Javascript/Typescript library which can be consumed by unit tests targeting the &lt;a href=&quot;https://jestjs.io/&quot; target=&quot;_blank&quot;&gt;Jest&lt;/a&gt; test runner.&lt;/p&gt;
+&lt;p&gt;If there is enough interest, I will look at getting it ported to other languages/frameworks.&lt;/p&gt;
+&lt;h2&gt;Further reading&lt;/h2&gt;
+&lt;p&gt;Books that inspired me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;The Cucumber Book&lt;/em&gt; • Matt WYNNE&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Diagramming Typescript</title>
+    <link href="https://conwy.co/articles/diagramming-ts/"/>
+    <updated>2022-01-02T00:00:00Z</updated>
+    <id>https://conwy.co/articles/diagramming-ts/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;As the practice of front-end development grows and evolves, front-end developers find themselves working with increasingly complex problem domains, requirements and code-bases. This necessitates increasing usage of solution design and planning tools, such as &lt;a href=&quot;https://en.wikipedia.org/wiki/Website_wireframe&quot;&gt;wireframes&lt;/a&gt;, &lt;a href=&quot;https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy&quot;&gt;component diagrams&lt;/a&gt;, &lt;a href=&quot;https://www.martinfowler.com/bliki/UserStory.html&quot;&gt;user stories&lt;/a&gt;, etc.&lt;/p&gt;
+&lt;p&gt;In recent work on large, complex Typescript code-bases I&#39;ve found myself doing a significant amount of upfront solution design, planning modifications or additions to the code by way of high-level diagrams.&lt;/p&gt;
+&lt;p&gt;In this article I want to share a &#39;tweaked&#39; form of UML that I&#39;ve been using in solution designs on Typescript code-bases.&lt;/p&gt;
+&lt;p&gt;But let&#39;s first review the utility of diagrams and UML.&lt;/p&gt;
+&lt;h2&gt;Why diagrams?&lt;/h2&gt;
+&lt;p&gt;To motivate this article, I want to review the main uses and benefits of diagrams as I see it.&lt;/p&gt;
+&lt;p&gt;Diagrams have the following features, distinct from either code or documentation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Partial&lt;/em&gt; - diagrams can &amp;quot;sketch&amp;quot; some parts of code while omitting others&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;High-level&lt;/em&gt; - diagrams can depict high-level components while omitting low-level implementation details&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Spatial&lt;/em&gt; - diagrams are in 2D space, enabling us to better visualise the parts and how they connect to eachother&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;By virtue of these features, diagrams offer certain unique uses and benefits at different stages of the software lifecycle.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Solution design&lt;/li&gt;
+&lt;li&gt;Planning complex changes&lt;/li&gt;
+&lt;li&gt;Documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Solution design&lt;/h3&gt;
+&lt;p&gt;Solution design helps us to conceive our solutions before implementing them. We can begin to assemble the pieces of the solution and envisage how they will interact with eachother in advance of writing any code. This helps us to clarify our work, avoid costly mistakes and rework and come up with better time estimates. The benefits are multiplied when solution design is shared between multiple team members and improved based on their feedback.&lt;/p&gt;
+&lt;p&gt;Diagramming is an excellent way to both develop and communicate a solution design. Diagrams, which don&#39;t need to be compiled, can be built partially, creating a kind of &amp;quot;code sketch&amp;quot; that communicates software design at a high level while omitting details. Diagrams are laid out spatially, allowing us to organise our thinking outside the constraints of the file system or compiler.&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;Note 1: In some organisations multiple stakeholders may need to approve a solution – from product owners to designers to security specialists. In these cases it&#39;s even more beneficial to develop solution designs and share them with the stakeholders. The stakeholders can then have an opportunity to identify issues and risks before implementation commences. They can co-design the solution with developers, shaping it in beneficial ways before implementation begins.&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;Note 2: There is a culture in some development teams of avoiding solution design, thinking it is unnecessary and even to be avoided, since it is part of undesirable &amp;quot;big upfront planning&amp;quot; or &amp;quot;waterfall&amp;quot; methodology. The idea is that &amp;quot;agile&amp;quot; is a new and better way of working and, as such, developers should begin coding as soon as possible with minimal planning and preparation (&amp;quot;MVP&amp;quot;). My thinking goes against this, but addressing it in-depth is beyond the scope of this article. But to summarise: if you carefully review the agile literature, it is very rare for it to discourage planning, big picture thinking, solution design or architecture. In fact, some of the most popular agile practitioners, such as Bob Martin and Martin Fowler, have written lengthy books on both architecture and UML. Thus it is apparent that agile is broadly compatible with solution design and planning.&lt;/small&gt;&lt;/p&gt;
+&lt;h3&gt;Planning complex changes&lt;/h3&gt;
+&lt;p&gt;As our software grows in multiple directions (code size and complexity, users, features, etc.) the complexity of making changes increases. Any change, from renaming a field to adding cross-cutting functionality such as monitoring, can involve changes to many components across the code-base. We may need to envisage the impacts of these changes and carefully plan them out, paying regard to constraints such as time, system resources, performance, etc.&lt;/p&gt;
+&lt;p&gt;This is where diagramming can come in handy. As we analyse the code directly, we can also begin to sketch out a partial model of the code, focussing on just the components that will need to be changed. We can then add our changes to this model and use annotations, dashed rectangles or whitespace to mark our which parts are changing.&lt;/p&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;p&gt;Diagrams can form a useful part of documentation. They can be added to wiki pages, task trackers and pull requests, to help developers and other team members understand the structure of the code.&lt;/p&gt;
+&lt;p&gt;We can create a diagram only depicts once slice of the code-base, and omit implementation detail. This helps when documenting a cross-cutting aspect of the code-base.&lt;/p&gt;
+&lt;p&gt;For example, we might have one page in the wiki dedicated to the topic of &#39;SMS verification&#39;. That page could detail the systems and processes involved in sending an SMS verification message. It could include a diagram depicting only the parts of our code involved in SMS verification and how they connect to eachother, omitting parts that aren&#39;t directly involved in SMS verification.&lt;/p&gt;
+&lt;h2&gt;Background on UML&lt;/h2&gt;
+&lt;p&gt;UML is a widely used diagramming language for depicting object-oriented code structures. Normally used with strongly-typed, class-based programming languages, such as Java and C#, it focuses on representing the public interfaces of classes, interfaces and other structures, inheritance relationships between classes (generalisation, realisation, etc.) and relationships between objects generated by classes (association, aggregation, composition).&lt;/p&gt;
+&lt;p&gt;The UML standard covers a range of diagrams, most of which can be readily applied to Typescript and/or front-end projects with practically no tweaking.&lt;/p&gt;
+&lt;p&gt;Notice, however, that UML &amp;quot;class diagrams&amp;quot; (as the name suggests) are focussed on depicting classes and objects. Most Typescript code-bases (especially front-end) are much more focussed on functions and types. This is in good part due to the functional style of programming that predominates in front-end languages (Javascript), frameworks (React), libraries (Redux) and tooling.&lt;/p&gt;
+&lt;p&gt;This presents a challenge: there is a dissonance between the class focussed world of UML and the function and type focussed world of Typescript. It seems like we need to tweak UML in order to use it effectively in a Typescript context.&lt;/p&gt;
+&lt;p&gt;Happily, as we will see, this is all quite doable. In fact, &amp;quot;Typescript UML&amp;quot; can be realised as a subset of UML without significantly altering the language.&lt;/p&gt;
+&lt;h2&gt;Applying UML to Typescript&lt;/h2&gt;
+&lt;p&gt;The first thing to note is that with Typescript we need to model functions and types – structures which aren&#39;t traditionally supported by UML.&lt;/p&gt;
+&lt;p&gt;UML already allows for extensibility, via the &amp;quot;stereotype&amp;quot; pattern, annotations and on connector lines. We can carefully apply use these features to depict important Typescript structures such as types and functions, while preserving the overall idioms of UML, to keep the diagrams clean, consistent and (if needed) broadly accessible to non-Typescript developers.&lt;/p&gt;
+&lt;h2&gt;Interfaces, types and enums&lt;/h2&gt;
+&lt;p&gt;Interfaces and enums, which are also present in class-based languages, translate immediately over to UML.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFVzZXJUeXBlIHtcbiAgICA8PEVudW0-PlxuICAgICtQaWxvdFxuICAgICtDcmV3XG4gIH1cblxuICBjbGFzcyBCYXNlVXNlciB7XG4gICAgPDxJbnRlcmZhY2U-PlxuICAgICt0eXBlOiBVc2VyVHlwZVxuICAgICtmaXJzdE5hbWU6IHN0cmluZ1xuICAgICtsYXN0TmFtZTogc3RyaW5nXG4gICAgK2VtYWlsOiBzdHJpbmdcbiAgfVxuICBCYXNlVXNlciAuLj4gVXNlclR5cGUiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFVzZXJUeXBlIHtcbiAgICA8PEVudW0-PlxuICAgICtQaWxvdFxuICAgICtDcmV3XG4gIH1cblxuICBjbGFzcyBCYXNlVXNlciB7XG4gICAgPDxJbnRlcmZhY2U-PlxuICAgICt0eXBlOiBVc2VyVHlwZVxuICAgICtmaXJzdE5hbWU6IHN0cmluZ1xuICAgICtsYXN0TmFtZTogc3RyaW5nXG4gICAgK2VtYWlsOiBzdHJpbmdcbiAgfVxuICBCYXNlVXNlciAuLj4gVXNlclR5cGUiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;enum UserType {
+  Pilot = &amp;quot;Pilot&amp;quot;,
+  Crew = &amp;quot;Crew&amp;quot;,
+}
+
+interface BaseUser {
+  id: string;
+  type: UserType;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Types are a little more tricky. A type might simply be declared equivalent to another structure – such as an interface or another type. Or it might also be a composition of other structures, such as a conditional type or mapped type.&lt;/p&gt;
+&lt;p&gt;How can we accurately represent our types diagrammatically without overburdening our diagrams with code-like detail?&lt;/p&gt;
+&lt;p&gt;My approach here is to simply lay out all the types involved and depict their relationships to eachother without necessarily including logical constraints or finer-grained details such as mapped properties. Where such details are crucial, they can be placed in a nearby &#39;note&#39; element (already a feature of standard UML) and/or, as in the case of mapped properties, simply included in the type&#39;s first compartment.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFVzZXJUeXBlIHtcbiAgICA8PEVudW0-PlxuICAgICtQaWxvdFxuICAgICtDcmV3XG4gIH1cblxuICBjbGFzcyBCYXNlVXNlciB7XG4gICAgPDxJbnRlcmZhY2U-PlxuICAgICt0eXBlOiBVc2VyVHlwZVxuICAgICtmaXJzdE5hbWU6IHN0cmluZ1xuICAgICtsYXN0TmFtZTogc3RyaW5nXG4gICAgK2VtYWlsOiBzdHJpbmdcbiAgfVxuICBCYXNlVXNlciAuLj4gVXNlclR5cGVcblxuICBjbGFzcyBQaWxvdCB7XG4gICAgPDxUeXBlPj5cbiAgICArdHlwZTogVXNlclR5cGUuUGlsb3RcbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gICAgK3llYXJzRXhwZXJpZW5jZTogbnVtYmVyXG4gIH1cbiAgUGlsb3QgLS18PiBCYXNlVXNlclxuXG4gIGNsYXNzIENyZXcge1xuICAgIDw8VHlwZT4-XG4gICAgK3R5cGU6IFVzZXJUeXBlLkNyZXc7XG4gICAgK2NyZXdDb2RlOiBzdHJpbmc7XG4gIH1cbiAgQ3JldyAtLXw-IEJhc2VVc2VyXG5cbiAgY2xhc3MgVXNlciB7XG4gICAgPDxUeXBlPj5cbiAgICBQaWxvdCB8IENyZXdcbiAgfVxuICBVc2VyIC0tfD4gUGlsb3RcbiAgVXNlciAtLXw-IENyZXdcblxuICBjbGFzcyBVc2VyQWNjb3VudEluZm8ge1xuICAgIDw8VHlwZT4-XG4gICAgK2ZpcnN0TmFtZTogc3RyaW5nXG4gICAgK2xhc3ROYW1lOiBzdHJpbmdcbiAgICArZW1haWw6IHN0cmluZ1xuICB9XG4gIFVzZXJBY2NvdW50SW5mbyAtLXw-IEJhc2VVc2VyOiAocGljaylcbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFVzZXJUeXBlIHtcbiAgICA8PEVudW0-PlxuICAgICtQaWxvdFxuICAgICtDcmV3XG4gIH1cblxuICBjbGFzcyBCYXNlVXNlciB7XG4gICAgPDxJbnRlcmZhY2U-PlxuICAgICt0eXBlOiBVc2VyVHlwZVxuICAgICtmaXJzdE5hbWU6IHN0cmluZ1xuICAgICtsYXN0TmFtZTogc3RyaW5nXG4gICAgK2VtYWlsOiBzdHJpbmdcbiAgfVxuICBCYXNlVXNlciAuLj4gVXNlclR5cGVcblxuICBjbGFzcyBQaWxvdCB7XG4gICAgPDxUeXBlPj5cbiAgICArdHlwZTogVXNlclR5cGUuUGlsb3RcbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gICAgK3llYXJzRXhwZXJpZW5jZTogbnVtYmVyXG4gIH1cbiAgUGlsb3QgLS18PiBCYXNlVXNlclxuXG4gIGNsYXNzIENyZXcge1xuICAgIDw8VHlwZT4-XG4gICAgK3R5cGU6IFVzZXJUeXBlLkNyZXc7XG4gICAgK2NyZXdDb2RlOiBzdHJpbmc7XG4gIH1cbiAgQ3JldyAtLXw-IEJhc2VVc2VyXG5cbiAgY2xhc3MgVXNlciB7XG4gICAgPDxUeXBlPj5cbiAgICBQaWxvdCB8IENyZXdcbiAgfVxuICBVc2VyIC0tfD4gUGlsb3RcbiAgVXNlciAtLXw-IENyZXdcblxuICBjbGFzcyBVc2VyQWNjb3VudEluZm8ge1xuICAgIDw8VHlwZT4-XG4gICAgK2ZpcnN0TmFtZTogc3RyaW5nXG4gICAgK2xhc3ROYW1lOiBzdHJpbmdcbiAgICArZW1haWw6IHN0cmluZ1xuICB9XG4gIFVzZXJBY2NvdW50SW5mbyAtLXw-IEJhc2VVc2VyOiAocGljaylcbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;type PilotLicenceNumber = string;
+
+type Pilot = BaseUser &amp;amp; {
+  type: UserType.Pilot;
+  licenceNumber: PilotLicenceNumber;
+  yearsExperience: number;
+};
+
+type Crew = BaseUser &amp;amp; {
+  type: UserType.Crew;
+  crewCode: string;
+};
+
+type User = Pilot | Crew;
+
+type UserAccountInfo = Pick&amp;lt;BaseUser, &amp;quot;firstName&amp;quot; | &amp;quot;lastName&amp;quot; | &amp;quot;email&amp;quot;&amp;gt;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I&#39;m not sure if this is ideal, but it seems a reasonably pragmatic approach. Note that UML allows us to depict the code partially, not necessarily exhaustively.&lt;/p&gt;
+&lt;p&gt;We can also depict &lt;em&gt;associations&lt;/em&gt; between different interfaces/types in the same way as regular UML class diagrams. In this example, we depict a &lt;code&gt;Flight&lt;/code&gt; interface which aggregates &lt;code&gt;Crew&lt;/code&gt; and &lt;code&gt;Pilot&lt;/code&gt; members, along with the cardinality of the relationship.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFBpbG90IHtcbiAgICA8PFR5cGU-PlxuICAgICt0eXBlOiBVc2VyVHlwZS5QaWxvdFxuICAgICtsaWNlbmNlTnVtYmVyOiBQaWxvdExpY2VuY2VOdW1iZXJcbiAgICAreWVhcnNFeHBlcmllbmNlOiBudW1iZXJcbiAgfVxuXG4gIGNsYXNzIENyZXcge1xuICAgIDw8VHlwZT4-XG4gICAgK3R5cGU6IFVzZXJUeXBlLkNyZXc7XG4gICAgK2NyZXdDb2RlOiBzdHJpbmc7XG4gIH1cblxuICBjbGFzcyBGbGlnaHQge1xuICAgIDw8SW50ZXJmYWNlPj5cbiAgICArZmxpZ2h0TnVtYmVyOiBzdHJpbmdcbiAgICArY3Jld3M6IENyZXdbXVxuICAgICtwaWxvdHM6IFBpbG90W11cbiAgfVxuICBGbGlnaHQgXCIwXCIgby0tPiBcIm5cIiBDcmV3IDogY3Jld3NcbiAgRmxpZ2h0IFwiMFwiIG8tLT4gXCJuXCIgUGlsb3QgOiBwaWxvdHMiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFBpbG90IHtcbiAgICA8PFR5cGU-PlxuICAgICt0eXBlOiBVc2VyVHlwZS5QaWxvdFxuICAgICtsaWNlbmNlTnVtYmVyOiBQaWxvdExpY2VuY2VOdW1iZXJcbiAgICAreWVhcnNFeHBlcmllbmNlOiBudW1iZXJcbiAgfVxuXG4gIGNsYXNzIENyZXcge1xuICAgIDw8VHlwZT4-XG4gICAgK3R5cGU6IFVzZXJUeXBlLkNyZXc7XG4gICAgK2NyZXdDb2RlOiBzdHJpbmc7XG4gIH1cblxuICBjbGFzcyBGbGlnaHQge1xuICAgIDw8SW50ZXJmYWNlPj5cbiAgICArZmxpZ2h0TnVtYmVyOiBzdHJpbmdcbiAgICArY3Jld3M6IENyZXdbXVxuICAgICtwaWxvdHM6IFBpbG90W11cbiAgfVxuICBGbGlnaHQgXCIwXCIgby0tPiBcIm5cIiBDcmV3IDogY3Jld3NcbiAgRmxpZ2h0IFwiMFwiIG8tLT4gXCJuXCIgUGlsb3QgOiBwaWxvdHMiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;interface Flight {
+  flightNumber: string;
+  crews: Crew[];
+  pilots: Pilot[];
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br /&gt;
+&lt;h2&gt;Functions&lt;/h2&gt;
+&lt;p&gt;As the name suggests, UML &amp;quot;class diagrams&amp;quot; are normally oriented toward depicting classes, which are treated as the main building blocks of class-based programs.&lt;/p&gt;
+&lt;p&gt;Typescript programs however, especially on the front-end, tend to more heavily emphasise functions. Functions are treated as &amp;quot;first class citizens&amp;quot;, meaning that they make up important structural elements of the program, and are not merely an implementation detail.&lt;/p&gt;
+&lt;p&gt;Nevertheless, we can take UML&#39;s &amp;quot;box with two compartments and a title bar&amp;quot; and re-purpose it for diagramming Typescript functions.&lt;/p&gt;
+&lt;p&gt;The public interface of a Typescript function primarily consists of its parameters and return type. We can repurpose the first compartment of our box to depict the parameters passed in to the function. Since a function has no publicly accessible &amp;quot;instance&amp;quot; members, there&#39;s no need to represent them at all. The lower compartment can contain private variables held in scope of the function, which, as with private members of a class, aren&#39;t accessible from outside.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIGlzVmFsaWRVc2VyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICArdXNlcjogVXNlclxuICB9XG4gIGlzVmFsaWRVc2VyIC4uPiBVc2VyIDogdXNlclxuICBpc1ZhbGlkVXNlciAuLj4gaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciA6IChjYWxscylcblxuICBjbGFzcyBpc1ZhbGlkUGlsb3RMaWNlbmNlTnVtYmVyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gIH1cbiAgaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciAuLj4gUGlsb3RMaWNlbmNlTnVtYmVyIDogbGljZW5jZU51bWJlclxuXG4iLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiXG59IiwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIGlzVmFsaWRVc2VyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICArdXNlcjogVXNlclxuICB9XG4gIGlzVmFsaWRVc2VyIC4uPiBVc2VyIDogdXNlclxuICBpc1ZhbGlkVXNlciAuLj4gaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciA6IChjYWxscylcblxuICBjbGFzcyBpc1ZhbGlkUGlsb3RMaWNlbmNlTnVtYmVyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gIH1cbiAgaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciAuLj4gUGlsb3RMaWNlbmNlTnVtYmVyIDogbGljZW5jZU51bWJlclxuXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;function isValidUser(user: User): boolean { ... }
+
+function isValidPilotLicenceNumber(licenceNumber: PilotLicenceNumber): boolean { ... }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This leaves one important problem – how do we represent the return type of a function?&lt;/p&gt;
+&lt;h2&gt;Return types of functions&lt;/h2&gt;
+&lt;p&gt;Since a Typescript function only has one return type, we might want to represent it as one structure. That type could have one or more members (if it is an inline type, interface or class). It could also have relationships to other types (e.g. an interface that realises another interface). It could even be another function.&lt;/p&gt;
+&lt;p&gt;We could designate an additional, third, compartment in which to place information about the return type. There are two downsides to this, however. Firstly, introducing a third compartment increases the learning curve for someone who is more accustomed to seeing only two compartments in a UML box diagram. They must figure out what the third compartment signifies and then remember that it signifies the return type and that they should look there for the return type. Secondly, there is the awkward problem of representing a return type which isn&#39;t simply a collection of members. How do we represent a return type that itself has a relationship with another type? Or a return type that is itself a function? If we simply list a single name in the third compartment as though it is a member, this creates confusion as to whether we are naming the return type itself or a member of the return type. For the above reasons it seems inconvenient to house our return type in the third compartment – or any compartment – of a Function box.&lt;/p&gt;
+&lt;p&gt;A better way is to put the return type in a separate box altogether. We can actually do this, in much the same way as we would represent a type of a function parameter. The relationship can easily be clarified with a connector, which points from the function box to the return type box with a &#39;returns&#39; label.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cbiAgY2xhc3MgZmV0Y2hGbGlnaHREZXRhaWxzIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICAraWQ6IHN0cmluZ1xuICB9XG4gIGZldGNoRmxpZ2h0RGV0YWlscyAuLj4gRmxpZ2h0IDogKHJldHVybnMpXG5cblxuICBjbGFzcyBGbGlnaHQge1xuICAgIDw8SW50ZXJmYWNlPj5cbiAgICArZmxpZ2h0TnVtYmVyOiBzdHJpbmdcbiAgICArY3Jld3M6IENyZXdbXVxuICAgICtwaWxvdHM6IFBpbG90W11cbiAgfSIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cbiAgY2xhc3MgZmV0Y2hGbGlnaHREZXRhaWxzIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICAraWQ6IHN0cmluZ1xuICB9XG4gIGZldGNoRmxpZ2h0RGV0YWlscyAuLj4gRmxpZ2h0IDogKHJldHVybnMpXG5cblxuICBjbGFzcyBGbGlnaHQge1xuICAgIDw8SW50ZXJmYWNlPj5cbiAgICArZmxpZ2h0TnVtYmVyOiBzdHJpbmdcbiAgICArY3Jld3M6IENyZXdbXVxuICAgICtwaWxvdHM6IFBpbG90W11cbiAgfSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;async function fetchFlightDetails(id: string): Flight { ... }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br /&gt;
+&lt;h2&gt;Framework-specific functions&lt;/h2&gt;
+&lt;p&gt;We can do a similar re-purposing to support framework-specific building blocks which are functions – for example, React &lt;strong&gt;components&lt;/strong&gt; and custom &lt;strong&gt;hooks&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;UML includes a &amp;quot;stereotype&amp;quot; pattern – a double-angle-bracketed name that sits above the title. This can be used to label our functions – e.g. &lt;code&gt;&amp;lt;&amp;lt;Component&amp;gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;&amp;lt;Hook&amp;gt;&amp;gt;&lt;/code&gt; for React-specific functions. These, along with the aforementioned ways of depicting functions and types, can be used to diagram the components of a React application.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cblxuICBjbGFzcyB1c2VGbGlnaHREZXRhaWxzIHtcbiAgICA8PEhvb2s-PlxuICAgICtmbGlnaHRJZDogc3RyaW5nXG4gIH1cbiAgdXNlRmxpZ2h0RGV0YWlscyAuLj4gRmxpZ2h0IDogKHJldHVybnMpXG4gIHVzZUZsaWdodERldGFpbHMgLi4-IGZldGNoRmxpZ2h0RGV0YWlscyA6IChjYWxscylcblxuICBjbGFzcyBGbGlnaHREZXRhaWxzIHtcbiAgICA8PENvbXBvbmVudD4-XG4gICAgK2ZsaWdodElkOiBzdHJpbmdcbiAgICAtc2V0RmxpZ2h0OiAoZmxpZ2h0OiBGbGlnaHQpOiB2b2lkXG4gICAgLWZsaWdodCgpOiBGbGlnaHRcbiAgfVxuICBGbGlnaHREZXRhaWxzIC4uPiB1c2VGbGlnaHREZXRhaWxzIDogKGNhbGxzKVxuICBGbGlnaHREZXRhaWxzIFwiMVwiICotLT4gXCIxLi5tXCIgUGlsb3REZXRhaWxzIDogKHJlbmRlcnMpXG4gIEZsaWdodERldGFpbHMgXCIxXCIgKi0tPiBcIjEuLm1cIiBDcmV3RGV0YWlscyA6IChyZW5kZXJzKVxuXG4gIGNsYXNzIFBpbG90RGV0YWlscyB7XG4gICAgPDxDb21wb25lbnQ-PlxuICAgICtwaWxvdDogUGlsb3RcbiAgfVxuICBQaWxvdERldGFpbHMgLi4-IFBpbG90XG5cbiAgY2xhc3MgQ3Jld0RldGFpbHMge1xuICAgIDw8Q29tcG9uZW50Pj5cbiAgICArY3JldzogQ3Jld1xuICB9XG4gIENyZXdEZXRhaWxzIC4uPiBDcmV3XG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG5cblxuICBjbGFzcyB1c2VGbGlnaHREZXRhaWxzIHtcbiAgICA8PEhvb2s-PlxuICAgICtmbGlnaHRJZDogc3RyaW5nXG4gIH1cbiAgdXNlRmxpZ2h0RGV0YWlscyAuLj4gRmxpZ2h0IDogKHJldHVybnMpXG4gIHVzZUZsaWdodERldGFpbHMgLi4-IGZldGNoRmxpZ2h0RGV0YWlscyA6IChjYWxscylcblxuICBjbGFzcyBGbGlnaHREZXRhaWxzIHtcbiAgICA8PENvbXBvbmVudD4-XG4gICAgK2ZsaWdodElkOiBzdHJpbmdcbiAgICAtc2V0RmxpZ2h0OiAoZmxpZ2h0OiBGbGlnaHQpOiB2b2lkXG4gICAgLWZsaWdodCgpOiBGbGlnaHRcbiAgfVxuICBGbGlnaHREZXRhaWxzIC4uPiB1c2VGbGlnaHREZXRhaWxzIDogKGNhbGxzKVxuICBGbGlnaHREZXRhaWxzIFwiMVwiICotLT4gXCIxLi5tXCIgUGlsb3REZXRhaWxzIDogKHJlbmRlcnMpXG4gIEZsaWdodERldGFpbHMgXCIxXCIgKi0tPiBcIjEuLm1cIiBDcmV3RGV0YWlscyA6IChyZW5kZXJzKVxuXG4gIGNsYXNzIFBpbG90RGV0YWlscyB7XG4gICAgPDxDb21wb25lbnQ-PlxuICAgICtwaWxvdDogUGlsb3RcbiAgfVxuICBQaWxvdERldGFpbHMgLi4-IFBpbG90XG5cbiAgY2xhc3MgQ3Jld0RldGFpbHMge1xuICAgIDw8Q29tcG9uZW50Pj5cbiAgICArY3JldzogQ3Jld1xuICB9XG4gIENyZXdEZXRhaWxzIC4uPiBDcmV3XG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;function useFlightDetails({
+  flightId
+}: {
+  flightId: string
+}): {
+  crews: Crew[],
+  pilots: Pilot[],
+} { ... }
+
+function FlightDetails({
+  flightId
+}: {
+  flightId: string
+}): React.Node { ... }
+
+function PilotDetails({
+  pilot,
+}: {
+  pilot: Pilot
+}): React.Node { ... }
+
+function CrewDetails({
+  crew,
+}: {
+  crew: Crew
+}): React.Node { ... }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note: As React components typically take a single &#39;props&#39; object as a parameter, I opted to just inline that object&#39;s members in the first compartment of the &lt;code&gt;&amp;lt;&amp;lt;Component&amp;gt;&amp;gt;&lt;/code&gt; box. This very small inconsistency probably won&#39;t be too confusing to anyone who has a basic understanding of React.&lt;/p&gt;
+&lt;br /&gt;
+&lt;h2&gt;Putting it all together&lt;/h2&gt;
+&lt;p&gt;For your reference, here is one big UML diagram comprising all the pieces discussed in this article:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFVzZXJUeXBlIHtcbiAgICA8PEVudW0-PlxuICAgICtQaWxvdFxuICAgICtDcmV3XG4gIH1cblxuICBjbGFzcyBCYXNlVXNlciB7XG4gICAgPDxJbnRlcmZhY2U-PlxuICAgICt0eXBlOiBVc2VyVHlwZVxuICAgICtmaXJzdE5hbWU6IHN0cmluZ1xuICAgICtsYXN0TmFtZTogc3RyaW5nXG4gICAgK2VtYWlsOiBzdHJpbmdcbiAgfVxuICBCYXNlVXNlciAuLj4gVXNlclR5cGVcblxuXG4gIGNsYXNzIHN0cmluZyB7XG4gICAgPDxUeXBlPj5cbiAgfVxuXG4gIGNsYXNzIFBpbG90TGljZW5jZU51bWJlciB7XG4gICAgPDxUeXBlPj5cbiAgfVxuICBQaWxvdExpY2VuY2VOdW1iZXIgLS18PiBzdHJpbmdcblxuICBjbGFzcyBQaWxvdCB7XG4gICAgPDxUeXBlPj5cbiAgICArdHlwZTogVXNlclR5cGUuUGlsb3RcbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gICAgK3llYXJzRXhwZXJpZW5jZTogbnVtYmVyXG4gIH1cbiAgUGlsb3QgLS18PiBCYXNlVXNlclxuICBQaWxvdCAuLj4gUGlsb3RMaWNlbmNlTnVtYmVyIDogbGljZW5jZU51bWJlclxuICBQaWxvdCAuLj4gVXNlclR5cGUgOiB0eXBlXG5cbiAgY2xhc3MgQ3JldyB7XG4gICAgPDxUeXBlPj5cbiAgICArdHlwZTogVXNlclR5cGUuQ3JldztcbiAgICArY3Jld0NvZGU6IHN0cmluZztcbiAgfVxuICBDcmV3IC0tfD4gQmFzZVVzZXJcbiAgQ3JldyAuLj4gVXNlclR5cGUgOiB0eXBlXG5cbiAgY2xhc3MgVXNlciB7XG4gICAgPDxUeXBlPj5cbiAgICBQaWxvdCB8IENyZXdcbiAgfVxuICBVc2VyIC0tfD4gUGlsb3RcbiAgVXNlciAtLXw-IENyZXdcblxuICBjbGFzcyBGbGlnaHQge1xuICAgIDw8SW50ZXJmYWNlPj5cbiAgICArZmxpZ2h0TnVtYmVyOiBzdHJpbmdcbiAgICArY3Jld3M6IENyZXdbXVxuICAgICtwaWxvdHM6IFBpbG90W11cbiAgfVxuICBGbGlnaHQgXCIwXCIgby0tPiBcIm5cIiBDcmV3IDogY3Jld3NcbiAgRmxpZ2h0IFwiMFwiIG8tLT4gXCJuXCIgUGlsb3QgOiBwaWxvdHNcblxuXG4gIGNsYXNzIGlzVmFsaWRVc2VyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICBpc1ZhbGlkVXNlcigpOiBib29sZWFuXG4gICAgK3VzZXI6IFVzZXJcbiAgfVxuICBpc1ZhbGlkVXNlciAuLj4gVXNlclxuICBpc1ZhbGlkVXNlciAuLj4gaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciA6IChjYWxscylcblxuICBjbGFzcyBpc1ZhbGlkUGlsb3RMaWNlbmNlTnVtYmVyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gIH1cbiAgaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciAuLj4gUGlsb3RMaWNlbmNlTnVtYmVyIDogbGljZW5jZU51bWJlclxuXG5cblxuICBjbGFzcyBmZXRjaEZsaWdodERldGFpbHMge1xuICAgIDw8RnVuY3Rpb24-PlxuICAgICtpZDogc3RyaW5nXG4gIH1cbiAgZmV0Y2hGbGlnaHREZXRhaWxzIC4uPiBGbGlnaHQgOiAocmV0dXJucylcblxuXG5cblxuICBjbGFzcyB1c2VGbGlnaHREZXRhaWxzIHtcbiAgICA8PEhvb2s-PlxuICAgICtmbGlnaHRJZDogc3RyaW5nXG4gIH1cbiAgdXNlRmxpZ2h0RGV0YWlscyAuLj4gRmxpZ2h0IDogKHJldHVybnMpXG4gIHVzZUZsaWdodERldGFpbHMgLi4-IGZldGNoRmxpZ2h0RGV0YWlscyA6IChjYWxscylcblxuICBjbGFzcyBGbGlnaHREZXRhaWxzIHtcbiAgICA8PENvbXBvbmVudD4-XG4gICAgK2ZsaWdodElkOiBzdHJpbmdcbiAgICAtZmxpZ2h0OiBGbGlnaHRcbiAgICAtc2V0RmxpZ2h0OiAoZmxpZ2h0OiBGbGlnaHQpOiB2b2lkXG4gIH1cbiAgRmxpZ2h0RGV0YWlscyAuLj4gdXNlRmxpZ2h0RGV0YWlscyA6IChjYWxscylcbiAgRmxpZ2h0RGV0YWlscyBcIjFcIiAqLS0-IFwiMS4ubVwiIFBpbG90RGV0YWlscyA6IChyZW5kZXJzKVxuICBGbGlnaHREZXRhaWxzIFwiMVwiICotLT4gXCIxLi5tXCIgQ3Jld0RldGFpbHMgOiAocmVuZGVycylcblxuICBjbGFzcyBQaWxvdERldGFpbHMge1xuICAgIDw8Q29tcG9uZW50Pj5cbiAgICArcGlsb3Q6IFBpbG90XG4gIH1cbiAgUGlsb3REZXRhaWxzIC4uPiBQaWxvdFxuXG4gIGNsYXNzIENyZXdEZXRhaWxzIHtcbiAgICA8PENvbXBvbmVudD4-XG4gICAgK2NyZXc6IENyZXdcbiAgfVxuICBDcmV3RGV0YWlscyAuLj4gQ3Jld1xuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot;&gt;&lt;img src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIGNsYXNzIFVzZXJUeXBlIHtcbiAgICA8PEVudW0-PlxuICAgICtQaWxvdFxuICAgICtDcmV3XG4gIH1cblxuICBjbGFzcyBCYXNlVXNlciB7XG4gICAgPDxJbnRlcmZhY2U-PlxuICAgICt0eXBlOiBVc2VyVHlwZVxuICAgICtmaXJzdE5hbWU6IHN0cmluZ1xuICAgICtsYXN0TmFtZTogc3RyaW5nXG4gICAgK2VtYWlsOiBzdHJpbmdcbiAgfVxuICBCYXNlVXNlciAuLj4gVXNlclR5cGVcblxuXG4gIGNsYXNzIHN0cmluZyB7XG4gICAgPDxUeXBlPj5cbiAgfVxuXG4gIGNsYXNzIFBpbG90TGljZW5jZU51bWJlciB7XG4gICAgPDxUeXBlPj5cbiAgfVxuICBQaWxvdExpY2VuY2VOdW1iZXIgLS18PiBzdHJpbmdcblxuICBjbGFzcyBQaWxvdCB7XG4gICAgPDxUeXBlPj5cbiAgICArdHlwZTogVXNlclR5cGUuUGlsb3RcbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gICAgK3llYXJzRXhwZXJpZW5jZTogbnVtYmVyXG4gIH1cbiAgUGlsb3QgLS18PiBCYXNlVXNlclxuICBQaWxvdCAuLj4gUGlsb3RMaWNlbmNlTnVtYmVyIDogbGljZW5jZU51bWJlclxuICBQaWxvdCAuLj4gVXNlclR5cGUgOiB0eXBlXG5cbiAgY2xhc3MgQ3JldyB7XG4gICAgPDxUeXBlPj5cbiAgICArdHlwZTogVXNlclR5cGUuQ3JldztcbiAgICArY3Jld0NvZGU6IHN0cmluZztcbiAgfVxuICBDcmV3IC0tfD4gQmFzZVVzZXJcbiAgQ3JldyAuLj4gVXNlclR5cGUgOiB0eXBlXG5cbiAgY2xhc3MgVXNlciB7XG4gICAgPDxUeXBlPj5cbiAgICBQaWxvdCB8IENyZXdcbiAgfVxuICBVc2VyIC0tfD4gUGlsb3RcbiAgVXNlciAtLXw-IENyZXdcblxuICBjbGFzcyBGbGlnaHQge1xuICAgIDw8SW50ZXJmYWNlPj5cbiAgICArZmxpZ2h0TnVtYmVyOiBzdHJpbmdcbiAgICArY3Jld3M6IENyZXdbXVxuICAgICtwaWxvdHM6IFBpbG90W11cbiAgfVxuICBGbGlnaHQgXCIwXCIgby0tPiBcIm5cIiBDcmV3IDogY3Jld3NcbiAgRmxpZ2h0IFwiMFwiIG8tLT4gXCJuXCIgUGlsb3QgOiBwaWxvdHNcblxuXG4gIGNsYXNzIGlzVmFsaWRVc2VyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICBpc1ZhbGlkVXNlcigpOiBib29sZWFuXG4gICAgK3VzZXI6IFVzZXJcbiAgfVxuICBpc1ZhbGlkVXNlciAuLj4gVXNlclxuICBpc1ZhbGlkVXNlciAuLj4gaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciA6IChjYWxscylcblxuICBjbGFzcyBpc1ZhbGlkUGlsb3RMaWNlbmNlTnVtYmVyIHtcbiAgICA8PEZ1bmN0aW9uPj5cbiAgICArbGljZW5jZU51bWJlcjogUGlsb3RMaWNlbmNlTnVtYmVyXG4gIH1cbiAgaXNWYWxpZFBpbG90TGljZW5jZU51bWJlciAuLj4gUGlsb3RMaWNlbmNlTnVtYmVyIDogbGljZW5jZU51bWJlclxuXG5cblxuICBjbGFzcyBmZXRjaEZsaWdodERldGFpbHMge1xuICAgIDw8RnVuY3Rpb24-PlxuICAgICtpZDogc3RyaW5nXG4gIH1cbiAgZmV0Y2hGbGlnaHREZXRhaWxzIC4uPiBGbGlnaHQgOiAocmV0dXJucylcblxuXG5cblxuICBjbGFzcyB1c2VGbGlnaHREZXRhaWxzIHtcbiAgICA8PEhvb2s-PlxuICAgICtmbGlnaHRJZDogc3RyaW5nXG4gIH1cbiAgdXNlRmxpZ2h0RGV0YWlscyAuLj4gRmxpZ2h0IDogKHJldHVybnMpXG4gIHVzZUZsaWdodERldGFpbHMgLi4-IGZldGNoRmxpZ2h0RGV0YWlscyA6IChjYWxscylcblxuICBjbGFzcyBGbGlnaHREZXRhaWxzIHtcbiAgICA8PENvbXBvbmVudD4-XG4gICAgK2ZsaWdodElkOiBzdHJpbmdcbiAgICAtZmxpZ2h0OiBGbGlnaHRcbiAgICAtc2V0RmxpZ2h0OiAoZmxpZ2h0OiBGbGlnaHQpOiB2b2lkXG4gIH1cbiAgRmxpZ2h0RGV0YWlscyAuLj4gdXNlRmxpZ2h0RGV0YWlscyA6IChjYWxscylcbiAgRmxpZ2h0RGV0YWlscyBcIjFcIiAqLS0-IFwiMS4ubVwiIFBpbG90RGV0YWlscyA6IChyZW5kZXJzKVxuICBGbGlnaHREZXRhaWxzIFwiMVwiICotLT4gXCIxLi5tXCIgQ3Jld0RldGFpbHMgOiAocmVuZGVycylcblxuICBjbGFzcyBQaWxvdERldGFpbHMge1xuICAgIDw8Q29tcG9uZW50Pj5cbiAgICArcGlsb3Q6IFBpbG90XG4gIH1cbiAgUGlsb3REZXRhaWxzIC4uPiBQaWxvdFxuXG4gIGNsYXNzIENyZXdEZXRhaWxzIHtcbiAgICA8PENvbXBvbmVudD4-XG4gICAgK2NyZXc6IENyZXdcbiAgfVxuICBDcmV3RGV0YWlscyAuLj4gQ3Jld1xuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cblxuXG5cbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;With all these parts in one diagram, including connective lines, we can perhaps see more clearly one of the main benefits of diagramming: being able to zoom out and see how all the parts connect together to form the whole.&lt;/p&gt;
+&lt;p&gt;We can, for example, easily see which components depend on the core types &lt;code&gt;Pilot&lt;/code&gt; and &lt;code&gt;Crew&lt;/code&gt;. During initial solution design, this diagram might help us to estimate and prioritise the work. Or during a complex change, it might help to visualise the impact, were we to modify one or both of these types.&lt;/p&gt;
+&lt;p&gt;This kind of &amp;quot;birds-eye view&amp;quot; wouldn&#39;t be possible with just code alone, which appears in a hierarchy of folders and files. Even if we expanded every folder, we still wouldn&#39;t see all the connections between the structures contained in the files. Diagrams give us a more powerful visualisation of our code.&lt;/p&gt;
+&lt;h2&gt;Future directions&lt;/h2&gt;
+&lt;p&gt;Many UML-code and code-UML converters already exist, supporting class-based programming languages such as Java and C#. It would be great to see such tools implemented for Typescript. &lt;a href=&quot;https://github.com/bafolts/tplant&quot;&gt;tplant&lt;/a&gt; looks like a promising start, though it appears to only support the code-UML direction.&lt;/p&gt;
+&lt;p&gt;It would be interesting to see if subsets of UML emerge, focussed on representing functional and/or Javascript/Typescript structures.&lt;/p&gt;
+&lt;p&gt;State-charts have already been recommended for diagramming Redux state machines. Perhaps it would be better for developers to standardise on UML state diagram notation.&lt;/p&gt;
+&lt;h2&gt;Further reading&lt;/h2&gt;
+&lt;p&gt;These books may serve as a handy guide and reference on UML:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;UML Distilled&lt;/em&gt; • Martin FOWLER&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;The Unified Modelling Language User Guide&lt;/em&gt; • Grady BOOCH&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Modelling with UML - Language, Concepts, Methods&lt;/em&gt; • Bernhard RUMPE&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>The many uses of mock data</title>
+    <link href="https://conwy.co/articles/mock-data/"/>
+    <updated>2021-09-28T00:00:00Z</updated>
+    <id>https://conwy.co/articles/mock-data/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Mock data, dummy data, fake data, test data, sample data.&lt;/p&gt;
+&lt;p&gt;These terms all express the same thing:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Data that a developer hard-codes in place of real data.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In my observation, mock data has tended to be used in a rather loose, slipshod, careless manner. Unlike documentation, it is treated as the garbage of software material. (Sometimes even referred to as &amp;quot;garbage data&amp;quot;). People will try to avoid writing it by using elaborate &amp;quot;generators&amp;quot; such as &lt;a href=&quot;https://github.com/Devskiller/jfairy&quot;&gt;jFairy&lt;/a&gt; or &lt;a href=&quot;https://github.com/brimdata/zed&quot;&gt;zed&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My argument in this article is that mock data, when treated with respect, turns out to be a supremely useful, versatile and valuable tool.&lt;/p&gt;
+&lt;p&gt;I find four special uses for mock data:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Iteratively designing and documenting structures&lt;/li&gt;
+&lt;li&gt;Boosting unit test development&lt;/li&gt;
+&lt;li&gt;Manually testing a running application&lt;/li&gt;
+&lt;li&gt;Decoupling development teams&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;In this article I will elaborate on each of these uses.&lt;/p&gt;
+&lt;h2&gt;1. Iteratively designing and documenting structures&lt;/h2&gt;
+&lt;p&gt;Let&#39;s begin with an example that should be reasonably familiar to most developers:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Validating a username in a sign-up form.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Suppose we want to capture and validate one of three kinds of username:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;an email address -or-&lt;/li&gt;
+&lt;li&gt;a 9-character alpha string -or-&lt;/li&gt;
+&lt;li&gt;a numeric employee number&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We might begin by modelling the &lt;code&gt;username&lt;/code&gt; field as a &lt;code&gt;string | number&lt;/code&gt; data-type that covers all three kinds of username.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;type Username = string | number;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The above type expresses a part of our requirements but not all of them. Specifically, it doesn&#39;t express such facts as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the username might be an email&lt;/li&gt;
+&lt;li&gt;the username might be a 9-character string&lt;/li&gt;
+&lt;li&gt;the username might be a string longer than 9 characters, but that would be invalid&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How might we express these requirements in code prior to writing a validation routine?&lt;/p&gt;
+&lt;p&gt;One way might be to write descriptive comments next to the field. Another way might be to bring in a hefty and cumbersome &amp;quot;validation framework&amp;quot; such as &lt;code&gt;zed&lt;/code&gt; and try to twist and wrangle it to the shape of our specific requirements.&lt;/p&gt;
+&lt;p&gt;Or... we could simply create a few mock values:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;const UsernameMocks = {
+  EMAIL: &amp;quot;user@website.com&amp;quot;,
+  TEXT_NINE_CHARS: &amp;quot;ninechars&amp;quot;,
+  TEXT_LONGER_THAN_NINE_CHARS: &amp;quot;longerthanninechars&amp;quot;,
+  NUMBER: 1234,
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We have now enumerated the variants of the username field that we expect to deal with.&lt;/p&gt;
+&lt;p&gt;And we&#39;ve given them descriptive names. Naming them this way helps us to think clearly about the requirement and allows us to document the requirement in code.&lt;/p&gt;
+&lt;p&gt;Looking at these mock values, we might also begin to ask questions. For example: does a numeric username have a lower and upper bound? Safe assumptions might be &lt;code&gt;0&lt;/code&gt; and &lt;code&gt;Number.MAX_SAFE_INTEGER&lt;/code&gt;, but we might want to check with a domain expert.&lt;/p&gt;
+&lt;p&gt;The point is, by laying out all the expected values of this field together in one view, we give ourselves an opportunity to think more deeply about the range of possible cases and how we will deal with these cases. In this way, mock data becomes a kind of tool for concretising requirements.&lt;/p&gt;
+&lt;p&gt;We can now begin to think about how we might design and test the validation routine.&lt;/p&gt;
+&lt;h2&gt;2. Boosting unit test development&lt;/h2&gt;
+&lt;p&gt;As we begin to write a username validation function, the &lt;code&gt;Username&lt;/code&gt; type definition combined with &lt;code&gt;UsernameMocks&lt;/code&gt; given above lead directly to four unit tests:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;describe(&amp;quot;validateUsername&amp;quot;, () =&amp;gt; {
+  it(&amp;quot;validates email as true&amp;quot;, () =&amp;gt; {});
+
+  it(&amp;quot;validates text 9 chars long as true&amp;quot;, () =&amp;gt; {});
+
+  it(&amp;quot;validates text more than 9 chars long as false&amp;quot;, () =&amp;gt; {});
+
+  it(&amp;quot;validates number as true&amp;quot;, () =&amp;gt; {});
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This isn&#39;t a coincidence – the whole point of mock data is to represent kinds of values we expect to deal with. Our unit tests need to do the same thing, to verify that the system under test behaves as we expect.&lt;/p&gt;
+&lt;p&gt;We can now begin to implement the requirement, writing each of the unit tests one by one, and writing enough code to make it pass.&lt;/p&gt;
+&lt;p&gt;Alternately / additionally, we could use this information about expected inputs to scaffold the function with comments:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;function validateUsername(username: Username): boolean {
+  // If email, return true
+  // If number, return true
+  // If less than or equal to 9 chars, return true
+  // Return false
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is just scratching the surface!&lt;/p&gt;
+&lt;p&gt;As we write the tests, we notice that we can reference the mock constants directly inside the test code, to avoid repeating ourselves.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;describe(&amp;quot;validate username&amp;quot;, () =&amp;gt; {
+  it(&amp;quot;returns true for email address&amp;quot;, () =&amp;gt; {
+    const output = validateUsername(UsernameMocks.EMAIL);
+    expect(output).toBeTruthy();
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Notice how clean and readable this test is! The naming of the mock constant reveals the intent of the test beautifully. Rather than pollute our test code with concrete values, we can extract them to well-named constants and have the test code focus on the &lt;em&gt;relationships&lt;/em&gt; between the values.&lt;/p&gt;
+&lt;p&gt;The re-use can go even further. Suppose, in a different part of the code, we want to display a user profile which includes the user&#39;s username. We want to style the text differently depending on what kind of username the user has.&lt;/p&gt;
+&lt;p&gt;We might extract the username type and mocks to its own module, say, &lt;code&gt;username.ts&lt;/code&gt;. Then we can re-use the mock usernames in our tests, like so:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-typescript&quot;&gt;describe(&amp;quot;user profile&amp;quot;, () =&amp;gt; {
+  it(&amp;quot;renders number username in monospace&amp;quot;, () =&amp;gt; {
+    const usernameEl = renderUsername(UsernameMocks.NUMBER);
+    expect(usernameEl).toHaveClass(&amp;quot;mono&amp;quot;);
+  });
+
+  it(&amp;quot;renders email username in sans-serif&amp;quot;, () =&amp;gt; {
+    const usernameEl = renderUsername(UsernameMocks.EMAIL);
+    expect(usernameEl).toHaveClass(&amp;quot;sans-serif&amp;quot;);
+  });
+
+  it(&amp;quot;renders alpha username in sans-serif&amp;quot;, () =&amp;gt; {
+    const usernameEl = renderUsername(UsernameMocks.TEXT_NINE_CHARS);
+    expect(usernameEl).toHaveClass(&amp;quot;sans-serif&amp;quot;);
+  });
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In future we might need to maintain username code – e.g. support additional kinds of username, remove support for a kind of username, fix a mistake in one of the mock values, etc.&lt;/p&gt;
+&lt;p&gt;It will be much easier to find the code that needs to change across the whole codebase if we use consistent mock constants than it will be if we use inconsistent mock literals.&lt;/p&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;a target=&quot;blank&quot; href=&quot;https://mermaid.live/edit#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgVXNlcm5hbWUge1xuICAgICAgICA8PHR5cGU-PlxuICAgICAgICB8IHN0cmluZ1xuICAgICAgICB8IG51bWJlclxuICAgIH1cblxuICAgIGNsYXNzIFVzZXJuYW1lTW9ja3Mge1xuICAgICAgICA8PG9iamVjdD4-XG5cbiAgICAgICAgRU1BSUxcbiAgICAgICAgVEVYVF9OSU5FX0NIQVJTXG4gICAgICAgIFRFWFRfTE9OR0VSX1RIQU5fTklORV9DSEFSU1xuICAgICAgICBOVU1CRVJcbiAgICB9XG4gICAgVXNlcm5hbWVNb2NrcyAuLnw-IFVzZXJuYW1lXG5cbiAgICBjbGFzcyBVc2VybmFtZVRlc3RzIHsgPDxUZXN0Pj4gfVxuICAgIFVzZXJuYW1lVGVzdHMgLi4-IFVzZXJuYW1lXG4gICAgVXNlcm5hbWVUZXN0cyAuLj4gVXNlcm5hbWVNb2Nrc1xuXG4gICAgY2xhc3MgVXNlclByb2ZpbGVUZXN0cyB7IDw8VGVzdD4-IH1cbiAgICBVc2VyUHJvZmlsZVRlc3RzIC4uPiBVc2VybmFtZVxuICAgIFVzZXJQcm9maWxlVGVzdHMgLi4-IFVzZXJuYW1lTW9ja3MiLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiLFxuICBcImhlaWdodFwiOiBcIjMwMHB4XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot;&gt;
+    &lt;img class=&quot;article-image&quot; src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgVXNlcm5hbWUge1xuICAgICAgICA8PHR5cGU-PlxuICAgICAgICB8IHN0cmluZ1xuICAgICAgICB8IG51bWJlclxuICAgIH1cblxuICAgIGNsYXNzIFVzZXJuYW1lTW9ja3Mge1xuICAgICAgICA8PG9iamVjdD4-XG5cbiAgICAgICAgRU1BSUxcbiAgICAgICAgVEVYVF9OSU5FX0NIQVJTXG4gICAgICAgIFRFWFRfTE9OR0VSX1RIQU5fTklORV9DSEFSU1xuICAgICAgICBOVU1CRVJcbiAgICB9XG4gICAgVXNlcm5hbWVNb2NrcyAuLnw-IFVzZXJuYW1lXG5cbiAgICBjbGFzcyBVc2VybmFtZVRlc3RzIHsgPDxUZXN0Pj4gfVxuICAgIFVzZXJuYW1lVGVzdHMgLi4-IFVzZXJuYW1lXG4gICAgVXNlcm5hbWVUZXN0cyAuLj4gVXNlcm5hbWVNb2Nrc1xuXG4gICAgY2xhc3MgVXNlclByb2ZpbGVUZXN0cyB7IDw8VGVzdD4-IH1cbiAgICBVc2VyUHJvZmlsZVRlc3RzIC4uPiBVc2VybmFtZVxuICAgIFVzZXJQcm9maWxlVGVzdHMgLi4-IFVzZXJuYW1lTW9ja3MiLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsImhlaWdodCI6IjMwMHB4In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;UML diagram depicting relationships between tests, mocks and types&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;The end result is that any test code that deals with mock values will be:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;faster to write&lt;/li&gt;
+&lt;li&gt;easier to read&lt;/li&gt;
+&lt;li&gt;more maintainable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Bonus:&lt;/strong&gt; And we&#39;re talking about more than just unit-tests here! Mock values can also be used to fill in live component demos (e.g. Storybook stories), dynamic documentation (e.g. Docusaurus pages) and snapshot tests (e.g. PhantomJS screenshots).&lt;/p&gt;
+&lt;h2&gt;3. Manually testing a running application&lt;/h2&gt;
+&lt;p&gt;Imagine if our application was augmented with mock data in such a way that all of its features could be used while running purely off the mock data, without ever having to connect to any real data-source. (By &#39;data-source&#39;, I&#39;m referring to things like databases, APIs, etc.)&lt;/p&gt;
+&lt;p&gt;This capability would offer some unique advantages:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We could simulate any behavior we desired in our application (by mocking states that could trigger that behavior)&lt;/li&gt;
+&lt;li&gt;We could test how the application would respond to an unexpected state (by mocking that state)&lt;/li&gt;
+&lt;li&gt;We could run and develop the application entirely on mocks while the external data-source was down, e.g. during an outage or planned maintenance&lt;/li&gt;
+&lt;li&gt;We could develop new features in advance of the data-source supporting them (adding mock data as needed and only substituting real data as it becomes available)&lt;/li&gt;
+&lt;li&gt;We could demo features of an application to stakeholders prior to having an external data-source to support that feature&lt;/li&gt;
+&lt;li&gt;We could mock data to model changes to an external data-source, to clarify our own thinking and/or to communicate requirements to the data-source maintainers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mocking all of an application&#39;s data-sources might seem like a daunting task. However, in my experience, it&#39;s easier than it might seem, especially if done in the early stages of a project.&lt;/p&gt;
+&lt;p&gt;But there are a few pre-requisites.&lt;/p&gt;
+&lt;p&gt;Firstly, the application needs an interchangeable data-source, so we can switch between real data and mock data. We need to write all our application code against that data-source abstraction, without concern for where the data actually comes from.&lt;/p&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;img class=&quot;article-image&quot; src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiZmxvd2NoYXJ0IFREXG4gICAgQVtBcHBsaWNhdGlvbl0gLS0-IEJ7aXNNb2NrTW9kZT99O1xuICAgIEIgLS0-fFllc3wgQ1tNb2NrRGF0YVNvdXJjZV07XG4gICAgQiAtLT58Tm98IEVbUmVhbERhdGFTb3VyY2VdOyIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot; /&gt;
+  &lt;figcaption&gt;Flowchart depicting application switching between real and mock data&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Secondly, we need to be able to switch the Application state between the real data-source and a mock data-source.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Some Single Page Application (SPA) projects use a state container such as Redux. In that case, we might dispatch a &lt;code&gt;SetMockStateAction&lt;/code&gt; which sets an &lt;code&gt;isMockMode&lt;/code&gt; flag in the store. When this flag is &lt;code&gt;true&lt;/code&gt;, all data-retrieval actions use mock data rather than making a real HTTP call.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In other cases (typically a SPA or a micro-service), an HTTP API client sits between the Application state and the HTTP API and calls the HTTP API to fetch data. We could add a &lt;code&gt;setMockState&lt;/code&gt; method here, which sets a private &lt;code&gt;isMockMode&lt;/code&gt; field which, when &lt;code&gt;true&lt;/code&gt;, uses mock data rather than making a real HTTP call. Or we could set up a Dependency Injection (DI) system, in which an abstract &lt;code&gt;APIClient&lt;/code&gt; interface is implemented by &lt;code&gt;HttpAPIClient&lt;/code&gt; and &lt;code&gt;MockAPIClient&lt;/code&gt;, which can be substituted at runtime.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgQXBwbGljYXRpb25TdGF0ZSB7XG4gICAgICAgIDw8Y2xhc3M-PlxuICAgIH1cbiAgICBBcHBsaWNhdGlvblN0YXRlIC4uPiBBUElDbGllbnRcblxuICAgIGNsYXNzIEFQSUNsaWVudCB7XG4gICAgICAgIDw8aW50ZXJmYWNlPj5cbiAgICAgICAgQVBJQ2xpZW50XG4gICAgfVxuXG4gICAgY2xhc3MgSHR0cEFQSUNsaWVudCB7XG4gICAgICAgIDw8Y2xhc3M-PlxuICAgIH1cbiAgICBIdHRwQVBJQ2xpZW50IC4ufD4gQVBJQ2xpZW50XG5cbiAgICBjbGFzcyBNb2NrQVBJQ2xpZW50IHtcbiAgICAgICAgPDxjbGFzcz4-XG4gICAgICAgIE1vY2tBUElDbGllbnRcbiAgICB9XG4gICAgTW9ja0FQSUNsaWVudCAuLnw-IEFQSUNsaWVudFxuIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot;&gt;
+    &lt;img class=&quot;article-image&quot; src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgQXBwbGljYXRpb25TdGF0ZSB7XG4gICAgICAgIDw8Y2xhc3M-PlxuICAgIH1cbiAgICBBcHBsaWNhdGlvblN0YXRlIC4uPiBBUElDbGllbnRcblxuICAgIGNsYXNzIEFQSUNsaWVudCB7XG4gICAgICAgIDw8aW50ZXJmYWNlPj5cbiAgICAgICAgQVBJQ2xpZW50XG4gICAgfVxuXG4gICAgY2xhc3MgSHR0cEFQSUNsaWVudCB7XG4gICAgICAgIDw8Y2xhc3M-PlxuICAgIH1cbiAgICBIdHRwQVBJQ2xpZW50IC4ufD4gQVBJQ2xpZW50XG5cbiAgICBjbGFzcyBNb2NrQVBJQ2xpZW50IHtcbiAgICAgICAgPDxjbGFzcz4-XG4gICAgICAgIE1vY2tBUElDbGllbnRcbiAgICB9XG4gICAgTW9ja0FQSUNsaWVudCAuLnw-IEFQSUNsaWVudFxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;UML diagram depicting application state switching between real and mock data&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;The &amp;quot;switch&amp;quot; could be activated by clicking a UI element, e.g. a small checkbox in the footer area of a web page, which is only visible to Admin users. The click handler toggles the Application state between real data-source vs. mocks.&lt;/p&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;img class=&quot;article-image&quot; src=&quot;https://conwy.co/articles/mock-data/mock-data-checkbox.png&quot; alt=&quot;Screenshot of a mock data checkbox&quot; /&gt;
+  &lt;figcaption&gt;Screenshot of a mock data checkbox&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Thirdly, we need all of our application state to be mocked in a set of mock constants. This is easiest if the application state is modelled in some more abstract way, e.g. using classes, interfaces, types, etc. That way, we can easily construct our mock data as a realisation of those abstractions.&lt;/p&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgQWNjb3VudCB7XG4gICAgICAgIDw8aW50ZXJmYWNlPj5cbiAgICB9XG5cbiAgICBjbGFzcyBNb2NrQWNjb3VudCB7XG4gICAgICAgIDw8b2JqZWN0Pj5cbiAgICB9XG4gICAgTW9ja0FjY291bnQgLi58PiBBY2NvdW50XG4gICAgXG4gICAgY2xhc3MgSW52b2ljZSB7XG4gICAgICAgIDw8aW50ZXJmYWNlPj5cbiAgICB9XG5cbiAgICBjbGFzcyBNb2NrSW52b2ljZSB7XG4gICAgICAgIDw8b2JqZWN0Pj5cbiAgICB9XG4gICAgTW9ja0ludm9pY2UgLi58PiBJbnZvaWNlXG4iLCJtZXJtYWlkIjoie1xuICBcInRoZW1lXCI6IFwiZGVmYXVsdFwiLFxuICBcImhlaWdodFwiOiBcIjMwMHB4XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot;&gt;
+    &lt;img class=&quot;article-image&quot; src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgQWNjb3VudCB7XG4gICAgICAgIDw8aW50ZXJmYWNlPj5cbiAgICB9XG5cbiAgICBjbGFzcyBNb2NrQWNjb3VudCB7XG4gICAgICAgIDw8b2JqZWN0Pj5cbiAgICB9XG4gICAgTW9ja0FjY291bnQgLi58PiBBY2NvdW50XG4gICAgXG4gICAgY2xhc3MgSW52b2ljZSB7XG4gICAgICAgIDw8aW50ZXJmYWNlPj5cbiAgICB9XG5cbiAgICBjbGFzcyBNb2NrSW52b2ljZSB7XG4gICAgICAgIDw8b2JqZWN0Pj5cbiAgICB9XG4gICAgTW9ja0ludm9pY2UgLi58PiBJbnZvaWNlXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCIsImhlaWdodCI6IjMwMHB4In0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;UML diagram depicting relationships between mock constants and application types&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;It would take significant effort to completely mock the data-sources of a pre-existing application. But that effort could be broken down into smaller pieces and pursued incrementally, similar to adding unit tests.&lt;/p&gt;
+&lt;p&gt;Once our application is completely augmented with mock data, maintaining the mock data going forward would only add a small overhead (and might even boost development speed, as described in sections 1 and 2).&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;How about switching between &lt;em&gt;multiple&lt;/em&gt; mock states? One way would be via a collection of mock controls, presented to Admin users in the UI, allowing the mocks to be adjusted at whatever level of detail is needed. These could be presented in a pop-up modal or panel activated by clicking a Mock Settings button located somewhere out-of-the-way and only accessible to Admin users.&lt;/p&gt;
+&lt;p&gt;The following screenshot depicts mock controls for a hypothetical online banking application, allowing the user&#39;s home country, preferred currency and business / personal accounts to be adjusted.&lt;/p&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;img class=&quot;article-image&quot; src=&quot;https://conwy.co/articles/mock-data/mock-data-controls.png&quot; /&gt;
+  &lt;figcaption&gt;Screenshot of controls for more complex customization of mock data&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h2&gt;4. Decoupling development teams&lt;/h2&gt;
+&lt;p&gt;Once our entire Application is able to run off mocked data, not only can we &lt;em&gt;operate&lt;/em&gt; the application while a data-source is unavailable, but we can also &lt;em&gt;operate and develop&lt;/em&gt; application features prior to the data-source even supporting them.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mocking our data-sources decouples our team&#39;s development efforts from other teams.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For example, imagine we are working in an &lt;em&gt;Invoicing&lt;/em&gt; team in an online banking system. We want to build a &amp;quot;Foreign Accounts&amp;quot; feature. Suppose this feature depends on data from an &lt;em&gt;Accounts&lt;/em&gt; team. Without mock data, the Invoicing team might have had to await until the Accounts team had built certain APIs, which it would then consume.&lt;/p&gt;
+&lt;p&gt;But with mock data, the Invoicing team no longer needs to wait for the Accounts team to support a Foreign Accounts feature, but rather, it can immediately begin developing the Foreign Accounts feature. We merely need to model Foreign Accounts interface in a way that makes sense for Invoicing purposes, and from those models, derive mocks.&lt;/p&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiZ2FudHRcbiAgICBzZWN0aW9uIFdpdGhvdXQgTW9jayBEYXRhXG4gICAgICAgIEFjY291bnRzIHRlYW0gcHJvZ3Jlc3MgICAgICAgICAgICAgIDphY3RpdmUsICAyMDE0LTAxLTExIDAwOjAwLCAyaFxuICAgICAgICBJbnRlZ3JhdGlvbiAgICAgICAgICAgICAgICAgICAgICAgICA6YWN0aXZlLCAgMjAxNC0wMS0xMSAwMjowMCwgMWhcbiAgICAgICAgSW52b2ljaW5nIHRlYW0gcHJvZ3Jlc3MgICAgICAgICAgICAgOmFjdGl2ZSwgIDIwMTQtMDEtMTEgMDM6MDAsIDJoXG5cbiAgICBzZWN0aW9uIFdpdGggTW9jayBEYXRhXG4gICAgICAgIEludm9pY2luZyB0ZWFtIHByb2dyZXNzICAgICAgICAgICAgIDphY3RpdmUsICAyMDE0LTAxLTExIDAwOjAwLCAyaFxuICAgICAgICBBY2NvdW50cyB0ZWFtIHByb2dyZXNzICAgICAgICAgICAgICA6YWN0aXZlLCAgMjAxNC0wMS0xMSAwMDowMCwgMmhcbiAgICAgICAgSW50ZWdyYXRpb24gICAgICAgICAgICAgICAgICAgICAgICAgOmFjdGl2ZSwgIDIwMTQtMDEtMTEgMDI6MDAsIDFoXG5cbiIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCIsXG4gIFwiZ2FudHRcIjoge1xuICAgIFwiYmFySGVpZ2h0XCI6IDgwLFxuICAgIFwiZm9udFNpemVcIjogMjUsXG4gICAgXCJzZWN0aW9uRm9udFNpemVcIjogMjUsXG4gICAgXCJsZWZ0UGFkZGluZ1wiOiAzMDAsXG4gICAgXCJiYXJHYXBcIjogMjVcbiAgfVxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot;&gt;
+    &lt;img class=&quot;article-image&quot; src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiZ2FudHRcbiAgICBzZWN0aW9uIFdpdGhvdXQgTW9jayBEYXRhXG4gICAgICAgIEFjY291bnRzIHRlYW0gcHJvZ3Jlc3MgICAgICAgICAgICAgIDphY3RpdmUsICAyMDE0LTAxLTExIDAwOjAwLCAyaFxuICAgICAgICBJbnRlZ3JhdGlvbiAgICAgICAgICAgICAgICAgICAgICAgICA6YWN0aXZlLCAgMjAxNC0wMS0xMSAwMjowMCwgMWhcbiAgICAgICAgSW52b2ljaW5nIHRlYW0gcHJvZ3Jlc3MgICAgICAgICAgICAgOmFjdGl2ZSwgIDIwMTQtMDEtMTEgMDM6MDAsIDJoXG5cbiAgICBzZWN0aW9uIFdpdGggTW9jayBEYXRhXG4gICAgICAgIEludm9pY2luZyB0ZWFtIHByb2dyZXNzICAgICAgICAgICAgIDphY3RpdmUsICAyMDE0LTAxLTExIDAwOjAwLCAyaFxuICAgICAgICBBY2NvdW50cyB0ZWFtIHByb2dyZXNzICAgICAgICAgICAgICA6YWN0aXZlLCAgMjAxNC0wMS0xMSAwMDowMCwgMmhcbiAgICAgICAgSW50ZWdyYXRpb24gICAgICAgICAgICAgICAgICAgICAgICAgOmFjdGl2ZSwgIDIwMTQtMDEtMTEgMDI6MDAsIDFoXG5cbiIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0IiwiZ2FudHQiOnsiYmFySGVpZ2h0Ijo4MCwiZm9udFNpemUiOjI1LCJzZWN0aW9uRm9udFNpemUiOjI1LCJsZWZ0UGFkZGluZyI6MzAwLCJiYXJHYXAiOjI1fX0sInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot; alt=&quot;Screenshot of a mock data controls&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;GANTT chart depicting hypothetical timelines with vs. without mocks&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;We can develop and test all the Invoicing logic against those mocks. When the Accounts team does finally support Foreign Accounts we can connect our Invoices system to theirs. Any dissonance between their models and ours can be solved by adding a mapping layer, e.g. an &lt;code&gt;AccountsAPIDataSource&lt;/code&gt; which implements &lt;code&gt;AccountsDataSource&lt;/code&gt; methods by calling AccountsAPI methods.&lt;/p&gt;
+&lt;figure class=&quot;article-image-container&quot;&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgSW52b2ljaW5nQXBwbGljYXRpb24ge1xuICAgIH1cbiAgICBJbnZvaWNpbmdBcHBsaWNhdGlvbiAuLj4gRm9yZWlnbkFjY291bnRzRGF0YVNvdXJjZVxuXG4gICAgY2xhc3MgRm9yZWlnbkFjY291bnRzRGF0YVNvdXJjZSB7XG4gICAgfVxuXG4gICAgY2xhc3MgRm9yZWlnbkFjY291bnRzQVBJRGF0YVNvdXJjZSB7XG4gICAgfVxuXG4gICAgRm9yZWlnbkFjY291bnRzQVBJRGF0YVNvdXJjZSAuLnw-IEZvcmVpZ25BY2NvdW50c0RhdGFTb3VyY2VcbiAgICBGb3JlaWduQWNjb3VudHNBUElEYXRhU291cmNlIC4uPiBBY2NvdW50c0FQSVxuICAgIFxuICAgIGNsYXNzIEFjY291bnRzQVBJIHtcbiAgICB9XG4gICAgIiwibWVybWFpZCI6IntcbiAgXCJ0aGVtZVwiOiBcImRlZmF1bHRcIlxufSIsInVwZGF0ZUVkaXRvciI6ZmFsc2UsImF1dG9TeW5jIjp0cnVlLCJ1cGRhdGVEaWFncmFtIjpmYWxzZX0&quot;&gt;
+    &lt;img alt=&quot;&quot; src=&quot;https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gICAgY2xhc3MgSW52b2ljaW5nQXBwbGljYXRpb24ge1xuICAgIH1cbiAgICBJbnZvaWNpbmdBcHBsaWNhdGlvbiAuLj4gRm9yZWlnbkFjY291bnRzRGF0YVNvdXJjZVxuXG4gICAgY2xhc3MgRm9yZWlnbkFjY291bnRzRGF0YVNvdXJjZSB7XG4gICAgfVxuXG4gICAgY2xhc3MgRm9yZWlnbkFjY291bnRzQVBJRGF0YVNvdXJjZSB7XG4gICAgfVxuXG4gICAgRm9yZWlnbkFjY291bnRzQVBJRGF0YVNvdXJjZSAuLnw-IEZvcmVpZ25BY2NvdW50c0RhdGFTb3VyY2VcbiAgICBGb3JlaWduQWNjb3VudHNBUElEYXRhU291cmNlIC4uPiBBY2NvdW50c0FQSVxuICAgIFxuICAgIGNsYXNzIEFjY291bnRzQVBJIHtcbiAgICB9XG4gICAgIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZSwiYXV0b1N5bmMiOnRydWUsInVwZGF0ZURpYWdyYW0iOmZhbHNlfQ&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;UML diagram depicting mapping layout between Accounts application and data-source&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Notice how we are building our Foreign Accounts feature against a &lt;code&gt;ForeignAccountsDataSource&lt;/code&gt;, which functions as a kind of contract between the &lt;code&gt;InvoicingApplication&lt;/code&gt; (which we control) and the &lt;code&gt;AccountsAPI&lt;/code&gt; (which the other team controls).&lt;/p&gt;
+&lt;p&gt;This contract helps us to think more clearly about what we need from the Accounts team - the inputs and outputs and behaviors. So we can communicate more clearly with the teams who we depend on about the data we depend on them for.&lt;/p&gt;
+&lt;h3&gt;Sharing mocked states with team members&lt;/h3&gt;
+&lt;p&gt;With mocked data in place, we can share various configurations of our application with team members such as QA engineers / testers, product owners, usability and accessibility professionals and others.&lt;/p&gt;
+&lt;p&gt;One technique applicable to web applications (which I used on a recent real-life project) is to configure the mock states via queryString parameters in the URL. The URL can then be shared with anyone who needs to see the web application in the mocked state. Rather than having the team member go through complicated sequences of steps to simulate a given state, all they need to do is to open the link.&lt;/p&gt;
+&lt;p&gt;For example, if we want to simulate the state in which the user entered a credit card into a payment page, but the card has expired, we might share a URL like this: http://myapp.com/payment-details?mockCreditCardExpired=true. This URL could be used to test the error message that is displayed for expired cards.&lt;/p&gt;
+&lt;h3&gt;Other uses of mock data&lt;/h3&gt;
+&lt;p&gt;We&#39;re talking about more than just simulating expected (or unexpected) application states! We can also simulate large data-sets (e.g. to test scalability), error conditions (to test error handling logic), delays (to test performance under various network conditions) and... well... anything else it&#39;s possible and useful to simulate. The ability to simulate specific application states is kind of a super power.&lt;/p&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;We&#39;ve looked at four interrelated benefits of treating mock data with respect and rigour, with examples / pseudo-code for each.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;It helps us to clarify our software design by thinking about examples during modelling, before diving in to implementation.&lt;/li&gt;
+&lt;li&gt;It boosts our unit testing efforts by providing a ready-made set of test inputs and making test code more readable and maintainable.&lt;/li&gt;
+&lt;li&gt;It gives us the powerful capability to run our application independent of external data-sources and, as such, to simulate any application behavior we desire.&lt;/li&gt;
+&lt;li&gt;Finally, it decouples us from immediate dependency on other teams while clarifying the relationships between teams by encouraging us to model them as contracts.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;These benefits come at a cost. Using mock data in this way requires application code to be structured in a certain way (isolation of Application state). And it takes significant effort to augment a pre-existing application with mock data, especially if that application has complex logic.&lt;/p&gt;
+&lt;p&gt;Given all of the above, mock data seems best suited to long-term software projects of moderate complexity, where the advantages of using mock data outweigh the costs.&lt;/p&gt;
+&lt;h2&gt;Related tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://mswjs.io/&quot;&gt;Mock Service Worker&lt;/a&gt;, targeted at web/typescript projects, provides some infrastructure for mocking web endpoints. The application can make requests as usual, but MSW can handle the requests and provide mock responses as if the Backend was mocked. The requests will appear in the Network Tab of Developer Tools, just like a regular request.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Further reading&lt;/h2&gt;
+&lt;p&gt;Books that inspired me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Domain modelling made functional&lt;/em&gt; • Scott WLASCHIN&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;The art of unit testing&lt;/em&gt; • Roy OSHEROV&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Parallel loading in React</title>
+    <link href="https://conwy.co/articles/parallel-loading-react/"/>
+    <updated>2021-04-17T00:00:00Z</updated>
+    <id>https://conwy.co/articles/parallel-loading-react/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Recently I wanted to build a React component that would merge the results of several independent requests into one set of data and render it as a single list.&lt;/p&gt;
+&lt;p&gt;The requests would look like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GET to load initial list of items&lt;/li&gt;
+&lt;li&gt;GET to load item 1 details&lt;/li&gt;
+&lt;li&gt;GET to load item 2 details&lt;/li&gt;
+&lt;li&gt;... etc for each item in the list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I wanted the list to ultimately render like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Item 1 + details&lt;/li&gt;
+&lt;li&gt;Item 2 + details&lt;/li&gt;
+&lt;li&gt;... etc for each item in the list&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The problem was: how to load a list of items, then load details of each item, making a separate request per item, then combine all of this information and render it to the user.&lt;/p&gt;
+&lt;p&gt;The simplest way would be to simply await all the requests and then render everything together at once.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgQyAtLT4gRHtOZXh0IGl0ZW0_fVxuICAgIEQgLS0-fFllc3wgQ1xuICAgIEQgLS0-fE5vfCBFKENvbWJpbmUgaXRlbXMgbGlzdCB3aXRoIGRldGFpbHMpXG4gICAgICAgIEUgLS0-IEYoUmVuZGVyIGl0ZW1zIGxpc3Qgd2l0aCBkZXRhaWxzKVxuICAgICAgICBGIC0tPiBHW0RvbmVdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkZWZhdWx0XCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6ZmFsc2V9&quot;&gt;&lt;img src=&quot;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vfxqexp62yw29w5co3bf.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Here is an implementation which uses &lt;code&gt;Promise.all&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://codepen.io/jonathanconway/pen/dyRQGam&quot;&gt;Codepen Link&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function UsersAndStatuses(props) {
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(async () =&amp;gt; {
+    const users = await mockUsers();
+    const userIds = users.map((user) =&amp;gt; user.id);
+
+    // Promise.all technique
+    const userStatuses = await Promise.all(userIds.map(mockUserStatus));
+
+    const usersWithStatus = users.map((user, index) =&amp;gt; ({
+      ...user,
+      ...userStatuses[index],
+    }));
+
+    setUsers(usersWithStatus);
+  }, []);
+
+  return (
+    &amp;lt;ul&amp;gt;
+      {!users.length &amp;amp;&amp;amp; &amp;quot;Loading...&amp;quot;}
+      {users.map((user) =&amp;gt; (
+        &amp;lt;li&amp;gt;
+          {user.name} {user.status}
+        &amp;lt;/li&amp;gt;
+      ))}
+    &amp;lt;/ul&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The problem with this solution is: it could take a considerable amount of time for all of these additional requests to render and we don&#39;t want to have to keep the user waiting for the whole list to load before they can see anything.&lt;/p&gt;
+&lt;p&gt;A far better solution would be to first load and render the list of items without the details, then render each detail for each item as it is loaded.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://mermaid.live/edit/#eyJjb2RlIjoiZ3JhcGggVERcbiAgICBBW1N0YXJ0XVxuICAgICAgICBBIC0tPiBCKEZldGNoIGl0ZW1zIGxpc3QpXG4gICAgICAgIEIgLS0-IEMoUmVuZGVyIGl0ZW1zIGxpc3QpXG4gICAgICAgIEMgLS0-IEQoRmV0Y2ggaXRlbSBuIGRldGFpbHMpXG4gICAgICAgIEQgLS0-IEUoUmVuZGVyIGl0ZW0gbiBkZXRhaWxzKVxuICAgIEUgLS0-IEZ7TmV4dCBpdGVtP31cbiAgICBGIC0tPnxZZXN8IERcbiAgICBGIC0tPnxOb3wgR1tGaW5pc2hdXG4gICIsIm1lcm1haWQiOiJ7XG4gIFwidGhlbWVcIjogXCJkYXJrXCJcbn0iLCJ1cGRhdGVFZGl0b3IiOmZhbHNlLCJhdXRvU3luYyI6dHJ1ZSwidXBkYXRlRGlhZ3JhbSI6dHJ1ZX0&quot;&gt;&lt;img src=&quot;https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ohogu4cawjiyhhd7hu4i.png&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Implementing this improved solution raised a challenge:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;How to merge the details from all the requests together into one state variable without triggering a React refresh cycle?&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If the React refresh cycle triggered, it would have caused the state variable to contain incomplete data, as one partial value would override another.&lt;/p&gt;
+&lt;p&gt;It turns out the solution is rather simple - we just have to re-use the latest copy of our state variable each time we set it.&lt;/p&gt;
+&lt;p&gt;So instead of the typical &lt;code&gt;setState&lt;/code&gt; call:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;setUsers({
+  ...users,
+  [updatedUserId]: updatedUser,
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We &lt;a href=&quot;https://twitter.com/dan_abramov/status/816394376817635329&quot;&gt;pass a state setter&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;setUsers((currentUsers) =&amp;gt; ({
+  ...currentUsers,
+  [updatedUserId]: updatedUser,
+}));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So... here&#39;s the parallel loading solution.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://codepen.io/jonathanconway/pen/dyRQMQL&quot;&gt;Codepen Link&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-jsx&quot;&gt;function UsersAndStatuses(props) {
+  const [usersById, setUsersById] = React.useState({});
+  const users = React.useMemo(() =&amp;gt; Object.values(usersById), [usersById]);
+
+  React.useEffect(async () =&amp;gt; {
+    const usersList = await mockUsers();
+
+    setUsersById(
+      usersList.reduce(
+        (acc, user) =&amp;gt; ({
+          ...acc,
+          [user.id]: user,
+        }),
+        {}
+      )
+    );
+
+    const userIds = usersList.map((user) =&amp;gt; user.id);
+
+    userIds.forEach(async (userId) =&amp;gt; {
+      const userStatus = await mockUserStatus(userId);
+
+      // Async state setter technique
+      setUsersById((currentUsersById) =&amp;gt; ({
+        ...currentUsersById,
+        [userId]: {
+          ...currentUsersById[userId],
+          ...userStatus,
+        },
+      }));
+    });
+  }, []);
+
+  return (
+    &amp;lt;ul&amp;gt;
+      {!users.length &amp;amp;&amp;amp; &amp;quot;Loading...&amp;quot;}
+      {users.map((user) =&amp;gt; (
+        &amp;lt;li&amp;gt;
+          {user.name} {user.status}
+        &amp;lt;/li&amp;gt;
+      ))}
+    &amp;lt;/ul&amp;gt;
+  );
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now go forth and parallelize all your async multiple requests!&lt;/p&gt;
+&lt;p&gt;Good luck!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Interaction wireframes</title>
+    <link href="https://conwy.co/articles/interaction-wireframes/"/>
+    <updated>2020-12-30T00:00:00Z</updated>
+    <id>https://conwy.co/articles/interaction-wireframes/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;It’s nearly 2021, so I thought I’d share a small achievement of 2020:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A way of depicting interactions in UI wireframes!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Background: I&#39;ve been doing a lot of complex UI work lately. In the process I&#39;ve been finding it useful to diagram out these interfaces. I like to do this both before and during the actual development work. It really helps to understand and reason about the UI. These are very interactive UIs - lots of clicking, dragging, dropping, etc. So the question arises: can the interactions also be expressed in visual form?&lt;/p&gt;
+&lt;p&gt;From experimenting with a number of projects and techniques, I&#39;ve settled on a consistent style, which I now use in all wireframes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;⬛️ &lt;strong&gt;Elements&lt;/strong&gt; - Black shapes and text.&lt;/li&gt;
+&lt;li&gt;🟢 &lt;strong style=&quot;color: green;&quot;&gt;Markers&lt;/strong&gt; - Green circles.&lt;/li&gt;
+&lt;li&gt;♦️ &lt;strong style=&quot;color: red&quot;&gt;Interactions&lt;/strong&gt; - Red arrow lines.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Let&#39;s do a quick dive into each.&lt;/p&gt;
+&lt;h2&gt;1. Elements&lt;/h2&gt;
+&lt;p&gt;The actual elements that make up the interface are marked out in plain black-on-white, using all the result shapes: rectangles, rounded rectangles, circles, etc., similar to how they would appear in the final application.&lt;/p&gt;
+&lt;p&gt;Here&#39;s a convention to follow for shapes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Straight rectangles for panels, modals, headers, etc.&lt;/li&gt;
+&lt;li&gt;Rounded rectangles for buttons, input boxes, checkboxes, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And here&#39;s an example:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image1.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image1.svg&quot; width=&quot;500&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Wireframe showing only interface elements&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h2&gt;2. Markers&lt;/h2&gt;
+&lt;p&gt;We might want to &amp;quot;mark&amp;quot; or &amp;quot;tag&amp;quot; a particular part of the UI with additional info.&lt;/p&gt;
+&lt;p&gt;For example, to indicate that a specific component should be used, when it isn&#39;t obvious just by looking at the diagram, we might want to mark that part of the wireframe with the name of that component.&lt;/p&gt;
+&lt;p&gt;For this purpose, we can drop in a &lt;strong style=&quot;color: darkGreen;&quot;&gt;green-coloured numbered circle 🟢&lt;/strong&gt;, and along with a matching legend item indicating the name of the component.&lt;/p&gt;
+&lt;p&gt;Here&#39;s what it looks like:&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image2.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image2.svg&quot; width=&quot;500&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Wireframe showing interface elements and component labels&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;h2&gt;3. Interactions&lt;/h2&gt;
+&lt;p&gt;Finally we get to the exciting part: &lt;em&gt;interactions&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;The user might generate events (click, drag, drop, keypress, etc) which cause the UI to change in some way (e.g. open a drop-down, move an element, hide a modal, etc).&lt;/p&gt;
+&lt;p&gt;You might have assumed that depicting interactivity would require the use of a prototyping tool, but actually it can be done in a static wireframe too.&lt;/p&gt;
+&lt;p&gt;We can simply add a &lt;strong style=&quot;color: red&quot;&gt;red arrow connector -🔺&lt;/strong&gt;, made up of the following parts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Source of the connector - the element from which the event originates&lt;/li&gt;
+&lt;li&gt;Label on the connector - name of the event&lt;/li&gt;
+&lt;li&gt;End of the connector - arrow-head pointing at a component (or group of components) which depict the state of the UI when the event is handled&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For example, suppose we want to depict that when the user clicks a button, a modal box appears. We draw a red arrow from the button to the modal, with ‘(click)’ in rounded brackets on the connector.&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image3.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image3.svg&quot; width=&quot;500&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Event connector depicting a button click event&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Notice that we don&#39;t necessarily have to depict the whole UI in the &#39;after&#39; part of the wireframe. We only have to depict the part that changed - in this case, the modal. This habit of only depicting the change really speeds up the wireframing activity. We only have to depict &lt;em&gt;changes&lt;/em&gt; in our UI, not the whole UI in every possible state.&lt;/p&gt;
+&lt;p&gt;There might be some logic to these interactions. For example, if the user enters a correct username and password to log in, we display a success notification. But if they get the password wrong, we show an error message underneath the password field. This kind of logic can be depicted by augmenting our diagram with a flowchart shape.&lt;/p&gt;
+&lt;h2&gt;Putting it all together&lt;/h2&gt;
+&lt;p&gt;Here&#39;s the whole UI - elements, numbered labels and event connectors (with logic).&lt;/p&gt;
+&lt;figure&gt;
+  &lt;a target=&quot;_blank&quot; href=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image3.svg&quot;&gt;
+    &lt;img src=&quot;https://conwy.co/articles/interaction-wireframes/interaction-wireframes-image3.svg&quot; /&gt;
+  &lt;/a&gt;
+  &lt;figcaption&gt;Wireframe showing interface elements, component labels and event connectors&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;Notice how we can read and comprehend this quite quickly, just like we&#39;d read a paragraph out of a book. Wireframes can communicate a information that is better represented visually and spatially rather than in paragraphs of plain text.&lt;/p&gt;
+&lt;p&gt;Notice also that this wireframe can manipulated - split apart, combined with other elements, used to form a new wireframe. This can be an excellent tool for experimenting with alternative designs. It can also be great for communicating - you can easily slice of any part of the design, paste it into a Slack discussion, and gather some feedback from your colleagues.&lt;/p&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;I&#39;ve found simple, low-fidelity wireframes that highlight &lt;strong&gt;interactions&lt;/strong&gt; to be highly useful when developing highly interactive or logic-intense user interfaces.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;They help me to understand how the software will actually work.&lt;/li&gt;
+&lt;li&gt;They give me a feeling of control over my work environment - I can change the design at any time and in any way.&lt;/li&gt;
+&lt;li&gt;They can help me to think clearly and form a good mental model of the requirements.&lt;/li&gt;
+&lt;li&gt;They provide a visual aid for communicating requirements to team members and getting their feedback.&lt;/li&gt;
+&lt;li&gt;They serve as a guide and reference point while I&#39;m actually writing the code.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Further reading&lt;/h2&gt;
+&lt;p&gt;Books that inspired me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Designing for the digital age&lt;/em&gt; • Kim GOODWIN&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Macintosh Human Interface Guidelines&lt;/em&gt; • Apple Computer&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Towards zero bugs</title>
+    <link href="https://conwy.co/articles/towards-zero-bugs/"/>
+    <updated>2019-12-01T00:00:00Z</updated>
+    <id>https://conwy.co/articles/towards-zero-bugs/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;Software with zero bugs may seem like an ambitious goal. Over time, defects in software have increased and have become so normalised that some developers and users even expect them.&lt;/p&gt;
+&lt;p&gt;But while it&#39;s difficult to get to zero bugs, I think it&#39;s worth trying for. We shouldn&#39;t concede defeat and assume ahead-of-time that our products will be defective. Rather, we should do everything in our power to avoid inadvertently creating bugs in our software, where they could be avoided. The closer we get to zero critters, the better!&lt;/p&gt;
+&lt;p&gt;Over time, I have been building up a mental checklist of things to look out for, both in the code I write and in the running application that it generates, to identify potential bugs. I now run through this checklist whenever I am about to complete work on a change or a new feature. I have also been working on building a mindset that encourages discipline, rigour and attention to detail.&lt;/p&gt;
+&lt;p&gt;By running these checks and building this mindset, I aim to identify and fix bugs early, rather than having them show up in a testing environment, or worse still, in front of an end-user.&lt;/p&gt;
+&lt;p&gt;I would love to share this with other developers. Please have a read and let me know your thoughts in the comments!&lt;/p&gt;
+&lt;h2&gt;The checklist&lt;/h2&gt;
+&lt;p&gt;Without further ado, here&#39;s my list:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Typos, accidental keystrokes, debugging statements.&lt;/strong&gt; Every time you&#39;re about to commit, hold back for a moment and review the diff of changes going in. Make sure you&#39;re only committing what you fully intend to commit. Check for typos, accidental keystrokes, inadvertent capitalisation, etc. A compiler or linter can usually pick these up, but there are often cases that are missed, so it&#39;s still worth taking a few seconds to run your eyes over the diff. Also check for development-only code, such as logging or debugging statements, which pass compilation but shouldn&#39;t be checked in.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Subtle logic errors.&lt;/strong&gt; Look for all those mistakes that &lt;em&gt;look&lt;/em&gt; like reasonable code, to both the first glance and the compiler, but are actually the wrong way round or otherwise incorrect.
+For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;False-positives. For example: &lt;code&gt;if (!hidden) { show(); } else { hide(); }&lt;/code&gt;. Observe that &lt;code&gt;!hidden&lt;/code&gt; is actually equivalent to being visible. So this code would actually execute &lt;code&gt;show()&lt;/code&gt; when already visible and &lt;code&gt;hide()&lt;/code&gt; when invisible! To correct this, we would want to remove the &lt;code&gt;!&lt;/code&gt; and have something like this: &lt;code&gt;if (hidden) { show(); } else { hide(); }&lt;/code&gt;. It&#39;s important to keep an eye out for these kinds of subtle logic errors.&lt;/li&gt;
+&lt;li&gt;Expressions being coerced to incorrect boolean values. For example, in Javascript, an &lt;code&gt;indexOf(x)&lt;/code&gt; call without being compared to anything, when it should be compared it to a numeric value. A correct (and clearer) way to achieve this intent might be to call &lt;code&gt;includes(x)&lt;/code&gt;, which &lt;em&gt;does&lt;/em&gt; return a boolean.&lt;/li&gt;
+&lt;li&gt;Off-by-one errors. For example: &lt;code&gt;for (let i = 0; i &amp;lt;= 10; i++) { ... }&lt;/code&gt;. This loop runs 11 iterations, where it was probably expected to run 10. It would be clearer to rewrite it as: &lt;code&gt;for (let i = 0; i &amp;lt; 10; i++) { ... }&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Filtering operations. You may perform a filtering function, but accidentally extract items from a list and return only those items, when your intent was to return the full list &lt;em&gt;including&lt;/em&gt; those items. Or your code might return everything except certain items, when the intent was to return nothing at all if those items exist. There are many other variations on this. In summary, carefully review complex filtering operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Edge cases.&lt;/strong&gt; To find these, try to break your app.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click a lot of different parts of the UI in very quick succession.&lt;/li&gt;
+&lt;li&gt;Test long sequences of actions and make sure the result at the end is exactly as expected. For example, test undo/redo thoroughly by performing an action, then undoing it, then redoing it, many times, then verifying the end result.&lt;/li&gt;
+&lt;li&gt;Input values in unexpectedly large quantities, in an unexpected format or null/empty values.&lt;/li&gt;
+&lt;li&gt;Test with correctly formatted but illogical values (e.g. a date that is the 32nd of the month).&lt;/li&gt;
+&lt;li&gt;Add a larger than normal number of items to a list.&lt;/li&gt;
+&lt;li&gt;Run multiple instances of the application at once and verify that it still works properly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Basically do everything you can to break your application and ensure that it recovers gracefully in all circumstances. If you have a large number of possible combinations of inputs to test, unit tests can definitely be your friend!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Values vs. references.&lt;/strong&gt; Do you expect a value to be set in one place and updated in many others? Or do you want to hold independent copies of that value in multiple places? Review your usages of references vs values and make sure they&#39;re correct for your use case.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Memory leaks.&lt;/strong&gt; These can dramatically slow down an application and even cause it to crash, due to incorrect and unconstrained allocation of memory. These can manifest themselves in a variety of ways, depending on the language and environment you&#39;re developing for.
+For example:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In C# or Java, it may be an unmanaged resource that&#39;s not being cleaned up.&lt;/li&gt;
+&lt;li&gt;In multithreaded applications, dead threads.&lt;/li&gt;
+&lt;li&gt;In Javascript, Maps that reference DOM nodes that no longer exist.&lt;/li&gt;
+&lt;li&gt;In RXJS, subscriptions to observables that you forgot to unsubscribe.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In addition to manually checking the code, practically every environment also has its own set of tools for diagnosing memory leaks. For example, for .NET, there is a memory profiler and for Javascript, Developer Tools in most browsers have a Memory tab or similar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Code executing too often.&lt;/strong&gt; Do you perform unnecessary operations within a for loop, a game loop, a template, a rendering cycle, or any other part of the code base that gets executed many times in succession? This could cause a slowdown to your app, which if it gets too bad, could be considered buggy behaviour. Code that might not need to run includes code that generates the same result on every iteration (in which case, some form of caching is your friend) or code that&#39;s only needed in certain states (where a simple &lt;code&gt;if&lt;/code&gt; statement around that state could skip the code when it&#39;s not needed).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Same same but different.&lt;/strong&gt; Be extra careful in situations where you have two things that look and behave very similarly, but are qualitatively different. An example of such a situation, which I encountered recently, was in building two tree views which depicted essentially the same data, but with subtly different visual markers on each. These visual markers highlighted opposite aspects of the same data. But, by mistake, I also coded one of the trees so that it reversed the order of its elements! This bug should have been obvious, but it escaped my notice. I was so focussed on getting the markers right (the difference) that I forgot to ensure that the ordering was right (the sameness). In retrospect, if I had pulled back and double-checked that the end-result had the &lt;em&gt;right&lt;/em&gt; difference and not the &lt;em&gt;wrong&lt;/em&gt; difference, I could have caught this early and fixed it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Null-checks.&lt;/strong&gt; Whenever two values are being compared, have you null- or undefined-checked both sides of the comparison if needed, and handle what to do if either/both are null? Add checks as needed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Async data dependencies.&lt;/strong&gt; Does your app depend on multiple sets of data, which may load at different times? What happens when not all of the data has loaded? Does the application crash and burn? Or does it handle the situation gracefully, perhaps waiting until all the data has loaded, and showing a &#39;loading&#39; indicator in the meantime? You might simulate this state by temporarily adding a lag to one of your data sources, using your language&#39;s &#39;delay&#39; mechanism. For example, calling Javascript&#39;s &lt;code&gt;setTimeout&lt;/code&gt; method, RX&#39;s &lt;a href=&quot;http://reactivex.io/documentation/operators/delay.html&quot;&gt;Delay operator&lt;/a&gt; or .NET&#39;s &lt;code&gt;Thread.Sleep()&lt;/code&gt;. Of course, take care to revert any testing code prior to check-in!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Browser/OS upgrades.&lt;/strong&gt; Depending on the environment you&#39;re developing for, be aware of the potential for breaking changes to that environment, when a new version comes out. Upgrade whenever a new version ships and test your application in the new version, looking for bugs. I experienced the importance of this recently, with the &lt;a href=&quot;https://bugs.chromium.org/p/chromium/issues/detail?id=927066&quot;&gt;changes to Flexbox in Chrome 72&lt;/a&gt;, which necessitated several CSS changes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Devices, screen sizes and zoom factors.&lt;/strong&gt; Test your app with multiple devices if needed – mobile, tablet and/or desktop. You may also need to check with multiple browsers on those devices as well as multiple versions and form-factors of the devices. Also, try increasing/decreasing the zoom level and ensure that the layouts, sizing, etc, are still proportional.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Accessibility.&lt;/strong&gt; Bugginess or even absence of accessibility features is a major problem in the software application landscape. If your app will be used by a broad segment of the population, you probably should be ensuring that it is accessible. Ideally accessibility is &amp;quot;baked-in&amp;quot; from the beginning, but this doesn&#39;t nullify the need to regularly and rigorously test that accessibility features work. In my own accessibility auditing, I focus on three main areas: A) keyboard-only operation, B) non-visual operation, C) adherence to WCAG. A basic test of these three areas can be performed on any web page, by A) pushing the mouse away and attempting to use the application keyboard-free, B) looking away from the screen and attempting to use the application by means of only a screen-reader, C) running the &lt;a href=&quot;https://wave.webaim.org/extension/&quot;&gt;Wave&lt;/a&gt; automated testing tool and reviewing its output. Similar tests can be run on non-Web/native applications. I plan to write an entire article dedicated to this topic, as it is a large one. In the meantime, you can check out some excellent resources, such as &lt;a href=&quot;https://www.w3.org/WAI&quot;&gt;WAI&lt;/a&gt;&#39;s &lt;a href=&quot;https://www.w3.org/WAI/test-evaluate/preliminary/&quot;&gt;Easy Checks&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Date and time handling and formatting.&lt;/strong&gt; Be extra careful to test code that does anything with dates or times. If the code is performing some kind of calculation on a date/time value, try to test it with a variety of inputs and ensure that it always produces a correct result date/time. Also, test that it works in a different time-zone. To do this locally, you can temporarily change your system time-zone, re-load your application and re-test the date/time feature.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Numeric values, such as currency.&lt;/strong&gt; As with dates/times, thoroughly test any aspect of your application that operates on numbers, and especially locale-specific numbers such as currency values.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Load testing.&lt;/strong&gt; Does the system break down when large number of items are passed through it? Substitute a fake data-source with thousands or even millions of records and see if the application can handle that load.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Requirements vs solution.&lt;/strong&gt; Double-check the original requirements and see if you actually addressed them. There might have been a subtle indication in the language that you overlooked or some ambiguities that you didn&#39;t yet clear up. If you need to go back to the business to clarify these issues, do this as soon and early as possible, so that you have a better chance of fixing any bugs in the code before releasing it.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Hit refresh.&lt;/strong&gt; Sometimes, for reasons that I don&#39;t entirely understand (and perhaps don&#39;t wish to) a running application will get out-of-sync with the code that generated it. Yes, this can happen even when automatic compilation tools are in use. In the case of web apps, caching of assets can play a role. For native apps, processes may remain open. I have sometimes spent half an hour or more trying to figure out why something wasn&#39;t working or why I couldn&#39;t reproduce a bug, only to find that the version I was using was stale. Long story short: when in doubt, hit restart and refresh.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Multiple environments.&lt;/strong&gt; Most organisations have multiple environments into which software is deployed in a staged manner. There&#39;s the local developer machine, then a Development server, then Staging and/or QA, then Production/Release/Live. It&#39;s a good idea to run some tests on your application in every environment. This is especially important if your feature or change depends on environment-specific factors, such as configuration values, database schemas, data and other systems, services or resources. Anything might go wrong in a new environment, from a typo in a configuration value to a missing authorisation on a resource. You don&#39;t have to test everything in every environment, but it&#39;s probably a good idea to at least test the happy path.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Find similar bugs and fix them (and generalise the fix!).&lt;/strong&gt; This came up recently, where a colleague discovered a bug in which the wrong property was being used to retrieve the error message from an HTTP response. Rather than merely fixing it for that one response, I tested all places in the codebase where an error message was being retrieved from an HTTP response and fixed them all where necessary. I then went a step further and generalised the fix, by extracting HTTP error handling to a common function. So not only were additional bugs eliminated, but similar bugs in the future were prevented, by improving the overall framework.&lt;/p&gt;
+&lt;h2&gt;The mindset&lt;/h2&gt;
+&lt;p&gt;This checklist may seem daunting, especially when working under time constraints. However, you don&#39;t have to action all of these items for every change you make. I typically give this list a quick scan and pick out only the items that are relevant to the change I&#39;m making. For example, a change to the logic for calculating a numeric value probably doesn&#39;t necessitate checking &#39;Devices, screen-sizes and zoom factors&#39;. Likewise, for a change to the layout of a dialog box, I can probably skip &#39;Async data dependencies&#39;.&lt;/p&gt;
+&lt;p&gt;The &amp;quot;old&amp;quot; mindset (that I have sometimes seen in the industry) is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I assume my code has no bugs by default.&lt;/li&gt;
+&lt;li&gt;Good developers never write buggy code, so I shouldn&#39;t bother too much checking my code for bugs, otherwise I might discover that I&#39;m a terrible developer!&lt;/li&gt;
+&lt;li&gt;There&#39;s never enough time to check for bugs, so I have no choice but to ship buggy code.&lt;/li&gt;
+&lt;li&gt;My code will naturally get more and more reliable as I gain experience.&lt;/li&gt;
+&lt;li&gt;Testing and bug-fixing is boring, tedious and not fun.&lt;/li&gt;
+&lt;li&gt;There&#39;s no reward to being thorough about testing for and fixing bugs.&lt;/li&gt;
+&lt;li&gt;Software development is unimportant, menial &amp;quot;grunt work&amp;quot;, so it doesn&#39;t matter if we get it wrong.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &amp;quot;new&amp;quot; mindset that I aim to spread, which I think is more productive, is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;My code is buggy unless proven otherwise.&lt;/li&gt;
+&lt;li&gt;Part of being a good developer is having the discipline and patience to go through code that I wrote, which looks fine - even spectacular - and find and fix all the bugs that I know are probably lurking within it.&lt;/li&gt;
+&lt;li&gt;There&#39;s almost always a little extra time to put in some honest effort to finding and fixing bugs.&lt;/li&gt;
+&lt;li&gt;Putting in a regular, consistent effort to write reliable code will make my code more reliable.&lt;/li&gt;
+&lt;li&gt;Testing and bug-fixing can be made fun, with a positive mindset and a little &#39;gamification&#39;. I can enjoy the endorphin-rush of fixing a bug and knowing that I left the code better than I found it.&lt;/li&gt;
+&lt;li&gt;The reward to testing for and fixing bugs is building the mental muscles (discipline, rigour, attention to detail, etc) that will result in more reliable software. Those muscles will move me forward in all aspects of problem-solving, not only bug-fixing. Also, I can build a reputation as someone who builds reliable software, which will probably be good for my career.&lt;/li&gt;
+&lt;li&gt;Software development is a profession and a craft, and we should take pride in our work.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Let a thousand checklists bloom!&lt;/h2&gt;
+&lt;p&gt;Do you keep a checklist like this, either in written or mental form? Are there any other items you would add to such a checklist? And do you have anything to add about the mindset needed to write reliable, bug-free code?&lt;/p&gt;
+&lt;p&gt;Feel free to comment about your checklists and experiences or link to them in the comments. It would be great to share any ideas that we developers can use, in order to get closer to writing bug-free code.&lt;/p&gt;
+&lt;p&gt;Thanks for reading!&lt;/p&gt;
+&lt;h2&gt;Further reading&lt;/h2&gt;
+&lt;p&gt;Boooks that inspired me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;The Checklist Manifesto&lt;/em&gt; • Atul GAWANDE&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Code Complete&lt;/em&gt; • Steve MCCONNELL&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;The Pragmatic Programmer&lt;/em&gt; • Andrew HUNT, David THOMAS&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Clean Code&lt;/em&gt; • Bob MARTIN&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Why we get hired</title>
+    <link href="https://conwy.co/articles/why-we-get-hired/"/>
+    <updated>2018-12-01T00:00:00Z</updated>
+    <id>https://conwy.co/articles/why-we-get-hired/</id>
+    <content xml:lang="en" type="html">&lt;p&gt;At various times in my career I&#39;ve asked myself questions about hiring.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why didn&#39;t they hire me?&lt;/li&gt;
+&lt;li&gt;Why &lt;em&gt;did&lt;/em&gt; they hire me?&lt;/li&gt;
+&lt;li&gt;Why did they hire that person?&lt;/li&gt;
+&lt;li&gt;How might I get hired for &lt;em&gt;x&lt;/em&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hiring is all kinds of complicated and there probably isn&#39;t a single &amp;quot;solution&amp;quot; to the many problems of hiring. I just want to present my own observations and perspective, as someome who has been hired many times, helped others get hired and occasionally hired.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Big caveat:&lt;/strong&gt; There is a powerful sociological and political lens through which all hiring decisions can be viewed. Others more qualified than me have spoken and written about it. I&#39;m going to quietly side-step that topic and focus on my own direct experiences.&lt;/p&gt;
+&lt;h2&gt;Rare, sought-after, specialist skills&lt;/h2&gt;
+&lt;p&gt;This ought to be an obvious one, but hey... sometimes the obvious eludes us!&lt;/p&gt;
+&lt;p&gt;If you&#39;re a Java developer and the job market is tight for those developers - i.e. there aren&#39;t many people in your area who can do Java development - then you will be highly sought after. If clients are deperate enough, they may hire you just because you hava that essential Java skill, even if you don&#39;t have all the other skills they need.&lt;/p&gt;
+&lt;p&gt;This can play out in all kinds of interesting ways. You might have very little general experience, but after 1-2 years of experience in a highly sought-after specialist field, you get chosen over a generalist with much greater experience. You might even get paid more than the generalist, due to your specialisation. In fact, you might find yourself taking that specialist skill-set and using it move from job to job, rapidly increasing your pay rate.&lt;/p&gt;
+&lt;h2&gt;Geography&lt;/h2&gt;
+&lt;p&gt;Ok, I said I wouldn&#39;t look at this sociologically, but perhaps there is a hint of that in this section.&lt;/p&gt;
+&lt;p&gt;Geography has had a big influence on my success in the job market. Some locations always had more jobs than others. For various reasons, companies chose to locate their workers there and hire there, and I was better off being in those areas.&lt;/p&gt;
+&lt;p&gt;Sometimes I observed that a particular company would choose to locate itself far away from a major employment hub. They would struggle to hire, but on the flip-side, those who they did hire would prefer to stay with them longer because leaving would mean increasing their commute or moving house, and it wasn&#39;t worth the inconvenience. This was an interesting instance of &amp;quot;lock-in&amp;quot; effects being applied to staff retention!&lt;/p&gt;
+&lt;p&gt;Some locations were also more competitive than others - for some reason, workers preferred to live there, and therefore, more workers were competing for the same jobs and it was more difficult to get a job or the salaries were lower.&lt;/p&gt;
+&lt;p&gt;I experienced this in various ways in both Sydney and London. In Sydney, the choice was often between more money, more walking and duller scenery vs. less money, less walking and nicer scenery. In London, there was a similar trade-off, but I also experienced a competitive spirit in both job interviews and day-to-day work, where workers would put in a very strong performance in interviews and during the job, in order to get and keep the employment contract.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;COVID update:&lt;/strong&gt; even after the great transition to remote work, location still seems to be matter to a degree. Companies often still want you to be located in the same country, if not state or major city, for various reasons probably to do with labor laws, taxes, visas, etc.&lt;/p&gt;
+&lt;h2&gt;Visas&lt;/h2&gt;
+&lt;p&gt;Visas seem to have a significant impact on the job market. Plenty of people want to move to another country, plenty of companies want to hire people and the visa system generates both opportunities and constraints.&lt;/p&gt;
+&lt;p&gt;Based on my experience, plus conversations with visa-holders, the primary effects of a visa on the worker were:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To tether the worker to their sponsoring company&lt;/li&gt;
+&lt;li&gt;To encourage less risky roles and projects&lt;/li&gt;
+&lt;li&gt;To encourage harder and longer work hours&lt;/li&gt;
+&lt;li&gt;To encourage longer tenures (in order to maintain the length of stay necessary to become a permanent resident)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Also important was the way the person became connected to the sponsor. Some workers already had a job with the sponsor prior to moving to another country, and maintained certain relationships within the company, enabling them to transition with more ease and possibly counteract some of the aforementioned pressures.&lt;/p&gt;
+&lt;p&gt;Others (myself included) were able and willing to take a brand new job in a brand new country.&lt;/p&gt;
+&lt;p&gt;From the hiring company&#39;s point of view, the visa factor wasn&#39;t necessarily separable from all the other factors, e.g. supply and demand of skills. For example, a company might dislike having to pay additional costs associated with sponsorship, but like the candidate&#39;s skills, but dislike the candidate&#39;s geographic location, but like the candidate&#39;s salary expectations. All of these factors would need to be weighed up until the hirers could see a clear winner among their choice of candidates.&lt;/p&gt;
+&lt;p&gt;Interestingly enough, in my own experiences as a visa-holder, I have found that the constraints of a visa don&#39;t necesarily disadvantage the visa-holder, but can actually advantage them. How so? Well, when a larger oganisation treats the category of employees who hold sponsored visas as overall having certain traits (e.g. being more reliable, holding longer tenures, etc.) they may prefer to hire them into roles which are appropriate to those traits. This can, in effect, mean that visa-holders qua visa-holders have access to roles within an organisation that they would&#39;ve have had as non-visa-holders. Within these roles, they can achieve desirable career outcomes, e.g. kinds of expertise and/or relationships that can only be gained via long-term engagements. In this way, the market dynamics that the visa system generates can be turned to the advantage of the visa holders.&lt;/p&gt;
+&lt;h2&gt;National and regional economy&lt;/h2&gt;
+&lt;p&gt;Again, it seems like it should be obvious, but I still find it useful to think more deeply about the economy.&lt;/p&gt;
+&lt;p&gt;If your country is in a clear or not-so-clear recession, jobs generally will be less plentiful. The effects can spread to industries that mightn&#39;t seem to be affected. If there are more unemployed workers generally then more of those workers might seek jobs in your field. Then the hirers in your field will see more and better applicants and therefore salaries will adjust down and requirements will adjust up.&lt;/p&gt;
+&lt;p&gt;As a software developer I&#39;ve worked alongside plenty of people whose background wasn&#39;t traditionally in software, but who moved in to software after losing their regular job, having their small business fail, etc. This occurring on a larger scale would almost certainly have impacted the supply-side of the job market.&lt;/p&gt;
+&lt;p&gt;One thing we don&#39;t always consider is &lt;em&gt;regional&lt;/em&gt; and &lt;em&gt;state&lt;/em&gt; level economics. Different parts of a country can be thriving or struggling at different times, as distinct from the country as a whole. The effects can surface in counter-intuitive wys - a region that is understaffed isn&#39;t necessarily short on work as much as it is short on workers.&lt;/p&gt;
+&lt;p&gt;Taking Australia as an example, there were periods where the mining boom in Western Australia attracted workers from various backgrounds, including those who might have otherwise been doing software development. This affected supply of software developers, but also generated difficulties in getting new projects approved, due to talent shortages. I can recall missing out on being hired on a number of occasions, not because the company didn&#39;t want to hire me, but because they couldn&#39;t get the project launched!&lt;/p&gt;
+&lt;p&gt;It can be useful to learn about the economic situation in your country, down to the regional level. That understanding can help you to know which areas to target to get the best possible job at the best possible salary.&lt;/p&gt;
+&lt;h2&gt;Industry and financial economy&lt;/h2&gt;
+&lt;p&gt;As the economy goes through cycles, so can a particular industry. An industry may go through a period of growth or transformation, so all the companies compete with eachother over who can move the quickest, and this creates demand for new jobs.&lt;/p&gt;
+&lt;p&gt;For example, digital and agile transformations had been occurring in large government departments and corporations in both Australia and the UK over the 2010s, creating growth in related job opportunities. Agile practitioners, digital designers, software developers and others cashed in on this trend.&lt;/p&gt;
+&lt;p&gt;On the other hand, one or more industries may also downsize and cut jobs, as that industry fades into irrelevance, gets replaces, gets outsourced/offshored or encounters some other damper on growth. An example of this might be the decline of the newspaper business over the 2000s and 2010s. I directly observed this in the form of announcements of this or that division being closed down, this or that manager leaving, relatively low salaries being advertised by companies in declining industries and projects being skewed toward cost-cutting rather than growth-generating.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Decline&amp;quot; of course can affect different people differently. What is a lack-lustre time for investors could be an excellent time for workers and vice-versa. Some of my most enjoyable engagements were in failing or declining enterprises. Unlike a sinking ship, the worst that can happen in a sinking company probably won&#39;t involve loss of life.&lt;/p&gt;
+&lt;h2&gt;Reputational&lt;/h2&gt;
+&lt;p&gt;Somewhat relatd to the previous subject, another area I want to touch on is reputation. No, not &lt;em&gt;your&lt;/em&gt; reputation - the company&#39;s!&lt;/p&gt;
+&lt;p&gt;A company or industry may have a reputation as being &#39;sought-after&#39;, which causes many applicants to flood the job market, making it tough for you to get in.&lt;/p&gt;
+&lt;p&gt;Equally so, a company or industry can develop a reputation as being &#39;unwanted&#39;. Maybe people think it&#39;s slowing down, there&#39;s less opportunity there, it&#39;s hard work for little pay or some other reason. But the reality might be the exact opposite! It might actually be a really good &#39;hidden gem&#39;, which no one else knows about!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Side-note:&lt;/strong&gt; Interestingly, this kind of &amp;quot;crowding out&amp;quot; or &amp;quot;mania&amp;quot; effect isn&#39;t only observed in the job market. It seems to also be observed in finance. In one of my favourite books, &lt;em&gt;Technological Revolutions and Financial Capital&lt;/em&gt;, the author points to certain periods of capitalism as a &amp;quot;frenzy of money-making money, which creates asset inflation and provides a gambling atmosphere within an ever-expanding bubble&amp;quot;.&lt;/p&gt;
+&lt;h2&gt;Seasonal&lt;/h2&gt;
+&lt;p&gt;Finally, a more trivial but nonetheless influential factor in hiring. Funnily enough seasons do still seem to matter! There are times of the year when people are more likely to take a break and go on holidays, e.g. Chrismas, versus other times when they&#39;re more likely to be working. Hiring activity may be greater when the weather is warm and lesser when it&#39;s cold. It&#39;s well known in Sydney that that job market tends to slow down around the end of the year and beginning of the next year, but picks up around the early to middle part of the year.&lt;/p&gt;
+&lt;h2&gt;Putting it all together&lt;/h2&gt;
+&lt;p&gt;Why am I interested in examining these factors for getting hired?&lt;/p&gt;
+&lt;p&gt;Well it&#39;s simple: I think by understanding these factors, I can better position myself in the job market to score my dream job!&lt;/p&gt;
+&lt;p&gt;Similar to how a pilot uses an understanding of the environmental conditions (temperature, wind currents, topography, etc) to direct an aircraft to fly in the smoothest way possible, I can direct my job search as a candidate in the most advantageous way.&lt;/p&gt;
+&lt;p&gt;I&#39;m not a crash-hot ultra-senior Python engineer or data-scientist or AI genius. I don&#39;t (at the time of writing) have a full degree from a prestigious university or decades of experience on successful projects, or hundreds of contacts.&lt;/p&gt;
+&lt;p&gt;But the job market doesn&#39;t necessarily care about all that.&lt;/p&gt;
+&lt;p&gt;If there is a heightened demand and lowered supply of a particular skill, and you show up in the right place, at the right time, for the right company, you can take advantage of that opportunity to score yourself that dream job! By looking at these factors and matching them up with your plans, you can set yourself up to cash in on job opportunities that wouldn&#39;t normally be available to you.&lt;/p&gt;
+&lt;p&gt;Once you&#39;ve taken one of those opportunities, you can use it to pivot to the next one. So you take advantage of a temporary peak in demand to get yourself into an entry-level Python developer role. Then you can transition or &#39;pivot&#39; into your next role, which might be a more senior Python developer role or maybe something else that you didn&#39;t even imagine you&#39;d be doing!&lt;/p&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;It&#39;s useful to learn and think deeply about the job market and use that knowledge to discover and take advantage of unique opportunities in the job market.&lt;/p&gt;
+&lt;p&gt;Some of the big factors include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;supply and demand of specialist skills (which can often offset a perceived deficit in generalist skills, educational background, etc),&lt;/li&gt;
+&lt;li&gt;geographical distribution of industries (companies and workers),&lt;/li&gt;
+&lt;li&gt;the visas open to the worker and perceived traits of visa vs. non-visa workers,&lt;/li&gt;
+&lt;li&gt;the differing situations of the national/regional economies and overall health and reputation of organisations and industries, and&lt;/li&gt;
+&lt;li&gt;even that most seemingly trivial of factors – the seasons!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I hope readers will benefit from these observations and use them to unlock otherwise-hidden areas of the job market or generate other kinds of arbitrage benefits.&lt;/p&gt;
+&lt;p&gt;Position yourself the right way and the wind will carry your sail boat!&lt;/p&gt;
+</content>
+  </entry>
+</feed>
