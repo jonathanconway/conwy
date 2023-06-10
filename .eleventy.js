@@ -1,3 +1,5 @@
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+
 const addFilters = require("./.eleventy.filters.js");
 
 module.exports = function (eleventyConfig) {
@@ -17,4 +19,6 @@ module.exports = function (eleventyConfig) {
   ]);
 
   addFilters(eleventyConfig);
+
+  eleventyConfig.addPlugin(pluginRss);
 };

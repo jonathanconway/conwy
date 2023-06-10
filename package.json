@@ -26,6 +26,7 @@
   "homepage": "https://github.com/jonathanconway/conwyco#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@playwright/test": "^1.15.0",
     "concurrently": "^6.0.0",
     "github-pages-deploy-action": "^3.5.1",
