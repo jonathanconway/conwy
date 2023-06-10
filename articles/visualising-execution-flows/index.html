@@ -428,7 +428,13 @@ class RegisterResource {
 <p>Dependency graphs of course help us to understand how code is structured, but they don't give us the full picture of which parts of that code execute in which order at runtime. For that, we really need execution flows.</p>
 <p>Theoretically any tool that could automatically report execution flows would need to be able to analyse the code in terms of its expected execution at runtime. The tool might, like a debugger, execute the code, in order to determine the flow of control, e.g. where the flow of control depends on some state which can only be discovered at runtime. Or it could statically analyse the code to determine all possible flows and generate a report of all of them.</p>
 <p>It's beyond the scope of this article to look into how such a tool could be developed, but it's something I'm interested in looking into and perhaps even undertaking myself.</p>
-<p>Update (11/06/2023): Experimentation with <a href="https://chat.openai.com/">ChatGPT</a> yielded promising results. The LLM (Large Language Model) tool was able to generate a flowchart with labels in plain-English, <a href="https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492">in both ASCII and Mermaid formats</a>. The flowchard did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc). With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!</p>
+<div class="note">
+  <h3 class="note-heading">Update on ChatGPT (11/06/2023)</h3>
+  <p>Experimentation with <a href="https://chat.openai.com">ChatGPT</a> yielded promising results.</p>
+  <p>The LLM (Large Language Model) tool was able to generate <a href="https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492">a flowchart with labels in plain-English in both ASCII and Mermaid formats</a>.</p>
+  <p>The flowchard did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).</p>
+  <p>With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!</p>
+</div>
 <h2>Conclusion</h2>
 <p>This article has outlined a format for describing execution flow, which can be used to visualise and understand how parts of a codebase execute at runtime (and generate diagrams).</p>
 <p>This understanding can help to diagnose bugs/errors, determine the best points at which to change the code, estimate how long changes might take, and no doubt many other use cases.</p>
