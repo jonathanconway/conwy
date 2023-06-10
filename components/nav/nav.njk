@@ -8,7 +8,7 @@
         ]
     -%}
       {% if params.tags.includes(navItem.key) %}
-        <strong>{{ navItem.label }}</strong>
+        <a class="active" href="/{{ navItem.path }}">{{ navItem.label }}</a>
       {% else %}
         <a href="/{{ navItem.path }}">{{ navItem.label }}</a>
       {% endif %}
