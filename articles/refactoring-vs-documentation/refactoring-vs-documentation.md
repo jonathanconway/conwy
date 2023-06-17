@@ -123,7 +123,7 @@ This flavour of documentation is similar to feature documentation, only it focus
   <a href="project-doc-example.svg">
     <img src="project-doc-example.svg" />
   </a>
-  <figcaption>Example: Outline of minimum order value notification feature documentation</figcaption>
+  <figcaption>Example: Outline of time-limited "Easter discount" project documentation</figcaption>
 </figure>
 
 #### How it helps to work with difficult code

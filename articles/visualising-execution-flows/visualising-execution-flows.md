@@ -365,7 +365,7 @@ You might have seen diagrams similar to those described here, but laid out as se
 
 <figure>
   <a href="https://mermaid.live/edit#pako:eNqdkUFLAzEQhf_KMud1KR5zKIh68yAtesplSKZtYDdZZzKKlP53J9YWBNmDOYTJ4-XL4-UIoUQCBz4LvSnlQA8J94yTz52tp7JPeUNSlAMNYzvdrNcvQnyn9fDM5T1F4iHJK44pNt11anvGifoZRT4KxzNq6ZIx_3jJdZWVfF6KsiWRVPIVKlTvlZly_R3mzFh2_z-FCXOxBofL4Lrb1ar38G3vREMgihQHb0VDDxPxhCla78eG9VAPZBnB2RhphzrW5jyZFbWW7WcO4FqMHnSOWC-fBG6Ho1zVx5hq4R_x9AXa0Ku1">
-      <img src="https://mermaid.ink/img/pako:eNqdkUFLAzEQhf_KMud1KR5zKIh68yAtesplSKZtYDdZZzKKlP53J9YWBNmDOYTJ4-XL4-UIoUQCBz4LvSnlQA8J94yTz52tp7JPeUNSlAMNYzvdrNcvQnyn9fDM5T1F4iHJK44pNt11anvGifoZRT4KxzNq6ZIx_3jJdZWVfF6KsiWRVPIVKlTvlZly_R3mzFh2_z-FCXOxBofL4Lrb1ar38G3vREMgihQHb0VDDxPxhCla78eG9VAPZBnB2RhphzrW5jyZFbWW7WcO4FqMHnSOWC-fBG6Ho1zVx5hq4R_x9AXa0Ku1?type=png" alt="">
+      <img src="sequence-diagram.svg" alt="">
   </a>
   <figcaption>Login success flow example as a sequence diagram rendered by Mermaid </figcaption>
 </figure>
@@ -395,7 +395,7 @@ It's beyond the scope of this article to look into how such a tool could be deve
   <h3 class="note-heading">Update on ChatGPT (11/06/2023)</h3>
   <p>Experimentation with <a href="https://chat.openai.com">ChatGPT</a> yielded promising results.</p>
   <p>The LLM (Large Language Model) tool was able to generate <a href="https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492">a flowchart with labels in plain-English in both ASCII and Mermaid formats</a>.</p>
-  <p>The flowchard did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).</p>
+  <p>The flowchart did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).</p>
   <p>With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!</p>
 </div>
 
