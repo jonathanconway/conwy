@@ -320,12 +320,12 @@ class RegisterResource {
   ---&amp;gt;|200,&#39;Login succeeded.&#39;| Response::constructor
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now we can step back and look at all these flows together and see the bigger picture, e.g. how login and register both check user validity using &lt;code&gt;UserAuthProvider&lt;/code&gt;, and how both instantiate the Response class with various constructor parameters.&lt;/p&gt;
-&lt;div class=&quot;note&quot;&gt;
+&lt;aside class=&quot;note&quot;&gt;
   &lt;h3 class=&quot;note-heading&quot;&gt;Sketching execution flows&lt;/h3&gt;
   &lt;p&gt;Observe that we don&#39;t have to cover the flows exhaustively, nor do we have to limit our coverage. We can cover just the parts of code that we are concerned with, based on our current goal, e.g. to solve the current bug or to learn more about a specific part of the code-base. We can make a kind of &quot;partial sketch&quot; of the parts of the execution flows that interest us.&lt;/p&gt;
   &lt;p&gt;For example, we don&#39;t cover how &lt;code&gt;login&lt;/code&gt; and &lt;code&gt;register&lt;/code&gt; are called, and we don&#39;t cover which further calls are made by &lt;code&gt;UserAuthProvider&lt;/code&gt;, &lt;code&gt;SessionProvider&lt;/code&gt; or &lt;code&gt;Response&lt;/code&gt;, if those parts of the code don&#39;t interest us.&lt;/p&gt;
   &lt;p&gt;And if we are dealing with a bug in which &lt;code&gt;isValidUser&lt;/code&gt; incorrectly returns &lt;code&gt;false&lt;/code&gt;, we can focus more on &lt;code&gt;isValidUser&lt;/code&gt; and which methods it calls.&lt;/p&gt;
-&lt;/div&gt;
+&lt;/aside&gt;
 &lt;h2&gt;Format for notating execution flows&lt;/h2&gt;
 &lt;p&gt;Did you notice the textual format used in the previous section to notate the execution flows?&lt;/p&gt;
 &lt;p&gt;Let&#39;s deep-dive into that.&lt;/p&gt;
@@ -384,10 +384,10 @@ class RegisterResource {
 &lt;p&gt;Now the juicy part – lets look at how this format can be instantly converted into a visual flowchat using Mermaid!&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://mermaid.js.org/&quot;&gt;Mermaid&lt;/a&gt; is a free, open-source tool, which takes code written in a specific syntax and converts it into a diagram.&lt;/p&gt;
 &lt;p&gt;You can run Mermaid in the browser using &lt;a href=&quot;https://mermaid.live/&quot;&gt;Mermaid Live&lt;/a&gt;, or if you prefer, you can download and run it locally using the instructions on the &lt;a href=&quot;https://github.com/mermaid-js/mermaid-live-editor&quot;&gt;mermaid-live-editor&lt;/a&gt; GitHub profile.&lt;/p&gt;
-&lt;div class=&quot;note&quot;&gt;
+&lt;aside class=&quot;note&quot;&gt;
   &lt;p&gt;Note: We&#39;ll need to add the keyword &lt;code&gt;graph&lt;/code&gt; to the top of the text.&lt;/p&gt;
   &lt;p&gt;Also, in these examples, we add numbered circular nodes (e.g. &lt;code&gt;---n1((1))&lt;/code&gt;) to indicate the order of execution.&lt;/p&gt;
-&lt;/div&gt;
+&lt;/aside&gt;
 &lt;p&gt;The following is how our two earlier Java examples – login success and login failure – render in Mermaid:&lt;/p&gt;
 &lt;figure&gt;
   &lt;a href=&quot;https://mermaid.live/edit#pako:eNqNkU9LAzEQxb_KMpdOYVfa7Z9DDoKoNxGx6CmXkEy7gd1kySSKtP3uZqWuPdWeknl5837DZA_aGwIBu6D6Rronv7PuldinoEmIdiilK4qqqtwccT6dnqrbQ2IKz6qjslfMnz6YQ_GWpbsUm5fgP6yhIITld9VaMzz8xtSI9RhzibdAXFzmbYjZeveHY4r3KQRy8Zy4RFxeRVwhrs6I9WxWTn78BSetiQyZm8mhyN29d5y7dT5iSDr6EbZGXP8DgxI6Cp2yJi9-P1glxIY6kiDy1dBWpTZKkO6YrSpFv_lyGkQmUQmpNyrSg1X5yzoQW9XyqD4am0c5icdvzQeeBg&quot;&gt;
@@ -411,11 +411,11 @@ class RegisterResource {
 &lt;p&gt;Notice that we&#39;ve added small numbered circles, indicating the order in which the calls occur. This makes the flow a bit easier to navigate.&lt;/p&gt;
 &lt;p&gt;Imagine this appearing in a Slack conversation:&lt;/p&gt;
 &lt;p&gt;It could potentially be easier to read and follow an execution flow diagram than to read paragraphs of text trying to describe in plain language the complex sequence of calls.&lt;/p&gt;
-&lt;div class=&quot;note&quot;&gt;
+&lt;aside class=&quot;note&quot;&gt;
   &lt;h3 class=&quot;note-heading&quot;&gt;Asynchronicity and concurrency&lt;/h3&gt;
   &lt;p&gt;Though we touched on async in the Javascript example with the &lt;code&gt;setTimeout&lt;/code&gt; call, we haven&#39;t fully addressed the issue of describing asynchronicity or concurrency in execution flows.&lt;/p&gt;
   &lt;p&gt;This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagrammatically, as long as a strict convention is adhered to.&lt;/p&gt;
-&lt;/div&gt;
+&lt;/aside&gt;
 &lt;h2&gt;Isn&#39;t this just a flowchart?&lt;/h2&gt;
 &lt;p&gt;Yes, but it&#39;s a &lt;strong&gt;&lt;em&gt;specialised&lt;/em&gt;&lt;/strong&gt; form of flowchart, focussed on representing execution flow.&lt;/p&gt;
 &lt;p&gt;The flowchart directly maps to the code it represents, so it accurately and unambiguously conveys information about that code. At the same time, because it&#39;s not actually code, but a diagram, it allows us to more easily view and reason about the code in terms of execution flows specifically. We don&#39;t have to jump around between files, scroll up and down, etc. but can see a whole execution flow in one screen.&lt;/p&gt;
@@ -441,13 +441,13 @@ class RegisterResource {
 &lt;p&gt;Dependency graphs of course help us to understand how code is structured, but they don&#39;t give us the full picture of which parts of that code execute in which order at runtime. For that, we really need execution flows.&lt;/p&gt;
 &lt;p&gt;Theoretically any tool that could automatically report execution flows would need to be able to analyse the code in terms of its expected execution at runtime. The tool might, like a debugger, execute the code, in order to determine the flow of control, e.g. where the flow of control depends on some state which can only be discovered at runtime. Or it could statically analyse the code to determine all possible flows and generate a report of all of them.&lt;/p&gt;
 &lt;p&gt;It&#39;s beyond the scope of this article to look into how such a tool could be developed, but it&#39;s something I&#39;m interested in looking into and perhaps even undertaking myself.&lt;/p&gt;
-&lt;div class=&quot;note&quot;&gt;
+&lt;aside class=&quot;note&quot;&gt;
   &lt;h3 class=&quot;note-heading&quot;&gt;Update on ChatGPT (11/06/2023)&lt;/h3&gt;
   &lt;p&gt;Experimentation with &lt;a href=&quot;https://chat.openai.com/&quot;&gt;ChatGPT&lt;/a&gt; yielded promising results.&lt;/p&gt;
   &lt;p&gt;The LLM (Large Language Model) tool was able to generate &lt;a href=&quot;https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492&quot;&gt;a flowchart with labels in plain-English in both ASCII and Mermaid formats&lt;/a&gt;.&lt;/p&gt;
   &lt;p&gt;The flowchart did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).&lt;/p&gt;
   &lt;p&gt;With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!&lt;/p&gt;
-&lt;/div&gt;
+&lt;/aside&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;This article has outlined a format for describing execution flow, which can be used to visualise and understand how parts of a codebase execute at runtime (and generate diagrams).&lt;/p&gt;
 &lt;p&gt;This understanding can help to diagnose bugs/errors, determine the best points at which to change the code, estimate how long changes might take, and no doubt many other use cases.&lt;/p&gt;
