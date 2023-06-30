@@ -212,14 +212,14 @@ LoginResource::register
 
 Now we can step back and look at all these flows together and see the bigger picture, e.g. how login and register both check user validity using `UserAuthProvider`, and how both instantiate the Response class with various constructor parameters.
 
-<div class="note">
+<aside class="note">
   <h3 class="note-heading">Sketching execution flows</h3>
   <p>Observe that we don't have to cover the flows exhaustively, nor do we have to limit our coverage. We can cover just the parts of code that we are concerned with, based on our current goal, e.g. to solve the current bug or to learn more about a specific part of the code-base. We can make a kind of "partial sketch" of the parts of the execution flows that interest us.</p>
 
   <p>For example, we don't cover how <code>login</code> and <code>register</code> are called, and we don't cover which further calls are made by <code>UserAuthProvider</code>, <code>SessionProvider</code> or <code>Response</code>, if those parts of the code don't interest us.</p>
 
   <p>And if we are dealing with a bug in which <code>isValidUser</code> incorrectly returns <code>false</code>, we can focus more on <code>isValidUser</code> and which methods it calls.</p>
-</div>
+</aside>
 
 ## Format for notating execution flows
 
@@ -308,10 +308,10 @@ Now the juicy part – lets look at how this format can be instantly converted i
 
 You can run Mermaid in the browser using [Mermaid Live](https://mermaid.live/), or if you prefer, you can download and run it locally using the instructions on the [mermaid-live-editor](https://github.com/mermaid-js/mermaid-live-editor) GitHub profile.
 
-<div class="note">
+<aside class="note">
   <p>Note: We'll need to add the keyword <code>graph</code> to the top of the text.</p>
   <p>Also, in these examples, we add numbered circular nodes (e.g. <code>---n1((1))</code>) to indicate the order of execution.</p>
-</div>
+</aside>
 
 The following is how our two earlier Java examples – login success and login failure – render in Mermaid:
 
@@ -344,12 +344,12 @@ Imagine this appearing in a Slack conversation:
 
 It could potentially be easier to read and follow an execution flow diagram than to read paragraphs of text trying to describe in plain language the complex sequence of calls.
 
-<div class="note">
+<aside class="note">
   <h3 class="note-heading">Asynchronicity and concurrency</h3>
   <p>Though we touched on async in the Javascript example with the <code>setTimeout</code> call, we haven't fully addressed the issue of describing asynchronicity or concurrency in execution flows.</p>
 
   <p>This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagrammatically, as long as a strict convention is adhered to.</p>
-</div>
+</aside>
 
 ## Isn't this just a flowchart?
 
@@ -391,13 +391,13 @@ Theoretically any tool that could automatically report execution flows would nee
 
 It's beyond the scope of this article to look into how such a tool could be developed, but it's something I'm interested in looking into and perhaps even undertaking myself.
 
-<div class="note">
+<aside class="note">
   <h3 class="note-heading">Update on ChatGPT (11/06/2023)</h3>
   <p>Experimentation with <a href="https://chat.openai.com">ChatGPT</a> yielded promising results.</p>
   <p>The LLM (Large Language Model) tool was able to generate <a href="https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492">a flowchart with labels in plain-English in both ASCII and Mermaid formats</a>.</p>
   <p>The flowchart did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).</p>
   <p>With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!</p>
-</div>
+</aside>
 
 ## Conclusion
 
