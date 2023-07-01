@@ -202,3 +202,9 @@ Suitable documentation can facilitate understanding of complex and poorly struct
 Unlike refactoring, documentation can be added without a full build-deploy cycle, without risking breakage and without having to follow the structure of the code.
 
 Creating documentation may be a better use of time than complex refactoring, if you are dealing with a complex code base, have tight time constraints and need to minimise risk.
+
+## Further reading
+
+These books inspired this article:
+
+- [_Software Engineering at Google_](https://www.kobo.com/au/en/ebook/software-engineering-at-google) by Titus Winters, Tom Manshreck, Hyrum Wright
