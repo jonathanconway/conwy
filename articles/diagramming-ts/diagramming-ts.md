@@ -238,6 +238,6 @@ State-charts have already been recommended for diagramming Redux state machines.
 
 These books may serve as a handy guide and reference on UML:
 
-- _UML Distilled_ • Martin FOWLER
-- _The Unified Modelling Language User Guide_ • Grady BOOCH
-- _Modelling with UML - Language, Concepts, Methods_ • Bernhard RUMPE
+- [_UML Distilled_](https://www.martinfowler.com/books/uml.html) • Martin FOWLER
+- [_The Unified Modelling Language User Guide_](https://www.amazon.com/Unified-Modeling-Language-User-Guide/dp/0321267974) • Grady BOOCH
+- [_Modelling with UML - Language, Concepts, Methods_](https://www.abbeys.com.au/book/modeling-with-uml-language-concepts-methods-book-9783319816357.do) • Bernhard RUMPE

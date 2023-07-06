@@ -52,34 +52,34 @@ This requirement might be captured in two BDD specs such as the following:
 >
 > ##### SCENARIO 1: Validate currency limit
 >
-> * **GIVEN** I am a registered user
-> * **AND** I have a bank balance of 100,000 GBP
-> * **AND** The maximum conversion from GBP to CAD is 50,000
-> * **WHEN** I go to the Make a Payment screen
-> * **AND** I set the Destination currency to CAD
-> * **AND** I set the Payment amount to 51,000 GBP
-> * **THEN** I will see a Currency conversion over daily payment limit error
-> * **AND** I will see a Fill max currency button
+> - **GIVEN** I am a registered user
+> - **AND** I have a bank balance of 100,000 GBP
+> - **AND** The maximum conversion from GBP to CAD is 50,000
+> - **WHEN** I go to the Make a Payment screen
+> - **AND** I set the Destination currency to CAD
+> - **AND** I set the Payment amount to 51,000 GBP
+> - **THEN** I will see a Currency conversion over daily payment limit error
+> - **AND** I will see a Fill max currency button
 >
 > ##### SCENARIO 2: Provide Max button, which resets currency to limit value
 >
-> * **GIVEN** I am a registered user
-> * **AND** I have a bank balance of 100,000 GBP
-> * **AND** The maximum conversion from GBP to CAD is 50,000
-> * **WHEN** I go to the Make a Payment screen
-> * **AND** I set the Destination currency to CAD
-> * **AND** I set the Payment amount to 51,000 GBP
-> * **AND** I click the Fill max currency button
-> * **AND** I click the Submit payment button
-> * **THEN** I will see a Payment successful screen
-> * **AND** I will see the amount paid as 50,000 GBP
+> - **GIVEN** I am a registered user
+> - **AND** I have a bank balance of 100,000 GBP
+> - **AND** The maximum conversion from GBP to CAD is 50,000
+> - **WHEN** I go to the Make a Payment screen
+> - **AND** I set the Destination currency to CAD
+> - **AND** I set the Payment amount to 51,000 GBP
+> - **AND** I click the Fill max currency button
+> - **AND** I click the Submit payment button
+> - **THEN** I will see a Payment successful screen
+> - **AND** I will see the amount paid as 50,000 GBP
 
 Notice how cumbersome and repetitive this is.
 
 We could replace it with a single, neatly condensed sequence of steps:
 
 > #### SCENARIO: Validate currency limit with max button
-> 
+>
 > 1. Log in as a registered user
 > 2. Assume a bank balance of 100,000 GBP
 > 3. Assume a maximum conversion from GBP to CAD of 50,000
@@ -121,4 +121,4 @@ If there is enough interest, I will look at getting it ported to other languages
 
 Books that inspired me:
 
-- _The Cucumber Book_ • Matt WYNNE
+- [_The Cucumber Book_](https://pragprog.com/titles/hwcuc2/the-cucumber-book-second-edition/) • Matt WYNNE

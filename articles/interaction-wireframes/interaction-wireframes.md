@@ -112,6 +112,5 @@ I've found simple, low-fidelity wireframes that highlight **interactions** to be
 
 Books that inspired me:
 
-- _Designing for the digital age_ • Kim GOODWIN
-
-- _Macintosh Human Interface Guidelines_ • Apple Computer
+- [_Designing for the Digital Age_](https://www.wiley.com/en-us/Designing+for+the+Digital+Age%3A+How+to+Create+Human+Centered+Products+and+Services-p-9780470229101) • Kim GOODWIN
+- [_Macintosh Human Interface Guidelines_](https://developer.apple.com/design/human-interface-guidelines/) • Apple Computer

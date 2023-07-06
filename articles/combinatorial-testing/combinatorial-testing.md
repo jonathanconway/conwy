@@ -304,3 +304,9 @@ If you'd like to add a little combinatorial goodness to our unit tests, please c
 [https://github.com/jonathanconway/combinator](https://github.com/jonathanconway/combinator)
 
 Contributions welcome!
+
+## Further reading
+
+These books inspired this article:
+
+- [_Introduction to Mathematical Thinking_](https://www.amazon.com/Introduction-Mathematical-Thinking-Keith-Devlin) by Keith Devlin

@@ -411,5 +411,5 @@ I hope you find it useful!
 
 These books inspired this article:
 
-- _The pocket guide to debugging_ • Julia EVANS
-- _UML distilled_ • Martin FOWLER
+- [_The Pocket Guide to Debugging_](https://jvns.ca/blog/2022/12/21/new-zine--the-pocket-guide-to-debugging/) • Julia EVANS
+- [_UML Distilled_](https://www.martinfowler.com/books/uml.html) • Martin FOWLER

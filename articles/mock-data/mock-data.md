@@ -342,5 +342,5 @@ Given all of the above, mock data seems best suited to long-term software projec
 
 Books that inspired me:
 
-- _Domain modelling made functional_ • Scott WLASCHIN
-- _The art of unit testing_ • Roy OSHEROV
+- [_Domain Modelling Made Functional_](https://pragprog.com/titles/swdddf/domain-modeling-made-functional/) • Scott WLASCHIN
+- [_The Art of Unit Testing_](https://www.artofunittesting.com/) • Roy OSHEROV
