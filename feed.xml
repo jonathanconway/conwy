@@ -848,8 +848,8 @@ class RegisterResource {
 &lt;h2&gt;Further reading&lt;/h2&gt;
 &lt;p&gt;These books inspired this article:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;The pocket guide to debugging&lt;/em&gt; • Julia EVANS&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;UML distilled&lt;/em&gt; • Martin FOWLER&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://jvns.ca/blog/2022/12/21/new-zine--the-pocket-guide-to-debugging/&quot;&gt;&lt;em&gt;The Pocket Guide to Debugging&lt;/em&gt;&lt;/a&gt; • Julia EVANS&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.martinfowler.com/books/uml.html&quot;&gt;&lt;em&gt;UML Distilled&lt;/em&gt;&lt;/a&gt; • Martin FOWLER&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>
@@ -1083,6 +1083,11 @@ twenty-eight days each year&lt;/p&gt;
 &lt;p&gt;If you&#39;d like to add a little combinatorial goodness to our unit tests, please check out this re-usable, open-source NPM package:&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jonathanconway/combinator&quot;&gt;https://github.com/jonathanconway/combinator&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Contributions welcome!&lt;/p&gt;
+&lt;h2&gt;Further reading&lt;/h2&gt;
+&lt;p&gt;These books inspired this article:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Introduction-Mathematical-Thinking-Keith-Devlin&quot;&gt;&lt;em&gt;Introduction to Mathematical Thinking&lt;/em&gt;&lt;/a&gt; by Keith Devlin&lt;/li&gt;
+&lt;/ul&gt;
 </content>
   </entry>
   <entry>
@@ -1178,7 +1183,7 @@ THEN z
 &lt;h2&gt;Further reading&lt;/h2&gt;
 &lt;p&gt;Books that inspired me:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;The Cucumber Book&lt;/em&gt; • Matt WYNNE&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pragprog.com/titles/hwcuc2/the-cucumber-book-second-edition/&quot;&gt;&lt;em&gt;The Cucumber Book&lt;/em&gt;&lt;/a&gt; • Matt WYNNE&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>
@@ -1338,9 +1343,9 @@ function CrewDetails({
 &lt;h2&gt;Further reading&lt;/h2&gt;
 &lt;p&gt;These books may serve as a handy guide and reference on UML:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;UML Distilled&lt;/em&gt; • Martin FOWLER&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;The Unified Modelling Language User Guide&lt;/em&gt; • Grady BOOCH&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Modelling with UML - Language, Concepts, Methods&lt;/em&gt; • Bernhard RUMPE&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.martinfowler.com/books/uml.html&quot;&gt;&lt;em&gt;UML Distilled&lt;/em&gt;&lt;/a&gt; • Martin FOWLER&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Unified-Modeling-Language-User-Guide/dp/0321267974&quot;&gt;&lt;em&gt;The Unified Modelling Language User Guide&lt;/em&gt;&lt;/a&gt; • Grady BOOCH&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.abbeys.com.au/book/modeling-with-uml-language-concepts-methods-book-9783319816357.do&quot;&gt;&lt;em&gt;Modelling with UML - Language, Concepts, Methods&lt;/em&gt;&lt;/a&gt; • Bernhard RUMPE&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>
@@ -1559,8 +1564,8 @@ function CrewDetails({
 &lt;h2&gt;Further reading&lt;/h2&gt;
 &lt;p&gt;Books that inspired me:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Domain modelling made functional&lt;/em&gt; • Scott WLASCHIN&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;The art of unit testing&lt;/em&gt; • Roy OSHEROV&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://pragprog.com/titles/swdddf/domain-modeling-made-functional/&quot;&gt;&lt;em&gt;Domain Modelling Made Functional&lt;/em&gt;&lt;/a&gt; • Scott WLASCHIN&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.artofunittesting.com/&quot;&gt;&lt;em&gt;The Art of Unit Testing&lt;/em&gt;&lt;/a&gt; • Roy OSHEROV&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>
@@ -1769,12 +1774,8 @@ function CrewDetails({
 &lt;h2&gt;Further reading&lt;/h2&gt;
 &lt;p&gt;Books that inspired me:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Designing for the digital age&lt;/em&gt; • Kim GOODWIN&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;em&gt;Macintosh Human Interface Guidelines&lt;/em&gt; • Apple Computer&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.wiley.com/en-us/Designing+for+the+Digital+Age%3A+How+to+Create+Human+Centered+Products+and+Services-p-9780470229101&quot;&gt;&lt;em&gt;Designing for the Digital Age&lt;/em&gt;&lt;/a&gt; • Kim GOODWIN&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.apple.com/design/human-interface-guidelines/&quot;&gt;&lt;em&gt;Macintosh Human Interface Guidelines&lt;/em&gt;&lt;/a&gt; • Apple Computer&lt;/li&gt;
 &lt;/ul&gt;
 </content>
   </entry>
