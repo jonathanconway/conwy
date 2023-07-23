@@ -83,7 +83,7 @@ function ShareholderStakeEditor({
   ...
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We want to make the state of &lt;code&gt;handleClickSave&lt;/code&gt; observable.&lt;/p&gt;
+&lt;p&gt;We want to make the state of our component observable.&lt;/p&gt;
 &lt;p&gt;Let&#39;s log two structured events:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;useShareholderStakeEditor/changeStakeValid&lt;/code&gt; - stake was valid and we will submit a PATCH request&lt;/li&gt;
