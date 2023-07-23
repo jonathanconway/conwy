@@ -90,7 +90,7 @@ function ShareholderStakeEditor({
 }
 ```
 
-We want to make the state of `handleClickSave` observable.
+We want to make the state of our component observable.
 
 Let's log two structured events:
 
