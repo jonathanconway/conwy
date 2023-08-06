@@ -46,8 +46,8 @@
 &lt;h2&gt;Scan&lt;/h2&gt;
 &lt;p&gt;After gaining context, the next step is to scan the code, getting a &amp;quot;big picture&amp;quot; view of how it hangs together.&lt;/p&gt;
 &lt;p&gt;I&#39;ll often check out the change locally, open some of the files in my IDE, and use the navigation tools in the IDE to figure out what sequence of calls are being made, what data are being passed, etc. If it&#39;s a complex network of calls, I might spend a few minutes sketching an &lt;a href=&quot;https://conwy.co/articles/visualising-execution-flows&quot;&gt;execution flowchart&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I also survey the content of new code added, looking at key variables, control-flow structures (conditionals, switchs, loops, etc), and getting a grasp of what the code does.&lt;/p&gt;
-&lt;p&gt;At this point I may already have questions or identify issues, and if so, I won&#39;t hesistate to leave a few comments.&lt;/p&gt;
+&lt;p&gt;I also survey the content of new code added, looking at key variables, control-flow structures (conditionals, switches, loops, etc), and getting an overall grasp of what the code does.&lt;/p&gt;
+&lt;p&gt;At this point I may already have questions or issues for the author, and if so, I won&#39;t hesistate to leave a few comments.&lt;/p&gt;
 &lt;p&gt;My comments will usually be in the following form:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[Priority]: (Message)
 &lt;/code&gt;&lt;/pre&gt;
