@@ -159,7 +159,7 @@
 <p>Let me go into a bit more detail on how I perform each of these.</p>
 <h2>Context</h2>
 <p>It's difficult to meaningfully assess a code change without understanding its intention and how it fits into the broader context of the system. The code may either look superficially correct, leading you to approve it too quickly, or it may look very odd, generating innumerable questions to the author.</p>
-<p>Conversely, when you <strong><em>do</em></strong> understand the intention and context, a code change become much easier to understand and more intelligible.</p>
+<p>Conversely, when you <strong><em>do</em></strong> understand the intention and context, a code change becomes much easier to understand and more intelligible.</p>
 <p>So I've found it useful to learn more about the context if I'm unclear.</p>
 <p>Here are some methods I use to learn more about the context:</p>
 <ul>
@@ -172,11 +172,11 @@
 <li>Look up the authors of the files associated with the change in version control history and ask them directly for context.</li>
 </ul>
 <p>While the above might seem time-consuming, I've found it possible to fairly quickly improve my knowledge, even within minutes, by just picking a few of the relevant methods and applying them.</p>
-<p>For example, if I already work closely with the author involved, a simple message asking for context often gets a quick reply. Or if the code changes are attached to tasks, e.g. via task codes, it's usually possible to access the task with just a couple of clicks, and then read it within a few minutes. So</p>
+<p>For example, if I already work closely with the author involved, a simple message asking for context often gets a quick reply. Or if the code changes are attached to tasks, e.g. via task codes, it's usually possible to access the task with just a couple of clicks, and then read it within a few minutes.</p>
 <p>I believe this &quot;context hunting&quot; is usually worth the effort. It's not only about understanding the code change you're looking at. The benefits of contextual knowledge compound over time. Initially you might spend, say, 10 minutes reading and digesting contextual information, but eventually the time spend can approach 0, as you develop a systematic understanding of the whole system. That systematic understanding is highly valuable in all kinds of ways, not only for code review. It can help you to succeed in your own projects within the organisation and even help you to make the case for new projects and initiatives.</p>
 <h2>Scan</h2>
 <p>After gaining context, the next step is to scan the code, getting a &quot;big picture&quot; view of how it hangs together.</p>
-<p>I'll often check out the change locally, open some of the files in my IDE, and use the navigation tools in the IDE to figure out what sequence of calls are being made, what data are being passed, etc. If it's a complex network of calls, I'll spend a few moments <a href="/articles/visualising-execution-flows">writing an execution flowchart</a>.</p>
+<p>I'll often check out the change locally, open some of the files in my IDE, and use the navigation tools in the IDE to figure out what sequence of calls are being made, what data are being passed, etc. If it's a complex network of calls, I might spend a few minutes sketching an <a href="/articles/visualising-execution-flows">execution flowchart</a>.</p>
 <p>I also survey the content of new code added, looking at key variables, control-flow structures (conditionals, switchs, loops, etc), and getting a grasp of what the code does.</p>
 <p>At this point I may already have questions or identify issues, and if so, I won't hesistate to leave a few comments.</p>
 <p>My comments will usually be in the following form:</p>
