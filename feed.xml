@@ -4,7 +4,7 @@
   <subtitle>Blog articles by Jonathan Conway</subtitle>
   <link href="https://conwy.co/feed.xml" rel="self"/>
   <link href="https://conwy.co/"/>
-  <updated>2023-07-06T00:00:00Z</updated>
+  <updated>2023-08-06T00:00:00Z</updated>
   <id>https://conwy.co/</id>
   <author>
     <name>Jonathan Conway</name>
@@ -13,7 +13,7 @@
   <entry>
     <title>Streamlining code reviews</title>
     <link href="https://conwy.co/articles/code-reviews/"/>
-    <updated>2023-07-06T00:00:00Z</updated>
+    <updated>2023-08-06T00:00:00Z</updated>
     <id>https://conwy.co/articles/code-reviews/</id>
     <content xml:lang="en" type="html">&lt;p&gt;For myself and others, I&#39;ve found that code reviews can be a challenging part of being a software developer.&lt;/p&gt;
 &lt;p&gt;There may be many code changes to go through, many possible mistakes to be found and limited time to find and communicate them. Even before considering mistakes, the sheer amount and complexity of the code and changes can feel overwhelming – you don&#39;t know where to begin. It often feels like code review is chaotic and random, and it&#39;s down to luck whether or not it will be constructive.&lt;/p&gt;
