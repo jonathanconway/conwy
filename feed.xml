@@ -27,8 +27,9 @@
 &lt;/ol&gt;
 &lt;p&gt;Let me go into a bit more detail on how I perform each of these.&lt;/p&gt;
 &lt;h2&gt;Context&lt;/h2&gt;
-&lt;p&gt;It&#39;s difficult to meaningfully assess a code change without understanding its intention and how it fits into the broader context of the system. The code may either look superficially correct, leading you to approve it too quickly, or it may look very odd, generating innumerable questions to the author.&lt;/p&gt;
-&lt;p&gt;Conversely, when you &lt;strong&gt;&lt;em&gt;do&lt;/em&gt;&lt;/strong&gt; understand the intention and context, a code change becomes much easier to understand and more intelligible.&lt;/p&gt;
+&lt;p&gt;It&#39;s difficult to meaningfully assess a code change without understanding its &lt;strong&gt;&lt;em&gt;context&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Context includes: what problem or requirement the code change intends to solve and how it fits into the broader context of the system.&lt;/p&gt;
+&lt;p&gt;Without context, the code may either look superficially correct, leading you to approve it too quickly, or it may look very odd, generating innumerable questions to the author. Conversely, when you &lt;strong&gt;&lt;em&gt;do&lt;/em&gt;&lt;/strong&gt; understand the intention and context, a code change becomes much easier to understand and more intelligible.&lt;/p&gt;
 &lt;p&gt;So I&#39;ve found it useful to learn more about the context if I&#39;m unclear.&lt;/p&gt;
 &lt;p&gt;Here are some methods I use to learn more about the context:&lt;/p&gt;
 &lt;ul&gt;
@@ -82,7 +83,7 @@
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Code reviews are an integral part of modern software engineering.&lt;/p&gt;
 &lt;p&gt;At a team level, they&#39;re a great way to maximise code quality and ensure a shared understanding and knowledge of the code and systems.&lt;/p&gt;
-&lt;p&gt;At an individual level, it&#39;s useful to understand as much of the code as possible, both at a high level and a detailed level. This improves the quality of my own work and increases the likelihood of success in my current work and new initiatives within the organisation.&lt;/p&gt;
+&lt;p&gt;At an individual level, they&#39;re useful for understanding as much of the code as possible, both at a high level and a detailed level. This improves the quality of my own work and increases the likelihood of success in my current work and new initiatives within the organisation.&lt;/p&gt;
 &lt;p&gt;Having a normalised process for performing code reviews helps make them easier and more fun. It also improves the quality of the feedback and, long-term, the code base.&lt;/p&gt;
 &lt;h2&gt;Further reading&lt;/h2&gt;
 &lt;p&gt;These books inspired this article:&lt;/p&gt;
