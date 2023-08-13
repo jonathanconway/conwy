@@ -42,7 +42,7 @@ These factors compound, causing a seemingly small refactoring to turn into a maj
 
 ## We have to understand the code anyway
 
-For any significant refactoring to be successful, the Developer likely needs to first have a solid grasp of the code being refactored. This means understanding the structure of the code as well as the expected behaviour of the code and the business problem it is intended to solve. Gaining this understanding takes a significant amount of time, as does making the actual changes.
+For any significant refactoring to be successful, the Developer likely needs to first have a solid grasp of the code being refactored. This means understanding the structure of the code as well as the expected behaviour of the code and the business problem it is intended to solve. Gaining this understanding takes a significant amount of time, as does making the actual changes. <sup>[1](#note-1)</sup>
 
 I would argue that such understanding is necessary anyway, not only for refactoring, but for making any changes to the code at all, such as implementing new features, making modifications or fixing bugs.
 
@@ -203,8 +203,13 @@ Unlike refactoring, documentation can be added without a full build-deploy cycle
 
 Creating documentation may be a better use of time than complex refactoring, if you are dealing with a complex code base, have tight time constraints and need to minimise risk.
 
+## Notes
+
+<sup id="note-1">1</sup> According to research, almost 60% of programmers’ time is spent understanding rather than writing code. See “Measuring Program Comprehension: A Large-Scale Field Study with Professionals” by Xin Xia et al. (2017), [https://ieeexplore.ieee.org/abstract/document/7997917](https://ieeexplore.ieee.org/abstract/document/7997917). From the book [_The Programmer's Brain_](https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/) by Felienne Hermans.
+
 ## Further reading
 
 These books inspired this article:
 
 - [_Software Engineering at Google_](https://www.kobo.com/au/en/ebook/software-engineering-at-google) by Titus Winters, Tom Manshreck, Hyrum Wright
+- [_The Programmer's Brain_](https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/) by Felienne Hermans
