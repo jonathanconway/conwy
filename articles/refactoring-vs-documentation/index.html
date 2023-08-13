@@ -168,7 +168,7 @@
 <p>Additionally, as the scope of the refactoring changes, so too does the scope of the regression testing that will need to be done, to ensure that the changes do not cause breakage. Even with 100% unit test coverage, any code change may open up gaps in coverage, requiring tests to be changed or new tests to be written. The application also needs to be end-to-end tested, whether in an automated or manual manner, and the scope of the end-to-end testing is also impacted.</p>
 <p>These factors compound, causing a seemingly small refactoring to turn into a major undertaking, with questionable justification for time spent in proportion to business value.</p>
 <h2>We have to understand the code anyway</h2>
-<p>For any significant refactoring to be successful, the Developer likely needs to first have a solid grasp of the code being refactored. This means understanding the structure of the code as well as the expected behaviour of the code and the business problem it is intended to solve. Gaining this understanding takes a significant amount of time, as does making the actual changes.</p>
+<p>For any significant refactoring to be successful, the Developer likely needs to first have a solid grasp of the code being refactored. This means understanding the structure of the code as well as the expected behaviour of the code and the business problem it is intended to solve. Gaining this understanding takes a significant amount of time, as does making the actual changes. <sup><a href="#note-1">1</a></sup></p>
 <p>I would argue that such understanding is necessary anyway, not only for refactoring, but for making any changes to the code at all, such as implementing new features, making modifications or fixing bugs.</p>
 <p>If we have to spend time understanding code, whether or not we actively perform refactoring, then that understanding itself is of value. So we might as well invest more time into understanding the code, rather than trying to refactor it, given the greater payoff of understanding.</p>
 <p>That understanding can be converted into documentation, for future reference and to transfer the knowledge to the rest of the team.</p>
@@ -285,10 +285,13 @@
 <p>Suitable documentation can facilitate understanding of complex and poorly structured code, enabling developers to work with it more efficiently.</p>
 <p>Unlike refactoring, documentation can be added without a full build-deploy cycle, without risking breakage and without having to follow the structure of the code.</p>
 <p>Creating documentation may be a better use of time than complex refactoring, if you are dealing with a complex code base, have tight time constraints and need to minimise risk.</p>
+<h2>Notes</h2>
+<p><sup id="note-1">1</sup> According to research, almost 60% of programmers’ time is spent understanding rather than writing code. See “Measuring Program Comprehension: A Large-Scale Field Study with Professionals” by Xin Xia et al. (2017), <a href="https://ieeexplore.ieee.org/abstract/document/7997917">https://ieeexplore.ieee.org/abstract/document/7997917</a>. From the book <a href="https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/"><em>The Programmer's Brain</em></a> by Felienne Hermans.</p>
 <h2>Further reading</h2>
 <p>These books inspired this article:</p>
 <ul>
 <li><a href="https://www.kobo.com/au/en/ebook/software-engineering-at-google"><em>Software Engineering at Google</em></a> by Titus Winters, Tom Manshreck, Hyrum Wright</li>
+<li><a href="https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/"><em>The Programmer's Brain</em></a> by Felienne Hermans</li>
 </ul>
 
 
