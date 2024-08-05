@@ -209,5 +209,17 @@
   {
     "from": "/video/interfaces-teamwork",
     "to": "https://www.youtube.com/watch?v=gjL5qEtKCkU"
+  },
+  {
+    "from": "/tailwindjs",
+    "to": "https://github.com/jonathanconway/tailwindjs"
+  },
+  {
+    "from": "/codeselectors",
+    "to": "https://usecodeselectors.surge.sh"
+  },
+  {
+    "from": "/testmatic",
+    "to": "https://testmatic-docs.surge.sh"
   }
 ]
