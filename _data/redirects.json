@@ -225,5 +225,9 @@
   {
     "from": "/new",
     "to": "https://conwy.surge.sh"
+  },
+  {
+    "from": "/calculus",
+    "to": "https://conwy.surge.sh/articles/studying-calculus"
   }
 ]
