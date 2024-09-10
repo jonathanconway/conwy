@@ -7,3 +7,5 @@
 <p class="small">Additionally I do some <a href="/articles">writing</a>, <a href="https://github.com/jonathanconway">open-source</a>, <a href="https://www.producthunt.com/@conwy">side-projects</a> and <a href="https://www.youtube.com/watch?v=86PqPOQx3Co">speaking</a>.</p>
 
 <p class="small">I studied <a href="https://www.sydney.edu.au/courses/courses/pc/graduate-certificate-in-interaction-design-and-electronic-arts.html">Interaction Design</a> at Sydney University.</p>
+
+<div id="new">⚡️ Check out a preview of my new website here: <a href="https://conwy.surge.sh">https://conwy.surge.sh</a></div>

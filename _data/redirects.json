@@ -221,5 +221,9 @@
   {
     "from": "/testmatic",
     "to": "https://testmatic-docs.surge.sh"
+  },
+  {
+    "from": "/new",
+    "to": "https://conwy.surge.sh"
   }
 ]
