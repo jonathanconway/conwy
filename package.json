@@ -32,7 +32,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@jonathanconway/tailwindjs": "^0.0.20",
+    "@jonathanconway/tailwindjs": "^0.0.21",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@mermaid-js/mermaid-cli": "^10.8.0",
