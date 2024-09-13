@@ -13,7 +13,7 @@
     "dev": "next dev -p 4000",
     "dev:watch": "concurrently \"npm run build:tailwind:watch\" \"npm run dev\"",
     "build": "next build",
-    "build:gh-pages": "touch out/.nojekyll",
+    "build-gh-pages": "npm run build:tailwind && npm run build && touch out/.nojekyll",
     "build:all": "next build && npm run build:custom:all",
     "build:watch": "nodemon \"npm run build\" ./src --ext ts,tsx,mdx,css --ignore *.test.*",
     "start": "npx serve@latest out  -p 4000",
