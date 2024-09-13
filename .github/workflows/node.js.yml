@@ -26,13 +26,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: npm run post-install
       - run: npm run build
       - run: npm test
-      - run: npm run snapshot
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
-          folder: _site
+          folder: out
