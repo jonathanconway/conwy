@@ -1,9 +1,0 @@
-graph TD
-    A[Start]
-        A --> B(Fetch items list)
-        B --> C(Fetch item n details)
-    C --> D{Next item?}
-    D -->|Yes| C
-    D -->|No| E(Combine items list with details)
-        E --> F(Render items list with details)
-        F --> G[Done]

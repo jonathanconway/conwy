@@ -1,0 +1,41 @@
+import { meta } from "./meta";
+import { MdxImg } from "@/components";
+
+> “I never regretted the time I spent on history and on math. Math sharpens your mind, history gives you some idea of your limitations and what’s going on in the world.”
+> – Bjarne STROUSTRUP ([Video](https://www.youtube.com/watch?v=-QxI-RP6-HM))
+
+Recently I completed [*Introduction to Calculus*](https://www.coursera.org/learn/introduction-to-calculus) on Coursera.
+
+My motivations were:
+
+* To improve my foundational math skills, enabling a better understanding of computing foundations and machine learning.
+* To test and improve my learning skills by studying a less familiar field outside comfort zone.
+* Ok... the real reason... to gain entry to the Sydney University B. Adv. Comp. program! 😄
+
+The course has been fascinating and engaging. It's not only introduced me to Calculus but also helped me to brush up on basic arithmetic and algebra where I discovered I had serious gaps. [Prof David Easdown's](https://www.sydney.edu.au/science/about/our-people/academic-staff/david-easdown.html) regular participation in the forums was valuable gift to us students!
+
+Some reflections in no particular order:
+
+* **Understanding fundamentals.** The hard part often isn't the highest level concepts, but the foundations you need in order to (properly) understand and use them. I had to understand concepts such as *completing the square*, *long division of polynomials* and *derivatives*, not only theoretically, but well enough to apply them correctly to solve an unexpected problem. I've [commented](https://news.ycombinator.com/item?id=40083488) about this on HackerNews.
+* **Benefits of drawing, visualising.** Using a high quality notebook and pen helped with enjoyment and motivation to study! Fleshing out problems on paper, down to the fine details, helped me to see how the pieces of a problem fit together, which was quite fascinating. <MdxImg alt="Scan of drawings I made while studying sinusoidal curves" src="/images/articles/studying-calculus/studying-calculus-1.jpg" width={300} />
+* **Geometric analogies.** I found it incredibly helpful when David presented an idea *geometrically*. Simple shapes such as triangles are intuitive to many learners. And the [Theorem of Pythagoras](https://en.wikipedia.org/wiki/Pythagorean_theorem) is now widely understood. The curve sketching exercises and Riemann sum rectangles were memorable examples but there were so many other cases where David made the idea clearer by some kind of geometric metaphor.
+* **Parts vs. whole.** I found that solving a non-trivial math problem typically requires also understanding all the parts of the problem. (This is in contrast to my usual profession, software development, where many problems can be solved using "black-box" solutions such as libraries, without understanding their internals.) This experience of the parts/whole adds a dimension to my understanding of problem solving generally.
+* **Focussing on mistakes.** Trying out the examples and practice tests and observing what I got wrong helped me narrow down specifically where my knowledge gaps lay and then actively correct them, which also helped improve my long-term memory of the concepts. (This way of thinking is also helping me in other areas of life beyond math.)
+* **Different learning methods at different stages.** I found different learning techniques useful at different stages of the course. Early in the course, I found repeated practice and deep thinking most useful. Midway through, I found sketching and visualisation more productive. Late in the course, I found all the above useful, plus reading various additional sources such as books.
+* **Thinking deeply about small things.** Prof David mentioned this in one of the videos - such a powerful insight! Sometimes on a walk or another repetitive activity I turned over an idea in my head to try and understand it in its essentials (e.g. I did this a lot with Leibniz notation, trying to understand it at some deeper level than words).
+* **Temporarily suspending understanding.** Introspectively, I found that getting stuck (what people call "writers block", "analysis paralysis", etc) often happens when I'm trying to understand an interconnected complex of ideas and am uncertain how to break them down. Here the usual approach of "divide and conquer" or breaking down the problem into smaller pieces doesn't work because I don't know how or according to what criteria to break them down. One way to proceed is to temporarily suspend trying to understand some parts so that I can focus on others. I'll treat them as small "black boxes" so that I can skip learning them. This enables me to move on to other problems and not be blocked.
+* **Concepts vs. application.** Abstract conceptual knowledge is not the same thing as knowledge that can be applied. I could read a book on Calculus without really understanding it, but doing the practice tests in this course was better. After this course it's more likely that I'll be able to see a problem, see where Calculus might help, identify/name the components and then try to solve it using appropriate methods.
+* **The power of good notation.** Prof David mentioned this in one of the videos on Leibniz notation. Amazing, rich insight. This immediately inspired ideas that I've been translating into my software development practices. Representing a problem differently can open the way to unexpected solutions. This inspired my [code selectors](/projects/codeselectors) project.
+* **Mathematics as a language.** Sometimes thinking of a mathematical idea as language or "description" helped me understand it. Rather than trying to understand a concept's full meaning immediately, I try to think of it as a just label – in object-oriented programmer-speak, a "class". Then I gradually add "properties" or "attributes" to that label as my understanding increases. For example, I found this method useful for understanding [Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than thinking of it as a particular number (which stumped me for a while) I found it better to think of it as the *criteria* for some number which I don't yet know. In SQL programming terms: a `SELECT` statement, with multiple `WHERE`/`AND` clauses, which yields a single scalar result which is _e_. In these terms, *e* is "the number which yields has a slope (rise over run) of 1 at 1", etc. Thinking this way helped me reason about the use of *e* in graphs.
+* **Directions for further study.** I greatly appreciated David's frequent references and pointers to areas for further study. Explaining the *proofs* of a method, rather than just the method itself, is one example – I could use this knowledge for [formal verification](https://en.wikipedia.org/wiki/Formal_verification). Referencing more advanced concepts such as series expansions is another example. This makes me curious and motivates me to study the field further.
+
+I started this course with some trepidation and had many challenges along the way, but I feel a great sense of satisfaction after completing it.
+
+Now I can't wait to jump into my next learning challenge: [Linear Algebra](https://www.coursera.org/learn/introduction-to-linear-algebra)!
+
+## Further reading
+
+Books that helped me along this journey:
+
+- [_Precalculus: Mathematics for Calculus, Seventh Edition_](https://www.amazon.com.au/Precalculus-Mathematics-Calculus-James-Stewart/dp/1305071751) • James STEWART, Lothar REDLIN, Saleem WATSON
+

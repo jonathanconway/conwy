@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+
+  width: 18rem;
+  min-height: 10rem;
+
+  border-radius: 0.375rem;
+  border: solid 1px var(--border-1);
+
+  display: flex;
+  padding: 0.75rem;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.container:hover {
+  background-color: var(--list-item-hover-background-color);
+}

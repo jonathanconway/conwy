@@ -1,0 +1,87 @@
+It&rsquo;s nearly 2021, so I thought I&rsquo;d share a small achievement of 2020:
+
+**A way of depicting interactions in UI wireframes!**
+
+Background: I've been doing a lot of complex UI work lately. In the process I've been finding it useful to diagram out these interfaces. I like to do this both before and during the actual development work. It really helps to understand and reason about the UI. These are very interactive UIs - lots of clicking, dragging, dropping, etc. So the question arises: can the interactions also be expressed in visual form?
+
+From experimenting with a number of projects and techniques, I've settled on a consistent style, which I now use in all wireframes:
+
+1. <strong>Elements</strong> □ - Shapes and enclosed text
+2. <strong>Markers</strong> ○ - Numbered circles (with a legend)
+3. <strong>Interactions</strong> → - Connecting arrow lines (with labels)
+
+Let's do a quick dive into each.
+
+## 1. Elements
+
+The actual elements that make up the interface are marked out with <strong>shapes</strong> such as rectangles, rounded rectangles, circles, etc., similar to how they would appear in the final application.
+
+Here's a convention to follow for shapes:
+
+- Straight rectangles for panels, modals, headers, etc.
+- Rounded rectangles for buttons, input boxes, checkboxes, etc.
+
+And here's an example:
+
+![Wireframe showing only interface elements drawn with simple shapes](/images/articles/interaction-wireframes/wireframes-elements.svg)
+
+## 2. Markers
+
+We might want to "mark" or "tag" a particular part of the UI with additional info.
+
+For example, to indicate that a specific component should be used, when it isn't obvious just by looking at the diagram, we might want to mark that part of the wireframe with the name of that component.
+
+For this purpose, we can drop in <strong>numbered circles</strong>, and along with a legend item for each indicating the name of the component.
+
+Here's how it looks:
+
+![Wireframe showing interface elements numbered with legends](/images/articles/interaction-wireframes/wireframes-markers.svg)
+
+## 3. Interactions
+
+Finally we get to the exciting part: _interactions_.
+
+The user might generate events (click, drag, drop, keypress, etc) which cause the UI to change in some way (e.g. open a drop-down, move an element, hide a modal, etc).
+
+You might have assumed that depicting interactivity would require the use of a prototyping tool, but actually it can be done in a static wireframe too.
+
+We can simply add a <strong>connecting arrow lines</strong> made up of the following parts:
+
+1. Source of the connector - the element from which the event originates
+2. Label on the connector - name of the event
+3. End of the connector - arrow-head pointing at a component (or group of components) which depict the state of the UI when the event is handled
+
+For example, suppose we want to depict that when the user clicks a button, a modal box appears. We draw an arrow from the button to the modal, with &lsquo;(click)&rsquo; in rounded brackets on the connector.
+
+![Event connector depicting a button click event](/images/articles/interaction-wireframes/wireframes-interactions.svg)
+
+Notice that we don't necessarily have to depict the whole UI in the 'after' part of the wireframe. We only have to depict the part that changed - in this case, the modal. This habit of only depicting the change really speeds up the wireframing activity. We only have to depict _changes_ in our UI, not the whole UI in every possible state.
+
+There might be some logic to these interactions. For example, if the user enters a correct username and password to log in, we display a success notification. But if they get the password wrong, we show an error message underneath the password field. This kind of logic can be depicted by augmenting our diagram with a flowchart shape.
+
+## Putting it all together
+
+Here's the whole UI - elements, numbered labels and event connectors (with logic).
+
+![Wireframe showing interface elements, component labels and event connectors](/images/articles/interaction-wireframes/wireframes-alltogether.svg)
+
+Notice how you can read and comprehend this quite quickly, just like we'd read a paragraph out of a book. Wireframes can communicate a information that is better represented visually and spatially rather than in paragraphs of plain text.
+
+Notice also that this wireframe can manipulated - split apart, combined with other elements, used to form a new wireframe. This can be an excellent tool for experimenting with alternative designs. It can also be great for communicating - you can easily slice of any part of the design, paste it into a Slack discussion, and gather some feedback from your colleagues.
+
+## Conclusion
+
+I've found simple, low-fidelity wireframes that highlight **interactions** to be highly useful when developing highly interactive or logic-intense user interfaces.
+
+- They help me to understand how the software will actually work.
+- They give me a feeling of control over my work environment - I can change the design at any time and in any way.
+- They can help me to think clearly and form a good mental model of the requirements.
+- They provide a visual aid for communicating requirements to team members and getting their feedback.
+- They serve as a guide and reference point while I'm actually writing the code.
+
+## Further reading
+
+Books that inspired me:
+
+- [_Designing for the Digital Age_](https://www.wiley.com/en-us/Designing+for+the+Digital+Age%3A+How+to+Create+Human+Centered+Products+and+Services-p-9780470229101) • Kim GOODWIN
+- [_Macintosh Human Interface Guidelines_](https://developer.apple.com/design/human-interface-guidelines/) • Apple Computer

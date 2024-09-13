@@ -1,0 +1,224 @@
+While automated testing methods have been established for a long time in the software development process (e.g. unit, integration and end-to-end tests), relatively less attention has been paid to manual testing.
+
+However manual testing is far from "dead". Software developers still routinely verify their work by using products manually. Further, developers are usually required to take responsibility for the end-to-end functioning of their software, not just writing quality code and passing unit tests. They are usually encouraged not lean too heavily on QA.
+
+In this article, I will:
+
+- Review the distinct benefits of manual testing.
+- Present a real-life scenario where manual testing adds value.
+- Provide guidance for structuring your manual testing, so you can get maximum benefit from it.
+
+## Benefits of manual testing
+
+Manual testing allows you to achieve certain specific goals which may not be available through automated testing:
+
+- Discover ***actual behaviour*** – how the system ***currently*** to behaves at runtime. (This information is not always readily available by other means.)
+- Determine ***intended behaviour*** – how the system is ***expected*** to behave. (Also not always readily available.)
+- Perform testing ***immediately*** – without setting up test frameworks, etc.
+- Perform testing in ***any environment*** you can access – not just local or QA environments.
+- Put yourself ***in the end-user's shoes*** – letting you experience the system as an end-user would.
+- Verify ***complex, lengthy workflows*** – which might be too difficult to automate. For example, complex interactions between an end-user and the system or complex data processing activities on the backend.
+
+As with any activity, manual testing can offer maximal benefit when performed in a structured manner.
+
+In my experience this involves:
+
+* Writing clear, structured test cases - e.g. heading, description, numbered steps with actions and expected results
+* Organising test cases for rapid retrieval, by using consistent naming and tags
+* Sharing test cases within the team/organisation, so others can leverage them
+
+## Example of a test case
+
+Here's a simple example of a test case involving a user logging in:
+
+```
+user_can_login.md:
+
+# User can login
+
+Users who have an account should be able to log in.
+
+## Steps
+
+1. Go to the homepage
+2. Click the login button
+3. Expect that the login screen is shown
+4. Enter username
+5. Enter password
+6. Click login screen submit button
+7. Expect that you are shown logged in, in the header section
+```
+
+Notice we have a brief heading and description, followed by neatly numbered steps.
+
+Steps can be:
+* ***Actions*** (e.g. "click the login button") or
+* ***Expectations*** (e.g. "expect that the login screen is shown")
+
+This format allows us to quickly follow the steps of the test case (actions) and know what to look at to determine whether the test passed or failed (expectations).
+
+## Scenario: critical fixes for a startup
+
+A realistic scenario might make it easier for you to see how manual testing can help.
+
+Imagine you begin work as a software engineer at a rapidly growing startup, building a complex product with many user flows.
+
+You are assigned to work on the sign up experience. Users provide various personal details such as their country of residence. Based on these, the system provides various prompts then accepts payment.
+
+You are given your first development task:
+
+> "Please fix the flow for Japanese customers. They are getting stuck at the point where they submit their personal details, but before they have paid for the product."
+
+This is based on direct customer contact. No one in the company can tell you exactly what "stuck" means or in exactly which part of the flow this is occurring.
+
+There is also minimal unit test code, code quality is not good and there's little documentation. Remember, it's a fast-growth startup – they don't have the same time and resources as a more mature company.
+
+How would you go about solving this? Your approach might look like this:
+
+1. You go through the flow manually, simulating a Japanese customer (perhaps setting your browser location to Japan).
+2. As you go, you write down the steps you are taking, such as which details you entered, which buttons you clicked, etc. (This makes it easier to keep track of what you're doing, in case you need to restart the process). 
+3. You find the exact point where the system is stuck - the submit button on screen 5 doesn't do anything.
+4. Examining the requests/responses, you discover that the system skipped the collection of the user's driver licence details, which are required for customers in certain countries, including Japan, causing an underlying API call to fail if not provided.
+5. Your verify this requirement with Backend engineers and the Product owner. Now you know what the fix is: you need to enable drivers licence details collection for Japanese customers.
+6. You make the fix in the relevant part of the code-base.
+7. Testing your work manually, you realise this data can be collected  earlier in the sign-up flow, with a skip option given for customers who don't have the details on hand. This will be a nicer user experience and increase the number of potential customers in the sales funnel.
+8. You complete all your changes, cover them with a unit test, save your manual testing steps in a markdown document (linked to from the pull-request) and push your changes.
+9. Once in Prod, you do a quick verification and see that everything works as expected. 
+10. You can now report to the team that your task is completed with (hopefully) zero bugs!
+
+Notice how documented manual testing helped you to solve this problem:
+
+- You found the actual error by manually going through the flow (step 1).
+- You kept track of your testing by writing down the steps, allowing you to quickly and efficiently repeat your test efforts whenever needed (steps 2, 7, 9).
+- You easily verified your work in Prod (step 9).
+- You empathised with the end-user and even found an opportunity to improve their experience as well as the onboarding rate (step 7).
+- You added value to the team by documenting your manual testing steps (step 8).
+
+As we'll soon see, this is only the beginning of the benefits! 
+
+## Tagging your test cases
+
+Tagging can be a powerful way of making your whole test case collection searchable.
+
+Suppose every time you refer to the login screen in your Markdown files, you use the exact phrase: "login screen". Perhaps wrap it in brackets: "(login scren)".
+
+Now this exact phrase is searchable, via a simple find-in-files in your text editor. By searching for the string "(login screen)" you can find every test case involving that screen.
+
+For example, your search might yield the following results:
+
+* `user_can_login.md`
+* `user_can_recover_forgotten_password.md`
+* `user_cannot_login_with_wrong_credentials.md`
+* `user_can_login_from_another_country.md`
+* `user_can_login_with_a_linked_google_account.md`
+
+This gives you powerful new capabilities such as:
+
+* **Regression-testing** - checking various test cases, in case your change might have broken something.
+* **Exploratory-testing** - observing how the application behaves in various scenarios, generating ideas for improvement or uncovering hidden bugs.
+* **Determining which unit tests to write** - to boost test coverage in a critical area of the application.
+
+## Test data 
+
+Suppose a feature you want to test relies on certain data existing in the system beforehand.
+
+For example, you might need a certain kind of user account, such as a user who has their country set to Japan.
+
+You could create a test user in your testing environment - `hiroshi@yompail` – and save it in your test case under a "Test data" heading.
+
+```
+user_can_login.md:
+
+# User can login
+
+## Steps
+
+1. Go to the homepage
+...
+
+## Test data
+
+- User: hiroshi@yopmail.com / P@ssw0rd
+```
+
+## Results and artifacts
+
+It can be very useful to know the full list of dates/times when you ran your test and what the result was on each run.
+
+These can be added to a "runs" section of the test case file.
+
+```
+user_can_login.md:
+
+# User can login
+
+## Steps
+
+1. Go to the homepage
+...
+
+## Runs
+
+| Date/time               | Result    |
+| ----------------------- | --------- |
+| 2024-10-01 9:00 AM      | Succeeded |
+| 2024-09-04 10:00 AM     | Failed    |
+```
+ 
+How might this be useful?
+
+* **Spotting a pattern in failures** can indicate a systemic problem, such as insufficient compute resources or code quality issues with a particular part of the code base.
+* **Correlating failures with code changes** can narrow your version control system search. For example, if you know the failure happened within the last week, you can limit your search changes made within that timeframe.
+
+When with manual testing, it is common for engineers to capture artifacts of their work, such as screenshots, screen recordings and copies of log output. These serve to demonstrate work done, prove that things worked correctly at a certain date/time and capture additional information that could help identify additional problems or improvement opportunities.
+
+Artifacts from manual tests can be organised alongside test cases, using a structured folder naming system.
+
+I have found it best to keep artifacts in folders named after the test cases and test run dates from which they were generated.
+
+Here's an example:
+
+- `/test_cases`
+  - `user_can_login.md`
+  - `user_can_recover_forgotten_password.md`
+  - ... etc
+- `/test_artifacts`
+  - `/user_can_login`
+    - `/2024_10_01_9_00_AM`
+      - `Screen Recording 2024-10-01 at 9.01.55 am.mov`
+      - `Untitled2.png`
+  - `/user_can_recover_forgotten_password`
+  - ... etc
+
+## Manual testing workflow
+
+You can make manual testing a regular, consistent part of your workflow. As you strengthen this habit, your work quality and overall knowledge of the system should improve.
+
+Here are some ideas:
+
+- Write a test case at the beginning of working on a major feature.
+- Include or link to the test case in the task tracking system.
+- Perform a test case of every major feature you deliver, writing a test case if one doesn't already exist.
+- Include or link to your test case from every pull request you submit.
+- Keep all your test cases in a shared knowledge system, such as your project's wiki.
+- Copy relevant parts of a test cases in chat conversations about a feature or bug.
+
+## Manual testing tools
+
+There are a range of software tools to help you write and manage test cases.
+
+- [Testmatic](/projects/testmatic). Shamless plug – I built this! It includes a web-based UI and CLI and saves everything to Markdown.
+- [Azure Test Plans](https://azure.microsoft.com/en-us/products/devops/test-plans). This one has a nice web-based UI and integrates with the Azure suite.
+- [DoesQA](https://does.qa/test-automation/codeless-vs-code). An interesting product that apparently allows you to write "codeless" but runnable tests.
+
+## Conclusion
+
+Manual testing offers distinct and powerful benefits, not offered by automated testing, such as understanding and representing current and desired system behaviour, making fast progress in challenging environments with limited documentation and test coverage, verifying changes in multiple environments, verifying complex workflows and empathising with end-users.
+
+Structuring your manual test efforts compounds these benefits: you can quickly locate related tests (enabling regression and exploratory testing), ease your test efforts (using test data) and keep track of test results (helping you identify patterns in failures or find the root cause of an issue).
+
+## Further reading
+
+These resources inspired this article:
+
+- [_Software Testing - A Craftsman's Approach_](https://www.routledge.com/Software-Testing-A-Craftsmans-Approach-Fifth-Edition/Jorgensen-DeVries/p/book/9780367767624) by Paul JORGENSEN

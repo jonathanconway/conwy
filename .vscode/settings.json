@@ -1,0 +1,4 @@
+{
+  "jestrunner.jestCommand": "npm run test",
+  "jestrunner.changeDirectoryToWorkspaceRoot": false
+}

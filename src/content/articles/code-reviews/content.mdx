@@ -1,0 +1,122 @@
+ 
+For myself and others, I've found that code reviews can be a challenging part of being a software developer.
+
+There may be many code changes to go through, many possible mistakes to be found and limited time to find and communicate them. Even before considering mistakes, the sheer amount and complexity of the code and changes can feel overwhelming – you don't know where to begin. It often feels like code review is chaotic and random, and it's down to luck whether or not it will be constructive.
+
+In this article I want to share my code review process, which I've evolved over time, in response to the pressures mentioned above.
+
+These are not necessarily based on hard evidence such as data and statistics, but more of a grab-bag of potentially useful ideas sampled from a range of different work environments, development stacks and teams, over many years.
+
+Broadly, there are three practices I follow, in order, for each code review:
+
+1. **_Context_** – gain a high level understanding of the context surrounding the change, by checking the description, commit messages, task and any other documentation, and/or by asking the author
+2. **_Scan_** – scan all of the code in the change, observe any questions or issues that come to mind, try to answer them on my own, otherwise leave a comment
+3. **_Checklist_** – make a final pass of all the code, this time against a checklist, and call out minor and major issues
+
+Let me go into a bit more detail on how I perform each of these.
+
+## Context
+
+It's difficult to meaningfully assess a code change without understanding its **_context_**.
+
+Context includes: what problem or requirement the code change intends to solve and how it fits into the broader context of the system.
+
+Without context, the code may either look superficially correct, leading you to approve it too quickly, or it may look very odd, generating innumerable questions to the author. Conversely, when you **_do_** understand the intention and context, a code change becomes much easier to understand and more intelligible.
+
+So I've found it useful to learn more about the context if I'm unclear.
+
+Here are some methods I use to learn more about the context:
+
+- Read descriptive notes and commit messages for the change, if any.
+- Look up the task associated with the code change and read description and comments there.
+- Look up code files related to the change and examine the code there.
+- Look up the **_history_** of the files associated with the change, look up the tasks associated with that history, read the descriptions and comments.
+- Search internal information sources (chat channels, wiki, etc.) using keywords found in the code.
+- Ask the author of the change directly for context.
+- Look up the authors of the files associated with the change in version control history and ask them directly for context.
+
+While the above might seem time-consuming, I've found it possible to fairly quickly improve my knowledge, even within minutes, by just picking a few of the relevant methods and applying them.
+
+For example, if I already work closely with the author involved, a simple message asking for context often gets a quick reply. Or if the code changes are attached to tasks, e.g. via task codes, it's usually possible to access the task with just a couple of clicks, and then read it within a few minutes.
+
+I believe this "context hunting" is usually worth the effort. It's not only about understanding the code change you're looking at. The benefits of contextual knowledge compound over time. Initially you might spend, say, 10 minutes reading and digesting contextual information, but eventually the time spend can approach 0, as you develop a systematic understanding of the whole system. That systematic understanding is highly valuable in all kinds of ways, not only for code review. It can help you to succeed in your own projects within the organisation and even help you to make the case for new projects and initiatives.
+
+## Scan
+
+After gaining context, the next step is to scan the code, getting a "big picture" view of how it hangs together.
+
+I'll often check out the change locally, open some of the files in my IDE, and use the navigation tools in the IDE to figure out what sequence of calls are being made, what data are being passed, etc. If it's a complex network of calls, I might spend a few minutes sketching an [execution flowchart](/articles/visualising-execution-flows).
+
+I also survey the content of new code added, looking at key variables, control-flow structures (conditionals, switches, loops, etc), and getting an overall grasp of what the code does.
+
+At this point I may already have questions or issues for the author, and if so, I won't hesistate to leave a few comments.
+
+My comments will usually be in the following form:
+
+```
+[Priority]: (Message)
+```
+
+This helps the author to understand my intent and prioritise which comments to reply to.
+
+For example, if it's a minor issue, which shouldn't necessarily block merging, I'll write something like this:
+
+```
+[Minor]: `.forEach(expandSection)` might be more concise here.
+```
+
+But if it's a question, I'll write:
+
+```
+[Question]: Should this section be hidden for users without permissions?
+```
+
+And if it's a major issue, I'll write:
+
+```
+[Major]: Should include an authorization check here.
+```
+
+## Checklist
+
+By this point I'll have a pretty solid understanding of the change.
+
+Now it's a good time to run through a code review checklist and see if I missed anything significant.
+
+Because I broadly understand the change as a whole, even with a large checklist of 50 items, it's possible to quickly scan the checklist and pick out only the items that apply to the code.
+
+For example, suppose one of the items in my checklist is:
+
+- Query keys should be appropriately unique
+
+After scanning the change, I will already know whether or not the change includes any query keys at all. If it does not, then I can immediately skip this step.
+
+On the other hand, if the change **_does_** contain enums, then I will know to check the following item in my checklist:
+
+- Enum values should match keys
+
+Where does this checklist come from?
+
+I usually build a unique checklist for each project I work on. As initial inputs to the checklist, I analyse the codebase I'm working on and read any technical documentation, such as coding standards.
+
+Subsequently I will add new items to the checklist, based on comments others leave on my change submissions, technical discussions with team members and general observations.
+
+Additionally, I've built up a pool of coding standards and best practices over my time as a developer. Some of these you can find documented in my article, [Towards zero bugs](/articles/towards-zero-bugs). I plan to publish a comprehensive list of them in a future blog post.
+
+This checklist isn't only useful for reviewing others' work – I use it on my own changes as well. By anticipating feedback and addressing it earlier, my code will already be of higher quality by the time it reaches the screens of others. This reduces the review workload on other engineers and improves my reputation within the team.
+
+## Conclusion
+
+Code reviews are an integral part of modern software engineering.
+
+At a team level, they're a great way to maximise code quality and ensure a shared understanding and knowledge of the code and systems.
+
+At an individual level, they're useful for understanding as much of the code as possible, both at a high level and a detailed level. This improves the quality of my own work and increases the likelihood of success in my current work and new initiatives within the organisation.
+
+Having a normalised process for performing code reviews helps make them easier and more fun. It also improves the quality of the feedback and, long-term, the code base.
+
+## Further reading
+
+These books inspired this article:
+
+- [_Software Engineering at Google_](https://www.kobo.com/au/en/ebook/software-engineering-at-google) by Titus WINTERS, Tom MANSHRECK, Hyrum WRIGHT

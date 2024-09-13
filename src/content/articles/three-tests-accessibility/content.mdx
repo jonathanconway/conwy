@@ -1,0 +1,116 @@
+import { meta } from "./meta";
+
+There are many good reasons to make our software applications accessible. But to achieve this goal, we must undertake rigorous accessibility testing. 
+
+This presents what may look like an overwhelming challenge: given that there are so many criteria for good accessibility, and that the application itself may be complex in many ways, **how do we verify that all parts of the application are accessible?**
+
+As accessibility is a developing and evolving field, we cannot pretend that there is one silver bullet or one definitive answer. However, I think it's worthwhile for us to put in a **best effort**.
+
+If we can come up with a small number of tests that cover the most basic and crucial bases of accessibility, then run those tests on all the screens and components of our application, then we can at least say that we have made a significant effort and at most say that we have removed all the most obvious and important impediments to the accessibility of our product.
+
+## Testing on principle
+
+The [WCAG Guidelines](https://www.w3.org/TR/WCAG20/), from which much accessibility advice is derived, are based on [four principles](https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines#WCAG_2.0):
+
+* **Perceivable** - Information and user interface components must be presentable to users in ways they can perceive.
+
+* **Operable** - User interface components and navigation must be operable.
+
+* **Understandable** - Information and the operation of user interface must be understandable.
+
+* **Robust** - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
+
+I asked one fundamental question of each principle: **what kind of test would verify that this principle had been followed?**
+
+Here are the answers what I came up with:
+
+* **Screen-reader-only**. If I can fully use the application purely by listening to it through a screen-reader, then the application is at least basically "presentable to users in ways they can perceive" and "understandable" through those ways.
+
+* **Keyboard-only**. If I can fully use the application with only a keyboard, then the application is at least basically "operable" by a range of assistive technologies, which operate through the same inputs as the keyboard.
+
+* **Automated test**. If the application passes automated tests, using an appropriate WCAG-compliance testing tool, then it is likely "robust" enough to be be interpreted by various user agents, and meets certain basic technical criteria for being "perceivable" and "operable".
+
+## Three tests
+
+The three answers lead to three basic tests:
+
+### Test 1: Screen-reader-only
+
+Try to use the application, relying only on **hearing the spoken word**. Turn on a screen-reader and turn off or look away from the screen. You can use the keyboard to provide input as needed.
+
+This tests whether the application is structured in such a way that it can be effectively "presented" to me through one other non-visual assistive technology (a screen-reader). If it can, then it is likely to work almost as well on other non-visual assistive technologies, which rely on the same information that a screen-reader relies on.
+
+Tools:
+* [VoiceOver](https://help.apple.com/voiceover/mac/10.14/) (built-in to MacOS and iOS)
+* [TalkBack](https://support.google.com/accessibility/android/answer/6283677?hl=en-GB) (built-in to Android)
+* [Narrator](https://support.microsoft.com/en-us/help/22798/windows-10-complete-guide-to-narrator) (built-in to Windows 10+)
+* [NVDA](https://www.nvaccess.org/) (other versions of Windows)
+* [ChromeVox](https://www.chromevox.com/) (Chrome browser on all operating systems)
+
+### Test 2: Keyboard-only
+
+Try to use the application, relying only on **keyboard input**. Put the mouse away or disconnect it, or disable your trackpad.
+
+This tests whether the application is "operable" by a range of assistive technologies, which operate similarly to a keyboard. For example, speech recognition facilities or braille keyboards, which interpret signals analogously to how a keyboard interprets certain keystrokes.
+
+Tools:
+* Just your keyboard!
+
+### Test 3: Automated test
+
+Run an automated testing tool on your application, analyse the output and address all major errors detected.
+
+For everything that cannot be captured by tests 1 and 2, automated testing tools can provide some coverage. Of course, an automated tool is just a piece of software and cannot replace aware, focussed human attention. However, it can catch obvious errors that a human may miss, due to human error. It can also thoroughly cover many areas in a short space of time, where a human would take much longer.
+
+Tools:
+* [WAVE](https://wave.webaim.org/) by WebAIM (all major operating systems). This tool analyses any web page and provides a detailed report, covering the entire WCAG specification, and highlighting errors.
+
+## Benefits of manual testing
+
+You'll notice that two out of the three tests are entirely manual and don't rely on automated tools. While manual testing is harder than just running an automated tool, I think it offers two key advantages:
+
+### 1. It uncovers errors that no automated tool can capture
+
+By actually trying to use our interface, we get a rich, qualitative answer to the question: "how usable is this?". We can directly observe when the interface is difficult, cumbersome, unclear, or otherwise unusable. We can also directly observe when the interface works smoothly and is easy to use.
+
+A web page might have perfectly structured content, proper usage of semantic HTML and alternative text on all non-textual content. **But what if a user has to listen through 3 minutes of audio, just to sign up for an email alert?**
+
+This is just one example of errors in the interaction design and/or code, which are generally not picked up by automated testing tools.
+
+By actually using an application the way a user would, we can directly identify issues that aren't clear-cut enough for an automated tool to detect.
+
+Of course, manual testing the application ourselves won't give us as much information as observing other people try to use it. However, it will probably reveal the biggest and most obvious accessibility issues, giving us an opportunity to resolve them sooner.
+
+### 2. It puts us in the shoes our users
+
+Manual testing encourages us to empathise with our users. This mindset of empathy is a crucial component of good usability, as it affects how we build, what we build and what we prioritise.
+
+## Play well with assistive technologies
+
+One lesson I learned from observing a wide range of users during usability testing was that **users rely a lot on assistive technology, independent of particular applications**.
+
+Many accessibility affordances, from navigating a form to interacting with navigation, are already built in to screen readers and input devices, which are constantly improving and innovating.
+
+* Screen-readers get better at interpreting interfaces and text.
+* Input devices are improved to offer more precise and easy-to-use affordances; new input devices come on the market.
+* Browsers and operating systems are improve the integration of accessibility features into the user experience.
+
+Rather than trying to anticipate and implement every conceivable accessibility feature directly into our applications, we should instead **focus on making sure our application plays well with assistive technologies**.
+
+We should simply expose the right structures and data and let assistive technologies take it from there. For example, in a rich web application, this means using properly marked-up form elements to label fields and capture form inputs.
+
+![Photo of a person putting their finger on a braille reading device](https://upload.wikimedia.org/wikipedia/commons/4/4a/Plage-braille.jpg)
+
+![Photo of a person using a mouth-held stylus to operate a screen](https://i.pinimg.com/originals/8f/11/23/8f11237b7a530bdfca68f34c5c051952.jpg)
+
+## Conclusion
+
+Rather than getting overwhelmed and giving up on accessibility, might we serve our users better by spending some time on basic testing and letting assistive technologies do most of the heavy lifting? I think the answer is yes!
+
+By means of simple but thorough testing, and making fixes as needed, we will be well our way to making accessible products that work for all of our users.
+
+## Further reading
+
+Boooks that inspired me:
+
+- [_Engineering for Accessibility_](https://www.microsoft.com/en-au/download/details.aspx?id=19262) • Jason GRIEVES, Masahiko KANEKO

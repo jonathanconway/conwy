@@ -1,0 +1,58 @@
+.fragment hr {
+  margin-top: 1rem;
+}
+
+.fragment p {
+  padding-top: 0.5rem;
+  font-size: 0.875rem; /* todo: add to variables */
+  line-height: 1.5rem;
+}
+
+.fragment > p:first-child {
+  padding-top: 0;
+}
+
+.fragment ol {
+  list-style-type: decimal;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.fragment ul {
+  list-style-type: disc;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.fragment li {
+  margin-top: 0.5rem;
+  line-height: 1.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.fragment pre {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--color-stone-200);
+  border: solid 1px var(--color-stone-400);
+  border-radius: var(--rounding-md);
+  white-space: pre-wrap;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.fragment * > p:first-child {
+  padding-top: 0;
+}

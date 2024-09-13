@@ -1,0 +1,127 @@
+import { meta } from "./meta";
+
+Software with zero bugs may seem like an ambitious goal. Over time, defects in software have increased and have become so normalised that some developers and users even expect them.
+
+But while it's difficult to get to zero bugs, I think it's worth trying for. We shouldn't concede defeat and assume ahead-of-time that our products will be defective. Rather, we should do everything in our power to avoid inadvertently creating bugs in our software, where they could be avoided. The closer we get to zero critters, the better!
+
+Over time, I have been building up a mental checklist of things to look out for, both in the code I write and in the running application that it generates, to identify potential bugs. I now run through this checklist whenever I am about to complete work on a change or a new feature. I have also been working on building a mindset that encourages discipline, rigour and attention to detail.
+
+By running these checks and building this mindset, I aim to identify and fix bugs early, rather than having them show up in a testing environment, or worse still, in front of an end-user.
+
+I would love to share this with other developers. Please have a read and let me know your thoughts in the comments!
+
+## The checklist
+
+Without further ado, here's my list:
+
+**Typos, accidental keystrokes, debugging statements.** Every time you're about to commit, hold back for a moment and review the diff of changes going in. Make sure you're only committing what you fully intend to commit. Check for typos, accidental keystrokes, inadvertent capitalisation, etc. A compiler or linter can usually pick these up, but there are often cases that are missed, so it's still worth taking a few seconds to run your eyes over the diff. Also check for development-only code, such as logging or debugging statements, which pass compilation but shouldn't be checked in.
+
+**Subtle logic errors.** Look for all those mistakes that _look_ like reasonable code, to both the first glance and the compiler, but are actually the wrong way round or otherwise incorrect.
+For example:
+
+- False-positives. For example: `if (!hidden) { show(); } else { hide(); }`. Observe that `!hidden` is actually equivalent to being visible. So this code would actually execute `show()` when already visible and `hide()` when invisible! To correct this, we would want to remove the `!` and have something like this: `if (hidden) { show(); } else { hide(); }`. It's important to keep an eye out for these kinds of subtle logic errors.
+- Expressions being coerced to incorrect boolean values. For example, in Javascript, an `indexOf(x)` call without being compared to anything, when it should be compared it to a numeric value. A correct (and clearer) way to achieve this intent might be to call `includes(x)`, which _does_ return a boolean.
+- Off-by-one errors. For example: `for (let i = 0; i <= 10; i++) { ... }`. This loop runs 11 iterations, where it was probably expected to run 10. It would be clearer to rewrite it as: `for (let i = 0; i < 10; i++) { ... }`.
+- Filtering operations. You may perform a filtering function, but accidentally extract items from a list and return only those items, when your intent was to return the full list _including_ those items. Or your code might return everything except certain items, when the intent was to return nothing at all if those items exist. There are many other variations on this. In summary, carefully review complex filtering operations.
+
+**Edge cases.** To find these, try to break your app.
+
+- Click a lot of different parts of the UI in very quick succession.
+- Test long sequences of actions and make sure the result at the end is exactly as expected. For example, test undo/redo thoroughly by performing an action, then undoing it, then redoing it, many times, then verifying the end result.
+- Input values in unexpectedly large quantities, in an unexpected format or null/empty values.
+- Test with correctly formatted but illogical values (e.g. a date that is the 32nd of the month).
+- Add a larger than normal number of items to a list.
+- Run multiple instances of the application at once and verify that it still works properly.
+
+Basically do everything you can to break your application and ensure that it recovers gracefully in all circumstances. If you have a large number of possible combinations of inputs to test, unit tests can definitely be your friend!
+
+**Values vs. references.** Do you expect a value to be set in one place and updated in many others? Or do you want to hold independent copies of that value in multiple places? Review your usages of references vs values and make sure they're correct for your use case.
+
+**Memory leaks.** These can dramatically slow down an application and even cause it to crash, due to incorrect and unconstrained allocation of memory. These can manifest themselves in a variety of ways, depending on the language and environment you're developing for.
+For example:
+
+- In C# or Java, it may be an unmanaged resource that's not being cleaned up.
+- In multithreaded applications, dead threads.
+- In Javascript, Maps that reference DOM nodes that no longer exist.
+- In RXJS, subscriptions to observables that you forgot to unsubscribe.
+
+In addition to manually checking the code, practically every environment also has its own set of tools for diagnosing memory leaks. For example, for .NET, there is a memory profiler and for Javascript, Developer Tools in most browsers have a Memory tab or similar.
+
+**Code executing too often.** Do you perform unnecessary operations within a for loop, a game loop, a template, a rendering cycle, or any other part of the code base that gets executed many times in succession? This could cause a slowdown to your app, which if it gets too bad, could be considered buggy behaviour. Code that might not need to run includes code that generates the same result on every iteration (in which case, some form of caching is your friend) or code that's only needed in certain states (where a simple `if` statement around that state could skip the code when it's not needed).
+
+**Same same but different.** Be extra careful in situations where you have two things that look and behave very similarly, but are qualitatively different. An example of such a situation, which I encountered recently, was in building two tree views which depicted essentially the same data, but with subtly different visual markers on each. These visual markers highlighted opposite aspects of the same data. But, by mistake, I also coded one of the trees so that it reversed the order of its elements! This bug should have been obvious, but it escaped my notice. I was so focussed on getting the markers right (the difference) that I forgot to ensure that the ordering was right (the sameness). In retrospect, if I had pulled back and double-checked that the end-result had the _right_ difference and not the _wrong_ difference, I could have caught this early and fixed it.
+
+**Null-checks.** Whenever two values are being compared, have you null-checked and undefined-checked both sides of the comparison if needed, and handle what to do if either/both are null? Add checks as needed. (Some languages offer conveniences / syntactical sugar for this. E.g. Javascript has the [optional-chaining operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining): `?.`.)
+
+**Async data dependencies.** Does your app depend on multiple sets of data, which may load at different times? What happens when not all of the data has loaded? Does the application crash and burn? Or does it handle the situation gracefully, perhaps waiting until all the data has loaded, and showing a 'loading' indicator in the meantime? You might simulate this state by temporarily adding a lag to one of your data sources, using your language's 'delay' mechanism. For example, calling Javascript's `setTimeout` method, RX's [Delay operator](http://reactivex.io/documentation/operators/delay.html) or .NET's `Thread.Sleep()`. Of course, take care to revert any testing code prior to check-in!
+
+**Browser/OS upgrades.** Depending on the environment you're developing for, be aware of the potential for breaking changes to that environment, when a new version comes out. Upgrade whenever a new version ships and test your application in the new version, looking for bugs. I experienced the importance of this recently, with the [changes to Flexbox in Chrome 72](https://bugs.chromium.org/p/chromium/issues/detail?id=927066), which necessitated several CSS changes.
+
+**Devices, screen sizes and zoom factors.** Test your app with multiple devices if needed – mobile, tablet and/or desktop. You may also need to check with multiple browsers on those devices as well as multiple versions and form-factors of the devices. Also, try increasing/decreasing the zoom level and ensure that the layouts, sizing, etc, are still proportional.
+
+**Accessibility.** Bugginess or even absence of accessibility features is a major problem in the software application landscape. If your app will be used by a broad segment of the population, you probably should be ensuring that it is accessible. Ideally accessibility is "baked-in" from the beginning, but this doesn't nullify the need to regularly and rigorously test that accessibility features work. In my own accessibility auditing, I focus on three main areas: A) keyboard-only operation, B) non-visual operation, C) adherence to WCAG. A basic test of these three areas can be performed on any web page, by A) pushing the mouse away and attempting to use the application keyboard-free, B) looking away from the screen and attempting to use the application by means of only a screen-reader, C) running the [Wave](https://wave.webaim.org/extension/) automated testing tool and reviewing its output. Similar tests can be run on non-Web/native applications. I plan to write an entire article dedicated to this topic, as it is a large one. In the meantime, you can check out some excellent resources, such as [WAI](https://www.w3.org/WAI)'s [Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/) page.
+
+**Date and time handling and formatting.** Be extra careful to test code that does anything with dates or times. If the code is performing some kind of calculation on a date/time value, try to test it with a variety of inputs and ensure that it always produces a correct result date/time. Also, test that it works in a different time-zone. To do this locally, you can temporarily change your system time-zone, re-load your application and re-test the date/time feature.
+
+**Numeric values, such as currency.** As with dates/times, thoroughly test any aspect of your application that operates on numbers, and especially locale-specific numbers such as currency values. Also check if you might receive a numeric value as a string and need to convert it to an appropriate numeric type before using it.
+
+**Load testing.** Does the system break down when large number of items are passed through it? Substitute a fake data-source with thousands or even millions of records and see if the application can handle that load.
+
+**Requirements vs solution.** Double-check the original requirements and see if you actually addressed them. There might have been a subtle indication in the language that you overlooked or some ambiguities that you didn't yet clear up. If you need to go back to the business to clarify these issues, do this as soon and early as possible, so that you have a better chance of fixing any bugs in the code before releasing it.
+
+**Hit refresh.** Sometimes, for reasons that I don't entirely understand (and perhaps don't wish to) a running application will get out-of-sync with the code that generated it. Yes, this can happen even when automatic compilation tools are in use. In the case of web apps, caching of assets can play a role. For native apps, processes may remain open. I have sometimes spent half an hour or more trying to figure out why something wasn't working or why I couldn't reproduce a bug, only to find that the version I was using was stale. Long story short: when in doubt, hit restart and refresh.
+
+**Multiple environments.** Most organisations have multiple environments into which software is deployed in a staged manner. There's the local developer machine, then a Development server, then Staging and/or QA, then Production/Release/Live. It's a good idea to run some tests on your application in every environment. This is especially important if your feature or change depends on environment-specific factors, such as configuration values, database schemas, data and other systems, services or resources. Anything might go wrong in a new environment, from a typo in a configuration value to a missing authorisation on a resource. You don't have to test everything in every environment, but it's probably a good idea to at least test the happy path.
+
+**Find similar bugs and fix them (and generalise the fix!).** This came up recently, where a colleague discovered a bug in which the wrong property was being used to retrieve the error message from an HTTP response. Rather than merely fixing it for that one response, I tested all places in the codebase where an error message was being retrieved from an HTTP response and fixed them all where necessary. I then went a step further and generalised the fix, by extracting HTTP error handling to a common function. So not only were additional bugs eliminated, but similar bugs in the future were prevented, by improving the overall framework.
+
+**Errors of addition.** When adding new code, be careful that it doesn't cause an error. For example, adding a field to a class, adding a value to an enum, etc might cause unexpected behaviour. This is especially important if you have code somewhere that dynamically reads the structure you're modifying, e.g. code that loops over the fields in a class using reflection. (Such "dynamic access" is usually not best practice, but unfortunately some code-bases use it, so we might need to check the code-base we're working on.)
+
+**Errors of ommission.** When adding new code, be careful that we didn't *forget* to include something, which might cause an error. Say we create a new subtype of an inheritable class, we might need to include some field or value. This might not necessarily be indicated by the compiler if, e.g., our code-base has some dynamic code that loops over the fields in all subtypes of the class and expects certain fields to exist.
+
+**Consuming a data source in a context where it is not available.** When we call a method or function from a component, we might verify that our code works by using that component and seeing that it works correctly. But will that call work in every possible context in which the component is used? What if there is a different way to access the same component, in which that call breaks? This could be very subtle and easy to miss, if we are not aware of the different contexts in which our component is used. For example, this happened to me once when working on a popup modal in React. The modal consumed a hook which depended on certain data being in the browser URL. But I was not aware that the modal could be accessed from a different page with a different URL which did not have that data. The different URL broke the hook and thus my modal component.
+
+**Re-testing after merge.** After completing a change and pushing, you might need to resolve a merge conflict or rebase your change. Be careful to re-test your work following the merge! Even a successfully automated merge might still result in a subtle logic error that you missed. The same applies to any changes you make in response to pull-request comments, build errors, etc.
+
+**Remote API calls.** Ensure all remote API calls your code depends on are fully working. E.g. HTTP requests, web-sockets connections, etc.
+
+## The mindset
+
+This checklist may seem daunting, especially when working under time constraints. However, you don't have to action all of these items for every change you make. I typically give this list a quick scan and pick out only the items that are relevant to the change I'm making. For example, a change to the logic for calculating a numeric value probably doesn't necessitate checking 'Devices, screen-sizes and zoom factors'. Likewise, for a change to the layout of a dialog box, I can probably skip 'Async data dependencies'.
+
+The "old" mindset (that I have sometimes seen in the industry) is:
+
+- I assume my code has no bugs by default.
+- Good developers never write buggy code, so I shouldn't bother too much checking my code for bugs, otherwise I might discover that I'm a terrible developer!
+- There's never enough time to check for bugs, so I have no choice but to ship buggy code.
+- My code will naturally get more and more reliable as I gain experience.
+- Testing and bug-fixing is boring, tedious and not fun.
+- There's no reward to being thorough about testing for and fixing bugs.
+- Software development is unimportant, menial "grunt work", so it doesn't matter if we get it wrong.
+
+The "new" mindset that I aim to spread, which I think is more productive, is:
+
+- My code is buggy unless proven otherwise.
+- Part of being a good developer is having the discipline and patience to go through code that I wrote, which looks fine - even spectacular - and find and fix all the bugs that I know are probably lurking within it.
+- There's almost always a little extra time to put in some honest effort to finding and fixing bugs.
+- Putting in a regular, consistent effort to write reliable code will make my code more reliable.
+- Testing and bug-fixing can be made fun, with a positive mindset and a little 'gamification'. I can enjoy the endorphin-rush of fixing a bug and knowing that I left the code better than I found it.
+- The reward to testing for and fixing bugs is building the mental muscles (discipline, rigour, attention to detail, etc) that will result in more reliable software. Those muscles will move me forward in all aspects of problem-solving, not only bug-fixing. Also, I can build a reputation as someone who builds reliable software, which will probably be good for my career.
+- Software development is a profession and a craft, and we should take pride in our work.
+
+## Let a thousand checklists bloom!
+
+Do you keep a checklist like this, either in written or mental form? Are there any other items you would add to such a checklist? And do you have anything to add about the mindset needed to write reliable, bug-free code?
+
+Feel free to comment about your checklists and experiences or link to them in the comments. It would be great to share any ideas that we developers can use, in order to get closer to writing bug-free code.
+
+Thanks for reading!
+
+## Further reading
+
+Boooks that inspired me:
+
+- [_The Checklist Manifesto_](https://atulgawande.com/book/the-checklist-manifesto/) • Atul GAWANDE
+- [_Code Complete_](https://archive.org/details/code-complete-2nd-edition/page/428/mode/2up) • Steve MCCONNELL
+- [_The Pragmatic Programmer_](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/) • Andrew HUNT, David THOMAS
+- [_Clean Code_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882) • Bob MARTIN

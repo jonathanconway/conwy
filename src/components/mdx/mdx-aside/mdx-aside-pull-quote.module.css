@@ -1,0 +1,21 @@
+.pullQuote {
+  position: relative;
+  padding-right: 5rem;
+}
+
+.pullQuote p:first-child {
+  margin-top: 0;
+}
+
+.pullQuote:after {
+  position: absolute;
+  content: " ";
+  right: 1rem;
+  top: 1rem;
+  width: 3rem;
+  height: 3rem;
+  opacity: 0.125;
+  background-image: url(/images/components/icon/svg/quote.svg);
+  background-repeat: no-repeat;
+  background-size: 3rem;
+}

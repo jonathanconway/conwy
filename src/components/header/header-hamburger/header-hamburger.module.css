@@ -1,0 +1,25 @@
+.hamburgerHiddenCheckbox {
+  display: none;
+}
+
+.hamburgerHiddenCheckbox ~ .hamburgerContents {
+  display: none;
+}
+
+.hamburgerHiddenCheckbox ~ .hamburgerMenuBackdrop {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .hamburgerHiddenCheckbox ~ .hamburgerContents {
+    display: flex;
+  }
+}
+
+.hamburgerHiddenCheckbox:checked ~ .hamburgerContents {
+  display: flex;
+}
+
+.hamburgerHiddenCheckbox:checked ~ .hamburgerMenuBackdrop {
+  display: flex;
+}

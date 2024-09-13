@@ -1,0 +1,117 @@
+import { meta } from "./meta";
+
+## Introduction
+
+Over the years several [acceptance testing frameworks](https://en.wikipedia.org/wiki/Acceptance_testing#List_of_acceptance-testing_frameworks) have risen and fallen in popularity.
+
+We have seen [Behavior Driven Development (BDD)](https://en.wikipedia.org/wiki/Behavior-driven_development), implemented in formats such as [Cucumber](https://en.wikipedia.org/wiki/Cucumber_(software)) and [RSpec](https://en.wikipedia.org/wiki/RSpec), aiming to provide a human-readable and machine-parsable syntax for defining requirements. Developers and business people collaborate to produce specs in a "Given/When/Then" structure. Developers then implement an executable test for each spec using a more standard programming language test framework, such as JUnit, XUnit, Jasmine, etc.
+
+Though it has grown in popularity, the BDD style has two disadvantages:
+
+1. The "Given/When/Then" syntax adds an additional learning curve for people not familiar with the language.
+2. The "Given/When/Then" structure (if adhered to) constrains the tests, forcing all assertions to take place after all actions, rather than allowing a sequence of interleaved actions and assertions.
+
+Instead of BDD, we could use a much simpler and more familiar syntax:
+
+**An ordered list of testing steps**
+
+In this _testing steps_ approach, we remove the Given/When/Then structure altogether and simply list our sequence of steps and assertions. As with BDD tests, we then write code that implements each of the steps, using templating and parameterization where appropriate for reusability.
+
+Instead of:
+
+```
+GIVEN x
+WHEN y
+THEN z
+```
+
+We write this:
+
+```
+1. x
+2. y
+3. z
+```
+
+## An example
+
+Suppose we wish to write a spec for the following requirement:
+
+> Display an error if a currency conversion is over the limit for that currency, along with a Max button which resets the payment amount to the maximum amount, and then allows the user to proceed with the payment at that amount.
+
+This requirement might be captured in two BDD specs such as the following:
+
+> ### TITLE: Validate currency limit with max button
+>
+> ### SCENARIO 1: Validate currency limit
+>
+> - **GIVEN** I am a registered user
+> - **AND** I have a bank balance of 100,000 GBP
+> - **AND** The maximum conversion from GBP to CAD is 50,000
+> - **WHEN** I go to the Make a Payment screen
+> - **AND** I set the Destination currency to CAD
+> - **AND** I set the Payment amount to 51,000 GBP
+> - **THEN** I will see a Currency conversion over daily payment limit error
+> - **AND** I will see a Fill max currency button
+>
+> ### SCENARIO 2: Provide Max button, which resets currency to limit value
+>
+> - **GIVEN** I am a registered user
+> - **AND** I have a bank balance of 100,000 GBP
+> - **AND** The maximum conversion from GBP to CAD is 50,000
+> - **WHEN** I go to the Make a Payment screen
+> - **AND** I set the Destination currency to CAD
+> - **AND** I set the Payment amount to 51,000 GBP
+> - **AND** I click the Fill max currency button
+> - **AND** I click the Submit payment button
+> - **THEN** I will see a Payment successful screen
+> - **AND** I will see the amount paid as 50,000 GBP
+
+Notice how cumbersome and repetitive this is.
+
+Using a ***testing steps*** format, we could replace it with a single, neatly condensed sequence of steps:
+
+> ### SCENARIO: Validate currency limit with max button
+>
+> 1. Log in as a registered user
+> 2. Assume a bank balance of 100,000 GBP
+> 3. Assume a maximum conversion from GBP to CAD of 50,000
+> 4. Go to the Make a Payment screen
+> 5. Set the Destination currency to CAD
+> 6. Set the Payment amount to 51,000 GBP
+> 7. Observe the following error is visible: Currency conversion over daily payment limit
+> 8. Observe the following button is visible: Fill max currency button
+> 9. Click the Fill max currency button
+> 10. Click the Submit payment button
+> 11. Observe the following success message: Payment successful screen
+> 12. Observe the following field | value: Amount paid | 50,000 GBP
+
+Notice how this latter form conveys the same information as the BDD spec, but without the Given/When/Then structure, and as a sequence of actions/events in a single flow.
+
+Also notice that this is closer to how most human beings would manually test this kind of behavior. They wouldn't separate their testing into two sets of three distinct phases, starting over again after the first set. Rather, they would more likely perform just one sequence of steps, verifying the correctness as they go, all the way until the last step.
+
+It's true that the testing steps don't explicitly tell us which of the steps are arrangements/pre-conditions, which are actions and which are assertions/post-conditions. For example, step 8 doesn't explicitly tell us that it is an assertion. However, I would argue that this fact is implicit in the language anyway and the average reader should have no problem interpreting a statement like "I will see a Fill max currency button" as an expectation rather than an action for the reader to perform.
+
+From the developer's point of view, it doesn't matter either; any of these steps can have its own code block, associated via string/template matching. We don't need to specify whether a step is a Given, a When or a Then, in order to match the step to the correct code block. (If we want to make that attribute explicit in code, we can always do so with a comment, decorator, method naming convention, etc.)
+
+## Conclusion
+
+It seems to me that the "Given/When/Then" way of structuring spec tests is a relic of design by contract and intended to help the code more than the user. It is unnecessary to structure tests in this way. Instead we can use a simple sequential list of steps. This is simpler, more user-friendly and more suitable to typical testing in which actions and assertions are intermingled throughout a sequence.
+
+Users don't normally think in terms of pre-conditions/post-conditions, but are much more likely to think in terms of sequence of actions they perform and responses they get from the system.
+
+## Library
+
+During writing of this article I developed a new testing framework which applies the concept of testing steps.
+
+You can check it out here: <a href="https://github.com/jonathanconway/testing-steps" target="_blank">`testing-steps`</a>.
+
+This framework is a Javascript/Typescript library which can be consumed by unit tests targeting the <a href="https://jestjs.io/" target="_blank">Jest</a> test runner.
+
+If there is enough interest, I will look at getting it ported to other languages/frameworks.
+
+## Further reading
+
+Books that inspired me:
+
+- [_The Cucumber Book_](https://pragprog.com/titles/hwcuc2/the-cucumber-book-second-edition/) • Matt WYNNE

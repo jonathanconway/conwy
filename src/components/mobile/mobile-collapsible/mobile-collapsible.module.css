@@ -1,0 +1,29 @@
+.checkbox {
+  display: none;
+}
+
+.checkbox ~ .content {
+  display: none;
+}
+
+.checkbox:not(:checked) ~ .header .expandButton {
+  display: none;
+}
+
+.checkbox:checked ~ .header .collapseButton {
+  display: none;
+}
+
+.checkbox:checked ~ .content {
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .checkbox ~ .header {
+    display: none;
+  }
+
+  .checkbox ~ .content {
+    display: flex;
+  }
+}
