@@ -2,8 +2,7 @@
 
 import { MicroMeta } from "@/framework/client";
 
-import { MicroListItem } from "../micro-list-item";
-
+import { MicrosListItem } from "./micros-list-item";
 import * as styles from "./micros-list.styles";
 
 export interface MicrosListProps {
@@ -15,7 +14,7 @@ export function MicrosList({ microMetas }: MicrosListProps) {
     <div className={styles.container()}>
       {microMetas
         .map((microMeta) => (
-          <MicroListItem key={microMeta.slug} microMeta={microMeta} />
+          <MicrosListItem key={microMeta.slug} microMeta={microMeta} />
         ))
         .filter(Boolean)}
     </div>

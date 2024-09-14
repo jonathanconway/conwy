@@ -1,6 +1,6 @@
-import { MicroListItemProps } from "./micro-list-item";
+import { MicrosListItemProps } from "./micros-list-item";
 
-export function createMicroListItemPropsMock(): MicroListItemProps {
+export function createMicroListItemPropsMock(): MicrosListItemProps {
   return {
     microMeta: {
       title: "",

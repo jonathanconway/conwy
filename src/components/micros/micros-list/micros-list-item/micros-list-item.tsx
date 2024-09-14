@@ -1,24 +1,24 @@
 import { MicroMeta } from "@/framework/client";
 
-import { Date } from "../../date";
-import { Icon, IconTypes } from "../../icon";
-import { Link } from "../../link";
-import { SocialLinksIcons } from "../../social-links";
-import { TextExpandable } from "../../text";
+import { Date } from "../../../date";
+import { Icon, IconTypes } from "../../../icon";
+import { Link } from "../../../link";
+import { SocialLinksIcons } from "../../../social-links";
+import { TextExpandable } from "../../../text";
 
-import * as styles from "./micro-list-item.styles";
+import * as styles from "./micros-list-item.styles";
 
-export interface MicroListItemProps {
+export interface MicrosListItemProps {
   readonly microMeta: MicroMeta;
 }
 
-export function MicroListItem(props: MicroListItemProps) {
+export function MicrosListItem(props: MicrosListItemProps) {
   return (
     <div className={styles.container}>
       <div className={styles.mainColumn}>
-        <div className={styles.date}>
+        <Link className={styles.date} href={`/micros/${props.microMeta.slug}`}>
           <Date>{props.microMeta.date}</Date>
-        </div>
+        </Link>
 
         <TextExpandable height="5rem">
           <div className={styles.blurb}>{props.microMeta.blurb}</div>

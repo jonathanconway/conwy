@@ -26,8 +26,8 @@ import {
   w_full,
 } from "@jonathanconway/tailwindjs";
 
-import * as linkStyles from "../../link/link.styles";
-import * as listItemStyles from "../../list-item/list-item.styles";
+import * as linkStyles from "../../../link/link.styles";
+import * as listItemStyles from "../../../list-item/list-item.styles";
 
 export const container = listItemStyles.container;
 
@@ -41,7 +41,7 @@ export const iconQuote = cn(w_full, h_full);
 
 export const title = cn(font_bold, group_name(hover.name, underline));
 
-export const date = cn(text_xs);
+export const date = cn(text_xs, hover(underline));
 
 export const blurb = cn(text_sm);
 

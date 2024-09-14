@@ -2,10 +2,10 @@
 
 import { Post, getAreSomeSame, getItemsTags } from "@/framework/client";
 
-import { MicroListItem } from "../../micros/micro-list-item";
+import { MicrosListItem } from "../../micros";
 import { ArticleListItem } from "../article-list-item";
 import { ALL } from "../tag-filters";
-import { useTagFiltersSwitch } from "../tag-filters/use-tag-filters-switch.hook";
+import { useTagFiltersSwitch } from "../tag-filters";
 
 import * as styles from "./articles-list.styles";
 
@@ -31,7 +31,7 @@ export function ArticlesList({ items }: ArticlesListProps) {
               return <ArticleListItem key={item.meta.slug} {...item.meta} />;
             case "micro":
               return (
-                <MicroListItem key={item.meta.slug} microMeta={item.meta} />
+                <MicrosListItem key={item.meta.slug} microMeta={item.meta} />
               );
             default:
               null;
