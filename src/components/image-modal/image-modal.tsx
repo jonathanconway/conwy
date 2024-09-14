@@ -56,7 +56,11 @@ export function ImageModal(props: ImageModalProps) {
 
         <div className={styles.imageModalMain}>
           <div className={styles.imageContainer}>
-            <Link href={carousel.selectedItem.imageUrl} target="_blank">
+            <Link
+              href={carousel.selectedItem.imageUrl}
+              target="_blank"
+              showOpenInNew={false}
+            >
               <Image
                 className={styles.image}
                 src={carousel.selectedItem.imageUrl}
