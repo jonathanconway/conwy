@@ -18,6 +18,7 @@ export * from "./layouts";
 export * from "./link";
 export * from "./list-item";
 export * from "./mdx";
+export * from "./micro";
 export * from "./micros";
 export * from "./mobile";
 export * from "./projects";
