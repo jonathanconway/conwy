@@ -19,7 +19,7 @@ import {
   uppercase,
 } from "@jonathanconway/tailwindjs";
 
-import * as listItemStyles from "../../list-item/list-item.styles";
+import * as listItemStyles from "../../../list-item/list-item.styles";
 
 export const container = cn(listItemStyles.container, min_h_40);
 

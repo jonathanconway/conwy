@@ -3,15 +3,15 @@ import Link from "next/link";
 
 import { POST_MAIN_IMAGE_DEFAULT, ProjectMeta } from "@/framework/client";
 
-import { SocialLinksIcons } from "../../social-links";
+import { SocialLinksIcons } from "../../../social-links";
 
-import * as styles from "./project-list-item.styles";
+import * as styles from "./projects-list-item.styles";
 
-interface ProjectListItemProps {
+interface ProjectsListItemProps {
   readonly projectMeta: ProjectMeta;
 }
 
-export function ProjectListItem(props: ProjectListItemProps) {
+export function ProjectsListItem(props: ProjectsListItemProps) {
   const { projectMeta } = props;
 
   return (
