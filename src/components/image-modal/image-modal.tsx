@@ -9,6 +9,7 @@ import { CarouselNav } from "../carousel";
 import { Heading } from "../heading";
 import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
+import { Link } from "../link";
 
 import * as styles from "./image-modal.styles";
 import { ImageModalClasses, useImageModal } from "./use-image-modal.hook";
@@ -55,13 +56,15 @@ export function ImageModal(props: ImageModalProps) {
 
         <div className={styles.imageModalMain}>
           <div className={styles.imageContainer}>
-            <Image
-              className={styles.image}
-              src={carousel.selectedItem.imageUrl}
-              alt={carousel.selectedItem.imageUrl}
-              width={600}
-              height={400}
-            />
+            <Link href={carousel.selectedItem.imageUrl} target="_blank">
+              <Image
+                className={styles.image}
+                src={carousel.selectedItem.imageUrl}
+                alt={carousel.selectedItem.imageUrl}
+                width={600}
+                height={400}
+              />
+            </Link>
 
             {carousel.selectedItem.notes
               .filter((note) => note.hotspot)
