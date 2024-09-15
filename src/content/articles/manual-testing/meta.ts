@@ -1,4 +1,4 @@
-import { ArticleMeta, SocialLinkTypes } from "@/framework";
+import { ArticleMeta, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Manual testing",

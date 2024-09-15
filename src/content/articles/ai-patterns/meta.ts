@@ -1,4 +1,4 @@
-import { ArticleMeta } from "@/framework";
+import { ArticleMeta } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "AI user interface patterns",
