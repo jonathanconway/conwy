@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "CIBC",
@@ -85,6 +85,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "Collateral API Integration",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.cibc.co.uk",
+      title: "CIBC website",
     },
   ],
 };

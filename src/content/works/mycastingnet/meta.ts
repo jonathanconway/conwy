@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "MyCastingNet",
@@ -63,4 +63,11 @@ export const meta: WorkMeta = {
     },
   ],
   projects: [],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.mycastingnet.com",
+      title: "MyCastingNet website",
+    },
+  ],
 };

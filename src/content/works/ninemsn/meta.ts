@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "ninemsn",
@@ -70,6 +70,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "Media Inventory System",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "http://ninemsn.com.au",
+      title: "NineMSN website",
     },
   ],
 };

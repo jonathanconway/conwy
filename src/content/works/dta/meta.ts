@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "DTA",
@@ -134,6 +134,18 @@ export const meta: WorkMeta = {
     },
     {
       title: "Researcher tools",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "http://dta.gov.au",
+      title: "DTA website",
+    },
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://web.archive.org/web/20180313174506/https://www.dta.gov.au/blog/Accessibility-going-beyond-the-guidelines/",
+      title: "Accessibility article",
     },
   ],
 };

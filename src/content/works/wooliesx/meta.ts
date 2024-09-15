@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "WooliesX",
@@ -96,6 +96,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "BrainJS Suggestions Prototype",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "http://wooliesx.com.au",
+      title: "WooliesX website",
     },
   ],
 };

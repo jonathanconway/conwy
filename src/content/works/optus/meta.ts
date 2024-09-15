@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Optus",
@@ -87,6 +87,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "Credit offer notification",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://subhub.optus.com.au",
+      title: "Optus SubHub website",
     },
   ],
 };

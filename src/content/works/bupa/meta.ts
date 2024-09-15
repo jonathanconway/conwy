@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Bupa",
@@ -81,6 +81,18 @@ export const meta: WorkMeta = {
   projects: [
     {
       title: "Bupa Web Transformation",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.bupa.com.au",
+      title: "Bupa website",
+    },
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://web.archive.org/web/20111204051308/http://www.bupa.com.au/",
+      title: "'Get a Quote' feature",
     },
   ],
 };

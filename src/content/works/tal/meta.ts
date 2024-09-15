@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "TAL",
@@ -53,6 +53,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "FP4",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.tal.com.au",
+      title: "TAL website",
     },
   ],
 };

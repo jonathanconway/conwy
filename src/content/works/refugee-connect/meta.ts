@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Refugee Connect",
@@ -44,4 +44,11 @@ export const meta: WorkMeta = {
     },
   ],
   projects: [],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "http://refugee-connect.surge.sh",
+      title: "Online prototype",
+    },
+  ],
 };

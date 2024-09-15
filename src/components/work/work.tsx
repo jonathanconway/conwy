@@ -6,6 +6,7 @@ import { WorkMainImage } from "../work";
 import { WorkBody } from "./work-body";
 import { WorkFeedbackCarousel } from "./work-feedback-carousel";
 import { WorkImageCascade } from "./work-image-cascade";
+import { WorkLinks } from "./work-links";
 import { WorkNav } from "./work-nav";
 import { WorkProjects } from "./work-projects";
 import { WorkTechs } from "./work-techs";
@@ -50,6 +51,8 @@ export function Work({ work }: WorkProps) {
               <WorkFeedbackCarousel workFeedbacks={workMeta.feedbacks} />
 
               <WorkProjects projects={workMeta.projects} />
+
+              <WorkLinks workMeta={workMeta} />
             </div>
           </div>
 

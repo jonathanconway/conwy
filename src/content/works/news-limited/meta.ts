@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "News Limited",
@@ -38,5 +38,13 @@ export const meta: WorkMeta = {
     {
       title: "The Australian Top 50 section",
     },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "http://theaustralian.com.au",
+      title: "TheAustralian website",
+    },
+    // todo: add top 50 from archive
   ],
 };

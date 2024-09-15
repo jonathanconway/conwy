@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "EPA / Demonz",
@@ -52,6 +52,13 @@ export const meta: WorkMeta = {
   projects: [
     {
       title: "EPA CRC",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.demonzmedia.com",
+      title: "Demonz Media website",
     },
   ],
 };

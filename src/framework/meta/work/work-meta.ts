@@ -1,4 +1,5 @@
 import { MetaBase } from "../meta-base";
+import { SocialLink } from "../social-link";
 
 export interface WorkMeta extends MetaBase {
   readonly startDate: string;
@@ -19,6 +20,8 @@ export interface WorkMeta extends MetaBase {
   readonly feedbacks: readonly WorkFeedback[];
 
   readonly projects: readonly WorkProject[];
+
+  readonly socialLinks: readonly SocialLink[];
 
   readonly type: "work";
 }

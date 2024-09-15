@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Villa Plus",
@@ -68,6 +68,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "Reservation flow optimization",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "http://villaplus.com",
+      title: "Villa Plus website",
     },
   ],
 };

@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "amaysim",
@@ -52,6 +52,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "Devices API",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.amaysim.com.au",
+      title: "Amaysim website",
     },
   ],
 };

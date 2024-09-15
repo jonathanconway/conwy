@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Revolut",
@@ -158,6 +158,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "Region-specific features",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.revolut.com/business/",
+      title: "Revolut Business website",
     },
   ],
 };

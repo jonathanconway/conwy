@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Community Engine",
@@ -53,4 +53,5 @@ export const meta: WorkMeta = {
       title: "BDD testing",
     },
   ],
+  socialLinks: [],
 };

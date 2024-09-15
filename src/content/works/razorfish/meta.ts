@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
   client: "Razorfish",
@@ -80,6 +80,18 @@ export const meta: WorkMeta = {
     },
     {
       title: "Aussie FreeFall campaign",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://web.archive.org/web/20101228031105/https://amnesiarazorfish.com.au/",
+      title: "Razorfish website",
+    },
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.campaignasia.com/article/aussie-home-loan-aussie-freefall-challenge-australia/209245",
+      title: "AussieFreeFall release",
     },
   ],
 };

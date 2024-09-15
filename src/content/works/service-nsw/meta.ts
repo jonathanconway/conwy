@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Service NSW",
@@ -51,6 +51,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "National Parks Pass",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "http://service.nsw.gov.au",
+      title: "ServiceNSW website",
     },
   ],
 };

@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "COIN Software",
@@ -59,6 +59,13 @@ export const meta: WorkMeta = {
     },
     {
       title: "SuperComparator - Refactoring and Fixes",
+    },
+  ],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://web.archive.org/web/20091122101921/http://coinsoftware.com.au/coin-modules.html",
+      title: "'Tools' factsheet",
     },
   ],
 };
