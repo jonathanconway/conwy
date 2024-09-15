@@ -38,8 +38,3 @@ export const logo = cn(
 );
 
 export const text = cn(hidden);
-
-export const tooltip = {
-  backgroundColor: "var(--color-sky-300)",
-  color: "black",
-};
