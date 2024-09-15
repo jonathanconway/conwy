@@ -1,13 +1,17 @@
-import { ProjectMeta, SocialLinkTypes } from "@/framework/client";
+import {
+  ProjectMeta,
+  ProjectSubTypes,
+  SocialLinkTypes,
+} from "@/framework/client";
 
 export const meta: ProjectMeta = {
   title: "htmldoc",
-  blurb: "Convention for adding code comments to HTML.",
+  blurb: "Convention for adding code comments to HTML",
   date: "2017-12-03",
   slug: "htmldoc",
   tags: ["software-development"],
   type: "project",
-  subType: "standard",
+  subType: ProjectSubTypes.Standard,
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

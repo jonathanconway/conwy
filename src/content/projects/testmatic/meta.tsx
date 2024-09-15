@@ -1,13 +1,17 @@
-import { ProjectMeta, SocialLinkTypes } from "@/framework/client";
+import {
+  ProjectMeta,
+  ProjectSubTypes,
+  SocialLinkTypes,
+} from "@/framework/client";
 
 export const meta: ProjectMeta = {
   title: "testmatic",
-  blurb: "Rapid-entry test case management system.",
+  blurb: "Rapid-entry test case management system",
   date: "2024-05-01",
   slug: "testmatic",
   tags: ["software-development"],
   type: "project",
-  subType: "tool",
+  subType: ProjectSubTypes.Tool,
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

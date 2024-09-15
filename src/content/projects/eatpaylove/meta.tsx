@@ -1,4 +1,8 @@
-import { ProjectMeta, SocialLinkTypes } from "@/framework/client";
+import {
+  ProjectMeta,
+  ProjectSubTypes,
+  SocialLinkTypes,
+} from "@/framework/client";
 
 export const meta: ProjectMeta = {
   title: "eatpaylove",
@@ -7,7 +11,7 @@ export const meta: ProjectMeta = {
   slug: "eatpaylove",
   tags: [],
   type: "project",
-  subType: "tool",
+  subType: ProjectSubTypes.Tool,
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

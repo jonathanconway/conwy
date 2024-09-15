@@ -1,13 +1,17 @@
-import { ProjectMeta, SocialLinkTypes } from "@/framework/client";
+import {
+  ProjectMeta,
+  ProjectSubTypes,
+  SocialLinkTypes,
+} from "@/framework/client";
 
 export const meta: ProjectMeta = {
   title: "codeselectors",
-  blurb: "Convention for referencing parts of code.",
+  blurb: "Convention for referencing parts of code",
   date: "2023-08-01",
   slug: "codeselectors",
   tags: ["software-development"],
   type: "project",
-  subType: "standard",
+  subType: ProjectSubTypes.Standard,
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

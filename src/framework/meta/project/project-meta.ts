@@ -1,10 +1,12 @@
 import { PostMetaBase } from "../post/post-meta-base";
 
+import { ProjectSubType } from "./project-sub-type";
+
 export interface ProjectMeta extends PostMetaBase {
   readonly title: string;
   readonly type: "project";
   readonly redirectUrl?: string;
-  readonly subType: "library" | "standard" | "tool";
+  readonly subType: ProjectSubType;
   readonly images: readonly ProjectImage[];
   readonly techs: readonly ProjectTech[];
   readonly platforms: readonly ProjectPlatform[];

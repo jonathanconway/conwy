@@ -2,7 +2,7 @@ import { ProjectMeta, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ProjectMeta = {
   title: "tailwindjs",
-  blurb: "Tailwind as Javascript functions for intellisense and type safety.",
+  blurb: "Tailwind as Javascript functions for intellisense and type safety",
   date: "2024-05-02",
   slug: "tailwindjs",
   tags: ["software-development"],
