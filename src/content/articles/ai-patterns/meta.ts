@@ -11,4 +11,5 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: ["design"],
   socialLinks: [],
+  isPinned: true,
 };

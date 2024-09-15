@@ -12,4 +12,5 @@ export const meta: MicroMeta = {
       url: "https://x.com/conw_y/status/1781560210273992775",
     },
   ],
+  isPinned: true,
 };

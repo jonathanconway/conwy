@@ -21,4 +21,5 @@ export const meta: MicroMeta = {
     },
   ],
   mainLink: "https://www.youtube.com/watch?v=g-BF4uOnzGk",
+  isPinned: true,
 };

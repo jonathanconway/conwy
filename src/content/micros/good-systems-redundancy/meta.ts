@@ -16,4 +16,5 @@ export const meta: MicroMeta = {
       url: "https://mastodon.social/@conwy/112125972399043834",
     },
   ],
+  isPinned: true,
 };

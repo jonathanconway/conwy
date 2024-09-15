@@ -16,7 +16,7 @@ export function RecentArticlesList({ items }: RecentArticlesListProps) {
   return (
     <div className={styles.container}>
       <Heading className={styles.h2} level={2}>
-        Recent articles
+        Recent posts
       </Heading>
 
       <ArticlesList items={items} />

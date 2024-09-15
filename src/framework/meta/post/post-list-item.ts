@@ -14,7 +14,6 @@ export function pickAndCombineListItems<T extends Post>(
   itemSets: readonly Record<string, T>[],
 ): readonly Post[] {
   const items = itemSets.flatMap((itemSet) => Object.values(itemSet));
-
   const itemsSorted = orderBy(items, "meta.date", "desc");
 
   const itemsSortedPicked = itemsSorted.map(toPicked("meta"));
@@ -22,22 +21,20 @@ export function pickAndCombineListItems<T extends Post>(
   return itemsSortedPicked;
 }
 
-export function sliceAllTopListItems({
+export function getItemsTags(items: readonly Post[]) {
+  return sortBy(uniq(items.flatMap((item) => item.meta.tags)));
+}
+
+export function getPinnedPosts({
   itemSets,
   limit,
 }: {
   readonly itemSets: readonly Record<string, Post>[];
-  limit: number;
+  readonly limit: number;
 }): readonly Post[] {
-  const limitAverage = Math.floor(limit / itemSets.length);
+  const postsAll = itemSets.map((itemSet) => Object.values(itemSet)).flat();
+  const postsPinned = postsAll.filter((post) => post.meta.isPinned);
+  const postsPinnedSliced = postsPinned.slice(0, limit);
 
-  const itemSetsSliced = itemSets.map((itemSet) =>
-    Object.fromEntries(Object.entries(itemSet).slice(0, limitAverage)),
-  );
-
-  return pickAndCombineListItems(itemSetsSliced);
-}
-
-export function getItemsTags(items: readonly Post[]) {
-  return sortBy(uniq(items.flatMap((item) => item.meta.tags)));
+  return postsPinnedSliced;
 }

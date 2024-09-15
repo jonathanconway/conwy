@@ -15,4 +15,5 @@ export const meta: ArticleMeta = {
       url: "https://github.com/jonathanconway/observability-example-react",
     },
   ],
+  isPinned: true,
 };

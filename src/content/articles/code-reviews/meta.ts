@@ -23,4 +23,5 @@ export const meta: ArticleMeta = {
     url: "https://x.com/conw_y/status/1688050838932209664",
     commentCount: 1,
   },
+  isPinned: true,
 };

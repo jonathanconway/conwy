@@ -1,10 +1,10 @@
 import { FragmentsAboutMe, PageLayout, RecentArticlesList } from "@/components";
 import * as articles from "@/content/articles";
 import * as micros from "@/content/micros";
-import { sliceAllTopListItems } from "@/framework";
+import { getPinnedPosts } from "@/framework";
 
 export default function Home() {
-  const items = sliceAllTopListItems({
+  const items = getPinnedPosts({
     itemSets: [articles, micros],
     limit: 10,
   });
