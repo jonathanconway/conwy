@@ -89,4 +89,5 @@ export const WORK_META_MOCK: WorkMeta = {
       title: "Credit offer notification",
     },
   ],
+  socialLinks: [],
 };

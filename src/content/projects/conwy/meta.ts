@@ -1,4 +1,4 @@
-import { ProjectMeta, ProjectSubTypes } from "@/framework";
+import { ProjectMeta, ProjectSubTypes } from "@/framework/client";
 
 export const meta: ProjectMeta = {
   title: "conwy.co",

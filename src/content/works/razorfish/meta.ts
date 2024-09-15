@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework";
+import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Razorfish",
