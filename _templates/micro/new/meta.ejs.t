@@ -2,7 +2,7 @@
 to: src/content/micros/<%= name %>/meta.ts
 ---
 
-import { MicroMeta } from "@/framework";
+import { MicroMeta, SocialLinkTypes } from "@/framework/client";
 
 export const metadata: MicroMeta = {
   blurb: `{{ blurb }}`,
@@ -12,7 +12,7 @@ export const metadata: MicroMeta = {
   type: "micro",
   socialLinks: [
     {
-      type: "{{ platform; e.g. twitter }}",
+      type: SocialLinkTypes.Mastodon,
       url: "{{ url }}",
     },
   ],

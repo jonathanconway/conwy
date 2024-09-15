@@ -1,13 +1,7 @@
 ---
-to: src/content/works/<%= name %>/index.ts
+to: src/content/fragments/<%= name %>/index.ts
 ---
 
-import { Work } from "@/framework";
+import <%= h.namePascal() %> from "./<%= name %>.mdx";
 
-import content from "./blurb-long.mdx";
-import { meta } from "./meta";
-
-export const <%= h.nameCamel() %> = {
-  meta,
-  content,
-} as Work;
+export { <%= h.namePascal() %> };

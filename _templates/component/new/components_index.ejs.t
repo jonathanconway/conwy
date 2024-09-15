@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/content/fragments/index.ts
+to: src/components/index.ts
 append: true
 skip_if: <%= name %>
 ---

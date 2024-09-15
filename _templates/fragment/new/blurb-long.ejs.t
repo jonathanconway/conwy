@@ -1,7 +1,5 @@
 ---
-to: src/content/works/<%= name %>/blurb-long.mdx
+to: src/content/fragments/<%= name %>/<%= name %>.mdx
 ---
-
-import { meta } from "./meta";
 
 (content here)

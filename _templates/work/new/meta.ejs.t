@@ -18,4 +18,5 @@ export const meta: WorkMeta = {
   type: "work",
   techs: [],
   projects: [],
+  socialLinks: [],
 };

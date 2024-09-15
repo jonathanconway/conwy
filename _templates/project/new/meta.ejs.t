@@ -2,7 +2,7 @@
 to: src/content/projects/<%= name %>/meta.ts
 ---
 
-import { ProjectMeta, SocialLinkTypes } from "@/framework";
+import { ProjectMeta } from "@/framework/client";
 
 export const <%= name %>: ProjectMeta = {
   title: "<%= name %>",
@@ -15,4 +15,7 @@ export const <%= name %>: ProjectMeta = {
   socialLinks: [],
   mainImage: "main.svg",
   redirectUrl: "<%= name %>",
+  images: [],
+  platforms: [],
+  techs: [],
 };
