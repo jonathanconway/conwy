@@ -1,14 +1,14 @@
 ---
-to: src/content/micros/<%= name %>/meta.ts
+to: src/content/micros/<%= h.contentName() %>/meta.ts
 ---
 
 import { MicroMeta, SocialLinkTypes } from "@/framework/client";
 
 export const metadata: MicroMeta = {
-  blurb: `{{ blurb }}`,
-  date: "{{ date: yyyy-mm-dd }}",
-  slug: "<%= name %>",
-  tags: ["{{ tag }}"],
+  blurb: `<%= h.content() %>`,
+  date: "<%= h.dateString() %>",
+  slug: "<%= h.contentName() %>",
+  tags: [],
   type: "micro",
   socialLinks: [
     {

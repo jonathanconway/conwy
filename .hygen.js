@@ -1,5 +1,5 @@
 const { basename, dirname, join } = require("path");
-const { camelCase, chain, last, startCase } = require("lodash");
+const { camelCase, chain, last, startCase, kebabCase } = require("lodash");
 
 const ROOT_DIR = "./";
 
@@ -36,6 +36,37 @@ function nameSentence() {
   return `${startCaseLower[0].toUpperCase()}${startCaseLower.substring(1)}`
 }
 
+function content() {
+  const contentSwitchArgIndex = process.argv.indexOf("--content");
+  if (contentSwitchArgIndex === -1) {
+    return "";
+  }
+
+  const contentValueArg = process.argv[contentSwitchArgIndex + 1];
+  if (contentValueArg) {
+    return contentValueArg;
+  }
+
+  return "";
+}
+
+function contentName() {
+  const contentValue = content();
+  if (contentValue) {
+    return kebabCase(contentValue).split("-").slice(0, 5).join("-");
+  }
+
+  return name();
+}
+
+function dateString() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = (now.getMonth() + 1).toString().padStart(2, "0");
+  const date = now.getDate().toString().padStart(2, "0");
+  return `${year}-${month}-${date}`;
+}
+
 //.hygen.js
 module.exports = {
   templates: `${__dirname}/_templates`,
@@ -48,5 +79,8 @@ module.exports = {
     namePascal,
     nameSentence,
     nameUpper,
+    content,
+    contentName,
+    dateString
   }
 }

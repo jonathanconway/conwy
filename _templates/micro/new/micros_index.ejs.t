@@ -2,6 +2,6 @@
 inject: true
 to: src/content/micros/index.ts
 append: true
-skip_if: <%= name %>
+skip_if: <%= h.contentName() %>
 ---
-export * from "./<%= name %>";
+export * from "./<%= h.contentName() %>";
