@@ -1,5 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+import moduleStyles from "./mdx-pre.module.css";
 import * as styles from "./mdx-pre.styles";
 
 export type MdxPreProps = DetailedHTMLProps<
@@ -10,6 +11,7 @@ export type MdxPreProps = DetailedHTMLProps<
 export function MdxPre({ className, children, ...restProps }: MdxPreProps) {
   return (
     <pre
+      className={moduleStyles.pre}
       style={styles.preInline} // Override prismjs css
       {...restProps}
       suppressHydrationWarning

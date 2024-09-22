@@ -13,6 +13,7 @@ import {
   MdxOL,
   MdxP,
   MdxPre,
+  MdxTable,
   MdxUL,
 } from "./components";
 
@@ -31,6 +32,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: MdxP,
     pre: MdxPre,
     ul: MdxUL,
+    table: MdxTable,
     ...components,
   };
 }

@@ -13,3 +13,4 @@ export * from "./mdx-ol";
 export * from "./mdx-p";
 export * from "./mdx-pre";
 export * from "./mdx-ul";
+export * from "./mdx-table";

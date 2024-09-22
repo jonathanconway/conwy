@@ -1,4 +1,11 @@
-const withMDX = require('@next/mdx')()
+import remarkGfm from 'remark-gfm'
+import createMDX from '@next/mdx'
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkGfm]
+  }
+})
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -24,4 +31,4 @@ const nextConfig = {
   staticPageGenerationTimeout: 5000
 }
 
-module.exports = withMDX(nextConfig)
+export default withMDX(nextConfig)

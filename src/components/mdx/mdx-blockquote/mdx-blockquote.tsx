@@ -1,18 +1,30 @@
 import { cn } from "@jonathanconway/tailwindjs";
-import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+import { MdxBlockQuoteProps } from "./mdx-blockquote-props";
+import { getBlockQuoteSubformatProps } from "./mdx-blockquote-subformats";
 import * as styles from "./mdx-blockquote.styles";
 
-export type MdxBlockQuoteProps = DetailedHTMLProps<
-  HTMLAttributes<HTMLQuoteElement>,
-  HTMLQuoteElement
->;
+export function MdxBlockQuote(props: MdxBlockQuoteProps) {
+  props = getBlockQuoteSubformatProps(props);
 
-export function MdxBlockQuote({
-  className,
-  children,
-  ...restProps
-}: MdxBlockQuoteProps) {
+  const { className, children, ...restProps } = props;
+
+  // if (getIsAsideSubformat(children)) {
+  //   return (
+  //     <MdxAside {...props} children={getAsideSubformatChildren(children)} />
+  //   );
+  // }
+
+  // if (getIsSubformatPullQuote(children)) {
+  //   return (
+  //     <MdxAside
+  //       {...props}
+  //       className="pull-quote"
+  //       children={getSubformatPullQuoteChildren(children)}
+  //     />
+  //   );
+  // }
+
   return (
     <blockquote
       className={cn(styles.blockquote, className ?? "")}

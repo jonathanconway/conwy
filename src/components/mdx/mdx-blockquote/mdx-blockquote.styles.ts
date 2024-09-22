@@ -16,7 +16,7 @@ import {
 } from "@jonathanconway/tailwindjs";
 
 export const blockquote = cn(
-  inline_block,
+  // block,
   my_4,
   p_4,
   pb_4,

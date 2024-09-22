@@ -11,17 +11,16 @@ import {
   mt_4,
   p_2,
   px_8,
-  py_12,
+  py_4,
   text_xs,
   w_auto,
-  w_full,
 } from "@jonathanconway/tailwindjs";
 
-export const container = cn(px_8, py_12);
+export const container = cn(px_8, py_4);
 
 export const img = cn(
   // w_full,
-  // max_h_80,
+  max_h_80,
   w_auto,
 
   p_2,
