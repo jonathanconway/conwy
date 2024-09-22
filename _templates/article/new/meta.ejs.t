@@ -8,7 +8,7 @@ export const meta: ArticleMeta = {
   title: "<%= h.nameSentence() %>",
   blurb: "",
   shortBlurb: "",
-  date: "2023-07-02",
+  date: "<%= h.dateString() %>",
   slug: "<%= name %>",
   type: "article",
   tags: [""],

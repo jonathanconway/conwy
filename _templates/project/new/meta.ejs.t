@@ -7,7 +7,7 @@ import { ProjectMeta } from "@/framework/client";
 export const <%= name %>: ProjectMeta = {
   title: "<%= name %>",
   blurb: "",
-  date: "2000-01-01",
+  date: "<%= h.dateString() %>",
   slug: "<%= name %>",
   tags: [],
   type: "project",
