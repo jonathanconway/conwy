@@ -23,7 +23,7 @@ export function ArticleHeader({
       <Heading level={2}>{title}</Heading>
 
       <div className={styles.line1}>
-        <span>{<Date>{date}</Date>}</span>
+        <span>{<Date>{date}</Date>}</span> •
         <Link href={historyUrl}>History</Link>
       </div>
 
