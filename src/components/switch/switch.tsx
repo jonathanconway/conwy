@@ -38,6 +38,7 @@ function SwitchOption(props: SwitchOptionGrouped) {
   return (
     <div key={props.name} className={styles.optionContainer}>
       <input
+        readOnly
         id={id}
         type="radio"
         name={props.name}
