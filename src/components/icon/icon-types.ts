@@ -9,6 +9,7 @@ export const IconTypes = {
   ArrowTriangleRight: "arrow-triangle-right",
   Close: "close",
   CheckBox: "check-box",
+  Bluesky: "blue-sky",
   Dev: "dev",
   Email: "email",
   Github: "github",
