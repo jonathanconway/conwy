@@ -1,19 +1,20 @@
-import { meta } from "./meta";
-
-As AI capabilities become increasingly available to everyday development teams, it might be useful to explore way to surface these capabilities to end-users.
+As AI capabilities become increasingly available to everyday development
+teams, it might be useful to explore way to surface these capabilities to
+end-users.
 
 This article describes some user interface patterns for surfacing AI.
 
 Using ***"treat it like a person"*** as a core principle, I provide patterns,
-examples and ways in which they mimick humans.
+examples (including in-the-wild cases) and how they mimic humans.
 
 ## Principles
 
-As the definition of "AI" is still somewhat in flux, I want to assume a definition for the purposes of this article:
+As the definition of "AI" is still somewhat in flux, I want to assume a
+definition for the purposes of this article:
 
 ***The capability of software/machines to do things that are normally thought of a human, in a rational way.***
 
-The fact AI mimicks human thinking/behaviour suggests that we user interfaces should expose AI capabilities in a human way.
+The fact AI mimics human thinking/behaviour suggests that we user interfaces should expose AI capabilities in a human way.
 
 As Ethan Mollick puts it in the book _Co-Intelligence_ (bold mine):
 
@@ -22,7 +23,14 @@ As Ethan Mollick puts it in the book _Co-Intelligence_ (bold mine):
 > it behaves like one. This mindset, which echoes my “treat it like a person” principle of AI, can significantly improve your
 > understanding of how and when to use AI in a practical, if not technical, sense.
 
-So let's look at the patterns...
+The patterns I've encountered are:
+
+- Inline suggestion
+- Single-agent chat
+- Multi-agent chat
+- Prompting and nudging controls
+
+Let's look at them in detail...
 
 ## Pattern: Inline suggestion
 
@@ -30,21 +38,31 @@ While performing a task, relevant ideas are displayed nearby in text or even ima
 
 The user might be invited to provide input, such as selecting between variants or filling in a blank. (See [Fill-in-the-blanks pattern](#pattern-fill-in-the-blanks))
 
-![Example: inline suggestion for a product owner entering a task](/images/articles/ai-patterns/ai-ui-patterns-inline-suggestion.svg)
-
 **Example:** As a product owner enters a story into a task tracking system, the AI suggests edge cases they didn't yet consider.
 
-**Mimicks:** 🧍 Colleague, mentor, friend, etc. sitting nearby verbally offering a suggestion and/or physically pointing to a part of the screen.
+![Example: inline suggestion for a product owner entering a task](/images/articles/ai-patterns/ai-ui-patterns-inline-suggestion.svg)
+
+**In the wild:** Code assistance plug-ins in IDEs (such as [Genie AI](https://www.genieai.co/), [Amazon Q](https://aws.amazon.com/q/), [CodeGPT](https://codegpt.co/), [Codeium](https://codeium.com/) and [Llama Coder](https://github.com/ex3ndr/llama-coder)) and dedicated IDEs (such as [Cursor](http://cursor.com)). Email and text message completion, as seen in [Gmail](https://mail.google.com/), [LinkedIn messaging](http://linkedin.com/) and [Apple Messages](https://en.wikipedia.org/wiki/Messages_(Apple)).
+
+![In the wild: reply suggestion on LinkedIn](/images/articles/ai-patterns/ai-ui-patterns-inline-suggestion-linkedin.png).
+
+**Mimics:** 🧍 Colleague, mentor, friend, etc. sitting nearby verbally offering a suggestion and/or physically pointing to a part of the screen.
 
 ## Pattern: Single-agent chat
 
 A specialised chat bot is available for back-and-forth discussion.
 
-![Example: specialised single-agent chat bot on an e-commerce website](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat.svg)
-
 **Example:**: Customer on an e-commerce website starts entering a question about a product. A specialised chat-bot replies with a detailed response. An input box allows the customer to respond with a follow-up question.
 
-**Mimicks:** 💬 Colleague, mentor, customer service, etc. communicating with the user via chat.
+![Example: specialised single-agent chat bot on an e-commerce website](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat.svg)
+
+**In the wild:** "Have a question?" feature on [Hotels](http://hotels.com/), "QnaBot" on [Amazon](http://amazon.com/).
+
+![In the wild: "Have a question?" feature on Hotels](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat-hotels.png)
+
+![In the wild: "QnaBot" on Amazon](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat-qna.png)
+
+**Mimics:** 💬 Colleague, mentor, customer service, etc. communicating with the user via chat.
 
 ## Pattern: Multi-agent chat
 
@@ -56,11 +74,19 @@ Also, because this is analagous to real human-human team-work, it's intuitive fo
 
 Users can address individual bots by name, to ask for further assistance on a specific topic or aspect covered by just that bot.
 
-![Example: specialised multi-agent chat bots embedded in a financial advisor tool](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat.svg)
-
 **Example:** Financial advisor tool for recommending products to customers. Agents representing analysts and compliance each offer a perspective. The advisor uses these insights to prepare for a meeting with the client.
 
-**Mimicks:** 👭 Group of people working together, such as a team meeting.
+![Example: specialised multi-agent chat bots embedded in a financial advisor tool](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat.svg)
+
+**In the wild:** Slack automation bots such as [Trello for Slack](https://trello.com/platforms/slack), [ThreadReaderApp](http://threadreaderapp.com) on Twitter and dedicated chat platforms such as [Symphony](http://threadreaderapp.com).
+
+![In the wild: Trello for Slack automation bot](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat-slack.png)
+
+![In the wild: ThreadReaderApp on Twitter](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat-thread-reader.png)
+
+![In the wild: Symphony dedicated multi-agent chat platform](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat-symphony.png)
+
+**Mimics:** 👭 Group of people working together, such as a team meeting.
 
 ## Pattern: Fill-in-the-blanks
 
@@ -68,24 +94,29 @@ A stencil is displayed, with some areas for user input and some ares for AI gene
 
 As the user fills in the inputs, the AI uses contextual information to generate more of the content. User and AI both work together until the full output has been generated.
 
-![Example: fill-in-the-blanks AI for CV editing tool](/images/articles/ai-patterns/ai-ui-patterns-fill-in-the-blanks.svg)
-
 **Example:** Writing a CV for a job. You start to fill in work history items. The AI suggests additional bullet points, which you accept or refuse. The AI suggests shorter more focussed descriptions and word removal, which you accept or refuse.
 
-**Mimicks:** 📈 Collaborative whiteboarding with colleagues (virtually or physically), collaborative card sorting exercises with a team.
+![Example: fill-in-the-blanks AI for CV editing tool](/images/articles/ai-patterns/ai-ui-patterns-fill-in-the-blanks.svg)
+
+**Mimics:** 📈 Collaborative white-boarding with colleagues (virtually or physically), collaborative card sorting exercises with a team.
 
 ## Pattern: Nudging controls
 
 A "work in progress" is displayed in the center while command-buttons for "nudging" are displayed around the edges or off to the side. By clicking the buttons, you can ask the AI to change the work along some dimension.
 
-![Example: nudging controls for AI-assisted logo editing tool](/images/articles/ai-patterns/ai-ui-patterns-nudging.svg)
-
 **Example:** 3D image manipulation. We ask the AI to make the shape more or less rounded, more or less flat, etc.
 
-**Mimicks:** 💺 Pairing with a designer, where the designer is tweaking this or that based on your input.
+![Example: nudging controls for AI-assisted logo editing tool](/images/articles/ai-patterns/ai-ui-patterns-nudging.svg)
+
+**In the wild:** Dall-E image generator.
+
+![In the wild: Dall-E image generator](/images/articles/ai-patterns/ai-ui-patterns-nudging-dalle.png)
+
+**Mimics:** 💺 Pairing with a designer, where the designer is tweaking this or that based on your input.
 
 ## Further reading
 
-- [_Exploring Generative AI_](https://martinfowler.com/articles/exploring-gen-ai.html) by Birgitta BÖCKELER
-- [_Artificial Intelligence: A Modern Approach_](https://aima.cs.berkeley.edu/) by Stuart RUSSELL, Peter NORVIG
-- [_Co-Intelligence_](https://www.penguin.com.au/books/co-intelligence-9780753560778) by Ethan MOLLICK
+- [_Exploring Generative AI_](https://martinfowler.com/articles/exploring-gen-ai.html) • Birgitta BÖCKELER
+- [_Artificial Intelligence: A Modern Approach_](https://aima.cs.berkeley.edu/) • Stuart RUSSELL, Peter NORVIG
+- [_Co-Intelligence_](https://www.penguin.com.au/books/co-intelligence-9780753560778) • Ethan MOLLICK
+- [_Living with AI Discombobulation_](https://youtu.be/lxpASbe5Uys) • Clay SHIRKY
