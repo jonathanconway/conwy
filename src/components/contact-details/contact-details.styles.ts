@@ -4,7 +4,8 @@ import {
   flex_col,
   flex_row,
   gap_1,
-  gap_3,
+  gap_2,
+  gap_4,
   inline_flex,
   items_center,
   items_start,
@@ -14,7 +15,9 @@ import {
 
 import * as linkStyles from "../link/link.styles";
 
-export const container = cn(mt_4, flex, flex_col, items_start, gap_3, text_sm);
+export const container = cn(mt_4, flex, flex_col, items_start, gap_4, text_sm);
+
+export const item = cn(inline_flex, items_center, gap_2);
 
 export const link = cn(
   linkStyles.link,
