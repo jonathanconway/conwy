@@ -10,9 +10,8 @@ export * from "./mock-data";
 export * from "./parallel-loading-react";
 export * from "./refactoring-documentation";
 export * from "./studying-calculus";
+export * from "./subformats";
 export * from "./testing-steps";
 export * from "./three-tests-accessibility";
 export * from "./towards-zero-bugs";
 export * from "./visualising-execution-flows";
-export * from "./subformats";
-

@@ -1,31 +1,42 @@
-import { PageLayout, Redirect as RedirectComponent } from "@/components";
-import { REDIRECTS, site } from "@/content";
-import { Redirect as Redirect_ } from "@/content/fragments";
+import { camelCase } from "lodash";
+import { Metadata } from "next";
 
-interface RedirectProps {
-  readonly params: { readonly slug: string };
-}
+import { REDIRECTS } from "@/content";
+import * as pages from "@/content/pages";
+import { Page as Page__ } from "@/framework";
 
-export default async function Redirect({ params: { slug } }: RedirectProps) {
-  const redirectUrl = REDIRECTS[slug];
+import { PagePage, generateMetadataPage } from "./page-page";
+import { PageRedirect, generateMetadataRedirect } from "./page-redirect";
+import { PageProps } from "./types";
 
-  return (
-    <PageLayout
-      main={
-        <div>
-          <Redirect_ />
+export default async function Page(props: PageProps) {
+  if (REDIRECTS[props.params.slug]) {
+    return <PageRedirect {...props} />;
+  }
 
-          <RedirectComponent redirectUrl={redirectUrl} />
-        </div>
-      }
-    />
-  );
+  return <PagePage {...props} />;
 }
 
 export async function generateStaticParams() {
-  return Object.keys(REDIRECTS).map((slug) => ({ slug }));
+  const redirectsParams = Object.keys(REDIRECTS).map((slug) => ({
+    slug,
+  }));
+
+  const pagesParams = Object.values(pages).map((item) => item.meta);
+
+  return [...redirectsParams, ...pagesParams];
 }
 
-export const metadata = {
-  title: `${site.title} - redirect`,
-};
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  if (REDIRECTS[props.params.slug]) {
+    return generateMetadataRedirect({ params: { slug: props.params.slug } });
+  }
+
+  const pagesByName = pages as Record<string, Page__>;
+  const pageName = camelCase(props.params.slug);
+  if (pagesByName[pageName]) {
+    return generateMetadataPage({ params: { slug: props.params.slug } });
+  }
+
+  throw new Error();
+}

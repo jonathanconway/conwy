@@ -1,0 +1,317 @@
+
+
+# General
+
+## Version control
+
+- [ ] Rebase on master if necessary, and do this regularly if the branch is long lived
+- [ ] Group related changes into one PR but split if PR gets too big
+
+## Approach
+
+- [ ] Legacy vs new - Agree with devs (in writing if possible) whether code written in some legacy style should be upgraded or left as-is
+- [ ] Don't build features not explicitly in the requirements (though there's some strategy here; sometimes you want to, if you have a personal and clearly defined reason for it)
+
+## Pull request
+
+- [ ] Include readily viewable links to task and other relevant info
+
+# Front End
+
+## 1. Branching/Merging
+
+- [ ] 1.1. Rebase on main branch if not done recently in case new changes are picked up that can break the build (this can happen even if there are no build conflicts)
+- [ ] 1.2. Use new "best practice" approach vs. "fit in with existing code" approach based on agreement with the team
+- [ ] 1.3. Group related items into the same PR rather than have many repetitive PRs
+
+## 2. Forms
+
+- [ ] 2.1. Disable buttons while in loading / saving state (use a11y attrs appropriately)
+- [ ] 2.2. Group related controls
+- [ ] 2.3. Careful not to let initialValues (or equivalent) be wiped when there’s a periodic data refresh in the query / data-source, the user might suddenly have their data cleared for no apparent reason 
+
+## 3. Libraries
+
+- [ ] Minimise use of feature flags, and try to remove as soon as possible
+- [ ] Prefer newer libraries
+
+## 4. Visual design / Styling
+
+- [ ] Does it work in dark mode?
+- [ ] Contrast - accessibility - do important features have 4.5:1 (regular text, AA) and 3:1 (large text; AA)? https://webaim.org/resources/contrastchecker/
+- [ ] Apply white-space: pre-wrap to rendered JSON
+- [ ] Is string too long? Shorten with ellipsis
+
+## CSS
+
+- [ ] Use rem or s-units (for React prop-based) instead of px; use other units where appropriate: vh/vw, etc.
+- [ ] Meaningful ordering, e.g.:
+	- [ ] 1 - Visibility (`display: none`, `visibility`, `opacity`)
+	- [ ] 2 - Positioning (`position`, `top`, `right`, `bottom`, `left`, `z-index`, ...)
+	- [ ] 3 - Size (`width`, `height`, `flex`, ...)
+	- [ ] 4 - Internal Layout (`display`, `flex-*`, `margin`, `padding`, ...)
+	- [ ] 5 - Borders, Backgrounds, Shadows (`border`, `background`, ...)
+	- [ ] 6 - Colors, Fonts, Foregrounds (`color`, `font`, `text-*`, `line-height`, ...)
+	- [ ] 7 - Interactivity (`cursor`)
+- [ ] Use optimal icon format - SVG vs. font-icons vs. emojis etc
+
+
+## 5. HTML
+
+- [ ] &lt;Text&gt; should have use prop (for React prop-based)
+- [ ] 
+
+## 6. Coding style
+
+- [ ] 6.1. Condense complex nested structures using produce or _.set
+- [ ] 6.2. Avoid deeply nested if/switch structures; simplify logic, flatten conditionals or extract to functions
+- [ ] 6.3. Remove unused code
+- [ ] 6.4. Order component structures - constants, hook calls, event handlers, util functions then component code [React]
+- [ ] 6.5. Enum values should match keys
+- [ ] 6.6. Pass whole object rather than just one field if possible
+- [ ] Prefer param objects to multiple params where possible
+- [ ] 6.7. Clean up / flatten objects to avoid unnecessary nesting
+- [ ] 6.8. Avoid using is with . filter(Boolean) ; instead, cast whole array to the expected non-null type
+- [ ] Don't use non-sensible fallbacks, e.g. 27 0; just make it undefined
+- [ ] If there are too many as 's / aliases in imports, import * instead and use dot-notation
+- [ ] Use convenience types if available and in-use; e.g. Maybe&lt;T&gt; instead of T | undefined
+- [ ] Use convenience hooks if available and in-use; e.g. useBoolean instead of useState&lt;boolean&gt;
+- [ ] Maybe look for opportunities to destructure in parameter itself rather than subsequent variable
+- [ ] Get rid of ? and ! suffixes where possible
+- [ ] Check chains of accessors, e.g. foo.bar.baz; make sure nothing is null/undefined; add ?. if needed
+- [ ] Avoid casting unless it makes sense semantically
+- [ ] Remove fallbacks where possible (e.g. x??")
+- [ ] Size values can be plain integers, they're half what rem would be
+- [ ] Avoid single-letter lambda parameters
+- [ ] Use shorter absolute import paths where possible
+- [ ] Unnecessary props, connect's
+- [ ] Make sure console logs are removed
+- [ ] Make code as tight and concise as possible. E.g. remove `&#123;` from arrow functions if not needed
+- [ ] All API requests (http.get, http-post, etc) should be typed
+- [ ] Everything should be typed as much as possible; prefer `unknown` over `any` if unable to type
+- [ ] When re-using 'reference code, go through it with a fine tooth comb and make sure nothing unnecessary is left in
+- [ ] Enums should be in TitleCase and singular
+- [ ] Naming intuitive?
+- [ ] Prune unused code
+- [ ] name files consistent with their main export function / object
+- [ ] Remove dead code
+- [ ] Order imports sensibly / consistently, use prettier if possible
+- [ ] Type can be better than interface, prefer it if applicable
+- [ ] Don't export anything unused outside the module
+- [ ] Prefer full function syntax (e.g. () => &#123; ... &#125;) to allow for easy insertion of hooks, etc later on with minimal diff
+- [ ] Move long strings to a variable
+- [ ] Consider removing unnecessary else branch on if
+- [ ] Extract copy texts to named constant
+- [ ] Avoid defaulting parameters to {} if they might be empty; this just complicates empty-checking, forcing us to empty-check individual fields
+- [ ] extract complex filtering logic to semantically / domain specific named functions
+- [ ] prefer longer more specific naming, to prevent name clashes
+- [ ] "Chunking" over nesting
+- [ ] Good use case for DRY: Better to have all the difficult code confined to one place
+
+
+## Comments
+
+- [ ] Include "director" commentary, including documenting flaws that need to be fixed later
+- [ ] Comment constants
+- [ ] Advanced features that reader is unlikely to know
+- [ ] Warnings
+- [ ] Shorter, more precise sentences
+- [ ] Communicate intent
+- [ ] Use information-dense words, e.g. refer to name of software pattern rather than describing the pattern all over again
+
+
+## React
+
+- [ ] Use ComponentPropsWithRef&lt;...&gt; or similar to avoid repeatedly defining className and children in props
+- [ ] Alias generic return field names (e.g. `data` from hook) to something meaningful (e.g, `cart`) so it's easier to find in text search
+- [ ] Hooks should maybe alias generic field names (e.g. `data`) on returning rather than callers doing
+- [ ] When there is repeated component consumption, see if you can extract what's common to another component
+- [ ] Careful about initialising return value of array to [] in hook without providing some kind of `isLoading` or similar; [] might mean it's still loading and shouldn't be treated as empty list
+- [ ] Group related state fields into one state object
+- [ ] Avoid contradictions in state
+- [ ] Avoid redundant state - use calculation, memoized if necessary
+- [ ] Avoid duplication in state
+- [ ] Avoid too deeply nested state
+- [ ] Don't mirror props in state
+- [ ] Consider which component information should be controlled (via props), and which information should be uncontrolled (via state).
+- [ ] Generally consider what could trigger re-renders and avoid it, e.g. by extracting to separate child component
+- [ ] When encapsulating via hooks, careful about state changes unexpectedly causing component re-renders, slowing down the app
+- [ ] Better not to pass spread props into a component generally; this makes it easier to wrap in React.memo where applicable
+- [ ] Better to pass primitives rather than objects/arrays/etc in props
+- [ ] When rendering dynamic array of components, pass `key` and make sure it's suitable, i.e. not just `index` if items might change order  or if item in same position might be swapped and need to re-render
+- [ ] New code: Prefer customer hooks, avoid HOCs and renderProps
+- [ ] When using Context Provider anywhere lower than the top level, be careful of the container updating causing context consumers to re-render ; use useMemo and useCallback to memoize the value passed to the provider
+- [ ] Catch errors, if possible/likely, in event handlers, callbacks and anywhere else outside React render lifecyce
+- [ ] Use ErrorBoundary for errors within React render lifecycle
+
+
+## 7. Usability
+
+- [ ] 7.x. Minimise jankiness, 
+- [ ] 7.x. Minimise Largest Contentful Paint
+- [ ] 7.x. Minimise First Input Delay
+- [ ] 7.x. Cumulative Layout shift
+- [ ] 7.x. Consistent casing, e.g. "Title case" for titles
+- [ ] 7.x. Handle error states with helpful messages and feedback
+- [ ] 7.x. Handle loading states with appropriate visual / textual cues
+- [ ] 7.x. Sort options lists as appropriate, e.g. alphabetically
+- [ ] 7.x. Handle failed requests
+- [ ] 7.x. Loading states should not break anything
+- [ ] 7.x. Always represent the user's input even if invalid; show validation alongside invalid value
+- [ ] 7.x. Modals should capture focus but also be easily closable with focusable Close button
+- [ ] 7.x. 
+- [ ] 7.x. 
+
+
+## 8. Manual testing
+
+- [ ] 8.1. Required fields should not accept blank spaces
+- [ ] 8.2. Test fields with extreme values, e.g. very low or high numbers or very long strings
+- [ ] 8.3. Performing actions more quickly should not cause breakage
+
+
+## 9. Unit testing
+
+- [ ] Keep tests small as possible, ideally one line! Use helpers and string encoding
+- [ ] 9.1. When mocking APIs, assert that they were called with correct path, query string parameters, etc
+- [ ] 9.2. Simplify / reduce big cumbersome asserts; e.g. assert on specific field values rather than deeply nested objectContaining
+- [ ] 9.3. Use waitForNextUpdate when testing hooks rather than wrapping in waitFor
+- [ ] 9.4. Put common behaviour (e.g. rendering) in a beforeEach block rather than repetitively in each it/test block
+- [ ] 9.5. All likely execution paths should be covered by tests
+- [ ] 9.6. Only use waitFor (not act) and explicitly wait for a side-effect (some text to appear, callback to be called, etc). [jest]
+- [ ] 9.7. Don't use free-standing wait, wrap the code in wait block [jest]
+- [ ] 9.8. Check for async causing unit test breakage to not get picked up by test [jest]
+- [ ] 9.9. Use helpers: makeAxiosError, mockRoles [jest]
+- [ ] 9.10. Unit tests should check counterfactual where applicable / useful. E.g. check for element not in document, as well as in document
+- [ ] 9.11. Await findBy*; only use waitFor around specific events [jest]
+- [ ] 9.12. Prefer userEvent then fireEvent [jest]
+- [ ] 9.13. Don't use jest.mock, use jest.spyOn instead [jest]
+- [ ] 9.14. Get rid of `let`  in tests [jest]
+- [ ] 9.15. Re-use mock data
+- [ ] 9.16. Mock data should be copied directly from source if possible, not "cleaned" (as that would make it not representative)
+- [ ] Clean and simple mock data as possible, short readable values
+- [ ] Centralise commonly used mocks in a shared mocks file
+- [ ] Tests should go in appropriate folder and/or have appropriate filename
+- [ ] Split unit tests by 'workflow'
+- [ ] Unit tests - use toBe(true) if the expected value is actually true and not just truthy
+- [ ] Avoid Testld where possible, prefer to query by title, label, aria role etc
+- [ ] Where Testlds are needed, try to keep them in a _tests_/ tests.ts
+- [ ] Keep component or folder-specific mocks in a _fixtures_/mocks. ts file
+- [ ] Prefer userEvent over fireEvent - higher level of abstraction
+- [ ] Keep state as local as possible
+- [ ] Derive values where possible, avoid useEffect
+- [ ] Nice error messages on test failure
+- [ ] 
+
+
+
+
+## 10. Querying / caching
+
+- [ ] Use mutate if you don't need a promise, or handle errors if you use mutatesync
+- [ ] Use mutate if you don't need a promise, or handle errors if you use mutateAsync
+- [ ] Use QueryObserverOptions for options pass-through
+- [ ] Make sure useQuery has all required query keys to cache bust correctly
+- [ ] Do you really need to useQuery? Will memo do instead?
+- [ ] Centralise query keys in packages/backoffice-ui-app-business/src/queries/queryKeys.ts
+- [ ] Use select in useQuery rather than transforming inside the fn passed to useQuery
+- [ ] Use extractQueryData if applicable
+- [ ] Match useQuery signature where possible
+- [ ] onSuccessAction should always return an action; for anything else use on Success without returning a value
+- [ ] ony cache minimum necessary data points in localstorage or memory, no more than necessary
+- [ ] Select session storage vs local storage correctly depending on the use case
+
+
+## Security
+
+- [ ] Never put potentially sensitive data (e.g. customer details) in uri, localStorage or anywhere it might get inadvertently leaked
+- [ ] 
+
+
+## Bug prevention
+
+- [ ] If something is added to a common type or enum, be careful that there isn't any code that dynamically loops over that thing, which gets inadvertently impacted
+- [ ] Careful about using a hook in a context where its data would not be available or otherwise it wouldn't work
+- [ ] Check all paths that can lead to a particular component running, not just the path that you're working on
+- [ ] Test companies changes in kyb portal
+- [ ] Regression-test everything after actioning PR feedback, in case the actioning of the feedback itself contained a bug
+- [ ] Impact analysis! Understand all the behaviour that is impacted by the FE change and test it also before pushing the PR
+- [ ] Compare behaviour and visible information when running PR branch to current app in CODES. Make sure there isn't inadvertent hiding or distortion of information, bugs, etc. Case in point: # Message from Maciej Pawtowski in #p-business-onboarding
+- [ ] Avoid throwing exceptions, as that can cause the whole app to break - instead, gracefully handle it.
+- [ ] Did you go manually exercise every piece of code that is affected by your change? (I.e. by clicking/typing in the local running app)
+- [ ] Check parameters and early-return / throw error if missing (depending on general guidelines)
+- [ ] Make use of `?.` if the goal is to prevent breakage
+- [ ] Null check / optionally-chain all properties of a param object that are required, not just the param object itself
+- [ ] handle non-numeric values in numeric calculations if necessary
+
+
+## Performance and efficiency 
+
+- [ ] 14.1. Check for unnecessary change detection (Angular) or render cycles (React) using Chrome Performance Tools or similar 
+	- [ ] Can use ngZone.runOutsideAngular to prevent change detection in Angular
+- [ ] 14.2. Identify expensive algorithms and optimise them or memoize/cache them
+- [ ] 14.3. Use `.reduce` efficiently; don't return result but set accumulator and return it (return by reference)
+- [ ] 14.4. Cache/memoize computations that aggregate many pieces of data into one structure (?)
+- [ ] Combine useMemo contents where applicable
+- [ ] Wrap whole component in memo where applicable
+- [ ] 14.5. Avoid "waterfall" requests - chains of dependent requests that slow down rate of rendering
+- [ ] Try to make `import` path as specific as possible, e.g. `import Link from "next/link"` rather than `import { Link } from "next"`
+- [ ] Keep components small
+- [ ] Use path imports rather than destructuring (unless you have tree shaking)
+- [ ] 
+
+
+## Modals
+
+- [ ] 15.1. Avoid consuming context (except theme) inside a modal - it'll be unavailable; pass value to the modal via props instead.
+- [ ] 
+
+
+## API calls
+
+- [ ] 16.1. If api call is being added, ensure it was actually tested and verified to work
+- [ ] 16.2. Encode url params if there's any chance that they might contain encodeable characters, e.g. / in uuid; see
+- [ ] 16.3. Always ensure that all BE APIs required for the FE change to work are already live and tested
+- [ ] Ensure sensitive data isn't being sent when non-HTTPS request is made
+- [ ] 
+
+## Design system
+
+- [ ] 17.1. Use VStack / HStack instead of Flex
+- [ ] 17.2. Use @revolut/ui-kit components rather than backoffice-ui-components
+- [ ] 17.3. Use textChain instead of chain where possible
+- [ ] 17.4. In Ul Kit Table column object, Header can just be string
+
+
+## Software design / code structure
+
+- [ ] Whenever calling a function, see if there's a more specific function that does exactly what you want, to avoid re-implementing something that was already implemented
+- [ ] Re-use code in a higher-level folder where possible
+- [ ] 18.1. Don't add specific things to generic components
+- [ ] 18.2. Naming - make sure names don't go out of date in future
+- [ ] 18.3. Split large files into smaller more focused files
+- [ ] 18.4. Can something common be extracted to a common module?
+- [ ] 18.5. Can something specific be moved to a more specific module?
+- [ ] 18.6. Extract pure functions where possible
+- [ ] 18.7. When hooks include JSX structures, extract them to components
+- [ ] 18.8. Pay attention to which components load which data; should data be loaded by components higher up in the hierarchy and merely passed down to lower components?
+- [ ] 18.9. Pull hooks or components up one or more folder levels if they will be used outside of their current folder
+- [ ] 18.10. Look at adjacent, similarly named constructs and think about what should be done with them, to avoid confusion
+- [ ] Split hooks / functions / components when they start to get too big
+
+
+## Naming
+
+- [ ] Choosing specific words
+- [ ] Avoiding generic names (or knowing when to use them)
+- [ ] Using concrete names instead of abstract names
+- [ ] Attaching extra information to a name, by using a suffix or prefix
+	- [ ] Units
+	- [ ] Other important information, e.g. `plaintextPassword`
+- [ ] Deciding how long a name should be
+- [ ] Using name formatting to pack extra information - e.g. local members prefixed with `_`
+- [ ] Prefer min/maxfor inclusive limits, first/last for inclusive ranges
+- [ ] is, has, can, or should can make booleans more clear
+- [ ] Match expectations of users, e.g. don't name expensive calculation like a simple "getter" 
+- [ ] Java - avoid get for non-getters
+

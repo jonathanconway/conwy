@@ -4,6 +4,7 @@ export * from "./meta-base";
 export * from "./meta-key";
 export * from "./meta";
 export * from "./micro";
+export * from "./page";
 export * from "./post";
 export * from "./project";
 export * from "./social-link";

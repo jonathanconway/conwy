@@ -32,8 +32,8 @@ function nameUpper() {
 }
 
 function nameSentence() {
-  const startCaseLower = startCase(name())
-  return `${startCaseLower[0].toUpperCase()}${startCaseLower.substring(1)}`
+  const startCaseLower = startCase(name()).toLowerCase();
+  return `${startCaseLower[0].toUpperCase()}${startCaseLower.substring(1)}`;
 }
 
 function content() {

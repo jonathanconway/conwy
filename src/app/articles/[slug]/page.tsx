@@ -12,7 +12,6 @@ interface PageProps {
 export default async function Page({ params: { slug } }: PageProps) {
   const articleModule = await import(`@/content/articles/${slug}`);
   const article = Object.values(articleModule)[0] as Article_;
-  // const article = articles.streamliningCodeReviews; //
   return <Article article={article} />;
 }
 
@@ -26,7 +25,6 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const articleModule = await import(`@/content/articles/${slug}`);
   const article = Object.values(articleModule)[0] as Article_;
-  // const article = articles.streamliningCodeReviews; //
   const articleTitle = article.meta.title.toLowerCase();
 
   return {
