@@ -1,4 +1,5 @@
 import { cn } from "@jonathanconway/tailwindjs";
+import { isString } from "lodash";
 import NextLink from "next/link";
 
 import { Icon, IconTypes } from "../icon";
@@ -29,7 +30,12 @@ export function Link_(props: LinkProps) {
         href={props.href}
         {...restProps}
       >
-        <span className={styles.linkText}>
+        <span
+          className={cn(
+            styles.linkContent,
+            isString(children) ? styles.linkText : "",
+          )}
+        >
           {children}
 
           {showOpenInNew && (

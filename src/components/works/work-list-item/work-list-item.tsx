@@ -16,7 +16,7 @@ export function WorkListItem(props: WorkListItemProps) {
   const techNames = workMeta.techs.map((tech) => tech.categoryName).join(", ");
 
   return (
-    <Link className={styles.container} href={`work/${workMeta.slug}`} target="">
+    <div className={styles.container}>
       <div className={styles.mainColumn}>
         {/* <div className={styles.date}>
           <Date format="MMM yyyy">{startDate}</Date>
@@ -24,7 +24,9 @@ export function WorkListItem(props: WorkListItemProps) {
           <Date format="MMM yyyy">{endDate}</Date>
         </div> */}
 
-        <div className={styles.title}>{workMeta.client}</div>
+        <Link href={`work/${workMeta.slug}`}>
+          <div className={styles.title}>{workMeta.client}</div>
+        </Link>
 
         <p className={styles.subTitle}>{workMeta.jobTitle}</p>
 
@@ -49,6 +51,6 @@ export function WorkListItem(props: WorkListItemProps) {
 
         {/* <span className={styles.type}>{type}</span> */}
       </div>
-    </Link>
+    </div>
   );
 }

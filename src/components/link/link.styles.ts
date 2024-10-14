@@ -46,11 +46,9 @@ export const link = cn(
 
 export const linkIcon = cn(text_inherit);
 
-export const linkText = cn(
-  inline_flex,
-  items_center,
-  gap_1_5,
+export const linkContent = cn(inline_flex, items_center, gap_1_5);
 
+export const linkText = cn(
   text_sky_600,
   dark(text_sky_300),
 
