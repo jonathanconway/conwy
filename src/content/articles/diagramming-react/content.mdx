@@ -1,0 +1,93 @@
+After working on a [Typescript diagram format](/articles/diagramming-ts) I wanted to focus on a React equivalent.
+
+Diagrams can be useful for various purposes:
+- Designing a solution at a high-level before writing any code
+- Understanding an existing code-base by diagramming it
+- Quickly sketching ideas to compare different designs or work out a refactoring strategy
+
+In this article I'll describe a UML-influenced diagramming format for React.
+
+## Overview
+
+The format consistent of the following elements:
+
+- **Component** - rectangle with title and list of props
+- **Component call** - caller to callee connected with solid-arrow-terminated line
+- **Component call with props** - caller to props and props to callee connected with solid-arrow-terminated line
+- **Component render props** - render prop rectangle connected to component with dot-terminated line
+- **Function** - rectangle with title and list of parameters
+- **Type or interface** - rectangle with title and list of props
+
+## Component
+
+A component is depicted with a depicted with a rectangle with `<<Component>>` descriptor and title at the top and, optionally, props underneath.
+
+![React diagram depicting a component](/images/articles/diagramming-react/component.svg)
+
+## Component call
+
+A component can render another component – here this is referred to as a "component call".
+
+A component call is depicted with a line from the caller component rectangle to the callee component rectangle, terminating in a filled arrow symbol.
+
+![React diagram depicting a component call](/images/articles/diagramming-react/component-call.svg)
+
+## Component call with props
+
+A component can pass props to another component – here this is referred to as a "component call with props".
+
+A component call with props is depicted with a line from the caller component rectangle to a props rectangle and another line from the props rectangle to the callee component rectangle, terminating in a filled arrow symbol.
+
+The props are depicted in a props rectangle, in which each prop has its own rectangle. This allows any individual prop to be linked to a type, function or component rectangle.
+
+![React diagram depicting a component call with props](/images/articles/diagramming-react/component-call-with-props.svg)
+
+## Component render props
+
+Render props are props for which we pass a React component, a function which renders a component or a React node.
+
+A render prop is depicted with a line from the prop box to a Component or Function rectangle, terminating in a dot symbol.
+
+![React diagram depicting a component call with render props](/images/articles/diagramming-react/component-call-with-render-props.svg)
+
+## Function
+
+Same as in the [Typescript diagram format](/articles/diagramming-ts), a function is depicted with a rectangle with `<<Function>>` descriptor and title at the top and, optionally, parameters underneath.
+
+![React diagram depicting a function](/images/articles/diagramming-react/function.svg)
+
+## Type or interface
+
+Same as in the [Typescript diagram format](/articles/diagramming-ts), a type or interface is depicted with a rectangle with `<<Type>>` or `<<Interface>>` descriptor and title at the top and, optionally, fields underneath.
+
+![React diagram depicting a function](/images/articles/diagramming-react/type-interface.svg)
+
+A **composition relationship** between types or an inheritance relationship between interfaces is depicted with a line from the composer/inheritor to the composed/inherited type/interface, terminating in an empty arrow symbol.
+
+![React diagram depicting type composition and interface inheritance](/images/articles/diagramming-react/composition-inheritance.svg)
+
+A **reference relationship** between two components, functions, types or interfaces is depicted with a line from the referencer to the referenced, terminating in an arrow symbol.
+
+![React diagram depicting an interface reference](/images/articles/diagramming-react/interface-reference.svg)
+
+## Example: contacts list
+
+Here's an example of a React diagram depicting components that make up a contacts list.
+
+- ContactsList component
+- ContactsList -> ContactListItem component call with render props
+- ContactsListItem component
+- ContactPhone component
+- ContactEmail component
+- Contact interface
+- getContacts function
+
+![React diagram depicting a function](/images/articles/diagramming-react/contacts-list-example.svg)
+
+## Downloads
+
+To make it easier to use this format, I've implemented them in the following formats, with downloadable templates:
+
+- Mermaid • [Download: diagramming-react.mermaid.md](/downloads/articles/diagramming-react/diagramming-react.mermaid.md)
+- Draw.io • [Download: diagramming-react.drawio](/downloads/articles/diagramming-react/diagramming-react.drawio)
+- Figma • [Download: diagramming-react.fig](/downloads/articles/diagramming-react/diagramming-react.fig)

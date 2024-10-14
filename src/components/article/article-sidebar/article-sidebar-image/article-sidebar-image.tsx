@@ -12,7 +12,7 @@ export function ArticleSidebarImage({ meta }: ArticleSidebarImageProps) {
   return (
     <Image
       className={styles.image()}
-      src={`/images/articles/${meta.slug}/main.jpg`}
+      src={`/images/articles/${meta.slug}/${meta.mainImage ?? "main.jpg"}`}
       alt="Article main image"
       priority
       unoptimized={true}

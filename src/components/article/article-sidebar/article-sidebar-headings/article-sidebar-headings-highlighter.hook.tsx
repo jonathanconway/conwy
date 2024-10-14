@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 import { isClient, isNotNil } from "@/framework/client";
 
-import { ARTICLE_HEADING_INTRO } from "../../article-heading-intro";
 import { ArticleHeading } from "../../article-headings";
 
 function getIsElementInViewport(el?: HTMLElement | null) {
@@ -60,9 +59,7 @@ export function useArticleSidebarHeadingsHighlighter(
 ) {
   const articleHeadingIds = map(articleHeadings, "id");
 
-  const [selectedHeadingId, setSelectedHeadingId] = useState(
-    ARTICLE_HEADING_INTRO.id,
-  );
+  const [selectedHeadingId, setSelectedHeadingId] = useState("top");
 
   const handleScroll = () => {
     const articleElements =

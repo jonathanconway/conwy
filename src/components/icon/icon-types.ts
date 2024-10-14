@@ -11,6 +11,7 @@ export const IconTypes = {
   CheckBox: "check-box",
   Bluesky: "blue-sky",
   Dev: "dev",
+  Download: "download",
   Email: "email",
   Github: "github",
   Hamburger: "hamburger",

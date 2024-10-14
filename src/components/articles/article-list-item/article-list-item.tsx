@@ -18,6 +18,7 @@ export function ArticleListItem({
   shortBlurb,
   socialLinks,
   type,
+  mainImage,
 }: ArticleListItemProps) {
   return (
     <div className={styles.container}>
@@ -33,7 +34,7 @@ export function ArticleListItem({
       <div className={styles.asideColumn}>
         <Image
           className={styles.image}
-          src={`/images/articles/${slug}/main.jpg`}
+          src={`/images/articles/${slug}/${mainImage ?? "main.jpg"}`}
           alt="Article main image"
           priority
           unoptimized={true}

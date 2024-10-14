@@ -48,9 +48,13 @@ export function ContactDetails() {
       {CONTACTS.map(({ iconType, id, label, href }) => (
         <div key={label} className={styles.item}>
           <Icon className={styles.linkIcon} icon={iconType} />
-          <span>{label}:</span>
-          <Link href={href} className={styles.link} target="_blank">
-            {id}
+          <Link
+            href={href}
+            className={styles.link}
+            target="_blank"
+            bracketedItems={[id]}
+          >
+            {label}
           </Link>
         </div>
       ))}

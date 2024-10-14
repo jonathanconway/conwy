@@ -13,6 +13,7 @@ export const link = cn(
   linkStyles.link,
 
   inline_flex,
+
   flex_row,
   items_center,
   gap_1,

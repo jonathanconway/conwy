@@ -1,6 +1,7 @@
 export * from "./ai-patterns";
 export * from "./code-reviews";
 export * from "./combinatorial-testing";
+export * from "./diagramming-react";
 export * from "./diagramming-ts";
 export * from "./front-end-observability";
 export * from "./interaction-wireframes";

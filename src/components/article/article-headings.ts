@@ -5,8 +5,6 @@ import { Article as Article_ } from "@/framework/client";
 
 import { MdxH2, MdxH2Short } from "../mdx";
 
-import { ARTICLE_HEADING_INTRO } from "./article-heading-intro";
-
 export interface ArticleHeading {
   readonly id: string;
   readonly title: string;
@@ -89,5 +87,5 @@ export function getArticleHeadings(
     },
   );
 
-  return [ARTICLE_HEADING_INTRO, ...headingElementHeadings];
+  return [{ id: "", title: "Intro" }, ...headingElementHeadings];
 }

@@ -7,6 +7,7 @@ export * from "./blue-sky";
 export * from "./check-box";
 export * from "./close";
 export * from "./dev";
+export * from "./download";
 export * from "./email";
 export * from "./github";
 export * from "./hamburger";

@@ -22,7 +22,6 @@ export function SocialLinksListItem({ socialLink }: SocialLinksListItemProps) {
         className={styles.linkIcon}
         icon={SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].iconType}
       />
-
       <span className={styles.linkText}>
         {socialLink.title ??
           SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].title}

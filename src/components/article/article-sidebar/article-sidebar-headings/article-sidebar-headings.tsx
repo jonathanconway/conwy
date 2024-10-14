@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "../../../link";
 import { Section } from "../../../section";
 import { ArticleHeading } from "../../article-headings";
 
@@ -25,14 +26,15 @@ export function ArticleSidebarHeadings({
       <ul className={styles.list}>
         {articleHeadings.map(({ id, title, shortTitle }) => (
           <li key={id} className={styles.listItem}>
-            <a
-              id={`${id}-article-link`}
-              href={`#${id}`}
-              className={styles.link(selectedHeadingId === id)}
-              title={title}
-            >
-              {shortTitle ?? title}
-            </a>
+            {selectedHeadingId === id ? (
+              <span className={styles.listItemSelected}>
+                {shortTitle ?? title}
+              </span>
+            ) : (
+              <Link id={`${id}-article-link`} href={`#${id}`} title={title}>
+                {shortTitle ?? title}
+              </Link>
+            )}
           </li>
         ))}
       </ul>
