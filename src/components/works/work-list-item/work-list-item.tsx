@@ -1,6 +1,6 @@
 import { WorkMeta } from "@/framework/client";
 
-import { Link } from "../../link";
+import { LinkBox } from "../../link-box";
 import { Tooltip } from "../../tooltip";
 import { WorkMainImage } from "../../work";
 
@@ -16,17 +16,9 @@ export function WorkListItem(props: WorkListItemProps) {
   const techNames = workMeta.techs.map((tech) => tech.categoryName).join(", ");
 
   return (
-    <div className={styles.container}>
+    <LinkBox className={styles.container} href={`work/${workMeta.slug}`}>
       <div className={styles.mainColumn}>
-        {/* <div className={styles.date}>
-          <Date format="MMM yyyy">{startDate}</Date>
-          <span> - </span>
-          <Date format="MMM yyyy">{endDate}</Date>
-        </div> */}
-
-        <Link href={`work/${workMeta.slug}`}>
-          <div className={styles.title}>{workMeta.client}</div>
-        </Link>
+        <div className={styles.title}>{workMeta.client}</div>
 
         <p className={styles.subTitle}>{workMeta.jobTitle}</p>
 
@@ -46,11 +38,7 @@ export function WorkListItem(props: WorkListItemProps) {
       </div>
       <div className={styles.asideColumn}>
         <WorkMainImage workMeta={props.workMeta} />
-
-        {/* {socialLinks && <SocialLinks socialLinks={socialLinks} />} */}
-
-        {/* <span className={styles.type}>{type}</span> */}
       </div>
-    </div>
+    </LinkBox>
   );
 }

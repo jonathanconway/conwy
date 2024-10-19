@@ -23,9 +23,11 @@ import {
   whitespace_nowrap,
 } from "@jonathanconway/tailwindjs";
 
+import * as linkBoxStyles from "../../link-box/link-box.styles";
 import * as listItemStyles from "../../list-item/list-item.styles";
 
 export const container = cn(
+  linkBoxStyles.linkBox,
   listItemStyles.container,
   text_stone_950,
   dark(text_stone_50),

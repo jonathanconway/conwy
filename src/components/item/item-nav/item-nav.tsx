@@ -2,7 +2,7 @@ import { startCase } from "lodash";
 
 import { ItemMeta } from "@/framework/client";
 
-import { Link } from "../../link";
+import { LinkBox } from "../../link-box";
 import { ItemMainImage } from "../item-main-image";
 
 import * as styles from "./item-nav.styles";
@@ -20,7 +20,11 @@ export function ItemNav<TMeta extends ItemMeta>(props: ItemNavProps<TMeta>) {
     <div className={styles.navsContainer}>
       {itemMetasNavsPreviousNext.map(({ type, itemMeta }) =>
         itemMeta ? (
-          <Link key={type} className={styles.navContainer} href={itemMeta.slug}>
+          <LinkBox
+            key={type}
+            className={styles.navContainer}
+            href={itemMeta.slug}
+          >
             <div className={styles.mainColumn}>
               <div className={styles.label}>
                 {type === "previous" && "< "}
@@ -34,7 +38,7 @@ export function ItemNav<TMeta extends ItemMeta>(props: ItemNavProps<TMeta>) {
             <div className={styles.asideColumn}>
               <ItemMainImage itemMeta={itemMeta} titleKey={props.titleKey} />
             </div>
-          </Link>
+          </LinkBox>
         ) : (
           <div key={type} className={styles.containerEmpty}></div>
         ),

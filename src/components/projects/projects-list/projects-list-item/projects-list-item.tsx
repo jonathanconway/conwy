@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { POST_MAIN_IMAGE_DEFAULT, ProjectMeta } from "@/framework/client";
 
+import { LinkBox } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
 
 import * as styles from "./projects-list-item.styles";
@@ -15,13 +15,13 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
   const { projectMeta } = props;
 
   return (
-    <div className={styles.container}>
+    <LinkBox className={styles.container} href={`projects/${projectMeta.slug}`}>
       <div className={styles.mainColumn}>
-        <Link href={`projects/${projectMeta.slug}`}>
+        <div>
           <div className={styles.title}>{projectMeta.title}</div>
 
           <p className={styles.blurb}>{projectMeta.blurb}</p>
-        </Link>
+        </div>
       </div>
       <div className={styles.asideColumn}>
         <Image
@@ -40,6 +40,6 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
 
         <span className={styles.type}>{projectMeta.subType}</span>
       </div>
-    </div>
+    </LinkBox>
   );
 }

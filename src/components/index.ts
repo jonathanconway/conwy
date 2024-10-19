@@ -16,6 +16,7 @@ export * from "./image-cascade";
 export * from "./image-modal";
 export * from "./layouts";
 export * from "./link";
+export * from "./link-box";
 export * from "./list-item";
 export * from "./mdx";
 export * from "./micro";
