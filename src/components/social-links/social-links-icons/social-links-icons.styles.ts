@@ -18,7 +18,7 @@ import {
 
 export const container = cn(flex, items_start, flex_row, gap_2, justify_end);
 
-export const icon = cn(
+export const link = cn(
   size_4,
 
   text_stone_600,

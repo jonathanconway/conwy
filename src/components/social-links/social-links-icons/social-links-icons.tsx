@@ -15,21 +15,18 @@ export function SocialLinksIcons({ socialLinks }: SocialLinksIconsProps) {
     <div className={styles.container}>
       {socialLinks.map((socialLink) => (
         <Link
+          className={styles.link}
           key={socialLink.url}
           href={socialLink.url}
           target="_blank"
           showOpenInNew={false}
-        >
-          <Icon
-            className={styles.icon}
-            icon={SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].iconType}
-            tooltip={{
-              contents:
-                socialLink.title ??
-                SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].title,
-            }}
-          />
-        </Link>
+          icon={SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].iconType}
+          tooltip={{
+            contents:
+              socialLink.title ??
+              SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].title,
+          }}
+        />
       ))}
     </div>
   );

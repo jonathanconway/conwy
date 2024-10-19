@@ -17,8 +17,5 @@ export const link = cn(
   flex_row,
   items_center,
   gap_1,
+  text_sm,
 );
-
-export const linkIcon = cn(linkStyles.linkIcon);
-
-export const linkText = cn(text_sm);

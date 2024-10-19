@@ -1,11 +1,11 @@
-import { cn } from "@jonathanconway/tailwindjs";
-import { isString } from "lodash";
+"use client";
+
 import NextLink from "next/link";
+import { MouseEvent } from "react";
 
 import { Icon, IconTypes } from "../icon";
 import { withTooltip } from "../tooltip";
 
-import { LinkBracketedItems } from "./link-bracketed-item";
 import { LinkProps } from "./link-props";
 import * as styles from "./link.styles";
 
@@ -23,42 +23,32 @@ export function Link_(props: LinkProps) {
     props.showOpenInNew !== false &&
     !props.download;
 
-  if (props.href) {
-    return (
-      <NextLink
-        className={cn(styles.link, styles.linkDecoration)}
-        href={props.href}
-        {...restProps}
-      >
-        <span
-          className={cn(
-            styles.linkContent,
-            isString(children) ? styles.linkText : "",
-          )}
-        >
-          {children}
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!props.href) {
+      event.preventDefault();
+    }
+    props.onClick?.(event);
+  };
 
-          {showOpenInNew && (
-            <Icon className={styles.linkIcon} icon={IconTypes.OpenInNew} />
-          )}
-
-          {props.download && (
-            <Icon className={styles.linkIcon} icon={IconTypes.Download} />
-          )}
-        </span>
-
-        <LinkBracketedItems items={props.bracketedItems} />
-      </NextLink>
-    );
-  }
-
-  // todo: extract to LinkText
   return (
-    <span className={styles.link} {...restProps}>
-      <span className={styles.linkText}>{children}</span>
+    <NextLink
+      className={styles.link}
+      href={props.href ?? ""}
+      {...restProps}
+      onClick={handleClick}
+    >
+      {props.icon && <Icon className={styles.linkIcon} icon={props.icon} />}
 
-      <LinkBracketedItems items={props.bracketedItems} />
-    </span>
+      {children}
+
+      {showOpenInNew && (
+        <Icon className={styles.linkIcon} icon={IconTypes.OpenInNew} />
+      )}
+
+      {props.download && (
+        <Icon className={styles.linkIcon} icon={IconTypes.Download} />
+      )}
+    </NextLink>
   );
 }
 

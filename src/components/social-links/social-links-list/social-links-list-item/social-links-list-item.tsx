@@ -1,6 +1,5 @@
 import { SocialLink } from "@/framework/client";
 
-import { Icon } from "../../../icon";
 import { Link } from "../../../link";
 import { SOCIAL_LINKS_DETAILS_BY_TYPE } from "../../social-links-details-by-type";
 
@@ -17,15 +16,9 @@ export function SocialLinksListItem({ socialLink }: SocialLinksListItemProps) {
       href={socialLink.url}
       className={styles.link}
       target="_blank"
+      icon={SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].iconType}
     >
-      <Icon
-        className={styles.linkIcon}
-        icon={SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].iconType}
-      />
-      <span className={styles.linkText}>
-        {socialLink.title ??
-          SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].title}
-      </span>
+      {socialLink.title ?? SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].title}
     </Link>
   );
 }
