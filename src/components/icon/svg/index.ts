@@ -10,6 +10,7 @@ export * from "./dev";
 export * from "./download";
 export * from "./email";
 export * from "./github";
+export * from "./goodreads";
 export * from "./hamburger";
 export * from "./linked-in";
 export * from "./like";

@@ -40,6 +40,11 @@ const CONTACTS = [
     id: "@conw_y",
     href: "https://web.telegram.org/k/#@conw_y",
   },
+  {
+    iconType: IconTypes.Goodreads,
+    label: "Goodreads",
+    href: "https://www.goodreads.com/review/list/54406240?shelf=read",
+  },
 ];
 
 export function ContactDetails() {
@@ -52,7 +57,7 @@ export function ContactDetails() {
             href={href}
             className={styles.link}
             target="_blank"
-            bracketedItems={[id]}
+            bracketedItems={id ? [id] : []}
           >
             {label}
           </Link>
