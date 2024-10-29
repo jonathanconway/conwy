@@ -1,5 +1,5 @@
 .hamburgerHiddenCheckbox {
-  display: none;
+  display: none !important;
 }
 
 .hamburgerHiddenCheckbox ~ .hamburgerContents {
