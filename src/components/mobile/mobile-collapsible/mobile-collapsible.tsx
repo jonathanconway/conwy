@@ -27,7 +27,6 @@ export function MobileCollapsible(props: MobileCollapsibleProps) {
         aria-hidden="true"
         type="checkbox"
       />
-
       <label
         className={cn(moduleStyles.header, styles.header)}
         htmlFor={inputId}
@@ -50,7 +49,6 @@ export function MobileCollapsible(props: MobileCollapsibleProps) {
           size="2rem"
         />
       </label>
-
       <div className={cn(moduleStyles.content, styles.content)}>
         {props.children}
       </div>
