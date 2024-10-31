@@ -15,7 +15,13 @@ export const meta: ProjectMeta = {
   socialLinks: [
     {
       type: SocialLinkTypes.Website,
-      url: "https://testmatic-docs.surge.sh/",
+      title: "Docs",
+      url: "/testmaticdocs",
+    },
+    {
+      type: SocialLinkTypes.Website,
+      title: "App",
+      url: "/testmaticui",
     },
     {
       type: SocialLinkTypes.Twitter,

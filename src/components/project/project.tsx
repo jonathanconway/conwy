@@ -6,6 +6,7 @@ import { Section } from "../section";
 import { ProjectImageCascade } from "./product-image-cascade";
 import { ProjectBody } from "./project-body";
 import { ProjectLinks } from "./project-links";
+import { ProjectMainImage } from "./project-main-image";
 import { ProjectNav } from "./project-nav";
 import { ProjectPlatforms } from "./project-platforms";
 import { ProjectTechs } from "./project-techs";
@@ -34,6 +35,9 @@ export function Project({ project }: ProjectProps) {
 
       <div className={styles.main}>
         <div className={styles.body}>
+          <ProjectMainImage projectMeta={projectMeta} />
+          <br />
+
           <Section label="Summary">
             <ProjectBody project={project} />
           </Section>

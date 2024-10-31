@@ -76,6 +76,8 @@ export const REDIRECTS: Redirects = {
     "https://web.archive.org/web/20180313174506/https://www.dta.gov.au/blog/Accessibility-going-beyond-the-guidelines/",
   tailwindjs: "https://github.com/jonathanconway/tailwindjs",
   codeselectors: "https://usecodeselectors.surge.sh",
-  testmatic: "https://testmatic-docs.surge.sh",
+  testmatic: "/projects/testmatic",
+  testmaticdocs: "https://spiffy-yeot-f1545f.netlify.app",
+  testmaticui: "https://heroic-kitten-eb0230.netlify.app",
   htmldoc: "http://usehtmldoc.surge.sh",
 };
