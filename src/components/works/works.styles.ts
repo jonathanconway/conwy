@@ -1,4 +1,4 @@
-export const container = () => `  
+export const container = () => `
   flex
   flex-row
   flex-wrap

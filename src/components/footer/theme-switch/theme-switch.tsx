@@ -1,6 +1,6 @@
 "use client";
 
-import { loadPrismJSTheme } from "../../head/prismjs-theme";
+import { loadPrismJSTheme } from "../../scripts/prismjs-theme";
 import { Switch, SwitchOption } from "../../switch";
 import { Theme, Themes, useSelectedTheme } from "../../theme";
 

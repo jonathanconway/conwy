@@ -5,7 +5,7 @@ import { Layout } from "@/components";
 import "./globals.css";
 
 export const metadata = {
-  title: "conwy - Homepage of Jonathan Conway",
+  title: "conwy - home",
   description: "Homepage of Jonathan Conway",
 };
 
