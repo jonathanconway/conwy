@@ -1,6 +1,6 @@
 import {
   all,
-  bg_stone_400,
+  bg_stone_200,
   bg_stone_800,
   border,
   border_stone_400,
@@ -25,7 +25,7 @@ export const aside = cn(
   border,
   border_stone_400,
 
-  bg_stone_400,
+  bg_stone_200,
   dark(bg_stone_800),
 
   all(first(pt_0)),
