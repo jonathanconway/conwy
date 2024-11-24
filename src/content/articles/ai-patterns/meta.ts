@@ -5,7 +5,6 @@ export const meta: ArticleMeta = {
   blurb:
     "AI-enabled capabilities can be surfaced in user interfaces in a variety of ways. Here's a review of those that I've encountered.",
   shortBlurb: "How might we surface AI capabilities in user interfaces?",
-  mainImage: "main.jpg",
   date: "2024-09-13",
   slug: "ai-patterns",
   type: "article",

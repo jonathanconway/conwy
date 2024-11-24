@@ -9,7 +9,6 @@ export const meta: ArticleMeta = {
   date: "2024-09-13",
   slug: "manual-testing",
   type: "article",
-  mainImage: "main.jpg",
   tags: ["software-development"],
   socialLinks: [
     {
