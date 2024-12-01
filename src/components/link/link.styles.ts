@@ -5,7 +5,7 @@ import {
   decoration_sky_300,
   decoration_sky_600,
   font_medium,
-  gap_1_5,
+  gap_0_5,
   hover,
   inline_flex,
   items_center,
@@ -31,7 +31,7 @@ export const linkDecoration = cn(
 export const linkContent = cn(
   inline_flex,
   items_center,
-  gap_1_5,
+  gap_0_5,
 
   text_sky_600,
   dark(text_sky_300),

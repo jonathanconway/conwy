@@ -15,6 +15,8 @@ interface ItemMainImageProps<TMeta extends ItemMeta> extends ImageProps {
 export function ItemMainImage<TMeta extends ItemMeta>(
   props: ItemMainImageProps<TMeta>,
 ) {
+  const { itemMeta, titleKey, ...restProps } = props;
+
   return (
     <Image
       className={styles.image}
@@ -22,9 +24,9 @@ export function ItemMainImage<TMeta extends ItemMeta>(
       unoptimized={true}
       width={96}
       height={64}
-      {...props}
-      src={`/images/${pluralize(props.itemMeta.type, 2)}/${props.itemMeta.slug}/${props.itemMeta.mainImage}`}
-      alt={`Thumbnail image for ${props.itemMeta[props.titleKey]}`}
+      src={`/images/${pluralize(itemMeta.type, 2)}/${itemMeta.slug}/${itemMeta.mainImage}`}
+      alt={`Thumbnail image for ${itemMeta[titleKey]}`}
+      {...restProps}
     />
   );
 }

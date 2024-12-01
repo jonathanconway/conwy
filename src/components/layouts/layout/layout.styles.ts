@@ -9,7 +9,6 @@ import {
   flex,
   flex_col,
   flex_row,
-  gap_16,
   overflow_y_visible,
   relative,
   selection,
@@ -31,7 +30,6 @@ export const body = cn(
   flex,
   flex_col,
   sm(flex_row),
-  gap_16,
 
   bodyBackground,
 

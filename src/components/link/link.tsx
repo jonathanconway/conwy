@@ -15,6 +15,11 @@ export function Link_(props: LinkProps) {
     ref,
     showOpenInNew: _showOpenInNew,
     bracketedItems,
+    showOpenPopup,
+    download,
+    href = "",
+    icon,
+    onClick,
     ...restProps
   } = props;
 
@@ -24,20 +29,20 @@ export function Link_(props: LinkProps) {
     !props.download;
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (!props.href) {
+    if (!href) {
       event.preventDefault();
     }
-    props.onClick?.(event);
+    onClick?.(event);
   };
 
   return (
     <NextLink
       className={styles.link}
-      href={props.href ?? ""}
-      {...restProps}
+      href={href}
       onClick={handleClick}
+      {...restProps}
     >
-      {props.icon && <Icon className={styles.linkIcon} icon={props.icon} />}
+      {icon && <Icon className={styles.linkIcon} icon={icon} />}
 
       {children}
 
@@ -45,7 +50,11 @@ export function Link_(props: LinkProps) {
         <Icon className={styles.linkIcon} icon={IconTypes.OpenInNew} />
       )}
 
-      {props.download && (
+      {showOpenPopup && (
+        <Icon className={styles.linkIcon} icon={IconTypes.Info} />
+      )}
+
+      {download && (
         <Icon className={styles.linkIcon} icon={IconTypes.Download} />
       )}
     </NextLink>

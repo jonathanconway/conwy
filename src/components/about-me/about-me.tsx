@@ -6,7 +6,7 @@ import { Fragment } from "../fragments";
 
 import moduleStyles from "./about-me.module.css";
 
-export function FragmentsAboutMe() {
+export function AboutMe() {
   return (
     <div className={moduleStyles.container}>
       <Image

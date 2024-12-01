@@ -12,6 +12,7 @@ export * from "./email";
 export * from "./github";
 export * from "./goodreads";
 export * from "./hamburger";
+export * from "./info";
 export * from "./linked-in";
 export * from "./like";
 export * from "./mastodon";

@@ -1,4 +1,4 @@
-import { FragmentsAboutMe, PageLayout, RecentArticlesList } from "@/components";
+import { AboutMe, PageLayout, RecentArticlesList } from "@/components";
 import * as articles from "@/content/articles";
 import * as micros from "@/content/micros";
 import { getPinnedPosts } from "@/framework";
@@ -13,7 +13,7 @@ export default function Home() {
     <PageLayout
       main={
         <>
-          <FragmentsAboutMe />
+          <AboutMe />
 
           <RecentArticlesList items={items} />
         </>

@@ -1,23 +1,13 @@
-import { ComponentPropsWithRef } from "react";
+import { ComponentPropsWithRef, forwardRef } from "react";
 
 import moduleStyles from "./fragment.module.css";
 
-export type FragmentProps = ComponentPropsWithRef<"div">;
+export type FragmentProps = ComponentPropsWithRef<"div"> & {
+  readonly slug?: string;
+};
 
-// function getRenderableChildren(children: ReactNode) {
-//   return Children.map(children, (child) => {
-//     if (
-//       !child ||
-//       typeof child !== "object" ||
-//       !("type" in child || "props" in child || "key" in child)
-//     ) {
-//       return null;
-//     }
-
-//     return child;
-//   });
-// }
-
-export function Fragment(props: FragmentProps) {
-  return <div className={moduleStyles.fragment} {...props} />;
+function Fragment_(props: FragmentProps, ref: any) {
+  return <div className={moduleStyles.fragment} {...props} ref={ref} />;
 }
+
+export const Fragment = forwardRef(Fragment_);

@@ -1,10 +1,16 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { NotePopup } from "@/components/note";
 
-export type MdxPProps = DetailedHTMLProps<
-  HTMLAttributes<HTMLParagraphElement>,
-  HTMLParagraphElement
->;
+import { MdxPProps } from "./mdx-p-props";
+import { getPSubformatProps } from "./mdx-p-subformat";
 
-export function MdxP({ className, children, ...restProps }: MdxPProps) {
-  return <p {...restProps}>{children}</p>;
+export function MdxP(props: MdxPProps) {
+  props = getPSubformatProps(props);
+
+  const { noteId, ...restProps } = props;
+
+  if (noteId) {
+    return <NotePopup noteId={noteId}>{props.children}</NotePopup>;
+  }
+
+  return <p {...restProps} />;
 }
