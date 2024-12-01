@@ -23,7 +23,7 @@ export function Icon_(props: IconProps) {
         - id needs to be on the container for the tooltip to activate.
         - className needs to be on the container for the hover colours to be applied.
     */
-    <div
+    <span
       id={props.id}
       className={cn(styles.iconContainer, props.className ?? "")}
       style={{
@@ -35,7 +35,7 @@ export function Icon_(props: IconProps) {
 
       {/* Explanation: Overlay needs to absorb mouse events for tooltip and hover effects to work simultaneously. */}
       <span className={styles.iconOverlay}></span>
-    </div>
+    </span>
   );
 }
 

@@ -16,7 +16,7 @@
     "build-gh-pages": "npm run build:tailwind && npm run build:all && touch out/.nojekyll",
     "build:all": "next build && npm run build:custom:all",
     "build:watch": "nodemon \"npm run build\" ./src --ext ts,tsx,mdx,css --ignore *.test.*",
-    "start": "npx serve@latest out  -p 4000",
+    "start": "npx serve@latest out -p 4000",
     "start:watch": "concurrently \"npm run start\" \"npm run build:watch\"",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",

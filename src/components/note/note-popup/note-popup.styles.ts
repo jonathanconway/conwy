@@ -29,9 +29,6 @@ export const tooltip = cn(shadow, shadow_md);
 
 export const tooltipStyles = {
   backgroundColor: "var(--page-background-color)",
-  borderColor: "black",
-  borderWidth: "1px",
-  border: "solid",
   color: "var(--text-color)",
   zIndex: 10_000,
   pointerEvents: "all",

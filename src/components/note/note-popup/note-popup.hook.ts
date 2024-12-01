@@ -16,12 +16,10 @@ export function useNotePopup(params: UseNotePopupParams) {
 function useNotePopupOpenOnMatchingHash({ noteId }: UseNotePopupParams) {
   const href = `#${noteId}`;
 
-  global.window = global.window ?? { location: {} };
-
-  const defaultIsOpen = global.window.location.hash === href;
+  const defaultIsOpen = global?.window?.location?.hash === href;
 
   const setIsOpen = (isOpen: boolean) => {
-    if (!isOpen && global.window.location.hash === href) {
+    if (!isOpen && global?.window?.location?.hash === href) {
       global.window.location.hash = "";
     }
   };
