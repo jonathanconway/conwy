@@ -1,3 +1,5 @@
+import { MouseEvent } from "react";
+
 import {
   NOTE_HREF_PREFIX,
   notePattern,
@@ -16,9 +18,19 @@ export function getASubformatPopupNoteLinkProps(props: MdxAProps): LinkProps {
 
   const showOpenPopup = true;
 
+  const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    if (global.window) {
+      const hash = (event.target as HTMLAnchorElement).href.split("#")[1];
+      global.window.location.hash = hash;
+    }
+  };
+
   return {
     ...props,
     children,
     showOpenPopup,
+    onClick,
   };
 }

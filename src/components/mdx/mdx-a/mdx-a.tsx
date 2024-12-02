@@ -1,3 +1,5 @@
+"use client";
+
 import { Link } from "../../link";
 
 import { MdxAProps } from "./mdx-a-props";
