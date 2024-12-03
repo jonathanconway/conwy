@@ -3,6 +3,7 @@ import {
   bottom_0,
   cn,
   h_full,
+  inline_block,
   left_0,
   relative,
   right_0,
@@ -12,7 +13,7 @@ import {
 
 export const DEFAULT_SIZE = "1rem";
 
-export const iconContainer = cn(relative);
+export const iconContainer = cn(relative, inline_block);
 
 export const iconSvg = cn(w_full, h_full);
 
