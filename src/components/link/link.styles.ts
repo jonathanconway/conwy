@@ -21,8 +21,8 @@ export const linkDecoration = cn(
   decoration_sky_600,
   dark(decoration_sky_300),
 
-  `group:hover:decoration-sky-500`,
-  `group:hover:dark:decoration-sky-400`,
+  `group-hover:decoration-sky-500`,
+  `group-hover:dark:decoration-sky-400`,
 
   // group(hover(decoration_sky_500)),
   // group(hover(dark(decoration_sky_400))),

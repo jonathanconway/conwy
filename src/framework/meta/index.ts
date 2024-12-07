@@ -8,4 +8,5 @@ export * from "./page";
 export * from "./post";
 export * from "./project";
 export * from "./social-link";
+export * from "./tool";
 export * from "./work";

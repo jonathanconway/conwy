@@ -1,0 +1,14 @@
+import { Tool, ToolSections } from "@/framework";
+
+export const HandBrake: Tool = {
+  section: ToolSections.App,
+  slug: "hand-brake",
+  title: "HandBrake",
+  category: "Video Converter",
+  date: "2024-12-06",
+  operatingSystems: ["MacOS", "Windows"],
+  url: "https://handbrake.fr/",
+  description:
+    "Video converter supporting many input and output sources, with many features.",
+  mainImage: "/images/tools/hand-brake.png",
+};

@@ -4,6 +4,7 @@ import {
   cn,
   cursor_pointer,
   dark,
+  group,
   hover,
 } from "@jonathanconway/tailwindjs";
 
@@ -12,4 +13,6 @@ export const linkBox = cn(
   hover(dark(bg_stone_800)),
 
   cursor_pointer,
+
+  group(),
 );

@@ -31,6 +31,7 @@ export * from "./switch";
 export * from "./switch";
 export * from "./text";
 export * from "./theme";
+export * from "./tools";
 export * from "./tooltip";
 export * from "./work";
 export * from "./works";
