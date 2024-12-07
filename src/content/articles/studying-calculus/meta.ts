@@ -16,5 +16,6 @@ export const meta: ArticleMeta = {
       title: "Link to course on Coursera",
     },
   ],
+  discussionLinks: [],
   isPinned: true,
 };

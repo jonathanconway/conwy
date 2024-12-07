@@ -21,5 +21,6 @@ export const meta: ArticleMeta = {
       title: "Testmatic: test case tool",
     },
   ],
+  discussionLinks: [],
   isPinned: true,
 };

@@ -3,7 +3,7 @@ import { uniq, without } from "lodash";
 import { LocalStorageKeys } from "@/app/local-storage-keys";
 import { getAreAllSame, useSessionStorage } from "@/framework/client";
 
-import { ALL } from "./tag-filters.const";
+import { ALL } from "./articles-tag-filters.const";
 
 const DEFAULT_SELECTED_TAGS = [ALL];
 

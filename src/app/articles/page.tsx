@@ -1,4 +1,9 @@
-import { ArticlesList, Fragment, PageLayout, TagFilters } from "@/components";
+import {
+  ArticlesList,
+  ArticlesTagFilters,
+  Fragment,
+  PageLayout,
+} from "@/components";
 import { site } from "@/content";
 import * as articles from "@/content/articles";
 import { Articles as Articles_ } from "@/content/fragments";
@@ -17,7 +22,7 @@ export default function Page() {
             <Articles_ />
           </Fragment>
 
-          <TagFilters items={items} />
+          <ArticlesTagFilters items={items} />
 
           <ArticlesList items={items} />
         </>

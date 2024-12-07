@@ -10,5 +10,6 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: ["life"],
   socialLinks: [],
+  discussionLinks: [],
   isPinned: true,
 };

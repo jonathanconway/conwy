@@ -29,4 +29,5 @@ export const meta: ArticleMeta = {
       url: "https://www.youtube.com/watch?v=86PqPOQx3Co",
     },
   ],
+  discussionLinks: [],
 };

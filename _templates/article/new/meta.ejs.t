@@ -13,4 +13,5 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: [""],
   socialLinks: [],
+  discussionLinks: [],
 };

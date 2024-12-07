@@ -4,11 +4,11 @@ import { Post, getItemsTags } from "@/framework/client";
 
 import { MobileCollapsible } from "../../mobile";
 
-import { ALL } from "./tag-filters.const";
-import * as styles from "./tag-filters.styles";
-import { useTagFiltersSwitch } from "./use-tag-filters-switch.hook";
+import { ALL } from "./articles-tag-filters.const";
+import * as styles from "./articles-tag-filters.styles";
+import { useTagFiltersSwitch } from "./use-articles-tag-filters-switch.hook";
 
-export interface TagFiltersProps {
+export interface ArticlesTagFiltersProps {
   readonly items: readonly Post[];
 }
 
@@ -16,7 +16,7 @@ function sentenceCase(input: string) {
   return input.split("-").join(" ").toLowerCase();
 }
 
-export function TagFilters({ items }: TagFiltersProps) {
+export function ArticlesTagFilters({ items }: ArticlesTagFiltersProps) {
   const allTags = getItemsTags(items);
   const tags = [ALL, ...allTags];
 

@@ -10,4 +10,5 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: ["software-development"],
   socialLinks: [],
+  discussionLinks: [],
 };

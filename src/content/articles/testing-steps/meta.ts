@@ -19,4 +19,5 @@ export const meta: ArticleMeta = {
       title: "Testmatic website",
     },
   ],
+  discussionLinks: [],
 };

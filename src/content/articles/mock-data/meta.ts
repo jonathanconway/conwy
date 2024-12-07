@@ -14,4 +14,12 @@ export const meta: ArticleMeta = {
       url: "https://dev.to/conw_y/the-many-uses-of-mock-data-4fi2",
     },
   ],
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/the-many-uses-of-mock-data-4fi2#comments",
+      likeCount: 8,
+      commentCount: 1,
+    },
+  ],
 };

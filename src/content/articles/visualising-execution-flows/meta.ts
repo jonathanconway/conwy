@@ -16,4 +16,11 @@ export const meta: ArticleMeta = {
       url: "https://dev.to/conw_y/visualising-execution-flows-59e7",
     },
   ],
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/visualising-execution-flows-59e7#comments",
+      likeCount: 18,
+    },
+  ],
 };

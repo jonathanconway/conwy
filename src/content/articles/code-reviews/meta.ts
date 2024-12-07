@@ -18,10 +18,17 @@ export const meta: ArticleMeta = {
       url: "https://www.linkedin.com/pulse/streamlining-code-reviews-jonathan-conway",
     },
   ],
-  discussionLink: {
-    type: SocialLinkTypes.Twitter,
-    url: "https://x.com/conw_y/status/1688050838932209664",
-    commentCount: 1,
-  },
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.Twitter,
+      url: "https://x.com/conw_y/status/1688050838932209664",
+      commentCount: 1,
+    },
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/streamlining-code-reviews-4016#comments",
+      likeCount: 3,
+    },
+  ],
   isPinned: true,
 };

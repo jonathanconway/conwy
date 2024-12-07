@@ -10,11 +10,13 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: ["design"],
   socialLinks: [],
-  discussionLink: {
-    type: SocialLinkTypes.LinkedIn,
-    url: "https://www.linkedin.com/pulse/surfacing-ai-user-interface-jonathan-conway-kyamc/?trackingId=GnKV9%2FnmRD2yS551gV0Y0A%3D%3D",
-    commentCount: 1,
-    likeCount: 1,
-  },
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.LinkedIn,
+      url: "https://www.linkedin.com/pulse/surfacing-ai-user-interface-jonathan-conway-kyamc/?trackingId=GnKV9%2FnmRD2yS551gV0Y0A%3D%3D",
+      commentCount: 1,
+      likeCount: 1,
+    },
+  ],
   isPinned: true,
 };

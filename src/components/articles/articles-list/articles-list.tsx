@@ -3,10 +3,10 @@
 import { Post, getAreSomeSame, getItemsTags } from "@/framework/client";
 
 import { MicrosListItem } from "../../micros";
-import { ArticleListItem } from "../article-list-item";
-import { ALL } from "../tag-filters";
-import { useTagFiltersSwitch } from "../tag-filters";
+import { ALL } from "../articles-tag-filters";
+import { useTagFiltersSwitch } from "../articles-tag-filters";
 
+import { ArticlesListItem } from "./articles-list-item";
 import * as styles from "./articles-list.styles";
 
 interface ArticlesListProps {
@@ -28,7 +28,7 @@ export function ArticlesList({ items }: ArticlesListProps) {
         .map((item) => {
           switch (item.meta.type) {
             case "article":
-              return <ArticleListItem key={item.meta.slug} {...item.meta} />;
+              return <ArticlesListItem key={item.meta.slug} {...item.meta} />;
             case "micro":
               return (
                 <MicrosListItem key={item.meta.slug} microMeta={item.meta} />

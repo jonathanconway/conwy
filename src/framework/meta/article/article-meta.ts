@@ -4,7 +4,7 @@ import { SocialLink } from "../social-link";
 export interface ArticleMeta extends PostMetaBase {
   readonly title: string;
   readonly type: "article";
-  readonly discussionLink?: ArticleMetaDiscussionLink;
+  readonly discussionLinks: readonly ArticleMetaDiscussionLink[];
 }
 
 export interface ArticleMetaDiscussionLink extends SocialLink {

@@ -13,4 +13,11 @@ export const meta: ArticleMeta = {
       url: "https://dev.to/conw_y/parallel-loading-in-react-cci",
     },
   ],
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/parallel-loading-in-react-cci#comments",
+      likeCount: 7,
+    },
+  ],
 };

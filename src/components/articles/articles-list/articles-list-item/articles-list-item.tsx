@@ -3,14 +3,14 @@ import Link from "next/link";
 
 import { ArticleMeta } from "@/framework/client";
 
-import { Date } from "../../date";
-import { SocialLinksIcons } from "../../social-links";
+import { Date } from "../../../date";
+import { SocialLinksIcons } from "../../../social-links";
 
-import * as styles from "./article-list-item.styles";
+import * as styles from "./articles-list-item.styles";
 
-export type ArticleListItemProps = ArticleMeta;
+export type ArticlesListItemProps = ArticleMeta;
 
-export function ArticleListItem({
+export function ArticlesListItem({
   date,
   slug,
   title,
@@ -19,7 +19,7 @@ export function ArticleListItem({
   socialLinks,
   type,
   mainImage,
-}: ArticleListItemProps) {
+}: ArticlesListItemProps) {
   return (
     <div className={styles.container}>
       <Link className={styles.mainColumn} href={`articles/${slug}`}>

@@ -20,6 +20,7 @@ export function createArticleMetaMock(): ArticleMeta {
         url: "https://linkedin.com/in/jonathanconway",
       },
     ],
+    discussionLinks: [],
   };
 }
 
@@ -38,5 +39,6 @@ export function createArticleMetaMock2(): ArticleMeta {
         url: "https://www.linkedin.com/pulse/streamlining-code-reviews-jonathan-conway",
       },
     ],
+    discussionLinks: [],
   };
 }

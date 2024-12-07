@@ -1,27 +1,40 @@
 import pluralize from "pluralize";
 
-import { ArticleMeta, SocialLinkLabels } from "@/framework";
+import {
+  ArticleMeta,
+  ArticleMetaDiscussionLink,
+  SocialLinkLabels,
+} from "@/framework";
 
-export function getArticleDiscussionLinkDetails(articleMeta: ArticleMeta) {
-  if (!articleMeta.discussionLink) {
+export function getArticleDiscussionLinksDetails(articleMeta: ArticleMeta) {
+  if (!articleMeta.discussionLinks) {
     return null;
   }
 
-  const discussionLink = articleMeta.discussionLink;
+  return articleMeta.discussionLinks.map(getArticleDiscussionLinkDetails);
+}
 
+export function getArticleDiscussionLinkDetails(
+  discussionLink: ArticleMetaDiscussionLink,
+) {
   const type = SocialLinkLabels[discussionLink.type];
 
   const commentCount = discussionLink.commentCount
-    ? `(${discussionLink.commentCount} ${pluralize("comment", discussionLink.commentCount)})`
+    ? `${discussionLink.commentCount} ${pluralize("comment", discussionLink.commentCount)}`
+    : "";
+
+  const likeCount = discussionLink.likeCount
+    ? `${discussionLink.likeCount} ${pluralize("like", discussionLink.likeCount)}`
     : "";
 
   const socialLink = {
-    ...articleMeta.discussionLink,
+    ...discussionLink,
     title: `Discussion on ${type}`,
   };
 
   return {
     socialLink,
     commentCount,
+    likeCount,
   };
 }

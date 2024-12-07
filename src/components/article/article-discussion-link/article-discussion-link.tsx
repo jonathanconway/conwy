@@ -1,31 +1,32 @@
-import pluralize from "pluralize";
-
 import { SocialLinksListItem } from "@/components/social-links";
-import { Article, SocialLinkLabels } from "@/framework";
+import { Article } from "@/framework";
 
 import * as styles from "./article-discussion-link.styles";
-import { getArticleDiscussionLinkDetails } from "./article-discussion-link.utils";
+import { getArticleDiscussionLinksDetails } from "./article-discussion-link.utils";
 
 interface ArticleDiscussionLinkProps {
   readonly article: Article;
 }
 
 export function ArticleDiscussionLink(props: ArticleDiscussionLinkProps) {
-  const discussionLinkedDetails = getArticleDiscussionLinkDetails(
+  const discussionLinksDetails = getArticleDiscussionLinksDetails(
     props.article.meta,
   );
 
-  if (!discussionLinkedDetails) {
+  if (!discussionLinksDetails?.length) {
     return null;
   }
 
-  const { socialLink, commentCount } = discussionLinkedDetails;
-
   return (
     <div className={styles.container}>
-      <SocialLinksListItem socialLink={socialLink} />
+      {discussionLinksDetails.map(({ socialLink, commentCount, likeCount }) => (
+        <div key={socialLink.url} className={styles.discussion}>
+          <SocialLinksListItem socialLink={socialLink} />
 
-      <span className={styles.count}>{commentCount}</span>
+          {commentCount && <span className={styles.count}>{commentCount}</span>}
+          {likeCount && <span className={styles.count}>{likeCount}</span>}
+        </div>
+      ))}
     </div>
   );
 }

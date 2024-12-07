@@ -1,4 +1,4 @@
 export * from "./articles-list";
-export * from "./article-list-item";
-export * from "./tag-filters";
-export * from "./recent-articles-list";
+export * from "./articles-list/articles-list-item";
+export * from "./articles-tag-filters";
+export * from "./articles-recent-list";

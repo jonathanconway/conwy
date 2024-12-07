@@ -13,4 +13,11 @@ export const meta: ArticleMeta = {
       url: "https://dev.to/conw_y/diagramming-typescript-2ehj",
     },
   ],
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/diagramming-typescript-2ehj#comments",
+      likeCount: 7,
+    },
+  ],
 };
