@@ -138,6 +138,11 @@ export const meta: WorkMeta = {
   ],
   socialLinks: [
     {
+      type: SocialLinkTypes.Github,
+      url: "https://github.com/jonathanconway/dta-reproduction",
+      title: "Prototypes",
+    },
+    {
       type: SocialLinkTypes.Website,
       url: "http://dta.gov.au",
       title: "DTA website",
