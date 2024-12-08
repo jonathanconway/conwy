@@ -139,8 +139,13 @@ export const meta: WorkMeta = {
   socialLinks: [
     {
       type: SocialLinkTypes.Github,
-      url: "https://github.com/jonathanconway/dta-reproduction",
+      url: "https://conwy-dta-prototype.netlify.app",
       title: "Prototypes",
+    },
+    {
+      type: SocialLinkTypes.Github,
+      url: "https://github.com/jonathanconway/dta-reproduction",
+      title: "Prototypes (Source)",
     },
     {
       type: SocialLinkTypes.Website,
