@@ -55,6 +55,7 @@ export const mainWrapper = cn(
   sm(flex_row),
   sm(gap_8),
 
+  px_4,
   sm(px_8),
   lg(pl_0),
 );
