@@ -10,7 +10,7 @@ import {
 import { join } from "path";
 import pluralize from "pluralize";
 
-import { Meta, MetaType } from "../meta";
+import { Meta, MetaType } from "../content";
 import { TypeOfConst } from "../utils";
 
 export const PublicStaticAssetTypes = {

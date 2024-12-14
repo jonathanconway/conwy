@@ -1,7 +1,5 @@
 export * from "./article";
 export * from "./item";
-export * from "./meta-base";
-export * from "./meta-key";
 export * from "./meta";
 export * from "./micro";
 export * from "./page";

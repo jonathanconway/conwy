@@ -1,4 +1,4 @@
-import { TypeOfConst } from "@/framework/utils";
+import { TypeOfConst } from "../../utils";
 
 export const ProjectSubTypes = {
   Library: "library",

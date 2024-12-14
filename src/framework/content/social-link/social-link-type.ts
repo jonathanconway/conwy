@@ -1,4 +1,4 @@
-import { TypeOfConst } from "../utils";
+import { TypeOfConst } from "../../utils";
 
 export const SocialLinkTypes = {
   Dev: "dev",
@@ -29,9 +29,3 @@ export const SocialLinkLabels = {
 };
 
 export type SocialLinkType = TypeOfConst<typeof SocialLinkTypes>;
-
-export interface SocialLink {
-  readonly type: SocialLinkType;
-  readonly url: string;
-  readonly title?: string;
-}

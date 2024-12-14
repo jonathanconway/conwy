@@ -1,4 +1,4 @@
-import { Post } from "../post/post";
+import { Post } from "../post";
 
 import { MicroMeta } from "./micro-meta";
 

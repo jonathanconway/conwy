@@ -1,4 +1,4 @@
-import { PostMetaBase } from "../post/post-meta-base";
+import { PostMetaBase } from "../post";
 import { SocialLink } from "../social-link";
 
 export interface ArticleMeta extends PostMetaBase {

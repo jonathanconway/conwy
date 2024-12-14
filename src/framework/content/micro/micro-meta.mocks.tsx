@@ -1,4 +1,3 @@
-import { ArticleMeta } from "../article/article-meta";
 import { SocialLinkTypes } from "../social-link";
 
 import { MicroMeta } from "./micro-meta";

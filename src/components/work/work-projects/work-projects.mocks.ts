@@ -1,4 +1,4 @@
-import { WORK_META_MOCK } from "@/framework/meta/work/work-meta.mocks";
+import { WORK_META_MOCK } from "@/framework";
 
 import { WorkProjectsProps } from "./work-projects.types";
 

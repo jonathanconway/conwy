@@ -1,4 +1,4 @@
-import { MetaBase } from "../meta-base";
+import { MetaBase } from "../meta";
 import { SocialLink } from "../social-link";
 
 export interface WorkMeta extends MetaBase {

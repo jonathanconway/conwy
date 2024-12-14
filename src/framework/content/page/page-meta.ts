@@ -1,4 +1,4 @@
-import { MetaBase } from "../meta-base";
+import { MetaBase } from "../meta";
 
 export interface PageMeta extends MetaBase {
   readonly title: string;
