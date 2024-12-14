@@ -1,0 +1,130 @@
+Over the last couple of years, I've sprinkled AI usage through various typical software engineering activities.
+
+The most common tools (and what I tend to use) have been [Copilot](https://github.com/settings/copilot) and [Copilot Chat](http://chatgpt.com), but some free tools such as [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) are beginning to become more mainstream.
+
+In this article I'll summarise the scenarios where I found AI useful.
+
+- [Writing code faster with autocomplete](#writing-code-faster-with-autocomplete)
+- [Getting help with error messages](#getting-help-with-error-messages)
+- [Getting help with technical problems](#getting-help-with-technical-problems)
+- [Writing bash scripts](#writing-bash-scripts)
+- [Generating unit test code](#generating-unit-test-code)
+- [Summarising conversations](#summarising-conversations)
+- [Code reviews](#code-reviews)
+
+## Writing code faster with autocomplete
+
+AI-powered autosuggest was a great help when I had to write a chunk of code that's necessarily verbose, but not unique to my problem.
+
+A perfect example is given on Copilot extention homepage.
+
+![Example: Copilot JS suggest for calculating days between two dates](/images/articles/ai-for-developers/copilot-js-suggest.png)
+
+## Getting help with error messages
+
+Pasting an error message into Copilot Chat, prefixed with `/fix`, can provide good guidance on the cause and fix for a given error.
+
+When the responses given aren't suitable, follow-up prompts such as "can you suggest some other alternatives" can help.
+
+![Example: Copilot Inline Chat Error Message example](/images/articles/ai-for-developers/inline-chat-fix-error-message-example.png)
+
+## Getting help with technical problems
+
+Similar to error messages, I found that expressing a technical problem in an AI-powered chat can yield some good ideas and solutions.
+
+This worked even better when I followed up the initial question with clarifications and/or challenged the AI to think of additional ideas or alternatives.
+
+![Example: Copilot Quick Chat feature](/images/articles/ai-for-developers/copilot-quick-chat.png)
+
+## Writing bash scripts
+
+Bash scripts can perform many kinds of general tasks. Once you have a script that does what you want, you can re-use it any number of times.
+
+A specific need I had was to see all the authors who had edited a particular file in a Git repository. With the help of ChatGPT I was able to write a script that achieved what I wanted.
+
+Here's the prompt I used:
+
+> Please write a bash script which finds and lists all the unique authors who have edited the given file in the current Git repository. The given file will be specified as the first parameter to the bash script.
+
+I've published the resulting script as a Github Gist: [list_authors.sh](https://gist.github.com/jonathanconway/71d5413cce30f43d3182fdfdc46c4723).
+
+The script takes as an argument the path to a file in that repo. It then uses `git log` on the current repository to find all the authors who have edited the file, `sort`s and `uniq`s them and outputs them to stdout.
+
+Here's a sample of the output from running it on [a file in the NextJS repository](https://github.com/vercel/next.js/blob/fd0bc9466e42ec313ce92c58e2a5c2c157e63f54/packages/next/src/shared/lib/head.tsx):
+
+```
+$ list_authors packages/next/src/shared/lib/head.tsx
+Authors who have edited 'packages/next/src/shared/lib/head.tsx':
+Adam Stankiewicz <sheerun@sher.pl>
+Filipe Medeiros <filipesilvamedeiros@gmail.com>
+Gerald Monaco <gerald@gmonaco.me>
+JJ Kasper <jj@jjsweb.site>
+...
+```
+
+## Generating unit test code
+
+I sometimes use GitHub Copilot to generate unit tests for a particular code file I am working on.
+
+This can be done by opening the file under test, pressing Cmd+I and asking Copilot to write a unit test for the current file: `please write a unit test for this file`.
+
+I use this is mainly to set up the scaffolding – `describe` and `it` blocks and assertions. Usually I need to tidy up a few things here and there, but the AI is surprisingly good at generating decent test code.
+
+## Summarising conversations
+
+Some colleagues and I had a long back-and-forth about code reviews in a Github discussion.
+
+When it came time to summarise all these in a meeting, I found that AI-powered chat was a great way to summarise the discussion and get everyone's thoughts on what we had discussed.
+
+It looks like ChatGPT now has a quick Summarise button for this purpose.
+
+![Example: ChatGPT summarise button](/images/articles/ai-for-developers/chat-gpt-summarise-button.png)
+
+## Code reviews
+
+When reviewing pull requests I've been experimenting with various ways of asking AI help me.
+
+One way I found useful was to have AI review and summarise the changes and overall quality.
+
+Here are the steps I took for doing this with Copilot Chat;
+
+1. Generate a diff between the pull request source and destination branches. First `git checkout <source-branch>` then `git diff <destination-branch> | pbcopy` to generate the diff and copy it to the clipboard.
+
+2. Paste the whole diff into a new empty tab in VS Code.
+
+3. Press Cmd+I and prompt Copilot with the following: "Please review these code changes."
+
+Here's a sample of the kinds of results I tended to get (anonymised):
+
+> The code changes introduce several new features and modifications to the healthcare application. Here are the key points:
+> 
+> 1. **Localization Updates**:
+>   - Added new localization strings for transfer confirmations in `en-AU.json`.
+> 
+> 2. **Removed Mock Initialization**:
+>   - Removed the conditional import of mock initialization in `layout.tsx`.
+> 
+> 3. **New Patient Transfer Form Submission Logic**:
+> 
+>   - Created a new file `submit.ts` to handle the patient transfer form submission logic.
+>   - This includes creating a `Ward` object, making a patient transfer request, and handling different states of the transfer (success, delay, error, no-response)
+> 
+> 4. **Transfer Form Tests**:
+>   - Updated `transfer-form.test.tsx` to reflect changes in patient name and ward number and added tests for the new patient transfer form submission logic.
+>
+> Overall, these changes enhance the patient transfer functionality by providing detailed feedback on the transfer status and improving the test coverage for various scenarios.
+
+Not as good as a human reviewer, but not useless either.
+
+And not bad given the tiny effort on my part!
+
+## Conclusion
+
+While I feel AI might have been a little over-hyped, I think there's still merit in becoming familiar with it and using it where it fits.
+
+It seems likely that AI adoption among software engineers will grow, so it will be advantageous to be familiar and conversant with the tooling.
+
+## Further reading and viewing
+
+- [_Pragmatic techniques to get the most out of GitHub Copilot_](https://www.youtube.com/watch?v=CwAzIpc4AnA) • Patrick CHANEZON, Burke HOLLAND, Brigit MURTAUGH, Isidor NIKOLIC, Allison WEINS, Martin WOODWARD
+- [_Notes on using LLMs for code_](https://simonwillison.net/2024/Sep/20/using-llms-for-code/) • Simon WILSON
