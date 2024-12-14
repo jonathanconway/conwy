@@ -7,6 +7,7 @@ import {
   gap_8,
   hidden,
   left_0,
+  lg,
   m_auto,
   ml_auto,
   mr_auto,
@@ -14,6 +15,7 @@ import {
   mt_28,
   mt_48,
   mx_0,
+  pl_0,
   pr_8,
   pt_10,
   px_4,
@@ -53,8 +55,8 @@ export const mainWrapper = cn(
   sm(flex_row),
   sm(gap_8),
 
-  px_4,
   sm(px_8),
+  lg(pl_0),
 );
 
 export const asideWrapper = cn(
