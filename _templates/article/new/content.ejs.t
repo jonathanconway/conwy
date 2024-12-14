@@ -1,5 +1,5 @@
 ---
-to: src/content/articles/<%= name %>/content.mdx
+to: src/content/articles/<%- name %>/content.mdx
 ---
 
 ( article content goes here )

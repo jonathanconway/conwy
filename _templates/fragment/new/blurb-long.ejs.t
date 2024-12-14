@@ -1,5 +1,5 @@
 ---
-to: src/content/fragments/<%= name %>/<%= name %>.mdx
+to: src/content/fragments/<%- name %>/<%- name %>.mdx
 ---
 
 (content here)

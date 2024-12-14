@@ -1,11 +1,11 @@
 ---
-to: src/content/works/<%= name %>/meta.ts
+to: src/content/works/<%- name %>/meta.ts
 ---
 
 import { WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
-  client: "<%= h.nameSentence() %>",
+  client: "<%- h.nameSentence() %>",
   blurbShort: "",
   startDate: "2020-02-20",
   endDate: "2024-02-20",
@@ -13,7 +13,7 @@ export const meta: WorkMeta = {
   mainImage: "thumbnail.png",
   feedbacks: [],
   images: [],
-  slug: "<%= name %>",
+  slug: "<%- name %>",
   tags: [],
   type: "work",
   techs: [],

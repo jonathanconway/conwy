@@ -1,11 +1,11 @@
 ---
-to: src/content/pages/<%= name %>/meta.ts
+to: src/content/pages/<%- name %>/meta.ts
 ---
 
 import { PageMeta } from "@/framework/client";
 
 export const meta: PageMeta = {
-  title: "<%= h.nameSentence() %>",
-  slug: "<%= name %>",
+  title: "<%- h.nameSentence() %>",
+  slug: "<%- name %>",
   type: "page",
 };

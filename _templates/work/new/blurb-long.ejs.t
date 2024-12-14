@@ -1,5 +1,5 @@
 ---
-to: src/content/works/<%= name %>/blurb-long.mdx
+to: src/content/works/<%- name %>/blurb-long.mdx
 ---
 
 import { meta } from "./meta";

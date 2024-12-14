@@ -1,7 +1,7 @@
 ---
-to: src/content/fragments/<%= name %>/index.ts
+to: src/content/fragments/<%- name %>/index.ts
 ---
 
-import <%= h.namePascal() %> from "./<%= name %>.mdx";
+import <%- h.namePascal() %> from "./<%- name %>.mdx";
 
-export { <%= h.namePascal() %> };
+export { <%- h.namePascal() %> };

@@ -1,7 +1,7 @@
 ---
-to: <%= name %>/index.ts
+to: <%- name %>/index.ts
 ---
 
-export * from "./<%= name %>";
-export * from "./<%= name %>.types";
-export * from "./<%= name %>.mocks";
+export * from "./<%- name %>";
+export * from "./<%- name %>.types";
+export * from "./<%- name %>.mocks";

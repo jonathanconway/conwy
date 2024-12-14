@@ -1,3 +1,3 @@
 ---
-sh: mkdir public/images/projects/<%= name %>
+sh: mkdir public/images/projects/<%- name %>
 ---
