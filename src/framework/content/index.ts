@@ -1,4 +1,5 @@
 export * from "./article";
+export * from "./book";
 export * from "./item";
 export * from "./meta";
 export * from "./micro";

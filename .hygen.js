@@ -1,5 +1,5 @@
 const { basename, dirname, join } = require("path");
-const { camelCase, chain, last, startCase, kebabCase } = require("lodash");
+const { camelCase, chain, last, startCase, kebabCase, trim } = require("lodash");
 
 const ROOT_DIR = "./";
 
@@ -8,7 +8,7 @@ function dir() {
 }
 
 function name() {
-  return basename(last(process.argv)).split(".")[0];
+  return basename(process.argv[4]).split(".")[0];
 }
 
 function namePartBranches() {
@@ -36,18 +36,26 @@ function nameSentence() {
   return `${startCaseLower[0].toUpperCase()}${startCaseLower.substring(1)}`;
 }
 
-function content() {
-  const contentSwitchArgIndex = process.argv.indexOf("--content");
+function nameStart() {
+  return startCase(name());
+}
+
+function switchValue(switchName) {
+  const contentSwitchArgIndex = process.argv.indexOf(`--${switchName}`);
   if (contentSwitchArgIndex === -1) {
     return "";
   }
-
+  
   const contentValueArg = process.argv[contentSwitchArgIndex + 1];
   if (contentValueArg) {
     return contentValueArg;
   }
-
+  
   return "";
+}
+
+function content() {
+  return switchValue("content");
 }
 
 function contentName() {
@@ -57,6 +65,22 @@ function contentName() {
   }
 
   return name();
+}
+
+function author() {
+  return switchValue("author");
+}
+
+function url() {
+  return switchValue("url");  
+}
+
+function bookStatus() {
+  return switchValue("status") || "Listed";
+}
+
+function bookTitle() {
+  return switchValue("title") || nameStart();
 }
 
 function dateString() {
@@ -78,9 +102,15 @@ module.exports = {
     namePartBranches,
     namePascal,
     nameSentence,
+    nameStart,
     nameUpper,
     content,
     contentName,
-    dateString
+    dateString,
+    switchValue,
+    author,
+    url,
+    bookStatus,
+    bookTitle
   }
 }
