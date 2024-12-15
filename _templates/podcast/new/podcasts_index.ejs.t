@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/content/books/index.ts
+to: src/content/podcasts/index.ts
 append: true
 skip_if: <%- name %>
 ---

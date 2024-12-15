@@ -15,7 +15,10 @@ export function BooksList(props: BooksListProps) {
     <ul>
       {booksItems.map((book) => (
         <li key={book.title}>
-          <Link href={book.url}>{book.title}</Link> by {book.authors.join(", ")}
+          <Link href={book.url} target="_blank">
+            {book.title}
+          </Link>{" "}
+          by {book.authors.join(", ")}
         </li>
       ))}
     </ul>

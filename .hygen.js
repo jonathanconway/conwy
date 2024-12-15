@@ -75,11 +75,11 @@ function url() {
   return switchValue("url");  
 }
 
-function bookStatus() {
+function status() {
   return switchValue("status") || "Listed";
 }
 
-function bookTitle() {
+function title() {
   return switchValue("title") || nameStart();
 }
 
@@ -110,7 +110,7 @@ module.exports = {
     switchValue,
     author,
     url,
-    bookStatus,
-    bookTitle
+    status,
+    title
   }
 }

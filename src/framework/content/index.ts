@@ -4,6 +4,7 @@ export * from "./item";
 export * from "./meta";
 export * from "./micro";
 export * from "./page";
+export * from "./podcast";
 export * from "./post";
 export * from "./project";
 export * from "./social-link";

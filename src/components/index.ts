@@ -23,6 +23,7 @@ export * from "./mdx";
 export * from "./micro";
 export * from "./micros";
 export * from "./mobile";
+export * from "./podcast";
 export * from "./projects";
 export * from "./redirect";
 export * from "./scripts";
