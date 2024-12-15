@@ -6,6 +6,7 @@ export const BookCategories = {
   Design: "design",
   Economics: "economics",
   Finance: "finance",
+  Geopolitics: "geopolitics",
   History: "history",
   Politics: "politics",
   Psychology: "psychology",
