@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const DesigningDataIntensiveApplications: Book = {
+export const designingDataIntensiveApplicationsBook: Book = {
   authors: ["Martin Kleppmann"],
   status: BookStatuses.Reading,
   title: "Designing-Data Intensive Applications",

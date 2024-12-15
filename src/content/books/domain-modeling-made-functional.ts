@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const DomainModelingMadeFunctional: Book = {
+export const domainModelingMadeFunctionalBook: Book = {
   authors: ["Scott Wlaschin"],
   status: BookStatuses.Finished,
   title: "Domain Modeling Made Functional",

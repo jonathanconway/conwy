@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const CrucialConversations: Book = {
+export const crucialConversationsBook: Book = {
   authors: ["Joseph Grenny"],
   status: BookStatuses.Listed,
   title: "Crucial Conversations",

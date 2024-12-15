@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const APhilosophyOfSoftwareDesign: Book = {
+export const aPhilosophyOfSoftwareDesignBook: Book = {
   authors: ["John Ousterhout"],
   status: BookStatuses.Finished,
   title: "A Philosophy of Software Design",

@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const TheJourneyOfHumanity: Book = {
+export const theJourneyOfHumanityBook: Book = {
   authors: ["Oded Galor"],
   status: BookStatuses.Listed,
   title: "The Journey of Humanity",

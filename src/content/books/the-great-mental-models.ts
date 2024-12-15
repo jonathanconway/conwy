@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const TheGreatMentalModels: Book = {
+export const theGreatMentalModelsBook: Book = {
   authors: ["Shane Parrish"],
   status: BookStatuses.Finished,
   title: "The Great Mental Models",

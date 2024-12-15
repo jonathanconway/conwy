@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const AesopsFables: Book = {
+export const aesopsFablesBook: Book = {
   authors: ["Aesop"],
   status: BookStatuses.Reading,
   title: "Aesop's Fables",

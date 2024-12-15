@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const TheArtOfReadableCode: Book = {
+export const theArtOfReadableCodeBook: Book = {
   authors: ["Dustin Boswell"],
   status: BookStatuses.Finished,
   title: "The Art of Readable Code",

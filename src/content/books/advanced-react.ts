@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const AdvancedReact: Book = {
+export const advancedReactBook: Book = {
   authors: ["Nadia Makarevich"],
   status: BookStatuses.Finished,
   title: "Advanced React",

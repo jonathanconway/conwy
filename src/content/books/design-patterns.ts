@@ -1,6 +1,6 @@
 import { Book, BookStatuses } from "@/framework";
 
-export const DesignPatterns: Book = {
+export const designPatternsBook: Book = {
   authors: ["Erich Gamma"],
   status: BookStatuses.Finished,
   title: "Design Patterns - Elements of Reusable Object-Oriented Software",
