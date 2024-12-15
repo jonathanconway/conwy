@@ -3,4 +3,5 @@ export * from "./logic";
 export * from "./strings";
 export * from "./styles";
 export * from "./typing";
+export * from "./text";
 export * from "./typing";
