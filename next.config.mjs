@@ -1,11 +1,16 @@
 import remarkGfm from 'remark-gfm'
 import createMDX from '@next/mdx'
+import {
+  createVanillaExtractPlugin
+} from '@vanilla-extract/next-plugin';
 
 const withMDX = createMDX({
   options: {
     remarkPlugins: [remarkGfm]
   }
 })
+
+const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -31,4 +36,4 @@ const nextConfig = {
   staticPageGenerationTimeout: 5000
 }
 
-export default withMDX(nextConfig)
+export default withVanillaExtract(withMDX(nextConfig));

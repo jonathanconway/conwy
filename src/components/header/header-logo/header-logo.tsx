@@ -1,7 +1,7 @@
 import { Link } from "../../link";
 
 import { HeaderLogoImage } from "./header-logo-image.svg";
-import * as styles from "./header-logo.styles";
+import * as styles from "./header-logo.css";
 
 export function HeaderLogo() {
   return (

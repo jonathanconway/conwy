@@ -5,8 +5,8 @@ import { ReactNode, useRef } from "react";
 
 import { Icon, IconTypes } from "../../icon";
 
+import * as styles from "./header-hamburger.css";
 import moduleStyles from "./header-hamburger.module.css";
-import * as styles from "./header-hamburger.styles";
 
 interface HeaderHamburgerProps {
   readonly children?: ReactNode;
@@ -32,23 +32,18 @@ export function HeaderHamburger(props: HeaderHamburgerProps) {
       <label htmlFor="header-hamburger">
         <Icon
           icon={IconTypes.HamburgerMenu}
-          className={styles.hamburgerIcon}
+          className={styles.icon}
           size="2rem"
         />
       </label>
 
       {/* todo: find a way to make this a part of the input rather than using js */}
       <div
-        className={cn(
-          moduleStyles.hamburgerMenuBackdrop,
-          styles.hamburgerMenuBackdrop,
-        )}
+        className={cn(moduleStyles.hamburgerMenuBackdrop, styles.menuBackdrop)}
         onClick={handleHambergerMenuBackdropClick}
       ></div>
 
-      <div
-        className={cn(moduleStyles.hamburgerContents, styles.hamburgerContents)}
-      >
+      <div className={cn(moduleStyles.hamburgerContents, styles.contents)}>
         {props.children}
       </div>
     </>

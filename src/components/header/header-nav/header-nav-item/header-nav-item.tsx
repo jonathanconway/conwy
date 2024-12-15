@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import * as styles from "./header-nav-item.styles";
+import * as styles from "./header-nav-item.css";
 
 interface HeaderNavItemProps {
   readonly title: string;
