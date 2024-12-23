@@ -8,3 +8,4 @@ export * from "./goto-conferences";
 export * from "./beyond-coding";
 export * from "./gresham-college";
 export * from "./stackoverflow-podcast";
+export * from "./timothy-ward";
