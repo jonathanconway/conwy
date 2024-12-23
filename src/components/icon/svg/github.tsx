@@ -1,5 +1,5 @@
-import Github_ from "@mui/icons-material/Github";
+import GitHub_ from "@mui/icons-material/GitHub";
 
 import { withMaterialIcon } from "../with-material-icon";
 
-export const Github = withMaterialIcon(Github_);
+export const Github = withMaterialIcon(GitHub_);
