@@ -31,7 +31,7 @@ export function HeaderHamburger(props: HeaderHamburgerProps) {
 
       <label htmlFor="header-hamburger">
         <Icon
-          icon={IconTypes.Hamburger}
+          icon={IconTypes.HamburgerMenu}
           className={styles.hamburgerIcon}
           size="2rem"
         />

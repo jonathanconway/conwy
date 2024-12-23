@@ -2,8 +2,24 @@ import { SVG_PROPS_COMMON, SvgProps } from "../icon-svg-props";
 
 export function Close(props: SvgProps) {
   return (
-    <svg {...SVG_PROPS_COMMON} {...props} viewBox="0 0 24 24">
-      <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+    <svg
+      {...SVG_PROPS_COMMON}
+      {...props}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <g clip-path="url(#clip0_129_107)">
+        <path
+          d="M22 4.01429L19.9857 2L12 9.98571L4.01429 2L2 4.01429L9.98571 12L2 19.9857L4.01429 22L12 14.0143L19.9857 22L22 19.9857L14.0143 12L22 4.01429Z"
+          fill="black"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_129_107">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }

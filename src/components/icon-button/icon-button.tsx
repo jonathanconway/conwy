@@ -1,6 +1,6 @@
-import { cn } from "@jonathanconway/tailwindjs";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
+import { cn } from "../../framework/client";
 import { Icon } from "../icon/icon";
 import { IconType } from "../icon/icon-types";
 import { withTooltip } from "../tooltip";
@@ -12,6 +12,7 @@ interface IconButtonProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
+  readonly size?: string;
   readonly icon?: IconType;
   readonly isSelected?: boolean;
 }
@@ -21,11 +22,15 @@ function IconButton_(props: IconButtonProps) {
 
   return (
     <button
-      className={cn(styles.iconButton(props), props.className ?? "")}
+      className={cn(styles.iconButton(props), props.className)}
       {...restProps}
     >
       {props.icon && (
-        <Icon className={styles.icon(props)} icon={props.icon} size="100%" />
+        <Icon
+          className={styles.icon(props)}
+          icon={props.icon}
+          size={props.size ?? "100%"}
+        />
       )}
     </button>
   );

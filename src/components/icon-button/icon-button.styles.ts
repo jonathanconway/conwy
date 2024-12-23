@@ -20,7 +20,9 @@ import {
   hover,
   inline_flex,
   items_center,
+  justify_center,
   opacity_30,
+  p_1,
   pointer_events_none,
   rounded,
   text_white,
@@ -37,52 +39,56 @@ export const iconButton = ({ isSelected = false }) =>
     inline_flex,
     items_center,
     content_center,
+    justify_center,
 
-    ...(isSelected
-      ? [
-          dark(from_stone_100),
-          dark(to_stone_300),
-
-          from_stone_500,
-          to_stone_700,
-
-          bg_gradient_to_t,
-
-          border_stone_700,
-          dark(border_stone_300),
-        ]
-      : [
-          bg_gradient_to_b,
-
-          from_stone_100,
-          to_stone_300,
-
-          enabled(hover(from_stone_200)),
-          enabled(hover(to_stone_400)),
-
-          dark(from_stone_500),
-          dark(to_stone_700),
-
-          enabled(hover(dark(from_stone_400))),
-          enabled(hover(dark(to_stone_600))),
-
-          border_stone_300,
-          enabled(hover(border_stone_400)),
-
-          dark(border_stone_700),
-          enabled(hover(dark(border_stone_600))),
-        ]),
+    ...(isSelected ? iconButtonSelected : iconButtonUnselected),
 
     rounded,
     border,
     w_6,
     h_6,
+    p_1,
 
     all(w_full),
     all(h_full),
 
     dark(text_white),
   );
+
+const iconButtonSelected = [
+  dark(from_stone_100),
+  dark(to_stone_300),
+
+  from_stone_500,
+  to_stone_700,
+
+  bg_gradient_to_t,
+
+  border_stone_700,
+  dark(border_stone_300),
+];
+
+const iconButtonUnselected = [
+  bg_gradient_to_b,
+
+  from_stone_100,
+  to_stone_300,
+
+  enabled(hover(from_stone_200)),
+  enabled(hover(to_stone_400)),
+
+  dark(from_stone_500),
+  dark(to_stone_700),
+
+  enabled(hover(dark(from_stone_400))),
+  enabled(hover(dark(to_stone_600))),
+
+  border_stone_300,
+  enabled(hover(border_stone_400)),
+
+  dark(border_stone_700),
+  enabled(hover(dark(border_stone_600))),
+];
 
 export const icon = ({ disabled = false }) =>
   cn(pointer_events_none, disabled ? opacity_30 : "");

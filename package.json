@@ -31,10 +31,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@jonathanconway/tailwindjs": "^0.0.22",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@mermaid-js/mermaid-cli": "^10.8.0",
+    "@mui/icons-material": "^6.2.0",
     "@next/mdx": "^14.1.0",
     "@next/third-parties": "^15.0.3",
     "@tailwindcss/forms": "^0.5.9",

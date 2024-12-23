@@ -5,10 +5,10 @@ import {
   decoration_sky_300,
   decoration_sky_600,
   font_medium,
-  gap_0_5,
   hover,
-  inline_flex,
+  inline,
   items_center,
+  pl_0_5,
   text_inherit,
   text_sky_300,
   text_sky_400,
@@ -29,10 +29,6 @@ export const linkDecoration = cn(
 );
 
 export const linkContent = cn(
-  inline_flex,
-  items_center,
-  gap_0_5,
-
   text_sky_600,
   dark(text_sky_300),
 
@@ -48,7 +44,7 @@ export const linkContent = cn(
 export const link = cn(
   "group",
 
-  inline_flex,
+  inline,
   items_center,
 
   font_medium,
@@ -60,4 +56,4 @@ export const link = cn(
   linkContent,
 );
 
-export const linkIcon = cn(text_inherit);
+export const linkIcon = cn(text_inherit, pl_0_5);
