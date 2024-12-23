@@ -44,7 +44,7 @@ A specific need I had was to see all the authors who had edited a particular fil
 
 Here's the prompt I used:
 
-**Please write a bash script which finds and lists all the unique authors who have edited the given file in the current Git repository. The given file will be specified as the first parameter to the bash script.**
+> Copyable: Please write a bash script which finds and lists all the unique authors who have edited the given file in the current Git repository. The given file will be specified as the first parameter to the bash script.
 
 I've published the resulting script as a Github Gist: [list_authors.sh](https://gist.github.com/jonathanconway/71d5413cce30f43d3182fdfdc46c4723).
 
@@ -76,23 +76,32 @@ Another technique is to provide just the code for one function or code block and
 
 Here's an example of a prompt I might use:
 
-> **Please write a Jest unit test for a Typescript function.**<br />
+> Copyable: Please write a Jest unit test for a Typescript function.
 >
-> **The unit test should have the following it blocks:**<br />
-> 1. returns a list of dates between the two dates passed<br />
-> 2. returns an empty array if two identical dates are passed<br />
-> 3. throws an error if null is passed<br />
 >
-> **Please write tests that satisfy the above it blocks.**<br />
+> The unit test should have the following it blocks:
+> 1. returns a list of dates between the two dates passed
+> 2. returns an empty array if two identical dates are passed
+> 3. throws an error if null is passed
 >
-> **Here is the Typescript function:**<br />
-> \`\`\`<br />
-> function calculateDaysBetweenDates (begin, end) \{<br />
->   var beginDate = new Date (begin) ;<br />
->   var endDate = new Date(end) ;<br />
->   var days = Math. round (endDate - beginDate) / (1000 * 60 * 60 * 24) ) ;<br />
->   return days;<br />
-> }<br />
+> Please write tests that satisfy the above it blocks.
+>
+> Here is the Typescript function:
+>
+> \`\`\`
+>
+> function calculateDaysBetweenDates (begin, end) \{
+>
+>   var beginDate = new Date (begin) ;
+>
+>   var endDate = new Date(end) ;
+>
+>   var days = Math. round (endDate - beginDate) / (1000 * 60 * 60 * 24) ) ;
+>
+>   return days;
+>
+> }
+>
 > \`\`\`
 
 ## Summarising conversations

@@ -1,6 +1,3 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { BlockQuoteProps } from "../../block-quote";
 
-export type MdxBlockQuoteProps = DetailedHTMLProps<
-  HTMLAttributes<HTMLQuoteElement>,
-  HTMLQuoteElement
->;
+export type MdxBlockQuoteProps = BlockQuoteProps;

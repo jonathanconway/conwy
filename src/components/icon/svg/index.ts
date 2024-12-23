@@ -6,6 +6,7 @@ export * from "./arrow-triangle-left";
 export * from "./blue-sky";
 export * from "./check-box";
 export * from "./close";
+export * from "./copy";
 export * from "./dev";
 export * from "./download";
 export * from "./email";

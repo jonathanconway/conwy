@@ -1,9 +1,9 @@
-import { isArray, isRegExp, isString } from "lodash";
+import { isArray, isObject, isString } from "lodash";
 import { ReactElement, ReactNode } from "react";
 
 import { skipEmptyChildren } from "./children";
 
-export function getIsSubformatChildrenMatchesPrefix(
+export function getHasSubformatChildrenMatchingPrefix(
   prefix: string,
   children: ReactNode,
 ): children is ReactNode[] {
@@ -67,8 +67,84 @@ export function getChildTextPatternMatches(
   return matches;
 }
 
-export function removeChildrenPrefix(prefix: string, childrenText: string) {
-  return childrenText.split(`${prefix}: `)[1];
+export function getChildrenText(children: ReactNode): string {
+  if (!children) {
+    return "";
+  }
+
+  if (isString(children)) {
+    return children;
+  }
+
+  if (isArray(children)) {
+    return String(children.map(getChildrenText).join("")).trim();
+  }
+
+  if (isObject(children)) {
+    if ("type" in children) {
+      if (children.type === "br") {
+        return "\n";
+      }
+    }
+
+    if ("props" in children) {
+      if ("type" in children.props) {
+        if (children.props.type === "br") {
+          return "";
+        }
+      }
+      if ("children" in children.props) {
+        return getChildrenText(children.props.children).trim();
+      }
+    }
+  }
+
+  return "";
+}
+
+export function removeFirstChildPrefix(
+  prefix: string,
+  children: ReactNode,
+): any {
+  if (!children) {
+    return "";
+  }
+
+  if (isString(children)) {
+    return children.replace(prefix, "");
+  }
+
+  if (isArray(children)) {
+    return children.map((child) => removeFirstChildPrefix(prefix, child));
+  }
+
+  if (isObject(children)) {
+    if ("type" in children) {
+      if (children.type === "br") {
+        return "\n";
+      }
+    }
+
+    if ("props" in children) {
+      if ("children" in children.props) {
+        return {
+          ...children,
+          props: {
+            ...children.props,
+            children: removeFirstChildPrefix(prefix, children.props.children),
+          },
+        };
+      }
+    }
+  }
+
+  return "";
+}
+
+export function removeChildrenPrefix(prefix: string) {
+  return function (childrenText?: string) {
+    return childrenText?.split(prefix)[1].trim();
+  };
 }
 
 export function removeChildrenPattern(pattern: RegExp, children: ReactNode) {
