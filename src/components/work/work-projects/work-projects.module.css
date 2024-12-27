@@ -1,7 +1,7 @@
-.icon circle {
+/* .icon circle {
   fill: var(--page-background-color);
   stroke: var(--border-1);
-}
+} */
 
 .icon linearGradient {
   filter: brightness(2);

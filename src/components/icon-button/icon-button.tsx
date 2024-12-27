@@ -1,11 +1,12 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
-import { cn } from "../../framework/client";
+import { cn } from "@/framework/client";
+
 import { Icon } from "../icon/icon";
 import { IconType } from "../icon/icon-types";
 import { withTooltip } from "../tooltip";
 
-import * as styles from "./icon-button.styles";
+import * as styles from "./icon-button.css";
 
 interface IconButtonProps
   extends DetailedHTMLProps<
@@ -22,12 +23,23 @@ function IconButton_(props: IconButtonProps) {
 
   return (
     <button
-      className={cn(styles.iconButton(props), props.className)}
+      className={
+        props.className ??
+        cn(
+          styles.iconButtonBase,
+          props.isSelected
+            ? styles.iconButtonSelected
+            : styles.iconButtonUnselected,
+        )
+      }
       {...restProps}
     >
       {props.icon && (
         <Icon
-          className={styles.icon(props)}
+          className={cn(
+            styles.icon,
+            props.disabled ? styles.iconButtonDisabled : null,
+          )}
           icon={props.icon}
           size={props.size ?? "100%"}
         />

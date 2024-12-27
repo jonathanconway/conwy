@@ -7,7 +7,7 @@
  * @returns
  */
 export function classNames(
-  ...values: readonly (string | object | undefined)[]
+  ...values: readonly (string | object | undefined | null)[]
 ) {
   return values.filter(Boolean).join(" ");
 }
@@ -20,6 +20,6 @@ export function classNames(
  * @param values Tailwind classes as strings or string-able objects.
  * @returns
  */
-export function cn(...values: readonly (string | object | undefined)[]) {
+export function cn(...values: readonly (string | object | undefined | null)[]) {
   return classNames(...values);
 }

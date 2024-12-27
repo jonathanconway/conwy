@@ -1,25 +1,39 @@
+import { switchThemeBase } from "../switch/switch.css-theme";
+
 export const themeBase = {
   media: {
     sm: "screen and (min-width: 640px)",
   },
 
   colors: {
-    white: "rgb(255 255 255)",
-    stone_50: "rgb(250 250 249)",
+    black_50: "rgba(0, 0, 0, 0.5)",
+    blue_100: "rgb(219 234 254)",
+    green_300: "rgb(134 239 172)",
+    green_500: "rgb(34 197 94)",
+    purple_300: "rgb(216 180 254)",
+    purple_400: "rgb(192 132 252)",
+    purple_500: "rgb(168 85 247)",
+    purple_600: "rgb(147 51 234)",
+    purple_900: "rgb(88 28 135)",
+    red_100: "rgb(254 226 226)",
+    sky_300: "rgb(125 211 252)",
+    sky_400: "rgb(56 189 248)",
+    sky_500: "rgb(14 165 233)",
+    sky_600: "rgb(2 132 199)",
     stone_100: "rgb(245 245 244)",
     stone_200: "rgb(231 229 228)",
     stone_300: "rgb(214 211 209)",
     stone_400: "rgb(168 162 158)",
+    stone_50: "rgb(250 250 249)",
     stone_500: "rgb(120 113 108)",
+    stone_600: "rgb(87 83 78)",
     stone_700: "rgb(68 64 60)",
     stone_800: "rgb(41 37 36)",
     stone_900: "rgb(28 25 23)",
     stone_950: "rgb(12 10 9)",
-    sky_300: "rgb(125 211 252)",
-    blue_100: "rgb(219 234 254)",
-    purple_400: "rgb(192 132 252)",
-    purple_900: "rgb(88 28 135)",
-    black_50: "rgba(0, 0, 0, 0.5)",
+    violet_300: "rgb(196 181 253)",
+    violet_500: "rgb(139 92 246)",
+    white: "rgb(255 255 255)",
 
     border_1: "",
     border_2: "",
@@ -41,6 +55,94 @@ export const themeBase = {
       color: "",
     },
   },
+  articlesTagFilters: {
+    tagFilterBox: {
+      selected: {
+        color: "",
+      },
+    },
+  },
+  box: {
+    border: {
+      color: "",
+    },
+  },
+  blockQuote: {
+    background: {
+      color: "",
+    },
+  },
+  button: {
+    background: {
+      gradientFrom: {
+        color: "",
+      },
+      gradientTo: {
+        color: "",
+      },
+    },
+    border: {
+      color: "",
+    },
+    color: "",
+    hover: {
+      background: {
+        gradientFrom: {
+          color: "",
+        },
+        gradientTo: {
+          color: "",
+        },
+      },
+    },
+    selected: {
+      border: {
+        color: "",
+      },
+      background: {
+        gradientFrom: {
+          color: "",
+        },
+        gradientTo: {
+          color: "",
+        },
+      },
+    },
+  },
+  code: {
+    border: {
+      color: "",
+    },
+  },
+  footer: {
+    color: "",
+    background: {
+      color: "",
+    },
+  },
+  link: {
+    text: {
+      color: "",
+      decoration: {
+        color: "",
+      },
+    },
+    hover: {
+      text: {
+        color: "",
+        decoration: {
+          color: "",
+        },
+      },
+    },
+  },
+  tooltip: {
+    color: "",
+    background: {
+      color: "",
+    },
+  },
+  switch: switchThemeBase,
 
   filters: {
     brightness_110: "brightness(1.1)",

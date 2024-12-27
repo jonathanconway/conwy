@@ -13,7 +13,7 @@ import {
   text_sm,
 } from "@jonathanconway/tailwindjs";
 
-import * as linkStyles from "../link/link.styles";
+import * as linkStyles from "../link/link.css";
 
 export const container = cn(mt_4, flex, flex_col, items_start, gap_4, text_sm);
 

@@ -21,7 +21,7 @@ import {
   w_full,
 } from "@jonathanconway/tailwindjs";
 
-import * as boxStyles from "../box/box.styles";
+import * as boxStyles from "../box/box.css";
 
 export const container = cn(
   relative,

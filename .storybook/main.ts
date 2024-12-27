@@ -59,10 +59,6 @@ const config: StorybookConfig = {
       test: /\.scss$/,
       use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
     });
-    // config.module?.rules?.push({
-    //   test: /\.css$/,
-    //   use: ["style-loader", "css-loader"],
-    // });
 
     if (config?.resolve?.alias) {
       config.resolve.alias["@"] = path.resolve(__dirname, "..", "src");

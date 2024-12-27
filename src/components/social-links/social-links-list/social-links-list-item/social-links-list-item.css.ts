@@ -1,7 +1,7 @@
 import { cn } from "@jonathanconway/tailwindjs";
 import { style } from "@vanilla-extract/css";
 
-import * as linkStyles from "../../../link/link.styles";
+import * as linkStyles from "../../../link/link.css";
 
 export const link = cn(
   linkStyles.link,

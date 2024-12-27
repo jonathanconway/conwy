@@ -26,7 +26,7 @@ import {
   w_full,
 } from "@jonathanconway/tailwindjs";
 
-import * as linkStyles from "../../../link/link.styles";
+import * as linkStyles from "../../../link/link.css";
 import * as listItemStyles from "../../../list-item/list-item.styles";
 
 export const container = listItemStyles.container;

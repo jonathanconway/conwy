@@ -1,6 +1,6 @@
 import { MouseEventHandler, useId } from "react";
 
-import * as styles from "./switch.styles";
+import * as styles from "./switch.css";
 import { SwitchOption as SwitchOption_, SwitchProps } from "./switch.types";
 
 export function Switch(props: SwitchProps) {

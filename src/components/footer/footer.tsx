@@ -1,6 +1,6 @@
 import { site } from "@/content";
 
-import * as styles from "./footer.styles";
+import * as styles from "./footer.css";
 import { ThemeSwitch } from "./theme-switch";
 
 export function Footer() {
@@ -25,7 +25,7 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className={styles.right}>
+      <div>
         <ThemeSwitch />
       </div>
     </div>

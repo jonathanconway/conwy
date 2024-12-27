@@ -4,7 +4,7 @@ import { isArray, isObject, isString } from "lodash";
 import { CSSProperties, Children, ReactNode, cloneElement, useId } from "react";
 import { Tooltip as Tooltip_ } from "react-tooltip";
 
-import * as styles from "./tooltip.styles";
+import * as styles from "./tooltip.css";
 
 export interface TooltipProps {
   readonly key?: string;

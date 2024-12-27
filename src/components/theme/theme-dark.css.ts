@@ -1,5 +1,7 @@
 import { createTheme } from "@vanilla-extract/css";
 
+import { switchThemeDark } from "../switch/switch.css-theme";
+
 import { themeBase } from "./theme-base";
 import { vars } from "./theme-contract.css";
 
@@ -28,6 +30,94 @@ export const themeDarkClass = createTheme(vars, {
       color: themeBase.colors.stone_500,
     },
   },
+  articlesTagFilters: {
+    tagFilterBox: {
+      selected: {
+        color: themeBase.colors.violet_300,
+      },
+    },
+  },
+  blockQuote: {
+    background: {
+      color: themeBase.colors.stone_800,
+    },
+  },
+  box: {
+    border: {
+      color: themeBase.colors.stone_700,
+    },
+  },
+  button: {
+    background: {
+      gradientFrom: {
+        color: themeBase.colors.stone_500,
+      },
+      gradientTo: {
+        color: themeBase.colors.stone_700,
+      },
+    },
+    border: {
+      color: themeBase.colors.stone_700,
+    },
+    color: themeBase.colors.stone_700,
+    hover: {
+      background: {
+        gradientFrom: {
+          color: themeBase.colors.stone_400,
+        },
+        gradientTo: {
+          color: themeBase.colors.stone_600,
+        },
+      },
+    },
+    selected: {
+      border: {
+        color: themeBase.colors.stone_300,
+      },
+      background: {
+        gradientFrom: {
+          color: themeBase.colors.stone_100,
+        },
+        gradientTo: {
+          color: themeBase.colors.stone_300,
+        },
+      },
+    },
+  },
+  code: {
+    border: {
+      color: themeBase.colors.stone_700,
+    },
+  },
+  footer: {
+    color: themeBase.colors.stone_200,
+    background: {
+      color: themeBase.colors.stone_800,
+    },
+  },
+  link: {
+    text: {
+      color: themeBase.colors.sky_300,
+      decoration: {
+        color: themeBase.colors.sky_300,
+      },
+    },
+    hover: {
+      text: {
+        color: themeBase.colors.sky_400,
+        decoration: {
+          color: themeBase.colors.sky_400,
+        },
+      },
+    },
+  },
+  tooltip: {
+    color: themeBase.colors.stone_800,
+    background: {
+      color: themeBase.colors.white,
+    },
+  },
+  switch: switchThemeDark,
 
   filters: {
     ...themeBase.filters,

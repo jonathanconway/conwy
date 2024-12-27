@@ -4,7 +4,7 @@ import { IconTypes } from "../../icon";
 import { IconButton } from "../../icon-button";
 import { UseCarouselResult } from "../use-carousel.hook";
 
-import * as styles from "./carousel-nav.styles";
+import * as styles from "./carousel-nav.css";
 
 interface CarouselNavProps<T> {
   readonly carousel: UseCarouselResult<T>;

@@ -6,7 +6,7 @@ import { Heading } from "../../heading";
 import { Link } from "../../link";
 import { ArticlesList } from "../articles-list";
 
-import * as styles from "./articles-recent-list.styles";
+import * as styles from "./articles-recent-list.css";
 
 interface ArticlesRecentListProps {
   readonly items: readonly Post[];
@@ -14,7 +14,7 @@ interface ArticlesRecentListProps {
 
 export function ArticlesRecentList({ items }: ArticlesRecentListProps) {
   return (
-    <div className={styles.container}>
+    <div>
       <Heading className={styles.h2} level={2}>
         Recent posts
       </Heading>

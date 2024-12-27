@@ -1,4 +1,5 @@
-import { THEME_CLASSES, Theme } from "./themes";
+import { THEME_CLASSES } from "./theme-classes";
+import { Theme } from "./themes";
 
 export function setSelectedThemeClass(theme: Theme) {
   const containerElement = document.body.parentElement!;

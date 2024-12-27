@@ -4,7 +4,7 @@ import { cn } from "@/framework/client";
 
 import { withCopyable } from "../copyable";
 
-import * as styles from "./block-quote.styles";
+import * as styles from "./block-quote.css";
 
 type BlockQuoteProps_ = HTMLProps<HTMLQuoteElement>;
 
