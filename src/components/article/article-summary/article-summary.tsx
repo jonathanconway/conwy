@@ -1,12 +1,12 @@
 import { Article as Article_ } from "@/framework/client";
 
-import * as styles from "./article-summary.styles";
+import * as styles from "./article-summary.css";
 
-export interface ArticleSummaryProps {
+interface ArticleSummaryProps {
   readonly article: Article_;
 }
 
-export async function ArticleSummary({ article }: ArticleSummaryProps) {
+export function ArticleSummary({ article }: ArticleSummaryProps) {
   const { summary: Summary } = article;
 
   if (!Summary) {

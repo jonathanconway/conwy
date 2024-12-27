@@ -1,21 +1,23 @@
 import { style } from "@vanilla-extract/css";
 
-import { media } from "../../vars";
+import { helpers } from "../../theme";
 
 export const container = style({
-  position: "relative",
   display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  width: "10rem",
+  flexDirection: "row",
+  gap: "1.5rem",
+  alignItems: "start",
+  width: "auto",
 
   "@media": {
-    [media.sm]: {
-      flexDirection: "row",
-      gap: "1.5rem",
-      alignItems: "start",
-
-      width: "auto",
+    [helpers.media.sm]: {
+      position: "relative",
+      flexDirection: "column",
+      alignItems: "center",
+      width: "10rem",
+      gap: 0,
+      paddingTop: "0.5rem",
+      paddingBottom: "0.5rem",
     },
   },
 });

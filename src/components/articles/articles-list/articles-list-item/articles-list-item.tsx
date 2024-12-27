@@ -6,7 +6,7 @@ import { ArticleMeta } from "@/framework/client";
 import { Date } from "../../../date";
 import { SocialLinksIcons } from "../../../social-links";
 
-import * as styles from "./articles-list-item.styles";
+import * as styles from "./articles-list-item.css";
 
 export type ArticlesListItemProps = ArticleMeta;
 

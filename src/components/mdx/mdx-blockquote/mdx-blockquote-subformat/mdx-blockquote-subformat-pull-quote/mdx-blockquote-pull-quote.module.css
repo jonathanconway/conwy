@@ -15,7 +15,7 @@
   width: 3rem;
   height: 3rem;
   opacity: 0.125;
-  background-image: url(/images/components/icon/svg/quote.svg);
+  /* background-image: url(/images/components/icon/svg/quote.svg); */
   background-repeat: no-repeat;
   background-size: 3rem;
 }

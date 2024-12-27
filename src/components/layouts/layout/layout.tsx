@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 import { Scripts } from "../../scripts";
 
-import * as styles from "./layout.styles";
+import * as styles from "./layout.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

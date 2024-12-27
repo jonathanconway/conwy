@@ -4,7 +4,7 @@ import { ArticleSidebar } from "./article-sidebar";
 import { createArticleSidebarPropsMock } from "./article-sidebar.mocks";
 
 const meta = {
-  title: "Components/Articles/ArticleSidebar",
+  title: "Components/Article/ArticleSidebar",
   component: ArticleSidebar,
   argTypes: {},
 } satisfies Meta<typeof ArticleSidebar>;

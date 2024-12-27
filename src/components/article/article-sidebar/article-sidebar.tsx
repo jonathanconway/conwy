@@ -5,18 +5,18 @@ import { getArticleHeadings } from "../article-headings";
 import { ArticleSidebarHeadings } from "./article-sidebar-headings";
 import { ArticleSidebarImage } from "./article-sidebar-image";
 import { ArticleSidebarLinks } from "./article-sidebar-links";
-import * as styles from "./article-sidebar.styles";
+import * as styles from "./article-sidebar.css";
 
 export interface ArticleSidebarProps {
   readonly article: Article_;
 }
 
-export async function ArticleSidebar({ article }: ArticleSidebarProps) {
+export function ArticleSidebar({ article }: ArticleSidebarProps) {
   //  todo: put this in sidebar headings instead
   const articleHeadings = getArticleHeadings(article);
 
   return (
-    <div className={styles.container()}>
+    <div className={styles.container}>
       <ArticleSidebarHeadings articleHeadings={articleHeadings} />
 
       <ArticleSidebarLinks articleMeta={article.meta} />

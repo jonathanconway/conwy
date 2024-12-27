@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { colors, text as text_ } from "../../../vars";
+import { vars } from "../../../theme";
+import { text as text_ } from "../../../vars";
 
 export const link = style({
   position: "relative",
@@ -8,7 +9,7 @@ export const link = style({
   paddingTop: "0.5rem",
   paddingBottom: "0.5rem",
   ":hover": {
-    color: colors.stone_400,
+    color: vars.colors.stone_400,
   },
 });
 

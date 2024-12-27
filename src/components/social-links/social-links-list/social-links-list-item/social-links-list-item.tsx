@@ -3,7 +3,7 @@ import { SocialLink } from "@/framework/client";
 import { Link } from "../../../link";
 import { SOCIAL_LINKS_DETAILS_BY_TYPE } from "../../social-links-details-by-type";
 
-import * as styles from "./social-links-list-item.styles";
+import * as styles from "./social-links-list-item.css";
 
 interface SocialLinksListItemProps {
   readonly socialLink: SocialLink;

@@ -1,83 +1,88 @@
-import {
-  absolute,
-  bg_stone_800,
-  bg_transparent,
-  bottom_0,
-  cn,
-  dark,
-  fixed,
-  left_0,
-  mt_0,
-  mt_60,
-  px_0,
-  px_2,
-  relative,
-  right_0,
-  right_2,
-  right_auto,
-  shadow_lg,
-  shadow_none,
-  sm,
-  text_stone_50,
-  text_stone_200,
-  text_stone_950,
-  top_0,
-  z_0,
-  z_10,
-  z_20,
-} from "@jonathanconway/tailwindjs";
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
-import { colors } from "../../vars";
+import { helpers, vars } from "../../theme";
 
 export const hiddenCheckbox = style({
   display: "none",
 });
 
 export const icon = style({
-  backgroundColor: colors.stone_100,
+  color: vars.colors.mobile_menu_button,
+  display: "none",
+
   "@media": {
-    "(prefers-color-scheme: dark)": {
-      vars: {
-        backgroundColor: colors.stone_900,
-      },
+    [helpers.media.sm]: {
+      display: "inline-flex",
     },
   },
 });
 
-export const contents = cn(
-  absolute,
-  sm(relative),
+export const contents = style({
+  position: "relative",
+  zIndex: 0,
+  right: "auto",
+  marginTop: 0,
+  paddingLeft: 0,
+  paddingRight: 0,
+  boxShadow: "0 0 #0000",
+  backgroundColor: "transparent",
+  color: vars.colors.mobile_menu,
 
-  z_20,
-  sm(z_0),
+  "@media": {
+    [helpers.media.sm]: {
+      position: "absolute",
+      zIndex: 20,
+      right: "0.5rem",
+      marginTop: "15rem",
+      paddingLeft: "0.5rem",
+      paddingRight: "0.5rem",
+      boxShadow:
+        "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      backgroundColor: vars.colors.stone_800,
+      color: vars.colors.stone_200,
+    },
+  },
+});
 
-  right_2,
-  sm(right_auto),
+globalStyle(`${hiddenCheckbox} ~ ${contents}`, {
+  "@media": {
+    [helpers.media.sm]: {
+      display: "none",
+    },
+  },
+});
 
-  mt_60,
-  sm(mt_0),
+globalStyle(`${hiddenCheckbox}:checked ~ ${contents}`, {
+  "@media": {
+    [helpers.media.sm]: {
+      display: "flex",
+    },
+  },
+});
 
-  px_2,
-  sm(px_0),
+export const menuBackdrop = style({
+  display: "none",
+  position: "fixed",
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  zIndex: 10,
+  backgroundColor: vars.colors.black_50,
+});
 
-  shadow_lg,
-  sm(shadow_none),
+globalStyle(`${hiddenCheckbox} ~ ${menuBackdrop}`, {
+  "@media": {
+    [helpers.media.sm]: {
+      display: "none",
+    },
+  },
+});
 
-  bg_stone_800,
-  sm(bg_transparent),
-
-  text_stone_200,
-  sm(text_stone_950),
-  sm(dark(text_stone_50)),
-);
-
-export const menuBackdrop = cn(
-  fixed,
-  top_0,
-  bottom_0,
-  left_0,
-  right_0,
-  z_10,
-  `bg-black/50`,
-);
+globalStyle(`${hiddenCheckbox}:checked ~ ${menuBackdrop}`, {
+  "@media": {
+    [helpers.media.sm]: {
+      display: "flex",
+    },
+  },
+});

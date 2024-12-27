@@ -5,7 +5,7 @@ import { Date } from "../../date";
 import { Heading } from "../../heading";
 import { Link } from "../../link";
 
-import * as styles from "./article-header.styles";
+import * as styles from "./article-header.css";
 
 export interface ArticleHeaderProps {
   readonly article: Article_;

@@ -2,7 +2,7 @@ import { Article as Article_ } from "@/framework/client";
 
 import { Fragment } from "../../fragments";
 
-import * as styles from "./article-body.styles";
+import * as styles from "./article-body.css";
 
 export interface ArticleBodyProps {
   readonly article: Article_;

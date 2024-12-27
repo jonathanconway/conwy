@@ -5,7 +5,7 @@ import { Section } from "../../../section";
 import { ArticleHeading } from "../../article-headings";
 
 import { useArticleSidebarHeadingsHighlighter } from "./article-sidebar-headings-highlighter.hook";
-import * as styles from "./article-sidebar-headings.styles";
+import * as styles from "./article-sidebar-headings.css";
 
 export interface ArticleSidebarProps {
   readonly articleHeadings: readonly ArticleHeading[];

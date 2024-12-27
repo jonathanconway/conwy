@@ -1,6 +1,6 @@
 import { groupBy, orderBy } from "lodash";
 
-import { Tool as Tool_, sentenceCase } from "@/framework";
+import { Tool as Tool_, sentenceCase } from "@/framework/client";
 
 import { Fragment } from "../fragments";
 import { Heading } from "../heading";

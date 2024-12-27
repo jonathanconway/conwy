@@ -1,4 +1,4 @@
-import Github_ from "@mui/icons-material/Github";
+import Github_ from "@mui/icons-material/GitHub";
 
 import { withMaterialIcon } from "../with-material-icon";
 

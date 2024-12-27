@@ -7,7 +7,7 @@ import { ALL } from "../articles-tag-filters";
 import { useTagFiltersSwitch } from "../articles-tag-filters";
 
 import { ArticlesListItem } from "./articles-list-item";
-import * as styles from "./articles-list.styles";
+import * as styles from "./articles-list.css";
 
 interface ArticlesListProps {
   readonly items: readonly Post[];

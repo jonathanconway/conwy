@@ -1,4 +1,4 @@
-import { BookStatus, titleCase } from "@/framework";
+import { BookStatus, titleCase } from "@/framework/client";
 
 import { Heading } from "../../heading";
 import { Link } from "../../link";

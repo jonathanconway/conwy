@@ -1,4 +1,4 @@
-import { Podcast } from "@/framework";
+import { Podcast } from "@/framework/client";
 
 export const economicsExplainedPodcast: Podcast = {
   title: "Economics Explained",

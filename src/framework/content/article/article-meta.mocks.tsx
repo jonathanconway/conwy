@@ -20,7 +20,14 @@ export function createArticleMetaMock(): ArticleMeta {
         url: "https://linkedin.com/in/jonathanconway",
       },
     ],
-    discussionLinks: [],
+    discussionLinks: [
+      {
+        type: SocialLinkTypes.Dev,
+        url: "https://dev.to/conw_y/towards-zero-bugs-1bop#comments",
+        commentCount: 25,
+        likeCount: 207,
+      },
+    ],
   };
 }
 

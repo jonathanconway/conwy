@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Tool as Tool_ } from "@/framework";
+import { Tool as Tool_ } from "@/framework/client";
 
 import { LinkBox, LinkBoxTitle } from "../../link-box";
 

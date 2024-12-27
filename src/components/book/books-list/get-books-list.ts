@@ -1,7 +1,7 @@
 import { flow, groupBy, orderBy, upperCase } from "lodash";
 
 import * as booksMap from "@/content/books";
-import { Book, BookStatus, stripLeadingArticles } from "@/framework";
+import { Book, BookStatus, stripLeadingArticles } from "@/framework/client";
 
 export function getBooksList({ status }: { readonly status: BookStatus }) {
   const books = Object.values(booksMap);
