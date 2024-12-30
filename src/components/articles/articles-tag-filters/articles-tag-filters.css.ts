@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { colors, media } from "../../styling";
+import { colors, media, rounded } from "../../styling";
 import { vars } from "../../theme";
 
 export const container = style({
@@ -28,7 +28,7 @@ export const tagFilterBox = style({
   display: "inline-block",
   width: "0.75rem" /* 12px */,
   height: "0.75rem" /* 12px */,
-  borderRadius: "0.25rem" /* 4px */,
+  ...rounded.regular,
   backgroundColor: colors.stone_500,
 });
 

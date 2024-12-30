@@ -13,7 +13,7 @@ export const link = style({
 });
 
 export const text = style({
-  ...text_.lg,
+  ...text_.size.lg,
   paddingLeft: "0.5rem",
   paddingRight: "0.5rem",
 });

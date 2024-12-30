@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { colors } from "../../styling";
+import { colors, rounded } from "../../styling";
 
 export const container = style({
   display: "flex",
@@ -35,5 +35,5 @@ export const tag = style({
   paddingRight: "0.25rem" /* 4px */,
   borderWidth: "1px",
   borderColor: colors.stone_400,
-  borderRadius: "0.25rem" /* 4px */,
+  ...rounded.regular,
 });

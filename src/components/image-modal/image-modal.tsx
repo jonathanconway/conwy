@@ -1,18 +1,18 @@
 "use client";
 
-import { cn } from "@jonathanconway/tailwindjs";
 import Image from "next/image";
 
-import { WorkImage } from "@/framework/client";
+import { WorkImage, cn } from "@/framework/client";
 
+import { Backdrop } from "../backdrop";
 import { CarouselNav } from "../carousel";
 import { Heading } from "../heading";
 import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
 import { Link } from "../link";
 
-import * as styles from "./image-modal.styles";
-import { ImageModalClasses, useImageModal } from "./use-image-modal.hook";
+import * as styles from "./image-modal.css";
+import { useImageModal } from "./use-image-modal.hook";
 
 interface ImageModalProps {
   readonly workImages: readonly WorkImage[];
@@ -21,20 +21,14 @@ interface ImageModalProps {
   readonly onClose: VoidFunction;
 }
 
+// todo: break down
+
 export function ImageModal(props: ImageModalProps) {
   const { carousel, hasHotspots, handleBackdropClick } = useImageModal(props);
 
   return (
-    <div
-      className={cn(ImageModalClasses.Backdrop, styles.imageModalBackdrop)}
-      onClick={handleBackdropClick}
-    >
-      <div
-        className={styles.imageModal}
-        style={{
-          maxWidth: "80vw",
-        }}
-      >
+    <Backdrop onClick={handleBackdropClick}>
+      <div className={styles.imageModal}>
         <header className={styles.imageModalHeader}>
           {carousel.selectedItem.title && (
             <Heading level={2} className={styles.imageModalTitle}>
@@ -46,7 +40,6 @@ export function ImageModal(props: ImageModalProps) {
             <CarouselNav carousel={carousel} tabTooltipDescription="Image" />
 
             <IconButton
-              className={styles.imageModalCloseButton}
               icon={IconTypes.Close}
               tooltip={{ contents: "Close" }}
               onClick={props.onClose}
@@ -87,9 +80,21 @@ export function ImageModal(props: ImageModalProps) {
           </div>
 
           {carousel.selectedItem.notes.length > 0 && (
-            <ul className={styles.notesContainer(hasHotspots)}>
+            <ul
+              className={
+                hasHotspots
+                  ? styles.notesContainer
+                  : styles.notesContainerWithHotspots
+              }
+            >
               {carousel.selectedItem.notes.map((note, noteIndex) => (
-                <li key={note.text} className={styles.noteText(hasHotspots)}>
+                <li
+                  key={note.text}
+                  className={cn(
+                    styles.noteText,
+                    hasHotspots ? styles.noteTextWithHotspots : null,
+                  )}
+                >
                   {note.hotspot && (
                     <span className={styles.noteNumber}>{noteIndex + 1}</span>
                   )}
@@ -100,6 +105,6 @@ export function ImageModal(props: ImageModalProps) {
           )}
         </div>
       </div>
-    </div>
+    </Backdrop>
   );
 }

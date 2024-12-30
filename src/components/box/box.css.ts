@@ -1,10 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { vars } from "../theme";
+import { boxBorder } from "./box.mixins";
 
 export const container = style({
-  borderRadius: "0.375rem",
-  borderWidth: "1px",
-  borderColor: vars.box.border.color,
+  ...boxBorder,
   padding: "0.75rem" /* 12px */,
 });

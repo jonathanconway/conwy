@@ -10,9 +10,14 @@ import { IconButton } from "../icon-button";
 import { ImageModal } from "../image-modal";
 import { Tooltip } from "../tooltip";
 
+import * as styles from "./image-cascade.css";
 import { useImageCascade } from "./image-cascade.hooks";
-import * as styles from "./image-cascade.styles";
 import { ImageCascadeProps } from "./image-cascade.types";
+
+const IMAGE_SIZE_PX = {
+  width: 150,
+  height: 100,
+};
 
 interface ImageCascadeState {
   readonly openImage?: ProjectImage;
@@ -49,8 +54,8 @@ export function ImageCascade(props: ImageCascadeProps) {
               style={{
                 left: `${(100 / (props.images.length * 2)) * (imageUrlIndex + 1)}%`,
                 top: `${(100 / (props.images.length * 2)) * (imageUrlIndex + 1)}%`,
-                width: `${styles.IMAGE_SIZE_PX.width}px`,
-                height: `${styles.IMAGE_SIZE_PX.height}px`,
+                width: `${IMAGE_SIZE_PX.width}px`,
+                height: `${IMAGE_SIZE_PX.height}px`,
               }}
               onClick={handleImageClick(image)}
             >
@@ -58,8 +63,8 @@ export function ImageCascade(props: ImageCascadeProps) {
                 className={styles.image}
                 src={image.imageUrl}
                 alt={image.imageUrl}
-                width={styles.IMAGE_SIZE_PX.width}
-                height={styles.IMAGE_SIZE_PX.height}
+                width={IMAGE_SIZE_PX.width}
+                height={IMAGE_SIZE_PX.height}
               />
             </div>
           </Tooltip>

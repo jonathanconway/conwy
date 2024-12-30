@@ -1,21 +1,17 @@
 import { style } from "@vanilla-extract/css";
 
 import { cn } from "../../framework/client";
+import { text } from "../styling";
 import { vars } from "../theme";
 
-export const sizeSmall = style({
-  fontSize: "0.875rem" /* 14px */,
-  lineHeight: "1.25rem" /* 20px */,
-});
-
-export const sizeXSmall = style({
-  fontSize: "0.75rem" /* 12px */,
-  lineHeight: "1rem" /* 16px */,
-});
+export const sizeSmall = style(text.size.sm);
+export const sizeXSmall = style(text.size.xs);
+export const sizeLG = style(text.size.lg);
 
 export const size = {
   small: sizeSmall,
   xsmall: sizeXSmall,
+  lg: sizeLG,
 };
 
 export const colorBody = style({

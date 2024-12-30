@@ -9,7 +9,13 @@ import { codeThemeBase } from "../code/code.css-theme";
 import { footerThemeBase } from "../footer/footer.css-theme";
 import { headerHamburgerThemeBase } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeBase } from "../header/header-logo/header-logo.css-theme";
+import { iconThemeBase } from "../icon/icon.css-theme";
+import { imageModalThemeBase } from "../image-modal/image-modal.css-theme";
+import { itemNavThemeBase } from "../item/item-nav/item-nav.css-theme";
+import { labelThemeBase } from "../label/label.css-theme";
 import { layoutThemeBase } from "../layouts/layout/layout.css-theme";
+import { linkBoxTitleThemeBase } from "../link-box/link-box-title/link-box-title.css-theme";
+import { linkBoxThemeBase } from "../link-box/link-box.css-theme";
 import { linkThemeBase } from "../link/link.css-theme";
 import { switchThemeBase } from "../switch/switch.css-theme";
 import { textThemeBase } from "../text/text.css-theme";
@@ -27,8 +33,14 @@ export const themeBase = {
   footer: footerThemeBase,
   headerHamburger: headerHamburgerThemeBase,
   headerLogo: headerLogoThemeBase,
+  icon: iconThemeBase,
+  imageModal: imageModalThemeBase,
+  itemNav: itemNavThemeBase,
+  label: labelThemeBase,
   layout: layoutThemeBase,
   link: linkThemeBase,
+  linkBox: linkBoxThemeBase,
+  linkBoxTitle: linkBoxTitleThemeBase,
   switch: switchThemeBase,
   text: textThemeBase,
   tooltip: tooltipThemeBase,

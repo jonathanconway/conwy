@@ -1,4 +1,4 @@
-import { colors } from "../styling/helpers";
+import { colors } from "../styling";
 
 export const boxThemeBase = {
   border: {

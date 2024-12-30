@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { POST_MAIN_IMAGE_DEFAULT, ProjectMeta } from "@/framework/client";
 
-import { LinkBox } from "../../../link-box";
+import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
 
 import * as styles from "./projects-list-item.styles";
@@ -15,10 +15,10 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
   const { projectMeta } = props;
 
   return (
-    <LinkBox className={styles.container} href={`projects/${projectMeta.slug}`}>
+    <LinkBox href={`projects/${projectMeta.slug}`}>
       <div className={styles.mainColumn}>
         <div>
-          <div className={styles.title}>{projectMeta.title}</div>
+          <LinkBoxTitle>{projectMeta.title}</LinkBoxTitle>
 
           <p className={styles.blurb}>{projectMeta.blurb}</p>
         </div>

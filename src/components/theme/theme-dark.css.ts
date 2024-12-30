@@ -11,7 +11,13 @@ import { codeThemeDark } from "../code/code.css-theme";
 import { footerThemeDark } from "../footer/footer.css-theme";
 import { headerHamburgerThemeDark } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeDark } from "../header/header-logo/header-logo.css-theme";
+import { iconThemeDark } from "../icon/icon.css-theme";
+import { imageModalThemeDark } from "../image-modal/image-modal.css-theme";
+import { itemNavThemeDark } from "../item/item-nav/item-nav.css-theme";
+import { labelThemeDark } from "../label/label.css-theme";
 import { layoutThemeDark } from "../layouts/layout/layout.css-theme";
+import { linkBoxTitleThemeDark } from "../link-box/link-box-title/link-box-title.css-theme";
+import { linkBoxThemeDark } from "../link-box/link-box.css-theme";
 import { linkThemeDark } from "../link/link.css-theme";
 import { switchThemeDark } from "../switch/switch.css-theme";
 import { textThemeDark } from "../text/text.css-theme";
@@ -31,8 +37,14 @@ export const themeDarkClass = createTheme(vars, {
   footer: footerThemeDark,
   headerHamburger: headerHamburgerThemeDark,
   headerLogo: headerLogoThemeDark,
+  icon: iconThemeDark,
+  imageModal: imageModalThemeDark,
+  itemNav: itemNavThemeDark,
+  label: labelThemeDark,
   layout: layoutThemeDark,
   link: linkThemeDark,
+  linkBox: linkBoxThemeDark,
+  linkBoxTitle: linkBoxTitleThemeDark,
   switch: switchThemeDark,
   text: textThemeDark,
   tooltip: tooltipThemeDark,

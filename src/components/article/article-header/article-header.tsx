@@ -20,7 +20,9 @@ export function ArticleHeader({
 
   return (
     <div className={styles.container}>
-      <Heading level={2}>{title}</Heading>
+      <Heading id="top" level={2}>
+        {title}
+      </Heading>
 
       <div className={styles.line1}>
         <span>{<Date>{date}</Date>}</span> •

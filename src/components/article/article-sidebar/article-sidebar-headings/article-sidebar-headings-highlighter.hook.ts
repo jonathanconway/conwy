@@ -1,13 +1,13 @@
 "use client";
 
-import { map, memoize, throttle } from "lodash";
-import { useEffect, useState } from "react";
+import { map, memoize } from "lodash";
+import { useCallback, useEffect, useState } from "react";
 
-import { isClient, isNotNil } from "@/framework/client";
+import { isClient, isNotNil, querySelector } from "@/framework/client";
 
 import { ArticleHeading } from "../../article-headings";
 
-function getIsElementInViewport(el?: HTMLElement | null) {
+function getIsElementInViewport(el?: Element | null) {
   if (!isClient) {
     return false;
   }
@@ -29,19 +29,23 @@ function getIsElementInViewport(el?: HTMLElement | null) {
 
 function getArticleHeadingElements(
   articleHeadingIds: readonly string[],
-): readonly HTMLElement[] {
+): readonly Element[] {
   if (!isClient) {
     return [];
   }
 
-  return articleHeadingIds
+  const articleHeadingElements = articleHeadingIds
     .map((id) => document.getElementById(id))
     .filter(isNotNil);
+
+  const articleTitleElement = querySelector("h2")!;
+
+  return [articleTitleElement, ...articleHeadingElements];
 }
 
 const getArticleHeadingElementsMemoized = memoize(getArticleHeadingElements);
 
-function getActiveElementInViewport(articleElements: readonly HTMLElement[]) {
+function getActiveElementInViewport(articleElements: readonly Element[]) {
   const elementsInViewport = articleElements.filter(getIsElementInViewport);
   const isLastElementInViewport = elementsInViewport?.includes(
     articleElements.slice(-1)[0],
@@ -77,12 +81,25 @@ export function useArticleSidebarHeadingsHighlighter(
     }
   };
 
+  const handleMount = () => {
+    if (window.location.hash) {
+      const headingElementMatchingHash = document.querySelector(
+        window.location.hash,
+      );
+      if (headingElementMatchingHash) {
+        setSelectedHeadingId(window.location.hash.replace("#", ""));
+      }
+    }
+  };
+
   useEffect(() => {
-    handleScroll();
+    window.addEventListener("scroll", handleScroll);
 
-    document?.body?.addEventListener("scroll", throttle(handleScroll, 200));
+    handleMount();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return {

@@ -11,6 +11,7 @@ type TextProps = HTMLAttributes<{}> & {
 export function Text({ className, type, ...restProps }: TextProps) {
   const details = TEXT_TYPE_DETAILS[type];
   const Element = details.element as "span" | "p";
+
   return (
     <Element
       className={className ?? details.className}

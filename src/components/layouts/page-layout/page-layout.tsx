@@ -17,9 +17,7 @@ export function PageLayout({ main, selectedNavPath }: PageLayoutProps) {
 
       <div className={styles.mainWrapper}>{main}</div>
 
-      <div className={styles.footerWrapper}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

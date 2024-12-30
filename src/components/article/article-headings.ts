@@ -87,5 +87,5 @@ export function getArticleHeadings(
     },
   );
 
-  return [{ id: "", title: "Intro" }, ...headingElementHeadings];
+  return [{ id: "top", title: "Intro" }, ...headingElementHeadings];
 }

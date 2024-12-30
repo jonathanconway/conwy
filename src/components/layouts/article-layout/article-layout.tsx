@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 
-import { Footer } from "../../footer";
-import { Header } from "../../header";
+import { PageLayout } from "../page-layout";
 
 import * as styles from "./article-layout.css";
 
@@ -12,22 +11,15 @@ export interface ArticleLayoutProps {
 
 export function ArticleLayout({ main, aside }: ArticleLayoutProps) {
   return (
-    <>
-      <div className={styles.headerWrapper}>
-        <Header selectedNavPath="/articles" />
-      </div>
+    <PageLayout
+      selectedNavPath="/articles"
+      main={
+        <div className={styles.container}>
+          <div className={styles.main}>{main}</div>
 
-      <div className={styles.mainWrapper}>
-        <div className="w-full">
-          {main}
-
-          <div className={styles.footerWrapper}>
-            <Footer />
-          </div>
+          <div className={styles.aside}>{aside}</div>
         </div>
-      </div>
-
-      <div className={styles.asideWrapper}>{aside}</div>
-    </>
+      }
+    />
   );
 }

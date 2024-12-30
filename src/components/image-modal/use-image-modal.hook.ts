@@ -2,6 +2,7 @@ import { MouseEvent, useEffect } from "react";
 
 import { ProjectImage } from "@/framework/client";
 
+import { isBackdrop } from "../backdrop";
 import { useCarousel } from "../carousel";
 
 interface UseImageModalParams {
@@ -10,10 +11,6 @@ interface UseImageModalParams {
 
   readonly onClose: VoidFunction;
 }
-
-export const ImageModalClasses = {
-  Backdrop: "image-modal-backdrop",
-};
 
 export function useImageModal(params: UseImageModalParams) {
   const carousel = useCarousel({
@@ -39,7 +36,7 @@ export function useImageModal(params: UseImageModalParams) {
 
   const handleBackdropClick = (event: MouseEvent<HTMLElement>) => {
     const target = event.target as HTMLElement;
-    if (!target.className.includes(ImageModalClasses.Backdrop)) {
+    if (!isBackdrop(target)) {
       return;
     }
 

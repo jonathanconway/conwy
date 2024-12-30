@@ -3,7 +3,7 @@ import pluralize from "pluralize";
 
 import { ItemMeta } from "@/framework/client";
 
-import * as styles from "./item-main-image.styles";
+import * as styles from "./item-main-image.css";
 
 type ImageProps = Omit<Parameters<typeof Image>[0], "src" | "alt">;
 

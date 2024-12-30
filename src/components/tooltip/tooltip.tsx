@@ -4,6 +4,9 @@ import { isArray, isObject, isString } from "lodash";
 import { CSSProperties, Children, ReactNode, cloneElement, useId } from "react";
 import { Tooltip as Tooltip_ } from "react-tooltip";
 
+import { getResponsiveHidden } from "../responsive";
+import { Breakpoint } from "../styling";
+
 import * as styles from "./tooltip.css";
 
 export interface TooltipProps {
@@ -11,6 +14,7 @@ export interface TooltipProps {
   readonly children?: readonly ReactNode[] | ReactNode;
   readonly contents?: ReactNode | string;
   readonly style?: CSSProperties;
+  readonly responsiveVisibility?: Partial<Record<Breakpoint, boolean>>;
 }
 
 function convertContentsToReactNode(contents?: ReactNode | string) {
@@ -65,6 +69,7 @@ export function Tooltip(props: TooltipProps) {
           ...props.style,
         }}
         opacity={1}
+        className={getResponsiveHidden(props.responsiveVisibility)}
       >
         {contents}
       </Tooltip_>

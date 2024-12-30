@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import { rounded } from "../styling";
 import { vars } from "../theme";
 
 export const outerContainer = style({
@@ -28,7 +29,7 @@ globalStyle(`${container} h1`, {
 
 export const face = style({
   width: "3.5rem",
-  borderRadius: "9999px",
+  ...rounded.full,
   borderWidth: "2px",
   borderColor: vars.aboutMe.face.border.color,
 });

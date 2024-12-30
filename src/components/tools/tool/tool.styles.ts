@@ -18,7 +18,7 @@ import {
   w_auto,
 } from "@jonathanconway/tailwindjs";
 
-import { linkBox } from "../../link-box/link-box.styles";
+import { linkBox } from "../../link-box/link-box.css";
 
 export const toolLinkBox = cn(
   linkBox,

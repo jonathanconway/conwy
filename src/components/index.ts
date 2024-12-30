@@ -1,6 +1,7 @@
 export * from "./about-me";
 export * from "./article";
 export * from "./articles";
+export * from "./backdrop";
 export * from "./book";
 export * from "./breadcrumb";
 export * from "./block-quote";

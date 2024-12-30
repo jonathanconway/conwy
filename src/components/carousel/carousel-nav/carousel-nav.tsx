@@ -20,7 +20,13 @@ export function CarouselNav<T>(props: CarouselNavProps<T>) {
     <div className={styles.switchButtonsContainer}>
       <IconButton
         icon={IconTypes.ArrowChevronLeft}
-        tooltip={{ key: "previous", contents: "Previous" }}
+        tooltip={{
+          key: "previous",
+          contents: "Previous",
+          responsiveVisibility: {
+            sm: false,
+          },
+        }}
         disabled={!props.carousel.canGoPrevious}
         onClick={props.carousel.handlePreviousClick}
       />
@@ -36,6 +42,9 @@ export function CarouselNav<T>(props: CarouselNavProps<T>) {
               isObject(tabItem) && "title" in tabItem
                 ? String(tabItem.title)
                 : `${props.tabTooltipDescription ?? "Item"} #${tabItemIndex + 1}`,
+            responsiveVisibility: {
+              sm: false,
+            },
           }}
           onClick={props.carousel.handleTabClick(tabItem)}
         />
@@ -43,7 +52,13 @@ export function CarouselNav<T>(props: CarouselNavProps<T>) {
 
       <IconButton
         icon={IconTypes.ArrowChevronRight}
-        tooltip={{ key: "next", contents: "Next" }}
+        tooltip={{
+          key: "next",
+          contents: "Next",
+          responsiveVisibility: {
+            sm: false,
+          },
+        }}
         disabled={!props.carousel.canGoNext}
         onClick={props.carousel.handleNextClick}
       />

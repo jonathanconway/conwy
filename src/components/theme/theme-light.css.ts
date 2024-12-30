@@ -11,7 +11,13 @@ import { codeThemeLight } from "../code/code.css-theme";
 import { footerThemeLight } from "../footer/footer.css-theme";
 import { headerHamburgerThemeLight } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeLight } from "../header/header-logo/header-logo.css-theme";
+import { iconThemeLight } from "../icon/icon.css-theme";
+import { imageModalThemeLight } from "../image-modal/image-modal.css-theme";
+import { itemNavThemeLight } from "../item/item-nav/item-nav.css-theme";
+import { labelThemeLight } from "../label/label.css-theme";
 import { layoutThemeLight } from "../layouts/layout/layout.css-theme";
+import { linkBoxTitleThemeLight } from "../link-box/link-box-title/link-box-title.css-theme";
+import { linkBoxThemeLight } from "../link-box/link-box.css-theme";
 import { linkThemeLight } from "../link/link.css-theme";
 import { switchThemeLight } from "../switch/switch.css-theme";
 import { textThemeLight } from "../text/text.css-theme";
@@ -31,8 +37,14 @@ export const themeLightClass = createTheme(vars, {
   footer: footerThemeLight,
   headerLogo: headerLogoThemeLight,
   headerHamburger: headerHamburgerThemeLight,
+  icon: iconThemeLight,
+  imageModal: imageModalThemeLight,
+  itemNav: itemNavThemeLight,
+  label: labelThemeLight,
   layout: layoutThemeLight,
   link: linkThemeLight,
+  linkBox: linkBoxThemeLight,
+  linkBoxTitle: linkBoxTitleThemeLight,
   switch: switchThemeLight,
   text: textThemeLight,
   tooltip: tooltipThemeLight,

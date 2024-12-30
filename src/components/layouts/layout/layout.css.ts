@@ -36,7 +36,6 @@ export const body = cn(
     flexDirection: "column",
     overflowY: "visible",
     backgroundColor: vars.layout.body.background.color,
-    gap: "4rem",
 
     "@media": {
       [media.sm]: {

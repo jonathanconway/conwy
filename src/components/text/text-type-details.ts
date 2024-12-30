@@ -1,5 +1,5 @@
 import { TextType, TextTypes } from "./text-type";
-import { textStyles } from "./text.css";
+import * as textStyles from "./text.css";
 
 export const TEXT_TYPE_DETAILS: Record<
   TextType,

@@ -23,12 +23,12 @@ export const logoContainer = style({
 
 export const logo = style({
   filter: vars.headerLogo.filter,
-  width: "8rem",
   pointerEvents: "none",
+  marginLeft: "-0.375rem",
+  width: "8rem",
   "@media": {
     [media.sm]: {
-      marginLeft: "-0.375rem",
-      width: "10rem",
+      width: "8rem",
     },
   },
 });

@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { rounded } from "../styling";
 import { vars } from "../theme";
 
 export const buttonBase = style({
@@ -9,7 +10,7 @@ export const buttonBase = style({
   alignItems: "center",
   alignContent: "center",
   borderStyle: "solid",
-  borderRadius: "0.25rem" /* 4px */,
+  ...rounded.regular,
   borderWidth: "1px",
   padding: "0.125rem 0.25rem" /* 4px */,
   cursor: "pointer",

@@ -28,7 +28,7 @@ import {
   w_16,
 } from "@jonathanconway/tailwindjs";
 
-import * as labelStyles from "../label/label.styles";
+import * as labelStyles from "../label/label.css";
 
 export const container = cn(relative, flex, flex_col, gap_8);
 

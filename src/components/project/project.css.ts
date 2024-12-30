@@ -17,6 +17,7 @@ import {
   sm,
   text_sm,
 } from "@jonathanconway/tailwindjs";
+import { style } from "@vanilla-extract/css";
 
 export const container = cn(relative, flex, flex_col, gap_8);
 
@@ -35,7 +36,9 @@ export const headerLeft = cn(
 
 export const headerRight = cn(flex_1);
 
-export const client = mt_0;
+export const client = style({
+  marginTop: 0,
+});
 
 export const blurb = cn(text_sm, flex_1);
 

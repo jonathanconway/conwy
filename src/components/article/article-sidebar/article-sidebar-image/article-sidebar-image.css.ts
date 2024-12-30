@@ -1,6 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
+import { rounded } from "../../../styling";
+
 export const image = style({
-  borderRadius: "0.375rem",
-  width: "24rem" /* 384px */,
+  ...rounded.md,
+  // width: "100%",
+  // width: "24rem" /* 384px */,
 });

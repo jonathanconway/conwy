@@ -2,13 +2,14 @@ import { style } from "@vanilla-extract/css";
 
 import { cn } from "@/framework/client";
 
+import { rounded } from "../styling";
 import * as textStyles from "../text/text.css";
 import { vars } from "../theme";
 
 export const container = style({
   display: "inline-flex",
   padding: "0.25rem",
-  borderRadius: "9999px",
+  ...rounded.full,
   backgroundColor: vars.switch.background.color,
 });
 
@@ -17,7 +18,7 @@ export const optionContainer = style({
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
-  borderRadius: "9999px",
+  ...rounded.full,
   selectors: {
     ["&:has(:checked)"]: {
       backgroundColor: vars.switch.checked.background.color,

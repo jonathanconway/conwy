@@ -1,1 +1,1 @@
-export * from "./label.styles";
+export * from "./label";

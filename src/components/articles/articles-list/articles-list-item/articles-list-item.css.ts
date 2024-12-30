@@ -2,6 +2,7 @@ import { cn } from "@jonathanconway/tailwindjs";
 import { style } from "@vanilla-extract/css";
 
 import * as listItemStyles from "../../../list-item/list-item.styles";
+import { rounded } from "../../../styling";
 import { vars } from "../../../theme";
 
 export const container = cn(listItemStyles.container);
@@ -11,7 +12,7 @@ export const mainColumn = listItemStyles.mainColumn;
 export const asideColumn = listItemStyles.asideColumn;
 
 export const image = style({
-  borderRadius: "0.375rem" /* 6px */,
+  ...rounded.md,
 });
 
 export const title = style({

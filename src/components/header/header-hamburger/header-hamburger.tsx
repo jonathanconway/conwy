@@ -6,6 +6,8 @@ import { Icon, IconTypes } from "../../icon";
 
 import * as styles from "./header-hamburger.css";
 
+//  todo: rename to header-menu
+
 interface HeaderHamburgerProps {
   readonly children?: ReactNode;
 }

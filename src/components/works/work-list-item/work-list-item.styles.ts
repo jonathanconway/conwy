@@ -23,7 +23,7 @@ import {
   whitespace_nowrap,
 } from "@jonathanconway/tailwindjs";
 
-import * as linkBoxStyles from "../../link-box/link-box.styles";
+import * as linkBoxStyles from "../../link-box/link-box.css";
 import * as listItemStyles from "../../list-item/list-item.styles";
 
 export const container = cn(

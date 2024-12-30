@@ -30,6 +30,7 @@ export function Link_(props: LinkProps) {
     !props.download;
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    console.log("link", href);
     if (!href) {
       event.preventDefault();
     }
