@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Footer } from "../../footer";
 import { Header } from "../../header";
 
-import * as styles from "./article-layout.styles";
+import * as styles from "./article-layout.css";
 
 export interface ArticleLayoutProps {
   readonly main: ReactNode;

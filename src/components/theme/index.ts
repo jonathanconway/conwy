@@ -1,4 +1,3 @@
-export * from "./helpers";
 export * from "./selected-theme-storage-watcher";
 export * from "./selected-theme-storage";
 export * from "./theme-contract.css";

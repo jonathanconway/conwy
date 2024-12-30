@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Footer } from "../../footer";
 import { Header } from "../../header";
 
-import * as styles from "./page-layout.styles";
+import * as styles from "./page-layout.css";
 
 export interface PageLayoutProps {
   readonly main: ReactNode;

@@ -1,4 +1,4 @@
-import { themeBase } from "../theme/theme-base";
+import { colors } from "../styling/helpers";
 
 export const switchThemeBase = {
   color: "",
@@ -14,27 +14,27 @@ export const switchThemeBase = {
 };
 
 export const switchThemeLight = {
-  color: themeBase.colors.black_50,
+  color: colors.black_50,
   background: {
-    color: themeBase.colors.stone_300,
+    color: colors.stone_300,
   },
   checked: {
-    color: themeBase.colors.white,
+    color: colors.white,
     background: {
-      color: themeBase.colors.purple_900,
+      color: colors.purple_900,
     },
   },
 };
 
 export const switchThemeDark = {
-  color: themeBase.colors.black_50,
+  color: colors.black_50,
   background: {
-    color: themeBase.colors.stone_800,
+    color: colors.stone_800,
   },
   checked: {
-    color: themeBase.colors.white,
+    color: colors.white,
     background: {
-      color: themeBase.colors.purple_600,
+      color: colors.purple_600,
     },
   },
 };

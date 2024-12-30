@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { helpers } from "../../theme";
+import { media } from "../../styling";
 
 export const container = style({
   display: "flex",
@@ -10,7 +10,7 @@ export const container = style({
   width: "auto",
 
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       position: "relative",
       flexDirection: "column",
       alignItems: "center",

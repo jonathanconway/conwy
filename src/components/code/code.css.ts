@@ -14,5 +14,5 @@ export const code = cn(
     paddingLeft: "0.375rem",
     paddingRight: "0.375rem",
   }),
-  textStyles.small,
+  textStyles.sizeSmall,
 );

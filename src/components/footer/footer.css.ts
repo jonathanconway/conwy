@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 import { cn } from "@/framework/client";
 
-import { xsmall } from "../text/text.css";
+import { sizeXSmall } from "../text/text.css";
 import { vars } from "../theme";
 
 export const left = style({
@@ -27,7 +27,7 @@ export const row = cn(
     flexDirection: "row",
     gap: "0.5rem",
   }),
-  xsmall,
+  sizeXSmall,
 );
 
 export const link = style({

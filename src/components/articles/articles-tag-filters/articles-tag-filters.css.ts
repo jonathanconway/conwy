@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
+import { colors, media } from "../../styling";
 import { vars } from "../../theme";
-import { media } from "../../vars";
 
 export const container = style({
   display: "flex",
@@ -29,7 +29,7 @@ export const tagFilterBox = style({
   width: "0.75rem" /* 12px */,
   height: "0.75rem" /* 12px */,
   borderRadius: "0.25rem" /* 4px */,
-  backgroundColor: vars.colors.stone_500,
+  backgroundColor: colors.stone_500,
 });
 
 export const tagFilterBoxSelected = style({

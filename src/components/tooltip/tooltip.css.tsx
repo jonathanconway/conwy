@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { colors } from "../styling";
 import { vars } from "../theme";
 
 export const childrenContainer = style({
@@ -8,7 +9,7 @@ export const childrenContainer = style({
   justifyContent: "center",
   alignItems: "center",
   borderWidth: "1px",
-  borderColor: vars.colors.red_100,
+  borderColor: colors.red_100,
 });
 
 export const tooltip = {

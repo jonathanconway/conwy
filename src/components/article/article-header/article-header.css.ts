@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { vars } from "../../theme";
+import { colors } from "../../styling";
 
 export const container = style({
   display: "flex",
@@ -34,6 +34,6 @@ export const tag = style({
   paddingLeft: "0.25rem" /* 4px */,
   paddingRight: "0.25rem" /* 4px */,
   borderWidth: "1px",
-  borderColor: vars.colors.stone_400,
+  borderColor: colors.stone_400,
   borderRadius: "0.25rem" /* 4px */,
 });

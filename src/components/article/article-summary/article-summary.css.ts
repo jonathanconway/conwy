@@ -4,11 +4,11 @@ import { vars } from "../../theme";
 
 export const summaryContainer = style({
   borderWidth: "1px",
-  borderColor: vars.colors.purple_400,
+  borderColor: vars.articleSummary.border.color,
   borderRadius: "0.25rem" /* 4px */,
   padding: "1rem",
   marginTop: "1rem",
   lineHeight: "1.75rem" /* 28px */,
   fontWeight: 500,
-  color: vars.colors.purple_900,
+  color: vars.articleSummary.color,
 });

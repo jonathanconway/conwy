@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { colors } from "../styling";
 import { vars } from "../theme";
 
 export const blockquote = style({
@@ -8,5 +9,5 @@ export const blockquote = style({
   padding: "1rem",
   backgroundColor: vars.blockQuote.background.color,
   borderLeftWidth: "8px",
-  borderColor: vars.colors.stone_400,
+  borderColor: colors.stone_400,
 });

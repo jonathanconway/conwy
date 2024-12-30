@@ -4,7 +4,7 @@ import { vars } from "../theme";
 
 export const outerContainer = style({
   borderBottom: "solid 1px",
-  borderBottomColor: vars.colors.border_1,
+  borderBottomColor: vars.aboutMe.container.border.bottom.color,
 });
 
 export const container = style({
@@ -30,5 +30,5 @@ export const face = style({
   width: "3.5rem",
   borderRadius: "9999px",
   borderWidth: "2px",
-  borderColor: vars.colors.border_2,
+  borderColor: vars.aboutMe.face.border.color,
 });

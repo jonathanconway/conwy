@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { helpers, vars } from "../../theme";
+import { filters, media } from "../../styling";
+import { vars } from "../../theme";
 
 export const faceAndLogoContainer = style({
   display: "flex",
@@ -13,19 +14,19 @@ export const logoContainer = style({
   position: "relative",
   height: "1.5rem",
   ":hover": {
-    filter: vars.filters.brightness_110,
+    filter: filters.brightness_110,
   },
   ":focus": {
-    filter: vars.filters.brightness_110,
+    filter: filters.brightness_110,
   },
 });
 
 export const logo = style({
-  filter: vars.filters.logo,
+  filter: vars.headerLogo.filter,
   width: "8rem",
   pointerEvents: "none",
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       marginLeft: "-0.375rem",
       width: "10rem",
     },

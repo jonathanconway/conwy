@@ -1,17 +1,18 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { helpers, vars } from "../../theme";
+import { colors, media } from "../../styling";
+import { vars } from "../../theme";
 
 export const hiddenCheckbox = style({
   display: "none",
 });
 
 export const icon = style({
-  color: vars.colors.mobile_menu_button,
+  color: vars.headerHamburger.icon.color,
   display: "none",
 
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       display: "inline-flex",
     },
   },
@@ -26,10 +27,10 @@ export const contents = style({
   paddingRight: 0,
   boxShadow: "0 0 #0000",
   backgroundColor: "transparent",
-  color: vars.colors.mobile_menu,
+  color: vars.headerHamburger.menu.color,
 
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       position: "absolute",
       zIndex: 20,
       right: "0.5rem",
@@ -38,15 +39,15 @@ export const contents = style({
       paddingRight: "0.5rem",
       boxShadow:
         "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-      backgroundColor: vars.colors.stone_800,
-      color: vars.colors.stone_200,
+      backgroundColor: colors.stone_800,
+      color: colors.stone_200,
     },
   },
 });
 
 globalStyle(`${hiddenCheckbox} ~ ${contents}`, {
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       display: "none",
     },
   },
@@ -54,7 +55,7 @@ globalStyle(`${hiddenCheckbox} ~ ${contents}`, {
 
 globalStyle(`${hiddenCheckbox}:checked ~ ${contents}`, {
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       display: "flex",
     },
   },
@@ -68,12 +69,12 @@ export const menuBackdrop = style({
   bottom: 0,
   left: 0,
   zIndex: 10,
-  backgroundColor: vars.colors.black_50,
+  backgroundColor: colors.black_50,
 });
 
 globalStyle(`${hiddenCheckbox} ~ ${menuBackdrop}`, {
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       display: "none",
     },
   },
@@ -81,7 +82,7 @@ globalStyle(`${hiddenCheckbox} ~ ${menuBackdrop}`, {
 
 globalStyle(`${hiddenCheckbox}:checked ~ ${menuBackdrop}`, {
   "@media": {
-    [helpers.media.sm]: {
+    [media.sm]: {
       display: "flex",
     },
   },

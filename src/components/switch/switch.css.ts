@@ -39,5 +39,5 @@ export const optionText = cn(
     paddingBottom: "0.25rem" /* 4px */,
     cursor: "pointer",
   }),
-  textStyles.xsmall,
+  textStyles.sizeXSmall,
 );
