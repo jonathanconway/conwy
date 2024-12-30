@@ -10,6 +10,7 @@ export const BookCategories = {
   History: "history",
   Politics: "politics",
   Psychology: "psychology",
+  Science: "science",
   SelfHelp: "self-help",
   SoftwareDevelopment: "software-development",
   Spirituality: "spirituality",

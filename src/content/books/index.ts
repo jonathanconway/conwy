@@ -38,3 +38,5 @@ export * from "./you-dont-know-js";
 export * from "./zen-the-art-motorcycle-maintenance";
 export * from "./the-storm-before-the-calm";
 export * from "./atlas-of-the-heart";
+export * from "./numbers-dont-lie";
+export * from "./how-the-world-really-works";
