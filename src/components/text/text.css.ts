@@ -1,33 +1,15 @@
-import { style } from "@vanilla-extract/css";
+import { ComplexStyleRule, style } from "@vanilla-extract/css";
 
-import { cn } from "../../framework/client";
-import { text } from "../styling";
-import { vars } from "../theme";
+import * as textMixins from "./text.mixins";
 
-export const sizeSmall = style(text.size.sm);
-export const sizeXSmall = style(text.size.xs);
-export const sizeLG = style(text.size.lg);
+export const body = style(textMixins.body);
 
-export const size = {
-  small: sizeSmall,
-  xsmall: sizeXSmall,
-  lg: sizeLG,
-};
+export const label = style(textMixins.label as ComplexStyleRule);
 
-export const colorBody = style({
-  color: vars.text.body.color,
-});
+export const paragraph = style(textMixins.paragraph);
 
-export const color = {
-  body: colorBody,
-};
+export const small = style(textMixins.small);
 
-export const summary = size.small;
+export const summary = style(textMixins.summary);
 
-export const body = cn(
-  size.small,
-  color.body,
-  style({
-    marginTop: "1rem" /* 16px */,
-  }),
-);
+export const subTitle = style(textMixins.subTitle);

@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { boxBorder } from "../box/box.mixins";
+import { boxBorderDecorative } from "../box/box.mixins";
 import { colors, rounded } from "../styling";
 import { vars } from "../theme";
 
@@ -25,7 +25,7 @@ export const imageContainer = style({
   padding: "0.375rem",
   borderWidth: "2px",
   borderStyle: "solid",
-  borderColor: boxBorder.borderColor,
+  borderColor: boxBorderDecorative.borderColor,
   ...rounded.lg,
   cursor: "pointer",
   backgroundColor: vars.layout.body.background.color,

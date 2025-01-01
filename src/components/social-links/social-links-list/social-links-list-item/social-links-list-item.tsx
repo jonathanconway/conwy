@@ -19,6 +19,7 @@ export function SocialLinksListItem({ socialLink }: SocialLinksListItemProps) {
       icon={SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].iconType}
     >
       {socialLink.title ?? SOCIAL_LINKS_DETAILS_BY_TYPE[socialLink.type].title}
+      ss
     </Link>
   );
 }

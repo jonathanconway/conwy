@@ -10,7 +10,6 @@ import {
   gap_6,
   gap_8,
   leading_5,
-  mt_0,
   mt_2,
   pr_0,
   relative,
@@ -19,32 +18,55 @@ import {
 } from "@jonathanconway/tailwindjs";
 import { style } from "@vanilla-extract/css";
 
-export const container = cn(relative, flex, flex_col, gap_8);
+import { media, responsive, text } from "../styling";
 
-export const main = cn(flex, flex_1, flex_col, sm(flex_row), gap_4);
+export const container = style({
+  position: "relative",
+  display: "flex",
+  flexDirection: "column",
+  gap: "2rem",
+});
 
-export const header = cn(flex, flex_row, gap_4);
+export const main = style({
+  display: "flex",
+  flex: 1,
+  gap: "1rem",
+  ...responsive.flexDirectionColumnMobileRowElse,
+});
 
-export const headerLeft = cn(
-  flex,
-  flex_1,
+export const header = style({
+  display: "flex",
+  flexDirection: "row",
+  gap: "1rem",
+});
 
-  flex_col,
+export const headerLeft = style({
+  display: "flex",
+  flex: 1,
+  flexDirection: "column",
+  gap: "0.5rem",
+});
 
-  gap_2,
-);
-
-export const headerRight = cn(flex_1);
+export const headerRight = style({
+  flex: 1,
+});
 
 export const client = style({
   marginTop: 0,
 });
 
-export const blurb = cn(text_sm, flex_1);
+export const blurb = style({
+  ...text.size.sm,
+  flex: 1,
+});
 
-export const body = cn(flex_1);
+export const body = style({
+  flex: 1,
+});
 
-export const blurbContent = cn(all(mt_2), all(pr_0), all(leading_5));
+export const blurbContent = style({});
+
+//  cn(all(mt_2), all(pr_0), all(leading_5));
 
 export const aside = cn(flex, flex_1, flex_col, gap_6);
 

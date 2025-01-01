@@ -5,8 +5,9 @@ import { Tooltip as Tooltip_ } from "react-tooltip";
 
 import { Fragment } from "../../fragments";
 
+import * as styles from "./note-popup.css";
 import { useNotePopup } from "./note-popup.hook";
-import * as styles from "./note-popup.styles";
+import * as mixins from "./note.mixins";
 
 interface NotePopupProps {
   readonly noteId: string;
@@ -38,10 +39,8 @@ export function NotePopup(props: NotePopupProps) {
         clickOutsideAnchor: true,
       }}
       defaultIsOpen={defaultIsOpen}
-      style={styles.tooltipStyles}
-      className={styles.tooltip}
+      style={mixins.note}
       classNameArrow={styles.tooltipArrow}
-      border={styles.tooltipBorder}
       opacity={1}
     >
       <Fragment>{props.children}</Fragment>

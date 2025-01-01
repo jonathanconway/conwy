@@ -1,9 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { cn } from "@/framework/client";
-
-import { rounded } from "../styling";
-import * as textStyles from "../text/text.css";
+import { rounded, text } from "../styling";
 import { vars } from "../theme";
 
 export const container = style({
@@ -31,14 +28,12 @@ export const optionInput = style({
   display: "none",
 });
 
-export const optionText = cn(
-  style({
-    display: "inline-flex",
-    paddingLeft: "0.5rem" /* 8px */,
-    paddingRight: "0.5rem" /* 8px */,
-    paddingTop: "0.25rem" /* 4px */,
-    paddingBottom: "0.25rem" /* 4px */,
-    cursor: "pointer",
-  }),
-  textStyles.sizeXSmall,
-);
+export const optionText = style({
+  display: "inline-flex",
+  paddingLeft: "0.5rem" /* 8px */,
+  paddingRight: "0.5rem" /* 8px */,
+  paddingTop: "0.25rem" /* 4px */,
+  paddingBottom: "0.25rem" /* 4px */,
+  cursor: "pointer",
+  ...text.size.xs,
+});

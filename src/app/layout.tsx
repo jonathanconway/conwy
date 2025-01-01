@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Layout } from "@/components";
+import { AppLayout } from "@/components";
 
 import "./globals.css";
 
@@ -10,5 +10,5 @@ export const metadata = {
 };
 
 export default function RootLayout(props: { children: ReactNode }) {
-  return <Layout {...props} />;
+  return <AppLayout {...props} />;
 }

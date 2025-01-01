@@ -1,19 +1,40 @@
 import { colors } from "../styling";
 
 export const boxThemeBase = {
-  border: {
-    color: "",
+  decorative: {
+    border: {
+      color: "",
+    },
+  },
+  structural: {
+    border: {
+      color: "",
+    },
   },
 };
 
 export const boxThemeLight = {
-  border: {
-    color: colors.stone_300,
+  decorative: {
+    border: {
+      color: colors.stone_300,
+    },
+  },
+  structural: {
+    border: {
+      color: colors.stone_500,
+    },
   },
 };
 
 export const boxThemeDark = {
-  border: {
-    color: colors.stone_700,
+  decorative: {
+    border: {
+      color: colors.stone_700,
+    },
+  },
+  structural: {
+    border: {
+      color: colors.stone_500,
+    },
   },
 };

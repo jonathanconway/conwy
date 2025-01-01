@@ -2,7 +2,7 @@ import { ProjectMeta, WorkMeta } from "@/framework/client";
 
 import { Section } from "../../section";
 
-import * as styles from "./item-techs.styles";
+import * as styles from "./item-techs.css";
 
 interface ItemTechsProps<TMeta extends WorkMeta | ProjectMeta> {
   readonly itemMeta: TMeta;

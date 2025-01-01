@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 
 interface TextExpandableState {
   readonly isExpanded: boolean;
@@ -32,7 +32,9 @@ export function useTextExpandable() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleToggleClick = () => {
+  const handleToggleClick = (event: MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
     setState({ ...state, isExpanded: !state.isExpanded });
   };
 

@@ -2,12 +2,11 @@
 
 import { Post, getAreSomeSame, getItemsTags } from "@/framework/client";
 
+import { List } from "../../list";
 import { MicrosListItem } from "../../micros";
-import { ALL } from "../articles-tag-filters";
-import { useTagFiltersSwitch } from "../articles-tag-filters";
+import { ALL, useTagFiltersSwitch } from "../articles-tag-filters";
 
 import { ArticlesListItem } from "./articles-list-item";
-import * as styles from "./articles-list.css";
 
 interface ArticlesListProps {
   readonly items: readonly Post[];
@@ -23,7 +22,7 @@ export function ArticlesList({ items }: ArticlesListProps) {
     : items.filter((item) => getAreSomeSame(item.meta.tags, selectedTags));
 
   return (
-    <div className={styles.articles}>
+    <List>
       {filteredItems
         .map((item) => {
           switch (item.meta.type) {
@@ -38,6 +37,6 @@ export function ArticlesList({ items }: ArticlesListProps) {
           }
         })
         .filter(Boolean)}
-    </div>
+    </List>
   );
 }

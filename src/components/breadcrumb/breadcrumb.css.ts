@@ -1,12 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { cn } from "@/framework/client";
+import { text } from "../styling";
 
-import * as textStyles from "../text/text.css";
-
-export const container = cn(
-  style({
-    display: "flex",
-  }),
-  textStyles.size.small,
-);
+export const container = style({
+  display: "flex",
+  ...text.size.sm,
+});

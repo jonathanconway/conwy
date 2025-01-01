@@ -1,15 +1,17 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
-import { colors, media, rounded } from "../../styling";
+import { colors, filters, media, rounded } from "../../styling";
 import { vars } from "../../theme";
 
 export const container = style({
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
   gap: "0.75rem" /* 12px */,
   "@media": {
     [media.sm]: {
-      flexDirection: "row",
+      flexDirection: "column",
+    },
+    [media.mdAndUp]: {
       marginBottom: "1rem" /* 16px */,
     },
   },
@@ -32,6 +34,10 @@ export const tagFilterBox = style({
   backgroundColor: colors.stone_500,
 });
 
+globalStyle(`${tagFilter}:hover ${tagFilterBox}`, {
+  filter: filters.brightness_125,
+});
+
 export const tagFilterBoxSelected = style({
   backgroundColor: vars.articlesTagFilters.tagFilterBox.selected.color,
 });
@@ -39,4 +45,8 @@ export const tagFilterBoxSelected = style({
 export const tagFilterLabel = style({
   fontSize: "0.875rem" /* 14px */,
   lineHeight: "1.25rem" /* 20px */,
+});
+
+export const tagFilterLabelSelected = style({
+  color: vars.articlesTagFilters.tagFilterLabel.selected.color,
 });

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import * as styles from "./two-col-layout.styles";
+import * as styles from "./two-col-layout.css";
 
 interface TwoColLayoutProps {
   readonly children: [ReactNode, ReactNode];

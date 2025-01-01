@@ -8,6 +8,10 @@ export const text = {
       fontSize: "0.875rem" /* 14px */,
       lineHeight: "1.25rem" /* 20px */,
     },
+    md: {
+      fontSize: "1rem" /* 16px */,
+      lineHeight: "1.5rem" /* 24px */,
+    },
     lg: {
       fontSize: "1.125rem" /* 18px */,
       lineHeight: "1.75rem" /* 28px */,

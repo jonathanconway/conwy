@@ -1,18 +1,14 @@
-import { cn } from "@jonathanconway/tailwindjs";
-
 import {
   getHasSubformatChildrenMatchingPrefix,
   getSubformatChildrenPrefixedRest,
 } from "@/framework/client";
 
-import { MdxBlockQuoteProps } from "../../mdx-blockquote-props";
-
-import moduleStyles from "./mdx-blockquote-pull-quote.module.css";
+import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 
 const PULL_QUOTE_PREFIX = "Pull-quote:";
 
 export function getBlockQuotePullQuoteSubformatProps(
-  props: MdxBlockQuoteProps,
+  props: MdxBlockquoteProps,
 ) {
   if (
     !getHasSubformatChildrenMatchingPrefix(PULL_QUOTE_PREFIX, props.children)
@@ -20,7 +16,7 @@ export function getBlockQuotePullQuoteSubformatProps(
     return props;
   }
 
-  const className = cn(props.className ?? "", moduleStyles.pullQuote);
+  const isPullQuote = true;
 
   const children = getSubformatChildrenPrefixedRest(
     PULL_QUOTE_PREFIX,
@@ -29,7 +25,7 @@ export function getBlockQuotePullQuoteSubformatProps(
 
   return {
     ...props,
-    className,
+    isPullQuote,
     children,
   };
 }

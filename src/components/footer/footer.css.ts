@@ -1,8 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { cn } from "@/framework/client";
-
-import { sizeXSmall } from "../text/text.css";
+import { text } from "../styling";
 import { vars } from "../theme";
 
 export const left = style({
@@ -21,14 +19,12 @@ export const container = style({
   color: vars.footer.color || undefined,
 });
 
-export const row = cn(
-  style({
-    display: "flex",
-    flexDirection: "row",
-    gap: "0.5rem",
-  }),
-  sizeXSmall,
-);
+export const row = style({
+  display: "flex",
+  flexDirection: "row",
+  gap: "0.5rem",
+  ...text.size.xs,
+});
 
 export const link = style({
   textDecorationLine: "underline",

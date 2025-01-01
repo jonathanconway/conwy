@@ -6,6 +6,11 @@ export const articlesTagFiltersThemeBase = {
       color: "",
     },
   },
+  tagFilterLabel: {
+    selected: {
+      color: "",
+    },
+  },
 };
 
 export const articlesTagFiltersThemeLight = {
@@ -14,10 +19,20 @@ export const articlesTagFiltersThemeLight = {
       color: colors.violet_500,
     },
   },
+  tagFilterLabel: {
+    selected: {
+      color: colors.violet_700,
+    },
+  },
 };
 
 export const articlesTagFiltersThemeDark = {
   tagFilterBox: {
+    selected: {
+      color: colors.violet_300,
+    },
+  },
+  tagFilterLabel: {
     selected: {
       color: colors.violet_300,
     },

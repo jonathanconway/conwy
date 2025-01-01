@@ -1,10 +1,13 @@
 import Image from "next/image";
 
+import { ListItem } from "@/components/list";
+import { TextTypes } from "@/components/text/text-type";
 import { Tool as Tool_ } from "@/framework/client";
 
 import { LinkBox, LinkBoxTitle } from "../../link-box";
+import { Text } from "../../text";
 
-import * as styles from "./tool.styles";
+import * as styles from "./tool.css";
 
 interface ToolsProps {
   readonly tool: Tool_;
@@ -12,29 +15,34 @@ interface ToolsProps {
 
 export function Tool({ tool }: ToolsProps) {
   return (
-    <LinkBox className={styles.toolLinkBox} href={tool.url} target="_blank">
-      {tool.mainImage && (
-        <div className={styles.toolImageContainer}>
-          <Image
-            className={styles.toolImage}
-            src={tool.mainImage}
-            alt={`Icon for ${tool.title}`}
-            width={32}
-            height={32}
-            style={{ width: "auto", height: "2rem" }}
-          />
-        </div>
-      )}
+    <LinkBox href={tool.url} target="_blank">
+      <ListItem
+        mainSlot={
+          <>
+            {tool.mainImage && (
+              <div className={styles.toolImageContainer}>
+                <Image
+                  src={tool.mainImage}
+                  alt={`Icon for ${tool.title}`}
+                  width={32}
+                  height={32}
+                  style={{ width: "auto", height: "2rem" }}
+                />
+              </div>
+            )}
 
-      <LinkBoxTitle>{tool.title}</LinkBoxTitle>
+            <LinkBoxTitle>{tool.title}</LinkBoxTitle>
 
-      <small>{tool.category}</small>
+            <Text type={TextTypes.Small}>{tool.category}</Text>
 
-      {tool.description && <p>{tool.description}</p>}
+            {tool.description && <Text>{tool.description}</Text>}
 
-      <p>
-        <small>{tool.operatingSystems.join(", ")}</small>
-      </p>
+            <Text type={TextTypes.Small}>
+              {tool.operatingSystems.join(", ")}
+            </Text>
+          </>
+        }
+      />
     </LinkBox>
   );
 }

@@ -24,9 +24,7 @@ export function Project({ project }: ProjectProps) {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <Heading level={2} className={styles.client}>
-            {projectMeta.title}
-          </Heading>
+          <Heading level={2}>{projectMeta.title}</Heading>
 
           <div className={styles.blurb}>{projectMeta.blurb}</div>
         </div>

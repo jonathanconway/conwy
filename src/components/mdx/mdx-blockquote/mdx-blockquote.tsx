@@ -1,12 +1,16 @@
 "use client";
 
-import { BlockQuote } from "../../block-quote";
+import { BlockQuote, BlockQuotePullQuote } from "../../block-quote";
 
-import { MdxBlockQuoteProps } from "./mdx-blockquote-props";
+import { MdxBlockquoteProps } from "./mdx-blockquote-props";
 import { getBlockQuoteSubformatProps } from "./mdx-blockquote-subformat";
 
-export function MdxBlockQuote(props: MdxBlockQuoteProps) {
-  props = getBlockQuoteSubformatProps(props);
+export function MdxBlockquote(props: MdxBlockquoteProps) {
+  const processedProps = getBlockQuoteSubformatProps(props);
 
-  return <BlockQuote {...props} />;
+  if (processedProps.isPullQuote) {
+    return <BlockQuotePullQuote {...processedProps} />;
+  }
+
+  return <BlockQuote {...processedProps} />;
 }

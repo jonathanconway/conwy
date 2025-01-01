@@ -1,9 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { ArticleMeta } from "@/framework/client";
 
 import { Date } from "../../../date";
+import { LinkBox, LinkBoxTitle } from "../../../link-box";
+import { ListItem, ListItemBlurb, ListItemType } from "../../../list";
 import { SocialLinksIcons } from "../../../social-links";
 
 import * as styles from "./articles-list-item.css";
@@ -21,31 +22,39 @@ export function ArticlesListItem({
   mainImage,
 }: ArticlesListItemProps) {
   return (
-    <div className={styles.container}>
-      <Link className={styles.mainColumn} href={`articles/${slug}`}>
-        <div className={styles.date}>
-          <Date>{date}</Date>
-        </div>
+    <LinkBox href={`articles/${slug}`}>
+      <ListItem
+        mainSlot={
+          <>
+            <div className={styles.date}>
+              <Date>{date}</Date>
+            </div>
 
-        <div className={styles.title}>{title}</div>
+            <LinkBoxTitle>{title}</LinkBoxTitle>
 
-        <p className={styles.blurb}>{shortBlurb ?? blurb}</p>
-      </Link>
-      <div className={styles.asideColumn}>
-        <Image
-          className={styles.image}
-          src={`/images/articles/${slug}/${mainImage ?? "main.jpg"}`}
-          alt="Article main image"
-          priority
-          unoptimized={true}
-          width={125}
-          height={93.75}
-        />
+            <ListItemBlurb>{shortBlurb ?? blurb}</ListItemBlurb>
+          </>
+        }
+        asideSlot={
+          <>
+            <Image
+              className={styles.image}
+              src={`/images/articles/${slug}/${mainImage ?? "main.jpg"}`}
+              alt="Article main image"
+              priority
+              unoptimized={true}
+              width={125}
+              height={93.75}
+            />
 
-        {socialLinks && <SocialLinksIcons socialLinks={socialLinks} />}
+            {socialLinks.length > 0 && (
+              <SocialLinksIcons socialLinks={socialLinks} />
+            )}
 
-        <span className={styles.type}>{type}</span>
-      </div>
-    </div>
+            <ListItemType>{type}</ListItemType>
+          </>
+        }
+      />
+    </LinkBox>
   );
 }

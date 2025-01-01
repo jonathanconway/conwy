@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { boxBorder } from "../box/box.mixins";
+import { boxBorderDecorative } from "../box/box.mixins";
+import * as shadowMixins from "../shadow";
 import { colors, media, rounded, text } from "../styling";
 import { vars } from "../theme";
 
@@ -93,7 +94,7 @@ export const image = style({
   ...rounded.lg,
   borderWidth: "2px",
   // todo: come up with an abstraction
-  borderColor: boxBorder.borderColor,
+  borderColor: boxBorderDecorative.borderColor,
   backgroundColor: vars.layout.body.background.color,
 });
 
@@ -107,7 +108,7 @@ export const noteHotspot = style({
   fontWeight: "bold",
   borderWidth: "2px",
   borderStyle: "solid",
-  boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+  boxShadow: shadowMixins.boxShadowRegular,
   width: "1.5rem",
   height: "1.5rem",
   ...rounded.full,
@@ -146,7 +147,7 @@ export const noteNumber = style({
   backgroundColor: colors.stone_700,
   borderColor: colors.yellow_400,
   borderWidth: "2px",
-  boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+  boxShadow: shadowMixins.boxShadowRegular,
   width: "1.5rem",
   height: "1.5rem",
   display: "inline-flex",

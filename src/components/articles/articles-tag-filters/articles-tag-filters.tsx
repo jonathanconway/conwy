@@ -1,6 +1,6 @@
 "use client";
 
-import { Post, getItemsTags } from "@/framework/client";
+import { Post, cn, getItemsTags } from "@/framework/client";
 
 import { MobileCollapsible } from "../../mobile";
 
@@ -39,11 +39,20 @@ export function ArticlesTagFilters({ items }: ArticlesTagFiltersProps) {
               onClick={onSelectTag(tag)}
             >
               <span
-                className={
-                  isSelected ? styles.tagFilterBox : styles.tagFilterBoxSelected
-                }
-              ></span>
-              <span className={styles.tagFilterLabel}>{sentenceCase(tag)}</span>
+                className={cn(
+                  styles.tagFilterBox,
+                  isSelected ? styles.tagFilterBoxSelected : undefined,
+                )}
+              />
+
+              <span
+                className={cn(
+                  styles.tagFilterLabel,
+                  isSelected ? styles.tagFilterLabelSelected : undefined,
+                )}
+              >
+                {sentenceCase(tag)}
+              </span>
             </span>
           );
         })}

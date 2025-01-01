@@ -28,6 +28,7 @@ export const colors = {
   stone_950: "rgb(12, 10, 9)",
   violet_300: "rgb(196, 181, 253)",
   violet_500: "rgb(139, 92, 246)",
+  violet_700: "rgb(109, 40, 217)",
   yellow_400: "rgb(250, 204, 21)",
   white: "rgb(255, 255, 255)",
 };

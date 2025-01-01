@@ -1,7 +1,8 @@
 import { WorkMeta, sortWorkMetas } from "@/framework/client";
 
+import { List } from "../list";
+
 import { WorkListItem } from "./work-list-item";
-import * as styles from "./works.styles";
 
 interface WorksProps {
   readonly workMetas: readonly WorkMeta[];
@@ -11,13 +12,13 @@ export function Works({ workMetas }: WorksProps) {
   const sortedWorkHistoryListItems = sortWorkMetas(workMetas);
 
   return (
-    <div className={styles.container()}>
+    <List>
       {sortedWorkHistoryListItems.map((workHistoryListItem) => (
         <WorkListItem
           key={workHistoryListItem.slug}
           workMeta={workHistoryListItem}
         />
       ))}
-    </div>
+    </List>
   );
 }
