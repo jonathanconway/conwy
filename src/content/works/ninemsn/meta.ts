@@ -21,7 +21,7 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      imageUrl: "ninemsn-01.jpg",
+      src: "ninemsn-01.jpg",
       notes: [],
     },
   ],

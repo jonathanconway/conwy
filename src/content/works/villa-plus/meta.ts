@@ -11,15 +11,15 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      imageUrl: "villa-plus-1.png",
+      src: "villa-plus-1.png",
       notes: [],
     },
     {
-      imageUrl: "villa-plus-2.jpg",
+      src: "villa-plus-2.jpg",
       notes: [], //Collaborative Kan-ban-style planning on whiteboard
     },
     {
-      imageUrl: "villa-plus-screencast.gif",
+      src: "villa-plus-screencast.gif",
       notes: [],
     },
   ],

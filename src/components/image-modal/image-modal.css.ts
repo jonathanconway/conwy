@@ -30,15 +30,18 @@ export const imageModal = style({
   borderColor: colors.stone_600,
   borderStyle: "solid",
   maxWidth: "80vw",
-  height: "80vh",
 });
 
 export const imageModalHeader = style({
   display: "flex",
-  flexDirection: "column",
   "@media": {
-    [media.sm]: {
+    [media.mdAndUp]: {
       flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    [media.sm]: {
+      flexDirection: "column",
+      gap: "1rem",
     },
   },
 });
@@ -46,34 +49,31 @@ export const imageModalHeader = style({
 export const imageModalTitle = style({
   ...text.size.xl,
   fontWeight: "bold",
-  order: 1,
-  "@media": {
-    [media.sm]: {
-      order: 2,
-    },
-  },
+  display: "inline-flex",
+  // order: 1,
+  // "@media": {
+  //   [media.sm]: {
+  //     order: 2,
+  //   },
+  // },
 });
 
 export const imageModalButtonsContainer = style({
   display: "flex",
   justifyContent: "space-between",
-  marginBottom: "1rem" /* 16px */,
   top: 0,
   right: 0,
   gap: "0.5rem",
-
-  "@media": {
-    [media.sm]: {
-      margin: "1rem" /* 16px */,
-      position: "absolute",
-    },
-  },
 });
 
 export const imageModalMain = style({
+  position: "relative",
+  overflow: "scroll",
   display: "flex",
   flexDirection: "column",
   gap: "2rem",
+  justifyContent: "center",
+  flex: 1,
 
   "@media": {
     [media.sm]: {
@@ -82,11 +82,7 @@ export const imageModalMain = style({
   },
 });
 
-export const imageContainer = style({
-  position: "relative",
-  maxHeight: "80vh",
-  overflow: "scroll",
-});
+export const imageContainer = style({});
 
 export const image = style({
   width: "600px",

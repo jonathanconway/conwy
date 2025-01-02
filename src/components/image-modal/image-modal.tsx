@@ -1,22 +1,22 @@
 "use client";
 
-import Image from "next/image";
-
-import { WorkImage, cn } from "@/framework/client";
+import { Image as Image_, cn } from "@/framework/client";
 
 import { Backdrop } from "../backdrop";
 import { CarouselNav } from "../carousel";
+import { CarouselBody } from "../carousel/carousel-body";
 import { Heading } from "../heading";
 import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
+import { Image } from "../image";
 import { Link } from "../link";
 
 import * as styles from "./image-modal.css";
 import { useImageModal } from "./use-image-modal.hook";
 
 interface ImageModalProps {
-  readonly workImages: readonly WorkImage[];
-  readonly defaultSelectedWorkImage: WorkImage;
+  readonly images: readonly Image_[];
+  readonly defaultImage: Image_;
 
   readonly onClose: VoidFunction;
 }
@@ -30,14 +30,14 @@ export function ImageModal(props: ImageModalProps) {
     <Backdrop onClick={handleBackdropClick}>
       <div className={styles.imageModal}>
         <header className={styles.imageModalHeader}>
-          {carousel.selectedItem.title && (
+          {carousel.selectedItem.alt && (
             <Heading level={2} className={styles.imageModalTitle}>
-              {carousel.selectedItem.title}
+              {carousel.selectedItem.alt}
             </Heading>
           )}
 
           <div className={styles.imageModalButtonsContainer}>
-            <CarouselNav carousel={carousel} tabTooltipDescription="Image" />
+            <CarouselNav carousel={carousel} />
 
             <IconButton
               icon={IconTypes.Close}
@@ -50,59 +50,18 @@ export function ImageModal(props: ImageModalProps) {
         <div className={styles.imageModalMain}>
           <div className={styles.imageContainer}>
             <Link
-              href={carousel.selectedItem.imageUrl}
+              href={carousel.selectedItem.src}
               target="_blank"
               showOpenInNew={false}
             >
               <Image
+                image={carousel.selectedItem}
                 className={styles.image}
-                src={carousel.selectedItem.imageUrl}
-                alt={carousel.selectedItem.imageUrl}
-                width={600}
-                height={400}
+                src={carousel.selectedItem.src}
+                alt={carousel.selectedItem.alt ?? carousel.selectedItem.src}
               />
             </Link>
-
-            {carousel.selectedItem.notes
-              .filter((note) => note.hotspot)
-              .map((note, noteIndex) => (
-                <span
-                  key={note.text}
-                  className={styles.noteHotspot}
-                  style={{
-                    left: note.hotspot!.x,
-                    top: note.hotspot!.y,
-                  }}
-                >
-                  {noteIndex + 1}
-                </span>
-              ))}
           </div>
-
-          {carousel.selectedItem.notes.length > 0 && (
-            <ul
-              className={
-                hasHotspots
-                  ? styles.notesContainer
-                  : styles.notesContainerWithHotspots
-              }
-            >
-              {carousel.selectedItem.notes.map((note, noteIndex) => (
-                <li
-                  key={note.text}
-                  className={cn(
-                    styles.noteText,
-                    hasHotspots ? styles.noteTextWithHotspots : null,
-                  )}
-                >
-                  {note.hotspot && (
-                    <span className={styles.noteNumber}>{noteIndex + 1}</span>
-                  )}
-                  {note.text}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       </div>
     </Backdrop>

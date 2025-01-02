@@ -29,13 +29,13 @@ export const meta: ProjectMeta = {
   platforms: ["Web"],
   images: [
     {
-      imageUrl: "tailwindjs-01.gif",
-      title: "Screen recording of TailwindJS in VSCode",
+      src: "tailwindjs-01.gif",
+      alt: "Screen recording of TailwindJS in VSCode",
       notes: [],
     },
     {
-      imageUrl: "tailwindjs-01.jpeg",
-      title: "Screenshot of TailwindJS in VSCode",
+      src: "tailwindjs-01.jpeg",
+      alt: "Screenshot of TailwindJS in VSCode",
       notes: [],
     },
   ],

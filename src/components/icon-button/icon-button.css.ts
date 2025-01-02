@@ -24,10 +24,14 @@ export const iconButtonSelected = buttonStyles.buttonSelected;
 
 export const iconButtonUnselected = buttonStyles.buttonUnselected;
 
+export const iconButtonDisabled = style({
+  pointerEvents: "none",
+});
+
 export const icon = style({
   pointerEvents: "none",
 });
 
-export const iconButtonDisabled = style({
+export const iconButtonIconDisabled = style({
   opacity: 0.3,
 });

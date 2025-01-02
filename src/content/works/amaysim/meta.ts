@@ -10,8 +10,8 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      imageUrl: "amaysim-01.jpg",
-      title: "MyDevices portal - Desktop",
+      src: "amaysim-01.jpg",
+      alt: "MyDevices portal - Desktop",
       notes: [],
     },
   ],

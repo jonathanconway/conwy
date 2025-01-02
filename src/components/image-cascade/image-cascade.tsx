@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import { ProjectImage } from "@/framework/client";
+import { Image as Image_ } from "@/framework/client";
 
 import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
@@ -20,49 +20,67 @@ const IMAGE_SIZE_PX = {
 };
 
 interface ImageCascadeState {
-  readonly openImage?: ProjectImage;
+  readonly openImage?: Image_;
 }
 
 export function ImageCascade(props: ImageCascadeProps) {
-  const { handleNextClick, handlePreviousClick, items } = useImageCascade({
-    items: props.images,
-  });
+  const { handleNextClick, handlePreviousClick, items, selectedItem } =
+    useImageCascade({
+      items: props.images,
+    });
+
   const [state, setState] = useState<ImageCascadeState>({});
 
   const handleImageModalCloseClick = () => {
     setState({});
   };
 
-  const handleImageClick = (openImage: ProjectImage) => () => {
+  const handleImageClick = (openImage: Image_) => () => {
     setState({ openImage });
   };
 
-  if (props.images?.length === 0) {
+  if (props.images.length === 0) {
     return;
+  }
+
+  if (props.images.length === 1) {
+    const image = props.images[0];
+    return (
+      <Image
+        className={styles.image}
+        src={image.src}
+        alt={image.src}
+        width={IMAGE_SIZE_PX.width}
+        height={IMAGE_SIZE_PX.height}
+      />
+    );
   }
 
   return (
     <>
       <div className={styles.container}>
-        {items?.map((image, imageUrlIndex) => (
+        {items?.map((image, imageIndex) => (
           <Tooltip
-            key={`image-cascade-item-${image.imageUrl}`}
-            contents={image.title ?? `Image #${imageUrlIndex}`}
+            key={`image-cascade-item-${image.src}`}
+            contents={image.alt ?? `Image #${imageIndex}`}
           >
             <div
               className={styles.imageContainer}
               style={{
-                left: `${(100 / (props.images.length * 2)) * (imageUrlIndex + 1)}%`,
-                top: `${(100 / (props.images.length * 2)) * (imageUrlIndex + 1)}%`,
+                left: `${(100 / (props.images.length * 2)) * (imageIndex + 1)}%`,
+                top: `${(100 / (props.images.length * 2)) * (imageIndex + 1)}%`,
                 width: `${IMAGE_SIZE_PX.width}px`,
                 height: `${IMAGE_SIZE_PX.height}px`,
               }}
               onClick={handleImageClick(image)}
             >
+              <span className={styles.imageNumber}>
+                {props.images.indexOf(image) + 1}
+              </span>
               <Image
                 className={styles.image}
-                src={image.imageUrl}
-                alt={image.imageUrl}
+                src={image.src}
+                alt={image.src}
                 width={IMAGE_SIZE_PX.width}
                 height={IMAGE_SIZE_PX.height}
               />
@@ -89,8 +107,8 @@ export function ImageCascade(props: ImageCascadeProps) {
 
       {state.openImage && (
         <ImageModal
-          workImages={props.images}
-          defaultSelectedWorkImage={state.openImage}
+          images={props.images}
+          defaultImage={state.openImage}
           onClose={handleImageModalCloseClick}
         />
       )}

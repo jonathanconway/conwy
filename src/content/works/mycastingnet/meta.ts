@@ -11,15 +11,15 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      imageUrl: "mycastingnet-01.png",
+      src: "mycastingnet-01.png",
       notes: [],
     },
     {
-      imageUrl: "mycastingnet-02.png",
+      src: "mycastingnet-02.png",
       notes: [],
     },
     {
-      imageUrl: "mycastingnet-03.png",
+      src: "mycastingnet-03.png",
       notes: [],
     },
   ],

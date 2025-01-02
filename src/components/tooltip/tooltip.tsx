@@ -8,6 +8,7 @@ import { getResponsiveHidden } from "../responsive";
 import { Breakpoint } from "../styling";
 
 import * as styles from "./tooltip.css";
+import * as mixins from "./tooltip.mixins";
 
 export interface TooltipProps {
   readonly key?: string;
@@ -65,7 +66,7 @@ export function Tooltip(props: TooltipProps) {
           mouseenter: true,
         }}
         style={{
-          ...styles.tooltip,
+          ...mixins.tooltip,
           ...props.style,
         }}
         opacity={1}

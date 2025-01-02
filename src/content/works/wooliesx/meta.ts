@@ -17,19 +17,19 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      imageUrl: "wooliesx-1.png",
+      src: "wooliesx-1.png",
       notes: [],
     },
     {
-      imageUrl: "wooliesx-2.png",
+      src: "wooliesx-2.png",
       notes: [],
     },
     {
-      imageUrl: "wooliesx-3.png",
+      src: "wooliesx-3.png",
       notes: [],
     },
     {
-      imageUrl: "wooliesx-4.png",
+      src: "wooliesx-4.png",
       notes: [],
     },
   ],

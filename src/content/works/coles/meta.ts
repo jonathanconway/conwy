@@ -38,9 +38,9 @@ export const meta: WorkMeta = {
   tags: [],
   type: "work",
   images: [
-    { imageUrl: "coles-1.png", notes: [] },
-    { imageUrl: "coles-2.png", notes: [] },
-    { imageUrl: "coles-3.png", notes: [] },
+    { src: "coles-1.png", notes: [] },
+    { src: "coles-2.png", notes: [] },
+    { src: "coles-3.png", notes: [] },
   ],
   techs: [
     {

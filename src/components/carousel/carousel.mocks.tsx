@@ -4,21 +4,15 @@ export function createCarouselPropsMock(): CarouselProps {
   return {
     items: [
       {
-        children: <div>item one</div>,
-        tooltip: {},
+        title: "item one",
       },
       {
-        children: <div>item two</div>,
-        tooltip: {
-          contents: "item two tooltip",
-        },
+        title: "item two",
       },
       {
-        children: <div>item three</div>,
-        tooltip: {
-          contents: "item three tooltip",
-        },
+        title: "item three",
       },
     ],
+    renderBody: () => <></>,
   };
 }

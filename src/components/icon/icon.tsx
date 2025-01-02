@@ -4,7 +4,9 @@ import { withTooltip } from "../tooltip";
 
 import { IconProps } from "./icon-props";
 import { ICON_TYPE_SVGS } from "./icon-types-svg";
-import * as styles from "./icon.styles";
+import * as styles from "./icon.css";
+
+export const DEFAULT_SIZE = "1rem";
 
 export function Icon_(props: IconProps) {
   const IconSvg = ICON_TYPE_SVGS[props.icon];
@@ -21,8 +23,8 @@ export function Icon_(props: IconProps) {
       id={props.id}
       className={cn(styles.iconContainer, props.className ?? "")}
       style={{
-        width: props.size ?? styles.DEFAULT_SIZE,
-        height: props.size ?? styles.DEFAULT_SIZE,
+        width: props.size ?? DEFAULT_SIZE,
+        height: props.size ?? DEFAULT_SIZE,
       }}
     >
       <IconSvg className={styles.iconSvg} icon={props.icon} />

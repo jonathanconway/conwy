@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 import { boxBorderDecorative } from "../box/box.mixins";
-import { colors, rounded } from "../styling";
+import { colors, rounded, text } from "../styling";
 import { vars } from "../theme";
 
 export const imageCascade = style({
@@ -34,6 +34,23 @@ export const imageContainer = style({
     // todo: generalize
     borderColor: vars.link.hover.text.color,
   },
+});
+
+export const imageNumber = style({
+  position: "absolute",
+  left: "0.25rem",
+  top: "0.25rem",
+  backgroundColor: vars.imageModal.background.color,
+  borderStyle: "solid",
+  borderWidth: "1px",
+  borderColor: vars.text.body.color,
+  ...rounded.full,
+  width: "1.5rem",
+  height: "1.5rem",
+  fontSize: text.size.xs.fontSize,
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
 });
 
 export const image = style({

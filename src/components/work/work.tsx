@@ -10,7 +10,7 @@ import { WorkLinks } from "./work-links";
 import { WorkNav } from "./work-nav";
 import { WorkProjects } from "./work-projects";
 import { WorkTechs } from "./work-techs";
-import * as styles from "./work.styles";
+import * as styles from "./work.css";
 
 interface WorkProps {
   readonly work: Work_;
@@ -56,9 +56,7 @@ export function Work({ work }: WorkProps) {
             </div>
           </div>
 
-          <div className={styles.imageCascadeContainer}>
-            <WorkImageCascade work={work} />
-          </div>
+          <WorkImageCascade work={work} />
         </div>
       </div>
     </div>

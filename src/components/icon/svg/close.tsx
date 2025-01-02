@@ -9,7 +9,7 @@ export function Close(props: SvgProps) {
       height="24"
       viewBox="0 0 24 24"
     >
-      <g clip-path="url(#clip0_129_107)">
+      <g clipPath="url(#clip0_129_107)">
         <path
           d="M22 4.01429L19.9857 2L12 9.98571L4.01429 2L2 4.01429L9.98571 12L2 19.9857L4.01429 22L12 14.0143L19.9857 22L22 19.9857L14.0143 12L22 4.01429Z"
           fill="black"

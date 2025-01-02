@@ -15,7 +15,7 @@ export const articleSummaryThemeLight = {
 };
 
 export const articleSummaryThemeDark = {
-  color: colors.purple_500,
+  color: colors.purple_300,
   border: {
     color: colors.purple_200,
   },

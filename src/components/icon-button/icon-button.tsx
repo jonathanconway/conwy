@@ -30,6 +30,7 @@ function IconButton_(props: IconButtonProps) {
           props.isSelected
             ? styles.iconButtonSelected
             : styles.iconButtonUnselected,
+          props.disabled ? styles.iconButtonDisabled : undefined,
         )
       }
       {...restProps}
@@ -38,7 +39,7 @@ function IconButton_(props: IconButtonProps) {
         <Icon
           className={cn(
             styles.icon,
-            props.disabled ? styles.iconButtonDisabled : null,
+            props.disabled ? styles.iconButtonIconDisabled : null,
           )}
           icon={props.icon}
           size={props.size ?? "100%"}

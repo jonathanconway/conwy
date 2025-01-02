@@ -27,15 +27,15 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      imageUrl: "revolut-1.png",
+      src: "revolut-1.png",
       notes: [],
     },
     {
-      imageUrl: "revolut-2.png",
+      src: "revolut-2.png",
       notes: [],
     },
     {
-      imageUrl: "revolut-3.webp",
+      src: "revolut-3.webp",
       notes: [],
     },
   ],

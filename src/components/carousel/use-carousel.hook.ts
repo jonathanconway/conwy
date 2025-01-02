@@ -3,66 +3,66 @@
 import { max, min } from "lodash";
 import { useState } from "react";
 
-interface UseCarouselParams<T> {
-  readonly items: readonly T[];
-  readonly defaultSelectedItem?: T;
+import { CarouselItem } from "./carousel-item";
+
+interface UseCarouselParams<TCarouselItem extends CarouselItem = CarouselItem> {
+  readonly items: readonly TCarouselItem[];
+  readonly defaultItem?: TCarouselItem;
 }
 
-export interface UseCarouselResult<T> {
-  readonly items: readonly T[];
-  readonly selectedItem: T;
+export interface UseCarouselResult<
+  TCarouselItem extends CarouselItem = CarouselItem,
+> {
+  readonly items: readonly TCarouselItem[];
+  readonly selectedItem: TCarouselItem;
   readonly canGoPrevious: boolean;
   readonly canGoNext: boolean;
   readonly handlePreviousClick: VoidFunction;
   readonly handleNextClick: VoidFunction;
-  readonly handleTabClick: (newSelectedItem: T) => () => void;
+  readonly handleTabClick: (newSelectedItem: TCarouselItem) => () => void;
 }
 
-interface UseCarouselState<T> {
-  readonly selectedItem: T;
+interface UseCarouselState {
+  readonly selectedIndex: number;
 }
 
-export function useCarousel<T>(params: UseCarouselParams<T>) {
+export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
+  params: UseCarouselParams<TCarouselItem>,
+) {
   const { items } = params;
 
-  const [state, setState] = useState<UseCarouselState<T>>({
-    selectedItem: params.defaultSelectedItem ?? params.items[0],
+  const [state, setState] = useState<UseCarouselState>({
+    selectedIndex: params.defaultItem ? items.indexOf(params.defaultItem) : 0,
   });
 
-  const { selectedItem } = state;
+  const { selectedIndex } = state;
 
-  const canGoPrevious = params.items.indexOf(state.selectedItem) > 0;
-  const canGoNext =
-    params.items.indexOf(state.selectedItem) < params.items.length - 1;
+  const selectedItem = params.items[selectedIndex];
+
+  const canGoPrevious = selectedIndex > 0;
+  const canGoNext = selectedIndex < params.items.length - 1;
 
   const handlePreviousClick = () => {
-    const newIndex =
-      max([params.items.indexOf(state.selectedItem) - 1, 0]) ?? 0;
-
-    const newSelectedItem = params.items[newIndex];
+    const newSelectedIndex = max([selectedIndex - 1, 0]) ?? 0;
 
     setState({
-      selectedItem: newSelectedItem,
+      selectedIndex: newSelectedIndex,
     });
   };
 
   const handleNextClick = () => {
-    const newIndex =
-      min([
-        params.items.indexOf(state.selectedItem) + 1,
-        params.items.length - 1,
-      ]) ?? params.items.length - 1;
-
-    const newSelectedItem = params.items[newIndex];
+    const newSelectedIndex =
+      min([selectedIndex + 1, params.items.length - 1]) ??
+      params.items.length - 1;
 
     setState({
-      selectedItem: newSelectedItem,
+      selectedIndex: newSelectedIndex,
     });
   };
 
-  const handleTabClick = (newSelectedItem: T) => () => {
+  const handleTabClick = (newSelectedItem: TCarouselItem) => () => {
     setState({
-      selectedItem: newSelectedItem,
+      selectedIndex: params.items.indexOf(newSelectedItem),
     });
   };
 

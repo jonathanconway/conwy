@@ -1,24 +1,16 @@
 import {
-  all,
   cn,
   flex,
   flex_1,
   flex_col,
   flex_row,
-  gap_2,
   gap_4,
   gap_6,
-  gap_8,
-  leading_5,
-  mt_2,
-  pr_0,
-  relative,
   sm,
-  text_sm,
 } from "@jonathanconway/tailwindjs";
 import { style } from "@vanilla-extract/css";
 
-import { media, responsive, text } from "../styling";
+import { responsive, text } from "../styling";
 
 export const container = style({
   position: "relative",

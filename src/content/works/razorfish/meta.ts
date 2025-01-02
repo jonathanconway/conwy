@@ -22,13 +22,13 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      imageUrl: "razorfish-01.jpg",
-      title: "Aussie Homeloans Freefall campaign",
+      src: "razorfish-01.jpg",
+      alt: "Aussie Homeloans Freefall campaign",
       notes: [],
     },
     {
-      imageUrl: "razorfish-02.jpg",
-      title: "Channel[v] / vMusic website",
+      src: "razorfish-02.jpg",
+      alt: "Channel[v] / vMusic website",
       notes: [],
     },
   ],
