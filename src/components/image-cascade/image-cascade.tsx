@@ -46,7 +46,7 @@ export function ImageCascade(props: ImageCascadeProps) {
   if (props.images.length === 1) {
     const image = props.images[0];
     return (
-      <div className={styles.container}>
+      <div className={styles.imageContainerSingle}>
         <Image
           className={styles.image}
           src={image.src}

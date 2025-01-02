@@ -12,6 +12,7 @@ import { contentListItemThemeDark } from "../content-list/content-list-item/cont
 import { footerThemeDark } from "../footer/footer.css-theme";
 import { headerHamburgerThemeDark } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeDark } from "../header/header-logo/header-logo.css-theme";
+import { headerNavThemeDark } from "../header/header-nav/header-nav.css-theme";
 import { iconThemeDark } from "../icon/icon.css-theme";
 import { imageFigureThemeDark } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeDark } from "../image-modal/image-modal.css-theme";
@@ -41,6 +42,7 @@ export const themeDarkClass = createTheme(vars, {
   footer: footerThemeDark,
   headerHamburger: headerHamburgerThemeDark,
   headerLogo: headerLogoThemeDark,
+  headerNav: headerNavThemeDark,
   icon: iconThemeDark,
   imageFigure: imageFigureThemeDark,
   imageModal: imageModalThemeDark,

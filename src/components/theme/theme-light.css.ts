@@ -12,6 +12,7 @@ import { contentListItemThemeLight } from "../content-list/content-list-item/con
 import { footerThemeLight } from "../footer/footer.css-theme";
 import { headerHamburgerThemeLight } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeLight } from "../header/header-logo/header-logo.css-theme";
+import { headerNavThemeLight } from "../header/header-nav/header-nav.css-theme";
 import { iconThemeLight } from "../icon/icon.css-theme";
 import { imageFigureThemeLight } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeLight } from "../image-modal/image-modal.css-theme";
@@ -41,6 +42,7 @@ export const themeLightClass = createTheme(vars, {
   footer: footerThemeLight,
   headerHamburger: headerHamburgerThemeLight,
   headerLogo: headerLogoThemeLight,
+  headerNav: headerNavThemeLight,
   icon: iconThemeLight,
   imageFigure: imageFigureThemeLight,
   imageModal: imageModalThemeLight,

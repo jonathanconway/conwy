@@ -35,5 +35,6 @@ export const tag = style({
   paddingRight: "0.25rem" /* 4px */,
   borderWidth: "1px",
   borderColor: colors.stone_400,
+  borderStyle: "solid",
   ...rounded.regular,
 });

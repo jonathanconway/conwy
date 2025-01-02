@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { responsive, text } from "../styling";
+import { media, responsive, text } from "../styling";
 
 export const container = style({
   position: "relative",
@@ -25,9 +25,27 @@ export const header = style({
 export const headerLeft = style({
   display: "flex",
   flex: 1,
-  flexDirection: "column",
-  gap: "0.5rem",
+
+  flexDirection: "row",
+  "@media": {
+    [media.sm]: {
+      flexDirection: "column",
+    },
+    [media.mdAndUp]: {
+      alignItems: "center",
+    },
+  },
+  gap: "0.75rem",
 });
+
+export const headerLeftTitle = style({
+  display: "flex",
+  flexDirection: "column",
+  flex: 1,
+  gap: "0.25rem",
+});
+
+export const headerLeftImage = style({});
 
 export const headerRight = style({
   flex: 1,

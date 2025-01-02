@@ -1,6 +1,6 @@
 import {
-  getHasSubformatChildrenMatchingPrefix,
-  getSubformatChildrenPrefixedRest,
+  getSubformatChildrenStartingWithPrefix,
+  removeFirstChildPrefix,
 } from "@/framework/client";
 
 import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
@@ -11,17 +11,14 @@ export function getBlockQuotePullQuoteSubformatProps(
   props: MdxBlockquoteProps,
 ) {
   if (
-    !getHasSubformatChildrenMatchingPrefix(PULL_QUOTE_PREFIX, props.children)
+    !getSubformatChildrenStartingWithPrefix(PULL_QUOTE_PREFIX, props.children)
   ) {
     return props;
   }
 
-  const isPullQuote = true;
+  const children = removeFirstChildPrefix(PULL_QUOTE_PREFIX, props.children);
 
-  const children = getSubformatChildrenPrefixedRest(
-    PULL_QUOTE_PREFIX,
-    props.children,
-  );
+  const isPullQuote = true;
 
   return {
     ...props,

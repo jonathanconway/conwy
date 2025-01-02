@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { boxBorderDecorative } from "../../box/box.mixins";
-
 export const image = style({
-  ...boxBorderDecorative,
-  width: "4rem",
+  // width: "4rem",
+  // height: "auto",
+  width: "auto",
+  height: "2.5rem",
 });

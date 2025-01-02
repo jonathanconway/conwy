@@ -10,6 +10,7 @@ import { contentListItemThemeBase } from "../content-list/content-list-item/cont
 import { footerThemeBase } from "../footer/footer.css-theme";
 import { headerHamburgerThemeBase } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeBase } from "../header/header-logo/header-logo.css-theme";
+import { headerNavThemeBase } from "../header/header-nav/header-nav.css-theme";
 import { iconThemeBase } from "../icon/icon.css-theme";
 import { imageFigureThemeBase } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeBase } from "../image-modal/image-modal.css-theme";
@@ -37,6 +38,7 @@ export const themeBase = {
   footer: footerThemeBase,
   headerHamburger: headerHamburgerThemeBase,
   headerLogo: headerLogoThemeBase,
+  headerNav: headerNavThemeBase,
   icon: iconThemeBase,
   imageFigure: imageFigureThemeBase,
   imageModal: imageModalThemeBase,

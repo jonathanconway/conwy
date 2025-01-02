@@ -29,25 +29,6 @@ export const containerEmpty = style({
   },
 });
 
-// export const navContainer = style({
-//   position: "relative",
-//   width: size.full,
-//   display: "flex",
-//   flexDirection: "row",
-//   gap: "1rem",
-//   ...boxBorder,
-// });
-
-//   hover(bg_stone_200),
-//   hover(dark(bg_stone_800)),
-
-//   p_1,
-
-//   text_stone_950,
-//   dark(text_stone_50),
-//   hover(text_stone_950),
-//   hover(dark(text_stone_50)),
-
 export const mainColumn = style({
   display: "flex",
   flexDirection: "column",
@@ -57,9 +38,12 @@ export const mainColumn = style({
   overflow: "hidden",
 });
 
-export const asideColumn = ""; // listItemStyles.asideColumn;
+export const asideColumn = style({
+  display: "flex",
+  alignContent: "center",
+});
 
-export const label = ""; // labelStyles.label;
+export const label = "";
 
 export const title = style({
   fontWeight: "bold",

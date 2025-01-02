@@ -26,6 +26,7 @@ export function Work({ work }: WorkProps) {
           <div className={styles.headerLeftImage}>
             <WorkMainImage workMeta={workMeta} />
           </div>
+
           <div className={styles.headerLeftTitle}>
             <Heading level={2}>{workMeta.client}</Heading>
 

@@ -86,6 +86,7 @@ export const imageContainer = style({});
 
 export const image = style({
   width: "600px",
+  height: "auto",
   padding: "0.375rem",
   ...rounded.lg,
   borderWidth: "2px",

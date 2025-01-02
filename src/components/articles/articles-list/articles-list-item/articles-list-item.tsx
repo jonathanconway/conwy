@@ -1,10 +1,9 @@
-import Image from "next/image";
-
 import { ArticleMeta } from "@/framework/client";
 
 import {
   ContentListItem,
   ContentListItemBlurb,
+  ContentListItemImage,
   ContentListItemType,
 } from "../../../content-list";
 import { Date } from "../../../date";
@@ -41,14 +40,9 @@ export function ArticlesListItem({
         }
         asideSlot={
           <>
-            <Image
-              className={styles.image}
+            <ContentListItemImage
               src={`/images/articles/${slug}/${mainImage ?? "main.jpg"}`}
               alt="Article main image"
-              priority
-              unoptimized={true}
-              width={125}
-              height={93.75}
             />
 
             {socialLinks.length > 0 && (

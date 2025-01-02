@@ -9,6 +9,7 @@ export const link = style({
   fontWeight: 600,
   color: vars.text.body.color,
   cursor: "pointer",
+  textDecorationLine: "none",
 
   ":hover": {
     textDecorationLine: "underline",

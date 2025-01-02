@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import { Image } from "../../../image";
 
 import * as styles from "./content-list-item-image.css";

@@ -31,7 +31,13 @@ export function ArticleSidebarHeadings({
                 {shortTitle ?? title}
               </span>
             ) : (
-              <Link id={`${id}-article-link`} href={`#${id}`} title={title}>
+              // todo: instead of title, apply tooltip and only show on text overflow
+              <Link
+                className={styles.link}
+                id={`${id}-article-link`}
+                href={`#${id}`}
+                title={title}
+              >
                 {shortTitle ?? title}
               </Link>
             )}

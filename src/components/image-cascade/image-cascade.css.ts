@@ -58,6 +58,8 @@ export const imageNumber = style({
 export const image = style({
   ...rounded.regular,
   pointerEvents: "none",
+  margin: "0.25rem",
+  maxHeight: "100%",
 });
 
 export const nav = style({

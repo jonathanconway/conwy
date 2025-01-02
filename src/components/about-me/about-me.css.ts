@@ -28,8 +28,8 @@ globalStyle(`${container} h1`, {
 });
 
 export const face = style({
-  width: "3.5rem",
   ...rounded.full,
   borderWidth: "2px",
   borderColor: vars.aboutMe.face.border.color,
+  borderStyle: "solid",
 });

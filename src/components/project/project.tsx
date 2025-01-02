@@ -1,7 +1,6 @@
 import { Project as Project_ } from "@/framework/client";
 
 import { Heading } from "../heading";
-import { MdxH2 } from "../mdx";
 import { Section } from "../section";
 
 import { ProjectImageCascade } from "./product-image-cascade";
@@ -24,9 +23,15 @@ export function Project({ project }: ProjectProps) {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <Heading level={2}>{projectMeta.title}</Heading>
+          <div className={styles.headerLeftImage}>
+            <ProjectMainImage projectMeta={projectMeta} />
+          </div>
 
-          <div className={styles.blurb}>{projectMeta.blurb}</div>
+          <div className={styles.headerLeftTitle}>
+            <Heading level={2}>{projectMeta.title}</Heading>
+
+            <div className={styles.blurb}>{projectMeta.blurb}</div>
+          </div>
         </div>
 
         <div className={styles.headerRight}>
@@ -36,9 +41,6 @@ export function Project({ project }: ProjectProps) {
 
       <div className={styles.main}>
         <div className={styles.body}>
-          <ProjectMainImage projectMeta={projectMeta} />
-          <br />
-
           <Section label="Summary">
             <ProjectBody project={project} />
           </Section>

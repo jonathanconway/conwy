@@ -16,8 +16,8 @@ export function AboutMe() {
           alt="Jonathan's face pic"
           priority
           unoptimized={true}
-          width="100"
-          height="100"
+          width={80}
+          height={80}
         />
 
         <Fragment>

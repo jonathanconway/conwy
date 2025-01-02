@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { linkContent } from "../link/link.mixins";
 import { text } from "../styling";
 import { vars } from "../theme";
 
@@ -27,5 +28,6 @@ export const row = style({
 });
 
 export const link = style({
+  ...linkContent,
   textDecorationLine: "underline",
 });

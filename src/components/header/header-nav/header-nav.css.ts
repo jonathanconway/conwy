@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { colors, media } from "../../styling";
+import { media } from "../../styling";
+import { vars } from "../../theme";
 
 export const container = style({
   display: "flex",
@@ -24,8 +25,7 @@ export const container = style({
       paddingRight: "0.5rem",
       boxShadow:
         "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-      backgroundColor: colors.stone_800,
-      color: colors.stone_200,
+      backgroundColor: vars.headerNav.background.color,
     },
   },
 });

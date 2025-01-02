@@ -25,7 +25,7 @@ export const contents = style({
   paddingRight: 0,
   boxShadow: "0 0 #0000",
   backgroundColor: "transparent",
-  color: vars.headerHamburger.menu.color,
+  // color: vars.headerHamburger.menu.color,
 
   "@media": {
     [media.sm]: {

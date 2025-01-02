@@ -29,7 +29,9 @@ export async function PagePage(props: PageProps) {
             ]}
           />
 
-          <Content />
+          <Fragment>
+            <Content />
+          </Fragment>
         </>
       }
     />

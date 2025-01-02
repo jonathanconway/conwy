@@ -29,6 +29,7 @@ export function ArticleHeader({
         <Link href={historyUrl}>History</Link>
       </div>
 
+      {/* todo: extract */}
       <p className={styles.tags}>
         {tags.map((tag) => (
           <span key={tag} className={styles.tag}>

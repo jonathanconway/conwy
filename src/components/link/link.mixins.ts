@@ -12,6 +12,7 @@ export const linkBase = {
 
 export const linkDecoration = {
   textDecorationColor: vars.link.text.decoration.color,
+  textDecorationLine: "none",
   ":hover": {
     textDecorationColor: vars.link.hover.text.decoration.color,
     textDecorationLine: "underline",

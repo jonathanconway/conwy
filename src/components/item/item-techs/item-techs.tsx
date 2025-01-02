@@ -1,5 +1,6 @@
 import { ProjectMeta, WorkMeta } from "@/framework/client";
 
+import { List } from "../../list";
 import { Section } from "../../section";
 
 import * as styles from "./item-techs.css";
@@ -17,7 +18,7 @@ export function ItemTechs<TMeta extends WorkMeta | ProjectMeta>(
 
   return (
     <Section label="Tech">
-      <ul className={styles.techList}>
+      <List>
         {props.itemMeta.techs.map((tech) => (
           <li key={tech.categoryName} className={styles.techListItem}>
             {tech.categoryName}
@@ -31,7 +32,7 @@ export function ItemTechs<TMeta extends WorkMeta | ProjectMeta>(
             </ul>
           </li>
         ))}
-      </ul>
+      </List>
     </Section>
   );
 }
