@@ -1,7 +1,7 @@
 import { Icon, IconTypes } from "../icon";
 import { Link } from "../link";
 
-import * as styles from "./contact-details.styles";
+import * as styles from "./contact-details.css";
 
 const CONTACTS = [
   {

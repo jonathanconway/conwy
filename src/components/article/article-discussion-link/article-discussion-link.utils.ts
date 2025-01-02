@@ -4,7 +4,7 @@ import {
   ArticleMeta,
   ArticleMetaDiscussionLink,
   SocialLinkLabels,
-} from "@/framework";
+} from "@/framework/client";
 
 export function getArticleDiscussionLinksDetails(articleMeta: ArticleMeta) {
   if (!articleMeta.discussionLinks) {

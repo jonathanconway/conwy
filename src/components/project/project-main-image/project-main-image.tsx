@@ -1,12 +1,10 @@
-import Image from "next/image";
-
 import { ProjectMeta } from "@/framework/client";
 
-import * as styles from "./project-main-image.styles";
+import { Image } from "../../image";
 
-type ImageProps = Omit<Parameters<typeof Image>[0], "src" | "alt">;
+import * as styles from "./project-main-image.css";
 
-interface ProjectMainImageProps extends ImageProps {
+interface ProjectMainImageProps {
   readonly projectMeta: ProjectMeta;
 }
 
@@ -14,13 +12,13 @@ export function ProjectMainImage(props: ProjectMainImageProps) {
   return (
     <Image
       className={styles.image}
-      priority
-      unoptimized={true}
+      image={{
+        src: `/images/projects/${props.projectMeta.slug}/${props.projectMeta.mainImage ?? "main.svg"}`,
+        alt: `Project thumbnail image for ${props.projectMeta.title}`,
+        notes: [],
+      }}
       width={96}
       height={64}
-      {...props}
-      src={`/images/projects/${props.projectMeta.slug}/main.svg`}
-      alt={`Project thumbnail image for ${props.projectMeta.title}`}
     />
   );
 }

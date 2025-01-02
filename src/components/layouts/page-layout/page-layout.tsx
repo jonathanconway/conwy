@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Footer } from "../../footer";
 import { Header } from "../../header";
 
-import * as styles from "./page-layout.styles";
+import * as styles from "./page-layout.css";
 
 export interface PageLayoutProps {
   readonly main: ReactNode;
@@ -17,9 +17,7 @@ export function PageLayout({ main, selectedNavPath }: PageLayoutProps) {
 
       <div className={styles.mainWrapper}>{main}</div>
 
-      <div className={styles.footerWrapper}>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }

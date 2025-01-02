@@ -1,6 +1,6 @@
-import { Heading } from "../heading";
+import { Label } from "../label";
 
-import * as styles from "./section.styles";
+import * as styles from "./section.css";
 import { SectionProps } from "./section.types";
 
 export function Section(props: SectionProps) {
@@ -8,9 +8,7 @@ export function Section(props: SectionProps) {
 
   return (
     <div className={styles.container} {...restProps}>
-      <Heading level={3} className={styles.label}>
-        {props.label}
-      </Heading>
+      <Label as="h4">{props.label}</Label>
 
       {props.children}
     </div>

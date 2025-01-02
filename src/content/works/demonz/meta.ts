@@ -16,15 +16,15 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      imageUrl: "demonz-1.jpg",
+      src: "demonz-1.jpg",
       notes: [],
     },
     {
-      imageUrl: "demonz-2.jpg",
+      src: "demonz-2.jpg",
       notes: [],
     },
     {
-      imageUrl: "demonz-3.jpg",
+      src: "demonz-3.jpg",
       notes: [],
     },
   ],

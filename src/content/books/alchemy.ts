@@ -1,4 +1,4 @@
-import { Book, BookCategories, BookStatuses } from "@/framework";
+import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const alchemyBook: Book = {
   authors: ["Rory Sutherland"],

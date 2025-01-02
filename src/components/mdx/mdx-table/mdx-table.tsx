@@ -1,8 +1,6 @@
-import { cn } from "@jonathanconway/tailwindjs";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import moduleStyles from "./mdx-table.module.css";
-import * as styles from "./mdx-table.styles";
+import { Table } from "../../table";
 
 export type MdxTableProps = DetailedHTMLProps<
   HTMLAttributes<HTMLTableElement>,
@@ -10,9 +8,5 @@ export type MdxTableProps = DetailedHTMLProps<
 >;
 
 export function MdxTable({ children, ...restProps }: MdxTableProps) {
-  return (
-    <table className={cn(moduleStyles.table, styles.table)} {...restProps}>
-      {children}
-    </table>
-  );
+  return <Table {...restProps}>{children}</Table>;
 }

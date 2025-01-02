@@ -1,6 +1,6 @@
 import { HeaderLogo } from "./header-logo";
 import { HeaderNav } from "./header-nav";
-import * as styles from "./header.styles";
+import * as styles from "./header.css";
 
 export interface HeaderProps {
   readonly selectedNavPath?: string;

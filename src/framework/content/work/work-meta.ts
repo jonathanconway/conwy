@@ -1,3 +1,4 @@
+import { Image } from "../image";
 import { MetaBase } from "../meta";
 import { SocialLink } from "../social-link";
 
@@ -13,7 +14,7 @@ export interface WorkMeta extends MetaBase {
 
   readonly jobTitle: string;
 
-  readonly images: readonly WorkImage[];
+  readonly images: readonly Image[];
 
   readonly techs: readonly WorkTech[];
 
@@ -24,18 +25,6 @@ export interface WorkMeta extends MetaBase {
   readonly socialLinks: readonly SocialLink[];
 
   readonly type: "work";
-}
-
-export interface WorkImage {
-  readonly imageUrl: string;
-  readonly title?: string;
-  readonly notes: readonly {
-    readonly hotspot?: {
-      readonly x: string;
-      readonly y: string;
-    };
-    readonly text: string;
-  }[];
 }
 
 export interface WorkTech {

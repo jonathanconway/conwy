@@ -51,18 +51,18 @@ export const meta: ProjectMeta = {
   platforms: ["Web", "CLI"],
   images: [
     {
-      imageUrl: "testmatic-02.gif",
-      title: "Screen recording of Testmatic CLI",
+      src: "testmatic-02.gif",
+      alt: "Screen recording of Testmatic CLI",
       notes: [],
     },
     {
-      imageUrl: "testmatic-01.gif",
-      title: "Screen recording of Testmatic UI",
+      src: "testmatic-01.gif",
+      alt: "Screen recording of Testmatic UI",
       notes: [],
     },
     {
-      imageUrl: "testmatic-03.png",
-      title: "Screenshot of Testmatic UI",
+      src: "testmatic-03.png",
+      alt: "Screenshot of Testmatic UI",
       notes: [],
     },
   ],

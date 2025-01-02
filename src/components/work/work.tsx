@@ -1,6 +1,6 @@
 import { Work as Work_ } from "@/framework/client";
 
-import { MdxH2 } from "../mdx";
+import { Heading } from "../heading";
 import { WorkMainImage } from "../work";
 
 import { WorkBody } from "./work-body";
@@ -10,7 +10,7 @@ import { WorkLinks } from "./work-links";
 import { WorkNav } from "./work-nav";
 import { WorkProjects } from "./work-projects";
 import { WorkTechs } from "./work-techs";
-import * as styles from "./work.styles";
+import * as styles from "./work.css";
 
 interface WorkProps {
   readonly work: Work_;
@@ -26,8 +26,9 @@ export function Work({ work }: WorkProps) {
           <div className={styles.headerLeftImage}>
             <WorkMainImage workMeta={workMeta} />
           </div>
+
           <div className={styles.headerLeftTitle}>
-            <MdxH2 className={styles.client}>{workMeta.client}</MdxH2>
+            <Heading level={2}>{workMeta.client}</Heading>
 
             <div className={styles.jobTitle}>{workMeta.jobTitle}</div>
           </div>
@@ -56,9 +57,7 @@ export function Work({ work }: WorkProps) {
             </div>
           </div>
 
-          <div className={styles.imageCascadeContainer}>
-            <WorkImageCascade work={work} />
-          </div>
+          <WorkImageCascade work={work} />
         </div>
       </div>
     </div>

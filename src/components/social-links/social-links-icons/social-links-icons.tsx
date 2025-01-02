@@ -1,10 +1,9 @@
 import { SocialLink } from "@/framework/client";
 
-import { Icon } from "../../icon";
 import { Link } from "../../link";
 import { SOCIAL_LINKS_DETAILS_BY_TYPE } from "../social-links-details-by-type";
 
-import * as styles from "./social-links-icons.styles";
+import * as styles from "./social-links-icons.css";
 
 export interface SocialLinksIconsProps {
   readonly socialLinks: readonly SocialLink[];

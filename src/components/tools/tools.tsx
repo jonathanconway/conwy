@@ -1,12 +1,12 @@
 import { groupBy, orderBy } from "lodash";
 
-import { Tool as Tool_, sentenceCase } from "@/framework";
+import { Tool as Tool_, sentenceCase } from "@/framework/client";
 
-import { Fragment } from "../fragments";
+import { ContentList } from "../content-list";
 import { Heading } from "../heading";
 
 import { Tool } from "./tool";
-import * as styles from "./tools.styles";
+import * as styles from "./tools.css";
 
 interface ToolsProps {
   readonly tools: readonly Tool_[];
@@ -19,16 +19,15 @@ export function Tools({ tools }: ToolsProps) {
   return (
     <div>
       {Object.entries(toolsBySection).map(([section, tools]) => (
-        <>
-          <Fragment>
-            <Heading level={4}>{sentenceCase(section)}</Heading>
-          </Fragment>
-          <div className={styles.toolsContainer}>
+        <div className={styles.section}>
+          <Heading level={4}>{sentenceCase(section)}</Heading>
+
+          <ContentList>
             {tools.map((tool) => (
               <Tool key={tool.slug} tool={tool} />
             ))}
-          </div>
-        </>
+          </ContentList>
+        </div>
       ))}
     </div>
   );

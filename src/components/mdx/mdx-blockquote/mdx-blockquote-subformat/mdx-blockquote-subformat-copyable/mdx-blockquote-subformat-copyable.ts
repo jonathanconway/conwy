@@ -5,15 +5,15 @@ import {
   removeFirstChildPrefix,
 } from "@/framework/client";
 
-import { MdxBlockQuoteProps } from "../../mdx-blockquote-props";
+import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 
 const COPYABLE_PREFIX = "Copyable: ";
 
 export const copyablePrefixPattern = new RegExp(/Copyable: /g);
 
 export function getBlockQuoteSubformatCopyableProps(
-  props: MdxBlockQuoteProps,
-): MdxBlockQuoteProps {
+  props: MdxBlockquoteProps,
+): MdxBlockquoteProps {
   if (
     !getSubformatChildrenStartingWithPrefix(COPYABLE_PREFIX, props.children)
   ) {

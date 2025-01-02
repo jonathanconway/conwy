@@ -1,6 +1,6 @@
 import { Project as Project_ } from "@/framework/client";
 
-import { MdxH2 } from "../mdx";
+import { Heading } from "../heading";
 import { Section } from "../section";
 
 import { ProjectImageCascade } from "./product-image-cascade";
@@ -10,7 +10,7 @@ import { ProjectMainImage } from "./project-main-image";
 import { ProjectNav } from "./project-nav";
 import { ProjectPlatforms } from "./project-platforms";
 import { ProjectTechs } from "./project-techs";
-import * as styles from "./project.styles";
+import * as styles from "./project.css";
 
 interface ProjectProps {
   readonly project: Project_;
@@ -23,9 +23,15 @@ export function Project({ project }: ProjectProps) {
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
-          <MdxH2 className={styles.client}>{projectMeta.title}</MdxH2>
+          <div className={styles.headerLeftImage}>
+            <ProjectMainImage projectMeta={projectMeta} />
+          </div>
 
-          <div className={styles.blurb}>{projectMeta.blurb}</div>
+          <div className={styles.headerLeftTitle}>
+            <Heading level={2}>{projectMeta.title}</Heading>
+
+            <div className={styles.blurb}>{projectMeta.blurb}</div>
+          </div>
         </div>
 
         <div className={styles.headerRight}>
@@ -35,16 +41,13 @@ export function Project({ project }: ProjectProps) {
 
       <div className={styles.main}>
         <div className={styles.body}>
-          <ProjectMainImage projectMeta={projectMeta} />
-          <br />
-
           <Section label="Summary">
             <ProjectBody project={project} />
           </Section>
         </div>
 
         <div className={styles.aside}>
-          <div className={styles.techAndFeedbackContainer}>
+          <div className={styles.techAndOtherContainer}>
             <ProjectTechs projectMeta={projectMeta} />
 
             <div className={styles.otherContainer}>
@@ -54,9 +57,7 @@ export function Project({ project }: ProjectProps) {
             </div>
           </div>
 
-          <div className={styles.imageCascadeContainer}>
-            <ProjectImageCascade projectMeta={project.meta} />
-          </div>
+          <ProjectImageCascade projectMeta={project.meta} />
         </div>
       </div>
     </div>

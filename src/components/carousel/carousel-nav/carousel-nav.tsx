@@ -1,18 +1,18 @@
-import { isObject } from "lodash";
-
 import { IconTypes } from "../../icon";
 import { IconButton } from "../../icon-button";
+import { CarouselItem } from "../carousel-item";
 import { UseCarouselResult } from "../use-carousel.hook";
 
-import * as styles from "./carousel-nav.styles";
+import * as styles from "./carousel-nav.css";
 
-interface CarouselNavProps<T> {
+interface CarouselNavProps<T extends CarouselItem = CarouselItem> {
   readonly carousel: UseCarouselResult<T>;
-  readonly tabTooltipDescription?: string;
 }
 
-export function CarouselNav<T>(props: CarouselNavProps<T>) {
-  if (props.carousel.items.length <= 1) {
+export function CarouselNav<T extends CarouselItem = CarouselItem>(
+  props: CarouselNavProps<T>,
+) {
+  if (props.carousel.items.length <= 0) {
     return null;
   }
 
@@ -20,30 +20,53 @@ export function CarouselNav<T>(props: CarouselNavProps<T>) {
     <div className={styles.switchButtonsContainer}>
       <IconButton
         icon={IconTypes.ArrowChevronLeft}
-        tooltip={{ key: "previous", contents: "Previous" }}
+        tooltip={
+          props.carousel.canGoPrevious
+            ? {
+                key: "previous",
+                contents: "Previous",
+                responsiveVisibility: {
+                  sm: false,
+                },
+              }
+            : undefined
+        }
         disabled={!props.carousel.canGoPrevious}
         onClick={props.carousel.handlePreviousClick}
       />
 
-      {props.carousel.items.map((tabItem, tabItemIndex) => (
+      {props.carousel.items.map((carouselItem, carouselItemIndex) => (
         <IconButton
-          //  todo: try to find a faster way
-          key={JSON.stringify(tabItem)}
-          isSelected={tabItem === props.carousel.selectedItem}
+          key={`carousel-item-${carouselItemIndex}`}
+          isSelected={carouselItem === props.carousel.selectedItem}
           tooltip={{
-            key: `tab-${tabItemIndex}`,
+            key:
+              carouselItem.tooltip?.key ??
+              `carousel-item-tooltip-${carouselItemIndex}`,
             contents:
-              isObject(tabItem) && "title" in tabItem
-                ? String(tabItem.title)
-                : `${props.tabTooltipDescription ?? "Item"} #${tabItemIndex + 1}`,
+              carouselItem.tooltip?.contents ?? `Item ${carouselItemIndex + 1}`,
+            responsiveVisibility: {
+              sm: false,
+            },
+            ...carouselItem.tooltip,
           }}
-          onClick={props.carousel.handleTabClick(tabItem)}
+          onClick={props.carousel.handleTabClick(carouselItem)}
         />
       ))}
 
       <IconButton
         icon={IconTypes.ArrowChevronRight}
-        tooltip={{ key: "next", contents: "Next" }}
+        tooltip={
+          props.carousel.canGoNext
+            ? {
+                key: "next",
+                contents: "Next",
+                responsiveVisibility: {
+                  sm: false,
+                },
+              }
+            : undefined
+        }
         disabled={!props.carousel.canGoNext}
         onClick={props.carousel.handleNextClick}
       />

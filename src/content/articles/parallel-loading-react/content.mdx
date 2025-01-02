@@ -1,5 +1,4 @@
 import { meta } from "./meta";
-import { MdxAside } from "@/components"
 
 Recently I had to build a React component that would merge the results of several independent requests into one set of data and render it as a single list.
 
@@ -18,9 +17,11 @@ I wanted the list to ultimately render like this:
 
 The problem was: how to load a list of items, then load details of each item, making a separate request per item, then combine all of this information and render it to the user, all within one component.
 
-<MdxAside>
-  Note: This could be done more easily by splitting details into a separate component, rendered in a `map` loop, and having each instance of that component make its own request. However, for various reasons, this wasn't possible, and I had to do everything in one component.
-</MdxAside>
+> ### Aside: Caveat: Ideal simpler implementation
+>
+> This could be done more simply by splitting details into a separate component, rendered in a `map` loop, and having each instance of that component make its own request.
+>
+> However, for various reasons, this might not always be possible. For example, when working in a complex pre-existing code-base, there might not be time to refactor everything to the simpler implementation.
 
 ## Synchronously combining results
 

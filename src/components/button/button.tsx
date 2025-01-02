@@ -1,17 +1,22 @@
 import { HTMLProps } from "react";
 
-import * as styles from "./button.styles";
+import { cn } from "@/framework/client";
+
+import * as styles from "./button.css";
 
 type ButtonProps = HTMLProps<HTMLButtonElement> & {
   readonly isSelected?: boolean;
 };
 
-export function Button(props: ButtonProps) {
+export function Button({ selected, type, ...restProps }: ButtonProps) {
   return (
     <button
-      {...props}
-      type={props.type as HTMLButtonElement["type"]}
-      className={styles.button(props.selected)}
+      {...restProps}
+      type={type as HTMLButtonElement["type"]}
+      className={cn(
+        styles.buttonBase,
+        selected ? styles.buttonSelected : styles.buttonUnselected,
+      )}
     />
   );
 }

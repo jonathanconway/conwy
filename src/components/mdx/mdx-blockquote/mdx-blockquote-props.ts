@@ -1,3 +1,3 @@
-import { BlockQuoteProps } from "../../block-quote";
+import { BlockQuoteProps as BlockquoteProps } from "../../block-quote";
 
-export type MdxBlockQuoteProps = BlockQuoteProps;
+export type MdxBlockquoteProps = BlockquoteProps;

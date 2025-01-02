@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 import { Link } from "../../link";
 
-import * as styles from "./text-expandable.styles";
+import * as styles from "./text-expandable.css";
 import { useTextExpandable } from "./use-text-expandable.hook";
 
 interface TextExpandableProps {
@@ -33,12 +33,7 @@ export function TextExpandable(props: TextExpandableProps) {
           height: isExpanded ? undefined : props.height,
         }}
       >
-        <div
-          ref={innerContainerRef}
-          className={styles.textExpandableInnerContainer}
-        >
-          {props.children}
-        </div>
+        <div ref={innerContainerRef}>{props.children}</div>
       </div>
 
       <Link className={styles.toggleLink} onClick={handleToggleClick}>

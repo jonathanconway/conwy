@@ -1,10 +1,9 @@
+import { TextTypes } from "@/components/text/text-type";
 import { WorkMeta } from "@/framework/client";
 
-import { LinkBox } from "../../link-box";
-import { Tooltip } from "../../tooltip";
-import { WorkMainImage } from "../../work";
-
-import * as styles from "./work-list-item.styles";
+import { ContentListItem, ContentListItemImage } from "../../content-list";
+import { LinkBox, LinkBoxTitle } from "../../link-box";
+import { Text } from "../../text";
 
 interface WorkListItemProps {
   readonly workMeta: WorkMeta;
@@ -16,29 +15,26 @@ export function WorkListItem(props: WorkListItemProps) {
   const techNames = workMeta.techs.map((tech) => tech.categoryName).join(", ");
 
   return (
-    <LinkBox className={styles.container} href={`work/${workMeta.slug}`}>
-      <div className={styles.mainColumn}>
-        <div className={styles.title}>{workMeta.client}</div>
+    <LinkBox href={`work/${workMeta.slug}`}>
+      <ContentListItem
+        mainSlot={
+          <>
+            <LinkBoxTitle>{workMeta.client}</LinkBoxTitle>
 
-        <p className={styles.subTitle}>{workMeta.jobTitle}</p>
+            <Text type={TextTypes.SubTitle}>{workMeta.jobTitle}</Text>
 
-        <p className={styles.blurb}>{workMeta.blurbShort}</p>
+            <Text type={TextTypes.Body}>{workMeta.blurbShort}</Text>
 
-        <Tooltip
-          contents={
-            <ul>
-              {workMeta.techs.map((tech) => (
-                <li key={tech.categoryName}>{tech.categoryName}</li>
-              ))}
-            </ul>
-          }
-        >
-          <p className={styles.techs}>Tech: {techNames}</p>
-        </Tooltip>
-      </div>
-      <div className={styles.asideColumn}>
-        <WorkMainImage workMeta={props.workMeta} />
-      </div>
+            <Text type={TextTypes.Small}>Tech: {techNames}</Text>
+          </>
+        }
+        asideSlot={
+          <ContentListItemImage
+            src={`/images/works/${props.workMeta.slug}/${props.workMeta.mainImage ?? "thumbnail.png"}`}
+            alt={`Work thumbnail image for ${props.workMeta.client}`}
+          />
+        }
+      />
     </LinkBox>
   );
 }

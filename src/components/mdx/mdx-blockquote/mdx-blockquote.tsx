@@ -1,12 +1,23 @@
 "use client";
 
-import { BlockQuote } from "../../block-quote";
+import { Aside } from "@/components/aside";
 
-import { MdxBlockQuoteProps } from "./mdx-blockquote-props";
+import { BlockQuote, BlockQuotePullQuote } from "../../block-quote";
+
+import { MdxBlockquoteProps } from "./mdx-blockquote-props";
 import { getBlockQuoteSubformatProps } from "./mdx-blockquote-subformat";
 
-export function MdxBlockQuote(props: MdxBlockQuoteProps) {
-  props = getBlockQuoteSubformatProps(props);
+export function MdxBlockquote(props: MdxBlockquoteProps) {
+  const { isPullQuote, isAside, ...processedProps } =
+    getBlockQuoteSubformatProps(props);
 
-  return <BlockQuote {...props} />;
+  if (isPullQuote) {
+    return <BlockQuotePullQuote {...processedProps} />;
+  }
+
+  if (isAside) {
+    return <Aside {...processedProps} />;
+  }
+
+  return <BlockQuote {...processedProps} />;
 }

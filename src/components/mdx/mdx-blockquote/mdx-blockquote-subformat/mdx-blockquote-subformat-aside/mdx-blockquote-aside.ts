@@ -1,31 +1,24 @@
-import { cn } from "@jonathanconway/tailwindjs";
-
 import {
-  getHasSubformatChildrenMatchingPrefix,
-  getSubformatChildrenPrefixedRest,
+  getSubformatChildrenStartingWithPrefix,
+  removeFirstChildPrefix,
 } from "@/framework/client";
 
-import { MdxBlockQuoteProps } from "../../mdx-blockquote-props";
-
-import * as styles from "./mdx-blockquote-aside.styles";
+import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 
 const ASIDE_PREFIX = "Aside:";
 
-export function getBlockQuoteAsideSubformatProps(props: MdxBlockQuoteProps) {
-  if (!getHasSubformatChildrenMatchingPrefix(ASIDE_PREFIX, props.children)) {
+export function getBlockQuoteAsideSubformatProps(props: MdxBlockquoteProps) {
+  if (!getSubformatChildrenStartingWithPrefix(ASIDE_PREFIX, props.children)) {
     return props;
   }
 
-  const className = cn(props.className ?? "", styles.aside);
+  const children = removeFirstChildPrefix(ASIDE_PREFIX, props.children);
 
-  const children = getSubformatChildrenPrefixedRest(
-    ASIDE_PREFIX,
-    props.children,
-  );
+  const isAside = true;
 
   return {
     ...props,
-    className,
     children,
+    isAside,
   };
 }

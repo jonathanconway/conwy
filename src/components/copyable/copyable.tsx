@@ -4,7 +4,7 @@ import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
 import { useTooltip } from "../tooltip/use-tooltip.hook";
 
-import * as styles from "./copyable.styles";
+import * as styles from "./copyable.css";
 
 interface CopyableProps {
   readonly copyText?: string;
@@ -37,7 +37,7 @@ export function Copyable(props: CopyableProps) {
         />
       </div>
 
-      <div className={styles.main}>{props.children}</div>
+      {props.children}
     </div>
   );
 }

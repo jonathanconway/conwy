@@ -22,6 +22,9 @@ export const meta: ProjectMeta = {
       categoryName: "CSS",
       items: [
         {
+          itemName: "Vanilla Extract",
+        },
+        {
           itemName: "TailwindCSS",
         },
       ],

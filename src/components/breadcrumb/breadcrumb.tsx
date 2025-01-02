@@ -1,6 +1,6 @@
 import { Link } from "../link";
 
-import * as styles from "./breadcrumb.styles";
+import * as styles from "./breadcrumb.css";
 
 interface BreadcrumbProps {
   readonly segments: readonly {
@@ -20,7 +20,7 @@ export function Breadcrumb(props: BreadcrumbProps) {
             <span>{segment.title}</span>
           )}
           {segmentIndex < props.segments.length - 1 && (
-            <span className={styles.arrow}>&nbsp;&gt;&nbsp;</span>
+            <span>&nbsp;&gt;&nbsp;</span>
           )}
         </>
       ))}

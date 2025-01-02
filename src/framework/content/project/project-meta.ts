@@ -1,3 +1,4 @@
+import { Image } from "../image";
 import { PostMetaBase } from "../post";
 
 import { ProjectSubType } from "./project-sub-type";
@@ -7,7 +8,7 @@ export interface ProjectMeta extends PostMetaBase {
   readonly type: "project";
   readonly redirectUrl?: string;
   readonly subType: ProjectSubType;
-  readonly images: readonly ProjectImage[];
+  readonly images: readonly Image[];
   readonly techs: readonly ProjectTech[];
   readonly platforms: readonly ProjectPlatform[];
 }
@@ -20,15 +21,3 @@ export interface ProjectTech {
 }
 
 export type ProjectPlatform = string;
-
-export interface ProjectImage {
-  readonly imageUrl: string;
-  readonly title?: string;
-  readonly notes: readonly {
-    readonly hotspot?: {
-      readonly x: string;
-      readonly y: string;
-    };
-    readonly text: string;
-  }[];
-}

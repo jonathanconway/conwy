@@ -1,54 +1,91 @@
 import { MicroMeta } from "@/framework/client";
 
+import {
+  ContentListItem,
+  ContentListItemBlurb,
+  ContentListItemType,
+} from "../../../content-list";
 import { Date } from "../../../date";
 import { Icon, IconTypes } from "../../../icon";
 import { Link } from "../../../link";
+import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
 import { TextExpandable } from "../../../text";
 
-import * as styles from "./micros-list-item.styles";
+import * as styles from "./micros-list-item.css";
 
 export interface MicrosListItemProps {
   readonly microMeta: MicroMeta;
+  readonly isCollapsed?: boolean;
 }
 
-export function MicrosListItem(props: MicrosListItemProps) {
+export function MicrosListItem({
+  isCollapsed = true,
+  ...props
+}: MicrosListItemProps) {
   return (
-    <div className={styles.container}>
-      <div className={styles.mainColumn}>
-        <Link className={styles.date} href={`/micros/${props.microMeta.slug}`}>
-          <Date>{props.microMeta.date}</Date>
-        </Link>
+    <LinkBox href={`/micros/${props.microMeta.slug}`}>
+      <ContentListItem
+        mainSlot={
+          <>
+            <LinkBoxTitle className={styles.date}>
+              <Date>{props.microMeta.date}</Date>
+            </LinkBoxTitle>
 
-        <TextExpandable height="5rem">
-          <div className={styles.blurb}>{props.microMeta.blurb}</div>
+            {/* todo: tidy up */}
+            {isCollapsed ? (
+              <TextExpandable height="5rem">
+                <ContentListItemBlurb>
+                  {props.microMeta.blurb}
+                </ContentListItemBlurb>
 
-          {props.microMeta.mainLink && (
-            <Link
-              className={styles.mainLink}
-              href={props.microMeta.mainLink}
-              target="_blank"
-            >
-              {props.microMeta.mainLink}
-            </Link>
-          )}
-        </TextExpandable>
-      </div>
-      <div className={styles.asideColumn}>
-        <div className={styles.image}>
-          <Icon
-            icon={IconTypes.Quote}
-            className={styles.iconQuote}
-            size="100%"
-          />
-        </div>
+                {props.microMeta.mainLink && (
+                  <Link
+                    className={styles.mainLink}
+                    href={props.microMeta.mainLink}
+                    target="_blank"
+                  >
+                    {props.microMeta.mainLink}
+                  </Link>
+                )}
+              </TextExpandable>
+            ) : (
+              <>
+                <ContentListItemBlurb>
+                  {props.microMeta.blurb}
+                </ContentListItemBlurb>
 
-        {props.microMeta.socialLinks && (
-          <SocialLinksIcons socialLinks={props.microMeta.socialLinks} />
-        )}
+                {props.microMeta.mainLink && (
+                  <Link
+                    className={styles.mainLink}
+                    href={props.microMeta.mainLink}
+                    target="_blank"
+                  >
+                    {props.microMeta.mainLink}
+                  </Link>
+                )}
+              </>
+            )}
+          </>
+        }
+        asideSlot={
+          <>
+            <div className={styles.decorationContainer}>
+              <Icon
+                className={styles.decoration}
+                icon={IconTypes.Quote}
+                size="100%"
+              />
+            </div>
 
-        <span className={styles.type}>{props.microMeta.type}</span>
-      </div>
-    </div>
+            {props.microMeta.socialLinks && (
+              <SocialLinksIcons socialLinks={props.microMeta.socialLinks} />
+            )}
+
+            <ContentListItemType>{props.microMeta.type}</ContentListItemType>
+          </>
+        }
+      />
+    </LinkBox>
   );
 }

@@ -1,9 +1,11 @@
 import { IconTypes } from "./icon-types";
 import {
+  ArrowChevronDown,
   ArrowChevronLeft,
   ArrowChevronRight,
   ArrowChevronUp,
   ArrowTriangleLeft,
+  ArrowTriangleRight,
   Bluesky,
   CheckBox,
   Close,
@@ -31,12 +33,12 @@ import {
 } from "./svg";
 
 export const ICON_TYPE_SVGS = {
-  [IconTypes.ArrowChevronDown]: ArrowTriangleLeft,
+  [IconTypes.ArrowChevronDown]: ArrowChevronDown,
   [IconTypes.ArrowChevronLeft]: ArrowChevronLeft,
   [IconTypes.ArrowChevronRight]: ArrowChevronRight,
   [IconTypes.ArrowChevronUp]: ArrowChevronUp,
   [IconTypes.ArrowTriangleLeft]: ArrowTriangleLeft,
-  [IconTypes.ArrowTriangleRight]: ArrowTriangleLeft,
+  [IconTypes.ArrowTriangleRight]: ArrowTriangleRight,
   [IconTypes.Bluesky]: Bluesky,
   [IconTypes.CheckBox]: CheckBox,
   [IconTypes.Close]: Close,

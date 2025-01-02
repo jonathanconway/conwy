@@ -1,7 +1,7 @@
-import { flow, orderBy, upperCase } from "lodash";
+import { flow, groupBy, orderBy, upperCase } from "lodash";
 
 import * as booksMap from "@/content/books";
-import { Book, BookStatus, stripLeadingArticles } from "@/framework";
+import { Book, BookStatus, stripLeadingArticles } from "@/framework/client";
 
 export function getBooksList({ status }: { readonly status: BookStatus }) {
   const books = Object.values(booksMap);
@@ -10,6 +10,7 @@ export function getBooksList({ status }: { readonly status: BookStatus }) {
     filterBooksItems(status),
     sortBooksItems,
     mapBooksToBookItems,
+    groupBooksByCategory,
   )(books);
 }
 
@@ -43,4 +44,8 @@ function formatBookAuthors(authors: readonly string[]) {
     const restNamesUpperCaseJoined = restNames.map(upperCase).join(" ");
     return `${firstName} ${restNamesUpperCaseJoined}`;
   });
+}
+
+function groupBooksByCategory(books: readonly Book[]) {
+  return groupBy(books, "category");
 }

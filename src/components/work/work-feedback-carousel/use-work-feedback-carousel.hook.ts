@@ -2,8 +2,6 @@ import { orderBy } from "lodash";
 
 import { WorkFeedback } from "@/framework/client";
 
-import { useCarousel } from "../../carousel";
-
 interface UseWorkFeedbackCarouselParams {
   readonly workFeedbacks: readonly WorkFeedback[];
 }
@@ -11,10 +9,8 @@ interface UseWorkFeedbackCarouselParams {
 export function useWorkFeedbackCarousel(params: UseWorkFeedbackCarouselParams) {
   const sortedWorkFeedbacks = sortWorkFeedbacks(params.workFeedbacks);
 
-  const workFeedbackCarousel = useCarousel({ items: sortedWorkFeedbacks });
-
   return {
-    workFeedbackCarousel,
+    sortedWorkFeedbacks,
   };
 }
 

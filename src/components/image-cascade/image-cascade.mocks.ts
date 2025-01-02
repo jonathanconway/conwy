@@ -3,7 +3,8 @@ import { ImageCascadeProps } from "./image-cascade.types";
 export const IMAGE_CASCADE_PROPS_MOCK: ImageCascadeProps = {
   images: [
     {
-      imageUrl: "/images/works/optus/optus-1.svg",
+      src: "/images/works/optus/optus-1.svg",
+      alt: "Agent SubHub",
       notes: [
         {
           text: "In addition to building the whole front-end, implemented back-end calculation logic for the savings and total.",
@@ -20,9 +21,8 @@ export const IMAGE_CASCADE_PROPS_MOCK: ImageCascadeProps = {
           },
         },
       ],
-      title: "Agent SubHub",
     },
-    { imageUrl: "/images/works/optus/optus-2.svg", notes: [] },
-    { imageUrl: "/images/works/optus/optus-3.png", notes: [] },
+    { src: "/images/works/optus/optus-2.svg", notes: [] },
+    { src: "/images/works/optus/optus-3.png", notes: [] },
   ],
 };

@@ -5,7 +5,7 @@ import { Section } from "../../../section";
 import { ArticleHeading } from "../../article-headings";
 
 import { useArticleSidebarHeadingsHighlighter } from "./article-sidebar-headings-highlighter.hook";
-import * as styles from "./article-sidebar-headings.styles";
+import * as styles from "./article-sidebar-headings.css";
 
 export interface ArticleSidebarProps {
   readonly articleHeadings: readonly ArticleHeading[];
@@ -31,7 +31,13 @@ export function ArticleSidebarHeadings({
                 {shortTitle ?? title}
               </span>
             ) : (
-              <Link id={`${id}-article-link`} href={`#${id}`} title={title}>
+              // todo: instead of title, apply tooltip and only show on text overflow
+              <Link
+                className={styles.link}
+                id={`${id}-article-link`}
+                href={`#${id}`}
+                title={title}
+              >
                 {shortTitle ?? title}
               </Link>
             )}

@@ -1,4 +1,4 @@
-import * as styles from "./header-logo.styles";
+import * as styles from "./header-logo.css";
 
 export function HeaderLogoImage() {
   return (

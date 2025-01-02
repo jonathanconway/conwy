@@ -27,11 +27,11 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      imageUrl: "bupa-01.jpg",
+      src: "bupa-01.jpg",
       notes: [],
     },
     {
-      imageUrl: "bupa-02.jpg",
+      src: "bupa-02.jpg",
       notes: [],
     },
   ],

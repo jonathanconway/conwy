@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import * as styles from "./header-nav-item.styles";
+import * as styles from "./header-nav-item.css";
 
 interface HeaderNavItemProps {
   readonly title: string;
@@ -20,24 +20,26 @@ export function HeaderNavItem({ title, href, selected }: HeaderNavItemProps) {
 
   return (
     <Link className={styles.link} href={href}>
-      <span className={styles.text}>{title}</span>
+      <div className={styles.linkInner}>
+        <span className={styles.text}>{title}</span>
 
-      {active && (
-        <div className={styles.activeIndicator}>
-          <span
-            className={styles.activeIndicatorLeft}
-            style={{
-              backgroundImage: HEADER_NAV_ITEM_TRACE_IMAGE_PATH_VALUE,
-            }}
-          ></span>
-          <span
-            className={styles.activeIndicatorRight}
-            style={{
-              backgroundImage: HEADER_NAV_ITEM_TRACE_IMAGE_PATH_VALUE,
-            }}
-          ></span>
-        </div>
-      )}
+        {active && (
+          <div className={styles.activeIndicator}>
+            <span
+              className={styles.activeIndicatorLeft}
+              style={{
+                backgroundImage: HEADER_NAV_ITEM_TRACE_IMAGE_PATH_VALUE,
+              }}
+            ></span>
+            <span
+              className={styles.activeIndicatorRight}
+              style={{
+                backgroundImage: HEADER_NAV_ITEM_TRACE_IMAGE_PATH_VALUE,
+              }}
+            ></span>
+          </div>
+        )}
+      </div>
     </Link>
   );
 }

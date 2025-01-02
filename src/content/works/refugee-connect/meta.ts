@@ -16,13 +16,13 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      imageUrl: "refugee-connect-1.png",
-      title: "Desktop prototype",
+      src: "refugee-connect-1.png",
+      alt: "Desktop prototype",
       notes: [],
     },
     {
-      imageUrl: "refugee-connect-2.png",
-      title: "Mobile prototype",
+      src: "refugee-connect-2.png",
+      alt: "Mobile prototype",
       notes: [],
     },
   ],

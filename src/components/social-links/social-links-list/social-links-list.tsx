@@ -1,7 +1,7 @@
 import { SocialLink } from "@/framework/client";
 
 import { SocialLinksListItem } from "./social-links-list-item";
-import * as styles from "./social-links-list.styles";
+import * as styles from "./social-links-list.css";
 
 interface SocialLinksListProps {
   readonly socialLinks: readonly SocialLink[];

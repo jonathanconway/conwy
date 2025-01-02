@@ -1,6 +1,8 @@
 import { site } from "@/content";
 
-import * as styles from "./footer.styles";
+import { Link } from "../link";
+
+import * as styles from "./footer.css";
 import { ThemeSwitch } from "./theme-switch";
 
 export function Footer() {
@@ -13,19 +15,19 @@ export function Footer() {
           </div>
         </div>
         <div className={styles.row}>
-          <a className={styles.link} href={site.sourceUrl} target="_blank">
+          <Link href={site.sourceUrl} target="_blank" showOpenInNew={false}>
             Source
-          </a>
-          <a
-            className={styles.link}
+          </Link>
+          <Link
             href={`https://wave.webaim.org/report#/${site.url}`}
             target="_blank"
+            showOpenInNew={false}
           >
             WCAG
-          </a>
+          </Link>
         </div>
       </div>
-      <div className={styles.right}>
+      <div>
         <ThemeSwitch />
       </div>
     </div>

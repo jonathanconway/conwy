@@ -1,12 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-
 import { ArticleMeta } from "@/framework/client";
 
+import {
+  ContentListItem,
+  ContentListItemBlurb,
+  ContentListItemImage,
+  ContentListItemType,
+} from "../../../content-list";
 import { Date } from "../../../date";
+import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
 
-import * as styles from "./articles-list-item.styles";
+import * as styles from "./articles-list-item.css";
 
 export type ArticlesListItemProps = ArticleMeta;
 
@@ -21,31 +25,34 @@ export function ArticlesListItem({
   mainImage,
 }: ArticlesListItemProps) {
   return (
-    <div className={styles.container}>
-      <Link className={styles.mainColumn} href={`articles/${slug}`}>
-        <div className={styles.date}>
-          <Date>{date}</Date>
-        </div>
+    <LinkBox href={`articles/${slug}`}>
+      <ContentListItem
+        mainSlot={
+          <>
+            <div className={styles.date}>
+              <Date>{date}</Date>
+            </div>
 
-        <div className={styles.title}>{title}</div>
+            <LinkBoxTitle>{title}</LinkBoxTitle>
 
-        <p className={styles.blurb}>{shortBlurb ?? blurb}</p>
-      </Link>
-      <div className={styles.asideColumn}>
-        <Image
-          className={styles.image}
-          src={`/images/articles/${slug}/${mainImage ?? "main.jpg"}`}
-          alt="Article main image"
-          priority
-          unoptimized={true}
-          width={125}
-          height={93.75}
-        />
+            <ContentListItemBlurb>{shortBlurb ?? blurb}</ContentListItemBlurb>
+          </>
+        }
+        asideSlot={
+          <>
+            <ContentListItemImage
+              src={`/images/articles/${slug}/${mainImage ?? "main.jpg"}`}
+              alt="Article main image"
+            />
 
-        {socialLinks && <SocialLinksIcons socialLinks={socialLinks} />}
+            {socialLinks.length > 0 && (
+              <SocialLinksIcons socialLinks={socialLinks} />
+            )}
 
-        <span className={styles.type}>{type}</span>
-      </div>
-    </div>
+            <ContentListItemType>{type}</ContentListItemType>
+          </>
+        }
+      />
+    </LinkBox>
   );
 }

@@ -1,12 +1,12 @@
 "use client";
 
-import { cn } from "@jonathanconway/tailwindjs";
 import { ReactNode, useRef } from "react";
 
 import { Icon, IconTypes } from "../../icon";
 
-import moduleStyles from "./header-hamburger.module.css";
-import * as styles from "./header-hamburger.styles";
+import * as styles from "./header-hamburger.css";
+
+//  todo: rename to header-menu
 
 interface HeaderHamburgerProps {
   readonly children?: ReactNode;
@@ -23,7 +23,7 @@ export function HeaderHamburger(props: HeaderHamburgerProps) {
     <>
       <input
         ref={headerHamburgerInputRef}
-        className={moduleStyles.hamburgerHiddenCheckbox}
+        className={styles.hiddenCheckbox}
         aria-hidden="true"
         type="checkbox"
         id="header-hamburger"
@@ -32,25 +32,18 @@ export function HeaderHamburger(props: HeaderHamburgerProps) {
       <label htmlFor="header-hamburger">
         <Icon
           icon={IconTypes.HamburgerMenu}
-          className={styles.hamburgerIcon}
+          className={styles.icon}
           size="2rem"
         />
       </label>
 
       {/* todo: find a way to make this a part of the input rather than using js */}
       <div
-        className={cn(
-          moduleStyles.hamburgerMenuBackdrop,
-          styles.hamburgerMenuBackdrop,
-        )}
+        className={styles.menuBackdrop}
         onClick={handleHambergerMenuBackdropClick}
       ></div>
 
-      <div
-        className={cn(moduleStyles.hamburgerContents, styles.hamburgerContents)}
-      >
-        {props.children}
-      </div>
+      <div className={styles.contents}>{props.children}</div>
     </>
   );
 }

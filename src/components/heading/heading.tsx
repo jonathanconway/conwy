@@ -1,6 +1,8 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import * as styles from "./heading.styles";
+import { TypeOfConst } from "@/framework";
+
+import * as styles from "./heading.css";
 
 export type HeadingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
@@ -9,15 +11,43 @@ export type HeadingProps = DetailedHTMLProps<
   readonly level?: 1 | 2 | 3 | 4;
 };
 
-export function Heading({ level, className, ...restProps }: HeadingProps) {
-  switch (level) {
-    case 1:
-      return <h1 className={className ?? styles.h1} {...restProps} />;
-    case 2:
-      return <h2 className={className ?? styles.h2} {...restProps} />;
-    case 3:
-      return <h3 className={className ?? styles.h3} {...restProps} />;
-    case 4:
-      return <h4 className={className ?? styles.h4} {...restProps} />;
+const HeadingLevels = {
+  H1: "h1",
+  H2: "h2",
+  H3: "h3",
+  H4: "h4",
+} as const;
+
+type HeadingLevel = TypeOfConst<typeof HeadingLevels>;
+
+const HEADING_LEVEL_DETAILS: Record<
+  number,
+  {
+    readonly element: HeadingLevel;
+    readonly className: string;
   }
+> = {
+  1: {
+    element: "h1",
+    className: styles.h1,
+  },
+  2: {
+    element: "h2",
+    className: styles.h2,
+  },
+  3: {
+    element: "h3",
+    className: styles.h3,
+  },
+  4: {
+    element: "h4",
+    className: styles.h4,
+  },
+};
+
+export function Heading({ level, className, ...restProps }: HeadingProps) {
+  const details = HEADING_LEVEL_DETAILS[level ?? 1];
+  const Element = details.element;
+
+  return <Element className={className ?? details.className} {...restProps} />;
 }

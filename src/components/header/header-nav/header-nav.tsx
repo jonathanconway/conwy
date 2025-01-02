@@ -1,7 +1,7 @@
 import { HeaderHamburger } from "../header-hamburger";
 
 import { HeaderNavItem } from "./header-nav-item";
-import * as styles from "./header-nav.styles";
+import * as styles from "./header-nav.css";
 import { getNavItemsWithSelected } from "./nav-items";
 
 interface HeaderNavProps {

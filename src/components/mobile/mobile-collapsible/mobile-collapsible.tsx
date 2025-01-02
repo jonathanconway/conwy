@@ -1,13 +1,11 @@
 "use client";
 
-import { cn } from "@jonathanconway/tailwindjs";
 import { ReactNode, useId, useRef } from "react";
 
 import { Heading } from "../../heading";
 import { Icon, IconTypes } from "../../icon";
 
-import moduleStyles from "./mobile-collapsible.module.css";
-import * as styles from "./mobile-collapsible.styles";
+import * as styles from "./mobile-collapsible.css";
 
 interface MobileCollapsibleProps {
   readonly title: string;
@@ -21,37 +19,31 @@ export function MobileCollapsible(props: MobileCollapsibleProps) {
   return (
     <div className={styles.mobileCollapsibleContainer}>
       <input
+        className={styles.checkbox}
         id={inputId}
         ref={inputRef}
-        className={moduleStyles.checkbox}
         aria-hidden="true"
         type="checkbox"
       />
-      <label
-        className={cn(moduleStyles.header, styles.header)}
-        htmlFor={inputId}
-      >
+
+      <label className={styles.header} htmlFor={inputId}>
         <Heading level={3} className={styles.title}>
           {props.title}
         </Heading>
 
         <Icon
-          className={cn(moduleStyles.expandButton, styles.expandCollapseButton)}
+          className={styles.expandButton}
           icon={IconTypes.ArrowChevronUp}
-          size="2rem"
+          size="1.5rem"
         />
         <Icon
-          className={cn(
-            moduleStyles.collapseButton,
-            styles.expandCollapseButton,
-          )}
+          className={styles.collapseButton}
           icon={IconTypes.ArrowChevronDown}
-          size="2rem"
+          size="1.5rem"
         />
       </label>
-      <div className={cn(moduleStyles.content, styles.content)}>
-        {props.children}
-      </div>
+
+      <div className={styles.content}>{props.children}</div>
     </div>
   );
 }

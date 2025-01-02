@@ -1,10 +1,10 @@
 import { SocialLinksListItem } from "@/components/social-links";
-import { Article } from "@/framework";
+import { Article } from "@/framework/client";
 
-import * as styles from "./article-discussion-link.styles";
+import * as styles from "./article-discussion-link.css";
 import { getArticleDiscussionLinksDetails } from "./article-discussion-link.utils";
 
-interface ArticleDiscussionLinkProps {
+export interface ArticleDiscussionLinkProps {
   readonly article: Article;
 }
 

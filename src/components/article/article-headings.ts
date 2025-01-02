@@ -1,9 +1,9 @@
-import { kebabCase, takeWhile } from "lodash";
+import { kebabCase } from "lodash";
 import { FunctionComponent, JSXElementConstructor, ReactElement } from "react";
 
 import { Article as Article_ } from "@/framework/client";
 
-import { MdxH2, MdxH2Short } from "../mdx";
+import { MdxH2 } from "../mdx";
 
 export interface ArticleHeading {
   readonly id: string;
@@ -18,9 +18,7 @@ function getIsComponentType(
   return (element.type as Function)?.name === componentType.name;
 }
 
-function byComponentType<T extends FunctionComponent>(
-  componentType: FunctionComponent,
-) {
+function byComponentType(componentType: FunctionComponent) {
   return (
     element: ReactElement<unknown, string | JSXElementConstructor<unknown>>,
   ) => getIsComponentType(element, componentType);
@@ -30,16 +28,10 @@ function getNextChildOfTypeAndNotType(
   children: readonly ReactElement[],
   fromElement: ReactElement,
   componentType: FunctionComponent,
-  notComponentType: FunctionComponent,
 ) {
   const nextChildren = children.slice(children.indexOf(fromElement) + 1);
-  const nextChildrenBeforeNotComponentType = takeWhile(
-    nextChildren,
-    (child) => !getIsComponentType(child, notComponentType),
-  );
-  return nextChildrenBeforeNotComponentType.find((child) =>
-    getIsComponentType(child, componentType),
-  );
+
+  return nextChildren.find((child) => getIsComponentType(child, componentType));
 }
 
 export function getArticleHeadings(
@@ -58,16 +50,11 @@ export function getArticleHeadings(
     const nextChild = getNextChildOfTypeAndNotType(
       children,
       headingElement,
-      MdxH2Short,
       MdxH2,
     );
 
     if (!nextChild) {
       return undefined;
-    }
-
-    if (getIsComponentType(nextChild, MdxH2Short)) {
-      return nextChild.props?.children?.toString();
     }
 
     return undefined;
@@ -87,5 +74,5 @@ export function getArticleHeadings(
     },
   );
 
-  return [{ id: "", title: "Intro" }, ...headingElementHeadings];
+  return [{ id: "top", title: "Intro" }, ...headingElementHeadings];
 }

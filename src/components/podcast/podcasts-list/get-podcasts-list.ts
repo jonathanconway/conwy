@@ -1,7 +1,7 @@
 import { flow, orderBy } from "lodash";
 
 import * as podcastsMap from "@/content/podcasts";
-import { Podcast } from "@/framework";
+import { Podcast } from "@/framework/client";
 
 export function getPodcastsList(): readonly Podcast[] {
   const podcasts = Object.values(podcastsMap);

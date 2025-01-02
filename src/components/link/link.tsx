@@ -7,10 +7,11 @@ import { Icon, IconTypes } from "../icon";
 import { withTooltip } from "../tooltip";
 
 import { LinkProps } from "./link-props";
-import * as styles from "./link.styles";
+import * as linkStyles from "./link.css";
 
 export function Link_(props: LinkProps) {
   const {
+    className,
     children,
     ref,
     showOpenInNew: _showOpenInNew,
@@ -29,6 +30,7 @@ export function Link_(props: LinkProps) {
     !props.download;
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    console.log("link", href);
     if (!href) {
       event.preventDefault();
     }
@@ -37,25 +39,25 @@ export function Link_(props: LinkProps) {
 
   return (
     <NextLink
-      className={styles.link}
+      className={className ?? linkStyles.link}
       href={href}
       onClick={handleClick}
       {...restProps}
     >
-      {icon && <Icon className={styles.linkIcon} icon={icon} />}
+      {icon && <Icon className={linkStyles.linkIcon} icon={icon} />}
 
       {children}
 
       {showOpenInNew && (
-        <Icon className={styles.linkIcon} icon={IconTypes.OpenInNew} />
+        <Icon className={linkStyles.linkIcon} icon={IconTypes.OpenInNew} />
       )}
 
       {showOpenPopup && (
-        <Icon className={styles.linkIcon} icon={IconTypes.Info} />
+        <Icon className={linkStyles.linkIcon} icon={IconTypes.Info} />
       )}
 
       {download && (
-        <Icon className={styles.linkIcon} icon={IconTypes.Download} />
+        <Icon className={linkStyles.linkIcon} icon={IconTypes.Download} />
       )}
     </NextLink>
   );

@@ -1,6 +1,7 @@
 export * from "./article";
 export * from "./book";
 export * from "./item";
+export * from "./image";
 export * from "./meta";
 export * from "./micro";
 export * from "./page";

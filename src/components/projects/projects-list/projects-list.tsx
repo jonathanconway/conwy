@@ -1,7 +1,8 @@
 import { ProjectMeta } from "@/framework/client";
 
+import { ContentList } from "../../content-list";
+
 import { ProjectsListItem } from "./projects-list-item";
-import * as styles from "./projects-list.styles";
 
 export interface ProjectsListProps {
   readonly projectMetas: readonly ProjectMeta[];
@@ -9,10 +10,10 @@ export interface ProjectsListProps {
 
 export function ProjectsList({ projectMetas }: ProjectsListProps) {
   return (
-    <div className={styles.container()}>
+    <ContentList>
       {projectMetas.map((projectMeta) => (
         <ProjectsListItem key={projectMeta.slug} projectMeta={projectMeta} />
       ))}
-    </div>
+    </ContentList>
   );
 }

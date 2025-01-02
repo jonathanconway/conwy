@@ -1,6 +1,5 @@
 "use client";
 
-import { reverse } from "lodash";
 import { useState } from "react";
 
 interface UseImageCascadeParams<T> {
@@ -22,50 +21,48 @@ interface UseImageCascadeState<T> {
   readonly selectedItem: T;
 }
 
-function sortItems<T>(items: readonly T[], selectedItem: T) {
-  const selectedItemIndex = items.indexOf(selectedItem);
-  if (selectedItemIndex === items.length - 1) {
-    return reverse(items);
-  } else if (selectedItemIndex > 0) {
-    return reverse([
-      ...items.slice(selectedItemIndex + 1),
-      ...items.slice(0, selectedItemIndex),
-      selectedItem,
-    ]);
-  } else {
-    return reverse([...items.slice(1), selectedItem]);
-  }
+function rotate<T>(input: readonly T[], index: number) {
+  return [
+    ...input.slice(index),
+    ...[...input]
+      .reverse()
+      .slice(input.length - index)
+      .reverse(),
+  ];
 }
 
 export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
+  const sourceItems = [...params.items].reverse();
+
   const [state, setState] = useState<UseImageCascadeState<T>>({
-    selectedItem: params.defaultSelectedItem ?? params.items[0],
+    selectedItem: sourceItems[0],
   });
 
   const { selectedItem } = state;
 
-  const items = sortItems(params.items, state.selectedItem);
+  const selectedIndex = sourceItems.indexOf(selectedItem);
+
+  const items = rotate(sourceItems, selectedIndex);
 
   const handlePreviousClick = () => {
-    const selectedItemIndex = params.items.indexOf(state.selectedItem);
+    const selectedItemIndex = sourceItems.indexOf(state.selectedItem);
 
     const newIndex =
-      selectedItemIndex === 0 ? params.items.length - 1 : selectedItemIndex - 1;
+      selectedItemIndex === sourceItems.length - 1 ? 0 : selectedItemIndex + 1;
 
-    const newSelectedItem = params.items[newIndex];
-
+    const newSelectedItem = sourceItems[newIndex];
     setState({
       selectedItem: newSelectedItem,
     });
   };
 
   const handleNextClick = () => {
-    const selectedItemIndex = params.items.indexOf(state.selectedItem);
+    const selectedItemIndex = sourceItems.indexOf(state.selectedItem);
 
     const newIndex =
-      selectedItemIndex === params.items.length - 1 ? 0 : selectedItemIndex + 1;
+      selectedItemIndex === 0 ? sourceItems.length - 1 : selectedItemIndex - 1;
 
-    const newSelectedItem = params.items[newIndex];
+    const newSelectedItem = sourceItems[newIndex];
 
     setState({
       selectedItem: newSelectedItem,
