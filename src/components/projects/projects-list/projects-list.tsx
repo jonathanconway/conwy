@@ -1,6 +1,6 @@
 import { ProjectMeta } from "@/framework/client";
 
-import { List } from "../../list";
+import { ContentList } from "../../content-list";
 
 import { ProjectsListItem } from "./projects-list-item";
 
@@ -10,10 +10,10 @@ export interface ProjectsListProps {
 
 export function ProjectsList({ projectMetas }: ProjectsListProps) {
   return (
-    <List>
+    <ContentList>
       {projectMetas.map((projectMeta) => (
         <ProjectsListItem key={projectMeta.slug} projectMeta={projectMeta} />
       ))}
-    </List>
+    </ContentList>
   );
 }

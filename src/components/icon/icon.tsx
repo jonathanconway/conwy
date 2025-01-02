@@ -1,4 +1,4 @@
-import { cn } from "@jonathanconway/tailwindjs";
+import { cn } from "@/framework/client";
 
 import { withTooltip } from "../tooltip";
 

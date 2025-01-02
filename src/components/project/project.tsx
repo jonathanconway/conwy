@@ -45,7 +45,7 @@ export function Project({ project }: ProjectProps) {
         </div>
 
         <div className={styles.aside}>
-          <div className={styles.techAndFeedbackContainer}>
+          <div className={styles.techAndOtherContainer}>
             <ProjectTechs projectMeta={projectMeta} />
 
             <div className={styles.otherContainer}>
@@ -55,9 +55,7 @@ export function Project({ project }: ProjectProps) {
             </div>
           </div>
 
-          <div className={styles.imageCascadeContainer}>
-            <ProjectImageCascade projectMeta={project.meta} />
-          </div>
+          <ProjectImageCascade projectMeta={project.meta} />
         </div>
       </div>
     </div>

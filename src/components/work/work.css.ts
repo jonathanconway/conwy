@@ -9,19 +9,6 @@ export const container = style({
   gap: "2rem",
 });
 
-export const main = style({
-  display: "flex",
-  flex: 1,
-  flexDirection: "row",
-  gap: "1rem",
-
-  "@media": {
-    [media.sm]: {
-      flexDirection: "column",
-    },
-  },
-});
-
 export const header = style({
   display: "flex",
   flexDirection: "row",
@@ -71,7 +58,22 @@ export const jobTitle = style({
   },
 });
 
-export const blurb = style({ flex: 1 });
+export const main = style({
+  display: "flex",
+  flex: 1,
+  flexDirection: "row",
+  gap: "2rem",
+
+  "@media": {
+    [media.sm]: {
+      flexDirection: "column",
+    },
+  },
+});
+
+export const blurb = style({
+  "@media": { [media.mdAndUp]: { flex: 1 } },
+});
 
 export const aside = style({
   display: "flex",

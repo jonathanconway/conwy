@@ -17,6 +17,7 @@ export const colors = {
   sky_600: "rgb(2, 132, 199)",
   stone_100: "rgb(245, 245, 244)",
   stone_200: "rgb(231, 229, 228)",
+  stone_150: "rgb(245, 242, 240)",
   stone_300: "rgb(214, 211, 209)",
   stone_400: "rgb(168, 162, 158)",
   stone_50: "rgb(250, 250, 249)",

@@ -4,7 +4,6 @@ import { text } from "@/components/styling";
 
 export const feedbackItemQuote = style({
   ...text.size.xs,
-  whiteSpace: "pre",
   lineHeight: "1.25rem",
 });
 

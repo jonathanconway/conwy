@@ -46,13 +46,15 @@ export function ImageCascade(props: ImageCascadeProps) {
   if (props.images.length === 1) {
     const image = props.images[0];
     return (
-      <Image
-        className={styles.image}
-        src={image.src}
-        alt={image.src}
-        width={IMAGE_SIZE_PX.width}
-        height={IMAGE_SIZE_PX.height}
-      />
+      <div className={styles.container}>
+        <Image
+          className={styles.image}
+          src={image.src}
+          alt={image.src}
+          width={IMAGE_SIZE_PX.width}
+          height={IMAGE_SIZE_PX.height}
+        />
+      </div>
     );
   }
 

@@ -1,4 +1,4 @@
-import { MdxCode, MdxPre, MdxAside, MdxAsideHeading, MdxP } from "@/components";
+import { MdxCode, MdxPre, MdxP } from "@/components";
 
 I've been reading the book [_Observability Engineering_](https://info.honeycomb.io/observability-engineering-oreilly-book-2022) by Charity Majors and thinking about how to apply the ideas to front end development.
 
@@ -26,20 +26,14 @@ With structured logs in place, developers can "ask" arbitrary questions about ho
 
 We can pro-actively search for unanticipated bugs or diagnose difficult errors involving complex front end logic.
 
-<MdxAside>
-  <MdxAsideHeading>Capabilities of observable systems</MdxAsideHeading>
-  
-  <MdxP>
-    In defining "observability" (Chapter 1), Majors lists the following capabilities:
-  </MdxP>
-
-  <MdxP>
-     - Understand the inner workings of your application
-     - Understand any system state your application may have gotten itself into, even new ones you have never seen before and couldn’t have predicted
-     - Understand the inner workings and system state solely by observing and interrogating with external tools
-     - Understand the internal state without shipping any new custom code to handle it (because that implies you needed prior knowledge to explain it)
-  </MdxP>
-</MdxAside>
+> ### Aside: Capabilities of observable systems
+>
+> In defining "observability" (Chapter 1), Majors lists the following capabilities:
+>
+> - Understand the inner workings of your application
+> - Understand any system state your application may have gotten itself into, even new ones you have never seen before and couldn’t have predicted
+> - Understand the inner workings and system state solely by observing and interrogating with external tools
+> - Understand the internal state without shipping any new custom code to handle it (because that implies you needed prior knowledge to explain it)
 
 Let's look at some examples.
 

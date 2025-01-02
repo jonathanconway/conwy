@@ -8,6 +8,7 @@ import { blockQuoteThemeDark } from "../block-quote/block-quote.css-theme";
 import { boxThemeBase } from "../box/box.css-theme";
 import { buttonThemeDark } from "../button/button.css-theme";
 import { codeThemeDark } from "../code/code.css-theme";
+import { contentListItemThemeDark } from "../content-list/content-list-item/content-list-item.css-theme";
 import { footerThemeDark } from "../footer/footer.css-theme";
 import { headerHamburgerThemeDark } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeDark } from "../header/header-logo/header-logo.css-theme";
@@ -20,7 +21,6 @@ import { layoutThemeDark } from "../layouts/app-layout/app-layout.css-theme";
 import { linkBoxTitleThemeDark } from "../link-box/link-box-title/link-box-title.css-theme";
 import { linkBoxThemeDark } from "../link-box/link-box.css-theme";
 import { linkThemeDark } from "../link/link.css-theme";
-import { listItemThemeDark } from "../list/list-item/list-item.css-theme";
 import { microsListItemThemeDark } from "../micros/micros-list/micros-list-item/micros-list-item.css-theme";
 import { switchThemeDark } from "../switch/switch.css-theme";
 import { textThemeDark } from "../text/text.css-theme";
@@ -37,19 +37,19 @@ export const themeDarkClass = createTheme(vars, {
   box: boxThemeBase,
   button: buttonThemeDark,
   code: codeThemeDark,
+  contentListItem: contentListItemThemeDark,
   footer: footerThemeDark,
   headerHamburger: headerHamburgerThemeDark,
   headerLogo: headerLogoThemeDark,
   icon: iconThemeDark,
-  imageModal: imageModalThemeDark,
   imageFigure: imageFigureThemeDark,
+  imageModal: imageModalThemeDark,
   itemNav: itemNavThemeDark,
   label: labelThemeDark,
   layout: layoutThemeDark,
   link: linkThemeDark,
   linkBox: linkBoxThemeDark,
   linkBoxTitle: linkBoxTitleThemeDark,
-  listItem: listItemThemeDark,
   microsListItem: microsListItemThemeDark,
   switch: switchThemeDark,
   text: textThemeDark,

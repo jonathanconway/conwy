@@ -3,7 +3,7 @@ import { ComplexStyleRule } from "@vanilla-extract/css";
 import { media } from "./media";
 
 export const responsive = {
-  flexDirectionColumnMobileRowElse: {
+  flexDirectionMobileColumnRowElse: {
     flexDirection: "row",
     "@media": {
       [media.sm]: {
@@ -11,7 +11,8 @@ export const responsive = {
       },
     },
   } as ComplexStyleRule,
-  flexDirectionRowMobileColumnElse: {
+
+  flexDirectionMobileRowColumnElse: {
     flexDirection: "column",
     "@media": {
       [media.sm]: {

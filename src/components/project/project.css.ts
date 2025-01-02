@@ -1,13 +1,3 @@
-import {
-  cn,
-  flex,
-  flex_1,
-  flex_col,
-  flex_row,
-  gap_4,
-  gap_6,
-  sm,
-} from "@jonathanconway/tailwindjs";
 import { style } from "@vanilla-extract/css";
 
 import { responsive, text } from "../styling";
@@ -23,7 +13,7 @@ export const main = style({
   display: "flex",
   flex: 1,
   gap: "1rem",
-  ...responsive.flexDirectionColumnMobileRowElse,
+  ...responsive.flexDirectionMobileColumnRowElse,
 });
 
 export const header = style({
@@ -58,14 +48,23 @@ export const body = style({
 
 export const blurbContent = style({});
 
-//  cn(all(mt_2), all(pr_0), all(leading_5));
+export const aside = style({
+  display: "flex",
+  flex: 1,
+  flexDirection: "column",
+  gap: "1.5rem",
+});
 
-export const aside = cn(flex, flex_1, flex_col, gap_6);
+export const techAndOtherContainer = style({
+  display: "flex",
+  ...responsive.flexDirectionMobileColumnRowElse,
+});
 
-export const techAndFeedbackContainer = cn(flex, flex_col, sm(flex_row), gap_4);
+export const techContainer = style({ display: "flex", flex: 1 });
 
-export const techContainer = cn(flex, flex_1);
-
-export const otherContainer = cn(flex, flex_col, flex_1, gap_6);
-
-export const imageCascadeContainer = cn();
+export const otherContainer = style({
+  display: "flex",
+  flexDirection: "column",
+  flex: 1,
+  gap: "1.5rem",
+});

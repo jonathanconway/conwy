@@ -1,4 +1,4 @@
-import { MdxAside, MdxAsideHeading, MdxCode, MdxH2Short, MdxP, MdxPre, MdxMermaid } from "@/components";
+import { MdxCode, MdxP, MdxPre, MdxMermaid } from "@/components";
 import { meta } from "./meta";
 
 Anyone who has spent some time developing software knows writing new code is but a small part of the job. At least as big, perhaps bigger, is **understanding the existing code**. And that includes understanding the **runtime behaviour** of that code!
@@ -15,8 +15,7 @@ Execution flow notations can be useful in understanding an existing code-base, t
 
 But first some background...
 
-## What do I mean by "execution flow"?
-<MdxH2Short>What's an execution flow?</MdxH2Short>
+## What is an execution flow?
 
 It's helpful to define the concept of "execution flow".
 
@@ -27,7 +26,6 @@ You should not confuse this with a more specific term: **_call stack_**. Since a
 On the other hand, you should also not confuse this with a more general term such as **_abstract syntax tree_** or "code structure". We are not describing the code as a whole, but just one path of possible execution of the code. Any piece of code that has one or more conditionals (e.g. `if` or `switch` statement, etc.) will execute differently depending on how those conditionals evaluate. For the same code, different lines might execute depending on the situation (e.g. depending on external state of some kind such as a database, web-service, system clock, etc.). Thus one code base can support multiple execution flows.
 
 ## Example of an execution flow
-<MdxH2Short>An example</MdxH2Short>
 
 Let's use a hypothetical example – handling a user login on a Java backend.
 
@@ -111,8 +109,7 @@ class LoginResource {
 3. Execution proceeds into the `else` block.
 4. We return `Response`, passing failure parameters.
 
-## IDE tools for determining execution flow
-<MdxH2Short>IDE tools</MdxH2Short>
+## Tools for finding execution flow
 
 So how to we figure out how our code flows in the first place?
 
@@ -170,8 +167,7 @@ Then we might locate this piece of code by using the _Find references_ tool:
 4. Observe that it is also called in the `LoginResource` class, in its `register` method.
 5. Observe that a new `Response` object is constructed.
 
-## Describing execution flows with text
-<MdxH2Short>Describing with text</MdxH2Short>
+## Describing with text
 
 Suppose we wanted to make some notes of the execution flows we discovered. Maybe there are too many for us to easily memorise. Perhaps we want to see them all in one view rather than scattered among many files.
 
@@ -211,18 +207,13 @@ LoginResource::register
 
 Now we can step back and look at all these flows together and see the bigger picture, e.g. how login and register both check user validity using `UserAuthProvider`, and how both instantiate the Response class with various constructor parameters.
 
-<MdxAside>
-  <MdxAsideHeading>Sketching execution flows</MdxAsideHeading>
-  
-  <MdxP>Observe that we don't have to cover the flows exhaustively, nor do we have to limit our coverage. We can cover just the parts of code that we are concerned with, based on our current goal, e.g. to solve the current bug or to learn more about a specific part of the code-base. We can make a kind of "partial sketch" of the parts of the execution flows that interest us.</MdxP>
+> ### Aside: Sketching execution flows
+> 
+> Observe that we don't have to cover the flows exhaustively, nor do we have to limit our coverage. We can cover just the parts of code that we are concerned with, based on our current goal, e.g. to solve the current bug or to learn more about a specific part of the code-base. We can make a kind of "partial sketch" of the parts of the execution flows that interest us.
+> For example, we don't cover how <code>login</code> and <code>register</code> are called, and we don't cover which further calls are made by <code>UserAuthProvider</code>, <code>SessionProvider</code> or <code>Response</code>, if those parts of the code don't interest us.
+> And if we are dealing with a bug in which <code>isValidUser</code> incorrectly returns <code>false</code>, we can focus more on <code>isValidUser</code> and which methods it calls.
 
-  <MdxP>For example, we don't cover how <code>login</code> and <code>register</code> are called, and we don't cover which further calls are made by <code>UserAuthProvider</code>, <code>SessionProvider</code> or <code>Response</code>, if those parts of the code don't interest us.</MdxP>
-
-  <MdxP>And if we are dealing with a bug in which <code>isValidUser</code> incorrectly returns <code>false</code>, we can focus more on <code>isValidUser</code> and which methods it calls.</MdxP>
-</MdxAside>
-
-## Format for notating execution flows
-<MdxH2Short>Notation format</MdxH2Short>
+## Notation
 
 Did you notice the textual format used in the previous section to notate the execution flows?
 
@@ -252,8 +243,7 @@ Class1::method
   ---|return values| Class1::method
 ```
 
-## Representing closures and indirect calls
-<MdxH2Short>Closures and indirection</MdxH2Short>
+## Closures and indirection
 
 Thusfar we've use the `Class::method` format to reference the callers and callees. This should work reasonably well for classical OO code-bases written in Java, C#, Swift etc.
 
@@ -303,8 +293,7 @@ flowchart
     ---retry
 ```
 
-## Visualising flows with Mermaid
-<MdxH2Short>Mermaid</MdxH2Short>
+## Visualising with Mermaid
 
 Now the juicy part – lets look at how this format can be instantly converted into a visual flowchat using Mermaid!
 
@@ -312,13 +301,11 @@ Now the juicy part – lets look at how this format can be instantly converted i
 
 You can run Mermaid in the browser using [Mermaid Live](https://mermaid.live/), or if you prefer, you can download and run it locally using the instructions on the [mermaid-live-editor](https://github.com/mermaid-js/mermaid-live-editor) GitHub profile.
 
-<MdxAside>
-  <MdxP>Note: We'll need to add the keyword <code>graph</code> to the top of the text.</MdxP>
-  <MdxP>Also, in these examples, we add numbered circular nodes (e.g. <code>---n1((1))</code>) to indicate the order of execution.</MdxP>
-</MdxAside>
+We'll need to add the keyword <code>graph</code> to the top of the text.
+
+Also, in these examples, we add numbered circular nodes (e.g. <code>---n1((1))</code>) to indicate the order of execution.
 
 The following is how our two earlier Java examples – login success and login failure – render in Mermaid:
-
 
 <MdxMermaid item={meta} alt="Login success flow example rendered by Mermaid">{`
 graph
@@ -376,16 +363,12 @@ Imagine this appearing in a Slack conversation:
 It could potentially be easier to read and follow an execution flow diagram than to read paragraphs of text trying to describe in plain language the complex sequence of calls.
 
 
-<MdxAside>
-  <MdxAsideHeading>Asynchronicity and concurrency</MdxAsideHeading>
-
-  <MdxP>Though we touched on async in the Javascript example with the <code>setTimeout</code> call, we haven't fully addressed the issue of describing asynchronicity or concurrency in execution flows.</MdxP>
-
-  <MdxP>This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagrammatically, as long as a strict convention is adhered to.</MdxP>
-</MdxAside>
+> ### Aside: Asynchronicity and concurrency
+>
+> Though we touched on async in the Javascript example with the <code>setTimeout</code> call, we haven't fully addressed the issue of describing asynchronicity or concurrency in execution flows.
+> This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagrammatically, as long as a strict convention is adhered to.
 
 ## Isn't this just a flowchart?
-<MdxH2Short>Vs flowcharts</MdxH2Short>
 
 Yes, but it's a **_specialised_** form of flowchart, focussed on representing execution flow.
 
@@ -393,8 +376,7 @@ The flowchart directly maps to the code it represents, so it accurately and unam
 
 Also by establishing and adhering to a convention in how we represent callers, callees, parameters and return values, etc. this flowchart technique is re-usable across programming languages, codebases, business domains, etc. A similar versatility is found in UML, sequence diagrams and other kinds of specialised diagram formats.
 
-## Why not use sequence diagrams?
-<MdxH2Short>Vs sequence diagrams</MdxH2Short>
+## Sequence diagrams
 
 You might have seen diagrams similar to those described here, but laid out as sequence diagrams. Execution flows can certainly be visualised as sequence diagrams. A sequence diagram is arranged as a set of vertical columns connected by arrows, where each column represents a method and each arrow represents a call.
 
@@ -416,8 +398,7 @@ There are weaknesses of sequence diagrams, however.
 
 For these reasons, I find the flowchart format more appealing.
 
-## Are there tools that generate execution flowcharts automatically?
-<MdxH2Short>Automatic generation</MdxH2Short>
+## Automatic generation
 
 Surprisingly, not really.
 
@@ -431,17 +412,12 @@ Theoretically any tool that could automatically report execution flows would nee
 
 It's beyond the scope of this article to look into how such a tool could be developed, but it's something I'm interested in looking into and perhaps even undertaking myself.
 
-<MdxAside>
-  <MdxAsideHeading>Use of ChatGPT</MdxAsideHeading>
-  
-  <MdxP>My experimentation with <a href="https://chat.openai.com">ChatGPT</a> yielded promising results.</MdxP>
-  
-  <MdxP>The LLM (Large Language Model) tool was able to generate <a href="https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492">a flowchart with labels in plain-English in both ASCII and Mermaid formats</a>.</MdxP>
-  
-  <MdxP>The flowchart did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).</MdxP>
-  
-  <MdxP>With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!</MdxP>
-</MdxAside>
+> ### Aside: Use of ChatGPT
+>
+> My experimentation with <a href="https://chat.openai.com">ChatGPT</a> yielded promising results.
+> The LLM (Large Language Model) tool was able to generate <a href="https://chat.openai.com/share/63de0d0e-3e97-48f6-aceb-e7e848e56492">a flowchart with labels in plain-English in both ASCII and Mermaid formats</a>.
+> The flowchart did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).
+> With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!
 
 ## Conclusion
 

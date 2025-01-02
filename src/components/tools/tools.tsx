@@ -2,8 +2,8 @@ import { groupBy, orderBy } from "lodash";
 
 import { Tool as Tool_, sentenceCase } from "@/framework/client";
 
+import { ContentList } from "../content-list";
 import { Heading } from "../heading";
-import { List } from "../list";
 
 import { Tool } from "./tool";
 import * as styles from "./tools.css";
@@ -22,11 +22,11 @@ export function Tools({ tools }: ToolsProps) {
         <div className={styles.section}>
           <Heading level={4}>{sentenceCase(section)}</Heading>
 
-          <List>
+          <ContentList>
             {tools.map((tool) => (
               <Tool key={tool.slug} tool={tool} />
             ))}
-          </List>
+          </ContentList>
         </div>
       ))}
     </div>

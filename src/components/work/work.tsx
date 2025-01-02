@@ -1,6 +1,6 @@
 import { Work as Work_ } from "@/framework/client";
 
-import { MdxH2 } from "../mdx";
+import { Heading } from "../heading";
 import { WorkMainImage } from "../work";
 
 import { WorkBody } from "./work-body";
@@ -27,7 +27,7 @@ export function Work({ work }: WorkProps) {
             <WorkMainImage workMeta={workMeta} />
           </div>
           <div className={styles.headerLeftTitle}>
-            <MdxH2 className={styles.client}>{workMeta.client}</MdxH2>
+            <Heading level={2}>{workMeta.client}</Heading>
 
             <div className={styles.jobTitle}>{workMeta.jobTitle}</div>
           </div>

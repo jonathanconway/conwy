@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ListItem } from "@/components/list";
+import { ContentListItem } from "@/components/content-list";
 import { TextTypes } from "@/components/text/text-type";
 import { Tool as Tool_ } from "@/framework/client";
 
@@ -16,7 +16,7 @@ interface ToolsProps {
 export function Tool({ tool }: ToolsProps) {
   return (
     <LinkBox href={tool.url} target="_blank">
-      <ListItem
+      <ContentListItem
         mainSlot={
           <>
             {tool.mainImage && (

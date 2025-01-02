@@ -1,6 +1,7 @@
-import { cn } from "@jonathanconway/tailwindjs";
 import { Inter } from "next/font/google";
 import { ReactNode } from "react";
+
+import { cn } from "@/framework/client";
 
 import { Scripts } from "../../scripts";
 

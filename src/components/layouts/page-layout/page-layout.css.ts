@@ -14,6 +14,9 @@ export const container = style({
   gap: "2rem",
 
   "@media": {
+    [media.lessThanXl]: {
+      width: "100%",
+    },
     [media.xlAndUp]: {
       width: containerMaxWidth,
     },

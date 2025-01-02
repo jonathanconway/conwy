@@ -6,7 +6,7 @@ import { vars } from "../../theme";
 export const navsContainer = style({
   display: "flex",
   flex: 1,
-  ...responsive.flexDirectionColumnMobileRowElse,
+  ...responsive.flexDirectionMobileColumnRowElse,
   ...gap._2,
 });
 

@@ -1,4 +1,4 @@
-import { MdxH2Short, MdxMermaid } from "@/components";
+import { MdxMermaid } from "@/components";
 import { meta } from "./meta";
 
 Mock data, dummy data, fake data, test data, sample data.
@@ -13,15 +13,14 @@ My argument in this article is that mock data, when treated with respect, turns 
 
 I find four special uses for mock data:
 
-1. Iteratively designing and documenting structures
-2. Boosting unit test development
-3. Manually testing a running application
-4. Decoupling development teams
+1. [Designing and documenting](#designing-documenting)
+2. [Unit testing](#unit-testing)
+3. [Manually testing](#manually-testing)
+4. [Decoupling teams](#decoupling-teams)
 
 I will elaborate on each of these.
 
-## Iteratively designing and documenting structures
-<MdxH2Short>Designing &amp; documenting</MdxH2Short>
+## Designing &amp; documenting
 
 Let's begin with an example that should be reasonably familiar to most developers:
 
@@ -70,8 +69,7 @@ The point is, by laying out all the expected values of this field together in on
 
 We can now begin to think about how we might design and test the validation routine.
 
-## Boosting unit test development
-<MdxH2Short>Unit tests</MdxH2Short>
+## Unit testing
 
 As we begin to write a username validation function, the `Username` type definition combined with `UsernameMocks` given above lead directly to four unit tests:
 
@@ -184,8 +182,7 @@ The end result is that any test code that deals with mock values will be:
 
 **Bonus:** And we're talking about more than just unit-tests here! Mock values can also be used to fill in live component demos (e.g. Storybook stories), dynamic documentation (e.g. Docusaurus pages) and snapshot tests (e.g. PhantomJS screenshots).
 
-## Manually testing a running application
-<MdxH2Short>Manual testing</MdxH2Short>
+## Manually testing
 
 Imagine if our application was augmented with mock data in such a way that all of its features could be used while running purely off the mock data, without ever having to connect to any real data-source. (By 'data-source', I'm referring to things like databases, APIs, etc.)
 
@@ -256,9 +253,7 @@ The following screenshot depicts mock controls for a hypothetical online banking
 
 ![Screenshot of controls for more complex customization of mock data](/images/articles/mock-data/mock-data-controls.svg)
 
-## Decoupling development teams
-
-<MdxH2Short>Decoupling teams</MdxH2Short>
+## Decoupling teams
 
 Once our entire Application is able to run off mocked data, not only can we _operate_ the application while a data-source is unavailable, but we can also _operate and develop_ application features prior to the data-source even supporting them.
 
@@ -315,7 +310,6 @@ One technique applicable to web applications (which I used on a recent real-life
 For example, if we want to simulate the state in which the user entered a credit card into a payment page, but the card has expired, we might share a URL like this: http://myapp.com/payment-details?mockCreditCardExpired=true. This URL could be used to test the error message that is displayed for expired cards.
 
 ## Other uses of mock data
-<MdxH2Short>Other uses</MdxH2Short>
 
 We're talking about more than just simulating expected (or unexpected) application states! We can also simulate large data-sets (e.g. to test scalability), error conditions (to test error handling logic), delays (to test performance under various network conditions) and... well... anything else it's possible and useful to simulate. The ability to simulate specific application states is kind of a super power.
 

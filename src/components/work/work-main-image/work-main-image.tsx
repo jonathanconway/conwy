@@ -1,20 +1,24 @@
-import Image from "next/image";
-
 import { WorkMeta } from "@/framework/client";
 
-import { ListItemImage } from "../../list";
+import { Image } from "../../image";
 
-type ImageProps = Omit<Parameters<typeof Image>[0], "src" | "alt">;
+import * as styles from "./work-main-image.css";
 
-interface WorkMainImageProps extends ImageProps {
+interface WorkMainImageProps {
   readonly workMeta: WorkMeta;
 }
 
 export function WorkMainImage(props: WorkMainImageProps) {
   return (
-    <ListItemImage
-      src={`/images/works/${props.workMeta.slug}/${props.workMeta.mainImage ?? "thumbnail.png"}`}
-      alt={`Work thumbnail image for ${props.workMeta.client}`}
+    <Image
+      className={styles.image}
+      image={{
+        src: `/images/works/${props.workMeta.slug}/${props.workMeta.mainImage ?? "thumbnail.png"}`,
+        alt: `Work thumbnail image for ${props.workMeta.client}`,
+        notes: [],
+      }}
+      width={96}
+      height={64}
     />
   );
 }

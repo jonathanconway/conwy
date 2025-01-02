@@ -1,7 +1,11 @@
 import { POST_MAIN_IMAGE_DEFAULT, ProjectMeta } from "@/framework/client";
 
+import {
+  ContentListItem,
+  ContentListItemImage,
+  ContentListItemType,
+} from "../../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
-import { ListItem, ListItemImage, ListItemType } from "../../../list";
 import { SocialLinksIcons } from "../../../social-links";
 import { Text, TextTypes } from "../../../text";
 
@@ -14,7 +18,7 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
 
   return (
     <LinkBox href={`projects/${projectMeta.slug}`}>
-      <ListItem
+      <ContentListItem
         mainSlot={
           <>
             <div>
@@ -26,7 +30,7 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
         }
         asideSlot={
           <>
-            <ListItemImage
+            <ContentListItemImage
               src={`/images/projects/${projectMeta.slug}/${projectMeta.mainImage ?? POST_MAIN_IMAGE_DEFAULT}`}
               alt="Project main image"
             />
@@ -35,7 +39,7 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
               <SocialLinksIcons socialLinks={projectMeta.socialLinks} />
             )}
 
-            <ListItemType>{projectMeta.subType}</ListItemType>
+            <ContentListItemType>{projectMeta.subType}</ContentListItemType>
           </>
         }
       />

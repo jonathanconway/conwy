@@ -2,9 +2,13 @@ import Image from "next/image";
 
 import { ArticleMeta } from "@/framework/client";
 
+import {
+  ContentListItem,
+  ContentListItemBlurb,
+  ContentListItemType,
+} from "../../../content-list";
 import { Date } from "../../../date";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
-import { ListItem, ListItemBlurb, ListItemType } from "../../../list";
 import { SocialLinksIcons } from "../../../social-links";
 
 import * as styles from "./articles-list-item.css";
@@ -23,7 +27,7 @@ export function ArticlesListItem({
 }: ArticlesListItemProps) {
   return (
     <LinkBox href={`articles/${slug}`}>
-      <ListItem
+      <ContentListItem
         mainSlot={
           <>
             <div className={styles.date}>
@@ -32,7 +36,7 @@ export function ArticlesListItem({
 
             <LinkBoxTitle>{title}</LinkBoxTitle>
 
-            <ListItemBlurb>{shortBlurb ?? blurb}</ListItemBlurb>
+            <ContentListItemBlurb>{shortBlurb ?? blurb}</ContentListItemBlurb>
           </>
         }
         asideSlot={
@@ -51,7 +55,7 @@ export function ArticlesListItem({
               <SocialLinksIcons socialLinks={socialLinks} />
             )}
 
-            <ListItemType>{type}</ListItemType>
+            <ContentListItemType>{type}</ContentListItemType>
           </>
         }
       />

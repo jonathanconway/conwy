@@ -1,4 +1,3 @@
-import { flex } from "@jonathanconway/tailwindjs";
 import { SvgIconProps } from "@mui/material";
 import { FC } from "react";
 

@@ -2,7 +2,7 @@ import { ProjectMeta } from "@/framework/client";
 
 import { Section } from "../../section";
 
-import * as styles from "./project-platforms.styles";
+import * as styles from "./project-platforms.css";
 
 interface ProjectPlatformsProps {
   readonly projectMeta: ProjectMeta;

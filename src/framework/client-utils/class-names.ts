@@ -3,7 +3,7 @@
  *
  * For more advanced use cases, you might prefer a dedicated library such as tailwind-merge (https://github.com/dcastil/tailwind-merge).
  *
- * @param values Tailwind classes as strings or string-able objects.
+ * @param values Classes as strings or string-able objects.
  * @returns
  */
 export function classNames(
@@ -17,7 +17,7 @@ export function classNames(
  *
  * For more advanced use cases, you might prefer a dedicated library such as tailwind-merge (https://github.com/dcastil/tailwind-merge).
  *
- * @param values Tailwind classes as strings or string-able objects.
+ * @param values Classes as strings or string-able objects.
  * @returns
  */
 export function cn(...values: readonly (string | object | undefined | null)[]) {

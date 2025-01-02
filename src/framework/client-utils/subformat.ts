@@ -7,10 +7,11 @@ export function getHasSubformatChildrenMatchingPrefix(
   prefix: string,
   children: ReactNode,
 ): children is ReactNode[] {
-  return (
-    isArray(children) &&
-    children.find((child) => String(child.props?.children) === prefix)
-  );
+  if (!isArray(children)) {
+    return false;
+  }
+
+  return children.find((child) => String(child.props?.children) === prefix);
 }
 
 export function getSubformatChildrenStartingWithPrefix(
@@ -20,6 +21,7 @@ export function getSubformatChildrenStartingWithPrefix(
   if (!isArray(children)) {
     return undefined;
   }
+
   return children.find((child) =>
     String(child.props?.children).startsWith(prefix),
   );

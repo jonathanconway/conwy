@@ -4,7 +4,17 @@ import { colors, rounded } from "../../styling";
 
 export const fragment = style({});
 
-// todo: is there a better way?
+const h3 = {
+  paddingTop: "1.25rem",
+};
+
+globalStyle(`${fragment} > h3:not(:first-child)`, h3);
+
+const h4 = {
+  paddingTop: "1.25rem",
+};
+
+globalStyle(`${fragment} > h4:not(:first-child)`, h4);
 
 const hr = {
   marginTop: "1rem",
@@ -28,13 +38,12 @@ globalStyle(`${fragment} p:first-child`, pFirst);
 
 const ol = {
   listStyleType: "decimal",
-  marginLeft: "auto",
-  marginRight: "auto",
-  marginTop: "1rem",
-  paddingLeft: "1.5rem",
-  paddingRight: "1.5rem",
+  marginLeft: 0,
+  marginRight: 0,
   paddingTop: 0,
+  paddingRight: "1.5rem",
   paddingBottom: 0,
+  paddingLeft: "1.5rem",
 };
 
 globalStyle(`${fragment} ol`, ol);
@@ -43,11 +52,10 @@ const ul = {
   listStyleType: "disc",
   marginLeft: 0,
   marginRight: 0,
-  marginTop: "0.5rem",
-  paddingLeft: "1.5rem",
-  paddingRight: "1.5rem",
   paddingTop: 0,
+  paddingRight: "1.5rem",
   paddingBottom: 0,
+  paddingLeft: "1.5rem",
 };
 
 globalStyle(`${fragment} ul`, ul);

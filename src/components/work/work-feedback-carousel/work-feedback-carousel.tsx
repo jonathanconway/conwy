@@ -23,7 +23,7 @@ export function WorkFeedbackCarousel(props: WorkFeedbackCarouselProps) {
 
   return (
     <Section label="Feedback">
-      <Carousel<WorkFeedbackCarouselItem>
+      <Carousel
         items={sortedWorkFeedbacks.map((feedback, feedbackIndex) => ({
           ...feedback,
           tooltip: {

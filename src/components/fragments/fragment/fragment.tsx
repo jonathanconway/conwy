@@ -6,6 +6,8 @@ export type FragmentProps = ComponentPropsWithRef<"div"> & {
   readonly slug?: string;
 };
 
+// todo: rename to content or contentfragment?
+
 function Fragment_(props: FragmentProps, ref: any) {
   return <div className={styles.fragment} {...props} ref={ref} />;
 }

@@ -9,7 +9,6 @@ export const notScrolledDown = style({
 export const scrolledDown = style({
   position: "fixed",
   top: "2.5rem",
-  right: `calc( ( (100% - 65rem) / 2) + 1rem)`,
   maxWidth: `${(65 - 5) * 0.3}rem`,
   width: `calc( ( 100% * 0.3 ) - 1.55rem )`,
 

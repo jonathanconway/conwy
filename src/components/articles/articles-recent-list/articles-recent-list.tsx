@@ -4,9 +4,9 @@ import { Post } from "@/framework/client";
 
 import { Heading } from "../../heading";
 import { Link } from "../../link";
+import { Stack } from "../../stack";
+import { Text } from "../../text";
 import { ArticlesList } from "../articles-list";
-
-import * as styles from "./articles-recent-list.css";
 
 interface ArticlesRecentListProps {
   readonly items: readonly Post[];
@@ -14,16 +14,14 @@ interface ArticlesRecentListProps {
 
 export function ArticlesRecentList({ items }: ArticlesRecentListProps) {
   return (
-    <div>
-      <Heading className={styles.h2} level={2}>
-        Recent posts
-      </Heading>
+    <Stack>
+      <Heading level={2}>Recent posts</Heading>
 
       <ArticlesList items={items} />
 
-      <div className={styles.bodyText}>
+      <Text>
         <Link href="/articles">More articles...</Link>
-      </div>
-    </div>
+      </Text>
+    </Stack>
   );
 }

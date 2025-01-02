@@ -6,9 +6,14 @@ import { vars } from "../../theme";
 
 export const link = style({
   position: "relative",
-  ...linkMixins.link,
-  ...text.size.xl,
   fontWeight: 600,
+  color: vars.text.body.color,
+  cursor: "pointer",
+
+  ":hover": {
+    textDecorationLine: "underline",
+    textDecorationColor: vars.text.body.color,
+  },
 });
 
 export const linkHoverHash = style({
@@ -16,12 +21,12 @@ export const linkHoverHash = style({
   display: "flex",
   top: 0,
   alignItems: "center",
-  left: "-1rem",
+  left: "-2rem",
   bottom: 0,
-  color: vars.label.color,
   visibility: "hidden",
   paddingLeft: "1rem",
   ...text.size.sm,
+  color: linkMixins.linkContent[":hover"].color,
 });
 
 globalStyle(`${link}:hover ${linkHoverHash}`, {

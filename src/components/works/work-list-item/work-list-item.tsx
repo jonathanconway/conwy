@@ -1,8 +1,8 @@
 import { TextTypes } from "@/components/text/text-type";
 import { WorkMeta } from "@/framework/client";
 
+import { ContentListItem, ContentListItemImage } from "../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../link-box";
-import { ListItem, ListItemImage } from "../../list";
 import { Text } from "../../text";
 
 interface WorkListItemProps {
@@ -16,7 +16,7 @@ export function WorkListItem(props: WorkListItemProps) {
 
   return (
     <LinkBox href={`work/${workMeta.slug}`}>
-      <ListItem
+      <ContentListItem
         mainSlot={
           <>
             <LinkBoxTitle>{workMeta.client}</LinkBoxTitle>
@@ -29,7 +29,7 @@ export function WorkListItem(props: WorkListItemProps) {
           </>
         }
         asideSlot={
-          <ListItemImage
+          <ContentListItemImage
             src={`/images/works/${props.workMeta.slug}/${props.workMeta.mainImage ?? "thumbnail.png"}`}
             alt={`Work thumbnail image for ${props.workMeta.client}`}
           />

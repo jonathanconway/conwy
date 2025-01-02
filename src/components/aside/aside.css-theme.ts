@@ -14,7 +14,7 @@ export const asideThemeLight = {
     color: colors.stone_400,
   },
   background: {
-    color: colors.stone_200,
+    color: colors.stone_150,
   },
 };
 
