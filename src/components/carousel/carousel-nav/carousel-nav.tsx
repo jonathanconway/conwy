@@ -12,7 +12,7 @@ interface CarouselNavProps<T extends CarouselItem = CarouselItem> {
 export function CarouselNav<T extends CarouselItem = CarouselItem>(
   props: CarouselNavProps<T>,
 ) {
-  if (props.carousel.items.length <= 0) {
+  if (props.carousel.items.length <= 1) {
     return null;
   }
 

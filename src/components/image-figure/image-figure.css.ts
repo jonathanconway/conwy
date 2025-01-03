@@ -13,6 +13,7 @@ export const container = style({
 export const img = style({
   maxHeight: "20rem",
   width: "100%",
+  height: "auto",
   padding: "0.5rem",
   borderWidth: "1px",
   borderColor: vars.imageFigure.border.color,

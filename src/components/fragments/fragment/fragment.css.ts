@@ -1,8 +1,10 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { colors, rounded } from "../../styling";
+import { colors, rounded, text } from "../../styling";
 
-export const fragment = style({});
+export const fragment = style({
+  ...text.size.sm,
+});
 
 const h3 = {
   paddingTop: "1.25rem",
@@ -24,11 +26,14 @@ globalStyle(`${fragment} hr`, hr);
 
 const p = {
   paddingTop: "0.5rem",
-  fontSize: "0.875rem" /* todo: add to variables */,
-  lineHeight: "1.5rem",
+  ...text.size.sm,
 };
 
 globalStyle(`${fragment} p`, p);
+
+// globalStyle(`${fragment} p:not(:first-child)`, {
+//   paddingTop: "0.5rem",
+// });
 
 const pFirst = {
   paddingTop: 0,
@@ -38,8 +43,8 @@ globalStyle(`${fragment} p:first-child`, pFirst);
 
 const ol = {
   listStyleType: "decimal",
-  marginLeft: 0,
-  marginRight: 0,
+  marginLeft: "auto",
+  marginRight: "auto",
   paddingTop: 0,
   paddingRight: "1.5rem",
   paddingBottom: 0,

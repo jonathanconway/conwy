@@ -1,11 +1,5 @@
 import { style } from "@vanilla-extract/css";
 
-import { text } from "../styling";
-import { vars } from "../theme";
+import * as mixins from "./label.mixins";
 
-export const label = style({
-  textTransform: "uppercase",
-  fontWeight: 500,
-  color: vars.label.color,
-  ...text.size.xs,
-});
+export const label = style(mixins.label);

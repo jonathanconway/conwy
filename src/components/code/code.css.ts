@@ -1,21 +1,33 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { rounded, text } from "../styling";
-import { vars } from "../theme";
+import * as boxMixins from "../box/box.mixins";
+import { media, rounded, text } from "../styling";
+
+// todo: because of prismjs; find a way to remove the !important 's
 
 export const code = style({
+  paddingLeft: "0.25rem !important",
+  paddingRight: "0.25rem !important",
+  wordWrap: "break-word !important",
   ...rounded.md,
-  borderWidth: "1px",
-  borderColor: vars.code.border.color,
-  paddingLeft: "0.375rem",
-  paddingRight: "0.375rem",
+  ...boxMixins.boxBorderDecorative,
   ...text.size.sm,
-});
+} as any);
 
 globalStyle(`pre code`, {
-  whiteSpace: "pre-wrap !important", // todo: because of prismjs; find a way to fix
+  whiteSpace: "pre-wrap !important",
 });
 
 globalStyle(`p code, li code`, {
-  whiteSpace: "nowrap !important", // todo: because of prismjs; find a way to fix
+  "@media": {
+    [media.lessThanLg]: {
+      display: "inline-block",
+      width: "100%",
+      whiteSpace: "break-word !important",
+    },
+    [media.lgAndUp]: {
+      // Only on larger screens; otherwise, a wide link might blow out the page width.
+      whiteSpace: "nowrap !important",
+    },
+  },
 });

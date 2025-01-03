@@ -1,24 +1,21 @@
 import { style } from "@vanilla-extract/css";
 
-import { cn } from "@/framework/client";
-
 import * as buttonStyles from "../button/button.css";
+import * as buttonMixins from "../button/button.mixins";
 import { rounded } from "../styling";
 
-export const iconButtonBase = cn(
-  buttonStyles.buttonBase,
-  style({
-    display: "inline-flex",
-    alignItems: "center",
-    alignContent: "center",
-    justifyContent: "center",
-    ...rounded.regular,
-    borderWidth: "1px",
-    width: "1.5rem",
-    height: "1.5rem",
-    padding: "0.25rem",
-  }),
-);
+export const iconButtonBase = style({
+  ...buttonMixins.buttonBase,
+  display: "inline-flex",
+  alignItems: "center",
+  alignContent: "center",
+  justifyContent: "center",
+  ...rounded.regular,
+  borderWidth: "1px",
+  width: "1.5rem",
+  height: "1.5rem",
+  padding: "0.25rem",
+});
 
 export const iconButtonSelected = buttonStyles.buttonSelected;
 

@@ -29,7 +29,7 @@ export const boxThemeLight = {
 export const boxThemeDark = {
   decorative: {
     border: {
-      color: colors.stone_700,
+      color: colors.stone_600,
     },
   },
   structural: {

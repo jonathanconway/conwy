@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 import * as linkMixins from "../../../link/link.mixins";
+import { media } from "../../../styling";
 
 export const list = style({
   display: "flex",
@@ -19,7 +20,13 @@ export const listItemSelected = style({
   fontWeight: 700,
   overflow: "hidden",
   textOverflow: "ellipsis",
-  whiteSpace: "nowrap",
+
+  "@media": {
+    [media.lgAndUp]: {
+      // Only on larger screens; otherwise, a wide link might blow out the page width.
+      whiteSpace: "nowrap",
+    },
+  },
 });
 
 export const link = style({

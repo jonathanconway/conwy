@@ -2,6 +2,7 @@ import { startCase } from "lodash";
 
 import { ItemMeta } from "@/framework/client";
 
+import { Icon, IconTypes } from "../../icon";
 import { Label } from "../../label";
 import { LinkBox } from "../../link-box";
 import { ItemMainImage } from "../item-main-image";
@@ -23,10 +24,14 @@ export function ItemNav<TMeta extends ItemMeta>(props: ItemNavProps<TMeta>) {
         itemMeta ? (
           <LinkBox key={type} href={itemMeta.slug}>
             <div className={styles.mainColumn}>
-              <Label as="div">
-                {type === "previous" && "< "}
-                {startCase(type)}
-                {type === "next" && " >"}
+              <Label as="div" className={styles.label}>
+                {type === "back" && (
+                  <Icon icon={IconTypes.ArrowChevronLeft} size="0.75rem" />
+                )}
+                <span className={styles.labelText}>{startCase(type)}</span>
+                {type === "next" && (
+                  <Icon icon={IconTypes.ArrowChevronRight} size="0.75rem" />
+                )}
               </Label>
 
               <div className={styles.title}>

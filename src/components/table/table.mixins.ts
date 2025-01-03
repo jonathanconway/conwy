@@ -1,5 +1,5 @@
 import * as boxMixins from "../box/box.mixins";
-import { text } from "../styling";
+import { media, text } from "../styling";
 import * as textMixins from "../text/text.mixins";
 
 export const table = {
@@ -42,8 +42,14 @@ export const tableCellHeader = {
   ...textMixins.label,
   borderTop: "none",
   borderBottom: "none",
-  whiteSpace: "nowrap",
   fontSize: "0.6rem",
+
+  "@media": {
+    [media.lgAndUp]: {
+      // Only on larger screens; otherwise, a wide link might blow out the page width.
+      whiteSpace: "nowrap",
+    },
+  },
 };
 
 export const tableCellBody = {

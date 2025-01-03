@@ -1,5 +1,9 @@
 export const text = {
   size: {
+    _2xs: {
+      fontSize: "0.65rem",
+      lineHeight: "1rem" /* 16px */,
+    },
     xs: {
       fontSize: "0.75rem" /* 12px */,
       lineHeight: "1rem" /* 16px */,

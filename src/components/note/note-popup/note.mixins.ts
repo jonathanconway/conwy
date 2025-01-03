@@ -12,4 +12,6 @@ export const note = {
   pointerEvents: "all",
   maxWidth: "20rem",
   boxShadow: shadowMixins.boxShadowRegular,
+  paddingLeft: "0.5rem",
+  paddingRight: "0.5rem",
 } as CSSProperties;

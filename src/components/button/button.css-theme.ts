@@ -88,7 +88,7 @@ export const buttonThemeDark = {
   border: {
     color: colors.stone_700,
   },
-  color: colors.stone_700,
+  color: colors.stone_50,
   hover: {
     background: {
       gradientFrom: {

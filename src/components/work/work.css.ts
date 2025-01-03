@@ -1,4 +1,4 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
 import { media, text } from "../styling";
 
@@ -7,12 +7,24 @@ export const container = style({
   display: "flex",
   flexDirection: "column",
   gap: "2rem",
+
+  "@media": {
+    [media.sm]: {
+      gap: "1.5rem",
+    },
+  },
 });
 
 export const header = style({
   display: "flex",
   flexDirection: "row",
-  gap: "1rem",
+  gap: "2rem",
+
+  "@media": {
+    [media.sm]: {
+      gap: "1rem",
+    },
+  },
 });
 
 export const headerLeft = style({
@@ -94,10 +106,6 @@ export const techAndFeedbackContainer = style({
       flexDirection: "row",
     },
   },
-});
-
-globalStyle(`${techAndFeedbackContainer} > *`, {
-  width: "50%",
 });
 
 export const techContainer = style({ display: "flex", flex: 1 });

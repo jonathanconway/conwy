@@ -1,5 +1,6 @@
 import { merge } from "lodash";
 
+import { media } from "../styling";
 import { vars } from "../theme";
 
 export const linkBase = {
@@ -7,7 +8,13 @@ export const linkBase = {
   alignItems: "center",
   fontWeight: 500,
   cursor: "pointer",
-  whiteSpace: "nowrap",
+
+  "@media": {
+    [media.lgAndUp]: {
+      // Only on larger screens; otherwise, a wide link might blow out the page width.
+      whiteSpace: "nowrap",
+    },
+  },
 };
 
 export const linkDecoration = {

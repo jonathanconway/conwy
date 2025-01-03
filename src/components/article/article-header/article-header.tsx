@@ -5,6 +5,7 @@ import { Date } from "../../date";
 import { Heading } from "../../heading";
 import { Link } from "../../link";
 
+import { ArticleHeaderTags } from "./article-header-tags";
 import * as styles from "./article-header.css";
 
 export interface ArticleHeaderProps {
@@ -29,14 +30,7 @@ export function ArticleHeader({
         <Link href={historyUrl}>History</Link>
       </div>
 
-      {/* todo: extract */}
-      <p className={styles.tags}>
-        {tags.map((tag) => (
-          <span key={tag} className={styles.tag}>
-            {tag}
-          </span>
-        ))}
-      </p>
+      <ArticleHeaderTags tags={tags} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { articleSummaryThemeDark } from "../article/article-summary/article-summ
 import { articlesTagFiltersThemeDark } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeDark } from "../aside/aside.css-theme";
 import { blockQuoteThemeDark } from "../block-quote/block-quote.css-theme";
-import { boxThemeBase } from "../box/box.css-theme";
+import { boxThemeDark } from "../box/box.css-theme";
 import { buttonThemeDark } from "../button/button.css-theme";
 import { codeThemeDark } from "../code/code.css-theme";
 import { contentListItemThemeDark } from "../content-list/content-list-item/content-list-item.css-theme";
@@ -35,7 +35,7 @@ export const themeDarkClass = createTheme(vars, {
   articleSummary: articleSummaryThemeDark,
   aside: asideThemeDark,
   blockQuote: blockQuoteThemeDark,
-  box: boxThemeBase,
+  box: boxThemeDark,
   button: buttonThemeDark,
   code: codeThemeDark,
   contentListItem: contentListItemThemeDark,

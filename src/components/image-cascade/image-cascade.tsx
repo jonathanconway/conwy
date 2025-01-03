@@ -79,13 +79,15 @@ export function ImageCascade(props: ImageCascadeProps) {
               <span className={styles.imageNumber}>
                 {props.images.indexOf(image) + 1}
               </span>
-              <Image
-                className={styles.image}
-                src={image.src}
-                alt={image.src}
-                width={IMAGE_SIZE_PX.width}
-                height={IMAGE_SIZE_PX.height}
-              />
+              <div className={styles.imageInner}>
+                <Image
+                  className={styles.image}
+                  src={image.src}
+                  alt={image.src}
+                  width={IMAGE_SIZE_PX.width}
+                  height={IMAGE_SIZE_PX.height}
+                />
+              </div>
             </div>
           </Tooltip>
         ))}

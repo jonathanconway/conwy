@@ -37,7 +37,7 @@ export function Copyable(props: CopyableProps) {
         />
       </div>
 
-      {props.children}
+      <div className={styles.contentContainer}>{props.children}</div>
     </div>
   );
 }

@@ -15,7 +15,7 @@ export function useItemNav<TMeta extends ItemMeta>(
   const itemMetaNext = getNext(itemMetas, params.itemMeta);
   const itemMetasNavsPreviousNext = [
     {
-      type: "previous",
+      type: "back",
       itemMeta: itemMetaPrevious,
     },
     {
@@ -23,7 +23,7 @@ export function useItemNav<TMeta extends ItemMeta>(
       itemMeta: itemMetaNext,
     },
   ] as readonly {
-    readonly type: "previous" | "next";
+    readonly type: "back" | "next";
     readonly itemMeta: TMeta;
   }[];
 

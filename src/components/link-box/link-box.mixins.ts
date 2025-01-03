@@ -1,6 +1,6 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 
-import { rounded } from "../styling";
+import { media, rounded } from "../styling";
 import { vars } from "../theme";
 
 export const linkBox: ComplexStyleRule = {
@@ -12,12 +12,20 @@ export const linkBox: ComplexStyleRule = {
   borderStyle: "solid",
   borderColor: vars.box.decorative.border.color,
   padding: "0.5rem",
-  gap: "1rem",
   cursor: "pointer",
   textDecoration: "none",
   color: vars.text.body.color,
 
   ":hover": {
     backgroundColor: vars.linkBox.hover.background.color,
+  },
+
+  "@media": {
+    [media.sm]: {
+      gap: "0.5rem",
+    },
+    [media.mdAndUp]: {
+      gap: "1rem",
+    },
   },
 };

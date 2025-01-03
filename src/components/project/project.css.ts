@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { media, responsive, text } from "../styling";
+import { media, text } from "../styling";
 
 export const container = style({
   position: "relative",
@@ -9,17 +9,16 @@ export const container = style({
   gap: "2rem",
 });
 
-export const main = style({
-  display: "flex",
-  flex: 1,
-  gap: "1rem",
-  ...responsive.flexDirectionMobileColumnRowElse,
-});
-
 export const header = style({
   display: "flex",
   flexDirection: "row",
-  gap: "1rem",
+  gap: "2rem",
+
+  "@media": {
+    [media.sm]: {
+      gap: "1.5rem",
+    },
+  },
 });
 
 export const headerLeft = style({
@@ -55,6 +54,19 @@ export const client = style({
   marginTop: 0,
 });
 
+export const main = style({
+  display: "flex",
+  flex: 1,
+  flexDirection: "row",
+  gap: "2rem",
+
+  "@media": {
+    [media.sm]: {
+      flexDirection: "column",
+    },
+  },
+});
+
 export const blurb = style({
   ...text.size.sm,
   flex: 1,
@@ -75,7 +87,13 @@ export const aside = style({
 
 export const techAndOtherContainer = style({
   display: "flex",
-  ...responsive.flexDirectionMobileColumnRowElse,
+  flexDirection: "row",
+  "@media": {
+    [media.sm]: {
+      flexDirection: "column",
+      gap: "1rem",
+    },
+  },
 });
 
 export const techContainer = style({ display: "flex", flex: 1 });
@@ -85,4 +103,10 @@ export const otherContainer = style({
   flexDirection: "column",
   flex: 1,
   gap: "1.5rem",
+
+  "@media": {
+    [media.sm]: {
+      gap: "1rem",
+    },
+  },
 });

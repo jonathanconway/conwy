@@ -40,6 +40,15 @@ export const imageContainer = style({
   },
 });
 
+export const imageInner = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  overflow: "hidden",
+  width: "100%",
+  height: "100%",
+});
+
 export const imageNumber = style({
   position: "absolute",
   left: "-0.5rem",
@@ -60,6 +69,8 @@ export const image = style({
   pointerEvents: "none",
   margin: "0.25rem",
   maxHeight: "100%",
+  width: "auto",
+  // width: "100%",
 });
 
 export const nav = style({

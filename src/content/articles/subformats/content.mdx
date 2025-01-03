@@ -102,9 +102,7 @@ function getBlockQuoteSubformatProps(props) {
 }
 ```
 
-> Aside:
->
-> Note: This chaining pattern allows multiple subformats to be applied independent of one another.
+> Aside: Note: This chaining pattern allows multiple subformats to be applied independent of one another.
 
 The `getPullQuoteVariationProps` function first checks if the `children` prop has the "Pull-quote:" prefix (this is handled by `getIsSubformatChildrenPrefixed`). If it does, then this is a pull-quote. So then it adds the `pullQuote` class (imported from CSS modules), which applies pull-quote styling to the element.
 

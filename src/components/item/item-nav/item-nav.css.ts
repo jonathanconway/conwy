@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import * as labelMixins from "../../label/label.mixins";
 import { gap, media, responsive, rounded, size, text } from "../../styling";
 import { vars } from "../../theme";
 
@@ -43,17 +44,25 @@ export const asideColumn = style({
   alignContent: "center",
 });
 
-export const label = "";
+export const label = style({
+  ...labelMixins.label,
+  display: "flex",
+  alignItems: "center",
+  gap: "0.25rem",
+});
+
+export const labelText = style({});
 
 export const title = style({
   fontWeight: "bold",
   ...text.size.xs,
   textOverflow: "ellipsis",
   overflow: "hidden",
+  whiteSpace: "nowrap",
 
   "@media": {
     [media.sm]: {
-      ...text.size.sm,
+      maxWidth: "20vw",
     },
   },
 });
