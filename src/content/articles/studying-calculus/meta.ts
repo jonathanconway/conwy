@@ -13,7 +13,7 @@ export const meta: ArticleMeta = {
     {
       type: SocialLinkTypes.Website,
       url: "https://www.coursera.org/learn/introduction-to-calculus",
-      title: "Link to course on Coursera",
+      title: "Calculus on Coursera",
     },
   ],
   discussionLinks: [],

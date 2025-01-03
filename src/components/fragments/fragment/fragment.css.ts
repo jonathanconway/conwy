@@ -27,6 +27,7 @@ globalStyle(`${fragment} hr`, hr);
 const p = {
   paddingTop: "0.5rem",
   ...text.size.sm,
+  lineHeight: "1.5rem",
 };
 
 globalStyle(`${fragment} p`, p);
