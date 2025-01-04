@@ -1,8 +1,6 @@
-import Head from "next/head";
-
 export function GoogleTagManager() {
   return (
-    <Head key="gtm">
+    <>
       {/* <!-- Google tag (gtag.js) --> */}
       <script
         async
@@ -17,6 +15,6 @@ export function GoogleTagManager() {
       gtag('config', 'G-25G3CM3VLS');
       `}
       </script>
-    </Head>
+    </>
   );
 }

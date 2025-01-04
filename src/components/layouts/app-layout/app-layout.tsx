@@ -13,7 +13,6 @@ export function AppLayout({ children }: { readonly children: ReactNode }) {
   return (
     <html lang="en" className={cn(styles.html, inter.className)}>
       <body className={styles.body}>{children}</body>
-
       <Scripts />
     </html>
   );
