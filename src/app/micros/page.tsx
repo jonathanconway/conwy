@@ -1,8 +1,6 @@
-import { PageLayout } from "@/components";
+import { MicrosList, PageLayout } from "@/components";
 import { site } from "@/content";
 import * as micros from "@/content/micros";
-
-import { MicrosList } from "../../components";
 
 export default function Page() {
   const microMetas = Object.values(micros).map((micro) => micro.meta);
