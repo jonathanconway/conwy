@@ -41,3 +41,4 @@ export * from "./atlas-of-the-heart";
 export * from "./numbers-dont-lie";
 export * from "./how-the-world-really-works";
 export * from "./how-to-eat";
+export * from "./technological-revolutions";
