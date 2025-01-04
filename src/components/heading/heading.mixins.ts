@@ -12,14 +12,15 @@ export const h1: ComplexStyleRule = {
 export const h2: ComplexStyleRule = {
   marginTop: 0,
   fontWeight: 600,
-  ...text.size.xl,
+  ...text.size._2xl,
 };
 
 export const h3: ComplexStyleRule = {
   fontWeight: 600,
-  ...text.size.lg,
+  ...text.size.xl,
 };
 
 export const h4: ComplexStyleRule = {
   fontWeight: 600,
+  ...text.size.lg,
 };
