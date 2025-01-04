@@ -1,35 +1,34 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
-
-import { text } from "../styling";
 import { vars } from "../theme";
+
+import * as textSizeMixins from "./text-size/text-size.mixins";
 
 export const body = {
   color: vars.text.body.color,
   fontWeight: 400,
   paddingTop: 0,
-  ...text.size.sm,
+  ...textSizeMixins.sm,
 };
 
 export const label = {
   textTransform: "uppercase",
   fontWeight: 500,
   color: vars.label.color,
-  ...text.size.xs,
+  ...textSizeMixins.xs,
 };
 
-export const paragraph = { ...body, paddingnTop: "1rem" /* 16px */ };
+export const paragraph = { ...body, paddingTop: "1rem" /* 16px */ };
 
 export const small = {
   ...body,
-  ...text.size.xs,
+  ...textSizeMixins.xs,
 };
 
 export const subTitle = {
   color: vars.text.body.color,
-  ...text.size.xs,
+  ...textSizeMixins.xs,
   fontWeight: "bold",
 };
 
 export const summary = {
-  ...text.size.sm,
+  ...textSizeMixins.sm,
 };

@@ -3,7 +3,11 @@
 import NextLink from "next/link";
 import { MouseEvent } from "react";
 
+import { cn } from "@/framework/client";
+
 import { Icon, IconTypes } from "../icon";
+import { Text, TextTypes } from "../text";
+import * as textSizeStyles from "../text/text-size/text-size.css";
 import { withTooltip } from "../tooltip";
 
 import { LinkProps } from "./link-props";
@@ -20,6 +24,7 @@ export function Link_(props: LinkProps) {
     download,
     href = "",
     icon,
+    size,
     onClick,
     ...restProps
   } = props;
@@ -30,16 +35,17 @@ export function Link_(props: LinkProps) {
     !props.download;
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    console.log("link", href);
     if (!href) {
       event.preventDefault();
     }
     onClick?.(event);
   };
 
+  const sizeStyle = size ? textSizeStyles[size] : undefined;
+
   return (
     <NextLink
-      className={className ?? linkStyles.link}
+      className={cn(className ?? linkStyles.link, sizeStyle)}
       href={href}
       onClick={handleClick}
       {...restProps}

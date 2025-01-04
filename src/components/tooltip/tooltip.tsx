@@ -4,8 +4,7 @@ import { isArray, isObject, isString } from "lodash";
 import { CSSProperties, Children, ReactNode, cloneElement, useId } from "react";
 import { Tooltip as Tooltip_ } from "react-tooltip";
 
-import { getResponsiveHidden } from "../responsive";
-import { Breakpoint } from "../styling";
+import { ResponsiveVisibilityMap, getResponsiveHidden } from "../responsive";
 
 import * as styles from "./tooltip.css";
 import * as mixins from "./tooltip.mixins";
@@ -15,7 +14,7 @@ export interface TooltipProps {
   readonly children?: readonly ReactNode[] | ReactNode;
   readonly contents?: ReactNode | string;
   readonly style?: CSSProperties;
-  readonly responsiveVisibility?: Partial<Record<Breakpoint, boolean>>;
+  readonly responsiveVisibility?: ResponsiveVisibilityMap;
 }
 
 function convertContentsToReactNode(contents?: ReactNode | string) {

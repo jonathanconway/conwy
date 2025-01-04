@@ -1,25 +1,18 @@
-import { ElementType, HTMLAttributes } from "react";
+import { ElementType } from "react";
 
-import { TextType, TextTypes } from "./text-type";
+import { TextProps } from "./text-props";
+import { TextTypes } from "./text-type";
 import { TEXT_TYPE_DETAILS } from "./text-type-details";
+import * as styles from "./text.css";
 
-type TextProps = HTMLAttributes<ElementType> & {
-  readonly type?: TextType;
-  readonly as?: string;
-};
-
-export function Text({
-  className,
-  type = TextTypes.Body,
-  as,
-  ...restProps
-}: TextProps) {
+export function Text(props: TextProps) {
+  const { className, type = TextTypes.Body, as, ...restProps } = props;
   const details = TEXT_TYPE_DETAILS[type];
   const Element = (as ?? details.element) as ElementType;
 
   return (
     <Element
-      className={className ?? details.className}
+      className={className ?? styles[details.classNameKey]}
       {...restProps}
     ></Element>
   );

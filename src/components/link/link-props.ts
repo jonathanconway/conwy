@@ -1,6 +1,7 @@
-import { AnchorHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
+import { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
 
 import { IconType } from "../icon";
+import { TextSize } from "../text/text-size";
 
 export type LinkProps = DetailedHTMLProps<
   AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -10,4 +11,5 @@ export type LinkProps = DetailedHTMLProps<
   readonly icon?: IconType;
   readonly showOpenInNew?: boolean;
   readonly showOpenPopup?: boolean;
+  readonly size?: TextSize;
 };

@@ -8,6 +8,7 @@ export * from "./breadcrumb";
 export * from "./carousel";
 export * from "./contact-details";
 export * from "./copyable";
+export * from "./collapsible";
 export * from "./date";
 export * from "./footer";
 export * from "./fragments";
