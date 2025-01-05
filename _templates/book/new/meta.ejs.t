@@ -2,7 +2,7 @@
 to: src/content/books/<%- name %>.ts
 ---
 
-import { Book, BookCategories, BookStatuses } from "@/framework";
+import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const <%- h.nameCamel() %>Book: Book = {
   authors: ["<%- h.author() %>"],
