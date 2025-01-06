@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { focusWithinOutline } from "../focus-outline";
 import { rounded, text } from "../styling";
 import { vars } from "../theme";
 
@@ -37,4 +38,5 @@ export const optionText = style({
   paddingBottom: "0.25rem" /* 4px */,
   cursor: "pointer",
   ...text.size.xs,
+  ...focusWithinOutline,
 });

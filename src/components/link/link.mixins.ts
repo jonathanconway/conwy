@@ -1,10 +1,11 @@
 import { merge } from "lodash";
 
+import { focusOutline } from "../focus-outline";
 import { media } from "../styling";
 import { vars } from "../theme";
 
 export const linkBase = {
-  display: "inline",
+  display: "inline-block",
   alignItems: "center",
   fontWeight: 500,
   cursor: "pointer",
@@ -33,7 +34,7 @@ export const linkContent = {
   },
 };
 
-export const link = merge(linkBase, linkDecoration, linkContent);
+export const link = merge(linkBase, linkDecoration, linkContent, focusOutline);
 
 export const linkIcon = {
   color: "inherit",

@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
+import { focusOutline } from "../../../focus-outline";
 import { colors, media, text as text_ } from "../../../styling";
 import { vars } from "../../../theme";
 
@@ -9,6 +10,7 @@ export const link = style({
   paddingTop: "0.5rem",
   paddingBottom: "0.5rem",
   textDecoration: "none",
+  ...focusOutline,
 
   "@media": {
     [media.sm]: {

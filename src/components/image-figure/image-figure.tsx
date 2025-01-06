@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
 
+import { Link } from "../link";
+
 import * as styles from "./image-figure.css";
 
 export type ImageFigureProps = DetailedHTMLProps<
@@ -13,7 +15,7 @@ export function ImageFigure(props: ImageFigureProps) {
 
   return (
     <figure className={styles.container} suppressHydrationWarning>
-      <a href={src} target="_blank">
+      <Link href={src} target="_blank" showOpenInNew={false}>
         <Image
           className={styles.img}
           alt={alt ?? title ?? ""}
@@ -22,7 +24,7 @@ export function ImageFigure(props: ImageFigureProps) {
           height={Number(height) || 400}
           placeholder="empty"
         />
-      </a>
+      </Link>
 
       <figcaption className={styles.figCaption}>▲ {title ?? alt}</figcaption>
     </figure>

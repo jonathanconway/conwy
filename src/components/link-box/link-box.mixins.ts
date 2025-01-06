@@ -1,5 +1,6 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 
+import { focusOutline } from "../focus-outline";
 import { media, rounded } from "../styling";
 import { vars } from "../theme";
 
@@ -15,6 +16,7 @@ export const linkBox: ComplexStyleRule = {
   cursor: "pointer",
   textDecoration: "none",
   color: vars.text.body.color,
+  ...focusOutline,
 
   ":hover": {
     backgroundColor: vars.linkBox.hover.background.color,

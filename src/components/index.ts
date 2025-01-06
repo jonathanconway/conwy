@@ -10,6 +10,7 @@ export * from "./contact-details";
 export * from "./copyable";
 export * from "./collapsible";
 export * from "./date";
+export * from "./focus-outline";
 export * from "./footer";
 export * from "./fragments";
 export * from "./header";

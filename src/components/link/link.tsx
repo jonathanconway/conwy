@@ -6,7 +6,6 @@ import { MouseEvent } from "react";
 import { cn } from "@/framework/client";
 
 import { Icon, IconTypes } from "../icon";
-import { Text, TextTypes } from "../text";
 import * as textSizeStyles from "../text/text-size/text-size.css";
 import { withTooltip } from "../tooltip";
 
