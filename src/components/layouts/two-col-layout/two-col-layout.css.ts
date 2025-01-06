@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { media } from "@/components/styling";
+import { media } from "../../styling";
 
 export const container = style({
   display: "flex",

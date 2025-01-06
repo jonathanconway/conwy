@@ -1,4 +1,4 @@
-import { colors } from "@/components/styling";
+import { colors } from "../../styling";
 
 export const itemNavThemeBase = {
   placeholder: {

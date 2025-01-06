@@ -1,7 +1,6 @@
 "use client";
 
-import { Aside } from "@/components/aside";
-
+import { Aside } from "../../aside";
 import { BlockQuote, BlockQuotePullQuote } from "../../block-quote";
 
 import { MdxBlockquoteProps } from "./mdx-blockquote-props";

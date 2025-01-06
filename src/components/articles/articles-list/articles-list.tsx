@@ -1,10 +1,10 @@
 "use client";
 
-import { Post, getAreSomeSame, getItemsTags } from "@/framework/client";
+import { Post } from "@/framework/client";
 
 import { ContentList } from "../../content-list";
+import { useTagFiltersResults } from "../../filters";
 import { MicrosListItem } from "../../micros";
-import { ALL, useTagFiltersSwitch } from "../articles-tag-filters";
 
 import { ArticlesListItem } from "./articles-list-item";
 
@@ -13,13 +13,11 @@ interface ArticlesListProps {
 }
 
 export function ArticlesList({ items }: ArticlesListProps) {
-  const allTags = getItemsTags(items);
-
-  const { selectedTags } = useTagFiltersSwitch(allTags);
-
-  const filteredItems = selectedTags.includes(ALL)
-    ? items
-    : items.filter((item) => getAreSomeSame(item.meta.tags, selectedTags));
+  const { filteredItems } = useTagFiltersResults({
+    items,
+    contentType: "article",
+    tagField: "meta.tags",
+  });
 
   return (
     <ContentList>

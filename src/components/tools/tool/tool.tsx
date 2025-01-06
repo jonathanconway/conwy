@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import { ContentListItem } from "@/components/content-list";
-import { TextTypes } from "@/components/text/text-type";
 import { Tool as Tool_ } from "@/framework/client";
 
+import { ContentListItem } from "../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../link-box";
 import { Text } from "../../text";
+import { TextTypes } from "../../text/text-type";
 
 import * as styles from "./tool.css";
 

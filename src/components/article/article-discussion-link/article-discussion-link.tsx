@@ -1,5 +1,6 @@
-import { SocialLinksListItem } from "@/components/social-links";
 import { Article } from "@/framework/client";
+
+import { SocialLinksListItem } from "../../social-links";
 
 import * as styles from "./article-discussion-link.css";
 import { getArticleDiscussionLinksDetails } from "./article-discussion-link.utils";

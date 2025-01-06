@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { media } from "@/components/styling";
+import { media } from "../../styling";
 
 const containerMaxWidth = "65rem";
 

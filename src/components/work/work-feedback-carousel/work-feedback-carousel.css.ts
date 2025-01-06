@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { text } from "@/components/styling";
+import { text } from "../../styling";
 
 export const feedbackItemQuote = style({
   ...text.size.xs,

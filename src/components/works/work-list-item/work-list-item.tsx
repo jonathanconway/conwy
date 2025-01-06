@@ -1,9 +1,9 @@
-import { TextTypes } from "@/components/text/text-type";
 import { WorkMeta } from "@/framework/client";
 
 import { ContentListItem, ContentListItemImage } from "../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../link-box";
 import { Text } from "../../text";
+import { TextTypes } from "../../text/text-type";
 
 interface WorkListItemProps {
   readonly workMeta: WorkMeta;

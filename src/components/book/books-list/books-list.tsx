@@ -1,34 +1,48 @@
-import { BookStatus, titleCase } from "@/framework/client";
+"use client";
 
-import { Heading } from "../../heading";
-import { Link } from "../../link";
+import { sentenceCase } from "@/framework/client";
 
-import { getBooksList } from "./get-books-list";
+import { TagFilters, useTagFiltersResults } from "../../filters";
+import { LinkBox, LinkBoxTitle } from "../../link-box";
+import { List } from "../../list";
+import { Text, TextTypes } from "../../text";
 
-interface BooksListProps {
-  readonly status: BookStatus;
-}
+import * as styles from "./books-list.css";
+import { getBooks } from "./get-books-list";
 
-export function BooksList(props: BooksListProps) {
-  const booksCategories = getBooksList(props);
+export function BooksList() {
+  const books = getBooks();
+
+  const { filteredItems } = useTagFiltersResults({
+    items: books,
+    contentType: "book",
+    tagField: "category",
+  });
 
   return (
     <>
-      {Object.entries(booksCategories).map(([bookCategoryName, books]) => (
-        <>
-          <Heading level={4}>{titleCase(bookCategoryName)}</Heading>
-          <ul>
-            {books.map((book) => (
-              <li key={book.title}>
-                <Link href={book.url} target="_blank">
-                  {book.title}
-                </Link>{" "}
-                by {book.authors.join(", ")}
-              </li>
-            ))}
-          </ul>
-        </>
-      ))}
+      <TagFilters contentType="book" items={books} tagField="category" />
+
+      <List className={styles.booksList}>
+        {filteredItems.map((book) => (
+          <li key={book.title} className={styles.booksListItem}>
+            <LinkBox
+              className={styles.bookLinkBox}
+              href={book.url}
+              target="_blank"
+            >
+              <LinkBoxTitle>{book.title}</LinkBoxTitle>
+              <Text type={TextTypes.Body}>by {book.authors.join(", ")}</Text>
+              <Text type={TextTypes.Small}>{sentenceCase(book.status)}</Text>
+            </LinkBox>
+          </li>
+        ))}
+      </List>
     </>
   );
 }
+
+//   <Link href={book.url} target="_blank">
+//     {book.title}
+//   </Link>{" "}
+//

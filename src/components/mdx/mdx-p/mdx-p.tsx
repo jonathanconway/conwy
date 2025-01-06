@@ -1,4 +1,4 @@
-import { NotePopup } from "@/components/note";
+import { NotePopup } from "../../note";
 
 import { MdxPProps } from "./mdx-p-props";
 import { getPSubformatProps } from "./mdx-p-subformat";
