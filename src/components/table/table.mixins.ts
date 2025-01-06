@@ -4,7 +4,6 @@ import * as textMixins from "../text/text.mixins";
 
 export const table = {
   marginTop: "1rem",
-  // padding: "0.75rem",
   borderSpacing: 0,
   // todo: remove
   borderCollapse: "unset",
@@ -25,7 +24,7 @@ export const tableCell = {
 export const tableCellHeaderTop = {};
 
 export const tableCellLeft = {
-  borderRight: "none",
+  borderLeftStyle: "none",
 };
 
 export const tableCellHeaderTopLeft = {
