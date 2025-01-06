@@ -37,16 +37,16 @@ function SwitchOption(props: SwitchOptionGrouped) {
 
   return (
     <div key={props.name} className={styles.optionContainer}>
-      <input
-        readOnly
-        id={id}
-        type="radio"
-        name={props.name}
-        className={styles.optionInput}
-        checked={props.defaultChecked}
-        onClick={props.onClick}
-      />
-      <label htmlFor={id} className={styles.optionText}>
+      <label htmlFor={id} className={styles.optionText} onClick={props.onClick}>
+        <input
+          readOnly
+          id={id}
+          type="radio"
+          name={props.name}
+          className={styles.optionInput}
+          checked={props.defaultChecked}
+          onClick={props.onClick}
+        />
         {props.content}
       </label>
     </div>

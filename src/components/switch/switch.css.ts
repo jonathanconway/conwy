@@ -25,7 +25,8 @@ export const optionContainer = style({
 });
 
 export const optionInput = style({
-  display: "none",
+  position: "absolute",
+  opacity: 0,
 });
 
 export const optionText = style({
