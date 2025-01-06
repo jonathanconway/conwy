@@ -30,6 +30,6 @@ export const linkHoverHash = style({
   color: linkMixins.linkContent[":hover"].color,
 });
 
-globalStyle(`${link}:hover ${linkHoverHash}`, {
+globalStyle(`${link}:hover ${linkHoverHash}, ${link}:focus ${linkHoverHash}`, {
   visibility: "visible",
 });
