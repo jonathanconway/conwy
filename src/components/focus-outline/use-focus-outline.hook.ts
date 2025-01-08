@@ -2,22 +2,41 @@
 
 import { useEffect } from "react";
 
-import { themeFocusOutlineClass } from "./focus-outline-theme.css";
+import {
+  themeFocusOutlineDisabledClass,
+  themeFocusOutlineEnabledClass,
+} from "./focus-outline-theme.css";
+
+function setFocusOutline(isEnabled: boolean) {
+  if (isEnabled) {
+    window.document.body.classList.remove(themeFocusOutlineDisabledClass);
+    if (
+      !window.document.body.classList.contains(themeFocusOutlineEnabledClass)
+    ) {
+      window.document.body.classList.add(themeFocusOutlineEnabledClass);
+    }
+  } else {
+    window.document.body.classList.remove(themeFocusOutlineEnabledClass);
+    if (
+      !window.document.body.classList.contains(themeFocusOutlineDisabledClass)
+    ) {
+      window.document.body.classList.add(themeFocusOutlineDisabledClass);
+    }
+  }
+}
 
 export function useFocusOutline() {
   const handleWindowMouseDown = () => {
-    window.document.body.classList.remove(themeFocusOutlineClass);
+    setFocusOutline(false);
   };
 
   const handleWindowKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
       case "Tab":
-        if (!window.document.body.classList.contains(themeFocusOutlineClass)) {
-          window.document.body.classList.add(themeFocusOutlineClass);
-        }
+        setFocusOutline(true);
         break;
       case "Escape":
-        window.document.body.classList.remove(themeFocusOutlineClass);
+        setFocusOutline(false);
         break;
     }
   };
