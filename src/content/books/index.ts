@@ -43,3 +43,5 @@ export * from "./how-the-world-really-works";
 export * from "./how-to-eat";
 export * from "./technological-revolutions";
 export * from "./thinking-fast-and-slow";
+export * from "./tidy-first";
+export * from "./infinite-game";
