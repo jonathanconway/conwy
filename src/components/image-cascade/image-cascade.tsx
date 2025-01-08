@@ -67,6 +67,8 @@ export function ImageCascade(props: ImageCascadeProps) {
             contents={image.alt ?? `Image #${imageIndex}`}
           >
             <div
+              role="button"
+              tabIndex={0}
               className={styles.imageContainer}
               style={{
                 left: `${(100 / (props.images.length * 2)) * (imageIndex + 1)}%`,

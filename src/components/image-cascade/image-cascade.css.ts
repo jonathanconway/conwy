@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 import { boxBorderDecorative } from "../box/box.mixins";
+import { focusOutline } from "../focus-outline";
 import { rounded, text } from "../styling";
 import { vars } from "../theme";
 
@@ -15,6 +16,7 @@ export const imageContainerSingle = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  pointerEvents: "none",
 });
 
 const imageBorder = {
@@ -33,6 +35,7 @@ export const imageContainer = style({
   backgroundColor: vars.layout.body.background.color,
   ...rounded.lg,
   ...imageBorder,
+  ...focusOutline,
 
   ":hover": {
     // todo: generalize
@@ -47,6 +50,7 @@ export const imageInner = style({
   overflow: "hidden",
   width: "100%",
   height: "100%",
+  pointerEvents: "none",
 });
 
 export const imageNumber = style({
@@ -60,6 +64,7 @@ export const imageNumber = style({
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
+  pointerEvents: "none",
   ...imageBorder,
   ...rounded.full,
 });
