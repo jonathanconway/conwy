@@ -1,4 +1,4 @@
-import { ArticleMeta, SocialLinkTypes } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "AI user interface patterns",
@@ -8,7 +8,7 @@ export const meta: ArticleMeta = {
   date: "2024-09-13",
   slug: "ai-patterns",
   type: "article",
-  tags: ["design"],
+  tags: [PostTags.Design],
   socialLinks: [],
   discussionLinks: [
     {

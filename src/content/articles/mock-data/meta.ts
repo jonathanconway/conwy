@@ -1,4 +1,4 @@
-import { ArticleMeta, SocialLinkTypes } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Uses of mock data",
@@ -6,7 +6,7 @@ export const meta: ArticleMeta = {
   date: "2021-09-28",
   slug: "mock-data",
   type: "article",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   mainImage: "main.jpg",
   socialLinks: [
     {

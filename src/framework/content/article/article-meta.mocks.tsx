@@ -1,3 +1,4 @@
+import { PostTags } from "../post";
 import { SocialLinkTypes } from "../social-link";
 
 import { ArticleMeta } from "./article-meta";
@@ -8,7 +9,7 @@ export function createArticleMetaMock(): ArticleMeta {
     blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
     date: "2023-09-02",
     slug: "front-end-observability",
-    tags: ["software-development"],
+    tags: [PostTags.SoftwareDevelopment],
     type: "article",
     socialLinks: [
       {
@@ -39,7 +40,7 @@ export function createArticleMetaMock2(): ArticleMeta {
     date: "2023-08-06",
     slug: "streamlining-code-reviews",
     type: "article",
-    tags: ["software-development", "design"],
+    tags: [PostTags.SoftwareDevelopment, PostTags.Design],
     socialLinks: [
       {
         type: SocialLinkTypes.LinkedIn,

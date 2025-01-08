@@ -1,10 +1,10 @@
-import { MicroMeta } from "@/framework/client";
+import { MicroMeta, PostTags } from "@/framework/client";
 
 export const meta: MicroMeta = {
   blurb: `Thought: CSS inheritance seems to cause similar maintainability issues to OO inheritance.`,
   date: "2024-04-20",
   slug: "css-inheritance",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   type: "micro",
   socialLinks: [
     {

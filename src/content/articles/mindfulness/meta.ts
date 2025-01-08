@@ -1,4 +1,4 @@
-import { ArticleMeta } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Mindfulness",
@@ -8,7 +8,7 @@ export const meta: ArticleMeta = {
   date: "2024-09-13",
   slug: "mindfulness",
   type: "article",
-  tags: ["life"],
+  tags: [PostTags.Life],
   socialLinks: [],
   discussionLinks: [],
   isPinned: true,

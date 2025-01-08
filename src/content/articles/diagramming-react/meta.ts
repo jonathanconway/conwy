@@ -1,4 +1,4 @@
-import { ArticleMeta } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Diagramming React code",
@@ -6,7 +6,7 @@ export const meta: ArticleMeta = {
   date: "2024-10-14",
   slug: "diagramming-react",
   type: "article",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   socialLinks: [],
   discussionLinks: [],
 };

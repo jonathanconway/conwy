@@ -1,4 +1,4 @@
-import { ArticleMeta } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Wireframing techniques",
@@ -6,7 +6,7 @@ export const meta: ArticleMeta = {
   date: "2020-12-30",
   slug: "interaction-wireframes",
   type: "article",
-  tags: ["design"],
+  tags: [PostTags.Design],
   socialLinks: [],
   discussionLinks: [],
 };

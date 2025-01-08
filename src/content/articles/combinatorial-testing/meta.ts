@@ -1,4 +1,4 @@
-import { ArticleMeta, SocialLinkTypes } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Combinatorial testing",
@@ -7,7 +7,7 @@ export const meta: ArticleMeta = {
   date: "2022-10-10",
   slug: "combinatorial-testing",
   type: "article",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   mainImage: "main.jpg",
   socialLinks: [
     {

@@ -1,10 +1,10 @@
-import { MicroMeta, SocialLinkTypes } from "@/framework/client";
+import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: MicroMeta = {
   blurb: `Brilliant talk! The “debt” metaphor in “tech debt” is problematic. Code quality is best seen as a continuous process, which needs to be supported by frequent delivery, appropriate timeframes, continuous learning, transparency and advocacy.`,
   date: "2024-09-03",
   slug: "sleeman-tech-debt",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   type: "micro",
   socialLinks: [
     {

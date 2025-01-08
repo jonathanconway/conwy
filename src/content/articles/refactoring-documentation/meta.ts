@@ -1,4 +1,4 @@
-import { ArticleMeta } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Refactoring vs documentation",
@@ -6,7 +6,7 @@ export const meta: ArticleMeta = {
   date: "2023-07-02",
   slug: "refactoring-documentation",
   type: "article",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   socialLinks: [],
   discussionLinks: [],
 };

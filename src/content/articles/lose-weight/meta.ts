@@ -1,4 +1,4 @@
-import { ArticleMeta, SocialLinkTypes } from "@/framework";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework";
 
 export const meta: ArticleMeta = {
   title: "How to lose weight (without getting lucky)",
@@ -7,7 +7,7 @@ export const meta: ArticleMeta = {
   date: "2025-01-03",
   slug: "lose-weight",
   type: "article",
-  tags: ["life"],
+  tags: [PostTags.Life],
   socialLinks: [
     {
       type: SocialLinkTypes.Website,
