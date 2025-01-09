@@ -1,15 +1,11 @@
 import { isNumber } from "lodash";
-import { ReactNode } from "react";
+
+import { cn } from "@/framework/client";
 
 import { SizeRem } from "../styling";
 
+import { StackProps } from "./stack-props";
 import * as styles from "./stack.css";
-
-interface StackProps {
-  readonly direction?: "column" | "row";
-  readonly gap?: SizeRem;
-  readonly children: ReactNode;
-}
 
 function stringifySizeRem(gap?: SizeRem) {
   if (!gap) {
@@ -26,7 +22,10 @@ function stringifySizeRem(gap?: SizeRem) {
 export function Stack({ direction = "column", gap, children }: StackProps) {
   return (
     <div
-      className={direction === "column" ? styles.stackColumn : styles.stackRow}
+      className={cn(
+        styles.stackBase,
+        direction === "column" ? styles.stackColumn : styles.stackRow,
+      )}
       style={{
         ...(gap
           ? {

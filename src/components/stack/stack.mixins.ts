@@ -1,4 +1,4 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
 export const stackBase: ComplexStyleRule = {
   display: "flex",
@@ -6,11 +6,13 @@ export const stackBase: ComplexStyleRule = {
 };
 
 export const stackColumn: ComplexStyleRule = {
-  ...stackBase,
   flexDirection: "column",
 };
 
 export const stackRow: ComplexStyleRule = {
-  ...stackBase,
-  flexDirection: "column",
+  flexDirection: "row",
+};
+
+export const stackImmediateChildren: GlobalStyleRule = {
+  flex: 1,
 };

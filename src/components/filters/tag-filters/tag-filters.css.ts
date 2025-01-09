@@ -3,17 +3,35 @@ import { globalStyle, style } from "@vanilla-extract/css";
 import { colors, filters, media, rounded } from "../../styling";
 import { vars } from "../../theme";
 
-export const container = style({
+export const containerFew = style({
   display: "flex",
   flexDirection: "row",
-  gap: "0.75rem" /* 12px */,
+  gap: "1rem",
   flexWrap: "wrap",
   "@media": {
     [media.sm]: {
       flexDirection: "column",
     },
     [media.mdAndUp]: {
-      marginBottom: "1rem" /* 16px */,
+      marginBottom: "1rem",
+    },
+  },
+});
+
+export const containerMany = style({
+  gap: "0.75rem",
+
+  "@media": {
+    [media.sm]: {
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "column",
+    },
+    [media.mdAndUp]: {
+      display: "inline-grid",
+      marginBottom: "1rem",
+      columnGap: "2rem",
+      gridTemplateColumns: "repeat(3, min-content)",
     },
   },
 });

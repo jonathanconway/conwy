@@ -32,6 +32,7 @@ export * from "./mobile";
 export * from "./podcast";
 export * from "./projects";
 export * from "./redirect";
+export * from "./responsive";
 export * from "./scripts";
 export * from "./section";
 export * from "./social-links";

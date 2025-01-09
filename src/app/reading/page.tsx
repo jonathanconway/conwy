@@ -1,4 +1,10 @@
-import { BooksList, Fragment, PageLayout, Stack } from "@/components";
+import {
+  BooksList,
+  Fragment,
+  PageLayout,
+  ResponsiveMdHalf,
+  Stack,
+} from "@/components";
 import { site } from "@/content";
 import { Reading } from "@/content/fragments";
 
@@ -7,10 +13,12 @@ export default function Page() {
     <PageLayout
       selectedNavPath="/reading"
       main={
-        <Stack>
-          <Fragment>
-            <Reading />
-          </Fragment>
+        <Stack gap={1}>
+          <ResponsiveMdHalf>
+            <Fragment>
+              <Reading />
+            </Fragment>
+          </ResponsiveMdHalf>
 
           <BooksList />
         </Stack>
