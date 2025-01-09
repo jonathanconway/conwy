@@ -1,12 +1,11 @@
 "use client";
 
-import { useGetBreakpoint } from "..";
-
 import { isObject } from "lodash";
 import { ReactNode } from "react";
 
 import { Stack, StackProps } from "../../stack";
 import { Breakpoint, Breakpoints } from "../../styling";
+import { useGetBreakpoint } from "../use-get-breakpoint.hook";
 
 type BreakpointMap<T> = Partial<Record<Breakpoint, T>>;
 

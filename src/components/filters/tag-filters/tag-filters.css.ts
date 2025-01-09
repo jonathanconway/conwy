@@ -33,6 +33,15 @@ export const containerMany = style({
       columnGap: "2rem",
       gridTemplateColumns: "repeat(3, min-content)",
     },
+    [media.md]: {
+      gridTemplateColumns: "repeat(4, min-content)",
+    },
+    [media.lg]: {
+      gridTemplateColumns: "repeat(5, min-content)",
+    },
+    [media.xl]: {
+      gridTemplateColumns: "repeat(7, min-content)",
+    },
   },
 });
 
