@@ -160,12 +160,12 @@ const Item = () => {
 
 Consumer code is also more aesthetically pleasing, when relying on props. It presents as a cleaner, more compact and concise list of components.
 
-Here's an example of multiple different kinds of controls in a form, utilizing the generic HOC pattern.
+Here's an example, in which we render different kinds of form controls side-by-side.
 
-Each passes a prop for one or more of the following generic components:
-- Label
-- Validation
-- Default
+Using the generic HOC pattern, each form control is passed a prop to configure one or more of:
+- A label
+- A default
+- Validation logic
 
 ```tsx
 const Item = () => {
@@ -200,6 +200,9 @@ const Item = () => {
 ```
 
 All controls appear at a consistent level of indentation and so do their props. This is easier to read and more aesthetically pleasing than if each control was nested in a different set of containers (validation, etc) and appeared at inconsistent levels of indentation.
+
+> Aside: This could be viewed as a variant of the principle of "cleaning up irregularity", discussed in Dustin Boswell's book [_The Art of Readable Code_](https://www.oreilly.com/library/view/the-art-of/9781449318482/), under Aesthetics (Chapter 4, pp. 37).
+> The code follows a regular pattern, making it easier to visually scan and add/remove similar items (in our example, form controls).
 
 ### Ability to constrain re-use of general components
 
