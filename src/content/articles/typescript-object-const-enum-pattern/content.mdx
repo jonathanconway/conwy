@@ -1,0 +1,98 @@
+Typescript's built-in `enum` structure is woefully inadequate, to the point that even the Typescript team saw fit to [list pitfalls and alternatives](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls) of `enum` in their documentation.
+
+One [recommended alternative](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums) is to declare an `object const` object with `as const`.
+
+In this article I will describe how I implement this pattern as both an object and a derived type.
+
+## Pattern
+
+Here's how I implement object const:
+
+```typescript
+const Enums = {
+  Entry: "value",
+  Entry: "value",
+  Entry: "value",
+} as const;
+
+type Enum = TypeOfConst<typeof Enums>;
+```
+
+The implementation of `TypeOfConst` is a very simple one-liner:
+
+```typescript
+type TypeOfConst<Const> = Const[keyof Const];
+```
+
+I typically put it in a shared utils file and export it.
+
+## Example
+
+Here's an example for enumerating a few colors:
+
+```typescript
+const Colors = {
+  Red: "red",
+  Green: "green",
+  Blue: "blue",
+  Purple: "purple",
+  Black: "black",
+  White: "white",
+} as const;
+
+type Color = TypeOfConst<typeof Colors>;
+```
+
+We can use the `Color` to access a type that can be one of the values and `Colors.{xyz}` to access the values themselves.
+
+For example, we can use `Color` as the type of a `backgroundColor` field on an interface definition:
+
+```typescript
+interface ButtonProps {
+  readonly backgroundColor: Color;
+}
+```
+
+And then set its value using `Colors`:
+
+```typescript
+const buttonProps: ButtonProps = {
+  backgroundColor: Colors.White,
+};
+```
+
+## Advantages
+
+The advantages I've found in this approach are:
+
+- Flexible values
+- Auto-suggest on container and values
+- Easy "go to source" on container
+
+### Flexible values
+
+Unlike a simple union of values, with an object const, we can separate the name of each entry from its value. This allows us more flexibility with the values, which can be strings, numbers, objects or any other type that can be assigned.
+
+### Auto-suggest on container and values
+
+With an object const, we get nice auto-suggest when we enter dot (".") after the const name.
+
+![Visual Studio Code intelli-sense on object const values](/images/articles/typescript-object-const-enum-pattern/auto-suggest.png)
+
+Even better, because the object const itself is named, we can use auto-suggest to find it and import it anywhere.
+
+![Visual Studio Code intelli-sense on object const container name](/images/articles/typescript-object-const-enum-pattern/auto-suggest-container.png)
+
+This wouldn't be possible with a simple union of values.
+
+### Easy "go to source" on container
+
+With an object const, we can use our IDE to quickly preview and/or navigate to the const source.
+
+For example, in Visual Studio Code, we can Cmd+MouseOver the const name to see its source in a pop-up, and Cmd+Click to be taken to the source code.
+
+![Visual Studio Code popup on Cmd+MouseOver on the object const name](/images/articles/typescript-object-const-enum-pattern/cmd-mouseover-popup.png)
+
+## Conclusion
+
+I think the object const pattern above provides a viable enumeration pattern for most use-cases in Typescript.

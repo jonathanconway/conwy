@@ -1,15 +1,10 @@
----
-to: src/content/articles/<%- name %>/meta.ts
----
-
 import { ArticleMeta, PostTags } from "@/framework";
 
 export const meta: ArticleMeta = {
-  title: "<%- h.nameSentence() %>",
-  blurb: "",
-  shortBlurb: "",
-  date: "<%- h.dateString() %>",
-  slug: "<%- name %>",
+  title: "Object const enum pattern for Typescript",
+  blurb: "My favourite pattern for enumerations in Typescript",
+  date: "2025-01-09",
+  slug: "typescript-object-const-enum-pattern",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
   socialLinks: [],
