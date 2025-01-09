@@ -8,13 +8,21 @@ export type MdxPreProps = DetailedHTMLProps<
   HTMLPreElement
 >;
 
-export function MdxPre({ className, children, ...restProps }: MdxPreProps) {
+export function MdxPre({
+  className,
+  children,
+  style,
+  ...restProps
+}: MdxPreProps) {
   return (
     <pre
       className={styles.pre}
-      style={mixins.preInline} // Override prismjs css
-      {...restProps}
+      style={{
+        ...restProps,
+        ...mixins.preInline,
+      }} // Override prismjs css
       suppressHydrationWarning
+      {...restProps}
     >
       {children}
     </pre>

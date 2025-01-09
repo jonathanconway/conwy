@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { colors, text } from "../styling";
+import { boxBorderDecorative } from "../box/box.mixins";
+import { text } from "../styling";
 import { vars } from "../theme";
 
 export const container = style({
@@ -8,17 +9,17 @@ export const container = style({
   paddingRight: "2rem" /* 32px */,
   paddingTop: "1rem",
   paddingBottom: "1rem",
+  ...boxBorderDecorative,
 });
 
 export const img = style({
+  maxWidth: "100%",
   maxHeight: "20rem",
-  width: "100%",
+  width: "auto",
   height: "auto",
   padding: "0.5rem",
   borderWidth: "1px",
-  borderColor: vars.imageFigure.border.color,
   borderStyle: "solid",
-  backgroundColor: colors.white,
   filter: vars.imageFigure.filter,
 });
 

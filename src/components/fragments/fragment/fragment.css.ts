@@ -32,10 +32,6 @@ const p = {
 
 globalStyle(`${fragment} p`, p);
 
-// globalStyle(`${fragment} p:not(:first-child)`, {
-//   paddingTop: "0.5rem",
-// });
-
 const pFirst = {
   paddingTop: 0,
 };
@@ -88,10 +84,17 @@ const pre = {
   lineHeight: "1.25rem",
 };
 
-globalStyle(`${fragment} pre`, pre);
+globalStyle(`${fragment} pre[class*=language-][class*=language-]`, pre);
 
 const childPFirst = {
   paddingTop: 0,
 };
 
 globalStyle(`${fragment} * > p:first-child`, childPFirst);
+
+const figure = {
+  marginTop: "1rem",
+  marginBottom: "1rem",
+};
+
+globalStyle(`${fragment} figure`, figure);
