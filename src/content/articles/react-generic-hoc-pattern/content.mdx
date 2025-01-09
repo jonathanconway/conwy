@@ -210,11 +210,11 @@ An additional advantage of this pattern is that we could, if desired, constrain 
 
 For example, we could keep the `Tooltip` itself private to its module folder and only export the `withTooltip` HOC. Then we could only apply `withTooltip` to components that we are confident will work well with the `Tooltip`.
 
-As a consumer, it would be easy to determine whether a given component supports the tooltip or not – we could simply examine the available pops via our IDE's autosuggest feature.
+As a consumer, it would be easy to determine whether a given component supports the tooltip or not – we could simply examine the available pops via our IDE's ***auto-suggest*** feature.
 
-Here's an example in Visual Studio Code:
+Here's an example with Visual Studio Code IntelliSense:
 
-![Looking up the `tooltip` prop on an `IconButton` component in the conwy.co code-base](/images/articles/react-generic-hoc-pattern/vs-code-intellisense-example.png)
+![IntelliSense suggesting the `tooltip` prop on an `IconButton` component in the conwy.co code-base](/images/articles/react-generic-hoc-pattern/vs-code-intellisense-example.png)
 
 ## Implementation
 
