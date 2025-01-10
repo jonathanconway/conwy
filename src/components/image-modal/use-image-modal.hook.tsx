@@ -1,19 +1,15 @@
-import { MouseEvent, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import { Image as Image_ } from "@/framework/client";
 
-import { isBackdrop } from "../backdrop";
 import { UseCarouselResult, useCarousel } from "../carousel";
 import { CarouselItem } from "../carousel/carousel-item";
 
-interface UseImageModalParams {
-  readonly images: readonly Image_[];
-  readonly defaultImage: Image_;
+import { ImageModalProps } from "./image-modal-props";
 
-  readonly onClose: VoidFunction;
-}
+type UseImageModalParams = ImageModalProps;
 
-type ImageCarouselItem = CarouselItem & Image_;
+export type ImageCarouselItem = CarouselItem & Image_;
 
 export function useImageModal(params: UseImageModalParams) {
   const items = params.images.map(
@@ -27,7 +23,9 @@ export function useImageModal(params: UseImageModalParams) {
       }) as ImageCarouselItem,
   );
 
-  const defaultItem = items[params.images.indexOf(params.defaultImage)];
+  const defaultItem = params.defaultImage
+    ? items[params.images.indexOf(params.defaultImage)]
+    : items[0];
 
   const carousel = useCarousel<ImageCarouselItem>({
     items,
@@ -53,10 +51,6 @@ export function useImageModal(params: UseImageModalParams) {
           event.preventDefault();
           carousel.handleNextClick();
           break;
-        case "Escape":
-          event.preventDefault();
-          params.onClose();
-          break;
       }
     },
     [carousel],
@@ -72,15 +66,6 @@ export function useImageModal(params: UseImageModalParams) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [carousel]);
 
-  const handleBackdropClick = (event: MouseEvent<HTMLElement>) => {
-    const target = event.target as HTMLElement;
-    if (!isBackdrop(target)) {
-      return;
-    }
-
-    params.onClose();
-  };
-
   const hasHotspots = Boolean(
     params.images
       .flatMap((workImage) => workImage.notes)
@@ -90,7 +75,5 @@ export function useImageModal(params: UseImageModalParams) {
   return {
     carousel,
     hasHotspots,
-
-    handleBackdropClick,
   };
 }
