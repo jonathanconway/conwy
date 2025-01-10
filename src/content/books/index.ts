@@ -45,3 +45,5 @@ export * from "./technological-revolutions";
 export * from "./thinking-fast-and-slow";
 export * from "./tidy-first";
 export * from "./infinite-game";
+export * from "./good-life";
+export * from "./algorithms-illuminated";
