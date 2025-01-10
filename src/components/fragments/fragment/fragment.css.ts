@@ -98,3 +98,10 @@ const figure = {
 };
 
 globalStyle(`${fragment} figure`, figure);
+
+const table = {
+  marginTop: "1rem",
+  marginBottom: "1rem",
+};
+
+globalStyle(`${fragment} table`, table);
