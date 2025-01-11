@@ -8,6 +8,8 @@ export const BookCategories = {
   Finance: "finance",
   Geopolitics: "geopolitics",
   History: "history",
+  Music: "music",
+  Philosophy: "philosophy",
   Politics: "politics",
   Psychology: "psychology",
   Science: "science",

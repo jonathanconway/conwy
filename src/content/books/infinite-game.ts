@@ -5,5 +5,5 @@ export const infiniteGameBook: Book = {
   status: BookStatuses.Finished,
   title: "The Infinite Game",
   url: "https://en.wikipedia.org/wiki/The_Infinite_Game",
-  category: BookCategories.SoftwareDevelopment,
+  category: BookCategories.SelfHelp,
 };
