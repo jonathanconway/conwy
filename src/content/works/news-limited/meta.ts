@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2011-11-01",
   endDate: "2012-02-20",
   jobTitle: "Javascript Developer",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/news-limited/main.png",
+  },
   feedbacks: [],
   images: [],
   slug: "news-limited",

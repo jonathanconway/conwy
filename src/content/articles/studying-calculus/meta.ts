@@ -9,6 +9,9 @@ export const meta: ArticleMeta = {
   slug: "studying-calculus",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/studying-calculus/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

@@ -1,4 +1,5 @@
 import {
+  PostTags,
   ProjectMeta,
   ProjectSubTypes,
   SocialLinkTypes,
@@ -9,7 +10,7 @@ export const meta: ProjectMeta = {
   blurb: "Convention for referencing parts of code",
   date: "2023-08-01",
   slug: "codeselectors",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   type: "project",
   subType: ProjectSubTypes.Standard,
   socialLinks: [
@@ -22,7 +23,9 @@ export const meta: ProjectMeta = {
       url: "http://github.com/jonathanconway/code-selectors",
     },
   ],
-  mainImage: "main.svg",
+  mainImage: {
+    src: "/images/projects/codeselectors/main.svg",
+  },
   redirectUrl: "codeselectors",
   techs: [
     {

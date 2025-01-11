@@ -9,14 +9,15 @@ interface ProjectMainImageProps {
 }
 
 export function ProjectMainImage(props: ProjectMainImageProps) {
+  if (!props.projectMeta.mainImage) {
+    return null;
+  }
+
   return (
     <Image
       className={styles.image}
-      image={{
-        src: `/images/projects/${props.projectMeta.slug}/${props.projectMeta.mainImage ?? "main.svg"}`,
-        alt: `Project thumbnail image for ${props.projectMeta.title}`,
-        notes: [],
-      }}
+      image={props.projectMeta.mainImage}
+      alt={`Project thumbnail image for ${props.projectMeta.title}`}
       width={96}
       height={64}
     />

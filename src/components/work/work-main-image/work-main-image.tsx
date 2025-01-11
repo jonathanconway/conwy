@@ -9,14 +9,15 @@ interface WorkMainImageProps {
 }
 
 export function WorkMainImage(props: WorkMainImageProps) {
+  if (!props.workMeta.mainImage) {
+    return;
+  }
+
   return (
     <Image
       className={styles.image}
-      image={{
-        src: `/images/works/${props.workMeta.slug}/${props.workMeta.mainImage ?? "thumbnail.png"}`,
-        alt: `Work thumbnail image for ${props.workMeta.client}`,
-        notes: [],
-      }}
+      image={props.workMeta.mainImage}
+      alt={`Work thumbnail image for ${props.workMeta.client}`}
       width={96}
       height={64}
     />

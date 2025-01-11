@@ -7,6 +7,9 @@ export const meta: ArticleMeta = {
   slug: "typescript-object-const-enum-pattern",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/typescript-object-const-enum-pattern/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [],
 };

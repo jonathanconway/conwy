@@ -1,6 +1,6 @@
-import Image from "next/image";
-
 import { ArticleMeta } from "@/framework/client";
+
+import { Image } from "../../../image";
 
 import * as styles from "./article-sidebar-image.css";
 
@@ -9,10 +9,14 @@ export interface ArticleSidebarImageProps {
 }
 
 export function ArticleSidebarImage({ meta }: ArticleSidebarImageProps) {
+  if (!meta.mainImage) {
+    return null;
+  }
+
   return (
     <Image
       className={styles.image}
-      src={`/images/articles/${meta.slug}/${meta.mainImage ?? "main.jpg"}`}
+      image={meta.mainImage}
       alt="Article main image"
       priority
       unoptimized={true}

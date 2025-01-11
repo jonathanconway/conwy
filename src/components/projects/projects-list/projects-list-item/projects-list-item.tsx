@@ -1,4 +1,4 @@
-import { POST_MAIN_IMAGE_DEFAULT, ProjectMeta } from "@/framework/client";
+import { ProjectMeta } from "@/framework/client";
 
 import {
   ContentListItem,
@@ -30,10 +30,12 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
         }
         asideSlot={
           <>
-            <ContentListItemImage
-              src={`/images/projects/${projectMeta.slug}/${projectMeta.mainImage ?? POST_MAIN_IMAGE_DEFAULT}`}
-              alt="Project main image"
-            />
+            {projectMeta?.mainImage && (
+              <ContentListItemImage
+                src={projectMeta.mainImage.src}
+                alt="Project main image"
+              />
+            )}
 
             {projectMeta.socialLinks && (
               <SocialLinksIcons socialLinks={projectMeta.socialLinks} />

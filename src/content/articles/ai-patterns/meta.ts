@@ -9,6 +9,9 @@ export const meta: ArticleMeta = {
   slug: "ai-patterns",
   type: "article",
   tags: [PostTags.Design],
+  mainImage: {
+    src: "/images/articles/ai-patterns/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [
     {

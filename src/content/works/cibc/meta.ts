@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2018-02-01",
   endDate: "2019-08-01",
   jobTitle: "Senior Software Developer",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/cibc/main.png",
+  },
   feedbacks: [
     {
       quote:

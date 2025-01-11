@@ -6,7 +6,9 @@ export const meta: WorkMeta = {
   startDate: "2007-06-01",
   endDate: "2008-06-01",
   jobTitle: "Front End Developer",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/ninemsn/main.png",
+  },
   feedbacks: [
     {
       quote:

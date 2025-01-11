@@ -1,14 +1,17 @@
 "use client";
 
-import { MouseEvent, useCallback, useEffect } from "react";
+import { MouseEvent, useCallback, useEffect, useRef } from "react";
 
 import { isBackdrop } from "../backdrop";
 
+import { useModalFocusTrap } from "./modal-focus-trap/use-modal-focus-trap.hook";
 import { ModalProps } from "./modal-props";
 
 type UseModalParams = ModalProps;
 
 export function useModal(params: UseModalParams) {
+  const { modalRef, handleTrapInputFocus } = useModalFocusTrap();
+
   const handleWindowKeyDown = useCallback((event: KeyboardEvent) => {
     switch (event.key) {
       case "Escape":
@@ -38,6 +41,9 @@ export function useModal(params: UseModalParams) {
   };
 
   return {
+    modalRef,
+    handleTrapInputFocus,
+
     handleBackdropClick,
   };
 }

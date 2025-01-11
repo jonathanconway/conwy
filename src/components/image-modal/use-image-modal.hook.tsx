@@ -68,7 +68,7 @@ export function useImageModal(params: UseImageModalParams) {
 
   const hasHotspots = Boolean(
     params.images
-      .flatMap((workImage) => workImage.notes)
+      .flatMap((workImage) => workImage.notes ?? [])
       .find((note) => Boolean(note.hotspot)),
   );
 

@@ -7,6 +7,9 @@ export const meta: ArticleMeta = {
   slug: "refactoring-documentation",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/refactoring-documentation/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [],
 };

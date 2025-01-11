@@ -8,7 +8,9 @@ export const meta: ArticleMeta = {
   slug: "ai-for-developers",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: "main.jpg",
+  mainImage: {
+    src: "/images/articles/ai-for-developers/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [],
 };

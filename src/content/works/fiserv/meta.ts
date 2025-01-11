@@ -6,7 +6,9 @@ export const meta: WorkMeta = {
     "Worked full-stack on Westpac Online Banking: payments, statements, accounts.",
   startDate: "2012-05-01",
   endDate: "2014-03-01",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/fiserv/main.png",
+  },
   jobTitle: "Senior Software Developer",
   feedbacks: [
     {

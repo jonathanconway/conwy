@@ -8,7 +8,9 @@ export const meta: ArticleMeta = {
   slug: "combinatorial-testing",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: "main.jpg",
+  mainImage: {
+    src: "/images/articles/combinatorial-testing/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

@@ -9,6 +9,9 @@ export const meta: ArticleMeta = {
   slug: "mindfulness",
   type: "article",
   tags: [PostTags.Life],
+  mainImage: {
+    src: "/images/articles/mindfulness/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [],
   isPinned: true,

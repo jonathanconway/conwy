@@ -14,7 +14,7 @@ export function ImageModalNotes({
   carousel,
   hasHotspots,
 }: ImageModalNotesProps) {
-  if (carousel.selectedItem.notes.length === 0) {
+  if (carousel.selectedItem.notes?.length === 0) {
     return null;
   }
 
@@ -24,7 +24,7 @@ export function ImageModalNotes({
         hasHotspots ? styles.notesContainer : styles.notesContainerWithHotspots
       }
     >
-      {carousel.selectedItem.notes.map((note, noteIndex) => (
+      {carousel.selectedItem.notes?.map((note, noteIndex) => (
         <li
           key={note.text}
           className={cn(

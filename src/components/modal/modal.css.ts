@@ -42,16 +42,16 @@ export const modal = style({
 
 export const modalHeader = style({
   display: "flex",
-  "@media": {
-    [media.mdAndUp]: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-    },
-    [media.sm]: {
-      flexDirection: "column",
-      gap: "1rem",
-    },
-  },
+  gap: "1rem",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  // "@media": {
+  //   [media.mdAndUp]: {
+  //   },
+  //   [media.sm]: {
+  //     flexDirection: "column",
+  //   },
+  // },
 });
 
 export const modalTitle = style({
@@ -68,20 +68,4 @@ export const modalToolbar = style({
   gap: "0.5rem",
 });
 
-export const modalMain = style({
-  position: "relative",
-  overflow: "scroll",
-  display: "flex",
-  gap: "2rem",
-  justifyContent: "center",
-  flex: 1,
-
-  "@media": {
-    [media.lessThanLg]: {
-      flexDirection: "column",
-    },
-    [media.lgAndUp]: {
-      flexDirection: "row",
-    },
-  },
-});
+export const modalMain = style({});

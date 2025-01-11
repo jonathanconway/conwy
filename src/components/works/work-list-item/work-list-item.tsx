@@ -29,10 +29,12 @@ export function WorkListItem(props: WorkListItemProps) {
           </>
         }
         asideSlot={
-          <ContentListItemImage
-            src={`/images/works/${props.workMeta.slug}/${props.workMeta.mainImage ?? "thumbnail.png"}`}
-            alt={`Work thumbnail image for ${props.workMeta.client}`}
-          />
+          props.workMeta.mainImage ? (
+            <ContentListItemImage
+              src={props.workMeta.mainImage.src}
+              alt={`Work thumbnail image for ${props.workMeta.client}`}
+            />
+          ) : null
         }
       />
     </LinkBox>

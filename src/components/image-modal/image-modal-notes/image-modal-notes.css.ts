@@ -1,9 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { boxBorderDecorative } from "../../box/box.mixins";
 import * as shadowMixins from "../../shadow";
 import { colors, media, rounded, text } from "../../styling";
-import { vars } from "../../theme";
 
 export const notesContainer = style({
   display: "flex",

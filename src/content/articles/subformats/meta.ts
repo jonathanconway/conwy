@@ -9,6 +9,9 @@ export const meta: ArticleMeta = {
   slug: "subformats",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/subformats/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [],
 };

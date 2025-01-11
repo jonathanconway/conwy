@@ -1,4 +1,5 @@
 import {
+  PostTags,
   ProjectMeta,
   ProjectSubTypes,
   SocialLinkTypes,
@@ -9,7 +10,7 @@ export const meta: ProjectMeta = {
   blurb: "Convention for adding code comments to HTML",
   date: "2017-12-03",
   slug: "htmldoc",
-  tags: ["software-development"],
+  tags: [PostTags.SoftwareDevelopment],
   type: "project",
   subType: ProjectSubTypes.Standard,
   socialLinks: [
@@ -22,7 +23,9 @@ export const meta: ProjectMeta = {
       url: "http://github.com/jonathanconway/htmldoc",
     },
   ],
-  mainImage: "main.svg",
+  mainImage: {
+    src: "/images/projects/htmldoc/main.svg",
+  },
   redirectUrl: "htmldoc",
   techs: [
     {

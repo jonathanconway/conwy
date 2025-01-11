@@ -9,7 +9,9 @@ export const meta: ProjectMeta = {
   type: "project",
   subType: ProjectSubTypes.Website,
   socialLinks: [],
-  mainImage: "main.svg",
+  mainImage: {
+    src: "/images/projects/conwy/main.svg",
+  },
   redirectUrl: "conwy",
   images: [],
   platforms: ["Web", "Mobile Web"],

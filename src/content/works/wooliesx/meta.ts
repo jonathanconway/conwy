@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2020-02-20",
   endDate: "2024-02-20",
   jobTitle: "Lead Software Engineer",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/wooliesx/main.png",
+  },
   feedbacks: [
     {
       quote:

@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2014-07-01",
   endDate: "2015-08-01",
   jobTitle: "Senior Software Developer",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/demonz/main.png",
+  },
   feedbacks: [
     {
       quote: "“I had a quick play; all works seamlessly and easy to use.”",

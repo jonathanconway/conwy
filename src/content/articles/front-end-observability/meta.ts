@@ -9,6 +9,9 @@ export const meta: ArticleMeta = {
   slug: "front-end-observability",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/front-end-observability/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Github,

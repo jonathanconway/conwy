@@ -14,7 +14,9 @@ export const meta: ProjectMeta = {
       url: "http://github.com/jonathanconway/tailwindjs",
     },
   ],
-  mainImage: "main.svg",
+  mainImage: {
+    src: "/images/projects/tailwindjs/main.svg",
+  },
   redirectUrl: "tailwindjs",
   techs: [
     {

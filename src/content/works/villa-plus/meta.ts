@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2020-02-20",
   endDate: "2024-02-20",
   jobTitle: "Technical Lead",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/villa-plus/main.png",
+  },
   feedbacks: [],
   images: [
     {

@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2010-06-01",
   endDate: "2011-02-01",
   jobTitle: "Technical Lead",
-  mainImage: "thumbnail.svg",
+  mainImage: {
+    src: "/images/works/bupa/main.png",
+  },
   feedbacks: [
     {
       quote:

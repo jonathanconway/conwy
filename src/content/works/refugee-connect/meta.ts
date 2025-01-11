@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2016-06-01",
   endDate: "2016-12-01",
   jobTitle: "Interaction Designer",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/refugee-connect/main.png",
+  },
   feedbacks: [
     {
       quote:

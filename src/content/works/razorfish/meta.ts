@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2008-11-01",
   endDate: "2009-01-01",
   jobTitle: "Senior .NET Developer",
-  mainImage: "thumbnail.svg",
+  mainImage: {
+    src: "/images/works/razorfish/main.png",
+  },
   feedbacks: [
     {
       quote:

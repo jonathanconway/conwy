@@ -17,10 +17,14 @@ export function Image({
   ...restProps
 }: ImageProps) {
   return (
-    <Link href={image.src} target="_blank" showOpenInNew={false}>
+    <Link
+      href={image?.src ?? restProps.src}
+      target="_blank"
+      showOpenInNew={false}
+    >
       <NextImage
         {...restProps}
-        src={image.src}
+        src={image?.src}
         alt={image.alt ?? image.src}
         width={width}
         height={height}

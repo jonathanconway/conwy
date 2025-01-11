@@ -1,9 +1,13 @@
 "use client";
 
+import { sentenceCase } from "@/framework/client";
+import { getUrlFilename } from "@/framework/content/url";
+
 import { CarouselNav } from "../carousel";
 import { Image } from "../image";
-import { Link } from "../link";
 import { Modal } from "../modal";
+import { Stack } from "../stack";
+import { Text } from "../text";
 
 import { ImageModalHotspots } from "./image-modal-hotspots";
 import { ImageModalNotes } from "./image-modal-notes/image-modal-notes";
@@ -16,25 +20,25 @@ export function ImageModal(props: ImageModalProps) {
 
   return (
     <Modal
-      title={carousel.selectedItem.alt}
+      title={sentenceCase(getUrlFilename(carousel.selectedItem.src))}
       toolbar={<CarouselNav carousel={carousel} />}
       onClose={props.onClose}
     >
       <div className={styles.imageModalMain}>
         <div className={styles.imageContainer}>
-          <Link
-            href={carousel.selectedItem.src}
-            target="_blank"
-            showOpenInNew={false}
-          >
+          <Stack>
             <Image
-              image={carousel.selectedItem}
               className={styles.image}
+              image={carousel.selectedItem}
               src={carousel.selectedItem.src}
               alt={carousel.selectedItem.alt ?? carousel.selectedItem.src}
             />
-            <ImageModalHotspots carousel={carousel} />
-          </Link>
+
+            {carousel.selectedItem.title && (
+              <Text type="small">▲ {carousel.selectedItem.title}</Text>
+            )}
+          </Stack>
+          <ImageModalHotspots carousel={carousel} />
         </div>
 
         <ImageModalNotes carousel={carousel} hasHotspots={hasHotspots} />

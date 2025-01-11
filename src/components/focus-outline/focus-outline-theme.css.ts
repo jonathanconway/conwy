@@ -13,5 +13,18 @@ export const themeFocusOutlineDisabledClass = createTheme(vars, {
 });
 
 globalStyle(`${themeFocusOutlineEnabledClass} *:focus`, {
+  position: "relative",
+  borderRadius: "3px",
+  borderColor: "black",
+});
+
+globalStyle(`${themeFocusOutlineEnabledClass} *:focus:after`, {
+  position: "absolute",
+  content: " ",
+  top: "-2px",
+  right: "-2px",
+  bottom: "-2px",
+  left: "-2px",
   border: "solid 3px black",
+  borderRadius: "3px",
 });

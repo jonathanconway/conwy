@@ -7,7 +7,9 @@ export const WORK_META_MOCK: WorkMeta = {
   startDate: "2023-09-20",
   endDate: "2024-03-22",
   jobTitle: "Senior Backend Engineer",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/optus/main.png",
+  },
   feedbacks: [
     {
       quote:

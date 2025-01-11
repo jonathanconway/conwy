@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2011-08-01",
   endDate: "2011-11-30",
   jobTitle: ".NET Developer",
-  mainImage: "thumbnail.svg",
+  mainImage: {
+    src: "/images/works/amaysim/main.png",
+  },
   feedbacks: [],
   images: [],
   slug: "tal",

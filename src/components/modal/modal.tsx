@@ -5,16 +5,20 @@ import { Heading } from "../heading";
 import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
 
+import { ModalFocusTrapSink } from "./modal-focus-trap/modal-focus-trap-sink";
 import { ModalProps } from "./modal-props";
 import * as styles from "./modal.css";
 import { useModal } from "./use-modal.hook";
 
 export function Modal(props: ModalProps) {
-  const { handleBackdropClick } = useModal(props);
+  const { modalRef, handleTrapInputFocus, handleBackdropClick } =
+    useModal(props);
 
   return (
     <Backdrop onClick={handleBackdropClick}>
-      <dialog className={styles.modal}>
+      <ModalFocusTrapSink onFocus={handleTrapInputFocus} />
+
+      <dialog className={styles.modal} ref={modalRef}>
         <header className={styles.modalHeader}>
           {props.title && (
             <Heading level={2} className={styles.modalTitle}>
@@ -36,6 +40,8 @@ export function Modal(props: ModalProps) {
         </header>
 
         <div className={styles.modalMain}>{props.children}</div>
+
+        <ModalFocusTrapSink onFocus={handleTrapInputFocus} />
       </dialog>
     </Backdrop>
   );

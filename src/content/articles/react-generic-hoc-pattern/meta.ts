@@ -8,6 +8,9 @@ export const meta: ArticleMeta = {
   slug: "react-generic-hoc-pattern",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/react-generic-hoc-pattern/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [],
 };

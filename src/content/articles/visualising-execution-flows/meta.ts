@@ -9,7 +9,9 @@ export const meta: ArticleMeta = {
   slug: "visualising-execution-flows",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: "main.jpg",
+  mainImage: {
+    src: "/images/articles/visualising-execution-flows/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

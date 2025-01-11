@@ -10,6 +10,9 @@ export const meta: ArticleMeta = {
   slug: "manual-testing",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/manual-testing/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

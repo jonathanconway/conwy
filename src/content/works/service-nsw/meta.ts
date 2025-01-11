@@ -7,7 +7,9 @@ export const meta: WorkMeta = {
   startDate: "2015-03-01",
   endDate: "2016-07-01",
   jobTitle: "Front End Practice Lead",
-  mainImage: "thumbnail.png",
+  mainImage: {
+    src: "/images/works/service-nsw/main.png",
+  },
   feedbacks: [
     {
       quote:

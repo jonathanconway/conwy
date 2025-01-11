@@ -40,10 +40,12 @@ export function ArticlesListItem({
         }
         asideSlot={
           <>
-            <ContentListItemImage
-              src={`/images/articles/${slug}/${mainImage ?? "main.jpg"}`}
-              alt="Article main image"
-            />
+            {mainImage?.src && (
+              <ContentListItemImage
+                src={mainImage.src}
+                alt="Article main image"
+              />
+            )}
 
             {socialLinks.length > 0 && (
               <SocialLinksIcons socialLinks={socialLinks} />

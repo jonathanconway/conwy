@@ -7,7 +7,9 @@ export const meta: ArticleMeta = {
   slug: "mock-data",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: "main.jpg",
+  mainImage: {
+    src: "/images/articles/mock-data/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

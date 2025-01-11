@@ -7,6 +7,9 @@ export const meta: ArticleMeta = {
   slug: "towards-zero-bugs",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/towards-zero-bugs/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

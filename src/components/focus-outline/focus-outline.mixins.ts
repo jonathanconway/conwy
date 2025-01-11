@@ -1,4 +1,4 @@
-import { ComplexStyleRule, globalStyle } from "@vanilla-extract/css";
+import { ComplexStyleRule } from "@vanilla-extract/css";
 
 import { vars } from "./focus-outline-theme-contract.css";
 

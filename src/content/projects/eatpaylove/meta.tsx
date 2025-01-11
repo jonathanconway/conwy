@@ -26,7 +26,9 @@ export const meta: ProjectMeta = {
       url: "https://github.com/jonathanconway/braggart",
     },
   ],
-  mainImage: "main.svg",
+  mainImage: {
+    src: "/images/projects/eatpaylove/main.svg",
+  },
   techs: [
     {
       categoryName: "react",

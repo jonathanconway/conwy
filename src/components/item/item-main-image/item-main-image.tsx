@@ -17,6 +17,10 @@ export function ItemMainImage<TMeta extends ItemMeta>(
 ) {
   const { itemMeta, titleKey, ...restProps } = props;
 
+  if (!itemMeta.mainImage?.src) {
+    return;
+  }
+
   return (
     <Image
       className={styles.image}
@@ -24,7 +28,7 @@ export function ItemMainImage<TMeta extends ItemMeta>(
       unoptimized={true}
       width={96}
       height={64}
-      src={`/images/${pluralize(itemMeta.type, 2)}/${itemMeta.slug}/${itemMeta.mainImage}`}
+      src={itemMeta.mainImage?.src}
       alt={`Thumbnail image for ${itemMeta[titleKey]}`}
       {...restProps}
     />

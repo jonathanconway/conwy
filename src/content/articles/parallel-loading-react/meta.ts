@@ -7,6 +7,9 @@ export const meta: ArticleMeta = {
   slug: "parallel-loading-react",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/parallel-loading-react/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

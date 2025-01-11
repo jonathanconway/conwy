@@ -7,6 +7,9 @@ export const meta: ArticleMeta = {
   slug: "diagramming-react",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/diagramming-react/main.jpg",
+  },
   socialLinks: [],
   discussionLinks: [],
 };

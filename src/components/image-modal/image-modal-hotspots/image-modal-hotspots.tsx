@@ -11,7 +11,7 @@ export function ImageModalHotspots(props: ImageModalHotspotsProps) {
   return (
     <>
       {props.carousel.selectedItem.notes
-        .filter((note) => note.hotspot)
+        ?.filter((note) => note.hotspot)
         .map((note, noteIndex) => (
           <span
             key={note.text}

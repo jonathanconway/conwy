@@ -8,6 +8,9 @@ export const meta: ArticleMeta = {
   slug: "code-reviews",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/code-reviews/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

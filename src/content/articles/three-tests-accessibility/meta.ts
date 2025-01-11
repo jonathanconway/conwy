@@ -10,6 +10,9 @@ export const meta: ArticleMeta = {
   slug: "three-tests-accessibility",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/three-tests-accessibility/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

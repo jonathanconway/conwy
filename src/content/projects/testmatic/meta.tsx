@@ -32,7 +32,9 @@ export const meta: ProjectMeta = {
       url: "http://github.com/jonathanconway/testmatic",
     },
   ],
-  mainImage: "main.svg",
+  mainImage: {
+    src: "/images/projects/testmatic/main.svg",
+  },
   redirectUrl: "testmatic",
   techs: [
     {

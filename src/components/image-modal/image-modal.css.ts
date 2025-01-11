@@ -14,7 +14,6 @@ export const imageModalButtonsContainer = style({
 
 export const imageModalMain = style({
   position: "relative",
-  overflow: "scroll",
   display: "flex",
   gap: "2rem",
   justifyContent: "center",
@@ -37,6 +36,7 @@ export const imageContainer = style({
 export const image = style({
   width: "32rem",
   height: "auto",
+  maxHeight: "80vh",
   padding: "0.375rem",
   ...rounded.lg,
   borderWidth: "2px",
@@ -46,10 +46,10 @@ export const image = style({
 
   "@media": {
     [media.lessThanLg]: {
-      width: "100%",
+      maxWidth: "100%",
     },
     [media.lgAndUp]: {
-      width: "70vw",
+      maxWidth: "70vw",
     },
   },
 });

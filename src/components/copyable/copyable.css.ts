@@ -6,12 +6,16 @@ export const container = style({
 
 export const toolbarContainer = style({
   position: "absolute",
-  top: "1rem",
+  top: 0,
   right: 0,
   padding: "1rem",
   opacity: 0.25,
 
   ":hover": {
+    opacity: 1,
+  },
+
+  ":focus-within": {
     opacity: 1,
   },
 });

@@ -7,6 +7,9 @@ export const meta: ArticleMeta = {
   slug: "diagramming-ts",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/diagramming-ts/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

@@ -46,15 +46,39 @@ export function ImageCascade(props: ImageCascadeProps) {
   if (props.images.length === 1) {
     const image = props.images[0];
     return (
-      <div className={styles.imageContainerSingle}>
-        <Image
-          className={styles.image}
-          src={image.src}
-          alt={image.src}
-          width={IMAGE_SIZE_PX.width}
-          height={IMAGE_SIZE_PX.height}
-        />
-      </div>
+      <>
+        <div className={styles.imageContainerSingle}>
+          <Tooltip
+            key={`image-cascade-item-${image.src}`}
+            contents={image.alt ?? "Image"}
+          >
+            <div
+              role="button"
+              tabIndex={0}
+              className={styles.imageContainer}
+              onClick={handleImageClick(image)}
+            >
+              <div className={styles.imageInner}>
+                <Image
+                  className={styles.image}
+                  src={image.src}
+                  alt={image.src}
+                  width={IMAGE_SIZE_PX.width}
+                  height={IMAGE_SIZE_PX.height}
+                />
+              </div>
+            </div>
+          </Tooltip>
+        </div>
+
+        {state.openImage && (
+          <ImageModal
+            images={props.images}
+            defaultImage={state.openImage}
+            onClose={handleImageModalCloseClick}
+          />
+        )}
+      </>
     );
   }
 

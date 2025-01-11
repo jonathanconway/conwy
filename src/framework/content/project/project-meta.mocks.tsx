@@ -16,7 +16,9 @@ export const PROJECT_META_MOCK: ProjectMeta = {
       url: "http://github.com/jonathanconway/tailwindjs",
     },
   ],
-  mainImage: "main.svg",
+  mainImage: {
+    src: "/images/projects/tailwindjs/main.svg",
+  },
   techs: [],
   platforms: [],
   images: [],

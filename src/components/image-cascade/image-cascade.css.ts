@@ -16,7 +16,6 @@ export const imageContainerSingle = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  pointerEvents: "none",
 });
 
 const imageBorder = {
@@ -75,7 +74,6 @@ export const image = style({
   margin: "0.25rem",
   maxHeight: "100%",
   width: "auto",
-  // width: "100%",
 });
 
 export const nav = style({

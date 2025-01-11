@@ -18,6 +18,14 @@ export const linkBase = {
   },
 };
 
+export const linkContentsText = {
+  display: "inline",
+};
+
+export const linkContentsImage = {
+  display: "inline-block",
+};
+
 export const linkDecoration = {
   textDecorationColor: vars.link.text.decoration.color,
   textDecorationLine: "none",

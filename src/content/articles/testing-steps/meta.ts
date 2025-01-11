@@ -7,6 +7,9 @@ export const meta: ArticleMeta = {
   slug: "testing-steps",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  mainImage: {
+    src: "/images/articles/testing-steps/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Github,

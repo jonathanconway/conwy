@@ -8,6 +8,9 @@ export const meta: ArticleMeta = {
   slug: "lose-weight",
   type: "article",
   tags: [PostTags.Life],
+  mainImage: {
+    src: "/images/articles/lose-weight/main.jpg",
+  },
   socialLinks: [
     {
       type: SocialLinkTypes.Website,
