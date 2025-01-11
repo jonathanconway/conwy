@@ -1,6 +1,11 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, Fragment, PageLayout } from "@/components";
+import {
+  Breadcrumb,
+  Fragment,
+  PageLayout,
+  ResponsiveMdHalf,
+} from "@/components";
 import { site } from "@/content";
 import { Page as Page__ } from "@/framework";
 
@@ -29,9 +34,11 @@ export async function PagePage(props: PageProps) {
             ]}
           />
 
-          <Fragment>
-            <Content />
-          </Fragment>
+          <ResponsiveMdHalf>
+            <Fragment>
+              <Content />
+            </Fragment>
+          </ResponsiveMdHalf>
         </>
       }
     />

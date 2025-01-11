@@ -1,19 +1,17 @@
 import { groupBy, orderBy } from "lodash";
 
-import { Tool as Tool_, sentenceCase } from "@/framework/client";
+import * as tools from "@/content/tools";
+import { sentenceCase } from "@/framework/client";
 
 import { ContentList } from "../content-list";
 import { Heading } from "../heading";
 
 import { Tool } from "./tool";
-import * as styles from "./tools.css";
+import * as styles from "./tools-list.css";
 
-interface ToolsProps {
-  readonly tools: readonly Tool_[];
-}
-
-export function Tools({ tools }: ToolsProps) {
-  const toolsOrdered = orderBy(tools, (tool) => tool.section + tool.title);
+export function ToolsList() {
+  const toolsItems = Object.values(tools);
+  const toolsOrdered = orderBy(toolsItems, (tool) => tool.section + tool.title);
   const toolsBySection = groupBy(toolsOrdered, (tool) => tool.section);
 
   return (

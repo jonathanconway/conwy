@@ -12,15 +12,11 @@ export const container = style({
   display: "flex",
 
   flexDirection: "row",
-  gap: "1.5rem",
+  gap: "1rem",
   alignItems: "flex-start",
 
-  width: "80%",
-  maxWidth: "24rem",
-
   marginTop: "2.5rem",
-  marginBottom: "1rem",
-  paddingBottom: "2.5rem",
+  marginBottom: "1.5rem",
 });
 
 globalStyle(`${container} h1`, {
