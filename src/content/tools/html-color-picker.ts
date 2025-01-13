@@ -6,7 +6,7 @@ export const HtmlColorPicker: Tool = {
   title: "HtmlColorPicker",
   category: "Color",
   date: "2024-12-07",
-  operatingSystems: ["MacOS"],
+  operatingSystems: ["Web"],
   url: "https://www.w3schools.com/colors/colors_picker.asp",
   description: "Web-compatible HTML color picker.",
   mainImage: "/images/tools/html-color-picker.png",
