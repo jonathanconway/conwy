@@ -6,6 +6,6 @@ export const section = style({
   gap: "0.5rem",
 });
 
-globalStyle(`${section} h4`, {
+globalStyle(`${section} h3`, {
   marginTop: "1.5rem",
 });
