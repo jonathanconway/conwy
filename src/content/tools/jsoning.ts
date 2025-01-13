@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework";
 
 export const Jsoning: Tool = {
-  section: ToolSections.App,
+  section: ToolSections.Website,
   slug: "jsoning",
   title: "JSONing",
   category: "Code Playground",
