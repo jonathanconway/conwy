@@ -54,3 +54,6 @@ export * from "./right-story-wrong-story";
 export * from "./correct-order-of-fundamental-harmonies";
 export * from "./macintosh-way";
 export * from "./apple-human-interface-guidelines";
+export * from "./noise";
+export * from "./geometry-of-wealth";
+export * from "./investments";
