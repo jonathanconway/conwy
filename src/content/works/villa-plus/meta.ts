@@ -57,6 +57,9 @@ export const meta: WorkMeta = {
         {
           itemName: "monitor",
         },
+        {
+          itemName: "open-telemetry",
+        },
       ],
     },
     {
