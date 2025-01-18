@@ -1,9 +1,9 @@
 import { createTheme } from "@vanilla-extract/css";
 
 import { aboutMeThemeDark } from "../about-me/about-me.css-theme";
-import { articleSummaryThemeDark } from "../article/article-summary/article-summary.css-theme";
 import { articlesTagFiltersThemeDark } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeDark } from "../aside/aside.css-theme";
+import { blockQuoteSummaryThemeDark } from "../block-quote/block-quote-summary/block-quote-summary.css-theme";
 import { blockQuoteThemeDark } from "../block-quote/block-quote.css-theme";
 import { boxThemeDark } from "../box/box.css-theme";
 import { buttonThemeDark } from "../button/button.css-theme";
@@ -32,9 +32,9 @@ import { vars } from "./theme-contract.css";
 export const themeDarkClass = createTheme(vars, {
   aboutMe: aboutMeThemeDark,
   articlesTagFilters: articlesTagFiltersThemeDark,
-  articleSummary: articleSummaryThemeDark,
   aside: asideThemeDark,
   blockQuote: blockQuoteThemeDark,
+  blockQuoteSummary: blockQuoteSummaryThemeDark,
   box: boxThemeDark,
   button: buttonThemeDark,
   code: codeThemeDark,

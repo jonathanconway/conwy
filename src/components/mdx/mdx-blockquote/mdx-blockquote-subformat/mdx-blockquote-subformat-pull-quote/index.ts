@@ -1,1 +1,1 @@
-export * from "./mdx-blockquote-pull-quote";
+export * from "./mdx-blockquote-subformat-pull-quote";

@@ -1,9 +1,9 @@
 import { createTheme } from "@vanilla-extract/css";
 
 import { aboutMeThemeLight } from "../about-me/about-me.css-theme";
-import { articleSummaryThemeLight } from "../article/article-summary/article-summary.css-theme";
 import { articlesTagFiltersThemeLight } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeLight } from "../aside/aside.css-theme";
+import { blockQuoteSummaryThemeLight } from "../block-quote/block-quote-summary/block-quote-summary.css-theme";
 import { blockQuoteThemeLight } from "../block-quote/block-quote.css-theme";
 import { boxThemeLight } from "../box/box.css-theme";
 import { buttonThemeLight } from "../button/button.css-theme";
@@ -32,9 +32,9 @@ import { vars } from "./theme-contract.css";
 export const themeLightClass = createTheme(vars, {
   aboutMe: aboutMeThemeLight,
   articlesTagFilters: articlesTagFiltersThemeLight,
-  articleSummary: articleSummaryThemeLight,
   aside: asideThemeLight,
   blockQuote: blockQuoteThemeLight,
+  blockQuoteSummary: blockQuoteSummaryThemeLight,
   box: boxThemeLight,
   button: buttonThemeLight,
   code: codeThemeLight,

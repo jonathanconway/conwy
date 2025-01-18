@@ -15,7 +15,7 @@ export const container = style({
 export const img = style({
   maxWidth: "100%",
   maxHeight: "20rem",
-  width: "auto",
+  width: "100%",
   height: "auto",
   padding: "0.5rem",
   borderWidth: "1px",

@@ -7,7 +7,7 @@ import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 
 const PULL_QUOTE_PREFIX = "Pull-quote:";
 
-export function getBlockQuotePullQuoteSubformatProps(
+export function getBlockQuoteSubformatPullQuoteProps(
   props: MdxBlockquoteProps,
 ) {
   if (

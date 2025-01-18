@@ -21,7 +21,7 @@ export const switchThemeLight = {
   checked: {
     color: colors.white,
     background: {
-      color: colors.purple_900,
+      color: colors.purple_700,
     },
   },
 };

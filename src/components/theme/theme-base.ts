@@ -1,7 +1,7 @@
 import { aboutMeThemeBase } from "../about-me/about-me.css-theme";
-import { articleSummaryThemeBase } from "../article/article-summary/article-summary.css-theme";
 import { articlesTagFiltersThemeBase } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeBase } from "../aside/aside.css-theme";
+import { blockQuoteSummaryThemeBase } from "../block-quote/block-quote-summary/block-quote-summary.css-theme";
 import { blockQuoteThemeBase } from "../block-quote/block-quote.css-theme";
 import { boxThemeBase } from "../box/box.css-theme";
 import { buttonThemeBase } from "../button/button.css-theme";
@@ -28,9 +28,9 @@ import { tooltipThemeBase } from "../tooltip/tooltip.css-theme";
 export const themeBase = {
   aboutMe: aboutMeThemeBase,
   articlesTagFilters: articlesTagFiltersThemeBase,
-  articleSummary: articleSummaryThemeBase,
   aside: asideThemeBase,
   blockQuote: blockQuoteThemeBase,
+  blockQuoteSummary: blockQuoteSummaryThemeBase,
   box: boxThemeBase,
   button: buttonThemeBase,
   code: codeThemeBase,

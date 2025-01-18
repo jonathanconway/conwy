@@ -7,7 +7,7 @@ import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 
 const ASIDE_PREFIX = "Aside:";
 
-export function getBlockQuoteAsideSubformatProps(props: MdxBlockquoteProps) {
+export function getBlockQuoteSubformatAsideProps(props: MdxBlockquoteProps) {
   if (!getSubformatChildrenStartingWithPrefix(ASIDE_PREFIX, props.children)) {
     return props;
   }
