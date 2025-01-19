@@ -15,7 +15,7 @@ interface ArticlesRecentListProps {
 export function ArticlesRecentList({ items }: ArticlesRecentListProps) {
   return (
     <Stack>
-      <Heading level={2}>Recent posts</Heading>
+      <Heading level={2}>Pinned posts</Heading>
 
       <ArticlesList items={items} />
 
