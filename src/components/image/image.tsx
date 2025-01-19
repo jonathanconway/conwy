@@ -18,6 +18,7 @@ export function Image({
 }: ImageProps) {
   return (
     <Link
+      className="image-link"
       href={image?.src ?? restProps.src}
       target="_blank"
       showOpenInNew={false}

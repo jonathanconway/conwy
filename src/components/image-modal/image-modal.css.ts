@@ -34,7 +34,7 @@ export const imageContainer = style({
 });
 
 export const image = style({
-  width: "32rem",
+  width: "100%",
   height: "auto",
   maxHeight: "80vh",
   padding: "0.375rem",

@@ -99,6 +99,13 @@ const figure = {
 
 globalStyle(`${fragment} figure`, figure);
 
+const image = {
+  marginTop: "2rem",
+  marginBottom: "1rem",
+};
+
+globalStyle(`${fragment} .image-link`, image);
+
 const table = {
   marginTop: "1rem",
   marginBottom: "1rem",

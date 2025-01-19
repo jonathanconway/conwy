@@ -1,0 +1,118 @@
+> Summary: User flows help digital teams get on the same page and view the user interface and interactions holistically. User flows are typically made up of screens and components, nodes and connectors and notes and links. Collaboration can take the form of comments and annotation sessions.
+
+When building a digital product on a team of almost any size and composition, I've found it helpful to get a ***complete birds-eye view*** of the user's journey through the product. This kind of view is especially helpful during discussions between engineers, designers and product owners.
+
+Everyone should be on the same page about ***how the how the user will interact*** with the product and ***how the product should behave***.
+
+In this case, just having a collection of screen mockups doesn't quite do the job. We want to see the ***connections between screens*** and how they interact with the user.
+
+In a previous article I discussed [interaction wireframes](/articles/interaction-wireframes) – wireframes that include additional details about parts of the interface (via markers) and connections between screens or parts of screens (via connecting arrow lines with labels).
+
+Recently ***user flows***, a more advanced form of this, have come into vogue. In this article I'd like to describe what user flows are and their benefits.
+
+## Ingredients of a user flow
+
+Here's an outline of a user flow:
+
+![Outline of a user flow](/images/articles/user-flows/outline.png)
+
+And an example – an emoji picker application:
+
+![Example user flow for an emoji picker](/images/articles/user-flows/example.png)
+
+Notice the following ingredients:
+
+1. Screens and components
+2. Nodes and connectors
+3. Notes and links
+
+Let's dive into each.
+
+## Screens and Components
+
+![](/images/articles/user-flows/screen.png)
+
+User flows are screen-centric. Everything revolves around whole screens that users see. We are really trying to see the product as it appears to the end-user.
+
+Desktop and mobile screens might sit adjacent, if the experience is very similar. But in cases where the mobile experience differs significantly from desktop, it's probably better to use entirely separate flows for each.
+
+Screens are high-fidelity mockups – they really look like the real thing. In the "bad old days", it might have been advisable to use lower-fidelity tools such as wireframes and even hand drawings. In some cases these are still useful.
+
+![Example screen containing components](/images/articles/user-flows/example-screen.png)
+
+User flows, in contrast, take advantage of more modern tools.
+1. ***Design tools*** (such as [Figma](http://figma.com)), which make it easy to create high-fidelity components and quickly assemble them into full screens and
+2. ***Collaborative whiteboard tools*** (such as [FigJam](https://www.figma.com/figjam/) and [Miro](https://miro.com)), which allow screens to be quickly assembled into flows, in a real-time collaborative visual space.
+
+Designers can consume ***design systems*** or ***component libraries***, assembling pre-built components (either internal to the organisation or off-the-shelf) into full screens. For example Figma has [Figma components](https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma).
+
+With component re-use, full fidelity mockups become more effective than wireframes. They look realistic and make it easy for engineers to implement the screens using the natural reusability of frameworks such as React, React Native or Angular.
+
+Using a collaborative whiteboard, designers can more easily communicate designs to engineers, who can also participate in the design, by asking questions, attaching comments to specific parts of the flow and/or participating in annotation sessions.
+
+## Nodes and connectors
+
+![](/images/articles/user-flows/nodes-connectors.png)
+
+Screens can be connected together using ***connectors*** – lines with directional arrows, indicating visually how the user "flows" through the application. Various kinds of ***nodes*** can be inserted between connected screens, to indicate user actions, system events and processes, conditionals and terminators.
+
+### User actions
+
+![](/images/articles/user-flows/user-action.png)
+
+In the example, I use green circles or ovals for user actions.
+
+The text should be very short, 1-3 words maximum. It should describe a specific user activity, such as "click", "hover", "submit form", etc.
+
+![Example user action](/images/articles/user-flows/example-user-action.png)
+
+### System events and processes
+
+![](/images/articles/user-flows/system-process-event.png)
+
+In the example, I use blue rectangles for system events and processes.
+
+System events triggered by user interaction should be described in brief words or phrases and directly connected to the screen or another node.
+
+Processes are second-order events that are triggered by events, not directly by interactions. I use blue rectangles for these also and connect them to the relevant event. If a process is long-running or a background process, relevant to the screen but not tied to a particular node, I just place it nearby.
+
+![Example system event and process](/images/articles/user-flows/example-system-event.png)
+
+### Conditionals and terminators
+
+![](/images/articles/user-flows/conditional.png)
+
+In the example, I use purple rhombuses for conditionals, such as "if foo then bar else baz".
+
+Conditionals are especially helpful for engineers, who need to understand the pre-conditions for a screen or component to be shown to the end-user.
+
+![](/images/articles/user-flows/terminators.png)
+
+Terminators indicate the start or end of a flow. I like to use a "person" or "stick figure" symbol for the start, to orient the viewers to the fact that a real person will be going through this flow. I like to use a simple gray circle to mark the end of a flow, with perhaps a link to a subsequent flow or to the main screen.
+
+![Example conditional and terminator](/images/articles/user-flows/example-conditional-terminator.png)
+
+## Optional: Notes and links
+
+Small ***notes*** can be added underneath screens and components to provide additional information such as intended user experience, edge cases and justifications. These might be simply pieces of text underneath a screen or they might be numbered or bulleted lists.
+
+Helpful ***links*** can be added, pointing to resources such as documentation, tasks in the task tracker, other user flows, chat discussions or anything else that's relevant to the screen.
+
+> Aside: I marked Notes and links as "Optional" because it adds some clutter to the whiteboard, which you might prefer to avoid.
+
+![Example notes and links](/images/articles/user-flows/example-notes-links.png)
+
+## Collaboration with comments and annotations
+
+Team members can add ***comments*** to specific elements in the flow using, say, the [Comment tool in FigJam](https://help.figma.com/hc/en-us/articles/1500004290941-Comments-in-FigJam).
+
+![Example comment](/images/articles/user-flows/example-comment.png)
+
+Also the team might run ***annotation sessions***. These are online meetings in which team members take some time to add online sticky notes to parts of the flow, communicating questions, accessibility issues, engineering issues or anything other relevant communication.
+
+![Example comment](/images/articles/user-flows/example-annotation-session.png)
+
+## Further reading
+
+- [User flows - Interaction Design Foundation](https://www.interaction-design.org/literature/topics/user-flows)
+

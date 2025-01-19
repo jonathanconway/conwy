@@ -1,30 +1,35 @@
 import { style } from "@vanilla-extract/css";
 
-import { boxBorderDecorative } from "../box/box.mixins";
+import * as boxMixins from "../box/box.mixins";
+import * as linkMixins from "../link/link.mixins";
 import { text } from "../styling";
 import { vars } from "../theme";
 
 export const container = style({
-  paddingLeft: "2rem" /* 32px */,
-  paddingRight: "2rem" /* 32px */,
-  paddingTop: "1rem",
-  paddingBottom: "1rem",
-  ...boxBorderDecorative,
+  padding: "0.5rem",
+  display: "inline-flex",
+  flexDirection: "column",
+  gap: "0.5rem",
+  ...boxMixins.boxBorderDecorative,
+});
+
+export const link = style({
+  ...linkMixins.link,
+  display: "inline-flex",
 });
 
 export const img = style({
   maxWidth: "100%",
   maxHeight: "20rem",
-  width: "100%",
+  width: "unset",
   height: "auto",
-  padding: "0.5rem",
+
   borderWidth: "1px",
   borderStyle: "solid",
   filter: vars.imageFigure.filter,
 });
 
 export const figCaption = style({
-  marginTop: "1rem",
   ...text.size.xs,
   lineHeight: "1rem",
 });
