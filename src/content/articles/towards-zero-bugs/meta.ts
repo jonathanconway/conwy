@@ -24,4 +24,5 @@ export const meta: ArticleMeta = {
       likeCount: 207,
     },
   ],
+  isPinned: true,
 };

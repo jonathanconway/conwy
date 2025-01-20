@@ -12,4 +12,5 @@ export const meta: ArticleMeta = {
   },
   socialLinks: [],
   discussionLinks: [],
+  isPinned: true,
 };

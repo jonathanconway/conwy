@@ -12,4 +12,5 @@ export const meta: ArticleMeta = {
   mainImage: {
     src: "/images/articles/user-flows/main.jpg",
   },
+  isPinned: true,
 };
