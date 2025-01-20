@@ -9,4 +9,7 @@ export const meta: ArticleMeta = {
   tags: [PostTags.Design],
   socialLinks: [],
   discussionLinks: [],
+  mainImage: {
+    src: "/images/articles/user-flows/main.jpg",
+  },
 };
