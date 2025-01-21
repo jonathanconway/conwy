@@ -22,7 +22,23 @@ export const meta: WorkMeta = {
       author: "Technical Lead",
     },
   ],
-  images: [],
+  images: [
+    {
+      src: "fiserv-01.jpeg",
+    },
+    {
+      src: "fiserv-02.jpeg",
+    },
+    {
+      src: "fiserv-03.gif",
+    },
+    {
+      src: "fiserv-04.gif",
+    },
+    {
+      src: "fiserv-05.png",
+    },
+  ],
   slug: "fiserv",
   tags: [],
   type: "work",
