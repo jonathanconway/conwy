@@ -1,8 +1,5 @@
-import { useCallback, useEffect } from "react";
+import { Image as Image_ } from "@/framework/client";
 
-import { Image as Image_, setSearchParams } from "@/framework/client";
-
-import { UseCarouselResult, useCarousel } from "../carousel";
 import { CarouselItem } from "../carousel/carousel-item";
 
 import { ImageModalProps } from "./image-modal-props";

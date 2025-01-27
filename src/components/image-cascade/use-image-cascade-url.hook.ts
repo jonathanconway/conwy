@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-import { setSearchParams } from "@/framework/client";
+import { clearSearchParams } from "@/framework/client";
 
 interface UseImageCascadeUrlParams<T> {
   readonly items: readonly T[];
@@ -29,7 +29,7 @@ export function useImageCascadeUrl<T>(params: UseImageCascadeUrlParams<T>) {
       return;
     }
 
-    setSearchParams({ image: "" });
+    clearSearchParams(["image"]);
   }
 
   return {
