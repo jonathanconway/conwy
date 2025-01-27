@@ -58,3 +58,4 @@ export * from "./noise";
 export * from "./geometry-of-wealth";
 export * from "./investments";
 export * from "./observability-engineering";
+export * from "./olaudah-equiano";

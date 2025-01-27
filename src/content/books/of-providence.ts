@@ -5,5 +5,5 @@ export const ofProvidenceBook: Book = {
   status: BookStatuses.Finished,
   title: "Of Providence",
   url: "https://en.wikipedia.org/wiki/De_Providentia",
-  category: BookCategories.Spirituality,
+  category: BookCategories.Philosophy,
 };

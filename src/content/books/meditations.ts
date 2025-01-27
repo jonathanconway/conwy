@@ -5,5 +5,5 @@ export const meditationsBook: Book = {
   status: BookStatuses.Finished,
   title: "Meditations",
   url: "https://en.wikipedia.org/wiki/Meditations",
-  category: BookCategories.Spirituality,
+  category: BookCategories.Philosophy,
 };
