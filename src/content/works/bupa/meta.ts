@@ -30,11 +30,11 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "bupa-01.jpg",
-      notes: [],
+      title: "Bupa website - Cover comparison tool",
     },
     {
       src: "bupa-02.jpg",
-      notes: [],
+      title: "Bupa website - Quick quote tool",
     },
   ],
   slug: "bupa",

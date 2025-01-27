@@ -30,15 +30,15 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "revolut-1.png",
-      notes: [],
+      title: "Revolut Business - Product page",
     },
     {
       src: "revolut-2.png",
-      notes: [],
+      title: "Revolut Business - Onboarding - Shareholders editor",
     },
     {
       src: "revolut-3.webp",
-      notes: [],
+      title: "Revolut Business - Accounts view",
     },
   ],
   slug: "revolut",

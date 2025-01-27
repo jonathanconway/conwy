@@ -13,16 +13,16 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      src: "mycastingnet-01.png",
-      notes: [],
+      src: "mycastingnet-02.png",
+      title: "My Shows screen",
     },
     {
-      src: "mycastingnet-02.png",
-      notes: [],
+      src: "mycastingnet-01.png",
+      title: "My Cast screen",
     },
     {
       src: "mycastingnet-03.png",
-      notes: [],
+      title: "My Cast screen - Adding a cast member",
     },
   ],
   slug: "mycastingnet",

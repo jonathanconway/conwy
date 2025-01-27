@@ -1,85 +1,37 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
-
-import { Image as Image_ } from "@/framework/client";
+import { Suspense } from "react";
 
 import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
 import { ImageModal } from "../image-modal";
 import { Tooltip } from "../tooltip";
 
+import { IMAGE_CASCADE_SIZE_PX } from "./image-cascade-size";
 import * as styles from "./image-cascade.css";
-import { useImageCascade } from "./image-cascade.hooks";
+import * as inlineStyles from "./image-cascade.css-inline";
 import { ImageCascadeProps } from "./image-cascade.types";
+import { useImageCascade } from "./use-image-cascade.hook";
 
-const IMAGE_SIZE_PX = {
-  width: 150,
-  height: 100,
-};
+function ImageCascade_(props: ImageCascadeProps) {
+  const { images, isUrlAddressable } = props;
 
-interface ImageCascadeState {
-  readonly openImage?: Image_;
-}
+  const {
+    isCascade,
+    items,
+    openedItem,
+    handleNextClick,
+    handlePreviousClick,
+    handleImageClick,
+    handleImageModalCloseClick,
+  } = useImageCascade({
+    items: images,
+    isUrlAddressable,
+  });
 
-export function ImageCascade(props: ImageCascadeProps) {
-  const { handleNextClick, handlePreviousClick, items, selectedItem } =
-    useImageCascade({
-      items: props.images,
-    });
-
-  const [state, setState] = useState<ImageCascadeState>({});
-
-  const handleImageModalCloseClick = () => {
-    setState({});
-  };
-
-  const handleImageClick = (openImage: Image_) => () => {
-    setState({ openImage });
-  };
-
-  if (props.images.length === 0) {
+  if (images.length === 0) {
     return;
-  }
-
-  if (props.images.length === 1) {
-    const image = props.images[0];
-    return (
-      <>
-        <div className={styles.imageContainerSingle}>
-          <Tooltip
-            key={`image-cascade-item-${image.src}`}
-            contents={image.alt ?? "Image"}
-          >
-            <div
-              role="button"
-              tabIndex={0}
-              className={styles.imageContainer}
-              onClick={handleImageClick(image)}
-            >
-              <div className={styles.imageInner}>
-                <Image
-                  className={styles.image}
-                  src={image.src}
-                  alt={image.src}
-                  width={IMAGE_SIZE_PX.width}
-                  height={IMAGE_SIZE_PX.height}
-                />
-              </div>
-            </div>
-          </Tooltip>
-        </div>
-
-        {state.openImage && (
-          <ImageModal
-            images={props.images}
-            defaultImage={state.openImage}
-            onClose={handleImageModalCloseClick}
-          />
-        )}
-      </>
-    );
   }
 
   return (
@@ -88,30 +40,28 @@ export function ImageCascade(props: ImageCascadeProps) {
         {items?.map((image, imageIndex) => (
           <Tooltip
             key={`image-cascade-item-${image.src}`}
-            contents={image.alt ?? `Image #${imageIndex}`}
+            contents={image.alt ?? image.title ?? `Image #${imageIndex}`}
           >
             <div
               role="button"
               tabIndex={0}
               className={styles.imageContainer}
-              style={{
-                left: `${(100 / (props.images.length * 2)) * (imageIndex + 1)}%`,
-                top: `${(100 / (props.images.length * 2)) * (imageIndex + 1)}%`,
-                width: `${IMAGE_SIZE_PX.width}px`,
-                height: `${IMAGE_SIZE_PX.height}px`,
-              }}
+              style={inlineStyles.imageContainer(props, imageIndex)}
               onClick={handleImageClick(image)}
             >
-              <span className={styles.imageNumber}>
-                {props.images.indexOf(image) + 1}
-              </span>
+              {isCascade && (
+                <span className={styles.imageNumber}>
+                  {images.indexOf(image) + 1}
+                </span>
+              )}
+
               <div className={styles.imageInner}>
                 <Image
                   className={styles.image}
                   src={image.src}
                   alt={image.src}
-                  width={IMAGE_SIZE_PX.width}
-                  height={IMAGE_SIZE_PX.height}
+                  width={IMAGE_CASCADE_SIZE_PX.width}
+                  height={IMAGE_CASCADE_SIZE_PX.height}
                 />
               </div>
             </div>
@@ -119,7 +69,7 @@ export function ImageCascade(props: ImageCascadeProps) {
         ))}
       </div>
 
-      {props.images?.length > 1 && (
+      {isCascade && (
         <div className={styles.nav}>
           <IconButton
             icon={IconTypes.ArrowChevronLeft}
@@ -135,13 +85,22 @@ export function ImageCascade(props: ImageCascadeProps) {
         </div>
       )}
 
-      {state.openImage && (
+      {openedItem && (
         <ImageModal
           images={props.images}
-          defaultImage={state.openImage}
+          defaultImage={openedItem}
+          isUrlAddressable={isUrlAddressable}
           onClose={handleImageModalCloseClick}
         />
       )}
     </>
+  );
+}
+
+export function ImageCascade(props: ImageCascadeProps) {
+  return (
+    <Suspense>
+      <ImageCascade_ {...props} />
+    </Suspense>
   );
 }

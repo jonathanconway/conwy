@@ -22,7 +22,7 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "optus-1.svg",
-      alt: "Agent SubHub",
+      title: "Agent SubHub - Main screen",
       notes: [
         {
           text: "In addition to building the whole front-end, implemented back-end calculation logic for the savings and total.",
@@ -40,8 +40,8 @@ export const meta: WorkMeta = {
         },
       ],
     },
-    { src: "optus-2.svg", notes: [] },
-    { src: "optus-3.png", notes: [] },
+    { src: "optus-2.svg", title: "SubHub - Subscription eligibility popup" },
+    { src: "optus-3.png", title: "Credit Offer - Solution design" },
   ],
   techs: [
     {

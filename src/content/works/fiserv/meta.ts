@@ -25,18 +25,28 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "fiserv-01.jpeg",
+      alt: "Staff award 1",
     },
     {
       src: "fiserv-02.jpeg",
+      alt: "Staff award 2",
     },
     {
       src: "fiserv-03.gif",
-    },
-    {
-      src: "fiserv-04.gif",
+      alt: "Accounts web interface",
     },
     {
       src: "fiserv-05.png",
+      alt: "Make a payment web interface",
+    },
+    {
+      src: "fiserv-04.gif",
+      alt: "DSynchronize tool",
+      notes: [
+        {
+          text: "Introduced this tool to the team, enabling them to keep in sync two versions of the product (which both needed to be simultaneously installed in development environments for the solution to function, for architectural reasons). This immediately boosted developer productivity, and continued to be used long after I left.",
+        },
+      ],
     },
   ],
   slug: "fiserv",

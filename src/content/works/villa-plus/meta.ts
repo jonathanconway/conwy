@@ -14,15 +14,15 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "villa-plus-1.png",
-      notes: [],
-    },
-    {
-      src: "villa-plus-2.jpg",
-      notes: [], //Collaborative Kan-ban-style planning on whiteboard
+      title: "Date range picker, built in React - Desktop web",
     },
     {
       src: "villa-plus-screencast.gif",
-      notes: [],
+      title: "Date range picker, built in React - Mobile web",
+    },
+    {
+      src: "villa-plus-2.jpg",
+      title: "Collaborative Kan-ban-style planning on whiteboard",
     },
   ],
   slug: "villa-plus",

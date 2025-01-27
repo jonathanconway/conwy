@@ -13,8 +13,7 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "amaysim-01.jpg",
-      alt: "MyDevices portal - Desktop",
-      notes: [],
+      title: "MyDevices portal",
     },
   ],
   slug: "amaysim",

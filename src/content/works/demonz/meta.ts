@@ -19,15 +19,15 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "demonz-1.jpg",
-      notes: [],
+      title: "Configuration - Inventory screen",
     },
     {
       src: "demonz-2.jpg",
-      notes: [],
+      title: "Data Entry - Receptacles On Site Count",
     },
     {
       src: "demonz-3.jpg",
-      notes: [],
+      title: "Reporting - Contractor Pricing",
     },
   ],
   slug: "demonz",

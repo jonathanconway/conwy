@@ -19,13 +19,13 @@ export function Image({
   return (
     <Link
       className="image-link"
-      href={image?.src ?? restProps.src}
+      href={image.src ?? restProps.src}
       target="_blank"
       showOpenInNew={false}
     >
       <NextImage
         {...restProps}
-        src={image?.src}
+        src={image.src}
         alt={image.alt ?? image.src}
         width={width}
         height={height}

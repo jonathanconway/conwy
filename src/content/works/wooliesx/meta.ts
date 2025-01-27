@@ -20,19 +20,19 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "wooliesx-1.png",
-      notes: [],
+      title: "OTA Tracker - Deliveries grid with details sidebar",
     },
     {
       src: "wooliesx-2.png",
-      notes: [],
+      title: "Street Service Time - Map with co-ordinates and details",
     },
     {
       src: "wooliesx-3.png",
-      notes: [],
+      title: "Rubix Authentication - Sequence diagram",
     },
     {
       src: "wooliesx-4.png",
-      notes: [],
+      title: "OTA Tracker - iPhone app prototype",
     },
   ],
   slug: "wooliesx",

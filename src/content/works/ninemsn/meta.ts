@@ -24,7 +24,12 @@ export const meta: WorkMeta = {
   images: [
     {
       src: "ninemsn-01.jpg",
-      notes: [],
+      title: "NineMSN NZ Olympics page",
+      notes: [
+        {
+          text: "Pixel-perfect and Internet Explorer 6.0 compatible",
+        },
+      ],
     },
   ],
   slug: "ninemsn",

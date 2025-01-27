@@ -2,6 +2,9 @@ import { Url } from "../url";
 
 export interface Image {
   readonly src: Url;
+
+  readonly title?: string;
+
   readonly alt?: string;
 
   readonly notes?: readonly {

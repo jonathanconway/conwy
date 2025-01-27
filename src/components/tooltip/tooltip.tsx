@@ -1,21 +1,14 @@
 "use client";
 
 import { isArray, isObject, isString } from "lodash";
-import { CSSProperties, Children, ReactNode, cloneElement, useId } from "react";
+import { Children, ReactNode, cloneElement, useId } from "react";
 import { Tooltip as Tooltip_ } from "react-tooltip";
 
-import { ResponsiveVisibilityMap, getResponsiveHidden } from "../responsive";
+import { getResponsiveHidden } from "../responsive";
 
+import { TooltipProps } from "./tooltip-props";
 import * as styles from "./tooltip.css";
 import * as mixins from "./tooltip.mixins";
-
-export interface TooltipProps {
-  readonly key?: string;
-  readonly children?: readonly ReactNode[] | ReactNode;
-  readonly contents?: ReactNode | string;
-  readonly style?: CSSProperties;
-  readonly responsiveVisibility?: ResponsiveVisibilityMap;
-}
 
 function convertContentsToReactNode(contents?: ReactNode | string) {
   if (!contents) {

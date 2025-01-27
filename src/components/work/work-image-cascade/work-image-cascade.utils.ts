@@ -7,10 +7,9 @@ export function workImageFullPath({ slug }: WorkMeta) {
 }
 
 export function generateWorkImages(work: Work) {
-  const workImages = work.meta.images.map((image, imageIndex) => ({
+  const workImages = work.meta.images.map((image) => ({
     ...image,
     src: workImageFullPath(work.meta)(image),
-    alt: image.alt ?? `${work.meta.client} image #${imageIndex + 1}`,
   }));
   return workImages;
 }

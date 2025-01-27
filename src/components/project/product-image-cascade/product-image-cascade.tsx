@@ -10,5 +10,5 @@ export interface ProjectImageCascadeProps {
 
 export function ProjectImageCascade(props: ProjectImageCascadeProps) {
   const projectImages = generateProjectImages(props.projectMeta);
-  return <ImageCascade images={projectImages} />;
+  return <ImageCascade images={projectImages} isUrlAddressable />;
 }

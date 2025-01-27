@@ -25,6 +25,7 @@ export const notesContainerWithHotspots = style({
 export const noteText = style({
   position: "relative",
   paddingTop: "0.125rem",
+  maxWidth: "10rem",
   ...text.size.sm,
 });
 

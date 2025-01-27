@@ -10,5 +10,5 @@ export interface WorkImageCascadeProps {
 
 export function WorkImageCascade(props: WorkImageCascadeProps) {
   const workImages = generateWorkImages(props.work);
-  return <ImageCascade images={workImages} />;
+  return <ImageCascade images={workImages} isUrlAddressable />;
 }

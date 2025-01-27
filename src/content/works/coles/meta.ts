@@ -40,9 +40,9 @@ export const meta: WorkMeta = {
   tags: [],
   type: "work",
   images: [
-    { src: "coles-1.png", notes: [] },
-    { src: "coles-2.png", notes: [] },
-    { src: "coles-3.png", notes: [] },
+    { src: "coles-1.png", title: "Delivery scheduling sidebar" },
+    { src: "coles-2.png", title: "Payment screen - Payment details entry" },
+    { src: "coles-3.png", title: "Payment screen - Confirmation" },
   ],
   techs: [
     {

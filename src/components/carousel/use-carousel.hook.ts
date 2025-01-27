@@ -8,6 +8,8 @@ import { CarouselItem } from "./carousel-item";
 interface UseCarouselParams<TCarouselItem extends CarouselItem = CarouselItem> {
   readonly items: readonly TCarouselItem[];
   readonly defaultItem?: TCarouselItem;
+
+  readonly onTabSelect?: (newSelectedItem: TCarouselItem) => void;
 }
 
 export interface UseCarouselResult<
@@ -29,7 +31,7 @@ interface UseCarouselState {
 export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
   params: UseCarouselParams<TCarouselItem>,
 ) {
-  const { items } = params;
+  const { items, onTabSelect } = params;
 
   const [state, setState] = useState<UseCarouselState>({
     selectedIndex: params.defaultItem ? items.indexOf(params.defaultItem) : 0,
@@ -48,6 +50,8 @@ export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
     setState({
       selectedIndex: newSelectedIndex,
     });
+
+    onTabSelect?.(items[newSelectedIndex]);
   };
 
   const handleNextClick = () => {
@@ -58,12 +62,18 @@ export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
     setState({
       selectedIndex: newSelectedIndex,
     });
+
+    onTabSelect?.(items[newSelectedIndex]);
   };
 
   const handleTabClick = (newSelectedItem: TCarouselItem) => () => {
+    const newSelectedIndex = params.items.indexOf(newSelectedItem);
+
     setState({
-      selectedIndex: params.items.indexOf(newSelectedItem),
+      selectedIndex: newSelectedIndex,
     });
+
+    onTabSelect?.(items[newSelectedIndex]);
   };
 
   return {

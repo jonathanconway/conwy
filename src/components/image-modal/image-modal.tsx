@@ -18,9 +18,11 @@ import { useImageModal } from "./use-image-modal.hook";
 export function ImageModal(props: ImageModalProps) {
   const { carousel, hasHotspots } = useImageModal(props);
 
+  const { title, alt, src } = carousel.selectedItem;
+
   return (
     <Modal
-      title={sentenceCase(getUrlFilename(carousel.selectedItem.src))}
+      title={title ?? alt ?? sentenceCase(getUrlFilename(src))}
       toolbar={<CarouselNav carousel={carousel} />}
       onClose={props.onClose}
     >
@@ -30,13 +32,11 @@ export function ImageModal(props: ImageModalProps) {
             <Image
               className={styles.image}
               image={carousel.selectedItem}
-              src={carousel.selectedItem.src}
-              alt={carousel.selectedItem.alt ?? carousel.selectedItem.src}
+              src={src}
+              alt={alt ?? src}
             />
 
-            {carousel.selectedItem.title && (
-              <Text type="small">▲ {carousel.selectedItem.title}</Text>
-            )}
+            {alt && title && <Text type="small">▲ {alt}</Text>}
           </Stack>
           <ImageModalHotspots carousel={carousel} />
         </div>

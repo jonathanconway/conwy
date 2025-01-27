@@ -10,19 +10,26 @@ export const container = style({
   height: "10rem",
 });
 
+const imageBorder = {
+  borderWidth: "2px",
+  borderStyle: "solid",
+  borderColor: boxBorderDecorative.borderColor,
+  ...rounded.lg,
+};
+
+const imageContainerBase = {
+  ...imageBorder,
+  ...focusOutline,
+};
+
 export const imageContainerSingle = style({
   position: "relative",
   height: "10rem",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  ...imageContainerBase,
 });
-
-const imageBorder = {
-  borderWidth: "2px",
-  borderStyle: "solid",
-  borderColor: boxBorderDecorative.borderColor,
-};
 
 export const imageContainer = style({
   position: "absolute",
@@ -32,9 +39,7 @@ export const imageContainer = style({
   padding: "0.375rem",
   cursor: "pointer",
   backgroundColor: vars.layout.body.background.color,
-  ...rounded.lg,
-  ...imageBorder,
-  ...focusOutline,
+  ...imageContainerBase,
 
   ":hover": {
     // todo: generalize
