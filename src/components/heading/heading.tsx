@@ -8,7 +8,7 @@ export type HeadingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement
 > & {
-  readonly level?: 1 | 2 | 3 | 4;
+  readonly level?: 1 | 2 | 3 | 4 | 5;
 };
 
 const HeadingLevels = {
@@ -16,6 +16,7 @@ const HeadingLevels = {
   H2: "h2",
   H3: "h3",
   H4: "h4",
+  H5: "h5",
 } as const;
 
 type HeadingLevel = TypeOfConst<typeof HeadingLevels>;
@@ -42,6 +43,10 @@ const HEADING_LEVEL_DETAILS: Record<
   4: {
     element: "h4",
     className: styles.h4,
+  },
+  5: {
+    element: "h5",
+    className: styles.h5,
   },
 };
 

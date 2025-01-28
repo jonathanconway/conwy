@@ -37,6 +37,7 @@ export * from "./scripts";
 export * from "./section";
 export * from "./social-links";
 export * from "./stack";
+export * from "./studies";
 export * from "./switch";
 export * from "./table";
 export * from "./text";

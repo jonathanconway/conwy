@@ -24,3 +24,8 @@ export const h4: ComplexStyleRule = {
   fontWeight: 600,
   ...text.size.lg,
 };
+
+export const h5: ComplexStyleRule = {
+  fontWeight: 600,
+  ...text.size.md,
+};

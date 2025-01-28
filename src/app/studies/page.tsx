@@ -3,24 +3,24 @@ import {
   PageLayout,
   ResponsiveMdHalf,
   Stack,
-  ToolsList,
+  StudiesList,
 } from "@/components";
 import { site } from "@/content";
-import { Tools } from "@/content/fragments";
+import { Studies } from "@/content/fragments";
 
 export default function Page() {
   return (
     <PageLayout
-      selectedNavPath="/tools"
+      selectedNavPath="/studies"
       main={
         <Stack gap={1}>
           <ResponsiveMdHalf>
             <Fragment>
-              <Tools />
+              <Studies />
             </Fragment>
           </ResponsiveMdHalf>
 
-          <ToolsList />
+          <StudiesList />
         </Stack>
       }
     />
@@ -28,5 +28,5 @@ export default function Page() {
 }
 
 export const metadata = {
-  title: `${site.title} - tools`,
+  title: `${site.title} - studies`,
 };

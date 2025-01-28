@@ -9,5 +9,6 @@ export * from "./podcast";
 export * from "./post";
 export * from "./project";
 export * from "./social-link";
+export * from "./study";
 export * from "./tool";
 export * from "./work";
