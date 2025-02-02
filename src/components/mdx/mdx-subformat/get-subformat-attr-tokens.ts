@@ -1,20 +1,25 @@
-import { fromPairs, trim } from "lodash";
+import { fromPairs } from "lodash";
 
-export function getSubformatAttrTokens(attrValue: string) {
-  const parts = attrValue.split(",").map(trim) ?? [];
-  const [body, ...tokensParts] = parts;
+function convertSearchParamsToObject(searchParams: URLSearchParams) {
+  return fromPairs(Array.from(searchParams.entries()));
+}
 
-  const tokens = fromPairs(
-    tokensParts
-      .filter((token) => token.includes("="))
-      .map((token) => {
-        const [tokenKey, ...tokenValues] = token.split("=");
-        return [tokenKey, tokenValues.slice(1).join("=")];
-      }),
-  );
+function getSearchParamsFromUrlString(urlString: string) {
+  if (
+    !["http", "https", "file", "mailto:"].find((prefix) =>
+      urlString.startsWith(`${prefix}:`),
+    )
+  ) {
+    urlString = `http://${urlString}`;
+  }
 
-  return {
-    body,
-    tokens,
-  };
+  return new URL(urlString);
+}
+
+export function getSubformatUrlTokens(attrValue: string) {
+  const url = getSearchParamsFromUrlString(attrValue);
+  const [body] = attrValue.split("?");
+  const tokens = convertSearchParamsToObject(url.searchParams);
+
+  return { body, tokens };
 }
