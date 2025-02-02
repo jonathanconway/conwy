@@ -7,7 +7,6 @@ import { ContentList } from "../content-list";
 import { Fragment } from "../fragments";
 import { SectionHeading } from "../heading";
 import { Link } from "../link";
-import { List } from "../list";
 import { TextSizes } from "../text";
 
 import { Tool } from "./tool";

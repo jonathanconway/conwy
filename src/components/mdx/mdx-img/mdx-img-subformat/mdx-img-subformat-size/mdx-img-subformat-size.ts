@@ -1,21 +1,12 @@
-import { trim } from "lodash";
+import { getSubformatAttrTokens } from "@/components/mdx/mdx-subformat";
 
 import { MdxImgSubformatProps } from "../mdx-img-subformat-props";
 
 export function getMdxImgSubformatSizeProps(props: MdxImgSubformatProps) {
-  const srcAttrTokens = props.src?.split(",").map(trim) ?? [];
-  const srcAttrTokenSize = srcAttrTokens.find((token) =>
-    token.startsWith("size"),
-  );
-
-  const size = srcAttrTokenSize?.split("=")[1]?.trim() || undefined;
-
-  const src = srcAttrTokens[0];
-
-  console.log("getMdxImgSubformatSizeProps", {
-    size,
-    src,
-  });
+  const {
+    body: src,
+    tokens: { size },
+  } = getSubformatAttrTokens(props.src ?? "");
 
   return {
     ...props,

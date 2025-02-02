@@ -9,11 +9,11 @@ import { TextTypes } from "../../text/text-type";
 
 import * as styles from "./tool.css";
 
-interface ToolsProps {
+interface ToolProps {
   readonly tool: Tool_;
 }
 
-export function Tool({ tool }: ToolsProps) {
+export function Tool({ tool }: ToolProps) {
   return (
     <LinkBox href={tool.url} target="_blank">
       <ContentListItem

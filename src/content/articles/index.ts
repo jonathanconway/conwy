@@ -21,3 +21,4 @@ export * from "./towards-zero-bugs";
 export * from "./typescript-object-const-enum-pattern";
 export * from "./user-flows";
 export * from "./visualising-execution-flows";
+export * from "./keyboard-shortcuts";
