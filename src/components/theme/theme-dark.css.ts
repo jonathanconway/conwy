@@ -17,6 +17,7 @@ import { iconThemeDark } from "../icon/icon.css-theme";
 import { imageFigureThemeDark } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeDark } from "../image-modal/image-modal.css-theme";
 import { itemNavThemeDark } from "../item/item-nav/item-nav.css-theme";
+import { kbdThemeDark } from "../kbd/kbd.css-theme";
 import { labelThemeDark } from "../label/label.css-theme";
 import { layoutThemeDark } from "../layouts/app-layout/app-layout.css-theme";
 import { linkBoxTitleThemeDark } from "../link-box/link-box-title/link-box-title.css-theme";
@@ -47,6 +48,7 @@ export const themeDarkClass = createTheme(vars, {
   imageFigure: imageFigureThemeDark,
   imageModal: imageModalThemeDark,
   itemNav: itemNavThemeDark,
+  kbd: kbdThemeDark,
   label: labelThemeDark,
   layout: layoutThemeDark,
   link: linkThemeDark,

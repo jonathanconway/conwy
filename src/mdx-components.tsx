@@ -8,6 +8,7 @@ import {
   MdxH2,
   MdxH3,
   MdxImg,
+  MdxKbd,
   MdxLI,
   MdxOL,
   MdxP,
@@ -25,6 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h2: MdxH2,
     h3: MdxH3,
     img: MdxImg,
+    kbd: MdxKbd, // todo: doesn't work for some reason, need to debug
     li: MdxLI,
     ol: MdxOL,
     p: MdxP,

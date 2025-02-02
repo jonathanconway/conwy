@@ -17,6 +17,7 @@ import { iconThemeLight } from "../icon/icon.css-theme";
 import { imageFigureThemeLight } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeLight } from "../image-modal/image-modal.css-theme";
 import { itemNavThemeLight } from "../item/item-nav/item-nav.css-theme";
+import { kbdThemeLight } from "../kbd/kbd.css-theme";
 import { labelThemeLight } from "../label/label.css-theme";
 import { layoutThemeLight } from "../layouts/app-layout/app-layout.css-theme";
 import { linkBoxTitleThemeLight } from "../link-box/link-box-title/link-box-title.css-theme";
@@ -47,6 +48,7 @@ export const themeLightClass = createTheme(vars, {
   imageFigure: imageFigureThemeLight,
   imageModal: imageModalThemeLight,
   itemNav: itemNavThemeLight,
+  kbd: kbdThemeLight,
   label: labelThemeLight,
   layout: layoutThemeLight,
   link: linkThemeLight,

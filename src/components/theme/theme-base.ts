@@ -15,6 +15,7 @@ import { iconThemeBase } from "../icon/icon.css-theme";
 import { imageFigureThemeBase } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeBase } from "../image-modal/image-modal.css-theme";
 import { itemNavThemeBase } from "../item/item-nav/item-nav.css-theme";
+import { kbdThemeBase } from "../kbd/kbd.css-theme";
 import { labelThemeBase } from "../label/label.css-theme";
 import { layoutThemeBase } from "../layouts/app-layout/app-layout.css-theme";
 import { linkBoxTitleThemeBase } from "../link-box/link-box-title/link-box-title.css-theme";
@@ -43,6 +44,7 @@ export const themeBase = {
   imageFigure: imageFigureThemeBase,
   imageModal: imageModalThemeBase,
   itemNav: itemNavThemeBase,
+  kbd: kbdThemeBase,
   label: labelThemeBase,
   layout: layoutThemeBase,
   link: linkThemeBase,

@@ -5,6 +5,7 @@ export * from "./mdx-h1";
 export * from "./mdx-h2";
 export * from "./mdx-h3";
 export * from "./mdx-img";
+export * from "./mdx-kbd";
 export * from "./mdx-li";
 export * from "./mdx-mermaid";
 export * from "./mdx-ol";
