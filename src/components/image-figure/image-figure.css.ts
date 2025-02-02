@@ -18,15 +18,20 @@ export const link = style({
   display: "inline-flex",
 });
 
-export const img = style({
+const imgBase = {
+  borderWidth: "1px",
+  borderStyle: "solid",
+  filter: vars.imageFigure.filter,
+};
+
+export const img = style(imgBase);
+
+export const imgSized = style({
+  ...imgBase,
   maxWidth: "100%",
   maxHeight: "20rem",
   width: "unset",
   height: "auto",
-
-  borderWidth: "1px",
-  borderStyle: "solid",
-  filter: vars.imageFigure.filter,
 });
 
 export const figCaption = style({
