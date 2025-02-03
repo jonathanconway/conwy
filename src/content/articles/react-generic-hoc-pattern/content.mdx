@@ -10,9 +10,13 @@ Suppose we have an extremely ***general*** component, which we want to widely re
 
 ![Diagram depicting generic and connected components](/images/articles/react-generic-hoc-pattern/generic-reused-component.png)
 
-This component is so general that it need know hardly anything about its connected components and, vice-versa, they need hardly know anything about it.
+We are happy for the immediate consumers of the component need to know about the general component.
 
-However we do want to let the ***consumers*** of this general component easily customize its behavior through props, so that it will be maximally useful.
+But we don't want their consumers – the ***end consumers*** – to know about it.
+
+![Diagram depicting generic component re-used by, but decoupled from, end consumers](/images/articles/react-generic-hoc-pattern/generic-reused-component-decoupling.png)
+
+For these end consumers, we just want to expose some special props, which will ultimately be passed through to the general component.
 
 ![Diagram depicting generic, connected and consumer components with props passed from consumer to generic](/images/articles/react-generic-hoc-pattern/generic-reused-component-consumer-props.png)
 
