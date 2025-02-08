@@ -12,14 +12,20 @@ export const meta: WorkMeta = {
   jobTitle: "Senior Software Developer",
   feedbacks: [
     {
-      quote:
+      content:
         "“Jonathan was the type of developer I wish I could replicate! Hard working, dedicated, talented in all aspects of development, always a team player willing to help out and always dependable.”",
-      author: "Program Director",
+      authorTitle: "Program Director",
+      date: "2014-05-04",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
     {
-      quote:
+      content:
         "“Jonathan has an excellent web development skill, the passion to go along with it, and the dedication to finish the job no matter what. It has been a pleasure working with Jon during my tenure at Fiserv within the Westpac project.”",
-      author: "Technical Lead",
+      authorTitle: "Technical Lead",
+      date: "2014-05-02",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
   ],
   images: [

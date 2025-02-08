@@ -12,16 +12,31 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "“Jonathan was friendly and easy to work with. In addition to rapidly delivering prototypes, he communicated well and provided valuable input into ideation sessions.”",
-      author: "Product Owner",
-      date: "May 2017",
+      authorTitle: "Product Owner",
+      date: "2017-05-01",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
     {
-      quote:
+      content:
         "“Jonathan ... was a passionate advocate of user-centered design; such as being active in attending user research sessions and contributing to the design process in ideation sessions.”",
-      author: "Technical Architect",
-      date: "March 2017",
+      authorTitle: "Technical Architect",
+      date: "2017-03-01",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+    },
+    {
+      content: "“Thanks for all your enthusiasm and passion for the user.”",
+      authorTitle: "Content Specialist",
+      date: "2017-06-04",
+    },
+    {
+      content:
+        "“Thanks ... for all your hard work and your constant dedication.”",
+      authorTitle: "Agile Lead",
+      date: "2017-06-04",
     },
   ],
   images: [

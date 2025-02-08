@@ -12,19 +12,28 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "“Jonathan was an enthusiastic Technical Lead pushing new exciting technologies, setting up strong standards and provided clear directions on tasks.”",
-      author: "Developer",
+      authorTitle: "Developer",
+      date: "2011-06-27",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
     {
-      quote:
+      content:
         "“Jonathan strived to provide the team with easy to use development environments, documented processes and clear direction on tasks. Great Technical Lead I'd enjoy working with again.”",
-      author: "Senior Developer",
+      authorTitle: "Senior Developer",
+      date: "2011-06-03",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
     {
-      quote:
+      content:
         "“Jonathan was a great front-end developer/lead. He not only helped establish the front-end development team, but also set the direction and standards. Full of initiative and great ideas, Jonathan made a great and valuable contribution to the team.”",
-      author: "Delivery Manager",
+      authorTitle: "Delivery Manager",
+      date: "2011-05-23",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
   ],
   images: [

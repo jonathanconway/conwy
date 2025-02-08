@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, PageLayout } from "@/components";
+import { PageLayout } from "@/components";
 import { Work } from "@/components/work";
 import { site } from "@/content";
 import * as works from "@/content/works";
@@ -15,28 +15,7 @@ export default async function Page({ params: { slug } }: PageProps) {
   const workModuleItems = Object.values(workModule);
   const work = workModuleItems[0] as Work_;
 
-  return (
-    <PageLayout
-      selectedNavPath="/work"
-      main={
-        <>
-          <Breadcrumb
-            segments={[
-              {
-                title: "Work",
-                url: "/work",
-              },
-              {
-                title: work.meta.client,
-              },
-            ]}
-          />
-
-          <Work work={work} />
-        </>
-      }
-    />
-  );
+  return <PageLayout selectedNavPath="/work" main={<Work work={work} />} />;
 }
 
 export async function generateStaticParams() {

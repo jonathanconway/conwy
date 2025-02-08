@@ -9,7 +9,13 @@ export const meta: WorkMeta = {
   mainImage: {
     src: "/images/works/amaysim/main.png",
   },
-  feedbacks: [],
+  feedbacks: [
+    {
+      content: "“Your baby has been born. Devices is now live!”",
+      authorTitle: "Senior Engineer",
+      date: "2017-08-01",
+    },
+  ],
   images: [
     {
       src: "amaysim-01.jpg",

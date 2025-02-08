@@ -12,19 +12,33 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content: "“That demo went really well, well done!”",
+      authorTitle: "Executive Director, Digital Markets Initiatives",
+      date: "2018-05-31",
+    },
+    {
+      content:
         "“Just wanted to let you know, great work with the Symphony stuff.”",
-      author: "Executive Director, Digital Markets Initiatives",
+      authorTitle: "Executive Director, Digital Markets Initiatives",
+      date: "2018-03-01",
     },
     {
-      quote:
+      content:
         "“Mosaic is looking good in production, well done for getting this out on time!”",
-      author: "Executive Director",
+      authorTitle: "Executive Director",
+      date: "2018-03-26",
     },
     {
-      quote:
-        "“Thanks for all your hard work on Mosaic and your attention to detail.”",
-      author: "Technical Lead",
+      content:
+        "“Thanks for all your hard work on Nexus, and your attention to detail.”",
+      authorTitle: "Technical Lead",
+      date: "2019-06-26",
+    },
+    {
+      content:
+        "“Thanks for all your work on the Security UI. You did a great job working through the detailed and endless specifications!”",
+      authorTitle: "Senior Developer",
+      date: "2019-06-26",
     },
   ],
   images: [],

@@ -12,8 +12,9 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
-        "The Refugee Connect proposal was judged the winner, out of 20+ others, by a panel of aid agencies, incl. Amnesty International.",
+      content:
+        "The Refugee Connect proposal was judged the winner, out of 20+ others, by a panel of aid agencies, including Amnesty International.",
+      date: "2016-12-01",
     },
   ],
   images: [

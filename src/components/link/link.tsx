@@ -9,6 +9,7 @@ import { Icon, IconTypes } from "../icon";
 import * as textSizeStyles from "../text/text-size/text-size.css";
 import { withTooltip } from "../tooltip";
 
+import { LinkLayoutTypes } from "./link-layout-type";
 import { LinkProps } from "./link-props";
 import * as linkStyles from "./link.css";
 
@@ -24,6 +25,7 @@ export function Link_(props: LinkProps) {
     href = "",
     icon,
     size,
+    layoutType = LinkLayoutTypes.Inline,
     onClick,
     ...restProps
   } = props;
@@ -42,9 +44,14 @@ export function Link_(props: LinkProps) {
 
   const sizeStyle = size ? textSizeStyles[size] : undefined;
 
+  const layoutStyle = {
+    [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
+    [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
+  }[layoutType];
+
   return (
     <NextLink
-      className={cn(className ?? linkStyles.link, sizeStyle)}
+      className={cn(className ?? linkStyles.link, sizeStyle, layoutStyle)}
       href={href}
       onClick={handleClick}
       {...restProps}

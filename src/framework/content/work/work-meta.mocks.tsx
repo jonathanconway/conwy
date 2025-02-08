@@ -12,7 +12,7 @@ export const WORK_META_MOCK: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "Positive feedback from Lead and Senior Developers on my\n full-stack work and problem-solving at late hours.",
     },
   ],

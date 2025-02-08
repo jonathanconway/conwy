@@ -6,5 +6,6 @@ export * from "./reading";
 export * from "./redirect";
 export * from "./speaking";
 export * from "./studies";
+export * from "./testimonials";
 export * from "./tools";
 export * from "./work";

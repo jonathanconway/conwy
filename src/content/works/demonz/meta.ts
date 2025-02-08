@@ -12,8 +12,9 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote: "“I had a quick play; all works seamlessly and easy to use.”",
-      author: "Project Sponsor",
+      content: "“I had a quick play; all works seamlessly and easy to use.”",
+      authorTitle: "Project Sponsor",
+      date: "2015-08-01",
     },
   ],
   images: [

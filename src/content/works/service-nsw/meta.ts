@@ -12,9 +12,12 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "“I gave JC responsibility for extensive liaison with the Digital Team and we were able to get a GO from them as a result. I recommend JC for any similar role.”",
-      author: "Project Manager",
+      authorTitle: "Project Manager",
+      date: "2015-11-12",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
   ],
   images: [],

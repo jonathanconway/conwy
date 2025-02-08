@@ -1,6 +1,7 @@
 import { Image } from "../image";
 import { MetaBase } from "../meta";
 import { SocialLink } from "../social-link";
+import { Testimonial } from "../testimonial";
 
 export interface WorkMeta extends MetaBase {
   readonly startDate: string;
@@ -18,7 +19,7 @@ export interface WorkMeta extends MetaBase {
 
   readonly techs: readonly WorkTech[];
 
-  readonly feedbacks: readonly WorkFeedback[];
+  readonly feedbacks: readonly Testimonial[];
 
   readonly projects: readonly WorkProject[];
 
@@ -32,12 +33,6 @@ export interface WorkTech {
   readonly items: readonly {
     readonly itemName: string;
   }[];
-}
-
-export interface WorkFeedback {
-  readonly quote: string;
-  readonly author?: string;
-  readonly date?: string;
 }
 
 export interface WorkProject {

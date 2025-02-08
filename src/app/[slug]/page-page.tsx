@@ -25,10 +25,6 @@ export async function PagePage(props: PageProps) {
           <Breadcrumb
             segments={[
               {
-                title: "Home",
-                url: "/",
-              },
-              {
                 title,
               },
             ]}

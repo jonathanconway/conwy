@@ -12,14 +12,20 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "“I had the pleasure of interviewing, recommending and working with Jonathan at the beginning of a large software project. He is a keen listener and offered practical solutions. Jonathan is a pragmatic programmer who would be a good hire for your next project.”",
-      author: "Technical Lead",
+      authorTitle: "Technical Lead",
+      date: "2009-04-15",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
     {
-      quote:
+      content:
         "“I got to know Jonathan at Amnesia. It was a pleasure working with Jonathan on the Channel V project. He is a great communicator and a very capable developer who can implement requirements to a point where exceed clients expectations.”",
-      author: "Senior Developer",
+      authorTitle: "Senior Developer",
+      date: "2009-03-29",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
   ],
   images: [

@@ -5,8 +5,6 @@ import { media } from "../styling";
 import { vars } from "../theme";
 
 export const linkBase = {
-  display: "inline-block",
-  alignItems: "center",
   fontWeight: 500,
   cursor: "pointer",
 
@@ -16,6 +14,15 @@ export const linkBase = {
       whiteSpace: "nowrap",
     },
   },
+};
+
+export const linkLayoutInline = {
+  display: "inline-block",
+};
+
+export const linkLayoutCompact = {
+  display: "flex",
+  alignItems: "center",
 };
 
 export const linkContentsText = {

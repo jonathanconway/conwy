@@ -1,18 +1,16 @@
 "use client";
 
-import { WorkFeedback } from "@/framework/client";
+import { Testimonial as Testimonial_ } from "@/framework/client";
 
-import { Carousel, CarouselItem } from "../../carousel";
+import { Carousel } from "../../carousel";
 import { Section } from "../../section";
 
 import { useWorkFeedbackCarousel } from "./use-work-feedback-carousel.hook";
 import * as styles from "./work-feedback-carousel.css";
 
 interface WorkFeedbackCarouselProps {
-  readonly workFeedbacks: readonly WorkFeedback[];
+  readonly workFeedbacks: readonly Testimonial_[];
 }
-
-type WorkFeedbackCarouselItem = CarouselItem & WorkFeedback;
 
 export function WorkFeedbackCarousel(props: WorkFeedbackCarouselProps) {
   const { sortedWorkFeedbacks } = useWorkFeedbackCarousel(props);
@@ -30,14 +28,12 @@ export function WorkFeedbackCarousel(props: WorkFeedbackCarouselProps) {
             contents: `Feedback ${feedbackIndex + 1}`,
           },
         }))}
-        renderBody={({ item: feedback }) => (
-          <div key={feedback.quote}>
-            <div className={styles.feedbackItemQuote}>{feedback.quote}</div>
+        renderBody={({ item: { content, authorTitle } }) => (
+          <div key={content}>
+            <div className={styles.feedbackItemQuote}>{content}</div>
 
-            {feedback.author && (
-              <div className={styles.feedbackItemAuthor}>
-                – {feedback.author}
-              </div>
+            {authorTitle && (
+              <div className={styles.feedbackItemAuthor}>– {authorTitle}</div>
             )}
           </div>
         )}

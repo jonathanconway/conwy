@@ -11,4 +11,5 @@ export * from "./project";
 export * from "./social-link";
 export * from "./study";
 export * from "./tool";
+export * from "./testimonial";
 export * from "./work";

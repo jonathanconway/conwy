@@ -1,9 +1,9 @@
 import { orderBy } from "lodash";
 
-import { WorkFeedback } from "@/framework/client";
+import { Testimonial } from "@/framework/client";
 
 interface UseWorkFeedbackCarouselParams {
-  readonly workFeedbacks: readonly WorkFeedback[];
+  readonly workFeedbacks: readonly Testimonial[];
 }
 
 export function useWorkFeedbackCarousel(params: UseWorkFeedbackCarouselParams) {
@@ -14,6 +14,6 @@ export function useWorkFeedbackCarousel(params: UseWorkFeedbackCarouselParams) {
   };
 }
 
-function sortWorkFeedbacks(workFeedbacks: readonly WorkFeedback[]) {
-  return orderBy(workFeedbacks, (feedback) => feedback.quote.length, "desc");
+function sortWorkFeedbacks(workFeedbacks: readonly Testimonial[]) {
+  return orderBy(workFeedbacks, (feedback) => feedback.content.length, "desc");
 }

@@ -12,14 +12,20 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "“Jonathan was really easy to bounce ideas off and had a very strong understanding of UI principals and requirements; and I'd happily do another contract working with him.”",
-      author: "Senior Software Developer",
+      authorTitle: "Senior Software Developer",
+      date: "2010-05-10",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
     {
-      quote:
+      content:
         "“Jonathan is a highly skilled web developer. He gives attention to detail and is a good communicator. He has delivered his tasks under tight deadlines and look forward to working with him again.”",
-      author: "Program Manager",
+      authorTitle: "Program Manager",
+      date: "2010-05-01",
+      linkedInUrl:
+        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
   ],
   images: [],

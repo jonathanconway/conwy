@@ -12,8 +12,14 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "Positive feedback from Lead and Senior Developers on my\n full-stack work and problem-solving at late hours.",
+      date: "2024-03-22",
+    },
+    {
+      content:
+        "“We’d like to thank you once again for your hard work and contributions to date.”",
+      date: "2024-02-20",
     },
   ],
   slug: "optus",

@@ -12,28 +12,28 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      quote:
+      content:
         "“My team speak very highly about your code. Apparently your Coles Plus code is very slick.”",
-      author: "Senior Software Engineer",
-      date: "July 2022",
+      authorTitle: "Senior Software Engineer",
+      date: "2022-06-01",
     },
     {
-      quote:
+      content:
         "“I wanted to say a huge thank you. You have been an integral part of the team since joining. We could not have re-launched Coles Plus without you.”",
-      author: "Group Product Manager",
-      date: "August 2023",
+      authorTitle: "Group Product Manager",
+      date: "2023-08-01",
     },
     {
-      quote:
+      content:
         "“Congratulations ... This is a great demonstration of understanding our customer pain points and building a solution [that] rewards them for their loyalty to Coles and just in time for Christmas. Well done team!”",
-      author: "General Manager",
-      date: "December 2022",
+      authorTitle: "General Manager",
+      date: "2022-12-01",
     },
     {
-      quote:
+      content:
         "“I wanted to thank you for the contribution you made to the 1Site project, and you should be super proud of all your achievements.”",
-      author: "Development Manager",
-      date: "July 2023",
+      authorTitle: "Development Manager",
+      date: "2023-07-01",
     },
   ],
   slug: "coles",
