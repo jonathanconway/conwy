@@ -38,5 +38,10 @@ export const meta: ProjectMeta = {
     },
   ],
   platforms: ["Web"],
-  images: [],
+  images: [
+    {
+      src: "htmldoc-screenshot.png",
+      alt: "Screenshot of HTMLDoc homepage",
+    },
+  ],
 };

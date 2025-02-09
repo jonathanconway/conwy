@@ -19,11 +19,11 @@ export const meta: ProjectMeta = {
     },
     {
       type: SocialLinkTypes.ProductHunt,
-      url: "https://www.producthunt.com/products/eatpaylove",
+      url: "https://www.producthunt.com/products/eatpaylove#eatpaylove",
     },
     {
       type: SocialLinkTypes.Github,
-      url: "https://github.com/jonathanconway/braggart",
+      url: "https://github.com/jonathanconway/eatpaylove",
     },
   ],
   mainImage: {
