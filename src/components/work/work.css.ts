@@ -115,6 +115,7 @@ export const otherContainer = style({
   flex: 1,
   flexDirection: "column",
   gap: "1.5rem",
+  width: "50%",
 });
 
 export const techListItem = style({

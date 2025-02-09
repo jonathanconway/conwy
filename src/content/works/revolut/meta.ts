@@ -29,17 +29,17 @@ export const meta: WorkMeta = {
       authorTitle: "KYB Analyst",
       date: "2020-06-01",
     },
-    // {
-    //   content:
-    //     "“Really liked Jon's feedback history story - not a massive new feature, but a simple design and delivers big value for our agents and for our customers. Should give good boost to KPI.“",
-    //   authorTitle: "Head of Product, Business",
-    //   date: "2020-05-07",
-    // },
-    // {
-    //   content: "“Jonathan is a master of the Backoffice!“",
-    //   authorTitle: "Senior Product Owner, Business",
-    //   date: "2022-07-22",
-    // },
+    {
+      content:
+        "“Really liked Jon's feedback history story - not a massive new feature, but a simple design and delivers big value for our agents and for our customers. Should give good boost to KPI.“",
+      authorTitle: "Head of Product, Business",
+      date: "2020-05-07",
+    },
+    {
+      content: "“Jonathan is a master of the Backoffice!“",
+      authorTitle: "Senior Product Owner, Business",
+      date: "2022-07-22",
+    },
   ],
   images: [
     {
