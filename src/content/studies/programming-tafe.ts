@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework";
+import { Study, StudyStatuses } from "@/framework/client";
 
 export const programmingTafe: Study = {
   title: "Programming",
@@ -18,4 +18,5 @@ export const programmingTafe: Study = {
       url: "/images/studies/programming-tafe/programming-tafe-certificate.pdf",
     },
   ],
+  category: "Software Development",
 };

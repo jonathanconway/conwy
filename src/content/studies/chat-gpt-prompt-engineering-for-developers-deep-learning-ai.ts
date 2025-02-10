@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework";
+import { Study, StudyStatuses } from "@/framework/client";
 
 export const chatGptPromptEngineeringForDevelopersDeepLearningAi: Study = {
   title: "ChatGPT Prompt Engineering for Developers",
@@ -17,4 +17,5 @@ export const chatGptPromptEngineeringForDevelopersDeepLearningAi: Study = {
       url: "https://learn.deeplearning.ai/accomplishments/1f417443-fc2c-407d-99af-20f5759c41e8?usp=sharing",
     },
   ],
+  category: "Artificial Intelligence",
 };

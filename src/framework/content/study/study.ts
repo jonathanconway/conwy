@@ -11,6 +11,7 @@ export interface Study {
   readonly credential?: string;
   readonly mark?: string;
   readonly description?: string;
+  readonly category: string;
   readonly links?: readonly {
     readonly title?: string;
     readonly url: string;

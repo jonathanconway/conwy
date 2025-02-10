@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework";
+import { Study, StudyStatuses } from "@/framework/client";
 
 export const introductionToStatisticsStanfordUniversityViaCoursera: Study = {
   title: "Introduction to Statistics",
@@ -12,4 +12,5 @@ export const introductionToStatisticsStanfordUniversityViaCoursera: Study = {
   mark: undefined,
   description: undefined,
   links: [],
+  category: "Mathematics",
 };

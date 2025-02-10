@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework";
+import { Study, StudyStatuses } from "@/framework/client";
 
 export const decentralizedFinanceDeFiTheFutureOfFinanceSpecializationDukeUniversityViaCoursera: Study =
   {
@@ -14,4 +14,5 @@ export const decentralizedFinanceDeFiTheFutureOfFinanceSpecializationDukeUnivers
     mark: undefined,
     description: undefined,
     links: [],
+    category: "Finance",
   };

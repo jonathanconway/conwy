@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework";
+import { Study, StudyStatuses } from "@/framework/client";
 
 export const microsoftCertifiedProfessionalMicrosoft: Study = {
   title: "Microsoft Certified Professional",
@@ -17,4 +17,5 @@ export const microsoftCertifiedProfessionalMicrosoft: Study = {
       url: "/images/studies/microsoft-certified-professional-microsoft/microsoft-certified-professional-microsoft-certificate.pdf",
     },
   ],
+  category: "Software Development",
 };

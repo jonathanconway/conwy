@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework";
+import { Study, StudyStatuses } from "@/framework/client";
 
 export const introductionToPhilosophyUniversityOfSydney: Study = {
   title: "Introduction to Philosophy",
@@ -17,4 +17,5 @@ export const introductionToPhilosophyUniversityOfSydney: Study = {
       url: "/images/studies/introduction-to-philosophy-university-of-sydney/introduction-to-philosophy-university-of-sydney-certificate.pdf",
     },
   ],
+  category: "Philosophy",
 };

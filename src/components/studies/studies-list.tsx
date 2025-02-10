@@ -1,5 +1,9 @@
+"use client";
+
+import * as studies_ from "@/content/studies";
 import { sentenceCase } from "@/framework/client";
 
+import { TagFilters, useTagFiltersResults } from "../filters";
 import { Fragment } from "../fragments";
 import { SectionHeading } from "../heading";
 import { Link } from "../link";
@@ -10,21 +14,33 @@ import * as styles from "./studies-list.css";
 import { Study } from "./study";
 
 export function StudiesList() {
-  const { sectionKeys, studiesBySectionEntries } = getStudiesList();
+  const studyItems = Object.values(studies_);
+
+  const { filteredItems: studies } = useTagFiltersResults({
+    items: studyItems,
+    contentType: "study",
+    tagField: "category",
+  });
+
+  const { sectionKeys, studiesBySectionEntries } = getStudiesList(studies);
 
   return (
-    <div>
-      <Fragment>
-        <ul>
-          {sectionKeys.map((section) => (
-            <li key={section}>
-              <Link href={`#${section}`} size={TextSizes.sm}>
-                {sentenceCase(section)}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Fragment>
+    <>
+      <TagFilters contentType="study" items={studyItems} tagField="category" />
+
+      {sectionKeys.length > 1 && (
+        <Fragment>
+          <ul>
+            {sectionKeys.map((section) => (
+              <li key={section}>
+                <Link href={`#${section}`} size={TextSizes.sm}>
+                  {sentenceCase(section)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Fragment>
+      )}
 
       <div className={styles.sectionsList}>
         {studiesBySectionEntries.map(([section, studies]) => (
@@ -37,6 +53,6 @@ export function StudiesList() {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }

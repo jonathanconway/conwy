@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework";
+import { Study, StudyStatuses } from "@/framework/client";
 
 export const calculusCoursera: Study = {
   title: "Introduction to Calculus",
@@ -24,4 +24,5 @@ export const calculusCoursera: Study = {
       url: "/images/studies/calculus-coursera/calculus-coursera-grade.pdf",
     },
   ],
+  category: "Mathematics",
 };
