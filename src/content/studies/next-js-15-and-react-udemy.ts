@@ -7,9 +7,14 @@ export const nextJs15AndReactUdemy: Study = {
   institution: "Udemy",
   slug: "next-js-15-and-react-udemy",
   type: "Online Course",
-  status: StudyStatuses.InProgress,
+  status: StudyStatuses.Completed,
   credential: undefined,
   mark: undefined,
   description: undefined,
-  links: [],
+  links: [
+    {
+      title: "Certificate",
+      url: "http://ude.my/UC-488fdf56-580f-41d1-907a-0151e4b71dc0",
+    },
+  ],
 };
