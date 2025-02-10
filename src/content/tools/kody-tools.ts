@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework";
 
 export const KodyTools: Tool = {
-  section: ToolSections.App,
+  section: ToolSections.Website,
   slug: "kody-tools",
   title: "Kody Tools",
   category: "Converters",

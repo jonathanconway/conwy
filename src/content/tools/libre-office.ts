@@ -4,7 +4,7 @@ export const LibreOffice: Tool = {
   section: ToolSections.App,
   slug: "libre-office",
   title: "LibreOffice",
-  category: "Office Suite",
+  category: "Office",
   date: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://www.libreoffice.org/",

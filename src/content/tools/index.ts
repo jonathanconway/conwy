@@ -1,5 +1,6 @@
 export * from "./audacity";
 export * from "./beyond-compare";
+export * from "./calculator-net";
 export * from "./calibre";
 export * from "./color-slurp";
 export * from "./coolors";
@@ -7,6 +8,7 @@ export * from "./draw";
 export * from "./ffmpeg";
 export * from "./fork";
 export * from "./free-ruler";
+export * from "./genius-scan";
 export * from "./github-cli";
 export * from "./hand-brake";
 export * from "./i-fun-box";
@@ -49,3 +51,5 @@ export * from "./json-viewer";
 
 export * from "./jsoning";
 
+export * from "./calculator-net";
+export * from "./genius-scan";
