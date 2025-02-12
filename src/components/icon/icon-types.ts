@@ -23,6 +23,7 @@ export const IconTypes = {
   Mastodon: "mastodon",
   Medium: "medium",
   OpenInNew: "open-in-new",
+  Person: "person",
   ProductHunt: "product-hunt",
   Quote: "quote",
   Substack: "substack",

@@ -1,3 +1,4 @@
+import { ColleagueRelationship } from "../colleague";
 import { Image } from "../image";
 import { MetaBase } from "../meta";
 import { SocialLink } from "../social-link";
@@ -26,6 +27,8 @@ export interface WorkMeta extends MetaBase {
   readonly socialLinks: readonly SocialLink[];
 
   readonly type: "work";
+
+  readonly colleagueRelationships?: readonly ColleagueRelationship[];
 }
 
 export interface WorkTech {

@@ -1,4 +1,9 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { colin, jinder } from "@/content/colleagues";
+import {
+  ColleagueRelationshipTypes,
+  SocialLinkTypes,
+  WorkMeta,
+} from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "CIBC",
@@ -108,6 +113,16 @@ export const meta: WorkMeta = {
       type: SocialLinkTypes.Website,
       url: "https://www.cibc.co.uk",
       title: "CIBC website",
+    },
+  ],
+  colleagueRelationships: [
+    {
+      colleague: jinder,
+      relationshipType: ColleagueRelationshipTypes.Mentor,
+    },
+    {
+      colleague: colin,
+      relationshipType: ColleagueRelationshipTypes.Manager,
     },
   ],
 };
