@@ -25,7 +25,7 @@ export function Link_(props: LinkProps) {
     href = "",
     icon,
     size,
-    layoutType = LinkLayoutTypes.Inline,
+    layoutType = LinkLayoutTypes.Compact,
     onClick,
     ...restProps
   } = props;

@@ -21,8 +21,9 @@ export const linkLayoutInline = {
 };
 
 export const linkLayoutCompact = {
-  display: "flex",
+  display: "inline-flex",
   alignItems: "center",
+  gap: "0.25rem",
 };
 
 export const linkContentsText = {
