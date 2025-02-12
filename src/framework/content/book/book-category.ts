@@ -4,6 +4,7 @@ export const BookCategories = {
   Business: "business",
   Culture: "culture",
   Design: "design",
+  Diet: "diet",
   Economics: "economics",
   Finance: "finance",
   Geopolitics: "geopolitics",

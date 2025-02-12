@@ -6,6 +6,7 @@ export * from "./antifragile";
 export * from "./change-your-thoughts-change-your-life";
 export * from "./collapse";
 export * from "./crucial-conversations";
+export * from "./deep-work";
 export * from "./design-patterns";
 export * from "./designing-data-intensive-applications";
 export * from "./designing-distributed-systems";
