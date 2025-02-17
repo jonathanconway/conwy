@@ -5,6 +5,7 @@ export const ToolSections = {
   Mobile: "mobile",
   CommandLine: "command-line",
   Website: "website",
+  BrowserExtension: "browser-extension",
 } as const;
 
 export type ToolSection = TypeOfConst<typeof ToolSections>;
