@@ -1,0 +1,180 @@
+## Motivation
+
+Engineers are increasingly called upon to provide on-call support for complex software running in production.
+
+To ease the diagnosis and resolution of issues in these systems, it can be beneficial to be able to ***simulate*** – at will – any of the important states the system can be in.
+
+This article covers what I've learned thus-far about simulation for the purposes of easing production support.
+
+## Benefits of arbitrary state simulation
+
+There are a number of benefits to being able to simulate states of interest, even before incidents occur.
+
+- Testing in advance
+- Faster diagnosis
+- Fewer team interdependencies
+
+### Testing in advance
+
+*A bug is better discovered and resolved at 1 PM than at 3 AM!*
+
+Engineers and testers can try out various states of the application in production, in advance, to uncover any unexpected bugs, unknown-unknowns, etc. As much as we try to keep all our environments consistent and predictable, there's always a chance some issue catches us by surprise only when it reaches production. It could be anything, from a quirk in the CPU architecture of the cloud instance to a difference in the time-zone where the instance is running.
+
+
+### Faster diagnosis
+
+*The faster an issue can be resolved at 3 AM the better!*
+
+When an issue occurs, rather than going through a lengthy procedure to try and "reproduce" the bug, it's better if engineers can follow a quick, systematic and repeatable procedure to directly trigger the bug.
+
+### Fewer team interdependencies
+
+*The fewer people who have to be woken up at 3 AM the better!*
+
+If an engineer can directly reproduce an issue themselves, this saves them from having to rely on subject-matter-experts, system administrators, product owners or others.
+
+## Types of state
+
+Here I will attempt to categorise system state into broadly the following types:
+
+- **🌎 System state.** Example: A new feature is activated for all users.
+- **🖥️ Instance state.** Example: Each instance performs a background job during off-peak hours. Instances are located in multiple time-zones.
+- **🧑‍💻 User state.** Example: A user account can have a subscription or not.
+- **⏰ Session state.** Example: A user account can be signed in or not.
+- **⏳ Activity state.** Example: A user sees a loading screen if a certain data source takes >2 seconds to load.
+
+Depending on the type of state we want to simulate, different tools and techniques can be applied.
+
+## Tools and techniques
+
+### Feature flags
+
+Feature flags are settings that can turn on or off application states.
+
+For example, if game developers implement a new kind of magic potion, say "Ginger potion", then its availability to game users could be controlled by a feature flag named: `GINGER_POTION_ENABLED`.
+
+- **Looked up at runtime.** Example: A product owner logs into a feature flag management system such as [LaunchDarkly](https://launchdarkly.com/) and changes a flag setting, causing the feature flag to be switched on or off in production.
+- **Built into the deployment.** Example: An engineer modifies a flag in a configuration file and deploys that change to production, causing the feature flag to be switched on or off in production.
+- **Combination approach.** Example: An engineer specifies a default value for a flag in a configuration file and deploys that change to production, but that flag setting can be overridden by a product owner via LaunchDarkly.
+
+### Test entities
+
+Test entities are entities set up specifically to trigger certain application states.
+
+Entities would typically be test user accounts, but might also be models of other entities in reality, such as bank accounts, credit cards or online products.
+
+For example, if certain users of a banking account have an individual account, whereas others have a joint account with another user, we could create two test account entities: a "Test Individual Account" and a "Test Joint Account". By logging in to an appropriate test account, with credentials shared privately within the organisation, engineers could simulate states specific to either individual or joint accounts.
+
+#### Fake and real
+
+Entities could be faked, but might alternately be real if needed. For example, if an airline needs to be able to simulate an actual passport check, a real individual's passport details could be used (obviously agreed with the person in advance, and likely a high-ranking employee in the company).
+
+### Special values
+
+Particular values can be inputted into the application's user interface, to trigger particular states.
+
+#### Fake and real
+
+As with entities, these could be faked or real.
+
+For example, to test an error state that is only revealed when a payment over $5,000 is attempted, we can simply enter a value of $5,100. But to test an error state that is only revealed when there is an unknown downstream system error, we might use a very specific value for the "Payment reference" field, such as "downstream-system-error". This should be a value which the customer is unlikely to ever use or guess, but which is simple for an engineer or tester to enter.
+
+### Procedures
+
+If we can use a reliable, repeatable and reversible procedure to generate a desired system state, then this might work out as a useful means of simulating that state.
+
+For example, suppose a banking application has a state in which the customer has consumed all of their daily payment limit. We could simulate this state by creating a scheduled payment for tomorrow, which consumes the full limit. To reverse it, we can remove the payment on the same day. This should qualify as a simple, repeatable procedure.
+
+In combination with fake values, we could add a "testing back door" into our application to make normally irreversible procedures reversible. For example, suppose we need to simulate a daily payment limit being reached on a same-day payment. We could make the payment as in the example above, but as an instant payment. Then we could reverse it by attempting to make a payment with a "Payment reference" field value of "reverse-payment". The application would have some code to implement an "undo" of the payment whenever that specific payment reference is used.
+
+### Client controls
+
+Browser clients for web applications allow the user to enter cookies, local storage values or other methods of storage.
+
+These can be used to simulate application states.
+
+* Client-side. Settings can be applied directly to the user interface.
+* Server-side. Settings can be sent to the server to be applied there, such as cookies.
+
+Other rich clients could have similar facilities, either built-in / off-the-shelf or custom built by the developers who maintain the client.
+
+### In-app controls
+
+Applications themselves could including in-app controls for simulating states, only available to internal staff, and activated by a special shortcut key or a menu item.
+
+I implemented an experimental form of this on the Exchange project at the DTA.
+
+## Comparing approaches
+
+| Approach         | Deployment required    | Non-technical staff    | Implementation effort | Types of state most suited for
+| :-               | :-                     | :-                     | :-                    | :-
+| Feature flags    | 🔸 Depends             | 🔸 Depends             | 🟠 Medium             | 🌎 System<br />🖥️ Instance
+| Special values   | 🚫 No                  | ✅ Yes                 | 🟡 Low-medium         | 🧑‍💻 User<br />🖥️ Instance<br />⏳ Activity
+| Procedures       | 🚫 No                  | ✅ Yes                 | 🟢 Low                | 🧑‍💻 User<br />⏰ Session<br />⏳ Activity
+| Client controls  | 🚫 No                  | 🚫 No                  | 🔴 High               | 🧑‍💻 User<br />⏰ Session<br />⏳ Activity
+| In-app controls  | 🚫 No                  | ✅ Yes                 | 🔴 High               | 🧑‍💻 User<br />⏰ Session<br />⏳ Activity
+
+## Documenting state simulations
+
+State simulations can be documented to put them in easy reach of all team members, from engineers to analysts and designers to product owners.
+
+Some documentation patterns I've observed:
+
+- Test accounts register
+- Feature pages
+- Pull requests
+- README files
+
+### Test accounts register
+
+A table of test accounts, with columns providing login details such as username and password, as well as details on what the account can be used to test.
+
+Usually a document in the team wiki (Confluence, Notion etc.) or a shared spreadsheet (Google Sheets, Excel, etc.).
+
+| Username                  | Password    | Usage                        |
+| :-                        | :-          | :-                           |
+| individual1@test.com      | P@ssw0rd    | Individual bank account      |
+| joint1@test.com           | P@ssw0rd    | Joint bank account           |
+| admin1@test.com           | P@ssw0rd    | Customer service             |
+
+External resources can be linked to, such as:
+
+- Account credentials in a secret store
+
+### Feature pages
+
+A document describing a feature, including descriptions of simulated states as part of that description.
+
+Usually a document in the team wiki (Confluence, Notion etc.).
+
+Simulated states can be:
+- Listed out in their own section or
+- Included as part of a test plan with test cases
+
+Details can be provided inline, such as:
+- Account credentials
+- Feature flags
+- Test entities
+- Procedures
+- Client controls
+- In-app controls
+
+External resources can also or alternately be linked to, such as:
+- Account credentials in a secret store
+- Feature flag pages in feature flag management system (such as [LaunchDarkly](https://launchdarkly.com))
+- Feature flag settings in code files in a source code repository (such as [Github](http://github.com))
+- Test entities in separate documentation pages or in a source code repository
+- Procedures in separate documentation page
+- Deep-links to in-app controls for setting up state simulations
+
+![Example with simulated states listed separately](/images/articles/simulating-states/docs-simulated-states-separate.svg)
+
+![Example with simulated states included in test cases](/images/articles/simulating-states/docs-simulated-states-test.svg)
+
+## Conclusion
+
+Being able to simulate all significant states is a super-power for development teams on medium to large sized projects.
+
+Testing can be performed more thoroughly in advance, avoiding many bugs reaching production. In the case some bugs do make it to production, they can be more directly reproduced and resolved. With appropriately applied and documented techniques, such as feature flags, special values and in-app controls, the whole team can participate, reducing problematic dependencies. 
+
+Enabling state simulation will likely be a consideration on many more projects going into the future.

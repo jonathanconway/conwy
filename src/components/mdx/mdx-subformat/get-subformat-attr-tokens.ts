@@ -17,6 +17,13 @@ function getSearchParamsFromUrlString(urlString: string) {
 }
 
 export function getSubformatUrlTokens(attrValue: string) {
+  if (!attrValue.trim()) {
+    return {
+      body: "",
+      tokens: {},
+    };
+  }
+
   const url = getSearchParamsFromUrlString(attrValue);
   const [body] = attrValue.split("?");
   const tokens = convertSearchParamsToObject(url.searchParams);
