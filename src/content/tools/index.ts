@@ -55,3 +55,5 @@ export * from "./calculator-net";
 export * from "./genius-scan";
 export * from "./mokku";
 
+export * from "./freac";
+
