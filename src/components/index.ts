@@ -33,6 +33,7 @@ export * from "./micros";
 export * from "./mobile";
 export * from "./podcast";
 export * from "./projects";
+export * from "./quote";
 export * from "./redirect";
 export * from "./responsive";
 export * from "./scripts";

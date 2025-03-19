@@ -9,6 +9,7 @@ export * from "./page";
 export * from "./podcast";
 export * from "./post";
 export * from "./project";
+export * from "./quote";
 export * from "./social-link";
 export * from "./study";
 export * from "./tool";
