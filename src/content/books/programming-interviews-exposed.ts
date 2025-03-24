@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const programmingInterviewsExposedBook: Book = {
+  slug: "programming-interviews-exposed",
   authors: ["John Mongan", "Noah Suojanen", "Eric Giguère"],
   status: BookStatuses.Reading,
   title: "Programming Interviews Exposed",

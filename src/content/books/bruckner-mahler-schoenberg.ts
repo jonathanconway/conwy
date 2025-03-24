@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const brucknerMahlerSchoenbergBook: Book = {
+  slug: "bruckner-mahler-schoenberg",
   authors: ["Dika Newlin"],
   status: BookStatuses.Listed,
   title: "Bruckner Mahler Schoenberg",

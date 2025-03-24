@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const crucialConversationsBook: Book = {
+  slug: "crucial-conversations",
   authors: ["Joseph Grenny"],
   status: BookStatuses.Listed,
   title: "Crucial Conversations",

@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const theJourneyOfHumanityBook: Book = {
+  slug: "the-journey-of-humanity",
   authors: ["Oded Galor"],
   status: BookStatuses.Listed,
   title: "The Journey of Humanity",

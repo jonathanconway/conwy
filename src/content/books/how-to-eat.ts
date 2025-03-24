@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const howToEatBook: Book = {
+  slug: "how-to-eat",
   authors: ["Thích Nhất Hạnh"],
   status: BookStatuses.Reading,
   title: "How to Eat",

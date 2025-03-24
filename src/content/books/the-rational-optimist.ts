@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const theRationalOptimistBook: Book = {
+  slug: "the-rational-optimist",
   authors: ["Matt Ridley"],
   status: BookStatuses.Finished,
   title: "The Rational Optimist",

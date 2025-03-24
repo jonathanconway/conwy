@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const theHeartOfTheBuddhasTeachingBook: Book = {
+  slug: "the-heart-of-the-buddhas-teaching",
   authors: ["Thich Nhat Hanh"],
   status: BookStatuses.Finished,
   title: "The Heart Of The Buddhas Teaching",

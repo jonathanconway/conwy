@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const designPatternsBook: Book = {
+  slug: "design-patterns",
   authors: ["Erich Gamma"],
   status: BookStatuses.Finished,
   title: "Design Patterns - Elements of Reusable Object-Oriented Software",

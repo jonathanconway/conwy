@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const correctOrderOfFundamentalHarmoniesBook: Book = {
+  slug: "correct-order-of-fundamental-harmonies",
   authors: ["Simon Sechter"],
   status: BookStatuses.Listed,
   title: "The Correct Order of Fundamental Harmonies",

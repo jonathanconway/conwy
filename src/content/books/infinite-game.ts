@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const infiniteGameBook: Book = {
+  slug: "infinite-game",
   authors: ["Simon Sinek"],
   status: BookStatuses.Finished,
   title: "The Infinite Game",

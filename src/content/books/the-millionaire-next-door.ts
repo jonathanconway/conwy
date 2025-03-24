@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const theMillionaireNextDoorBook: Book = {
+  slug: "the-millionaire-next-door",
   authors: ["Thomas Stanley"],
   status: BookStatuses.Finished,
   title: "The Millionaire Next Door",

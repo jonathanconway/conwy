@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const fullCatastropheLivingBook: Book = {
+  slug: "full-catastrophe-living",
   authors: ["Jon Kabat-Zinn"],
   status: BookStatuses.Finished,
   title: "Full Catastrophe Living",

@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const collapseBook: Book = {
+  slug: "collapse",
   authors: ["Jared Diamond"],
   status: BookStatuses.Finished,
   title: "Collapse",

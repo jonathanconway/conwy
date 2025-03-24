@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const observabilityEngineeringBook: Book = {
+  slug: "observability-engineering",
   authors: ["Charity Majors"],
   status: BookStatuses.Reading,
   title: "Observability Engineering",

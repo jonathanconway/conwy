@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const designingDataIntensiveApplicationsBook: Book = {
+  slug: "designing-data-intensive-applications",
   authors: ["Martin Kleppmann"],
   status: BookStatuses.Reading,
   title: "Designing-Data Intensive Applications",

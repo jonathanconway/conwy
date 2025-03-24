@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const thinkingFastAndSlowBook: Book = {
+  slug: "thinking-fast-and-slow",
   authors: ["Daniel Kahneman"],
   status: BookStatuses.Listed,
   title: "Thinking, Fast and Slow",

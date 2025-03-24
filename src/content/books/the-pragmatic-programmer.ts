@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const thePragmaticProgrammerBook: Book = {
+  slug: "the-pragmatic-programmer",
   authors: ["Andrew Hunt"],
   status: BookStatuses.Finished,
   title: "The Pragmatic Programmer - From Journeyman To Master",

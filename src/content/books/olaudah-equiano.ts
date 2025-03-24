@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const olaudahEquianoBook: Book = {
+  slug: "olaudah-equiano",
   authors: ["Olaudah Equiano"],
   status: BookStatuses.Reading,
   title: "The Interesting Narrative of the Life of Olaudah Equiano",

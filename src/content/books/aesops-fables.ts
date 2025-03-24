@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const aesopsFablesBook: Book = {
+  slug: "aesops-fables",
   authors: ["Aesop"],
   status: BookStatuses.Reading,
   title: "Aesop's Fables",

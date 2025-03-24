@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const theHeroWithAThousandFacesBook: Book = {
+  slug: "the-hero-with-a-thousand-faces",
   authors: ["Joseph Campbell"],
   status: BookStatuses.Listed,
   title: "The Hero With A Thousand Faces",

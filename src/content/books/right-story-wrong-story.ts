@@ -1,6 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
 export const rightStoryWrongStoryBook: Book = {
+  slug: "right-story-wrong-story",
   authors: ["Tyson Yunkaporta"],
   status: BookStatuses.Listed,
   title: "Right Story, Wrong Story",
