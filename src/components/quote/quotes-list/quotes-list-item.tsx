@@ -8,6 +8,7 @@ import { LinkBox, LinkBoxTitle } from "../../link-box";
 import { Text, TextTypes } from "../../text";
 
 import * as styles from "./quotes-list-item.css";
+import { formatAuthorName } from "./quotes-list-item.utils";
 
 interface QuotesListItemProps {
   readonly quote: Quote;
@@ -24,7 +25,9 @@ export function QuotesListItem({ quote }: QuotesListItemProps) {
         <BlockQuotePullQuote className={styles.quotePullQuote}>
           <Stack direction="column" gap={0.5}>
             <LinkBoxTitle>{quote.text}</LinkBoxTitle>
-            <Text type={TextTypes.Body}>– {quote.author}</Text>
+            <Text type={TextTypes.Body}>
+              – {formatAuthorName(quote.author)}
+            </Text>
           </Stack>
         </BlockQuotePullQuote>
       </LinkBox>
