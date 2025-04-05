@@ -1,6 +1,6 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/client";
 
-export const domainModelingMadeFunctionalBook: Book = {
+export const eatDrinkBeHealthyBook: Book = {
   slug: "eat-drink-be-healthy",
   authors: ["Walter Willett"],
   status: BookStatuses.Finished,
