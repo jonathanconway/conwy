@@ -1,4 +1,4 @@
-import { Tool, ToolSections } from "@/framework";
+import { Tool, ToolSections } from "@/framework/client";
 
 export const Mokku: Tool = {
   section: ToolSections.BrowserExtension,

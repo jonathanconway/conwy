@@ -1,10 +1,13 @@
-import { Book, BookCategories, BookStatuses } from "@/framework/client";
+import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
 export const algorithmsLouridasBook: Book = {
-  slug: "algorithms-louridas",
-  authors: ["Panos Louridas"],
-  status: BookStatuses.Finished,
-  title: "Algorithms",
-  url: "https://direct.mit.edu/books/book/4869/Algorithms",
-  category: BookCategories.SoftwareDevelopment,
+  meta: {
+    type: "book",
+    slug: "algorithms-louridas",
+    authors: ["Panos Louridas"],
+    status: BookStatuses.Finished,
+    title: "Algorithms",
+    url: "https://direct.mit.edu/books/book/4869/Algorithms",
+    category: BookCategories.SoftwareDevelopment,
+  },
 };

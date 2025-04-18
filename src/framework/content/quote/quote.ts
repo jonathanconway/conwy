@@ -6,5 +6,6 @@ export interface Quote {
   readonly author: string;
   readonly source?: {
     readonly url: Url;
+    readonly title?: string;
   };
 }

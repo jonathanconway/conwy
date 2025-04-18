@@ -7,7 +7,7 @@ import {
   ResponsiveMdHalf,
 } from "@/components";
 import { site } from "@/content";
-import { Page as Page__ } from "@/framework";
+import { Page as Page__ } from "@/framework/client";
 
 import { PageProps } from "./types";
 

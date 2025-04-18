@@ -1,5 +1,5 @@
 import { TextSizes } from "@/components/text";
-import { sentenceCase } from "@/framework";
+import { sentenceCase } from "@/framework/client";
 
 import { IconTypes } from "../../icon";
 import { Link } from "../../link";

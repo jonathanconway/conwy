@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Article } from "@/components";
 import { site } from "@/content";
 import * as articles from "@/content/articles";
-import { Article as Article_ } from "@/framework";
+import { Article as Article_ } from "@/framework/client";
 
 interface PageProps {
   readonly params: { readonly slug: string };

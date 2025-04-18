@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags } from "@/framework";
+import { ArticleMeta, PostTags } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Keyboard shortcuts",

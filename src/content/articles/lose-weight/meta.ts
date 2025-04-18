@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "How to lose weight (without getting lucky)",

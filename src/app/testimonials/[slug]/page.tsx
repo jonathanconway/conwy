@@ -4,7 +4,7 @@ import { PageLayout } from "@/components";
 import { Work } from "@/components/work";
 import { site } from "@/content";
 import * as works from "@/content/works";
-import { Work as Work_ } from "@/framework";
+import { Work as Work_ } from "@/framework/client";
 
 interface PageProps {
   readonly params: { readonly slug: string };

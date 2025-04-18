@@ -1,10 +1,13 @@
-import { Book, BookCategories, BookStatuses } from "@/framework/client";
+import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
 export const advancedReactBook: Book = {
-  slug: "advanced-react",
-  authors: ["Nadia Makarevich"],
-  status: BookStatuses.Finished,
-  title: "Advanced React",
-  url: "https://www.advanced-react.com",
-  category: BookCategories.SoftwareDevelopment,
+  meta: {
+    type: "book",
+    slug: "advanced-react",
+    authors: ["Nadia Makarevich"],
+    status: BookStatuses.Finished,
+    title: "Advanced React",
+    url: "https://www.advanced-react.com",
+    category: BookCategories.SoftwareDevelopment,
+  },
 };

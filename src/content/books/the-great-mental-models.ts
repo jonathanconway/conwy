@@ -1,10 +1,13 @@
-import { Book, BookCategories, BookStatuses } from "@/framework/client";
+import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
 export const theGreatMentalModelsBook: Book = {
-  slug: "the-great-mental-models",
-  authors: ["Shane Parrish"],
-  status: BookStatuses.Finished,
-  title: "The Great Mental Models",
-  url: "https://fs.blog/books/",
-  category: BookCategories.Economics,
+  meta: {
+    type: "book",
+    slug: "the-great-mental-models",
+    authors: ["Shane Parrish"],
+    status: BookStatuses.Finished,
+    title: "The Great Mental Models",
+    url: "https://fs.blog/books/",
+    category: BookCategories.Economics,
+  },
 };

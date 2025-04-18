@@ -1,4 +1,4 @@
-import { TypeOfConst } from "@/framework";
+import { TypeOfConst } from "@/framework/client";
 
 export const TextSizes = {
   _2xs: "_2xs",

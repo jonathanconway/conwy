@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
 
-import { Image as Image_ } from "@/framework";
+import { Image as Image_ } from "@/framework/client";
 
 import { ImageSize } from "../image/image-sizes";
 

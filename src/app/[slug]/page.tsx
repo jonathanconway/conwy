@@ -3,7 +3,7 @@ import { Metadata } from "next";
 
 import { REDIRECTS } from "@/content";
 import * as pages from "@/content/pages";
-import { Page as Page__ } from "@/framework";
+import { Page as Page__ } from "@/framework/client";
 
 import { PagePage, generateMetadataPage } from "./page-page";
 import { PageRedirect, generateMetadataRedirect } from "./page-redirect";

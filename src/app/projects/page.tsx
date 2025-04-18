@@ -2,7 +2,7 @@ import { Fragment, PageLayout, ProjectsList } from "@/components";
 import { site } from "@/content";
 import { Projects as Projects_ } from "@/content/fragments";
 import * as projects from "@/content/projects";
-import { getProjectMetas } from "@/framework";
+import { getProjectMetas } from "@/framework/client";
 
 export default function Projects() {
   const projectMetas = getProjectMetas(projects);

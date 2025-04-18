@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Micro, PageLayout } from "@/components";
 import { site } from "@/content";
 import * as micros from "@/content/micros";
-import { Micro as Micro_ } from "@/framework";
+import { Micro as Micro_ } from "@/framework/client";
 
 interface PageProps {
   readonly params: { readonly slug: string };

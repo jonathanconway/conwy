@@ -11,7 +11,7 @@ import {
 import { site } from "@/content";
 import { Work as Work_ } from "@/content/fragments";
 import * as works from "@/content/works";
-import { getTestimonials, getWorkMetas } from "@/framework";
+import { getTestimonials, getWorkMetas } from "@/framework/client";
 
 export default function Page() {
   const workMetas = getWorkMetas(works);

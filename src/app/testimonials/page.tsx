@@ -2,7 +2,7 @@ import { Breadcrumb, Fragment, PageLayout, Testimonials } from "@/components";
 import { site } from "@/content";
 import { Testimonials as Testimonials_ } from "@/content/fragments";
 import * as works from "@/content/works";
-import { getTestimonials } from "@/framework";
+import { getTestimonials } from "@/framework/client";
 
 export default function Page() {
   const testimonials = getTestimonials(works);

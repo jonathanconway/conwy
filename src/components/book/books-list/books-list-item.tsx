@@ -19,12 +19,16 @@ const BOOK_STATUS_EMOJI = {
 
 export function BooksListItem({ book }: BooksListItemProps) {
   return (
-    <li key={book.title} className={styles.booksListItem}>
-      <LinkBox className={styles.bookLinkBox} href={book.url} target="_blank">
-        <LinkBoxTitle>{book.title}</LinkBoxTitle>
-        <Text type={TextTypes.Body}>by {book.authors.join(", ")}</Text>
+    <li key={book.meta.title} className={styles.booksListItem}>
+      <LinkBox
+        className={styles.bookLinkBox}
+        href={book.meta.url}
+        target="_blank"
+      >
+        <LinkBoxTitle>{book.meta.title}</LinkBoxTitle>
+        <Text type={TextTypes.Body}>by {book.meta.authors.join(", ")}</Text>
         <Text type={TextTypes.Small}>
-          {BOOK_STATUS_EMOJI[book.status]} {sentenceCase(book.status)}
+          {BOOK_STATUS_EMOJI[book.meta.status]} {sentenceCase(book.meta.status)}
         </Text>
       </LinkBox>
     </li>

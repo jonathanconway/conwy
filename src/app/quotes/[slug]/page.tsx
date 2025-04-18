@@ -4,7 +4,7 @@ import "@/components";
 import { PageLayout, QuotesListItem, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as quotes from "@/content/quotes";
-import { Quote as Quote_ } from "@/framework";
+import { Quote as Quote_ } from "@/framework/client";
 
 interface PageProps {
   readonly params: { readonly slug: string };

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 import { ArticleLayout, ArticleSidebar } from "@/components";
-import { Article as Article_ } from "@/framework";
+import { Article as Article_ } from "@/framework/client";
 
 interface LayoutProps {
   readonly children: ReactNode;

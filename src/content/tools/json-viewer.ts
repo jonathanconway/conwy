@@ -1,4 +1,4 @@
-import { Tool, ToolSections } from "@/framework";
+import { Tool, ToolSections } from "@/framework/client";
 
 export const JsonViewer: Tool = {
   section: ToolSections.App,

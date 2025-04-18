@@ -4,7 +4,7 @@ import { PageLayout } from "@/components";
 import { Project } from "@/components/project";
 import { site } from "@/content";
 import * as projects from "@/content/projects";
-import { Project as Project_ } from "@/framework";
+import { Project as Project_ } from "@/framework/client";
 
 interface PageProps {
   readonly params: { readonly slug: string };

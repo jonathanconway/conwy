@@ -1,4 +1,4 @@
-import { Tool, ToolSections } from "@/framework";
+import { Tool, ToolSections } from "@/framework/client";
 
 export const CalculatorNet: Tool = {
   section: ToolSections.Website,

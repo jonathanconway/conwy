@@ -2,7 +2,7 @@ import { Date, DateFormats } from "@/components/date";
 import { IconTypes } from "@/components/icon";
 import { LinkLayoutTypes } from "@/components/link/link-layout-type";
 import { Stack } from "@/components/stack";
-import { TestimonialAndWork as TestimonialAndWork_ } from "@/framework";
+import { TestimonialAndWork as TestimonialAndWork_ } from "@/framework/client";
 
 import { Box } from "../../box";
 import { Chain } from "../../chain";

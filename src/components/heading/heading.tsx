@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { TypeOfConst } from "@/framework";
+import { TypeOfConst } from "@/framework/client";
 
 import * as styles from "./heading.css";
 

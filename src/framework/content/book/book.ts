@@ -1,14 +1,5 @@
-import { Slug } from "../slug";
-import { Url } from "../url";
-
-import { BookCategory } from "./book-category";
-import { BookStatus } from "./book-status";
+import { BookMeta } from "./book-meta";
 
 export interface Book {
-  readonly slug: Slug;
-  readonly title: string;
-  readonly authors: readonly string[];
-  readonly url: Url;
-  readonly status: BookStatus;
-  readonly category: BookCategory;
+  readonly meta: BookMeta;
 }

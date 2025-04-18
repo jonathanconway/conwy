@@ -1,10 +1,13 @@
-import { Book, BookCategories, BookStatuses } from "@/framework/client";
+import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
 export const rightStoryWrongStoryBook: Book = {
-  slug: "right-story-wrong-story",
-  authors: ["Tyson Yunkaporta"],
-  status: BookStatuses.Listed,
-  title: "Right Story, Wrong Story",
-  url: "https://www.textpublishing.com.au/books/right-story-wrong-story-adventures-in-indigenous-thinking",
-  category: BookCategories.Philosophy,
+  meta: {
+    type: "book",
+    slug: "right-story-wrong-story",
+    authors: ["Tyson Yunkaporta"],
+    status: BookStatuses.Listed,
+    title: "Right Story, Wrong Story",
+    url: "https://www.textpublishing.com.au/books/right-story-wrong-story-adventures-in-indigenous-thinking",
+    category: BookCategories.Philosophy,
+  },
 };
