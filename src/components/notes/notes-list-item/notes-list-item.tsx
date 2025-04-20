@@ -4,6 +4,7 @@ import { ContentListItem } from "../../content-list";
 import { LinkBox } from "../../link-box";
 import { Text } from "../../text";
 import { TextTypes } from "../../text/text-type";
+import { Tooltip } from "../../tooltip";
 
 import { NotesListItemSource } from "./notes-list-item-source";
 import * as styles from "./notes-list-item.css";
@@ -28,7 +29,9 @@ export function NotesListItem(props: NotesListItemProps) {
         asideSlot={
           noteMeta.commentCount && (
             <div className={styles.aside}>
-              <Text type={TextTypes.Small}>💬 {noteMeta.commentCount}</Text>
+              <Tooltip contents={`${noteMeta.commentCount} notes`}>
+                <Text type={TextTypes.Small}>💬 {noteMeta.commentCount}</Text>
+              </Tooltip>
             </div>
           )
         }

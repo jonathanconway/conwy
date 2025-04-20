@@ -3,7 +3,7 @@ import { NoteMeta } from "@/framework/client";
 import { BookAuthors } from "../../book";
 import { ContentTypeIcon } from "../../content-type";
 import { Heading } from "../../heading";
-import { Stack } from "../../stack";
+import { Stack, StackDirections } from "../../stack";
 import { Text, TextTypes } from "../../text";
 
 interface NoteSourceProps {
@@ -12,8 +12,8 @@ interface NoteSourceProps {
 
 export function NoteSource(props: NoteSourceProps) {
   return (
-    <Stack direction="column" gap={0.25}>
-      <Stack direction="row">
+    <Stack direction={StackDirections.Column} gap={0.25}>
+      <Stack direction={StackDirections.Row}>
         <Text type={TextTypes.Label}>
           <ContentTypeIcon contentType={props.noteMeta.source.type} />{" "}
           {props.noteMeta.source.type}

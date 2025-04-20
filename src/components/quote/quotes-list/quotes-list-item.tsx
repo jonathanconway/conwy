@@ -5,7 +5,7 @@ import { Quote } from "@/framework/client";
 import { BlockQuotePullQuote } from "../../aside";
 import { Link } from "../../link";
 import { LinkBox, LinkBoxTitle } from "../../link-box";
-import { Stack } from "../../stack";
+import { Stack, StackDirections } from "../../stack";
 import { Text, TextTypes } from "../../text";
 
 import * as styles from "./quotes-list-item.css";
@@ -20,8 +20,9 @@ export function QuotesListItem({ quote }: QuotesListItemProps) {
     <li key={quote.slug} className={styles.quotesListItem}>
       <LinkBox className={styles.quoteLinkBox} href={`/quotes/${quote.slug}`}>
         <BlockQuotePullQuote className={styles.quotePullQuote}>
-          <Stack direction="column" gap={0.5}>
+          <Stack direction={StackDirections.Column} gap={0.5}>
             <LinkBoxTitle>{quote.text}</LinkBoxTitle>
+
             <Text type={TextTypes.Body}>
               – {formatAuthorName(quote.author)}
             </Text>
