@@ -6,5 +6,6 @@ export const somethingYouLikeQuote: Quote = {
   slug: "something-you-like",
   source: {
     url: "https://rationalreminder.ca/podcast/200",
+    title: "Rational Reminder, Episode 200",
   },
 };
