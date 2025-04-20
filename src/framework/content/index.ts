@@ -6,7 +6,7 @@ export * from "./image";
 export * from "./item";
 export * from "./meta";
 export * from "./micro";
-export * from "./notes";
+export * from "./note";
 export * from "./page";
 export * from "./podcast";
 export * from "./post";
