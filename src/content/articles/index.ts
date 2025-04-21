@@ -23,3 +23,4 @@ export * from "./typescript-object-const-enum-pattern";
 export * from "./user-flows";
 export * from "./visualising-execution-flows";
 export * from "./keyboard-shortcuts";
+export * from "./working-relationships";
