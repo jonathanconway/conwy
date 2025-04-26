@@ -2,6 +2,7 @@ export * from "./billions";
 export * from "./eat";
 export * from "./everything-spiritual";
 export * from "./habit";
+export * from "./good-example";
 export * from "./judgements";
 export * from "./nature-questioning";
 export * from "./something-you-like";
