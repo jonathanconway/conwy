@@ -20,7 +20,23 @@ export const meta: WorkMeta = {
         "https://www.linkedin.com/in/jonathanconway/details/recommendations",
     },
   ],
-  images: [],
+  images: [
+    {
+      src: "service-nsw-1.png",
+      alt: "Create Account flow",
+      notes: [],
+    },
+    {
+      src: "service-nsw-2.jpg",
+      alt: "Linking government services such as RMS and Birth Deaths & Marriages",
+      notes: [],
+    },
+    {
+      src: "service-nsw-3.jpg",
+      alt: "MyServiceNSW Dashboard",
+      notes: [],
+    },
+  ],
   slug: "service-nsw",
   tags: [],
   type: "work",
