@@ -1,6 +1,6 @@
 import { Study, StudyStatuses } from "@/framework/client";
 
-export const interactionDesignSydneyUni: Study = {
+export const interactionDesignSydneyUniStudy: Study = {
   title: "Interaction Design and Electronic Arts",
   mainUrl:
     "https://www.sydney.edu.au/courses/courses/pc/graduate-certificate-in-interaction-design-and-electronic-arts.html",

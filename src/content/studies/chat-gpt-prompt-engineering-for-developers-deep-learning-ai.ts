@@ -1,6 +1,6 @@
 import { Study, StudyStatuses } from "@/framework/client";
 
-export const chatGptPromptEngineeringForDevelopersDeepLearningAi: Study = {
+export const chatGptPromptEngineeringForDevelopersDeepLearningAiStudy: Study = {
   title: "ChatGPT Prompt Engineering for Developers",
   mainUrl: "https://learn.deeplearning.ai/courses/chatgpt-prompt-eng",
   date: "2024",

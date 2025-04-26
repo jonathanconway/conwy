@@ -1,6 +1,6 @@
 import { Study, StudyStatuses } from "@/framework/client";
 
-export const decentralizedFinanceDeFiTheFutureOfFinanceSpecializationDukeUniversityViaCoursera: Study =
+export const decentralizedFinanceDeFiTheFutureOfFinanceSpecializationDukeUniversityViaCourseraStudy: Study =
   {
     title: "Decentralized Finance (DeFi): The Future of Finance Specialization",
     mainUrl:

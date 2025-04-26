@@ -1,6 +1,6 @@
 import { Study, StudyStatuses } from "@/framework/client";
 
-export const introductionToPhilosophyUniversityOfSydney: Study = {
+export const introductionToPhilosophyUniversityOfSydneyStudy: Study = {
   title: "Introduction to Philosophy",
   mainUrl: "https://cce.sydney.edu.au/course/inph",
   date: "2014",

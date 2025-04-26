@@ -1,6 +1,6 @@
 import { Study, StudyStatuses } from "@/framework/client";
 
-export const nextJs15AndReactUdemy: Study = {
+export const nextJs15AndReactUdemyStudy: Study = {
   title: "Next.js 15 and React",
   mainUrl: "https://www.udemy.com/course/nextjs-react-the-complete-guide",
   date: "2025",

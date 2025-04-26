@@ -1,6 +1,6 @@
 import { Study, StudyStatuses } from "@/framework/client";
 
-export const networkAdministrationHornsbyCollegeOfTafe: Study = {
+export const networkAdministrationHornsbyCollegeOfTafeStudy: Study = {
   title: "Network Administration",
   mainUrl:
     "https://www.tafensw.edu.au/international/courses/Certificate-III-in-Information-Technology-(Networking)--ICT30120N",

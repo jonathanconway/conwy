@@ -1,6 +1,6 @@
 import { Study, StudyStatuses } from "@/framework/client";
 
-export const calculusCoursera: Study = {
+export const calculusCourseraStudy: Study = {
   title: "Introduction to Calculus",
   mainUrl: "https://www.coursera.org/learn/introduction-to-calculus",
   credential: "Non-credit",
