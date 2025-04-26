@@ -18,7 +18,7 @@ export function BooksList() {
 
   return (
     <>
-      <TagFilters contentType="book" items={books} tagField="category" />
+      <TagFilters contentType="book" items={books} tagField="meta.category" />
 
       <List className={styles.booksList}>
         {filteredItems.map((book) => (

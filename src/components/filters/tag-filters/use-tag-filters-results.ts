@@ -14,7 +14,7 @@ export interface UseTagFiltersParams<T> {
 }
 
 export function useTagFiltersResults<T>(params: UseTagFiltersParams<T>) {
-  const { selectedTags } = useTagFiltersSelected("article");
+  const { selectedTags } = useTagFiltersSelected(params.contentType);
 
   const filteredItems = selectedTags.includes(ALL)
     ? params.items
