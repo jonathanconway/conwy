@@ -5,7 +5,7 @@ export const howBrandsGrowBook: Book = {
     type: "book",
     slug: "how-brands-grow",
     authors: ["Byron Sharp"],
-    status: BookStatuses.Reading,
+    status: BookStatuses.Finished,
     title: "How Brands Grow",
     url: "http://www.amazon.com/How-Brands-Grow-What-Marketers/dp/0195573560",
     category: BookCategories.Business,
