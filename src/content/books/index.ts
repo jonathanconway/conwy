@@ -44,6 +44,8 @@ export * from "./of-providence";
 export * from "./olaudah-equiano";
 export * from "./orientations";
 export * from "./programming-interviews-exposed";
+export * from "./positive-psychology";
+export * from "./may-contain-lies";
 export * from "./reflections-on-the-self";
 export * from "./right-story-wrong-story";
 export * from "./sand-talk";

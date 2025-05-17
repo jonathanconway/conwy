@@ -6,7 +6,7 @@ export const howToReadABook: Book = {
     slug: "how-to-read-a-book",
     authors: ["Mortimer Adler"],
     status: BookStatuses.Listed,
-    title: "how-to-read-a-book",
+    title: "How to Read a Book",
     url: "https://en.wikipedia.org/wiki/How_to_Read_a_Book",
     category: BookCategories.Philosophy,
   },
