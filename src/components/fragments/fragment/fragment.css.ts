@@ -112,3 +112,9 @@ const table = {
 };
 
 globalStyle(`${fragment} table`, table);
+
+const a = {
+  whiteSpace: "unset",
+};
+
+globalStyle(`${fragment} a`, a);

@@ -28,11 +28,11 @@ export function getSubformatChildrenStartingWithPrefix(
 }
 
 function getChildText(children: ReactNode) {
-  if (!isString(children)) {
+  if (isString(children)) {
     return undefined;
   }
 
-  return children;
+  return children?.toString();
 }
 
 export function getIsChildTextStartingWithPrefix(
@@ -149,9 +149,23 @@ export function removeChildrenPrefix(prefix: string) {
   };
 }
 
-export function removeChildrenPattern(pattern: RegExp, children: ReactNode) {
-  const childText = getChildText(children);
-  return childText?.replace(pattern, "");
+export function removeChildrenPrefixPattern(prefixPattern: RegExp) {
+  return function (children?: ReactNode): ReactNode {
+    if (isString(children)) {
+      if (prefixPattern.test(children)) {
+        return children.split(":").slice(1).join(":").trim();
+      }
+    }
+
+    if (isArray(children)) {
+      return [
+        removeChildrenPrefixPattern(prefixPattern)(children[0]),
+        ...children.slice(1),
+      ];
+    }
+
+    return children;
+  };
 }
 
 export function getSubformatChildrenPrefixedRest(

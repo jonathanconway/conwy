@@ -14,7 +14,7 @@ export function getPSubformatPopupNoteProps(props: MdxPProps): MdxPProps {
 
   const noteId = `${NOTE_ID_PREFIX}${matches[0][1]}`;
 
-  const children = String(props.children).replace(notePattern, "").trim();
+  const { children } = props;
 
   return {
     children,

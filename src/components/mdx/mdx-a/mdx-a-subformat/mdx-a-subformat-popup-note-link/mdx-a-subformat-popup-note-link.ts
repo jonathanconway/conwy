@@ -3,7 +3,7 @@ import { MouseEvent } from "react";
 import {
   NOTE_HREF_PREFIX,
   notePattern,
-  removeChildrenPattern,
+  removeChildrenPrefixPattern,
 } from "@/framework/client";
 
 import { LinkProps } from "../../../../link";
@@ -14,7 +14,7 @@ export function getASubformatPopupNoteLinkProps(props: MdxAProps): LinkProps {
     return props;
   }
 
-  const children = removeChildrenPattern(notePattern, props.children);
+  const children = removeChildrenPrefixPattern(notePattern)(props.children);
 
   const showOpenPopup = true;
 

@@ -1,4 +1,4 @@
-export const notePattern = new RegExp(/Note (.*?):/g);
+export const notePattern = new RegExp(/Note (0|[1-9][0-9]*):/g);
 
 export const NOTE_ID_PREFIX = "note-";
 
