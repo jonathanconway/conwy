@@ -1,12 +1,13 @@
 import {
   Fragment,
   PageLayout,
-  ResponsiveMdHalf,
+  ResponsiveStack,
   Stack,
   ToolsList,
+  ToolsSections,
 } from "@/components";
 import { site } from "@/content";
-import { Tools } from "@/content/fragments";
+import { Tools, ToolsSidebar } from "@/content/fragments";
 
 export default function Page() {
   return (
@@ -14,11 +15,20 @@ export default function Page() {
       selectedNavPath="/tools"
       main={
         <Stack gap={1}>
-          <ResponsiveMdHalf>
+          <ResponsiveStack
+            direction={{
+              md: "row",
+            }}
+          >
             <Fragment>
               <Tools />
+
+              <ToolsSections />
             </Fragment>
-          </ResponsiveMdHalf>
+            <Fragment>
+              <ToolsSidebar />
+            </Fragment>
+          </ResponsiveStack>
 
           <ToolsList />
         </Stack>
