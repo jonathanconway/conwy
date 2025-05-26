@@ -14,6 +14,7 @@ export * from "./hand-brake";
 export * from "./i-fun-box";
 export * from "./imagemagick";
 export * from "./keepass-xc";
+export * from "./keycastr";
 export * from "./libation";
 export * from "./libre-office";
 export * from "./mermaid";
@@ -56,4 +57,3 @@ export * from "./genius-scan";
 export * from "./mokku";
 
 export * from "./freac";
-
