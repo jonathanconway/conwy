@@ -9,6 +9,7 @@ export * from "./color-slurp";
 export * from "./coolors";
 export * from "./draw";
 export * from "./ffmpeg";
+export * from "./file-browser-pro";
 export * from "./fork";
 export * from "./freac";
 export * from "./free-ruler";
