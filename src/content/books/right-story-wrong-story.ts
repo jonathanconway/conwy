@@ -5,7 +5,7 @@ export const rightStoryWrongStoryBook: Book = {
     type: "book",
     slug: "right-story-wrong-story",
     authors: ["Tyson Yunkaporta"],
-    status: BookStatuses.Listed,
+    status: BookStatuses.Finished,
     title: "Right Story, Wrong Story",
     url: "https://www.textpublishing.com.au/books/right-story-wrong-story-adventures-in-indigenous-thinking",
     category: BookCategories.Philosophy,
