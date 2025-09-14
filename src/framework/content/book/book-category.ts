@@ -18,6 +18,7 @@ export const BookCategories = {
   SelfHelp: "self-help",
   SoftwareDevelopment: "software-development",
   Spirituality: "spirituality",
+  Writing: "writing",
 } as const;
 
 export type BookCategory = TypeOfConst<typeof BookCategories>;
