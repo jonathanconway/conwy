@@ -7,6 +7,16 @@ import { vars } from "../theme";
 export const linkBase = {
   fontWeight: 500,
   cursor: "pointer",
+};
+
+export const linkLayoutInline = {
+  display: "inline",
+};
+
+export const linkLayoutCompact = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "0.25rem",
 
   "@media": {
     [media.lgAndUp]: {
@@ -14,16 +24,6 @@ export const linkBase = {
       whiteSpace: "nowrap",
     },
   },
-};
-
-export const linkLayoutInline = {
-  display: "inline-block",
-};
-
-export const linkLayoutCompact = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "0.25rem",
 };
 
 export const linkContentsText = {
