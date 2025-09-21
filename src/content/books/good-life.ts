@@ -5,7 +5,7 @@ export const goodLifeBook: Book = {
     type: "book",
     slug: "good-life",
     authors: ["Robert Waldinger", "Marc Schulz"],
-    status: BookStatuses.Reading,
+    status: BookStatuses.Finished,
     title: "The Good Life",
     url: "https://www.penguin.com.au/books/the-good-life-9781846046780",
     category: BookCategories.Psychology,
