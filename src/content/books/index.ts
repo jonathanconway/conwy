@@ -49,6 +49,7 @@ export * from "./on-writing";
 export * from "./orientations";
 export * from "./positive-psychology";
 export * from "./programming-interviews-exposed";
+export * from "./react-anti-patterns";
 export * from "./reflections-on-the-self";
 export * from "./right-story-wrong-story";
 export * from "./sand-talk";
