@@ -1,3 +1,4 @@
+export * from "./a-history-of-western-philosophy";
 export * from "./a-philosophy-of-software-design";
 export * from "./advanced-react";
 export * from "./aesops-fables";
