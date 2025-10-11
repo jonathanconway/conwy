@@ -79,7 +79,7 @@ export function getChildrenText(children: ReactNode): string {
   }
 
   if (isArray(children)) {
-    return String(children.map(getChildrenText).join("")).trim();
+    return String(children.map(getChildrenText).join(""))?.trim();
   }
 
   if (isObject(children)) {
@@ -90,13 +90,17 @@ export function getChildrenText(children: ReactNode): string {
     }
 
     if ("props" in children) {
-      if ("type" in children.props) {
-        if (children.props.type === "br") {
-          return "";
+      if (isObject(children.props)) {
+        if ("type" in children.props) {
+          if (children.props.type === "br") {
+            return "";
+          }
         }
-      }
-      if ("children" in children.props) {
-        return getChildrenText(children.props.children).trim();
+        if ("children" in children.props) {
+          if (isObject(children.props.children)) {
+            return getChildrenText(children.props.children as ReactNode)?.trim();
+          }
+        }
       }
     }
   }
@@ -128,14 +132,18 @@ export function removeFirstChildPrefix(
     }
 
     if ("props" in children) {
-      if ("children" in children.props) {
-        return {
-          ...children,
-          props: {
-            ...children.props,
-            children: removeFirstChildPrefix(prefix, children.props.children),
-          },
-        };
+      if (isObject(children.props)) {
+        if ("children" in children.props) {
+          if (isObject(children.props.children) || isString(children.props.children)) {
+            return {
+              ...children,
+              props: {
+                ...children.props,
+                children: removeFirstChildPrefix(prefix, children.props.children as ReactNode),
+              },
+            };
+          }
+        }
       }
     }
   }
@@ -145,7 +153,7 @@ export function removeFirstChildPrefix(
 
 export function removeChildrenPrefix(prefix: string) {
   return function (childrenText?: string) {
-    return childrenText?.split(prefix)[1].trim();
+    return childrenText?.split(prefix)[1]?.trim();
   };
 }
 
@@ -153,7 +161,7 @@ export function removeChildrenPrefixPattern(prefixPattern: RegExp) {
   return function (children?: ReactNode): ReactNode {
     if (isString(children)) {
       if (prefixPattern.test(children)) {
-        return children.split(":").slice(1).join(":").trim();
+        return children.split(":").slice(1).join(":")?.trim();
       }
     }
 
@@ -177,7 +185,7 @@ export function getSubformatChildrenPrefixedRest(
   }
 
   let filteredChildren = children.filter(
-    (child) => (child as ReactElement).props?.children !== prefix,
+    (child) => ((child as ReactElement).props as any)?.children !== prefix,
   );
 
   filteredChildren = skipEmptyChildren(filteredChildren) as ReactNode[];

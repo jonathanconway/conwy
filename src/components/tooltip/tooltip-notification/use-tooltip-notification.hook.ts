@@ -6,7 +6,7 @@ import { TooltipRefProps } from "react-tooltip";
 import { Maybe } from "@/framework/client";
 
 interface UseTooltipNotificationParams {
-  readonly targetRef: RefObject<TooltipRefProps>;
+  readonly targetRef: RefObject<TooltipRefProps | null>;
   readonly targetElement?: Maybe<Element>;
 }
 

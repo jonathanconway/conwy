@@ -12,7 +12,7 @@ export function QuotesList() {
   return (
     <List className={styles.quotesList}>
       {quotes.map((quote) => (
-        <QuotesListItem quote={quote} />
+        <QuotesListItem key={quote.slug} quote={quote} />
       ))}
     </List>
   );

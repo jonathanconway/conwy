@@ -1,5 +1,5 @@
 export interface PageProps {
-  readonly params: {
+  readonly params: Promise<{
     readonly slug: string;
-  };
+  }>;
 }

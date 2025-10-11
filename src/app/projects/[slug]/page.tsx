@@ -5,20 +5,18 @@ import { Project } from "@/components/project";
 import { site } from "@/content";
 import * as projects from "@/content/projects";
 import { Project as Project_ } from "@/framework/client";
+import { PageProps } from "../../[slug]/types";
 
-interface PageProps {
-  readonly params: { readonly slug: string };
-}
-
-export default async function Page({ params: { slug } }: PageProps) {
-  const projectModule = await import(`@/content/projects/${slug}`);
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const projectModule = await import(`@/content/projects/${params.slug}`);
   const projectModuleItems = Object.values(projectModule);
   const project = projectModuleItems[0] as Project_;
-
+  
   return (
     <PageLayout
-      selectedNavPath="/project"
-      main={<Project project={project} />}
+    selectedNavPath="/project"
+    main={<Project project={project} />}
     />
   );
 }
@@ -28,10 +26,9 @@ export async function generateStaticParams() {
   return allProjectMetas;
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: PageProps): Promise<Metadata> {
-  const projectModule = await import(`@/content/projects/${slug}`);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+  const projectModule = await import(`@/content/projects/${params.slug}`);
   const project = Object.values(projectModule)[0] as Project_;
   const title = project.meta.title;
 

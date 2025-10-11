@@ -20,6 +20,7 @@ function handleSelectedThemeStorage(theme: Theme) {
       `/css/prismjs/themes/${PRISM_JS_THEME_CSS_FILENAME_BY_THEME[theme]}`,
     );
     newLink.setAttribute("data-noprefix", "true");
+    newLink.setAttribute("precedence", "default");
 
     document.head.appendChild(newLink);
   }, 500);

@@ -1,5 +1,5 @@
 import { get, omit } from "lodash";
-import { ComponentType } from "react";
+import { ComponentType, JSX } from "react";
 
 export function createWithHOC<THOCProps, THOCName extends string>(
   HOC: ComponentType<THOCProps>,

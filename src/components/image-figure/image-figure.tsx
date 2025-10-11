@@ -1,5 +1,6 @@
 "use client";
 
+import { isString } from "lodash";
 import { getImageWidthHeightFromSize } from "../image";
 import { ImageModal } from "../image-modal";
 
@@ -13,7 +14,9 @@ export function ImageFigure(props: ImageFigureProps) {
   const { size } = props;
   const { width, height } = getImageWidthHeightFromSize(props);
 
-  const src = props.image?.src ?? props.src ?? "";
+  const srcBlobOrString = props.image?.src ?? props.src ?? "";
+  const src = isString(srcBlobOrString) ? srcBlobOrString : "";
+
   const alt = props.image?.alt ?? props.alt;
   const title = props.title ?? alt;
   const caption = title ?? alt;

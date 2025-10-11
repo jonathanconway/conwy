@@ -10,7 +10,8 @@ import { PageRedirect, generateMetadataRedirect } from "./page-redirect";
 import { PageProps } from "./types";
 
 export default async function Page(props: PageProps) {
-  if (REDIRECTS[props.params.slug]) {
+  const params = await props.params;
+  if (REDIRECTS[params.slug]) {
     return <PageRedirect {...props} />;
   }
 
@@ -28,14 +29,15 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  if (REDIRECTS[props.params.slug]) {
-    return generateMetadataRedirect({ params: { slug: props.params.slug } });
+  const params = await props.params;
+  if (REDIRECTS[params.slug]) {
+    return generateMetadataRedirect({ params: Promise.resolve({ slug: params.slug }) });
   }
 
   const pagesByName = pages as Record<string, Page__>;
-  const pageName = camelCase(props.params.slug);
+  const pageName = camelCase(params.slug);
   if (pagesByName[pageName]) {
-    return generateMetadataPage({ params: { slug: props.params.slug } });
+    return generateMetadataPage({ params: Promise.resolve({ slug: params.slug }) });
   }
 
   throw new Error();

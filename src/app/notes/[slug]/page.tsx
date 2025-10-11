@@ -1,19 +1,18 @@
 import { Metadata } from "next";
 
-import { ArticleLayout, Note, PageLayout } from "@/components";
+import { ArticleLayout, Note } from "@/components";
 import { site } from "@/content";
 import * as notes from "@/content/notes";
 import { Note as Note_ } from "@/framework/client";
+import { PageProps } from "../../[slug]/types";
 
-interface PageProps {
-  readonly params: { readonly slug: string };
-}
 
-export default async function Page({ params: { slug } }: PageProps) {
-  const noteModule = await import(`@/content/notes/${slug}`);
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const noteModule = await import(`@/content/notes/${params.slug}`);
   const noteModuleItems = Object.values(noteModule);
   const note = noteModuleItems[0] as Note_;
-
+  
   return <ArticleLayout main={<Note note={note} />} aside={<></>} />;
 }
 
@@ -22,10 +21,9 @@ export async function generateStaticParams() {
   return allMicroMetas;
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: PageProps): Promise<Metadata> {
-  const microModule = await import(`@/content/notes/${slug}`);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+  const microModule = await import(`@/content/notes/${params.slug}`);
   const micro = Object.values(microModule)[0] as Note_;
   const title = micro.meta.date;
 

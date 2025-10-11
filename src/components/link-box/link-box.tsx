@@ -1,8 +1,8 @@
 "use client";
 
-import NextLink from "next/link";
 import { MouseEvent } from "react";
 
+import { Link } from "../link";
 import { withTooltip } from "../tooltip";
 
 import { LinkBoxProps } from "./link-box-props";
@@ -32,7 +32,7 @@ export function LinkBox_(props: LinkBoxProps) {
   };
 
   return (
-    <NextLink
+    <Link
       className={props.className ?? styles.linkBox}
       href={String(props.href)}
       onClick={handleClick}

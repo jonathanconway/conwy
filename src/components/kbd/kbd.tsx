@@ -6,7 +6,7 @@ import * as styles from "./kbd.css";
 
 export function Kbd({ className, children, ...restProps }: KbdProps) {
   const title =
-    KBD_DETAILS[String(children).trim() as keyof typeof KBD_DETAILS]?.title;
+    KBD_DETAILS[String(children)?.trim() as keyof typeof KBD_DETAILS]?.title;
 
   return (
     <Tooltip contents={title}>

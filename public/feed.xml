@@ -4,7 +4,7 @@
   <subtitle>Blog articles by Jonathan Conway</subtitle>
   <link href="https://conwy.co/feed.xml" rel="self"/>
   <link href="https://conwy.co/"/>
-  <updated>2024-09-13T00:00:00.000Z</updated>
+  <updated>2025-02-12T00:00:00.000Z</updated>
   <id>https://conwy.co</id>
   <author>
     <name>Jonathan Conway</name>
@@ -12,24 +12,1696 @@
   </author>
   
   <entry>
+    <title>Simulating application states</title>
+    <link href="https://conwy.co/articles/simulating-states" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>simulating-states</id>
+    <content xml:lang="en" type="html">## Motivation
+
+Engineers are increasingly called upon to provide on-call support for complex software running in production.
+
+To ease the diagnosis and resolution of issues in these systems, it can be beneficial to be able to ***simulate*** – at will – any of the important states the system can be in.
+
+This article covers what I&#39;ve learned thus-far about simulation for the purposes of easing production support.
+
+## Benefits of arbitrary state simulation
+
+There are a number of benefits to being able to simulate states of interest, even before incidents occur.
+
+- Testing in advance
+- Faster diagnosis
+- Fewer team interdependencies
+
+### Testing in advance
+
+*A bug is better discovered and resolved at 1 PM than at 3 AM!*
+
+Engineers and testers can try out various states of the application in production, in advance, to uncover any unexpected bugs, unknown-unknowns, etc. As much as we try to keep all our environments consistent and predictable, there&#39;s always a chance some issue catches us by surprise only when it reaches production. It could be anything, from a quirk in the CPU architecture of the cloud instance to a difference in the time-zone where the instance is running.
+
+
+### Faster diagnosis
+
+*The faster an issue can be resolved at 3 AM the better!*
+
+When an issue occurs, rather than going through a lengthy procedure to try and &quot;reproduce&quot; the bug, it&#39;s better if engineers can follow a quick, systematic and repeatable procedure to directly trigger the bug.
+
+### Fewer team interdependencies
+
+*The fewer people who have to be woken up at 3 AM the better!*
+
+If an engineer can directly reproduce an issue themselves, this saves them from having to rely on subject-matter-experts, system administrators, product owners or others.
+
+## Types of state
+
+Here I will attempt to categorise system state into broadly the following types:
+
+- **🌎 System state.** Example: A new feature is activated for all users.
+- **🖥️ Instance state.** Example: Each instance performs a background job during off-peak hours. Instances are located in multiple time-zones.
+- **🧑‍💻 User state.** Example: A user account can have a subscription or not.
+- **⏰ Session state.** Example: A user account can be signed in or not.
+- **⏳ Activity state.** Example: A user sees a loading screen if a certain data source takes &gt;2 seconds to load.
+
+Depending on the type of state we want to simulate, different tools and techniques can be applied.
+
+## Tools and techniques
+
+### Feature flags
+
+Feature flags are settings that can turn on or off application states.
+
+For example, if game developers implement a new kind of magic potion, say &quot;Ginger potion&quot;, then its availability to game users could be controlled by a feature flag named: `GINGER_POTION_ENABLED`.
+
+- **Looked up at runtime.** Example: A product owner logs into a feature flag management system such as [LaunchDarkly](https://launchdarkly.com/) and changes a flag setting, causing the feature flag to be switched on or off in production.
+- **Built into the deployment.** Example: An engineer modifies a flag in a configuration file and deploys that change to production, causing the feature flag to be switched on or off in production.
+- **Combination approach.** Example: An engineer specifies a default value for a flag in a configuration file and deploys that change to production, but that flag setting can be overridden by a product owner via LaunchDarkly.
+
+### Test entities
+
+Test entities are entities set up specifically to trigger certain application states.
+
+Entities would typically be test user accounts, but might also be models of other entities in reality, such as bank accounts, credit cards or online products.
+
+For example, if certain users of a banking account have an individual account, whereas others have a joint account with another user, we could create two test account entities: a &quot;Test Individual Account&quot; and a &quot;Test Joint Account&quot;. By logging in to an appropriate test account, with credentials shared privately within the organisation, engineers could simulate states specific to either individual or joint accounts.
+
+#### Fake and real
+
+Entities could be faked, but might alternately be real if needed. For example, if an airline needs to be able to simulate an actual passport check, a real individual&#39;s passport details could be used (obviously agreed with the person in advance, and likely a high-ranking employee in the company).
+
+### Special values
+
+Particular values can be inputted into the application&#39;s user interface, to trigger particular states.
+
+#### Fake and real
+
+As with entities, these could be faked or real.
+
+For example, to test an error state that is only revealed when a payment over $5,000 is attempted, we can simply enter a value of $5,100. But to test an error state that is only revealed when there is an unknown downstream system error, we might use a very specific value for the &quot;Payment reference&quot; field, such as &quot;downstream-system-error&quot;. This should be a value which the customer is unlikely to ever use or guess, but which is simple for an engineer or tester to enter.
+
+### Procedures
+
+If we can use a reliable, repeatable and reversible procedure to generate a desired system state, then this might work out as a useful means of simulating that state.
+
+For example, suppose a banking application has a state in which the customer has consumed all of their daily payment limit. We could simulate this state by creating a scheduled payment for tomorrow, which consumes the full limit. To reverse it, we can remove the payment on the same day. This should qualify as a simple, repeatable procedure.
+
+In combination with fake values, we could add a &quot;testing back door&quot; into our application to make normally irreversible procedures reversible. For example, suppose we need to simulate a daily payment limit being reached on a same-day payment. We could make the payment as in the example above, but as an instant payment. Then we could reverse it by attempting to make a payment with a &quot;Payment reference&quot; field value of &quot;reverse-payment&quot;. The application would have some code to implement an &quot;undo&quot; of the payment whenever that specific payment reference is used.
+
+### Client controls
+
+Browser clients for web applications allow the user to enter cookies, local storage values or other methods of storage.
+
+These can be used to simulate application states.
+
+* Client-side. Settings can be applied directly to the user interface.
+* Server-side. Settings can be sent to the server to be applied there, such as cookies.
+
+Other rich clients could have similar facilities, either built-in / off-the-shelf or custom built by the developers who maintain the client.
+
+### In-app controls
+
+Applications themselves could including in-app controls for simulating states, only available to internal staff, and activated by a special shortcut key or a menu item.
+
+I implemented an experimental form of this on the Exchange project at the DTA.
+
+## Comparing approaches
+
+| Approach         | Deployment required    | Non-technical staff    | Implementation effort | Types of state most suited for
+| :-               | :-                     | :-                     | :-                    | :-
+| Feature flags    | 🔸 Depends             | 🔸 Depends             | 🟠 Medium             | 🌎 System🖥️ Instance
+| Special values   | 🚫 No                  | ✅ Yes                 | 🟡 Low-medium         | 🧑‍💻 User🖥️ Instance⏳ Activity
+| Procedures       | 🚫 No                  | ✅ Yes                 | 🟢 Low                | 🧑‍💻 User⏰ Session⏳ Activity
+| Client controls  | 🚫 No                  | 🚫 No                  | 🔴 High               | 🧑‍💻 User⏰ Session⏳ Activity
+| In-app controls  | 🚫 No                  | ✅ Yes                 | 🔴 High               | 🧑‍💻 User⏰ Session⏳ Activity
+
+## Documenting state simulations
+
+State simulations can be documented to put them in easy reach of all team members, from engineers to analysts and designers to product owners.
+
+Some documentation patterns I&#39;ve observed:
+
+- Test accounts register
+- Feature pages
+- Pull requests
+- README files
+
+### Test accounts register
+
+A table of test accounts, with columns providing login details such as username and password, as well as details on what the account can be used to test.
+
+Usually a document in the team wiki (Confluence, Notion etc.) or a shared spreadsheet (Google Sheets, Excel, etc.).
+
+| Username                  | Password    | Usage                        |
+| :-                        | :-          | :-                           |
+| individual1@test.com      | P@ssw0rd    | Individual bank account      |
+| joint1@test.com           | P@ssw0rd    | Joint bank account           |
+| admin1@test.com           | P@ssw0rd    | Customer service             |
+
+External resources can be linked to, such as:
+
+- Account credentials in a secret store
+
+### Feature pages
+
+A document describing a feature, including descriptions of simulated states as part of that description.
+
+Usually a document in the team wiki (Confluence, Notion etc.).
+
+Simulated states can be:
+- Listed out in their own section or
+- Included as part of a test plan with test cases
+
+Details can be provided inline, such as:
+- Account credentials
+- Feature flags
+- Test entities
+- Procedures
+- Client controls
+- In-app controls
+
+External resources can also or alternately be linked to, such as:
+- Account credentials in a secret store
+- Feature flag pages in feature flag management system (such as [LaunchDarkly](https://launchdarkly.com))
+- Feature flag settings in code files in a source code repository (such as [Github](http://github.com))
+- Test entities in separate documentation pages or in a source code repository
+- Procedures in separate documentation page
+- Deep-links to in-app controls for setting up state simulations
+
+![Example with simulated states listed separately](/images/articles/simulating-states/docs-simulated-states-separate.svg)
+
+![Example with simulated states included in test cases](/images/articles/simulating-states/docs-simulated-states-test.svg)
+
+## Conclusion
+
+Being able to simulate all significant states is a super-power for development teams on medium to large sized projects.
+
+Testing can be performed more thoroughly in advance, avoiding many bugs reaching production. In the case some bugs do make it to production, they can be more directly reproduced and resolved. With appropriately applied and documented techniques, such as feature flags, special values and in-app controls, the whole team can participate, reducing problematic dependencies. 
+
+Enabling state simulation will likely be a consideration on many more projects going into the future.</content>
+  </entry>
+  
+
+  <entry>
+    <title>Keyboard shortcuts</title>
+    <link href="https://conwy.co/articles/keyboard-shortcuts" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>keyboard-shortcuts</id>
+    <content xml:lang="en" type="html">In this article I want share the keyboard shortcuts that I use on a daily basis, in various environments.
+
+Advantages of using shortcuts:
+- Shave off a few seconds or milliseconds, hundreds of times over. The time savings really add up.
+- Make you look smarter in screen sharing sessions, live demos and pairing.
+- They&#39;re just fun to use!
+
+## Visual Studio Code
+
+![](/images/tools/vs-code.png?size=icon-small)
+
+| Shortcut                                                                                                       | Action                               | 
+| :-                                                                                                             | :-                                   |
+| ⌘ + ⇧ + ⌥ + ( ↑ / ↓ )     | Rectangular selection                |
+| ⇧ + ⌥ + 🖱️ Drag                                                              | Rectangular selection (mouse)        |
+| ⌘ + A                                                                        | Select all                           |
+| ⌘ + L                                                                        | Select line                          |
+| ⌃ + ( A / E )                                               | Skip to line start / end             |
+| ⌥ + ( ← / → )                                               | Skip by word left / right            |
+| ⌥ + ⇧ + ( ← / → )                          | Select by word left / right          |
+| ⌥ + ( ↑ / ↓ )                                               | Move line up / down                  |
+| ⌥ + ⇧ + ( ↑ / ↓ )                          | Duplicate line up / down             |
+| ⌘ + ⇧ + ( [ / ] )                          | Switch tab left / right              |
+| ( ⌃ + ⇤ ) / ( ⌃ + ⇧ + ⇤ ) | Switch tab most / least recent       |
+| ⌘ + ( [ / ] )                                               | Indent / outdent                     |
+| ⌘ + /                                                                        | Toggle comment                       |
+| ⌘ + W                                                                        | Close current tab                    |
+| ⌘ + K, W                                                    | Close all tabs. Keep window open.    |
+| ⌘ + ⇧ + W                                                   | Close current window                 |
+| ⌘ + P                                                                        | Quick find file                      |
+| ⌘ + ⇧ + P                                                   | Quick find action                    |
+| ⌘ + T                                                                        | Quick find symbol                    |
+| ⌘ + N                                                                        | Open new tab                         |
+| ⌘ + ⇧ + N                                                   | Open new window                      |
+| ⌘ + ⇧ + E                                                   | Focus on file browser                |
+| ⌘ + F2                                                                       | Select all instances of current word |
+
+## Sublime Text
+
+![](/images/tools/sublime-text.png?size=icon-small)
+
+| Shortcut                                                                                  | Action                               | 
+| :-                                                                                        | :-                                   |
+| ⌃ + ⌘ + ( ↑ / ↓ )     | Rectangular selection                |
+| ⌥ + 🖱️ Drag                                                              | Rectangular selection (mouse)        |
+| ⌘ + A                                                   | Select all                           |
+| ⌘ + L                                                   | Select line                          |
+| ⌃ + ( A / E )                          | Skip to line start / end             |
+| ⌥ + ( ← / → )                          | Skip by word left / right            |
+| ⌥ + ⇧ + ( ← / → )     | Select by word left / right          |
+| ⌥ + ( ↑ / ↓ )                          | Move line up / down                  |
+| ⌘ + ⇧ + D                              | Duplicate line down                  |
+| ⌘ + ⇧ + ( [ / ] )     | Switch tab left / right              |
+| ( ⌃ + ⇤ ) / ( ⇧ + ⇤ ) | Switch tab most / least recent       |
+| ⌘ + ( [ / ] )                          | Indent / outdent                     |
+| ⌘ + /                                                   | Toggle comment                       |
+| ⌘ + W                                                   | Close current tab                    |
+| ⌘ + P                                                   | Quick find file                      |
+| ⌘ + ⇧ + P                              | Quick find action                    |
+| ⌘ + ⇧ + W                              | Close current window                 |
+| ⌘ + N                                                   | Open new tab                         |
+| ⌘ + ⇧ + N                              | Open new window                      |
+| ⌃ + ⇧ + G                              | Select all instances of current word |
+
+## iTerm2
+
+![](/images/tools/iterm2.png?size=icon-small)
+
+| Shortcut                                                         | Action                   | 
+| :-                                                               | :-                       |
+| ( ↑ / ↓ )                      | Previous / Next history  |
+| ⌃ + R                                           | Search history           |
+| ⌃ + C                                           | Stop current process     |
+| ⌃ + ( A / E ) | Skip to line start / end |
+| ⌃ + W                          | Delete previous word     |
+| ⌃ + D                                           | Delete next character    |
+| ⌘ + T                                           | Open new tab             |
+| ⌘ + N                          | Open new window          |
+
+Some additional convenience shortcuts can be added by [configuring iTerm2 key mappings](https://mariusschulz.com/blog/keyboard-shortcuts-for-jumping-and-deleting-in-iterm2), as described in Marius Schulz&#39;s excellent article.
+
+| Shortcut                                                         | Action                    | 
+| :-                                                               | :-                        |
+| ⌥ + ( ← / → ) | Skip by word left / right |
+| ⌘ + ( ← / → ) | Skip to line start / end  |
+| ⌥ + ⌫                          | Delete previous word      |
+| ⌘ + ⌫                          | Delete line               |
+
+
+## Slack
+
+![](/images/tools/slack.svg?size=icon-small)
+
+| Shortcut                                                           | Action                                                   | 
+| :-                                                                 | :-                                                       |
+| ⌘ + B                            | Bold                                                     |
+| ⌘ + I                            | Italic                                                   |
+| ⌘ + ⇧ + X       | Strikethrough                                            |
+| ⌘ + V                            | Make the selection a link with pasted URL from clipboard |
+| ⌘ + U                            | Upload file with file picker                             |
+| &gt;, Space                      | Start a blockquote                                       |
+| ⌘ + ⇧ + C       | Toggle inline code block                                 |
+| &gt;, Space                      | Start a blockquote                                       |
+| ``` | Start full line code block                               |
+
+## Fork
+
+![](/images/tools/fork.png?size=icon-small)
+
+| Shortcut                                                                              | Action                                                          | 
+| :-                                                                                    | :-                                                              |
+| ⌘ + C                                               | Copy full file name of the selected file. Including path.       |
+| ⌘ + ⇧ + O                          | Open the selected file. Uses the default editor.                |
+| ⌘ + ⇧ + C                          | Focus on the commit message input.                              |
+| ↓                                                                    | On message input, show recent commit messages. Click to re-use. |
+| ⌘ + ⇧ + ( [ / ] ) | Switch tab left / right                                         |
+| ⌘ + T                                               | Open new tab                                                    |
+| ⌘ + N                                               | Open new window                                                 |
+</content>
+  </entry>
+  
+
+  <entry>
+    <title>User flows</title>
+    <link href="https://conwy.co/articles/user-flows" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>user-flows</id>
+    <content xml:lang="en" type="html">&gt; Summary: User flows help digital teams get on the same page and view the user interface and interactions holistically. User flows are typically made up of screens and components, nodes and connectors and notes and links. Collaboration can take the form of comments and annotation sessions.
+
+When building a digital product on a team of almost any size and composition, I&#39;ve found it helpful to get a ***complete birds-eye view*** of the user&#39;s journey through the product. This kind of view is especially helpful during discussions between engineers, designers and product owners.
+
+Everyone should be on the same page about ***how the how the user will interact*** with the product and ***how the product should behave***.
+
+In this case, just having a collection of screen mockups doesn&#39;t quite do the job. We want to see the ***connections between screens*** and how they interact with the user.
+
+In a previous article I discussed [interaction wireframes](/articles/interaction-wireframes) – wireframes that include additional details about parts of the interface (via markers) and connections between screens or parts of screens (via connecting arrow lines with labels).
+
+Recently ***user flows***, a more advanced form of this, have come into vogue. In this article I&#39;d like to describe what user flows are and their benefits.
+
+## Ingredients of a user flow
+
+Here&#39;s an outline of a user flow:
+
+![Outline of a user flow](/images/articles/user-flows/outline.png)
+
+And an example – an emoji picker application:
+
+![Example user flow for an emoji picker](/images/articles/user-flows/example.png)
+
+Notice the following ingredients:
+
+1. Screens and components
+2. Nodes and connectors
+3. Notes and links
+
+Let&#39;s dive into each.
+
+## Screens and Components
+
+![](/images/articles/user-flows/screen.png)
+
+User flows are screen-centric. Everything revolves around whole screens that users see. We are really trying to see the product as it appears to the end-user.
+
+Desktop and mobile screens might sit adjacent, if the experience is very similar. But in cases where the mobile experience differs significantly from desktop, it&#39;s probably better to use entirely separate flows for each.
+
+Screens are high-fidelity mockups – they really look like the real thing. In the &quot;bad old days&quot;, it might have been advisable to use lower-fidelity tools such as wireframes and even hand drawings. In some cases these are still useful.
+
+![Example screen containing components](/images/articles/user-flows/example-screen.png)
+
+User flows, in contrast, take advantage of more modern tools.
+1. ***Design tools*** (such as [Figma](http://figma.com)), which make it easy to create high-fidelity components and quickly assemble them into full screens and
+2. ***Collaborative whiteboard tools*** (such as [FigJam](https://www.figma.com/figjam/) and [Miro](https://miro.com)), which allow screens to be quickly assembled into flows, in a real-time collaborative visual space.
+
+Designers can consume ***design systems*** or ***component libraries***, assembling pre-built components (either internal to the organisation or off-the-shelf) into full screens. For example Figma has [Figma components](https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-components-in-Figma).
+
+With component re-use, full fidelity mockups become more effective than wireframes. They look realistic and make it easy for engineers to implement the screens using the natural reusability of frameworks such as React, React Native or Angular.
+
+Using a collaborative whiteboard, designers can more easily communicate designs to engineers, who can also participate in the design, by asking questions, attaching comments to specific parts of the flow and/or participating in annotation sessions.
+
+## Nodes and connectors
+
+![](/images/articles/user-flows/nodes-connectors.png)
+
+Screens can be connected together using ***connectors*** – lines with directional arrows, indicating visually how the user &quot;flows&quot; through the application. Various kinds of ***nodes*** can be inserted between connected screens, to indicate user actions, system events and processes, conditionals and terminators.
+
+### User actions
+
+![](/images/articles/user-flows/user-action.png)
+
+In the example, I use green circles or ovals for user actions.
+
+The text should be very short, 1-3 words maximum. It should describe a specific user activity, such as &quot;click&quot;, &quot;hover&quot;, &quot;submit form&quot;, etc.
+
+![Example user action](/images/articles/user-flows/example-user-action.png)
+
+### System events and processes
+
+![](/images/articles/user-flows/system-process-event.png)
+
+In the example, I use blue rectangles for system events and processes.
+
+System events triggered by user interaction should be described in brief words or phrases and directly connected to the screen or another node.
+
+Processes are second-order events that are triggered by events, not directly by interactions. I use blue rectangles for these also and connect them to the relevant event. If a process is long-running or a background process, relevant to the screen but not tied to a particular node, I just place it nearby.
+
+![Example system event and process](/images/articles/user-flows/example-system-event.png)
+
+### Conditionals and terminators
+
+![](/images/articles/user-flows/conditional.png)
+
+In the example, I use purple rhombuses for conditionals, such as &quot;if foo then bar else baz&quot;.
+
+Conditionals are especially helpful for engineers, who need to understand the pre-conditions for a screen or component to be shown to the end-user.
+
+![](/images/articles/user-flows/terminators.png)
+
+Terminators indicate the start or end of a flow. I like to use a &quot;person&quot; or &quot;stick figure&quot; symbol for the start, to orient the viewers to the fact that a real person will be going through this flow. I like to use a simple gray circle to mark the end of a flow, with perhaps a link to a subsequent flow or to the main screen.
+
+![Example conditional and terminator](/images/articles/user-flows/example-conditional-terminator.png)
+
+## Optional: Notes and links
+
+Small ***notes*** can be added underneath screens and components to provide additional information such as intended user experience, edge cases and justifications. These might be simply pieces of text underneath a screen or they might be numbered or bulleted lists.
+
+Helpful ***links*** can be added, pointing to resources such as documentation, tasks in the task tracker, other user flows, chat discussions or anything else that&#39;s relevant to the screen.
+
+&gt; Aside: I marked Notes and links as &quot;Optional&quot; because it adds some clutter to the whiteboard, which you might prefer to avoid.
+
+![Example notes and links](/images/articles/user-flows/example-notes-links.png)
+
+## Collaboration with comments and annotations
+
+Team members can add ***comments*** to specific elements in the flow using, say, the [Comment tool in FigJam](https://help.figma.com/hc/en-us/articles/1500004290941-Comments-in-FigJam).
+
+![Example comment](/images/articles/user-flows/example-comment.png)
+
+Also the team might run ***annotation sessions***. These are online meetings in which team members take some time to add online sticky notes to parts of the flow, communicating questions, accessibility issues, engineering issues or anything other relevant communication.
+
+![Example comment](/images/articles/user-flows/example-annotation-session.png)
+
+## Further reading
+
+- [User flows - Interaction Design Foundation](https://www.interaction-design.org/literature/topics/user-flows)
+
+</content>
+  </entry>
+  
+
+  <entry>
+    <title>Object const enum pattern for Typescript</title>
+    <link href="https://conwy.co/articles/typescript-object-const-enum-pattern" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>typescript-object-const-enum-pattern</id>
+    <content xml:lang="en" type="html">&gt; Summary: Typescript&#39;s built-in enum structure can be replaced with a better object const pattern. The advantages of this pattern include flexibility over values and ability to exploit IDE features such as auto-suggest and &quot;go to source&quot;.
+
+Typescript&#39;s built-in `enum` structure is woefully inadequate, to the point that even the Typescript team saw fit to [list pitfalls and alternatives](https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls) of `enum` in their documentation.
+
+One [recommended alternative](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums) is to declare an `object const` object with `as const`.
+
+In this article I will describe how I implement this pattern as both an object and a derived type.
+
+## Pattern
+
+Here&#39;s how I implement object const:
+
+```typescript
+const Enums =  as const;
+
+type Enum = TypeOfConst;
+```
+
+The implementation of `TypeOfConst` is a very simple one-liner:
+
+```typescript
+type TypeOfConst = Const[keyof Const];
+```
+
+I typically put it in a shared utils file and export it.
+
+## Example
+
+Here&#39;s an example for enumerating a few colors:
+
+```typescript
+const Colors =  as const;
+
+type Color = TypeOfConst;
+```
+
+We can use the `Color` to access a type that can be one of the values and `Colors.` to access the values themselves.
+
+For example, we can use `Color` as the type of a `backgroundColor` field on an interface definition:
+
+```typescript
+interface ButtonProps 
+```
+
+And then set its value using `Colors`:
+
+```typescript
+const buttonProps: ButtonProps = ;
+```
+
+## Advantages
+
+The advantages I&#39;ve found in this approach are:
+
+- Flexible values
+- Auto-suggest on container and values
+- Easy &quot;go to source&quot; on container
+
+### Flexible values
+
+Unlike a simple union of values, with an object const, we can separate the name of each entry from its value. This allows us more flexibility with the values, which can be strings, numbers, objects or any other type that can be assigned.
+
+### Auto-suggest on container and values
+
+With an object const, we get nice auto-suggest when we enter dot (&quot;.&quot;) after the const name.
+
+![Visual Studio Code intelli-sense on object const values](/images/articles/typescript-object-const-enum-pattern/auto-suggest.png)
+
+Even better, because the object const itself is named, we can use auto-suggest to find it and import it anywhere.
+
+![Visual Studio Code intelli-sense on object const container name](/images/articles/typescript-object-const-enum-pattern/auto-suggest-container.png)
+
+This wouldn&#39;t be possible with a simple union of values.
+
+### Easy &quot;go to source&quot; on container
+
+With an object const, we can use our IDE to quickly preview and/or navigate to the const source.
+
+For example, in Visual Studio Code, we can Cmd+MouseOver the const name to see its source in a pop-up, and Cmd+Click to be taken to the source code.
+
+![Visual Studio Code popup on Cmd+MouseOver on the object const name](/images/articles/typescript-object-const-enum-pattern/cmd-mouseover-popup.png)
+
+## Conclusion
+
+I think the object const pattern above provides a viable enumeration pattern for most use-cases in Typescript.</content>
+  </entry>
+  
+
+  <entry>
+    <title>Generic HOC creator pattern for React</title>
+    <link href="https://conwy.co/articles/react-generic-hoc-pattern" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>react-generic-hoc-pattern</id>
+    <content xml:lang="en" type="html">&gt; Summary: Using a generic HOC creator pattern, I can compose two React components together in a highly decoupled way. The pattern is to create a HOC (Higher-Order Component) creator function, which can be applied to a general component by a combined components and exported for re-use by consumer components. Examples of applications include Tooltips and Form controls.
+
+I&#39;ve recently developed a pattern that allows me to compose two React components together in a highly decoupled way, using a generic HOC creator.
+
+In this article I&#39;ll motivate and outline the pattern, provide an example, and discuss my own implementation, `createWithHOC`.
+
+## Motivation
+
+Suppose we have an extremely ***general*** component, which we want to widely re-use by connecting it to other components in our component library.
+
+![Diagram depicting generic and connected components](/images/articles/react-generic-hoc-pattern/generic-reused-component.png)
+
+We are happy for the immediate consumers of the component need to know about the general component.
+
+But we don&#39;t want their consumers – the ***end consumers*** – to know about it.
+
+![Diagram depicting generic component re-used by, but decoupled from, end consumers](/images/articles/react-generic-hoc-pattern/generic-reused-component-decoupling.png)
+
+For these end consumers, we just want to expose some special props, which will ultimately be passed through to the general component.
+
+![Diagram depicting generic, connected and consumer components with props passed from consumer to generic](/images/articles/react-generic-hoc-pattern/generic-reused-component-consumer-props.png)
+
+## Pattern
+
+The pattern here is to create a HOC (Higher-Order Component) creator function, which can be applied to the ***general*** component by the ***combined*** components and exported for re-use by the ***consumer*** components.
+
+1. The HOC creator function is called and passed the general component as a parameter, along with a string descriptor (more on that later).
+2. Its result is a HOC, which is exported. This exported HOC allows the general component to be combined with another component.
+3. One or more other components call this HOC, to combine themselves with the general component.
+4. Its result is a component which has almost identical props as the combined component, except that it includes one additional prop. This additional prop, named by the string descriptor from step 1, contains the props to be passed to the general component.
+
+![Diagram depicting the generic HOC creator pattern outlined in the steps above](/images/articles/react-generic-hoc-pattern/with-hoc-pattern.png)
+
+## Example
+
+Let&#39;s look at a realistic example to see how this pattern can be applied.
+
+Suppose we have a `Tooltip` component, which takes a `children` prop and a `contents` prop. The `children` prop will have the component that triggers the tooltip. The `contents` prop will have the component that should be shown inside the tooltip.
+
+```typescript
+interface TooltipProps 
+
+export function Tooltip(props: TooltipProps) 
+```
+
+Now in our component library, there are several different components that might all need to have a tooltip.
+
+For example:
+- Button
+- Checkbox
+- Image
+
+For each of the above three components, we want to allow their consumers to provide an optional tooltip. But we don&#39;t want to couple these three components too closely to the Tooltip component. And we want the re-use of the Tooltip component to be as easy and straight-forward as possible.
+
+First, in our `tooltip.tsx` file, lets create and export an HOC that exposes `Tooltip` in a re-usable manner:
+
+```typescript
+export const withTooltip = createWithHOC(Tooltip, &quot;tooltip&quot;);
+```
+
+Notice that `createWithHOC` doesn&#39;t know much about `Tooltip`. It just receives its definition and a string descriptor - &quot;tooltip&quot;. However, what it returns - `withTooltip` - is very useful.
+
+Here&#39;s a simple implementation of our `Button` component:
+
+```tsx
+interface ButtonProps 
+
+export const Button_ = (props) =&gt; 
+    
+  );
+};
+
+export const Button = withTooltip(Button_);
+```
+
+If we were to consume `Button` directly, without the `withTooltip` wrapper, it would have the `children` and `onClick` props, as we would expect.
+
+However, with the `withTooltip` wrapper call, `Button` is now augmented with an additional `tooltip` prop. (Named by the string &quot;tooltip&quot;, which we originally passed to the `createWithHOC` call in our `tooltip.tsx` file).
+
+So now the props of `Button_` look like this, from a consumer&#39;s point of view:
+
+```typescript
+// Note: Fictitious interface name.
+// This is just the un-named type of the props parameter of the
+// `Button` component exported in the previous code sample.
+interface ButtonProps 
+```
+
+So when we consume `Button`, our code can look like this:
+
+```tsx
+const Item = () =&gt; }   // &lt;--  props
+    &gt;
+      🗑️
+    
+  )
+}
+```
+
+This will have the same net effect as if we had consumed `Button_` directly, wrapped in `Tooltip`, passing the appropriate props to each.
+
+```tsx
+const Item = () =&gt; 
+```
+
+## Advantages
+
+I found three advantages of using this pattern, where applicable:
+
+- Smaller consumer code
+- Aesthetically pleasing consumer code
+- Ability to constrain re-use of general components
+
+### Smaller consumer code
+
+Consumer code is significantly smaller and less indented, as we are relying on props rather than nesting. This benefit can add up quickly when, say, rendering multiple instances of the same component type side-by-side.
+
+Here&#39;s an example of multiple buttons with tooltips:
+
+```tsx
+const Item = () =&gt; 
+```
+
+### Aesthetically pleasing consumer code
+
+Consumer code is also more aesthetically pleasing, when relying on props. It presents as a cleaner, more compact and concise list of components.
+
+Here&#39;s an example, in which we render different kinds of form controls side-by-side.
+
+Using the generic HOC pattern, each form control is passed a prop to configure one or more of:
+- A label
+- A default
+- Validation logic
+
+```tsx
+const Item = () =&gt; 
+```
+
+All controls appear at a consistent level of indentation and so do their props. This is easier to read and more aesthetically pleasing than if each control was nested in a different set of containers (validation, etc) and appeared at inconsistent levels of indentation.
+
+&gt; Aside: This could be viewed as a variant of the principle of &quot;cleaning up irregularity&quot;, discussed in Dustin Boswell&#39;s book [_The Art of Readable Code_](https://www.oreilly.com/library/view/the-art-of/9781449318482/), under Aesthetics (Chapter 4, pp. 37).
+&gt; The code follows a regular pattern, making it easier to visually scan and add/remove similar items (in our example, form controls).
+
+### Ability to constrain re-use of general components
+
+An additional advantage of this pattern is that we could, if desired, constrain the re-use of our general component.
+
+For example, we could keep the `Tooltip` itself private to its module folder and only export the `withTooltip` HOC. Then we could only apply `withTooltip` to components that we are confident will work well with the `Tooltip`.
+
+As a consumer, it would be easy to determine whether a given component supports the tooltip or not – we could simply examine the available pops via our IDE&#39;s ***auto-suggest*** feature.
+
+Here&#39;s an example with Visual Studio Code IntelliSense:
+
+![IntelliSense suggesting the `tooltip` prop on an `IconButton` component in the conwy.co code-base](/images/articles/react-generic-hoc-pattern/vs-code-intellisense-example.png)
+
+## Implementation
+
+Here&#39;s the `createWithHOC` function I developed in Typescript for creating the `with*` HOC creator.
+
+```tsx
+
+export function createWithHOC(
+  HOC: ComponentType,
+  hocName: THOCName,
+)  else 
+    };
+  };
+}
+```
+
+I also published it as a Github Gist: [create-with-hoc.ts](https://gist.github.com/jonathanconway/8a4144df3304505f720429e464641a4a).
+
+Please feel free to re-use, tweak and/or share as desired. I hope someone out there finds it useful!</content>
+  </entry>
+  
+
+  <entry>
+    <title>How to lose weight (without getting lucky)</title>
+    <link href="https://conwy.co/articles/lose-weight" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>lose-weight</id>
+    <content xml:lang="en" type="html">&gt; Summary: To lose unwanted fat in a healthy, sustainable, frugal and environmentally-friendly way, follow a whole-food plant-based low-fat diet and burn excess fat by doing strength and cardio exercise on a daily basis.
+
+Over the last few years I&#39;ve been making steady progress toward getting in better shape. It&#39;s not been a straight path, but I&#39;m pleased to report that I&#39;ve been able to get very close to my ideal body type several times (body-image issues aside) and am much closer now than I was even a few months ago!
+
+In this article, I&#39;ll try and share what&#39;s worked for me.
+
+BTW, the title is a riff on [*How to get rich (without getting lucky)*](https://www.goodreads.com/book/show/53662964-how-to-get-rich) by Naval Ravikant, one of my favourite modern writers.
+
+&gt; Aside: Caveat: I don&#39;t pretend to be any kind of authority on this. This article will just be a catalog of ideas I collected from various sources (some evidence-based, some experience-based) which seem to have worked for me.
+
+## Goal
+
+Before launching into the tactics, I want to clarify my goal. I didn&#39;t actually start out with a clear goal, but rather I developed the goal over time and refined it quite a few times.
+
+My basic goal now is a lean-muscular, moderately &quot;athletic&quot; body.
+
+There are some constraints around this goal:
+
+- **Long-term.** Not just for a few months. Ideally life-long.
+- **Healthy.** Not involving toxic chemicals or unhealthy extremes.
+- **Frugal.** Spending little or no more money on food than I would otherwise.
+- **International.** I can move to another location while maintaining the diet/lifestyle.
+- **Environmentally conscious.** At least not adding more damage to the natural world than I would otherwise.
+
+As you can imagine, adding these constraints necessarily adds some complexity. However I still found it doable, given some ingenuity and (importantly) persistence!
+
+## Motivation
+
+&gt; Pull-quote: “Visualize your success and then go after it.”
+&gt;
+&gt; – Arnold SCHWARZENEGGER
+
+It&#39;s important to always have a &quot;north star&quot;, &quot;dream&quot;, &quot;vision&quot; or whatever you want to call it.
+
+Some thoughts that keep me going:
+- I can achieve something difficult that even some great or famous people have struggled with.
+- I&#39;ll feel &quot;light as a feather&quot; and energized throughout the day, carrying less weight around.
+- Looking good, with a body that is pleasant to behold, is a plus, for myself and possibly others.
+- I see myself keeping physically fit into my 70s, regardless of what happens to me, health or otherwise. This is a life-long vision.
+- Avoiding serious health issues associated with obesity and unfitness, such as cardiovascular issues and cancer, is well worth the effort.
+
+When all else fails, I just imagine having ripped abs while partying on a yacht in Fiji. That usually does it! 😄
+
+![Stock photo of people jumping off a boat off the coast](/images/articles/lose-weight/yacht.jpg)
+
+These all visions congeal into an image in my mind of a successful, active, fit, mature adult.
+
+I think overall health is critical. I would never go on any regimen – diet, exercise or otherwise – that directly risked my overall health. Keeping overall health in mind is good in and of itself. But it also supports your weight loss goals. You can maintain consistent exercise and diet more easily if you are in good health most of the time.
+
+It&#39;s important to celebrate wins – large and small. If you notice your looks or energy levels improving, take a moment to glow with self-pride and celebrate your achievement! Even if there are no visible changes, if you&#39;re able stick to your routine for some period of time, celebrate that too. Positive reinforcement of health behaviour is more sustainable than negativity and self-punishment.
+
+## Lifestyle system
+
+When making significant lifestyle changes, it&#39;s often helpful to step back and think of your lifestyle as a system. In a systems approach, you develop a network or web of goals. These goals are connected to eachother, and thus reinforce eachother.
+
+For a simple example: you could move home to a location that is at least 15 minutes walk from the nearest public transport or park your car 15 at a location that is minutes walk from your home. Then you are forced to walk at least 30 minutes per day - from and to your transportation. This small change in habits automatically generates an additional 30 minutes per day of exercise.
+
+The effect is amplified when you combine elements that are beneficial on their own and mutually reinforcing. For example, you could begin doing all your shopping at a supermarket that&#39;s 15 minutes from your home. Thus you set up a pattern of eating healthier (your supermarket is more likely to have healthy food like fruits and vegetables) **and** walking for 30 minutes daily.
+
+For more information, you can check out books on systems thinking such as:
+
+* [Thinking in Systems • Donella MEADOWS](https://en.wikipedia.org/wiki/Thinking_In_Systems%3A_A_Primer)
+* [Early Retirement Extreme • Jacob LUND-FISKER](https://archive.org/details/earlyretiremente0000fisk)
+
+## Mind-state
+
+&gt; Pull-quote: “Meditation practice is also a kind of food because it nourishes us. Consider the practice offered by the Buddha to be a kind of food. Any practice must be a kind of food. Walking is like a delicious food. Eating is a delicious food, sitting is a delicious food, and working meditation is also delicious food.”
+&gt;
+&gt; – Thich NHAT HANH • _How to Eat_
+
+I practice a few minutes of daily [mindfulness meditation](/articles/mindfulness), which helps to reduce anxiety and reduce mental blocks. During this I take some time to wish strength, health and wellness, both for those I know, and for myself. I try to cultivate a spirit of &quot;non-grasping&quot; generally. I try to notice when I&#39;m mentally reaching toward something, whether it&#39;s food or rest. Simply noticing this helps me to slow down and go back to a more relaxed, reflective frame of mind, putting me more in the drivers seat and in control of my actions.
+
+There are some other mental tricks I use to manage anxiety, such as focusing on next actions and the future, while deliberately moderating expectations and reducing thoughts about the past.
+
+Understanding and harnessing the effort-reward cycle I also find important. For example, I try to do my morning exercise before having my first shower or drinking my first coffee. This helps motivate me to do the exercise (effort) in order to get the reward (shower, coffee). I use a similar cycle for my afternoon/evening exercise. First I exercise (effort) then I enjoy dinner/supper (reward). These cycles can show up in all kinds of little parts of life, so I try to make best use of them whenever possible.
+
+&gt; Pull-quote: “The best moments in our lives are not the passive, receptive, relaxing times...the best moments usually occur when a person&#39;s body or mind is stretched to it&#39;s limited in voluntary effort to accomplish something difficult and worthwhile.”
+&gt;
+&gt; – Mihaly CSIKSZENTMIHALYI • _Flow: The Psychology of Optimal Experience_
+
+Flow activities can help you active and energized and reduce unnecessary eating.
+
+When one feels tired, it may seem that food and rest are needed. But counter-intuitively, I&#39;ve found that&#39;s often not the case. In fact, more activity seems to generate more energy. Note that the activity need not be intense or stressful. I&#39;ve had the best experiences with moderate activities – a steady walk or hike, slow body weight exercises, a lazy afternoon swim or even chores around the house like cleaning and cooking. 
+
+## Monitoring
+
+Any long-term endeavour should have appropriate monitoring.
+
+I&#39;ve given up on measuring body weight or mucking around with measuring tape.
+
+***A quick look in the mirror on a regular basis seems the surest measure!***
+
+And the best way to avoid making excuses.
+
+There is one other kind of monitoring I consider crucial: blood tests. These can be obtained relatively inexpensively (at least in Australia, the UK, etc). You take the results to your GP/doctor and they tell you if you have any deficiencies. In my case, there was a minor calcium deficiency, which I remedied by adding a little yogurt to my diet and taking Vitamin D tablets (to aid absorption).
+
+Monitoring aside, I think it&#39;s best to focus on **behaviour change** as a goal, rather than a particular body type, size, etc. Your bodily appearance can fluctuate a lot, especially over short periods like a few days or a week. Even if your goal is to look a certain way, it can be difficult to get to that goal if you cannot sustain effort over long periods such as months. So it&#39;s better to focus on changing your behaviour – eating the right foods and right portions, doing the right kinds and quantities of exercise, etc.
+
+Observe carefully your progress in developing better habits and celebrate your wins in the area of behaviour change, regardless of what your body looks like on a given day. Over time, you will move closer to your ideal bodily appearance and feeling, as long as you&#39;re performing the right actions and doing so consistently.
+
+## Routine
+
+&gt; Pull-quote: “We are what we repeatedly do. ... Excellence, then, is not an act but a habit.”
+&gt;
+&gt; – Aristotle
+
+&gt; Pull-quote: “Don&#39;t Make Me Think”
+&gt;
+&gt; – Steven KRUG
+
+&gt; Pull-quote: “Each evening, there is a tiny moment—usually around 5:15 p.m. that shapes the rest of my night. ... the ritual is changing into my workout clothes. If I change clothes, I know the workout will happen. Everything that follows—driving to the gym, deciding which exercises to do, stepping under the bar—is easy once I’ve taken the first step.Don&#39;t Make Me Think”
+&gt;
+&gt; – James CLEAR • _Atomic Habits_
+
+One thing that has helped me the most in my health and fitness pursuits is simply **maintaining a consistent daily routine**. Making a habit of daily exercise and healthy eating ensures consistent and steady progress toward my goal.
+
+Strong habits tend to be self-reinforcing. Once you get accustomed to taking that regular morning walk or that afternoon workout, it becomes automatic and a way of life.
+
+My routine has functioned as a kind of &quot;fall back&quot; which I can execute almost mindlessly, without stressing and lapsing. It&#39;s a **simple default** that enables me to accomplish my tasks as easily and directly as possible, without hesitation or doubt.
+
+This has actually been good for my mental health too. I&#39;m less anxious when I don&#39;t have to constantly worry about what to do next. Of course, I do sometimes change my routine, but I try to do so in a relaxed, contemplative frame of mind, not in the heat of the moment.
+
+I&#39;ve been able to maintain my routine pretty consistently throughout international travel, changing work hours and various ups and downs of life.
+
+One trick is to make the routine flexible and focus primarily on *activities*, rather than timing. So if I miss a morning workout, it&#39;s Ok, not the end of the world. I just need to do that workout in the evening instead. So the *times* are flexible, while the *activities* remain solid.
+
+I also have certain routines in the evening that help me to wind down, relax and avoid unplanned snacking. These include dimming the lights to create a cosy atmosphere, according to the famous Scandinavian [Hygge](https://en.wikipedia.org/wiki/Hygge) effect. Even on travel this can be done quite effectively with a portable USB lamp and/or tweaking my laptop display configuration. I also like to floss and brush my teeth, which gives me a fresh taste that helps to avoid any temptation to eat.
+
+## Exercise
+
+Exercise is a critical part of my routine. Exercise builds and maintains muscle tone, sustains health (including mental) and energy levels and reduces appetite / food cravings.
+
+There&#39;s a fantastic cumulative effect with exercise: as you lose fat and gain muscle, the exercise gets easier and you feel less hungry, which make it easier to exercise more, etc. The challenge, of course, is to maintain consistency and not slack off.
+
+All the exercises I&#39;m about to list are:
+- Reasonably environmentally friendly do not by nature involve any damage to the environment
+- Can be done in practically any major city or town, at any time of day
+- Are healthy and low impact on your body, unlikely to cause serious injuries when done long term, assuming they&#39;re done with reasonable care
+
+I try to do at least one session of HIIT, strength training and walking every day, and some swimming every week.
+
+Keeping the exercises simple and safe increases the likelihood of doing them consistently, which I think is critical to getting most of the benefits of exercise.
+
+### Strength training
+
+Here&#39;s a list of the specific strength exercises I do.
+
+I like to do body weight exercises, also known as callisthenics. These include:
+
+- Pull-ups and muscle-ups on the bar. Forward and reverse grip. Several sets, each as much as I can while keeping form.
+- Push-ups. Lateral and tilted up or down. On the bars or the floor.
+- Dips. On the bar or between two chairs.
+- Ab crunches. While resting on the bar or hanging off the bar, or lying on the floor with a weight.
+- Step-ups onto a low bar, large stair step, rock, or even bedside.
+- Military presses with weight or resistance band.
+- Bicep curls with with weight or resistance band.
+- Some other body-weight exercises like planking, squats and lunges.
+
+Some other points:
+
+- **Core strength.** Try to incorporate core / ab training into as many exercises as possible. Abs are involved in many full-body exercises, so by focusing a little on your abs, you get a kind of bonus &quot;2 in 1&quot; effect. While doing pull-ups, push-ups, band rows, etc. you can &quot;feel into&quot; your abs and make sure they&#39;re coming along for the ride.
+- **Quality over quantity.** In each workout, I try to prioritise overall quality. First priority is safety – none of the movements should cause severe pain or injury. Next, I want to strain the muscles enough to feel satisfied that it was a thorough workout. This involves a kind of &quot;good pain&quot; or burning feeling, where you know that your muscle was tested. This doesn&#39;t necessarily have to involve training to complete failure.
+- **Variation.** I try to make each workout a little different and unique so that each muscle group is being adequately challenged. This could mean varying the grip, intensity, number of reps, order of reps or many other possible variables.
+
+In case you didn&#39;t notice, many of these can be done either with or without the gym! I can just use body weight, furniture or outdoor facilities. This makes the exercise routine easy to maintain while travelling and resilient to unexpected changes in the my day plan.
+
+Strength-training builds muscle, which aids weight loss in multiple ways:
+- Speeds up metabolism, aiding digestion and fat loss
+- Improves general stamina for cardio
+- Good for general health - heart, lungs, etc.
+
+I aim for 3-5 strength training sets every day.
+
+### HIIT
+
+I&#39;ve recently been practicing [high-intensity interval training](https://en.wikipedia.org/wiki/High-intensity_interval_training). Here I do body-weight cardio exercises at a high intensity, with 20 second breaks, for a period of 5-10 minutes.
+
+HIIT seems to generally accelerate my progress. Plus, I&#39;ve seen plenty of studies showing its benefit for overall health.
+
+The real beauty of HIIT is its simplicity, minimalism and time efficiency. No equipment is needed, just a little floor-space and discipline! And one can almost always spare 5-10 minutes out of a 16-hour waking day. These factors make it simple to maintain HIIT during travel or changes to my day plan.
+
+My HIIT routine varies, but typically consists of:
+- Burpees
+- Squat-jumps
+- Star-jumps
+- Push-ups
+- Back squeeze while lying on chest
+- Jogging on the spot
+
+I found HIIT to be the toughest exercise to begin, yet the easiest to complete once started. Funny that!
+
+YouTube videos like this one are a helpful aid: [Intense 15 Minute BURPEE ONLY HIIT Workout for Serious Results!](https://www.youtube.com/watch?v=X34SBfiT7xo).
+
+I use HIIT as a replacement for walking, aiming for 1 HIIT session every second day during periods where I can&#39;t walk.
+
+### Walking
+
+Yes, simply walking.
+
+The real beauty of walking, apart from being minimal and easy to do almost anywhere on travels, is how it can be combined with other activities. With smartphone in hand, I can tune in to a fantastic array of audio material: [audiobooks](/reading), podcasts, online courses and great music.
+
+I can also combine it with travelling to appointments, shopping, remote meetings, connecting with nature (bush-walking) and just general exploration of the world. 🙂 It&#39;s wonderful to become immersed in my environment and visiting familiar streets and parks feels similar to visiting old friends.
+
+During walking, I try to focus on posture, keeping a tall, straight upper back. Posture issues are a growing concern these days, not just for IT/tech workers who often have to face forward to use laptops, but also now for the general public, who are often consuming content heads-down on mobile devices.
+
+You can add novelty to walks by taking different routes, varying your pace and stride, noticing and engaging with strangers from time to time and combining various activities with your walks like picking up packages or sight-seeing.
+
+I aim for 30 minutes to 1 hour of walking every day.
+
+### Swimming
+
+I like to do laps at the local pool. Maybe pool-swimming is not 100% good on the environmental scale, so I might someday switch to ocean or lake swimming. Swimming is a great all-round cardio workout and very safe and low-impact. And being in the water is fun!
+
+I aim for one session per week.
+
+### Standing
+
+I&#39;ve been trying to stand for more hours of the day. Studies have shown that spending more time standing is positive for overall fitness and burns more calories. Most modern offices have standing desks.
+
+At home it&#39;s easy to turn almost any surface into a standing desk using a sturdy cardboard box or a crate or two. Even better, you can combine the standing with moving around and taking mini-breaks from work to do small chores such as cleaning up, vacuuming, etc. So you get two-in-one: fitness _and_ a cleaner home! 
+
+I aim for at least 4 hours of standing per day.
+
+### Managing pain
+
+&gt; Pull-quote: “God ... does not pet the good man: He tries him.”
+&gt;
+&gt; – Seneca
+
+To be sure, there&#39;s some physical pain involved in regular exercise. Feeling fatigued, occasional muscle aches, the odd heel spur. Assuming full care is taken to avoid injury, workouts can just feel tough sometimes.
+
+I don&#39;t have any one sure answer to &quot;solve&quot; inherent pain in exercise, but more like a set of small &quot;mind hacks&quot; that help me to manage pain and stay the course.
+
+- **Exercise even when I don’t want to.** *Especially* when I don&#39;t want to, so as to reinforce the habit.
+- **Meditation, mindful breathing.** Deep inhalations, breathing into the pain, being with my body.
+- **Effort-reward cycle.** Making the effort with the knowledge that I&#39;ll feel better at the end. (And yes, 99% of the time I do feel better!)
+- **Awareness of body.** Especially the effect of heat/cold, caffeine, sleep. When drowsy or lethargic, I remind myself of external factors to avoid excusing myself from putting in work.
+- **Mental imagery.** I like to use my imagination to create pleasant and comforting imagery so that I feel relaxed and happy throughout the painful episode. For example, when working out in the cold, I might put on some jazz music and imagine being in an Italian restaurant. Or when it&#39;s intensely hot, I might imagine being on an island in the Mediterranean, enjoying an ocean view from a luxury hotel. Persisting through tough times with imagination can unlock &quot;coping&quot; parts of your mind that you never knew existed!
+
+### Enjoying the weather
+
+I&#39;ve found weather isn&#39;t usually a reason not to exercise. Actually, with the right mindset, I find the weather more of an incentive.
+
+When it&#39;s hot and sunny, I immerse myself in the intensity of the heat and sunshine (with generous application of sunscreen, of course).
+
+When its cold and wet, I savour the calming and relaxing feeling of the coolness and rain (under the comfort of a sturdy umbrella).
+
+When it&#39;s humid and cloudy... well... I tell myself to toughen up! 😄 (Recalling Stoic quotes can help.)
+
+Suitable clothing and gear really helps here.
+
+- When it&#39;s hot, I wear minimal clothes, light materials and clothing styles that free up my body, like shorts and singlets.
+- When it&#39;s cooler, I wear clothes that conserve heat while keeping my body flexible, like close-fitting long-sleeve wool shirts and tight pants.
+- When it&#39;s rainy, I wear a comfortable rain jacket, pack an umbrella and wrap my backpack in a waterproof bag cover to keep my valuables dry. I also waterproof my boots with beeswax and maybe some proofing spray.
+- I like to wear good quality, comfortable shoes, typically hiking boots.
+
+With the right clothing, equipment and preparation, working out in any weather – from sunny to rainy – is no problem at all.
+
+### Music
+
+Music can be a great motivator during HIIT and intense strength training. I like to listen to music with a strong rhythm and high dynamic range. Some favourites include music from the [Ozora](https://www.youtube.com/results?search_query=ozora) Psytrance festival, smooth jazzy tracks of [Dimitri from Paris](https://en.wikipedia.org/wiki/Dimitri_from_Paris) and [classic 70s Brazilian samba mixes](https://www.youtube.com/results?search_query=+brazilian+samba+grooves).
+
+## Diet
+
+I&#39;ve settled on the [mediterranean diet](https://en.wikipedia.org/wiki/Mediterranean_diet) as my diet of choice. This diet is plant-based, mostly vegetables and whole grains, with some added fish, dairy and fruit, and plant-based fats like olive oil. It&#39;s high in nutrients, filling, low-calorie and I find it delicious!
+
+&gt; Aside: Any diet you choose should be as enjoyable and tasty as possible. This is so you can stick with it. Unless you have the will-power of a saint, a diet that isn&#39;t enjoyable, interesting, varied and satiating will be very difficult to stick with, even if it technically meets your nutrition requirements.
+
+Environmentally it&#39;s maybe slightly less optimal that pure veganism/vegetarianism, due to the fish and dairy content. I am investigating more sustainable options such as synthetic fish and dairy alternatives. Also there are many high quality and cheap equivalents of most animal products: legumes (including peanut butter) can replace fish, tofu and Nattō can replace yogurt and yeast flakes can replace cheese (protein) and calcium can be supplemented.
+
+### Meals
+
+Meals I prepare regularly:
+
+- **Fruit.** In-season berries or citrus fruits. Combined with a cup of plain or sugar-free flavoured yogurt. This combo I find especially refreshing in hot weather and/or just after an intense workout. High in Vitamin C.
+- **Sardines/Salmon/Oysters.** Occasionally I eat some seafood, to maintain adequate Vitamin B12 intake, but I prefer to limit it. I think fish from a tin is best – bones included, as they provide nutrients such as Calcium, Vitamin D and other important micronutrients. I like to fry them gently and season with lemon/lime juice or vinegar and top with ground pepper. Side of wholemeal pasta or a bread roll. Maybe complimented with tomato sauce (simply onions fried in tomato paste and vinegar) and/or a quarter of avocado.
+- **Veggies.** Steamed in a pot. Broccoli, cauliflower, kale, brussels sprouts, etc. With some added carrot, capsicum, red onions, button mushrooms or whatever else I feel like. Sprinkled with vinegar, a single stick of cheddar cheese cubed or a half-cup of yeast flakes and generous herbs and spices, including hot chilli powder and a carefully measured tablespoon of olive oil. Veggies are high in vitamins and minerals, fibre and antioxidants.
+- **Oatmeal.** One half-cup of oats mixed with a teaspoon of cocoa in a small bowl. Soaked in water for a few minutes - hot or cold. Cooked for a few minutes if I have a microwave. Topped with a tablespoon of peanut butter, 5 small pieces of dried fruit and some cinnamon powder. The dried fruit adds a perfect level of sweetness and chewiness with minimal calories and practically zero sugar spike. Makes a great dessert!
+
+These meals can all be prepped in ~20-30 minutes each and I&#39;m rarely spending more than 45 minutes per day in the kitchen.
+
+&gt; #### Aside: Toppings
+&gt; I prefer to use oils/fats as toppings rather than cooking with them. This is for calorie-control reasons. Basically I can use smaller quantity while enjoying virtually the same taste and flavour. For example, I can just measure out one tablespoon of olive oil per day as a topping for the veggies, rather than spraying olive oil into a pan adding an uncontrollable amount of calories.
+
+The ingredients are cheap, available, healthy, reasonably environmentally friendly, simple to store and cook.
+
+- **Cost:** Mostly cheap and can be purchased in bulk or found in aisles. The fresh fruit and veggies can be purchased frozen to save cost and studies show that in frozen form they are just as nutritious as refrigerated, and possibly even more nutritious!
+- **Availability:** Thanks to the wonders of modern globalised trade, I&#39;ve found most of these are available in most major cities and metro areas in much of the developed world. I do donate to food banks and other initiatives, with the hope that we will eliminate hunger and malnourishment for all people.
+- **Health:** Nutritious, whole food, no added sugar, high-fibre, high in anti-oxidants, low-calorie.
+- **Environment:** There&#39;s no beef or chicken and the dairy portions are modest. Even the seafood is relatively good - consuming bottom-feeders like sardines has a lower environmental impact.
+- **Storage:** Most of the stuff can just be kept in a cupboard. I&#39;ll usually pick up the veggies the same day I eat them, but they keep pretty well in the fridge if I decide to do a weekly shop. Frozen veggies can, of course, be kept in the freezer indefinitely. An additional advantage of plant foods is that they tend to spoil less and don&#39;t produce harmful bacteria when not cooled (say, when the power goes out, the fridge fails or you just forget to put them in the fridge).
+
+&gt; #### Aside: Nattō
+&gt; There is one food item I didn&#39;t mention that I have once or twice a week: [Nattō](https://en.wikipedia.org/wiki/Nattō). This remarkable fermented soybean snack originates in Japan and apparently is a part of the reason Japanese people are so long-lived. It contains Vitamin K2, a surprisingly rare nutrient, which is great for bone health, given a diet with sufficient calcium and Vitamin D. It&#39;s only $3-5 for a pack of 3 and can usually be found in small Asian grocers.
+
+&gt; #### Aside: Spicy food
+&gt; Everything I&#39;ve read indicates that hot and spicy foods are good for health. Capsaicin and other chemicals found in chilli peppers and other hot foods are great for reducing bodily inflammation, which reduces risk of cancer and other diseases. Spicy foods seem to also increase my feeling of satiation after a meal.
+&gt; Some of my favourite spicy foods include:
+&gt; - Cayenne pepper
+&gt; - Hot chilli pepper - great topping for vegetable and seafood dishes
+&gt; - Chilli flakes - great for soups and stews
+&gt; - Black peppers - great with seafood and tofu
+&gt; - Scotch bonnet peppers - great for bean dishes. Especially Caribbean classics such as black beans and plantains.
+
+### Drinks
+
+I only drink water and plain coffee or tea (no sugar or milk, zero-calorie, always before 3 PM).
+
+Drinks should always be zero-calorie, in my opinion. Liquids are the worst way to get calories - they&#39;re typically over-processed, resulting in insulin spikes. And you don&#39;t get to feel full and satisfied, because you&#39;re consuming them so fast. I&#39;ll never understand why some people are into shakes; I find them inconvenient, complicated and messy.
+
+&gt; #### Aside: Timing coffee
+&gt; Despite its many benefits, on the downside, there is some evidence that caffeine disrupts calcium absorption. For this reason, it&#39;s probably best to limit caffeine and avoid pairing it with your calcium-containing meals. Caffeine can also interfere with sleep, if taken too late in the day. To address both of these issues, I generally limit my caffeine intake to 3 cups per day and only consume it before 3 PM, during which time I&#39;m mostly fasting anyway. I consume all my calcium-rich foods later than 3 PM, usually 5 PM or later.
+
+### Portion control
+
+Importantly, I control and measure all the ingredients out. This gives me pretty much total control over calories.
+
+I don&#39;t use any tricky or sophisticated equipment, just simple measuring rules, such as the following:
+- Hand-full (pasta)
+- Punnet (berries)
+- Pot (yogurt)
+- Can (fish)
+- Piece (citrus fruit, bread roll, dried fruit)
+- Quarter (avocado, potato)
+- Measuring cup scoop (oats)
+- Tablespoon (olive oil, lemon/lime juice, peanut butter)
+- Stick (cheese)
+
+When preparing any meal, I simply follow the same predictable routine, with the same quantities. For example, only 2 hand-fulls of pasta per day, or only 1 stick of cheese.
+
+I can work out the calories fairly easily, by examining the packaging or searching online, then dividing by the quantities. For example, 2 hand-fulls of pasta are about 1/8th of a pack, which is ~436.25 calories.
+
+Here&#39;s an example of a calorie table, based on a spreadsheet I currently use.
+
+| Food item         | Daily portion  | Calories | Fat (grams) | 
+| :-                | :-             | :-       | :-          |
+| Avocado           | 1 quarter      | 80       | 5           |
+| Brussels sprouts  | 1 bag          | 210      | 0.5         |
+| Chickpeas         | 1 can          | 310      | 2.5         |  
+| Cocoa             | 2 teaspoons    | 75       | 1           | 
+| Dates             | 5 pieces       | 80       | 0.25        | 
+| Hazelnuts         | 5 pieces       | 25       | 2           | 
+| Honey             | 1 teaspoon     | 30       | 0           | 
+| Oats              | 1 cup          | 230      | 2.5         |  
+| Sardines          | 1 small can    | 145      | 2.5         |  
+| Seeds             | ½ teaspoon     | 35       | 1           | 
+| Strawberries      | 1 punnet       | 100      | 0.5         |  
+| Tomato paste      | 2 tablespoons  | 100      | 0.25        |  
+| Vinegar           | 2 tablespoons  | 30       | 0           | 
+
+With these simple measurements, I don&#39;t have to think much about the quantities when preparing and consuming meals. I just follow the routine &quot;blindly&quot; and rely on &quot;force of habit&quot; to override and overwhelm any possible urge to cheat and add too much or too little. This consistency has helped me overcome temptation to overeat or under-eat. It took some time to build up the habit, and I&#39;ve had occasional relapses, but overall I&#39;ve maintained my diet plan more often than not.
+
+By measuring ingredients in a standardised, repeatable, &quot;unthinking&quot; way, I can &quot;lock in&quot; a certain number of calories per day. This allows me fine-grained calorie control. This way I can create a long-term caloric deficit in a balanced, controlled way and avoid the dreaded &quot;yo-yo dieting&quot;, where extremes of under-eating and over-eating lead to stress and missing weight-loss goals.
+
+While I think calorie counting is a very useful **measurement** tool for portion control, I would prefer not to lean too heavily on it as a **motivational** mechanism. To sustain healthy eating patterns over the long run, I think firm routines and mindfulness are more reliable.
+
+&gt; Aside: Recommended daily caloric guidelines based can be found at websites such as [WebMd](https://www.webmd.com/diet/calories-chart), [EatForHealth](https://www.eatforhealth.gov.au/nutrition-calculators/daily-energy-requirements-calculator) and [MyPlate](https://www.myplate.gov/myplate-plan).
+
+&gt; Aside: I think it&#39;s just as important to get *enough* calories as it is to *limit* calories. Chronic under-eating can lead to health issues and compensatory over-eating, which can throw a good routine out of order. I find it better to avoid extremes either way. To lose weight, it&#39;s better to sustain a small deficit over a long period of time. Say, 200 calories per day over several months.
+
+With this careful diet plan in place, I only need to store the necessary ingredients in my home. So I have no unhealthy foods lying around to be accidentally snacked on. This makes it easy to stick to my diet and, to paraphrase Rico Mariani, [&quot;fall into the pit of success&quot;](https://learn.microsoft.com/en-us/archive/blogs/brada/the-pit-of-success). Even within my approved list of ingredients, I keep the higher-calorie items (such as peanut butter and dried fruit) stowed away in the fridge or drawer, out of harm&#39;s way. 🙂 This habit of minimizing stored food works great with my [minimalist lifestyle](https://en.wikipedia.org/wiki/Simple_living) and is also convenient for extended periods of travelling.
+
+### Avoiding added sugar
+
+&gt; Pull-quote: “Stay strong.
+&gt; Get off the sugar train.
+&gt; Get off the addiction.
+&gt; Stop eating sugar.”
+&gt; – Discipline Equals Freedom • Jocko WILLINK
+
+Many perfectly healthy foods contain sugar, including fruits, vegetables and wholegrains.
+
+The problem isn&#39;t sugar or carbohydrates per-se. It is the ***processed sugar*** that is added to the food that&#39;s the problem as well as alcohol in any form.
+
+The problem is that added sugar affects the human brain in ways that cause addiction. This addiction manifests in hunger, cravings, high appetite.
+
+The key to avoiding sugar addiction is to eliminate added sugar from your diet, relying instead only on the naturally occurring sugars in whole foods, including fruits, vegetables, nuts, beans and grains such as pasta.
+
+Other benefits to avoiding sugar include reduced likelihood of diabetes, tooth and gum issues and more stable energy levels.
+
+### Minimising dietary fat
+
+&gt; Pull-quote: “Other than in the experimental situation of gross carbohydrate overfeeding, conversion of carbohydrate to stored lipid does not occur to any appreciable extent in humans.”
+&gt;
+&gt; – Essentials of Human Nutrition • Jim MANN, Arthur TRUSWELL
+
+When we talk about weight loss, we usually mean ***fat loss***. We are probably not interested in losing muscle tone or bone density.
+
+The body can easily store dietary fat as bodily fat (&quot;adipose tissue&quot;), as it is already in the form fat (&quot;lipid&quot;). By contrast, the body has more difficulty converting other kinds of macronutrients – carbohydrates and protein – into fat for storage. So consuming less fat and more carbohydrates and protein in the diet results in less fat gain overall. Yes, this is even true when calories are held constant!
+
+The process of converting sugars into fats is a process called &quot;de novo lipogenesis&quot;. According to various studies (such as this one: [De novo lipogenesis in humans: metabolic and regulatory aspects](https://pubmed.ncbi.nlm.nih.gov/10365981)), only a relatively small portion of the energy absorbed from carbohydrates is stored as fat on the body. Most circulates in the bloodstream (&quot;glycogen&quot;) and is expended for bodily processes (including digestion), expended in normal daily activity, released as body heat (&quot;thermic effect of food&quot;) or stored in the liver.
+
+In my personal experience, I found that I could consume a far higher caloric content while still losing weight, if I strictly limited my daily fat intake. It&#39;s not necessary or possible to completely eliminate fat from the diet – even fruits and vegetables contain small amounts. But by following a whole-food plant-based diet and avoiding or limiting fattier foods such as avocados, nuts and seeds, fat content can easily be reduced to a very small amount, which can easily be burned off during moderate intensity fasted exercise such as a morning walk.
+
+### Enjoying food
+
+I try to eat a bit slower and more mindfully. Famous spiritualist Thích Nhất Hạnh wrote a whole book on this topic: [How to Eat](https://www.penguinrandomhouse.com/books/545835/how-to-eat-by-thich-nhat-hanh/), which I&#39;ve started reading. Some studies show that if we take 20 minutes or more to finish a meal, we&#39;ll feel more satisfied. Using small cutlery for eating, like a smaller fork or chopsticks, can help you to slow down and appreciate each bite more.
+
+I like to eat while involved in some relaxing, social and/or moderately stimulating activity. Typically while in an online meetup, interacting in an online chat or forum, with friends and family, and/or watching or listening to something educational such as history or nature documentary.
+
+One thing I noticed since childhood is that the layout of the food can really make eating an absolute joy! For example, I like to add small &quot;sides&quot; to my dishes that really pack a flavour and spice punch. I can combine different parts of the plate as I eat, creating a rich, varied experience. I noticed this kind of &quot;mix-and-match&quot; mode of eating is prominent in the more traditional world cuisines, no doubt for good reason.
+
+- South Indian cuisine - thali
+- Vietnamese cuisine - spring roles
+- Spanish cuisine - tapas
+- Mexican cuisine - salsas
+
+So with my regular diet, I take inspiration from this technique of having small side portions, but adapt it to my own calorie control and nutrient constraints.
+
+### Maximising food volume
+
+&gt; Pull-quote: “People who eat the most vegetables and fruits tend to have the healthiest body weight and gain less weight through their adult years. Eating lots of low-CD [calorie-density] vegetables and fruits instead of other foods can help you shed pounds and keep them off.”
+&gt;
+&gt; – Barbara ROLLS • _The Ultimate Volumetrics Diet_
+
+Popularised by Barbara Rolls, volume eating is a tool that can be utilised to help with weight-loss. It allows you to eat more food and feel fuller without eating too many of calories. The trick is to select foods that are more bulky and filling. These are typically plant-based foods such as leafy green vegetables, fresh fruits, whole grains and beans. Many of these foods are very healthy anyway, so you also get a health benefit from choosing them.
+
+### Fasting
+
+I like to do most of my exercise in the morning or afternoon, when I&#39;m feeling lightest and most alert. So I generally fast most of the day (except for coffee and a small post-workout snack) and do my main eating in the early to late evening. This is known as the [&quot;warrior diet&quot;](https://en.wikipedia.org/wiki/Intermittent_fasting).
+
+Advantages of the warrior diet:
+- Simple, repeatable eating schedule, since there&#39;s only one main period of cooking/heating and one place in which to do most of the eating
+- It&#39;s very satisfying and filling to consume 2,000+ calories in a 4-hour period. I&#39;m never hungry at the end of it, as long as I finished it all and drank enough water.
+- I don&#39;t get hungry much during the day either, since I&#39;m pre-occupied with work, exercise and whatever else I&#39;m doing. Caffeine also helps here.
+- Intense exercise while fasted (such as HIIT and strength training) burns more fat, as the body relies on fat stores to provide the calories to fuel the exercise.
+
+### Avoiding temptation
+
+Whenever I&#39;m feeling some random unexpected hunger pang (which is pretty rare these days, thanks to the routines described in this article) I try to run through a mental checklist and this usually sorts me out.
+
+- **Am I feeling stressed?** Maybe I need a brief meditation or even just a few minutes of simple box-breathing. This is usually not a problem while out, at work or elsewhere. 
+- **Am I uncomfortable?** Maybe I just need to put on a coat or jacket, turn on the air conditioning briefly or go to the toilet.
+- **Am I hydrated?** Thirst and hunger can be easily confused. I always carry a water bottle with me so I can hydrate regularly.
+- **Am I tired?** This is more tricky during the day, but in the evening I can usually go to bed earlier if I need a bit more sleep.
+
+I&#39;ve found that 9/10 times, it&#39;s not that I&#39;m genuinely hungry, but that I&#39;m using food as a distraction to cope with some other issue. If I can quickly find the root-cause and address it, I have no need of food.
+
+Humans need to eat, but we don&#39;t need to eat that much, and certainly not as much as is pushed on us by the capitalist/consumerist system. If we feel hungry outside of mealtimes, it&#39;s likely for some other reason, not a genuine need for food.
+
+There are still a few simple, cheap, easy fall-backs if I really desperately need to consume something small outside my usual mealtime.
+
+- **Small piece of fruit.** Usually 20-50 calories is pretty negligible and I eat it slowly to enjoy it. Healthy and great while on-the-go.
+- **Pickled veggies.** Especially cucumber and carrot. Pretty low-calorie and healthy.
+- **Mint tea.** This refreshing drink provides a pleasant freshness, with zero calories or caffeine.
+- **Brushing my teeth again.** I don&#39;t go nuts with this, but if I want to freshen up during the day, this is healthy zero-calorie way.
+
+With food, I try save the best for last. Keep earlier-in-the-day snacks as bland as possible, such as small cans of fish or beans with just a little flavouring on top. The blandness of the snack will discourage you from over-eating. But toward the end of the day, eat a very tasty, nutritious and filling dinner. This will satisfy you and help you avoid cravings later in the evening when the temptation might be stronger. It can also motivate you beforehand, helping to power you through the day in order to get to the evening meal. This taps into the &quot;effort-reward&quot; cycle, an ancient part of the human experience. Additionally, if you really enjoy dinner, you will likely eat a sufficient quantity of calories at that time, which will help you to avoid accidentally under-eating, which leads to unhealthy &quot;yo-yo dieting&quot;. In short, the tastiest meal of the day should not be the snack-foods, which you&#39;re likely to over-consume, but a large evening meal, which is likely to be filling and well timed.
+
+Finally, some little habits that give me a motivational boost sometimes:
+
+- Simply wait for 20 minutes, most cravings will pass
+- Look forward to tonight&#39;s or tomorrow&#39;s activities, including eating
+
+### Herbs and Supplements
+
+Certain herbs and herbal teas can help burn fat and/or reduce appetite. For example, there is some evidence that [drinking hibiscus tea reduces body fat](https://nutritionfacts.org/video/fat-blocking-benefits-of-hibiscus-tea/). Some [moderate Flaxseed consumption has also been shown to reduce body fat](https://nutritionfacts.org/blog/are-there-any-benefits-of-flaxseed-for-weight-loss/).
+
+I&#39;m not very big on supplements, due to the cost, complexity and dubious health benefits. I do take one vitamin D tablet per day if I&#39;m not getting out in the sun much. I take regular blood tests and if the doctor recommends supplementation to remedy any deficiency, I&#39;ll that it.
+
+## Conclusion
+
+I hope you found some utility and inspiration in this article!
+
+Maintaining fitness and health is best treated as a long-term game in my opinion. The changes should be gradual, cumulative and sustainable.
+
+In my experience, the surest way to lose unwanted fat is to maintain a calorie deficit over a long period of time by exercising vigorously on a daily basis and sticking to a healthy and enjoyable eating routine.
+
+The toughest aspect is to *persist over long periods of time*, which is why I emphasize simplicity, convenience, health, motivation and enjoyment! But Stoicism is a great help when times do get tough.
+
+Optimizing my exercise and diet has been a fun and fascinating (though sometimes challenging) journey. I see it as a kind of [infinite game](https://en.wikipedia.org/wiki/The_Infinite_Game), something I can always get better/smarter at and that enriches my life.
+
+## Further viewing
+
+- [Food and Health on Coursera](https://www.coursera.org/learn/food-and-health)
+- [The Miraculous Healing Power of Food • Anthony LIM](https://www.youtube.com/watch?v=Nuts6ZE5wok&amp;t=54s)
+- [Miche, PhD • Michaela](https://www.youtube.com/@MichePhD)
+
+## Further reading
+
+- [Eat, Drink, and Be Healthy • Walter WILLETT](https://nutritionsource.hsph.harvard.edu/2017/10/15/eat-drink-and-be-healthy-willett/)
+- [NutritionFacts.org • Michael GREGER](http://nutritionfacts.org)
+- [Food - What the Heck Should I Eat • Mark HYMAN](https://drhyman.com/products/food-what-the-heck-should-i-eat)
+- [Losing weight mega-thread on MrMoneyMustache.com](https://forum.mrmoneymustache.com/ask-a-mustachian/help-with-diet-and-weight-loss!-way-too-chunky!)
+- [Essentials of Human Nutrition • Jim MANN, Arthur TRUSWELL](https://ebook.app.hcu.edu.gh/wp-content/uploads/2024/06/Jim-Mann-Stewart-Truswell-Essentials-of-Human-Nutrition-Oxford-University-Press-2012.pdf)
+- [The Ultimate Volumetrics Diet • Barbara ROLLS](https://www.harpercollins.com.au/9780062060655/the-ultimate-volumetrics-diet/)
+
+## Tools
+
+Some tools to help you on your diet and fitness journey.
+
+- [Callisthenics Parks](http://calisthenics-parks.com) - free outdoor gyms, all over the world
+- [Free Outdoor Fitness](https://freeoutdoorfitness.net) - free outdoor gyms in Australia and New Zealand
+- [RapidTables: Kilojoules to Calories conversion](https://www.rapidtables.com/convert/energy/kj-to-cal.html)
+- [EatPayLove](http://eatpaylove.surge.sh) - mobile-friendly calories and cost tracking app</content>
+  </entry>
+  
+
+  <entry>
+    <title>AI for developers</title>
+    <link href="https://conwy.co/articles/ai-for-developers" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>ai-for-developers</id>
+    <content xml:lang="en" type="html">&gt; Summary: AI, when used by developers, can assist code writing with autocomplete, provide helpful information for diagnosing error messages and technical problems, generate code such as bash scripts and unit tests, summarise technical conversations and provide helpful summaries for code reviews.
+
+Over the last couple of years, I&#39;ve sprinkled AI usage through various typical software engineering activities.
+
+The most common tools (and what I tend to use) have been [Copilot](https://github.com/settings/copilot) and [Copilot Chat](http://chatgpt.com), but some free tools such as [Llama Coder](https://marketplace.visualstudio.com/items?itemName=ex3ndr.llama-coder) are beginning to become more mainstream.
+
+In this article I&#39;ll summarise the scenarios where I found AI useful.
+
+- [Writing code faster with autocomplete](#writing-code-faster-with-autocomplete)
+- [Getting help with error messages](#getting-help-with-error-messages)
+- [Getting help with technical problems](#getting-help-with-technical-problems)
+- [Writing bash scripts](#writing-bash-scripts)
+- [Generating unit test code](#generating-unit-test-code)
+- [Summarising conversations](#summarising-conversations)
+- [Code reviews](#code-reviews)
+- [General thoughts](#general-thoughts)
+
+## Writing code faster with autocomplete
+
+AI-powered autosuggest was a great help when I had to write a chunk of code that&#39;s necessarily verbose, but not unique to my problem.
+
+A perfect example is given on Copilot extention homepage.
+
+![Example: Copilot JS suggest for calculating days between two dates](/images/articles/ai-for-developers/copilot-js-suggest.png)
+
+## Getting help with error messages
+
+Pasting an error message into Copilot Chat, prefixed with `/fix`, can provide good guidance on the cause and fix for a given error.
+
+When the responses given aren&#39;t suitable, follow-up prompts such as &quot;can you suggest some other alternatives&quot; can help.
+
+![Example: Copilot Inline Chat Error Message example](/images/articles/ai-for-developers/inline-chat-fix-error-message-example.png)
+
+## Getting help with technical problems
+
+Similar to error messages, I found that expressing a technical problem in an AI-powered chat can yield some good ideas and solutions.
+
+This worked even better when I followed up the initial question with clarifications and/or challenged the AI to think of additional ideas or alternatives.
+
+![Example: Copilot Quick Chat feature](/images/articles/ai-for-developers/copilot-quick-chat.png)
+
+## Writing bash scripts
+
+Bash scripts can perform many kinds of general tasks. Once you have a script that does what you want, you can re-use it any number of times.
+
+A specific need I had was to see all the authors who had edited a particular file in a Git repository. With the help of ChatGPT I was able to write a script that achieved what I wanted.
+
+Here&#39;s the prompt I used:
+
+&gt; Copyable: Please write a bash script which finds and lists all the unique authors who have edited the given file in the current Git repository. The given file will be specified as the first parameter to the bash script.
+
+I&#39;ve published the resulting script as a Github Gist: [list_authors.sh](https://gist.github.com/jonathanconway/71d5413cce30f43d3182fdfdc46c4723).
+
+The script takes as an argument the path to a file in that repo. It then uses `git log` on the current repository to find all the authors who have edited the file, `sort`s and `uniq`s them and outputs them to stdout.
+
+Here&#39;s a sample of the output from running it on [a file in the NextJS repository](https://github.com/vercel/next.js/blob/fd0bc9466e42ec313ce92c58e2a5c2c157e63f54/packages/next/src/shared/lib/head.tsx):
+
+```
+$ list_authors packages/next/src/shared/lib/head.tsx
+Authors who have edited &#39;packages/next/src/shared/lib/head.tsx&#39;:
+Adam Stankiewicz 
+Filipe Medeiros 
+Gerald Monaco 
+JJ Kasper 
+...
+```
+
+## Generating unit test code
+
+I sometimes use GitHub Copilot to generate unit tests for a particular code file I am working on.
+
+This can be done by opening the file under test, pressing Cmd+I and asking Copilot to write a unit test for the current file.
+
+I would use a prompt like: **&quot;Please write a unit test for this file&quot;**.
+
+I use this is mainly to set up the scaffolding, such as `describe` and `it` blocks and basic assertions. Usually I need to tidy up a few things here and there, but the AI is surprisingly good at generating decent test code.
+
+Another technique is to provide just the code for one function or code block and ask AI to generate test code for it, listing a few test cases.
+
+Here&#39;s an example of a prompt I might use:
+
+&gt; Copyable: Please write a Jest unit test for a Typescript function.
+&gt;
+&gt;
+&gt; The unit test should have the following it blocks:
+&gt; 1. returns a list of dates between the two dates passed
+&gt; 2. returns an empty array if two identical dates are passed
+&gt; 3. throws an error if null is passed
+&gt;
+&gt; Please write tests that satisfy the above it blocks.
+&gt;
+&gt; Here is the Typescript function:
+&gt;
+&gt; \`\`\`
+&gt;
+&gt; function calculateDaysBetweenDates (begin, end) \
+&gt;
+&gt; \`\`\`
+
+## Summarising conversations
+
+Some colleagues and I had a long back-and-forth about code reviews in a Github discussion.
+
+When it came time to summarise all these in a meeting, I found that AI-powered chat was a great way to summarise the discussion and get everyone&#39;s thoughts on what we had discussed.
+
+It looks like ChatGPT now has a quick Summarise button for this purpose.
+
+![Example: ChatGPT summarise button](/images/articles/ai-for-developers/chat-gpt-summarise-button.png)
+
+## Code reviews
+
+When reviewing pull requests I&#39;ve been experimenting with various ways of asking AI help me.
+
+One way I found useful was to have AI review and summarise the changes and overall quality.
+
+Here are the steps I took for doing this with Copilot Chat:
+
+1. Generate a diff between the pull request source and destination branches.
+  - `git checkout ` to checkout the branch
+  - `git diff  | pbcopy` to run the diff and copy the output
+
+2. Paste the whole diff into a new empty tab in VS Code
+
+3. Press Cmd+I and prompt Copilot: **&quot;Please review these code changes&quot;**
+
+Here&#39;s a sample of the kinds of results I tended to get (anonymised):
+
+&gt; The code changes introduce several new features and modifications to the healthcare application. Here are the key points:
+&gt; 
+&gt; 1. Localization Updates:
+&gt;   - Added new localization strings for transfer confirmations in `en-AU.json`.
+&gt; 
+&gt; 2. Removed Mock Initialization:
+&gt;   - Removed the conditional import of mock initialization in `layout.tsx`.
+&gt; 
+&gt; 3. New Patient Transfer Form Submission Logic:
+&gt; 
+&gt;   - Created a new file `submit.ts` to handle the patient transfer form submission logic.
+&gt;   - This includes creating a `Ward` object, making a patient transfer request, and handling different states of the transfer (success, delay, error, no-response)
+&gt; 
+&gt; 4. Transfer Form Tests:
+&gt;   - Updated `transfer-form.test.tsx` to reflect changes in patient name and ward number and added tests for the new patient transfer form submission logic.
+&gt;
+&gt; Overall, these changes enhance the patient transfer functionality by providing detailed feedback on the transfer status and improving the test coverage for various scenarios.
+
+Not as good as a human reviewer, but not useless either.
+
+And not bad given the tiny effort on my part!
+
+## General thoughts
+
+### Code is valuable
+
+I&#39;ve heard the idea that code is no longer valuable, since AI can now write it.
+
+I disagree. In fact, I think well written code is more valuable with the advent of AI. When working with code through an AI tool, we need the AI to be able to understand the code, reason about it, draw clear and distinct conclusions and make concise edits which we can easily review to identify mistakes. Well written, consistent code enables this.
+
+Even better: if we can state our coding standards explicitly to the AI, using project-specific configuration (such as CLAUDE.md files in Claude Code) and AI &quot;memory&quot; features, then we can improve the effectiveness and quality of the code changes made by the AI.
+
+### Psychological hurdle to AI adoption
+
+From introspection (also some observation) the biggest hurdle holding back engineers from fully utilising AI tools is the emotional/psychological adaptation. The technology itself is not especially cognitively demanding. I&#39;d argue the shift to functional programming or the Cloud were as hard or harder than AI. I think the important thing is a willingness to learn and adapt. This mental flexibility can be improved over time, with technique such as making a habit of continuous learning and exploring cognitive biases.
+
+## Conclusion
+
+While I feel AI might have been a little over-hyped, I think there&#39;s still merit in becoming familiar with it and using it where it fits.
+
+It seems likely that AI adoption among software engineers will grow, so it will be advantageous to be familiar and conversant with the tooling.
+
+## Further reading and viewing
+
+- [_Pragmatic techniques to get the most out of GitHub Copilot_](https://www.youtube.com/watch?v=CwAzIpc4AnA) • Patrick CHANEZON, Burke HOLLAND, Brigit MURTAUGH, Isidor NIKOLIC, Allison WEINS, Martin WOODWARD
+- [_Notes on using LLMs for code_](https://simonwillison.net/2024/Sep/20/using-llms-for-code/) • Simon WILSON
+</content>
+  </entry>
+  
+
+  <entry>
+    <title>Diagramming React code</title>
+    <link href="https://conwy.co/articles/diagramming-react" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>diagramming-react</id>
+    <content xml:lang="en" type="html">&gt; Summary: React components can be diagramming in a UML-like format, depicting Components, Component calls (with props and render props), Functions and Types or Interfaces.
+
+After working on a [Typescript diagram format](/articles/diagramming-ts) I wanted to focus on a React equivalent.
+
+Diagrams can be useful for various purposes:
+- Designing a solution at a high-level before writing any code
+- Understanding an existing code-base by diagramming it
+- Quickly sketching ideas to compare different designs or work out a refactoring strategy
+
+In this article I&#39;ll describe a UML-influenced diagramming format for React.
+
+## Overview
+
+The format consistent of the following elements:
+
+- **Component** - rectangle with title and list of props
+- **Component call** - caller to callee connected with solid-arrow-terminated line
+- **Component call with props** - caller to props and props to callee connected with solid-arrow-terminated line
+- **Component render props** - render prop rectangle connected to component with dot-terminated line
+- **Function** - rectangle with title and list of parameters
+- **Type or interface** - rectangle with title and list of props
+
+## Component
+
+A component is depicted with a depicted with a rectangle with `&lt;&gt;` descriptor and title at the top and, optionally, props underneath.
+
+![React diagram depicting a component](/images/articles/diagramming-react/component.svg)
+
+## Component call
+
+A component can render another component – here this is referred to as a &quot;component call&quot;.
+
+A component call is depicted with a line from the caller component rectangle to the callee component rectangle, terminating in a filled arrow symbol.
+
+![React diagram depicting a component call](/images/articles/diagramming-react/component-call.svg)
+
+## Component call with props
+
+A component can pass props to another component – here this is referred to as a &quot;component call with props&quot;.
+
+A component call with props is depicted with a line from the caller component rectangle to a props rectangle and another line from the props rectangle to the callee component rectangle, terminating in a filled arrow symbol.
+
+The props are depicted in a props rectangle, in which each prop has its own rectangle. This allows any individual prop to be linked to a type, function or component rectangle.
+
+![React diagram depicting a component call with props](/images/articles/diagramming-react/component-call-with-props.svg)
+
+## Component render props
+
+Render props are props for which we pass a React component, a function which renders a component or a React node.
+
+A render prop is depicted with a line from the prop box to a Component or Function rectangle, terminating in a dot symbol.
+
+![React diagram depicting a component call with render props](/images/articles/diagramming-react/component-call-with-render-props.svg)
+
+## Function
+
+Same as in the [Typescript diagram format](/articles/diagramming-ts), a function is depicted with a rectangle with `&lt;&gt;` descriptor and title at the top and, optionally, parameters underneath.
+
+![React diagram depicting a function](/images/articles/diagramming-react/function.svg)
+
+## Type or interface
+
+Same as in the [Typescript diagram format](/articles/diagramming-ts), a type or interface is depicted with a rectangle with `&lt;&gt;` or `&lt;&gt;` descriptor and title at the top and, optionally, fields underneath.
+
+![React diagram depicting a function](/images/articles/diagramming-react/type-interface.svg)
+
+A **composition relationship** between types or an inheritance relationship between interfaces is depicted with a line from the composer/inheritor to the composed/inherited type/interface, terminating in an empty arrow symbol.
+
+![React diagram depicting type composition and interface inheritance](/images/articles/diagramming-react/composition-inheritance.svg)
+
+A **reference relationship** between two components, functions, types or interfaces is depicted with a line from the referencer to the referenced, terminating in an arrow symbol.
+
+![React diagram depicting an interface reference](/images/articles/diagramming-react/interface-reference.svg)
+
+## Example: contacts list
+
+Here&#39;s an example of a React diagram depicting components that make up a contacts list.
+
+- ContactsList component
+- ContactsList -&gt; ContactListItem component call with render props
+- ContactsListItem component
+- ContactPhone component
+- ContactEmail component
+- Contact interface
+- getContacts function
+
+![React diagram depicting a function](/images/articles/diagramming-react/contacts-list-example.svg)
+
+## Downloads
+
+To make it easier to use this format, I&#39;ve implemented them in the following formats, with downloadable templates:
+
+- Mermaid • [Download: diagramming-react.mermaid.md](/downloads/articles/diagramming-react/diagramming-react.mermaid.md)
+- Draw.io • [Download: diagramming-react.drawio](/downloads/articles/diagramming-react/diagramming-react.drawio)
+- Figma • [Download: diagramming-react.fig](/downloads/articles/diagramming-react/diagramming-react.fig)
+</content>
+  </entry>
+  
+
+  <entry>
+    <title>Subformats</title>
+    <link href="https://conwy.co/articles/subformats" />
+    <updated>2025-02-12T00:00:00.000Z</updated>
+    <id>subformats</id>
+    <content xml:lang="en" type="html">&gt; Summary: Subformats is a technique by which I extend an established format (such as Markdown), to add my own custom features, while remaining backwards-compatible, so I can re-use the content with third-party tools.
+
+Let&#39;s face it: even the most versatile formats can become limiting.
+
+For example, Markdown seems to support every kind of textual element we could ever want. Yet there will always be some users (like me) who want to, say, apply special styling to [pull-quotes](https://en.wikipedia.org/wiki/Pull_quote).
+
+In this article I present the idea of a &quot;subformat&quot;: a backwards-compatible variation of an existing format, which adds additional information to that format. That additional information can be used by a parser which understands the subformat.
+
+## The problem
+
+I recently encountered a problem while migrating content to [my new homepage](/projects/conwy).
+
+The articles are in plain Markdown format (`.md`) but I had to migrate them to MDX format in
+order to allow certain sections to be rendered as React components.
+
+Example of React-rendered components enabled by using MDX format:
+
+- **Code samples** - rendered by my `MdxCode` component, using PrismJS
+- **Diagrams** - rendered by my `MdxMermaid` component, using MermaidJS
+
+However I also wanted the ability to copy and paste the source Markdown code directly into other Markdown-based content platforms such as [Github](https://github.com/) and [DEV.to](https://dev.to/).
+
+To do this, I would have to convert the content from MDX format back into plain Markdown format, then copy and paste it into the platform.
+
+This wouldn&#39;t be so easy, with so many Mdx tags all over the place.
+
+There are a couple of options to speed up the conversion:
+
+- Use a free online converter such as [MDX Formatter](https://jsonformatter.org/mdx-formatter)
+- Integrate an automated converter such as [mdx-to-md](https://www.npmjs.com/package/mdx-to-md), perhaps bootstrapped using my builder infrastructure
+
+However both of these options would require some busywork / tedium and might bring up errors and anomalies.
+
+I eventually settled on what seems like a better solution: **subformats**.
+
+## What is a &quot;subformat&quot;?
+
+I coined this term because there doesn&#39;t seem to be any pre-existing term that describes what I&#39;m trying to do.
+
+By &quot;subformat&quot;, I basically mean a variation of an existing format, which adds additional information to that format. That additional information can be used by a parser which understands the subformat.
+
+For example: I use the Markdown ***format***, but then add my own small backwards-compatible variations to it, creating my own Markdown ***subformat***.
+
+In this case, I add small pieces of text to Markdown, which do not interfere with the normal rendering of the Markdown, but which can still be picked up and used by my own parser.
+
+This keeps the content backwards-compatible (i.e., the same content can be used by normal Markdown parsers) while allowing a newer / different
+parser to access the additional information.
+
+Using this additional information, my own parser can add enhancements such as React controls or special styling.
+
+## Markdown subformat I&#39;m using
+
+I&#39;m using a Markdown subformat to provide additional functionality to my Markdown-based articles in a way that maintains
+compatibility with regular Markdown parsers like Github and DEV.to.
+
+Here are the variations that make up the subformat:
+
+| Markdown element            | Variation                                   | Used for                                                     |
+|-----------------------------|---------------------------------------------|--------------------------------------------------------------|
+| `&gt;` (block-quote)     | Content prefixed with:`Blurb:`        | Brief summary in purple text, at the top of an article.      |
+| `&gt;`(block-quote)      | Content prefixed with:`Aside:`        | Aside text in a box, in an article body.                     |
+| `&gt;`(block-quote)      | Content prefixed with:`Pull-quote:`   | Pull-quote in a box, with a quotes icon, in an article body. |
+| `` ``` ``(code block) | Content prefixed with:`// Lines (x) ` | Code with lines (x) highlighted.                             |
+
+## Example: pull-quote
+
+You can see an example implementation in my **pull-quote variation** of the Markdown `blockquote` element.
+
+For context: I&#39;m using [MDX](https://mdxjs.com/), which allows Markdown to be rendered using React components. The mdx-components.tsx file defines a mapping between DOM nodes and React components, including `blockquote` → `MdxBlockBuote.tsx`.
+
+```typescript
+export function useMDXComponents(components: MDXComponents): MDXComponents ;
+}
+```
+
+In the `MdxBlockQuote` component which renders the Markdown blockquote, I pass the props through `getBlockQuoteSubformatProps`:
+
+```typescript
+export function MdxBlockQuote(props: MdxBlockQuoteProps) 
+    
+  );
+}
+```
+
+The `getBlockQuoteSubformatProps` function in turn passes the props through a set of chained functions, each applying a variation and returning the resulting props.
+
+```typescript
+function getBlockQuoteSubformatProps(props) 
+```
+
+&gt; Aside: Note: This chaining pattern allows multiple subformats to be applied independent of one another.
+
+The `getPullQuoteVariationProps` function first checks if the `children` prop has the &quot;Pull-quote:&quot; prefix (this is handled by `getIsSubformatChildrenPrefixed`). If it does, then this is a pull-quote. So then it adds the `pullQuote` class (imported from CSS modules), which applies pull-quote styling to the element.
+
+```typescript
+const PULL_QUOTE_PREFIX = &quot;Pull-quote:&quot;;
+
+export function getBlockQuotePullQuoteSubformatProps(
+  props: MdxBlockQuoteProps,
+) 
+
+  // Add pull-quote class
+  const className = cn(props.className ?? &quot;&quot;, moduleStyles.pullQuote);
+
+  // Remove pull-quote prefix
+  const children = removeSubformatChildrenPrefix(
+    PULL_QUOTE_PREFIX,
+    props.children,
+  );
+
+  return ;
+}
+```
+
+Now I can write the following in my Markdown file:
+
+```markdown
+
+This is a paragraph.
+
+&gt; Aside:
+&gt;
+&gt; This is an aside
+
+This is another paragraph.
+
+```
+
+If I copy/paste it into, say, Github, it will render it like this:
+
+![Screenshot of aside block-quote in Github](/images/articles/subformats/github-screenshot.png)
+
+But on my own website, it will render like this:
+
+![Screenshot of aside block-quote in conwy.co](/images/articles/subformats/conwy-screenshot.png)
+
+## Use cases
+
+I think the subformats concept could be useful in the following senario:
+
+- You want to use a popular/common format or standard (such as Markdown) *and*
+- You want to add certain custom features not natively supported by that format *and*
+- You want to maintain compatibility with the format *and*
+- You don&#39;t have good reason to believe that your custom features will make it into the popular format anytime soon
+
+Based on these situations I can think of the following use cases for subformats:
+
+- Embedding site-specific formatting into Markdown documents (such as the scenario above).
+- Embedding type information into JSON files using structured comments.
+- Demarcating insertion/interpolation points in files using comments, e.g. HTML templates using `` comments.
+
+## Caveat
+
+If the underlying format will support your use case in the near future, or there is a simpler alternative technique, then a subformat might be better avoided. This is a very specific tool for a very small subset of use cases.</content>
+  </entry>
+  
+
+  <entry>
     <title>AI user interface patterns</title>
     <link href="https://conwy.co/articles/ai-patterns" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>ai-patterns</id>
-    <content xml:lang="en" type="html">As AI capabilities become increasingly available to everyday development teams, it might be useful to explore way to surface these capabilities to end-users.
+    <content xml:lang="en" type="html">&gt; Summary: AI-enabled capabilities can be surfaced in user interfaces in a variety of ways, including inline suggestions, single and multi-agent chat, providing hints for filling in inputs and through controls that allow the user to nudge a preview until it matches what they want.
+
+As AI capabilities become increasingly available to everyday development
+teams, it might be useful to explore way to surface these capabilities to
+end-users.
 
 This article describes some user interface patterns for surfacing AI.
 
 Using ***&quot;treat it like a person&quot;*** as a core principle, I provide patterns,
-examples and ways in which they mimick humans.
+examples (including in-the-wild cases) and how they mimic humans.
 
 ## Principles
 
-As the definition of &quot;AI&quot; is still somewhat in flux, I want to assume a definition for the purposes of this article:
+As the definition of &quot;AI&quot; is still somewhat in flux, I want to assume a
+definition for the purposes of this article:
 
 ***The capability of software/machines to do things that are normally thought of a human, in a rational way.***
 
-The fact AI mimicks human thinking/behaviour suggests that we user interfaces should expose AI capabilities in a human way.
+The fact AI mimics human thinking/behaviour suggests that we user interfaces should expose AI capabilities in a human way.
 
 As Ethan Mollick puts it in the book _Co-Intelligence_ (bold mine):
 
@@ -38,7 +1710,14 @@ As Ethan Mollick puts it in the book _Co-Intelligence_ (bold mine):
 &gt; it behaves like one. This mindset, which echoes my “treat it like a person” principle of AI, can significantly improve your
 &gt; understanding of how and when to use AI in a practical, if not technical, sense.
 
-So let&#39;s look at the patterns...
+The patterns I&#39;ve encountered are:
+
+- Inline suggestion
+- Single-agent chat
+- Multi-agent chat
+- Prompting and nudging controls
+
+Let&#39;s look at them in detail...
 
 ## Pattern: Inline suggestion
 
@@ -46,21 +1725,31 @@ While performing a task, relevant ideas are displayed nearby in text or even ima
 
 The user might be invited to provide input, such as selecting between variants or filling in a blank. (See [Fill-in-the-blanks pattern](#pattern-fill-in-the-blanks))
 
-![Example: inline suggestion for a product owner entering a task](/images/articles/ai-patterns/ai-ui-patterns-inline-suggestion.svg)
-
 **Example:** As a product owner enters a story into a task tracking system, the AI suggests edge cases they didn&#39;t yet consider.
 
-**Mimicks:** 🧍 Colleague, mentor, friend, etc. sitting nearby verbally offering a suggestion and/or physically pointing to a part of the screen.
+![Example: inline suggestion for a product owner entering a task](/images/articles/ai-patterns/ai-ui-patterns-inline-suggestion.svg)
+
+**In the wild:** Code assistance plug-ins in IDEs (such as [Genie AI](https://www.genieai.co/), [Amazon Q](https://aws.amazon.com/q/), [CodeGPT](https://codegpt.co/), [Codeium](https://codeium.com/) and [Llama Coder](https://github.com/ex3ndr/llama-coder)) and dedicated IDEs (such as [Cursor](http://cursor.com)). Email and text message completion, as seen in [Gmail](https://mail.google.com/), [LinkedIn messaging](http://linkedin.com/) and [Apple Messages](https://en.wikipedia.org/wiki/Messages_(Apple)).
+
+![In the wild: reply suggestion on LinkedIn](/images/articles/ai-patterns/ai-ui-patterns-inline-suggestion-linkedin.png).
+
+**Mimics:** 🧍 Colleague, mentor, friend, etc. sitting nearby verbally offering a suggestion and/or physically pointing to a part of the screen.
 
 ## Pattern: Single-agent chat
 
 A specialised chat bot is available for back-and-forth discussion.
 
-![Example: specialised single-agent chat bot on an e-commerce website](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat.svg)
-
 **Example:**: Customer on an e-commerce website starts entering a question about a product. A specialised chat-bot replies with a detailed response. An input box allows the customer to respond with a follow-up question.
 
-**Mimicks:** 💬 Colleague, mentor, customer service, etc. communicating with the user via chat.
+![Example: specialised single-agent chat bot on an e-commerce website](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat.svg)
+
+**In the wild:** &quot;Have a question?&quot; feature on [Hotels](http://hotels.com/), &quot;QnaBot&quot; on [Amazon](http://amazon.com/).
+
+![In the wild: &quot;Have a question?&quot; feature on Hotels](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat-hotels.png)
+
+![In the wild: &quot;QnaBot&quot; on Amazon](/images/articles/ai-patterns/ai-ui-patterns-single-agent-chat-qna.png)
+
+**Mimics:** 💬 Colleague, mentor, customer service, etc. communicating with the user via chat.
 
 ## Pattern: Multi-agent chat
 
@@ -72,11 +1761,19 @@ Also, because this is analagous to real human-human team-work, it&#39;s intuitiv
 
 Users can address individual bots by name, to ask for further assistance on a specific topic or aspect covered by just that bot.
 
-![Example: specialised multi-agent chat bots embedded in a financial advisor tool](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat.svg)
-
 **Example:** Financial advisor tool for recommending products to customers. Agents representing analysts and compliance each offer a perspective. The advisor uses these insights to prepare for a meeting with the client.
 
-**Mimicks:** 👭 Group of people working together, such as a team meeting.
+![Example: specialised multi-agent chat bots embedded in a financial advisor tool](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat.svg)
+
+**In the wild:** Slack automation bots such as [Trello for Slack](https://trello.com/platforms/slack), [ThreadReaderApp](http://threadreaderapp.com) on Twitter and dedicated chat platforms such as [Symphony](http://threadreaderapp.com).
+
+![In the wild: Trello for Slack automation bot](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat-slack.png)
+
+![In the wild: ThreadReaderApp on Twitter](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat-thread-reader.png)
+
+![In the wild: Symphony dedicated multi-agent chat platform](/images/articles/ai-patterns/ai-ui-patterns-multi-agent-chat-symphony.png)
+
+**Mimics:** 👭 Group of people working together, such as a team meeting.
 
 ## Pattern: Fill-in-the-blanks
 
@@ -84,37 +1781,43 @@ A stencil is displayed, with some areas for user input and some ares for AI gene
 
 As the user fills in the inputs, the AI uses contextual information to generate more of the content. User and AI both work together until the full output has been generated.
 
-![Example: fill-in-the-blanks AI for CV editing tool](/images/articles/ai-patterns/ai-ui-patterns-fill-in-the-blanks.svg)
-
 **Example:** Writing a CV for a job. You start to fill in work history items. The AI suggests additional bullet points, which you accept or refuse. The AI suggests shorter more focussed descriptions and word removal, which you accept or refuse.
 
-**Mimicks:** 📈 Collaborative whiteboarding with colleagues (virtually or physically), collaborative card sorting exercises with a team.
+![Example: fill-in-the-blanks AI for CV editing tool](/images/articles/ai-patterns/ai-ui-patterns-fill-in-the-blanks.svg)
+
+**Mimics:** 📈 Collaborative white-boarding with colleagues (virtually or physically), collaborative card sorting exercises with a team.
 
 ## Pattern: Nudging controls
 
 A &quot;work in progress&quot; is displayed in the center while command-buttons for &quot;nudging&quot; are displayed around the edges or off to the side. By clicking the buttons, you can ask the AI to change the work along some dimension.
 
-![Example: nudging controls for AI-assisted logo editing tool](/images/articles/ai-patterns/ai-ui-patterns-nudging.svg)
-
 **Example:** 3D image manipulation. We ask the AI to make the shape more or less rounded, more or less flat, etc.
 
-**Mimicks:** 💺 Pairing with a designer, where the designer is tweaking this or that based on your input.
+![Example: nudging controls for AI-assisted logo editing tool](/images/articles/ai-patterns/ai-ui-patterns-nudging.svg)
+
+**In the wild:** Dall-E image generator.
+
+![In the wild: Dall-E image generator](/images/articles/ai-patterns/ai-ui-patterns-nudging-dalle.png)
+
+**Mimics:** 💺 Pairing with a designer, where the designer is tweaking this or that based on your input.
 
 ## Further reading
 
-- [_Exploring Generative AI_](https://martinfowler.com/articles/exploring-gen-ai.html) by Birgitta BÖCKELER
-- [_Artificial Intelligence: A Modern Approach_](https://aima.cs.berkeley.edu/) by Stuart RUSSELL, Peter NORVIG
-- [_Co-Intelligence_](https://www.penguin.com.au/books/co-intelligence-9780753560778) by Ethan MOLLICK
-</content>
+- [_Exploring Generative AI_](https://martinfowler.com/articles/exploring-gen-ai.html) • Birgitta BÖCKELER
+- [_Artificial Intelligence: A Modern Approach_](https://aima.cs.berkeley.edu/) • Stuart RUSSELL, Peter NORVIG
+- [_Co-Intelligence_](https://www.penguin.com.au/books/co-intelligence-9780753560778) • Ethan MOLLICK
+- [_Living with AI Discombobulation_](https://youtu.be/lxpASbe5Uys) • Clay SHIRKY</content>
   </entry>
   
 
   <entry>
     <title>Manual testing</title>
     <link href="https://conwy.co/articles/manual-testing" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>manual-testing</id>
-    <content xml:lang="en" type="html">While automated testing methods have been established for a long time in the software development process (e.g. unit, integration and end-to-end tests), relatively less attention has been paid to manual testing.
+    <content xml:lang="en" type="html">&gt; Summary: Manual testing offers distinct and powerful benefits such as understanding system behaviour with minimal documentation, verifying changes rapidly in multiple environments and empathising with end-users. Structuring your manual test efforts compounds these benefits.
+
+While automated testing methods have been established for a long time in the software development process (e.g. unit, integration and end-to-end tests), relatively less attention has been paid to manual testing.
 
 However manual testing is far from &quot;dead&quot;. Software developers still routinely verify their work by using products manually. Further, developers are usually required to take responsibility for the end-to-end functioning of their software, not just writing quality code and passing unit tests. They are usually encouraged not lean too heavily on QA.
 
@@ -344,9 +2047,11 @@ These resources inspired this article:
   <entry>
     <title>Mindfulness</title>
     <link href="https://conwy.co/articles/mindfulness" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>mindfulness</id>
-    <content xml:lang="en" type="html">&gt; “Let all those beings which exist --
+    <content xml:lang="en" type="html">&gt; Summary: Recently I started the habit of practicing mindfulness-meditation daily. This resulted in some unique experiences and personal transformation including positive orientation, enhanced awareness and reduced stress.
+
+&gt; “Let all those beings which exist --
 &gt; without enemies, without obstacles, overcoming their grief
 &gt; and attaining happiness, be able to move freely,
 &gt; each in the path destined for them.”
@@ -357,6 +2062,11 @@ These resources inspired this article:
 
 &gt; “Mindfulness is not merely a concept or a good idea. It is a way of being.”
 &gt; – John KABAT-ZINN
+
+&gt; “You don’t make any decisions. You don’t judge anything. You just accept
+&gt; everything. If I do that for ten or fifteen minutes while walking around,
+&gt; I end up in a very peaceful, grateful state.”
+&gt; – Naval RAVIKANT
 
 During my most recent sabbatical I experimented with mindfulness-meditation.
 
@@ -392,10 +2102,21 @@ Namaste!</content>
   <entry>
     <title>What I learned studying Calculus</title>
     <link href="https://conwy.co/articles/studying-calculus" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>studying-calculus</id>
-    <content xml:lang="en" type="html">&gt; “I never regretted the time I spent on history and on math. Math sharpens your mind, history gives you some idea of your limitations and what’s going on in the world.”
+    <content xml:lang="en" type="html">&gt; Summary: Completing an Introduction to Calculus taught me a range of interesting lessons including lessons about learning, such as the importance of understanding fundamentals, visualisation, geometric analogies, parts vs. whole, focussing on correcting mistakes and thinking deeply about small things.
+
+&gt; “I never regretted the time I spent on history and on math. Math sharpens
+&gt; your mind, history gives you some idea of your limitations and what’s going
+&gt; on in the world.”
+&gt;
 &gt; – Bjarne STROUSTRUP ([Video](https://www.youtube.com/watch?v=-QxI-RP6-HM))
+
+&gt; “Curiosity is recognizing a gap in our knowledge about something that
+&gt; interests us, and becoming emotionally and cognitively invested in closing
+&gt; that gap through exploration and learning.”
+&gt;
+&gt; – Brené BROWN • _Atlas of the Heart_
 
 Recently I completed [*Introduction to Calculus*](https://www.coursera.org/learn/introduction-to-calculus) on Coursera.
 
@@ -409,18 +2130,53 @@ The course has been fascinating and engaging. It&#39;s not only introduced me to
 
 Some reflections in no particular order:
 
-* **Understanding fundamentals.** The hard part often isn&#39;t the highest level concepts, but the foundations you need in order to (properly) understand and use them. I had to understand concepts such as *completing the square*, *long division of polynomials* and *derivatives*, not only theoretically, but well enough to apply them correctly to solve an unexpected problem. I&#39;ve [commented](https://news.ycombinator.com/item?id=40083488) about this on HackerNews.
-* **Benefits of drawing, visualising.** Using a high quality notebook and pen helped with enjoyment and motivation to study! Fleshing out problems on paper, down to the fine details, helped me to see how the pieces of a problem fit together, which was quite fascinating. 
-* **Geometric analogies.** I found it incredibly helpful when David presented an idea *geometrically*. Simple shapes such as triangles are intuitive to many learners. And the [Theorem of Pythagoras](https://en.wikipedia.org/wiki/Pythagorean_theorem) is now widely understood. The curve sketching exercises and Riemann sum rectangles were memorable examples but there were so many other cases where David made the idea clearer by some kind of geometric metaphor.
-* **Parts vs. whole.** I found that solving a non-trivial math problem typically requires also understanding all the parts of the problem. (This is in contrast to my usual profession, software development, where many problems can be solved using &quot;black-box&quot; solutions such as libraries, without understanding their internals.) This experience of the parts/whole adds a dimension to my understanding of problem solving generally.
-* **Focussing on mistakes.** Trying out the examples and practice tests and observing what I got wrong helped me narrow down specifically where my knowledge gaps lay and then actively correct them, which also helped improve my long-term memory of the concepts. (This way of thinking is also helping me in other areas of life beyond math.)
-* **Different learning methods at different stages.** I found different learning techniques useful at different stages of the course. Early in the course, I found repeated practice and deep thinking most useful. Midway through, I found sketching and visualisation more productive. Late in the course, I found all the above useful, plus reading various additional sources such as books.
-* **Thinking deeply about small things.** Prof David mentioned this in one of the videos - such a powerful insight! Sometimes on a walk or another repetitive activity I turned over an idea in my head to try and understand it in its essentials (e.g. I did this a lot with Leibniz notation, trying to understand it at some deeper level than words).
-* **Temporarily suspending understanding.** Introspectively, I found that getting stuck (what people call &quot;writers block&quot;, &quot;analysis paralysis&quot;, etc) often happens when I&#39;m trying to understand an interconnected complex of ideas and am uncertain how to break them down. Here the usual approach of &quot;divide and conquer&quot; or breaking down the problem into smaller pieces doesn&#39;t work because I don&#39;t know how or according to what criteria to break them down. One way to proceed is to temporarily suspend trying to understand some parts so that I can focus on others. I&#39;ll treat them as small &quot;black boxes&quot; so that I can skip learning them. This enables me to move on to other problems and not be blocked.
-* **Concepts vs. application.** Abstract conceptual knowledge is not the same thing as knowledge that can be applied. I could read a book on Calculus without really understanding it, but doing the practice tests in this course was better. After this course it&#39;s more likely that I&#39;ll be able to see a problem, see where Calculus might help, identify/name the components and then try to solve it using appropriate methods.
-* **The power of good notation.** Prof David mentioned this in one of the videos on Leibniz notation. Amazing, rich insight. This immediately inspired ideas that I&#39;ve been translating into my software development practices. Representing a problem differently can open the way to unexpected solutions. This inspired my [code selectors](/projects/codeselectors) project.
-* **Mathematics as a language.** Sometimes thinking of a mathematical idea as language or &quot;description&quot; helped me understand it. Rather than trying to understand a concept&#39;s full meaning immediately, I try to think of it as a just label – in object-oriented programmer-speak, a &quot;class&quot;. Then I gradually add &quot;properties&quot; or &quot;attributes&quot; to that label as my understanding increases. For example, I found this method useful for understanding [Euler&#39;s number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than thinking of it as a particular number (which stumped me for a while) I found it better to think of it as the *criteria* for some number which I don&#39;t yet know. In SQL programming terms: a `SELECT` statement, with multiple `WHERE`/`AND` clauses, which yields a single scalar result which is _e_. In these terms, *e* is &quot;the number which yields has a slope (rise over run) of 1 at 1&quot;, etc. Thinking this way helped me reason about the use of *e* in graphs.
-* **Directions for further study.** I greatly appreciated David&#39;s frequent references and pointers to areas for further study. Explaining the *proofs* of a method, rather than just the method itself, is one example – I could use this knowledge for [formal verification](https://en.wikipedia.org/wiki/Formal_verification). Referencing more advanced concepts such as series expansions is another example. This makes me curious and motivates me to study the field further.
+## Understanding fundamentals
+
+The hard part often isn&#39;t the highest level concepts, but the foundations you need in order to (properly) understand and use them. I had to understand concepts such as *completing the square*, *long division of polynomials* and *derivatives*, not only theoretically, but well enough to apply them correctly to solve an unexpected problem. I&#39;ve [commented](https://news.ycombinator.com/item?id=40083488) about this on HackerNews.
+
+## Benefits of drawing, visualising
+
+Using a high quality notebook and pen helped with enjoyment and motivation to study! Fleshing out problems on paper, down to the fine details, helped me to see how the pieces of a problem fit together, which was quite fascinating. 
+
+## Geometric analogies
+
+I found it incredibly helpful when David presented an idea *geometrically*. Simple shapes such as triangles are intuitive to many learners. And the [Theorem of Pythagoras](https://en.wikipedia.org/wiki/Pythagorean_theorem) is now widely understood. The curve sketching exercises and Riemann sum rectangles were memorable examples but there were so many other cases where David made the idea clearer by some kind of geometric metaphor.
+
+## Parts vs. whole
+
+I found that solving a non-trivial math problem typically requires also understanding all the parts of the problem. (This is in contrast to my usual profession, software development, where many problems can be solved using &quot;black-box&quot; solutions such as libraries, without understanding their internals.) This experience of the parts/whole adds a dimension to my understanding of problem solving generally.
+
+## Focussing on mistakes
+
+Trying out the examples and practice tests and observing what I got wrong helped me narrow down specifically where my knowledge gaps lay and then actively correct them, which also helped improve my long-term memory of the concepts. (This way of thinking is also helping me in other areas of life beyond math.)
+
+## Different learning methods at different stages
+
+I found different learning techniques useful at different stages of the course. Early in the course, I found repeated practice and deep thinking most useful. Midway through, I found sketching and visualisation more productive. Late in the course, I found all the above useful, plus reading various additional sources such as books.
+
+## Thinking deeply about small things
+
+Prof David mentioned this in one of the videos - such a powerful insight! Sometimes on a walk or another repetitive activity I turned over an idea in my head to try and understand it in its essentials (e.g. I did this a lot with Leibniz notation, trying to understand it at some deeper level than words).
+
+## Temporarily suspending understanding
+
+Introspectively, I found that getting stuck (what people call &quot;writers block&quot;, &quot;analysis paralysis&quot;, etc) often happens when I&#39;m trying to understand an interconnected complex of ideas and am uncertain how to break them down. Here the usual approach of &quot;divide and conquer&quot; or breaking down the problem into smaller pieces doesn&#39;t work because I don&#39;t know how or according to what criteria to break them down. One way to proceed is to temporarily suspend trying to understand some parts so that I can focus on others. I&#39;ll treat them as small &quot;black boxes&quot; so that I can skip learning them. This enables me to move on to other problems and not be blocked.
+
+## Concepts vs. application
+
+Abstract conceptual knowledge is not the same thing as knowledge that can be applied. I could read a book on Calculus without really understanding it, but doing the practice tests in this course was better. After this course it&#39;s more likely that I&#39;ll be able to see a problem, see where Calculus might help, identify/name the components and then try to solve it using appropriate methods.
+
+## The power of good notation
+
+Prof David mentioned this in one of the videos on Leibniz notation. Amazing, rich insight. This immediately inspired ideas that I&#39;ve been translating into my software development practices. Representing a problem differently can open the way to unexpected solutions. This inspired my [code selectors](/projects/codeselectors) project.
+
+## Mathematics as a language
+
+Sometimes thinking of a mathematical idea as language or &quot;description&quot; helped me understand it. Rather than trying to understand a concept&#39;s full meaning immediately, I try to think of it as a just label – in object-oriented programmer-speak, a &quot;class&quot;. Then I gradually add &quot;properties&quot; or &quot;attributes&quot; to that label as my understanding increases. For example, I found this method useful for understanding [Euler&#39;s number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than thinking of it as a particular number (which stumped me for a while) I found it better to think of it as the *criteria* for some number which I don&#39;t yet know. In SQL programming terms: a `SELECT` statement, with multiple `WHERE`/`AND` clauses, which yields a single scalar result which is _e_. In these terms, *e* is &quot;the number which yields has a slope (rise over run) of 1 at 1&quot;, etc. Thinking this way helped me reason about the use of *e* in graphs.
+
+## Directions for further study
+
+I greatly appreciated David&#39;s frequent references and pointers to areas for further study. Explaining the *proofs* of a method, rather than just the method itself, is one example – I could use this knowledge for [formal verification](https://en.wikipedia.org/wiki/Formal_verification). Referencing more advanced concepts such as series expansions is another example. This makes me curious and motivates me to study the field further.
 
 I started this course with some trepidation and had many challenges along the way, but I feel a great sense of satisfaction after completing it.
 
@@ -428,9 +2184,8 @@ Now I can&#39;t wait to jump into my next learning challenge: [Linear Algebra](h
 
 ## Further reading
 
-Books that helped me along this journey:
-
 - [_Precalculus: Mathematics for Calculus, Seventh Edition_](https://www.amazon.com.au/Precalculus-Mathematics-Calculus-James-Stewart/dp/1305071751) • James STEWART, Lothar REDLIN, Saleem WATSON
+- [_How to Solve It_](https://en.wikipedia.org/wiki/How_to_Solve_It) • George POLYA
 
 </content>
   </entry>
@@ -439,9 +2194,11 @@ Books that helped me along this journey:
   <entry>
     <title>Streamlining code reviews</title>
     <link href="https://conwy.co/articles/code-reviews" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>code-reviews</id>
-    <content xml:lang="en" type="html">For myself and others, I&#39;ve found that code reviews can be a challenging part of being a software developer.
+    <content xml:lang="en" type="html">&gt; Summary: Code reviews can be made easier and more efficient by following a repeatable process. The process I found useful is: 1. context: gain a high level understanding of the context of the change, 2. scan: read all the code and mark out any immediate issues and questions and follow them up, 3. checklist: rigorously review the code against a code review checklist and leave prioritised comments.
+
+For myself and others, I&#39;ve found that code reviews can be a challenging part of being a software developer.
 
 There may be many code changes to go through, many possible mistakes to be found and limited time to find and communicate them. Even before considering mistakes, the sheer amount and complexity of the code and changes can feel overwhelming – you don&#39;t know where to begin. It often feels like code review is chaotic and random, and it&#39;s down to luck whether or not it will be constructive.
 
@@ -521,6 +2278,10 @@ And if it&#39;s a major issue, I&#39;ll write:
 
 ## Checklist
 
+&gt; Pull-quote: “Substantial parts of what software designers, financial managers, firefighters, police officers, lawyers, and most certainly clinicians do are now too complex for them to carry out reliably from memory alone.”
+&gt;
+&gt; – Atul GAWANDE • _[The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)_
+
 By this point I&#39;ll have a pretty solid understanding of the change.
 
 Now it&#39;s a good time to run through a code review checklist and see if I missed anything significant.
@@ -569,9 +2330,11 @@ These books inspired this article:
   <entry>
     <title>Visualising execution flows</title>
     <link href="https://conwy.co/articles/visualising-execution-flows" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>visualising-execution-flows</id>
-    <content xml:lang="en" type="html">Anyone who has spent some time developing software knows writing new code is but a small part of the job. At least as big, perhaps bigger, is **understanding the existing code**. And that includes understanding the **runtime behaviour** of that code!
+    <content xml:lang="en" type="html">&gt; Summary: To understand how a code-base is connected and functions at runtime, we can use execution flows. These map the paths through the code as it executes the code in real life. A rigorous format can map directly to the code-base, enabling an accurate depiction. An appropriate format can be fed into a tool such as Mermaid, to generate a visual flowchart.
+
+Anyone who has spent some time developing software knows writing new code is but a small part of the job. At least as big, perhaps bigger, is **understanding the existing code**. And that includes understanding the **runtime behaviour** of that code!
 
 I often found myself having to understand a complex cluster of code modules, entailing many function calls being made and many data types being passed and returned.
 
@@ -585,8 +2348,7 @@ Execution flow notations can be useful in understanding an existing code-base, t
 
 But first some background...
 
-## What do I mean by &quot;execution flow&quot;?
-What&#39;s an execution flow?
+## What is an execution flow?
 
 It&#39;s helpful to define the concept of &quot;execution flow&quot;.
 
@@ -597,7 +2359,6 @@ You should not confuse this with a more specific term: **_call stack_**. Since a
 On the other hand, you should also not confuse this with a more general term such as **_abstract syntax tree_** or &quot;code structure&quot;. We are not describing the code as a whole, but just one path of possible execution of the code. Any piece of code that has one or more conditionals (e.g. `if` or `switch` statement, etc.) will execute differently depending on how those conditionals evaluate. For the same code, different lines might execute depending on the situation (e.g. depending on external state of some kind such as a database, web-service, system clock, etc.). Thus one code base can support multiple execution flows.
 
 ## Example of an execution flow
-An example
 
 Let&#39;s use a hypothetical example – handling a user login on a Java backend.
 
@@ -655,8 +2416,7 @@ Here&#39;s the code example once more, with the relevant lines highlighted:
 3. Execution proceeds into the `else` block.
 4. We return `Response`, passing failure parameters.
 
-## IDE tools for determining execution flow
-IDE tools
+## Tools for finding execution flow
 
 So how to we figure out how our code flows in the first place?
 
@@ -705,8 +2465,7 @@ Then we might locate this piece of code by using the _Find references_ tool:
 4. Observe that it is also called in the `LoginResource` class, in its `register` method.
 5. Observe that a new `Response` object is constructed.
 
-## Describing execution flows with text
-Describing with text
+## Describing with text
 
 Suppose we wanted to make some notes of the execution flows we discovered. Maybe there are too many for us to easily memorise. Perhaps we want to see them all in one view rather than scattered among many files.
 
@@ -746,18 +2505,13 @@ LoginResource::register
 
 Now we can step back and look at all these flows together and see the bigger picture, e.g. how login and register both check user validity using `UserAuthProvider`, and how both instantiate the Response class with various constructor parameters.
 
+&gt; ### Aside: Sketching execution flows
+&gt; 
+&gt; Observe that we don&#39;t have to cover the flows exhaustively, nor do we have to limit our coverage. We can cover just the parts of code that we are concerned with, based on our current goal, e.g. to solve the current bug or to learn more about a specific part of the code-base. We can make a kind of &quot;partial sketch&quot; of the parts of the execution flows that interest us.
+&gt; For example, we don&#39;t cover how login and register are called, and we don&#39;t cover which further calls are made by UserAuthProvider, SessionProvider or Response, if those parts of the code don&#39;t interest us.
+&gt; And if we are dealing with a bug in which isValidUser incorrectly returns false, we can focus more on isValidUser and which methods it calls.
 
-  Sketching execution flows
-  
-  Observe that we don&#39;t have to cover the flows exhaustively, nor do we have to limit our coverage. We can cover just the parts of code that we are concerned with, based on our current goal, e.g. to solve the current bug or to learn more about a specific part of the code-base. We can make a kind of &quot;partial sketch&quot; of the parts of the execution flows that interest us.
-
-  For example, we don&#39;t cover how login and register are called, and we don&#39;t cover which further calls are made by UserAuthProvider, SessionProvider or Response, if those parts of the code don&#39;t interest us.
-
-  And if we are dealing with a bug in which isValidUser incorrectly returns false, we can focus more on isValidUser and which methods it calls.
-
-
-## Format for notating execution flows
-Notation format
+## Notation
 
 Did you notice the textual format used in the previous section to notate the execution flows?
 
@@ -787,8 +2541,7 @@ Class1::method
   ---|return values| Class1::method
 ```
 
-## Representing closures and indirect calls
-Closures and indirection
+## Closures and indirection
 
 Thusfar we&#39;ve use the `Class::method` format to reference the callers and callees. This should work reasonably well for classical OO code-bases written in Java, C#, Swift etc.
 
@@ -833,8 +2586,7 @@ flowchart
     ---retry
 ```
 
-## Visualising flows with Mermaid
-Mermaid
+## Visualising with Mermaid
 
 Now the juicy part – lets look at how this format can be instantly converted into a visual flowchat using Mermaid!
 
@@ -842,13 +2594,11 @@ Now the juicy part – lets look at how this format can be instantly converted i
 
 You can run Mermaid in the browser using [Mermaid Live](https://mermaid.live/), or if you prefer, you can download and run it locally using the instructions on the [mermaid-live-editor](https://github.com/mermaid-js/mermaid-live-editor) GitHub profile.
 
+We&#39;ll need to add the keyword graph to the top of the text.
 
-  Note: We&#39;ll need to add the keyword graph to the top of the text.
-  Also, in these examples, we add numbered circular nodes (e.g. ---n1((1))) to indicate the order of execution.
-
+Also, in these examples, we add numbered circular nodes (e.g. ---n1((1))) to indicate the order of execution.
 
 The following is how our two earlier Java examples – login success and login failure – render in Mermaid:
-
 
 
 
@@ -865,16 +2615,12 @@ Imagine this appearing in a Slack conversation:
 It could potentially be easier to read and follow an execution flow diagram than to read paragraphs of text trying to describe in plain language the complex sequence of calls.
 
 
-
-  Asynchronicity and concurrency
-
-  Though we touched on async in the Javascript example with the setTimeout call, we haven&#39;t fully addressed the issue of describing asynchronicity or concurrency in execution flows.
-
-  This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagrammatically, as long as a strict convention is adhered to.
-
+&gt; ### Aside: Asynchronicity and concurrency
+&gt;
+&gt; Though we touched on async in the Javascript example with the setTimeout call, we haven&#39;t fully addressed the issue of describing asynchronicity or concurrency in execution flows.
+&gt; This is probably a fairly deep topic that deserves a dedicated article. However I have no doubt it can be represented diagrammatically, as long as a strict convention is adhered to.
 
 ## Isn&#39;t this just a flowchart?
-Vs flowcharts
 
 Yes, but it&#39;s a **_specialised_** form of flowchart, focussed on representing execution flow.
 
@@ -882,8 +2628,7 @@ The flowchart directly maps to the code it represents, so it accurately and unam
 
 Also by establishing and adhering to a convention in how we represent callers, callees, parameters and return values, etc. this flowchart technique is re-usable across programming languages, codebases, business domains, etc. A similar versatility is found in UML, sequence diagrams and other kinds of specialised diagram formats.
 
-## Why not use sequence diagrams?
-Vs sequence diagrams
+## Sequence diagrams
 
 You might have seen diagrams similar to those described here, but laid out as sequence diagrams. Execution flows can certainly be visualised as sequence diagrams. A sequence diagram is arranged as a set of vertical columns connected by arrows, where each column represents a method and each arrow represents a call.
 
@@ -896,8 +2641,7 @@ There are weaknesses of sequence diagrams, however.
 
 For these reasons, I find the flowchart format more appealing.
 
-## Are there tools that generate execution flowcharts automatically?
-Automatic generation
+## Automatic generation
 
 Surprisingly, not really.
 
@@ -911,17 +2655,12 @@ Theoretically any tool that could automatically report execution flows would nee
 
 It&#39;s beyond the scope of this article to look into how such a tool could be developed, but it&#39;s something I&#39;m interested in looking into and perhaps even undertaking myself.
 
-
-  Use of ChatGPT
-  
-  My experimentation with ChatGPT yielded promising results.
-  
-  The LLM (Large Language Model) tool was able to generate a flowchart with labels in plain-English in both ASCII and Mermaid formats.
-  
-  The flowchart did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).
-  
-  With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!
-
+&gt; ### Aside: Use of ChatGPT
+&gt;
+&gt; My experimentation with ChatGPT yielded promising results.
+&gt; The LLM (Large Language Model) tool was able to generate a flowchart with labels in plain-English in both ASCII and Mermaid formats.
+&gt; The flowchart did accurately follow the flow of the code. However, it did not use the format I described above, which is intended to directly map to elements in the code (function names, variable names, etc).
+&gt; With some more training of ChatGPT, more detailed prompts or a more customised LLM tool than ChatGPT, perhaps it will be possible in the near future for a chat-bot to generate execution flows automatically. That would be cool!
 
 ## Conclusion
 
@@ -945,9 +2684,11 @@ These books inspired this article:
   <entry>
     <title>Front end observability</title>
     <link href="https://conwy.co/articles/front-end-observability" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>front-end-observability</id>
-    <content xml:lang="en" type="html">I&#39;ve been reading the book [_Observability Engineering_](https://info.honeycomb.io/observability-engineering-oreilly-book-2022) by Charity Majors and thinking about how to apply the ideas to front end development.
+    <content xml:lang="en" type="html">&gt; Summary: Observability can be applied to front end code, specifically: user events, HTTP events and browser events. Tracing can reveal all the events in a particular user-system interaction, while querying across events can identify patterns and anomalies or just learn more about how the system functions. Observability can be surfaced in documentation, empowering all members of a multi-disciplinary team.
+
+I&#39;ve been reading the book [_Observability Engineering_](https://info.honeycomb.io/observability-engineering-oreilly-book-2022) by Charity Majors and thinking about how to apply the ideas to front end development.
 
 She describes the concept of a **_structured event_** - an event &quot;which captures everything that occurred while one particular request interacted with your service&quot; (Chapter 5).
 
@@ -965,7 +2706,7 @@ A key benefit of structured events (compared to unstructured logs) is that they 
 
 ![Observability points for typical front end applications: HTTP, user and browser events](/images/articles/front-end-observability/observability-points.svg)
 
-These data points are ***queryable*** and we can filter for them using the powerful querying facilities of monitoring platforms such as [Sentry](https://sentry.io/), [DynaTrace](http://dynatrace.com), [AWS CloudWatch RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html), and [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview).
+These data points are ***queryable*** and we can filter for them using the powerful querying facilities of a monitoring platform such as [Sentry](https://sentry.io/), [DynaTrace](http://dynatrace.com), [AWS CloudWatch RUM](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-RUM-custom-events.html) or [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-query-overview).
 
 ![Querying structured logs in Sentry](/images/articles/front-end-observability/example-stake-error-sentry-query.png)
 
@@ -973,20 +2714,14 @@ With structured logs in place, developers can &quot;ask&quot; arbitrary question
 
 We can pro-actively search for unanticipated bugs or diagnose difficult errors involving complex front end logic.
 
-
-  Capabilities of observable systems
-  
-  
-    In defining &quot;observability&quot; (Chapter 1), Majors lists the following capabilities:
-  
-
-  
-     - Understand the inner workings of your application
-     - Understand any system state your application may have gotten itself into, even new ones you have never seen before and couldn’t have predicted
-     - Understand the inner workings and system state solely by observing and interrogating with external tools
-     - Understand the internal state without shipping any new custom code to handle it (because that implies you needed prior knowledge to explain it)
-  
-
+&gt; ### Aside: Capabilities of observable systems
+&gt;
+&gt; In defining &quot;observability&quot; (Chapter 1), Majors lists the following capabilities:
+&gt;
+&gt; - Understand the inner workings of your application
+&gt; - Understand any system state your application may have gotten itself into, even new ones you have never seen before and couldn’t have predicted
+&gt; - Understand the inner workings and system state solely by observing and interrogating with external tools
+&gt; - Understand the internal state without shipping any new custom code to handle it (because that implies you needed prior knowledge to explain it)
 
 Let&#39;s look at some examples.
 
@@ -1260,19 +2995,19 @@ These resources inspired this article:
   
 
   <entry>
-    <title>Refactoring vs Documentation</title>
+    <title>Refactoring vs documentation</title>
     <link href="https://conwy.co/articles/refactoring-documentation" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>refactoring-documentation</id>
-    <content xml:lang="en" type="html">Most of the software projects I&#39;ve worked on involved complex and poorly structured code. This can happen for various reasons, even with the most dedicated and experienced developers. The problem space is complex, difficult to navigate and/or highly dynamic, time is limited, there is a high turn-over of developers, language and frameworks have limitations.
+    <content xml:lang="en" type="html">&gt; Summary: Understanding and documenting existing systems and code can be a better use of time than large-scale refactoring. This is particular the case in fast-growth businesses, where time is limited and pragmatic concerns outweigh code aesthetics.
+
+Most of the software projects I&#39;ve worked on involved complex and poorly structured code. This can happen for various reasons, even with the most dedicated and experienced developers. The problem space is complex, difficult to navigate and/or highly dynamic, time is limited, there is a high turn-over of developers, language and frameworks have limitations.
 
 Refactoring is an oft-touted solution, aiming to bring order to a chaotic code-base by cleaning and improving the code without changing its functionality. Regression testing, via unit tests and end-to-end tests, allow us to verify that the code still performs its intended function.
 
 The problem with refactoring is that almost no team (that I&#39;ve worked on) ever has time for it. There always seem to be other activities that would generate more business value, and faster, and those activities tend to be prioritised. In the professional world, at least, code only exists to achieve an outcome, not as a work of art for its own sake.
 
-
-  In some situations, such as a rapidly growing or changing business environment, understanding and documenting existing code might be a better use of time than a lengthy refactoring.
-
+&gt; Pull-quote: In some situations, such as a rapidly growing or changing business environment, understanding and documenting existing code might be a better use of time than a lengthy refactoring.
 
 Given the above, I&#39;ve come to think that, at least in some situations, such as a rapidly growing or changing business environment, understanding and documenting existing code might be a better use of time than a lengthy refactoring. Bad code can stay bad, but can be worked with effectively, if it is well understood by the development team so that they can work with it efficiently.
 
@@ -1425,7 +3160,7 @@ These books inspired this article:
   <entry>
     <title>Three tests for accessibility</title>
     <link href="https://conwy.co/articles/three-tests-accessibility" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>three-tests-accessibility</id>
     <content xml:lang="en" type="html">There are many good reasons to make our software applications accessible. But to achieve this goal, we must undertake rigorous accessibility testing. 
 
@@ -1546,267 +3281,11 @@ Boooks that inspired me:
   
 
   <entry>
-    <title>Combinatorial Testing</title>
+    <title>Combinatorial testing</title>
     <link href="https://conwy.co/articles/combinatorial-testing" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>combinatorial-testing</id>
-    <content xml:lang="en" type="html">Have you recently tried to unit test a function which has many combinations of possible inputs and expected outputs?
-
-An increasingly common way of writing such a test is to utilize a data-driven test. The problem with data-driven tests is that they can quickly grow to be large and unwieldy.
-
-In this article, I want to introduce a technique for generating data-driven tests without having to spell out every individual combination of inputs/outputs in code.
-
-But first, a quick refresher on data-driven tests...
-
-## Limitations of data-driven tests
-
-You may be familiar with [data-driven testing](https://en.wikipedia.org/wiki/Data-driven_testing). Basically you write a table of combinations of inputs and outputs in which each test case is inputted as &quot;row&quot; of data. Data-driven testing is now supported by many popular test frameworks (Jest, JUnit, NUnit to name a few).
-
-One problem with data-driven testing is: sometimes we have so many combinations to cover that a comprehensive data-driven test would be very lengthy and difficult to read or maintain.
-
-Imagine, for example, trying to write a data-driven unit test for a function which returns the **number of days in a given month**.
-
-The function takes two parameters: `year` and `month` and returns one `day` value. It has to deal with a range of values for each parameter. Multiplying all values that need to be tested by two parameters yields a large number of combinations.
-
-```ts
-it.each([
-  ,
-  ,
-  ,
-  ,
-
-  // and so on and so on ... 😓
-]);
-```
-
-That number of combinations, though easy for a computer to process, is not easy for us to wrap our human minds around!
-
-Perhaps the solution is to express the combinations in a more concise manner – as grouped ranges of values – rather than spelling out every single combination.
-
-Combinator function to the rescue!
-
-## What is a combinator?
-
-In the world of functional programming, the term &quot;combinator&quot; informally refers to a pattern...
-
-&gt; &quot;where complex structures are built by defining a small set of very simple &#39;primitives&#39;, and a set of &#39;combinators&#39; for combining them into more complicated structures&quot;
-&gt; – _Combinator Pattern_ • [wiki.haskell.org/Combinator_pattern](https://wiki.haskell.org/Combinator_pattern)
-
-The combinator I present in this article is more specific. It takes as input an object whose properties each have a value that is an array. Then it combines each value of each array. All of the objects generated by this means are then returned to the caller.
-
-For example, suppose we provide an input object having a single property, &quot;color&quot;, whose value is an array containing elements &quot;red&quot; and &quot;blue&quot;:
-
-```ts
-
-```
-
-The combinator will return us an array having the following objects:
-
-1. an object having a &quot;color&quot; property whose value is &quot;red&quot; and
-2. an object having a &quot;color&quot; property whose value is &quot;blue&quot;
-
-```ts
-[
-  ,
-  ,
-];
-```
-
-Suppose we provide an additional property in our input object, &quot;brightness&quot;, whose value is an array containing elements 100 and 200:
-
-```ts
-
-```
-
-The combinator will return us an array having every specified combination of &quot;color&quot; and &quot;brightness&quot;:
-
-1. an object having a &quot;color&quot; property whose value is &quot;red&quot; and a property &quot;brightness&quot; whose value is 100 and
-2. an object having a &quot;color&quot; property whose value is &quot;red&quot; and a property &quot;brightness&quot; whose value is 200 and
-3. an object having a &quot;color&quot; property whose value is &quot;blue&quot; and a property &quot;brightness&quot; whose value is 100 and
-4. an object having a &quot;color&quot; property whose value is &quot;blue&quot; and a property &quot;brightness&quot; whose value is 200
-
-Like this:
-
-```ts
-[
-  ,
-  ,
-  ,
-  ,
-];
-```
-
-Providing a definition object as input, we can get a large set of results as output.
-
-Here&#39;s a high-level diagram:
-
-![UML diagram depicting combinatorial test definition and results](/images/articles/combinatorial-testing/mermaid/mermaid-diagram-2024-08-12-135445.svg)
-
-
-  combinate ..&gt; Definition~T~
-
-  class combinate~T~ 
-  combinate ..&gt; Array~T~ : returns
-  Array~T~ ..&gt; T
-
-  class Array~T~ 
-
-  class T 
-`} */}
-
-Let&#39;s apply this combinator to a slightly more &quot;real world&quot; example.
-
-## An example: days in a month
-
-For historical reasons, determining the number of days in a month in the Western calendar is complicated.
-
-The following short rhyme tries to summarize the rules in a memorable way:
-
-&gt; Thirty days have September,
-&gt;
-&gt; April, June and November.
-&gt;
-&gt; All the rest have thirty-one,
-&gt;
-&gt; except February alone, which has
-&gt;
-&gt; twenty-eight days each year
-&gt;
-&gt; and twenty-nine days each leap-year
-
-Suppose we wanted to unit-test a function, `getDaysInMonth`, which takes `month` and `year` as input and returns a number of `days`.
-
-We could simply input every possible date into the unit test and assert on the month of each. As mentioned above, that could involve quite a lot of fiddling in Excel and would result in a very long and not very human-readable test file.
-
-Instead, let&#39;s try to tackle this problem with a combinator.
-
-Starting with the first two lines of the rhyme:
-
-&gt; Thirty days have September,
-&gt;
-&gt; April, June and November.
-
-We can express this &quot;thirty days&quot; combination set programmatically, like this:
-
-```ts
-const thirtyDays = combinate();
-```
-
-The result can easily be passed into a data-driven test in Jest:
-
-```ts
-it.each(thirtyDays)(
-  &quot;$month in $year should have $expectedDays days&quot;,
-  () =&gt; 
-);
-```
-
-On running the unit test, the following test cases will be generated and executed:
-
-```ts
-✓ april in 2020 should have 30 days (3 ms)
-✓ june in 2020 should have 30 days
-✓ september in 2020 should have 30 days
-✓ november in 2020 should have 30 days
-✓ april in 2021 should have 30 days
-✓ june in 2021 should have 30 days (1 ms)
-✓ september in 2021 should have 30 days
-✓ november in 2021 should have 30 days (1 ms)
-✓ april in 2022 should have 30 days
-✓ june in 2022 should have 30 days
-✓ september in 2022 should have 30 days
-✓ november in 2022 should have 30 days
-✓ april in 2023 should have 30 days
-✓ june in 2023 should have 30 days
-✓ september in 2023 should have 30 days
-✓ november in 2023 should have 30 days
-```
-
-Notice how we can use a small amount of code (in this example, 5 lines for the `combinate` call) to generate a much larger set of test cases (16). This gives our test code more leverage.
-
-Covering the remaining lines of the rhyme:
-
-&gt; All the rest have thirty-one,
-
-```ts
-const thirtyOneDays = combinate();
-```
-
-The following data will be generated:
-
-```ts
-✓ january in 2020 should have 31 days (2 ms)
-✓ march in 2020 should have 31 days (1 ms)
-✓ may in 2020 should have 31 days (1 ms)
-✓ july in 2020 should have 31 days (1 ms)
-✓ august in 2020 should have 31 days
-✓ october in 2020 should have 31 days
-... etc ...
-```
-
-&gt; except February alone, which has
-&gt; twenty-eight days each year
-
-```ts
-const februaryDays = combinate();
-```
-
-```ts
-✓ february in 2023 should have 28 days (2 ms)
-```
-
-&gt; and twenty-nine days each leap-year
-
-```ts
-const februaryLeapYearDays = combinate();
-```
-
-```ts
-✓ february in 2024 should have 29 days (2 ms)
-```
-
-Finally, putting it all together, here is the complete unit test:
-
-```ts
-describe(&quot;getDaysInMonth&quot;, () =&gt; );
-
-  const thirtyOneDays = combinate();
-
-  const twentyEightDays = combinate();
-
-  const twentyNineDays = combinate();
-
-  it.each([
-    ...thirtyDays,
-    ...thirtyOneDays,
-    ...twentyEightDays,
-    ...twentyNineDays,
-  ])(
-    &quot;$month in $year should have $expectedDays days&quot;,
-    () =&gt; 
-  );
-});
-```
-
-Notice that we can assign meaningful names to each of the variables, increasing the readability of the test code.
-
-I&#39;m sure you would agree that this test code, using a combinator, is more concise and readable than a large table of numbers and strings!
-
-In closing, I encourage you to use combinatorial testing to shorten and sweeten your data-driven tests, thus testing your software thoroughly and making it maximally robust.
-
-## Introducing combinator-util
-
-If you&#39;d like to add a little combinatorial goodness to our unit tests, please check out this re-usable, open-source NPM package:
-
-[https://github.com/jonathanconway/combinator](https://github.com/jonathanconway/combinator)
-
-Contributions welcome!
-
-## Further reading
-
-These books inspired this article:
-
-- [_Introduction to Mathematical Thinking_](https://www.amazon.com/Introduction-Mathematical-Thinking-Keith-Devlin) by Keith Devlin
+    <content xml:lang="en" type="html">&gt; Summary: Combinators (from functional programming) can be used to generate data-driven tests that cover many combinations of inputs, without having to spell out every possible combination in code.
 </content>
   </entry>
   
@@ -1814,9 +3293,11 @@ These books inspired this article:
   <entry>
     <title>Testing Steps</title>
     <link href="https://conwy.co/articles/testing-steps" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>testing-steps</id>
-    <content xml:lang="en" type="html">## Introduction
+    <content xml:lang="en" type="html">&gt; Summary: The BDD-style &quot;Given/When/Then&quot; syntax adds an additional learning curve and can be cumbersome for long flows. I suggest an alternative: numbered lists of steps and expectations marked out with an &quot;Observe&quot; prefix.
+
+## Introduction
 
 Over the years several [acceptance testing frameworks](https://en.wikipedia.org/wiki/Acceptance_testing#List_of_acceptance-testing_frameworks) have risen and fallen in popularity.
 
@@ -1938,9 +3419,11 @@ Books that inspired me:
   <entry>
     <title>Diagramming Typescript</title>
     <link href="https://conwy.co/articles/diagramming-ts" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>diagramming-ts</id>
-    <content xml:lang="en" type="html">As the practice of front-end development grows and evolves, front-end developers find themselves working with increasingly complex problem domains, requirements and code-bases. This necessitates increasing usage of solution design and planning tools, such as [wireframes](https://en.wikipedia.org/wiki/Website_wireframe), [component diagrams](https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy), [user stories](https://www.martinfowler.com/bliki/UserStory.html), etc.
+    <content xml:lang="en" type="html">&gt; Summary: Typescript structures can be diagramming in a UML-like format, depicting Interfaces and Types (including inheritance and composition), Enums and Functions (including parameters and return types) as rectangles, with suitable connecting lines.
+
+As the practice of front-end development grows and evolves, front-end developers find themselves working with increasingly complex problem domains, requirements and code-bases. This necessitates increasing usage of solution design and planning tools, such as [wireframes](https://en.wikipedia.org/wiki/Website_wireframe), [component diagrams](https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy), [user stories](https://www.martinfowler.com/bliki/UserStory.html), etc.
 
 In recent work on large, complex Typescript code-bases I&#39;ve found myself doing a significant amount of upfront solution design, planning modifications or additions to the code by way of high-level diagrams.
 
@@ -1970,21 +3453,17 @@ Solution design helps us to conceive our solutions before implementing them. We 
 
 Diagramming is an excellent way to both develop and communicate a solution design. Diagrams, which don&#39;t need to be compiled, can be built partially, creating a kind of &quot;code sketch&quot; that communicates software design at a high level while omitting details. Diagrams are laid out spatially, allowing us to organise our thinking outside the constraints of the file system or compiler.
 
+&gt; ### Aside: Multi-stakeholder solution design
+&gt;
+&gt; In some organisations multiple stakeholders may need to approve a solution – from product owners to designers to security specialists. In these cases it&#39;s even more beneficial to develop solution designs and share them with the stakeholders. The stakeholders can then have an opportunity to identify issues and risks before implementation commences. They can co-design the solution with developers, shaping it in beneficial ways before implementation begins.
 
-  Multi-stakeholder solution design
- 
-  In some organisations multiple stakeholders may need to approve a solution – from product owners to designers to security specialists. In these cases it&#39;s even more beneficial to develop solution designs and share them with the stakeholders. The stakeholders can then have an opportunity to identify issues and risks before implementation commences. They can co-design the solution with developers, shaping it in beneficial ways before implementation begins.
-
-
-
-  Agile solution design
-
-  There is a culture in some development teams of avoiding solution design, thinking it is unnecessary and even to be avoided, since it is part of undesirable &quot;big upfront planning&quot; or &quot;waterfall&quot; methodology. The idea is that &quot;agile&quot; is a new and better way of working and, as such, developers should begin coding as soon as possible with minimal planning and preparation (&quot;MVP&quot;).
-  
-  My thinking goes against this, but addressing it in-depth is beyond the scope of this article. But to summarise: if you carefully review the agile literature, it is very rare for it to discourage planning, big picture thinking, solution design or architecture.
-  
-  In fact, some of the most popular agile practitioners, such as Bob Martin and Martin Fowler, have written lengthy books on both architecture and UML. Thus it is apparent that agile is broadly compatible with solution design and planning.
-
+&gt; ### Aside: Agile solution design
+&gt; 
+&gt; There is a culture in some development teams of avoiding solution design, thinking it is unnecessary and even to be avoided, since it is part of undesirable &quot;big upfront planning&quot; or &quot;waterfall&quot; methodology. The idea is that &quot;agile&quot; is a new and better way of working and, as such, developers should begin coding as soon as possible with minimal planning and preparation (&quot;MVP&quot;).
+&gt;   
+&gt; My thinking goes against this, but addressing it in-depth is beyond the scope of this article. But to summarise: if you carefully review the agile literature, it is very rare for it to discourage planning, big picture thinking, solution design or architecture.
+&gt;   
+&gt; In fact, some of the most popular agile practitioners, such as Bob Martin and Martin Fowler, have written lengthy books on both architecture and UML. Thus it is apparent that agile is broadly compatible with solution design and planning.
 
 ### Planning complex changes
 
@@ -2279,9 +3758,11 @@ These books may serve as a handy guide and reference on UML:
   <entry>
     <title>Uses of mock data</title>
     <link href="https://conwy.co/articles/mock-data" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>mock-data</id>
-    <content xml:lang="en" type="html">Mock data, dummy data, fake data, test data, sample data.
+    <content xml:lang="en" type="html">&gt; Summary: Rigorous use of mock data can benefit complex, long-term software projects by thinking about examples during modelling, providing unit test inputs, quickly simulate any desired application state and decouple immediate inter-team dependencies. The costs including the need to structure the application in a suitable manner and the time/effort to add mock data.
+
+Mock data, dummy data, fake data, test data, sample data.
 
 These terms all express the same thing:
 
@@ -2293,15 +3774,14 @@ My argument in this article is that mock data, when treated with respect, turns 
 
 I find four special uses for mock data:
 
-1. Iteratively designing and documenting structures
-2. Boosting unit test development
-3. Manually testing a running application
-4. Decoupling development teams
+1. [Designing and documenting](#designing-documenting)
+2. [Unit testing](#unit-testing)
+3. [Manually testing](#manually-testing)
+4. [Decoupling teams](#decoupling-teams)
 
 I will elaborate on each of these.
 
-## Iteratively designing and documenting structures
-Designing &amp; documenting
+## Designing &amp; documenting
 
 Let&#39;s begin with an example that should be reasonably familiar to most developers:
 
@@ -2345,8 +3825,7 @@ The point is, by laying out all the expected values of this field together in on
 
 We can now begin to think about how we might design and test the validation routine.
 
-## Boosting unit test development
-Unit tests
+## Unit testing
 
 As we begin to write a username validation function, the `Username` type definition combined with `UsernameMocks` given above lead directly to four unit tests:
 
@@ -2426,8 +3905,7 @@ The end result is that any test code that deals with mock values will be:
 
 **Bonus:** And we&#39;re talking about more than just unit-tests here! Mock values can also be used to fill in live component demos (e.g. Storybook stories), dynamic documentation (e.g. Docusaurus pages) and snapshot tests (e.g. PhantomJS screenshots).
 
-## Manually testing a running application
-Manual testing
+## Manually testing
 
 Imagine if our application was augmented with mock data in such a way that all of its features could be used while running purely off the mock data, without ever having to connect to any real data-source. (By &#39;data-source&#39;, I&#39;m referring to things like databases, APIs, etc.)
 
@@ -2486,9 +3964,7 @@ The following screenshot depicts mock controls for a hypothetical online banking
 
 ![Screenshot of controls for more complex customization of mock data](/images/articles/mock-data/mock-data-controls.svg)
 
-## Decoupling development teams
-
-Decoupling teams
+## Decoupling teams
 
 Once our entire Application is able to run off mocked data, not only can we _operate_ the application while a data-source is unavailable, but we can also _operate and develop_ application features prior to the data-source even supporting them.
 
@@ -2528,7 +4004,6 @@ One technique applicable to web applications (which I used on a recent real-life
 For example, if we want to simulate the state in which the user entered a credit card into a payment page, but the card has expired, we might share a URL like this: http://myapp.com/payment-details?mockCreditCardExpired=true. This URL could be used to test the error message that is displayed for expired cards.
 
 ## Other uses of mock data
-Other uses
 
 We&#39;re talking about more than just simulating expected (or unexpected) application states! We can also simulate large data-sets (e.g. to test scalability), error conditions (to test error handling logic), delays (to test performance under various network conditions) and... well... anything else it&#39;s possible and useful to simulate. The ability to simulate specific application states is kind of a super power.
 
@@ -2562,9 +4037,11 @@ Books that inspired me:
   <entry>
     <title>Parallel loading in React</title>
     <link href="https://conwy.co/articles/parallel-loading-react" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>parallel-loading-react</id>
-    <content xml:lang="en" type="html">Recently I had to build a React component that would merge the results of several independent requests into one set of data and render it as a single list.
+    <content xml:lang="en" type="html">&gt; Summary: The problem was: how to load a list of items, then load details of each item, then combine all of this information and render it to the user, all within one component. This could be done more easily by splitting details into a separate component, rendered in a `map` loop, and having each instance of that component make its own request.
+
+Recently I had to build a React component that would merge the results of several independent requests into one set of data and render it as a single list.
 
 The requests would look like this:
 
@@ -2581,9 +4058,11 @@ I wanted the list to ultimately render like this:
 
 The problem was: how to load a list of items, then load details of each item, making a separate request per item, then combine all of this information and render it to the user, all within one component.
 
-
-  Note: This could be done more easily by splitting details into a separate component, rendered in a `map` loop, and having each instance of that component make its own request. However, for various reasons, this wasn&#39;t possible, and I had to do everything in one component.
-
+&gt; ### Aside: Caveat: Ideal simpler implementation
+&gt;
+&gt; This could be done more simply by splitting details into a separate component, rendered in a `map` loop, and having each instance of that component make its own request.
+&gt;
+&gt; However, for various reasons, this might not always be possible. For example, when working in a complex pre-existing code-base, there might not be time to refactor everything to the simpler implementation.
 
 ## Synchronously combining results
 
@@ -2698,9 +4177,11 @@ function UsersAndStatuses(props) );
   <entry>
     <title>Wireframing techniques</title>
     <link href="https://conwy.co/articles/interaction-wireframes" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>interaction-wireframes</id>
-    <content xml:lang="en" type="html">It’s nearly 2021, so I thought I’d share a small achievement of 2020:
+    <content xml:lang="en" type="html">&gt; Summary: Interaction wireframes depict a user interface at low fidelity including additional information on each component and interactions – how the interface responds to user activity.
+
+It’s nearly 2021, so I thought I’d share a small achievement of 2020:
 
 **A way of depicting interactions in UI wireframes!**
 
@@ -2794,11 +4275,13 @@ Books that inspired me:
   <entry>
     <title>Towards zero bugs</title>
     <link href="https://conwy.co/articles/towards-zero-bugs" />
-    <updated>2024-09-13T00:00:00.000Z</updated>
+    <updated>2025-02-12T00:00:00.000Z</updated>
     <id>towards-zero-bugs</id>
-    <content xml:lang="en" type="html">Software with zero bugs may seem like an ambitious goal. Over time, defects in software have increased and have become so normalised that some developers and users even expect them.
+    <content xml:lang="en" type="html">&gt; Summary: Using a checklist, and a mindset of expecting and seeking out bugs, we can eliminate bugs from our code before going to production.
 
-But while it&#39;s difficult to get to zero bugs, I think it&#39;s worth trying for. We shouldn&#39;t concede defeat and assume ahead-of-time that our products will be defective. Rather, we should do everything in our power to avoid inadvertently creating bugs in our software, where they could be avoided. The closer we get to zero critters, the better!
+Software with zero bugs may seem like an ambitious goal. Over time, defects in software have increased and have become so normalised that some developers and users even expect them.
+
+But while it&#39;s difficult to get to zero bugs, I think it&#39;s worth trying for. We shouldn&#39;t concede defeat and assume ahead-of-time that our products will be defective. Rather, we should do everything in our power to avoid inadvertently creating bugs in our software, where they could be avoided. The closer we get to zero , the better!
 
 Over time, I have been building up a mental checklist of things to look out for, both in the code I write and in the running application that it generates, to identify potential bugs. I now run through this checklist whenever I am about to complete work on a change or a new feature. I have also been working on building a mindset that encourages discipline, rigour and attention to detail.
 

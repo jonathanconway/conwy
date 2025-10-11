@@ -4,13 +4,12 @@ import { Micro, PageLayout } from "@/components";
 import { site } from "@/content";
 import * as micros from "@/content/micros";
 import { Micro as Micro_ } from "@/framework/client";
+import { PageProps } from "../../[slug]/types";
 
-interface PageProps {
-  readonly params: { readonly slug: string };
-}
 
-export default async function Page({ params: { slug } }: PageProps) {
-  const microModule = await import(`@/content/micros/${slug}`);
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const microModule = await import(`@/content/micros/${params.slug}`);
   const microModuleItems = Object.values(microModule);
   const micro = microModuleItems[0] as Micro_;
 
@@ -22,10 +21,9 @@ export async function generateStaticParams() {
   return allMicroMetas;
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: PageProps): Promise<Metadata> {
-  const microModule = await import(`@/content/micros/${slug}`);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+  const microModule = await import(`@/content/micros/${params.slug}`);
   const micro = Object.values(microModule)[0] as Micro_;
   const title = micro.meta.date;
 

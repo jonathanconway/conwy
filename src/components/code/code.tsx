@@ -29,7 +29,7 @@ export function Code({ className, children, ...restProps }: CodeProps) {
     }
   }, []);
 
-  const childrenTrimmed = isString(children) ? children.trim() : children;
+  const childrenTrimmed = isString(children) ? children?.trim() : children;
 
   return (
     <code

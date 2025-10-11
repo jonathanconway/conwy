@@ -43,7 +43,7 @@ export function getArticleHeadings(
   const headingElements = children.filter(byComponentType(MdxH2));
 
   const headingTitles = headingElements.map((headingElement) =>
-    headingElement.props?.children?.toString(),
+    (headingElement.props as any)?.children?.toString(),
   );
 
   const headingShortTitles = headingElements.map((headingElement) => {

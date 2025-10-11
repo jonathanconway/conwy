@@ -13,7 +13,7 @@ export function Breadcrumb(props: BreadcrumbProps) {
   return (
     <div className={styles.container}>
       {props.segments.map((segment, segmentIndex) => (
-        <>
+        <div key={segment.title}>
           {segment.url ? (
             <Link href={segment.url}>{segment.title}</Link>
           ) : (
@@ -22,7 +22,7 @@ export function Breadcrumb(props: BreadcrumbProps) {
           {segmentIndex < props.segments.length - 1 && (
             <span>&nbsp;&gt;&nbsp;</span>
           )}
-        </>
+        </div>
       ))}
     </div>
   );

@@ -7,6 +7,7 @@ export function PrismJSThemeLink() {
       rel="stylesheet"
       href={`/css/prismjs/themes/${PRISM_JS_THEME_CSS_FILENAME_BY_THEME.light}`}
       data-noprefix
+      precedence="default"
     />
   );
 }

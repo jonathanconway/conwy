@@ -19,7 +19,11 @@ async function getArticleMetas(
   return await Promise.all(
     articleFolders.map(
       async (articleFolder) =>
-        (await import(`@/content/articles/${articleFolder}/meta`)).meta,
+        (
+          await import(
+            `${__dirname}/../../content/articles/${articleFolder}/meta`
+          )
+        ).meta,
     ),
   );
 }

@@ -5,13 +5,11 @@ import { PageLayout, Quote, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as quotes from "@/content/quotes";
 import { Quote as Quote_ } from "@/framework/client";
+import { PageProps } from "../../[slug]/types";
 
-interface PageProps {
-  readonly params: { readonly slug: string };
-}
-
-export default async function Page({ params: { slug } }: PageProps) {
-  const quoteModule = await import(`@/content/quotes/${slug}`);
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const quoteModule = await import(`@/content/quotes/${params.slug}`);
   const quoteModuleItems = Object.values(quoteModule);
   const quote = quoteModuleItems[0] as Quote_;
 
@@ -32,10 +30,9 @@ export async function generateStaticParams() {
   return allQuoteMetas;
 }
 
-export async function generateMetadata({
-  params: { slug },
-}: PageProps): Promise<Metadata> {
-  const quoteModule = await import(`@/content/quotes/${slug}`);
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
+  const quoteModule = await import(`@/content/quotes/${params.slug}`);
   const quote = Object.values(quoteModule)[0] as Quote_;
   const title = quote.text;
 

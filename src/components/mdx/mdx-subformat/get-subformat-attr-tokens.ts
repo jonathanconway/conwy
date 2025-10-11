@@ -17,7 +17,7 @@ function getSearchParamsFromUrlString(urlString: string) {
 }
 
 export function getSubformatUrlTokens(attrValue: string) {
-  if (!attrValue.trim()) {
+  if (!attrValue?.trim()) {
     return {
       body: "",
       tokens: {},

@@ -2,8 +2,6 @@ import NextImage from "next/image";
 
 import { Image as Image_ } from "@/framework/client";
 
-import { Link } from "../link";
-
 type NextImageProps = Partial<Parameters<typeof NextImage>[0]>;
 
 interface ImageProps extends NextImageProps {
@@ -17,19 +15,12 @@ export function Image({
   ...restProps
 }: ImageProps) {
   return (
-    <Link
-      className="image-link"
-      href={image.src ?? restProps.src}
-      target="_blank"
-      showOpenInNew={false}
-    >
-      <NextImage
-        {...restProps}
-        src={image.src}
-        alt={image.alt ?? image.src}
-        width={width}
-        height={height}
-      />
-    </Link>
+    <NextImage
+      {...restProps}
+      src={image.src}
+      alt={image.alt ?? image.src}
+      width={width}
+      height={height}
+    />
   );
 }
