@@ -11,4 +11,6 @@ export * from "./microsoft-certified-professional-microsoft";
 export * from "./network-administration-tafe";
 export * from "./next-js-15-and-react-udemy";
 export * from "./programming-tafe";
+export * from "./secure-code-warrior-javascript";
+export * from "./secure-code-warrior-node";
 export * from "./testing-javascript";
