@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import "@/components";
-import { PageLayout, QuotesListItem, ResponsiveMdHalf } from "@/components";
+import { PageLayout, Quote, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as quotes from "@/content/quotes";
 import { Quote as Quote_ } from "@/framework/client";
@@ -20,7 +20,7 @@ export default async function Page({ params: { slug } }: PageProps) {
       selectedNavPath="/quotes"
       main={
         <ResponsiveMdHalf>
-          <QuotesListItem quote={quote} />
+          <Quote quote={quote} />
         </ResponsiveMdHalf>
       }
     />

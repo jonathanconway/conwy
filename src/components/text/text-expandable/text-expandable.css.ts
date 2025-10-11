@@ -21,4 +21,6 @@ export const ellipsis = style({
   display: "inline",
   bottom: 0,
   right: 0,
+  paddingRight: "0.125rem",
+  paddingBottom: "0.125rem",
 });

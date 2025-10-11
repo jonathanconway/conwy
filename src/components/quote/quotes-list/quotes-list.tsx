@@ -12,7 +12,7 @@ export function QuotesList() {
   return (
     <List className={styles.quotesList}>
       {quotes.map((quote) => (
-        <QuotesListItem quote={quote} isExpandable />
+        <QuotesListItem quote={quote} />
       ))}
     </List>
   );
