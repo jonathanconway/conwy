@@ -6,22 +6,30 @@ import { BlockQuotePullQuote } from "../../aside";
 import { Link } from "../../link";
 import { LinkBox, LinkBoxTitle } from "../../link-box";
 import { Stack, StackDirections } from "../../stack";
-import { Text, TextTypes } from "../../text";
+import { Text, TextExpandable, TextTypes } from "../../text";
 
 import * as styles from "./quotes-list-item.css";
 import { formatAuthorName } from "./quotes-list-item.utils";
 
 interface QuotesListItemProps {
   readonly quote: Quote;
+  readonly isExpandable?: boolean;
 }
 
-export function QuotesListItem({ quote }: QuotesListItemProps) {
+export function QuotesListItem({
+  quote,
+  isExpandable = true,
+}: QuotesListItemProps) {
   return (
     <li key={quote.slug} className={styles.quotesListItem}>
       <LinkBox className={styles.quoteLinkBox} href={`/quotes/${quote.slug}`}>
         <BlockQuotePullQuote className={styles.quotePullQuote}>
           <Stack direction={StackDirections.Column} gap={0.5}>
-            <LinkBoxTitle>{quote.text}</LinkBoxTitle>
+            <LinkBoxTitle>
+              <TextExpandable height="5rem" isEnabled={isExpandable}>
+                {quote.text}
+              </TextExpandable>
+            </LinkBoxTitle>
 
             <Text type={TextTypes.Body}>
               – {formatAuthorName(quote.author)}

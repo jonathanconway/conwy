@@ -6,6 +6,7 @@ import { text } from "../../styling";
 import { vars } from "../../theme";
 
 export const textExpandableOuterContainer = style({
+  position: "relative",
   overflow: "hidden",
 });
 
@@ -14,3 +15,10 @@ export const toggleLink = style(
     color: vars.text.body.color,
   }),
 );
+
+export const ellipsis = style({
+  position: "absolute",
+  display: "inline",
+  bottom: 0,
+  right: 0,
+});

@@ -10,7 +10,9 @@ import { useTextExpandable } from "./use-text-expandable.hook";
 interface TextExpandableProps {
   readonly children: ReactNode;
   readonly height: string;
+  readonly isEnabled?: boolean;
 }
+
 export function TextExpandable(props: TextExpandableProps) {
   const {
     isEnabled,
@@ -20,7 +22,7 @@ export function TextExpandable(props: TextExpandableProps) {
     handleToggleClick,
   } = useTextExpandable();
 
-  if (!isEnabled) {
+  if (!props.isEnabled || !isEnabled) {
     return props.children;
   }
 
@@ -34,8 +36,8 @@ export function TextExpandable(props: TextExpandableProps) {
         }}
       >
         <div ref={innerContainerRef}>{props.children}</div>
+        {!isExpanded && <span className={styles.ellipsis}>...</span>}
       </div>
-
       <Link className={styles.toggleLink} onClick={handleToggleClick}>
         {isExpanded ? "Less" : "More"}
       </Link>
