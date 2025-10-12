@@ -17,6 +17,7 @@ export * from "./footer";
 export * from "./fragments";
 export * from "./header";
 export * from "./heading";
+export * from "./ideas";
 export * from "./icon-button";
 export * from "./icon";
 export * from "./image-cascade";

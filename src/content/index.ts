@@ -1,5 +1,6 @@
 export * from "./articles";
 export * from "./books";
+export * from "./ideas";
 export * from "./micros";
 export * from "./quotes";
 export * from "./redirects";
