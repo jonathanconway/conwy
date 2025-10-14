@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { ProjectsListItem } from "./projects-list-item";
 import { PROJECTS_LIST_ITEM_MOCK } from "./projects-list-item.mocks";

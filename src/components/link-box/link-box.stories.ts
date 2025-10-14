@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { LinkBox } from "./link-box";
 import { LINK_BOX_PROPS_MOCK } from "./link-box.mocks";

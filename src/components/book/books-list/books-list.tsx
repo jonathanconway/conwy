@@ -22,7 +22,7 @@ export function BooksList() {
 
       <List className={styles.booksList}>
         {filteredItems.map((book) => (
-          <BooksListItem book={book} />
+          <BooksListItem key={book.meta.slug} book={book} />
         ))}
       </List>
     </>

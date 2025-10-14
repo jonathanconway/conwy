@@ -50,7 +50,7 @@ export function Study({
           {Boolean(links?.length) && (
             <List className={styles.linksList}>
               {links?.map(({ url, title }) => (
-                <li>
+                <li key={url}>
                   <Link
                     className={styles.linksListItem}
                     href={url}

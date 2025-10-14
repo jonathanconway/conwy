@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { IMAGE_CASCADE_PROPS_MOCK } from './image-cascade.mocks';
 import { ImageCascade } from "./image-cascade";
+import { IMAGE_CASCADE_PROPS_MOCK } from "./image-cascade.mocks";
 
 const meta = {
   title: "Components/ImageCascade",
@@ -18,4 +18,3 @@ export const Primary: Story = {
     ...IMAGE_CASCADE_PROPS_MOCK,
   },
 };
-

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { Section } from "./section";
 import { SECTION_PROPS_MOCK } from "./section.mocks";

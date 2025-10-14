@@ -5,6 +5,7 @@ import { PageLayout, Quote, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as quotes from "@/content/quotes";
 import { Quote as Quote_ } from "@/framework/client";
+
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {

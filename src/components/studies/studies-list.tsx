@@ -44,7 +44,7 @@ export function StudiesList() {
 
       <div className={styles.sectionsList}>
         {studiesBySectionEntries.map(([section, studies]) => (
-          <div className={styles.studiesList}>
+          <div key={section} className={styles.studiesList}>
             <SectionHeading>{sentenceCase(section)}</SectionHeading>
 
             {studies.map((study) => (

@@ -2,7 +2,7 @@
 to: src/components/<%- h.namePartBranches() %>/<%- h.namePartLeaf() %>.stories.tsx
 ---
 
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { <%- h.nameUpper() %>_PROPS_MOCK } from './<%- h.namePartLeaf() %>.mocks';
 import { <%- h.namePascal() %> } from "./<%- h.namePartLeaf() %>";

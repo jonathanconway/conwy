@@ -18,7 +18,7 @@ export function ToolsList() {
   return (
     <>
       {toolsBySectionEntries.map(([section, tools]) => (
-        <div className={styles.section}>
+        <div key={section} className={styles.section}>
           <SectionHeading>{sentenceCase(section)}</SectionHeading>
 
           <ContentList>

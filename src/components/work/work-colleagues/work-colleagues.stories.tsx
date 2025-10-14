@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { WorkColleagues } from "./work-colleagues";
 import { WORK_COLLEAGUE_RELATIONSHIPS_PROPS_MOCK } from "./work-colleagues.mocks";

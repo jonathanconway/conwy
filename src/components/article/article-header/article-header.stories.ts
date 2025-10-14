@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { ArticleHeader } from "./article-header";
 import { createArticleHeaderPropsMock } from "./article-header.mocks";

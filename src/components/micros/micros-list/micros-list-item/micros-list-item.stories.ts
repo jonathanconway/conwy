@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { MicrosListItem } from "./micros-list-item";
 import { createMicroListItemPropsMock } from "./micros-list-item.mocks";

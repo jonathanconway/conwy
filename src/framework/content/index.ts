@@ -2,6 +2,7 @@ export * from "./article";
 export * from "./book";
 export * from "./colleague";
 export * from "./content-types";
+export * from "./content-renderable";
 export * from "./idea";
 export * from "./image";
 export * from "./item";
