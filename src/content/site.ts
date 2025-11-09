@@ -1,7 +1,9 @@
+import { packageInfo } from "@/package-info";
+
 export const site = {
-  title: "conwy",
-  owner: "Jonathan Conway",
-  url: "https://conwy.co",
-  sourceUrl: "https://github.com/jonathanconway/conwy_next",
+  title: packageInfo.name,
+  owner: packageInfo.author.name,
+  url: packageInfo.homepage,
+  sourceUrl: packageInfo.repository.url,
   copyrightYear: 2024,
 };

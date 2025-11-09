@@ -10,6 +10,9 @@ export interface PackageInfo {
     readonly email: string;
     readonly url: string;
   };
+  readonly repository: {
+    readonly url: string;
+  };
 }
 
 const packageInfo = packageInfoObject as PackageInfo;

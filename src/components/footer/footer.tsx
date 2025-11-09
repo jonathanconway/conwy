@@ -6,12 +6,14 @@ import * as styles from "./footer.css";
 import { ThemeSwitch } from "./theme-switch";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.row}>
           <div>
-            © {site.copyrightYear} {site.owner}
+            © {site.copyrightYear}-{currentYear} {site.owner}
           </div>
         </div>
         <div className={styles.row}>

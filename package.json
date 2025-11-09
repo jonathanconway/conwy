@@ -8,6 +8,10 @@
     "url": "https://conwy.co"
   },
   "homepage": "https://conwy.co",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanconway/conwy.git"
+  },
   "private": true,
   "scripts": {
     "build": "next build",
