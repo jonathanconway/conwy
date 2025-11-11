@@ -75,6 +75,7 @@ export * from "./the-power-of-now";
 export * from "./the-pragmatic-programmer";
 export * from "./the-rational-optimist";
 export * from "./the-secret-of-our-success";
+export * from "./the-seven-sins-of-memory";
 export * from "./the-sovereign-individual";
 export * from "./the-storm-before-the-calm";
 export * from "./think-twice";
