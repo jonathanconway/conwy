@@ -1,5 +1,7 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
+import { influenceNotesSlug } from "../notes/influence/slug";
+
 export const influenceBook: Book = {
   meta: {
     type: "book",
@@ -9,5 +11,7 @@ export const influenceBook: Book = {
     title: "Influence",
     url: "https://ia800203.us.archive.org/33/items/ThePsychologyOfPersuasion/The%20Psychology%20of%20Persuasion.pdf",
     category: BookCategories.Business,
+
+    notesSlug: influenceNotesSlug,
   },
 };
