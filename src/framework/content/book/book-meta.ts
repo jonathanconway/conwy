@@ -1,3 +1,4 @@
+import { NoteSlug } from "../note/note-slug";
 import { Slug } from "../slug";
 import { Url } from "../url";
 
@@ -12,4 +13,6 @@ export interface BookMeta {
   readonly url: Url;
   readonly status: BookStatus;
   readonly category: BookCategory;
+
+  readonly notesSlug?: NoteSlug;
 }

@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { linkBox } from "../../link-box/link-box.mixins";
+import { boxBorderStructural } from "../../box/box.mixins";
+import { link } from "../../link/link.mixins";
 
 export const booksListItem = style({
   display: "flex",
@@ -8,10 +9,15 @@ export const booksListItem = style({
   listStyle: "none",
 });
 
-export const bookLinkBox = style({
-  ...linkBox,
+export const bookLinkBoxInner = style({
   flexDirection: "column",
   gap: "0.25rem",
+  flex: 1,
+});
 
-  "@media": {},
+export const bookNotesLink = style({
+  ...link,
+  borderLeft: `solid 1px ${boxBorderStructural.borderColor}`,
+  marginLeft: "0.25rem",
+  paddingLeft: "0.25rem",
 });
