@@ -36,6 +36,7 @@ export * from "./progressive-downloader";
 export * from "./real-favicon-generator";
 export * from "./regex-101";
 export * from "./run-js";
+export * from "./sd-card";
 export * from "./shntool";
 export * from "./simple-note";
 export * from "./sox";
