@@ -6,6 +6,7 @@ export const ToolSections = {
   CommandLine: "command-line",
   Website: "website",
   BrowserExtension: "browser-extension",
+  Belonging: "belonging",
 } as const;
 
 export type ToolSection = TypeOfConst<typeof ToolSections>;
