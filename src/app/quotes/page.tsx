@@ -6,7 +6,7 @@ import {
   Stack,
 } from "@/components";
 import { site } from "@/content";
-import { Quotes } from "@/content/fragments";
+import { quotesFragment } from "@/content/fragments";
 
 export default function QuotesPage() {
   return (
@@ -16,7 +16,7 @@ export default function QuotesPage() {
         <Stack gap={1}>
           <ResponsiveMdHalf>
             <Fragment>
-              <Quotes />
+              <quotesFragment.content />
             </Fragment>
           </ResponsiveMdHalf>
 

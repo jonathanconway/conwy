@@ -9,7 +9,7 @@ import {
   Works,
 } from "@/components";
 import { site } from "@/content";
-import { Work as Work_ } from "@/content/fragments";
+import { workFragment } from "@/content/fragments";
 import * as works from "@/content/works";
 import { getTestimonials, getWorkMetas } from "@/framework/client";
 
@@ -24,7 +24,7 @@ export default function Page() {
         <>
           <ResponsiveMdHalf>
             <Fragment>
-              <Work_ />
+              <workFragment.content />
 
               <p>
                 <Link href="/testimonials" size={TextSizes.sm}>

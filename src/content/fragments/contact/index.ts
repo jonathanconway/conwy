@@ -1,3 +1,5 @@
-import Contact from "./contact.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Contact };
+import content from "./content.mdx";
+
+export const contactFragment: Fragment = { content };

@@ -1,11 +1,12 @@
 import {
-  Fragment, // Link,
+  Fragment,
+  // Link,
   Notes,
   PageLayout,
   ResponsiveMdHalf, // Text,
 } from "@/components";
 import { site } from "@/content";
-import { Notes as Notes_ } from "@/content/fragments";
+import { notesFragment } from "@/content/fragments";
 import * as notes from "@/content/notes";
 import { getNoteMetas } from "@/framework/client";
 
@@ -20,7 +21,7 @@ export default function Page() {
         <>
           <ResponsiveMdHalf>
             <Fragment>
-              <Notes_ />
+              <notesFragment.content />
               <p>
                 {/* <Link href="/testimonials" size={TextSizes.sm}>
                   Testimonials

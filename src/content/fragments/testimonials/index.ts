@@ -1,3 +1,5 @@
-import Testimonials from "./testimonials.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Testimonials };
+import content from "./content.mdx";
+
+export const testimonialsFragment: Fragment = { content };

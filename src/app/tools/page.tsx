@@ -7,7 +7,7 @@ import {
   ToolsSections,
 } from "@/components";
 import { site } from "@/content";
-import { Tools, ToolsSidebar } from "@/content/fragments";
+import { toolsFragment, toolsSidebarFragment } from "@/content/fragments";
 
 export default function Page() {
   return (
@@ -21,12 +21,12 @@ export default function Page() {
             }}
           >
             <Fragment>
-              <Tools />
+              <toolsFragment.content />
 
               <ToolsSections />
             </Fragment>
             <Fragment>
-              <ToolsSidebar />
+              <toolsSidebarFragment.content />
             </Fragment>
           </ResponsiveStack>
 

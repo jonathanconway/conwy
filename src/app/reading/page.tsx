@@ -6,7 +6,7 @@ import {
   Stack,
 } from "@/components";
 import { site } from "@/content";
-import { Reading } from "@/content/fragments";
+import { readingFragment } from "@/content/fragments";
 
 export default function Page() {
   return (
@@ -16,7 +16,7 @@ export default function Page() {
         <Stack gap={1}>
           <ResponsiveMdHalf>
             <Fragment>
-              <Reading />
+              <readingFragment.content />
             </Fragment>
           </ResponsiveMdHalf>
 

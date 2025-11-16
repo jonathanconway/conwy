@@ -1,4 +1,5 @@
-import ToolsSidebar from "./tools-sidebar.mdx";
-import Tools from "./tools.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Tools, ToolsSidebar };
+import content from "./content.mdx";
+
+export const toolsFragment: Fragment = { content };

@@ -1,3 +1,5 @@
-import Notes from "./notes.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Notes };
+import content from "./content.mdx";
+
+export const notesFragment: Fragment = { content };

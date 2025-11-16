@@ -5,7 +5,7 @@ import {
   TwoColLayout,
 } from "@/components";
 import { site } from "@/content";
-import { Contact as Contact_ } from "@/content/fragments/contact";
+import { contactFragment } from "@/content/fragments/contact";
 
 export default function Contact() {
   return (
@@ -15,7 +15,7 @@ export default function Contact() {
         <TwoColLayout>
           <div>
             <Fragment>
-              <Contact_ />
+              <contactFragment.content />
             </Fragment>
 
             <ContactDetails />

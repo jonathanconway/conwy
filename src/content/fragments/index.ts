@@ -11,4 +11,5 @@ export * from "./speaking";
 export * from "./studies";
 export * from "./testimonials";
 export * from "./tools";
+export * from "./tools-sidebar";
 export * from "./work";

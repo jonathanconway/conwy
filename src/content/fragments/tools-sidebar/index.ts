@@ -2,4 +2,4 @@ import { Fragment } from "@/framework/client";
 
 import content from "./content.mdx";
 
-export const aboutMeFragment: Fragment = { content };
+export const toolsSidebarFragment: Fragment = { content };

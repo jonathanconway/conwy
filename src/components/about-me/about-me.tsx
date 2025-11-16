@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { AboutMe as AboutMe_ } from "@/content/fragments";
+import { aboutMeFragment } from "@/content/fragments";
 
 import { Fragment } from "../fragments";
 import { ResponsiveMdHalf } from "../responsive";
@@ -23,7 +23,7 @@ export function AboutMe() {
           />
 
           <Fragment>
-            <AboutMe_ />
+            <aboutMeFragment.content />
           </Fragment>
         </div>
       </ResponsiveMdHalf>

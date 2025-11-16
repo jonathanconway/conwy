@@ -1,3 +1,5 @@
-import Reading from "./reading.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Reading };
+import content from "./content.mdx";
+
+export const readingFragment: Fragment = { content };

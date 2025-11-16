@@ -1,3 +1,5 @@
-import Speaking from "./speaking.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Speaking };
+import content from "./content.mdx";
+
+export const speakingFragment: Fragment = { content };

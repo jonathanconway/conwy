@@ -6,7 +6,7 @@ import {
   StudiesList,
 } from "@/components";
 import { site } from "@/content";
-import { Studies } from "@/content/fragments";
+import { studiesFragment } from "@/content/fragments";
 
 export default function Page() {
   return (
@@ -16,7 +16,7 @@ export default function Page() {
         <Stack gap={1}>
           <ResponsiveMdHalf>
             <Fragment>
-              <Studies />
+              <studiesFragment.content />
             </Fragment>
           </ResponsiveMdHalf>
 

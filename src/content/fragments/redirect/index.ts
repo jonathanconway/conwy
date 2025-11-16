@@ -1,3 +1,5 @@
-import Redirect from "./redirect.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Redirect };
+import content from "./content.mdx";
+
+export const readirectFragment: Fragment = { content };

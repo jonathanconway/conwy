@@ -1,3 +1,7 @@
-import Work from "./work.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Work };
+import content from "./content.mdx";
+
+export const workFragment: Fragment = {
+  content,
+};

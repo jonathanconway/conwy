@@ -6,7 +6,7 @@ import {
   Stack,
 } from "@/components";
 import { site } from "@/content";
-import { Ideas } from "@/content/fragments";
+import { ideasFragment } from "@/content/fragments";
 
 export default async function IdeasPage() {
   return (
@@ -16,7 +16,7 @@ export default async function IdeasPage() {
         <Stack gap={2}>
           <ResponsiveMdHalf>
             <Fragment>
-              <Ideas />
+              <ideasFragment.content />
             </Fragment>
           </ResponsiveMdHalf>
 

@@ -1,3 +1,5 @@
-import Studies from "./studies.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Studies };
+import content from "./content.mdx";
+
+export const studiesFragment: Fragment = { content };

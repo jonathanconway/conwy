@@ -1,3 +1,5 @@
-import Articles from "./articles.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Articles };
+import content from "./content.mdx";
+
+export const articlesFragment: Fragment = { content };

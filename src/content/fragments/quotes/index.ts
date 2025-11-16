@@ -1,3 +1,5 @@
-import Quotes from "./quotes.mdx";
+import { Fragment } from "@/framework/client";
 
-export { Quotes };
+import content from "./content.mdx";
+
+export const quotesFragment: Fragment = { content };
