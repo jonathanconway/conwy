@@ -1,4 +1,4 @@
-import { colin, jinder } from "@/content/colleagues";
+import { colinColleague, jinderColleague } from "@/content/colleagues";
 import {
   ColleagueRelationshipTypes,
   SocialLinkTypes,
@@ -117,11 +117,11 @@ export const meta: WorkMeta = {
   ],
   colleagueRelationships: [
     {
-      colleague: jinder,
+      colleague: jinderColleague,
       relationshipType: ColleagueRelationshipTypes.Mentor,
     },
     {
-      colleague: colin,
+      colleague: colinColleague,
       relationshipType: ColleagueRelationshipTypes.Manager,
     },
   ],

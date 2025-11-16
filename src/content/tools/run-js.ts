@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const RunJs: Tool = {
+export const runJsTool: Tool = {
   section: ToolSections.App,
   slug: "run-js",
   title: "RunJS",

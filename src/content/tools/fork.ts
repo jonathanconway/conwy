@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Fork: Tool = {
+export const forkTool: Tool = {
   section: ToolSections.App,
   slug: "fork",
   title: "Fork",

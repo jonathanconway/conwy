@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Utm: Tool = {
+export const utmTool: Tool = {
   section: ToolSections.App,
   slug: "utm",
   title: "UTM",

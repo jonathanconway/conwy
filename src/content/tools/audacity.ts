@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Audacity: Tool = {
+export const audacityTool: Tool = {
   section: ToolSections.App,
   slug: "audacity",
   title: "Audacity",

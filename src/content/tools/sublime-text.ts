@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const SublimeText: Tool = {
+export const sublimeTextTool: Tool = {
   section: ToolSections.App,
   slug: "sublime-text",
   title: "Sublime Text",

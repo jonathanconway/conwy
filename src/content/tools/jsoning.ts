@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Jsoning: Tool = {
+export const jsoningTool: Tool = {
   section: ToolSections.Website,
   slug: "jsoning",
   title: "JSONing",

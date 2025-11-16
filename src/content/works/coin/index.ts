@@ -3,7 +3,7 @@ import { Work } from "@/framework/client";
 import content from "./blurb-long.mdx";
 import { meta } from "./meta";
 
-export const coin = {
+export const coinWork = {
   meta,
   content,
 } as Work;

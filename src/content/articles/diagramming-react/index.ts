@@ -3,7 +3,7 @@ import { Article } from "@/framework/client";
 import content from "./content.mdx";
 import { meta } from "./meta";
 
-export const DiagrammingReact = {
+export const diagrammingReactArticle = {
   meta,
   content,
 } as Article;

@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const HtmlColorPicker: Tool = {
+export const htmlColorPickerTool: Tool = {
   section: ToolSections.Website,
   slug: "html-color-picker",
   title: "HtmlColorPicker",

@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const IFunBox: Tool = {
+export const iFunBoxTool: Tool = {
   section: ToolSections.App,
   slug: "i-fun-box",
   title: "IFunBox",

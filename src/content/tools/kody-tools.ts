@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const KodyTools: Tool = {
+export const kodyToolsTool: Tool = {
   section: ToolSections.Website,
   slug: "kody-tools",
   title: "Kody Tools",

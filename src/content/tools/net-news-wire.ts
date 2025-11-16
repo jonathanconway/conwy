@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const netNewsWire: Tool = {
+export const netNewsWireTool: Tool = {
   section: ToolSections.App,
   slug: "net-news-wire",
   title: "NetNewsWire",

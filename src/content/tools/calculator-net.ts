@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const CalculatorNet: Tool = {
+export const calculatorNetTool: Tool = {
   section: ToolSections.Website,
   slug: "calculator-net",
   title: "Calculator.net",

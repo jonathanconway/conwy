@@ -1,6 +1,6 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
-export const mayContainLies: Book = {
+export const mayContainLiesBook: Book = {
   meta: {
     type: "book",
     slug: "may-contain-lies",

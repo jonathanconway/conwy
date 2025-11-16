@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const GithubCli: Tool = {
-  section: ToolSections.CommandLine,
+export const githubCliTool: Tool = {
+  section: ToolSections.CommandLineTool,
   slug: "github-cli",
   title: "Github CLI",
   category: "Git Tool",

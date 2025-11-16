@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Sox: Tool = {
-  section: ToolSections.CommandLine,
+export const soxTool: Tool = {
+  section: ToolSections.CommandLineTool,
   slug: "sox",
   title: "SOX (Sound eXchange)",
   category: "Audio Converter",

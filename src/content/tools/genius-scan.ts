@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const GeniusScan: Tool = {
-  section: ToolSections.Mobile,
+export const geniusScanTool: Tool = {
+  section: ToolSections.MobileApp,
   slug: "genius-scan",
   title: "GeniusScan",
   category: "Office",

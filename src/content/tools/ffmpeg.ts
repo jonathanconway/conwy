@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Ffmpeg: Tool = {
-  section: ToolSections.CommandLine,
+export const ffmpegTool: Tool = {
+  section: ToolSections.CommandLineTool,
   slug: "ffmpeg",
   title: "FFmpeg",
   category: "Multimedia Converter",

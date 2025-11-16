@@ -1,6 +1,6 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
-export const howToReadABook: Book = {
+export const howToReadABookBook: Book = {
   meta: {
     type: "book",
     slug: "how-to-read-a-book",

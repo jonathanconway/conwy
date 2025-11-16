@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Vlc: Tool = {
+export const vlcTool: Tool = {
   section: ToolSections.App,
   slug: "vlc",
   title: "VLC",

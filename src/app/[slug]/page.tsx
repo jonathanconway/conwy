@@ -31,13 +31,18 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   if (REDIRECTS[params.slug]) {
-    return generateMetadataRedirect({ params: Promise.resolve({ slug: params.slug }) });
+    return generateMetadataRedirect({
+      params: Promise.resolve({ slug: params.slug }),
+    });
   }
 
-  const pagesByName = pages as Record<string, Page__>;
-  const pageName = camelCase(params.slug);
-  if (pagesByName[pageName]) {
-    return generateMetadataPage({ params: Promise.resolve({ slug: params.slug }) });
+  const pagesBySlug = Object.fromEntries(
+    Object.values(pages).map((page) => [page.meta.slug, page]),
+  );
+  if (pagesBySlug[params.slug]) {
+    return generateMetadataPage({
+      params: Promise.resolve({ slug: params.slug }),
+    });
   }
 
   throw new Error();

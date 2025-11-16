@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Mokku: Tool = {
+export const mokkuTool: Tool = {
   section: ToolSections.BrowserExtension,
   slug: "mokku",
   title: "Mokku",

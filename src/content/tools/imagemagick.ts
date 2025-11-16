@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Imagemagick: Tool = {
-  section: ToolSections.CommandLine,
+export const imagemagickTool: Tool = {
+  section: ToolSections.CommandLineTool,
   slug: "imagemagick",
   title: "ImageMagick",
   category: "Image Converter",

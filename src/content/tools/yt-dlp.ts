@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const YtDlp: Tool = {
-  section: ToolSections.CommandLine,
+export const ytDlpTool: Tool = {
+  section: ToolSections.CommandLineTool,
   slug: "yt-dlp",
   title: "yt-dlp",
   category: "Video Downloader",

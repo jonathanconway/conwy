@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Wave: Tool = {
+export const waveTool: Tool = {
   section: ToolSections.Website,
   slug: "wave",
   title: "WebAIM WAVE",

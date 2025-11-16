@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const FileBrowserPro: Tool = {
-  section: ToolSections.Mobile,
+export const fileBrowserProTool: Tool = {
+  section: ToolSections.MobileApp,
   slug: "file-browser-pro",
   title: "FileBrowserPro",
   category: "File Management",

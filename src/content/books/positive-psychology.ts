@@ -1,9 +1,9 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
-export const positivePsychologyCoachingInPractice: Book = {
+export const positivePsychologyBook: Book = {
   meta: {
     type: "book",
-    slug: "positive-psychology-coaching-in-practice",
+    slug: "positive-psychology",
     authors: ["Suzy Green", "Stephen Palmer"],
     status: BookStatuses.Reading,
     title: "Positive Psychology Coaching in Practice",

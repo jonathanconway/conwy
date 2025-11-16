@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const KeepassXc: Tool = {
+export const keepassXcTool: Tool = {
   section: ToolSections.App,
   slug: "keepass-xc",
   title: "KeePassXC",

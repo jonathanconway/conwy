@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const SimpleNote: Tool = {
+export const simpleNoteTool: Tool = {
   section: ToolSections.App,
   slug: "simple-note",
   title: "SimpleNote",

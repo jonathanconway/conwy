@@ -17,10 +17,10 @@ export function Chain({ className, children, ...restProps }: ChainProps) {
   return (
     <div {...restProps} className={className ?? styles.chain}>
       {renderableChildren.map((child, childIndex) => (
-        <>
+        <span key={childIndex} className={styles.part}>
           {child}
           {childIndex < maxChildIndex && <Text type={TextTypes.Small}>•</Text>}
-        </>
+        </span>
       ))}
     </div>
   );

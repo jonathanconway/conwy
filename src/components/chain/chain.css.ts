@@ -6,3 +6,7 @@ export const chain = style({
   flexFlow: "wrap",
   gap: "0.25rem",
 });
+
+export const part = style({
+  display: "contents",
+});

@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Freac: Tool = {
+export const freacTool: Tool = {
   section: ToolSections.App,
   slug: "freac",
   title: "fre:ac",

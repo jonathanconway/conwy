@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const FreeRuler: Tool = {
+export const freeRulerTool: Tool = {
   section: ToolSections.App,
   slug: "free-ruler",
   title: "FreeRuler",

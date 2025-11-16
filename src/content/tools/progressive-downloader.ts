@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const ProgressiveDownloader: Tool = {
+export const progressiveDownloaderTool: Tool = {
   section: ToolSections.App,
   slug: "progressive-downloader",
   title: "Progressive Downloader",

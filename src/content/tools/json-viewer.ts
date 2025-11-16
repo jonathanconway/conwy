@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const JsonViewer: Tool = {
+export const jsonViewerTool: Tool = {
   section: ToolSections.App,
   slug: "json-viewer",
   title: "JsonViewer",

@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const TunnelBear: Tool = {
+export const tunnelBearTool: Tool = {
   section: ToolSections.App,
   slug: "tunnel-bear",
   title: "TunnelBear",

@@ -1,7 +1,7 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Shntool: Tool = {
-  section: ToolSections.CommandLine,
+export const shntoolTool: Tool = {
+  section: ToolSections.CommandLineTool,
   slug: "shntool",
   title: "shntool",
   category: "Audio Converter",

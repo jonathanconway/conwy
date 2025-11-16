@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const Regex101: Tool = {
+export const regex101Tool: Tool = {
   section: ToolSections.Website,
   slug: "regex-101",
   title: "RegEx101",

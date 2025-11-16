@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const colorSlurp: Tool = {
+export const colorSlurpTool: Tool = {
   section: ToolSections.App,
   slug: "color-slurp",
   title: "ColorSlurp",

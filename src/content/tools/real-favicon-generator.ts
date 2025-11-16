@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const RealFaviconGenerator: Tool = {
+export const realFaviconGeneratorTool: Tool = {
   section: ToolSections.Website,
   slug: "real-favicon-generator",
   title: "RealFaviconGenerator",

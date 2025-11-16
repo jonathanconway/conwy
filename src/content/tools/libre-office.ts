@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const LibreOffice: Tool = {
+export const libreOfficeTool: Tool = {
   section: ToolSections.App,
   slug: "libre-office",
   title: "LibreOffice",

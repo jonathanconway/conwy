@@ -10,7 +10,7 @@ export interface BookMeta {
   readonly slug: Slug;
   readonly title: string;
   readonly authors: readonly string[];
-  readonly url: Url;
+  readonly url?: Url;
   readonly status: BookStatus;
   readonly category: BookCategory;
 

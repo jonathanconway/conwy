@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const BeyondCompare: Tool = {
+export const beyondCompareTool: Tool = {
   section: ToolSections.App,
   slug: "beyond-compare",
   title: "Beyond Compare",

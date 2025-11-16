@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const TimeIs: Tool = {
+export const timeIsTool: Tool = {
   section: ToolSections.Website,
   slug: "time-is",
   title: "time.is",

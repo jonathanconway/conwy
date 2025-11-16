@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const ObsStudio: Tool = {
+export const obsStudioTool: Tool = {
   section: ToolSections.App,
   slug: "obs-studio",
   title: "OBS Studio",

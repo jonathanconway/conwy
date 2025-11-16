@@ -3,7 +3,7 @@ import { Work } from "@/framework/client";
 import content from "./blurb-long.mdx";
 import { meta } from "./meta";
 
-export const villaPlus = {
+export const villaPlusWork = {
   meta,
   content,
 } as Work;

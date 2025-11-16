@@ -1,6 +1,6 @@
 import { Colleague, SocialLinkTypes } from "@/framework/client";
 
-export const colin: Colleague = {
+export const colinColleague: Colleague = {
   slug: "colin",
   fullName: "Colin Myles",
   links: [

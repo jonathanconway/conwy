@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const BuiltWith: Tool = {
+export const builtWithTool: Tool = {
   section: ToolSections.Website,
   slug: "built-with",
   title: "BuiltWith",

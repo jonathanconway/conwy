@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const TheUnarchiver: Tool = {
+export const theUnarchiverTool: Tool = {
   section: ToolSections.App,
   slug: "the-unarchiver",
   title: "The Unarchiver",

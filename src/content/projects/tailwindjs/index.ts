@@ -3,7 +3,7 @@ import { Project } from "@/framework/client";
 import content from "./content.mdx";
 import { meta } from "./meta";
 
-export const tailwindjs = {
+export const tailwindjsProject = {
   meta,
   content,
 } as Project;

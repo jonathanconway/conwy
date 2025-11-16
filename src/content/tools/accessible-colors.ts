@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const AccessibleColors: Tool = {
+export const accessibleColorsTool: Tool = {
   section: ToolSections.Website,
   slug: "accessible-colors",
   title: "AccessibleColors",
