@@ -22,7 +22,7 @@ export function Link_(props: LinkProps) {
     bracketedItems,
     showOpenPopup,
     download,
-    href = "",
+    href = "javascript:",
     icon,
     size,
     layoutType = LinkLayoutTypes.Inline,

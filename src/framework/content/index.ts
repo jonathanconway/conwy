@@ -18,4 +18,5 @@ export * from "./social-link";
 export * from "./study";
 export * from "./testimonial";
 export * from "./tool";
+export * from "./url";
 export * from "./work";

@@ -1,3 +1,9 @@
-import NextLink from "next/link";
+import { LinkProps as NextLinkProps } from "next/link";
+import { HTMLProps } from "react";
 
-export type LinkBoxProps = Parameters<typeof NextLink>[0];
+import { TextSize } from "../text";
+
+export interface LinkBoxProps
+  extends Omit<Exclude<HTMLProps<HTMLAnchorElement>, NextLinkProps>, "size"> {
+  readonly size?: TextSize;
+}

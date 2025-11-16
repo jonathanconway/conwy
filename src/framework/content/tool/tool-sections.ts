@@ -2,8 +2,8 @@ import { TypeOfConst } from "../../utils";
 
 export const ToolSections = {
   App: "app",
-  Mobile: "mobile",
-  CommandLine: "command-line",
+  MobileApp: "mobile-app",
+  CommandLineTool: "command-line-tool",
   Website: "website",
   BrowserExtension: "browser-extension",
   Belonging: "belonging",

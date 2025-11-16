@@ -13,17 +13,17 @@ interface ToolProps {
   readonly tool: Tool_;
 }
 
-export function Tool({ tool }: ToolProps) {
+export function Tool(props: ToolProps) {
   return (
-    <LinkBox href={tool.url} target="_blank">
+    <LinkBox href={props.tool.url} target="_blank">
       <ContentListItem
         mainSlot={
           <>
-            {tool.mainImage && (
+            {props.tool.mainImage && (
               <div className={styles.toolImageContainer}>
                 <Image
-                  src={tool.mainImage}
-                  alt={`Icon for ${tool.title}`}
+                  src={props.tool.mainImage}
+                  alt={`Icon for ${props.tool.title}`}
                   width={32}
                   height={32}
                   style={{ width: "auto", height: "2rem" }}
@@ -31,15 +31,19 @@ export function Tool({ tool }: ToolProps) {
               </div>
             )}
 
-            <LinkBoxTitle>{tool.title}</LinkBoxTitle>
+            <LinkBoxTitle>{props.tool.title}</LinkBoxTitle>
 
-            <Text type={TextTypes.Small}>{tool.category}</Text>
+            {props.tool.category && (
+              <Text type={TextTypes.Small}>{props.tool.category}</Text>
+            )}
 
-            {tool.description && <Text>{tool.description}</Text>}
+            {props.tool.description && <Text>{props.tool.description}</Text>}
 
-            <Text type={TextTypes.Small}>
-              {tool.operatingSystems.join(", ")}
-            </Text>
+            {props.tool.operatingSystems && (
+              <Text type={TextTypes.Small}>
+                {props.tool.operatingSystems.join(", ")}
+              </Text>
+            )}
           </>
         }
       />

@@ -1,25 +1,26 @@
-import { groupBy, orderBy } from "lodash";
+import { groupBy, kebabCase, orderBy } from "lodash";
+import pluralize from "pluralize";
 
 import * as tools from "@/content/tools";
-import { sentenceCase } from "@/framework/client";
+import { ToolSections, sentenceCase } from "@/framework/client";
 
 import { Link } from "../link";
-import { TextSizes } from "../text";
+import { Text, TextSizes, TextTypes } from "../text";
 
 export function ToolsSections() {
   const toolsItems = Object.values(tools);
-  const toolsOrdered = orderBy(toolsItems, (tool) => tool.section + tool.title);
+  const toolsOrdered = orderBy(toolsItems, (tool) => tool.title);
   const toolsBySection = groupBy(toolsOrdered, (tool) => tool.section);
-
-  const sectionKeys = Object.keys(toolsBySection);
+  const sections = Object.values(ToolSections);
 
   return (
     <ul>
-      {sectionKeys.map((section) => (
+      {sections.map((section) => (
         <li key={section}>
-          <Link href={`#${section}`} size={TextSizes.sm}>
-            {sentenceCase(section)}
-          </Link>
+          <Link href={`#${kebabCase(pluralize(section))}`} size={TextSizes.sm}>
+            {sentenceCase(pluralize(section))}
+          </Link>{" "}
+          <Text type={TextTypes.Small}>({toolsBySection[section].length})</Text>
         </li>
       ))}
     </ul>

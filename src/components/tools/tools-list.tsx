@@ -1,7 +1,8 @@
 import { groupBy, orderBy } from "lodash";
+import pluralize from "pluralize";
 
 import * as tools from "@/content/tools";
-import { sentenceCase } from "@/framework/client";
+import { ToolSections, sentenceCase } from "@/framework/client";
 
 import { ContentList } from "../content-list";
 import { SectionHeading } from "../heading";
@@ -11,18 +12,18 @@ import * as styles from "./tools-list.css";
 
 export function ToolsList() {
   const toolsItems = Object.values(tools);
-  const toolsOrdered = orderBy(toolsItems, (tool) => tool.section + tool.title);
+  const toolsOrdered = orderBy(toolsItems, (tool) => tool.title);
+  const toolsSections = Object.values(ToolSections);
   const toolsBySection = groupBy(toolsOrdered, (tool) => tool.section);
-  const toolsBySectionEntries = Object.entries(toolsBySection);
 
   return (
     <>
-      {toolsBySectionEntries.map(([section, tools]) => (
+      {toolsSections.map((section) => (
         <div key={section} className={styles.section}>
-          <SectionHeading>{sentenceCase(section)}</SectionHeading>
+          <SectionHeading>{sentenceCase(pluralize(section))}</SectionHeading>
 
           <ContentList>
-            {tools.map((tool) => (
+            {toolsBySection[section].map((tool) => (
               <Tool key={tool.slug} tool={tool} />
             ))}
           </ContentList>
