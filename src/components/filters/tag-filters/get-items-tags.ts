@@ -1,5 +1,6 @@
-import { get, isArray, uniq } from "lodash";
+import { get, isArray, uniq, without } from "lodash";
 
+import { ALL } from "./default-selected-tags";
 import { TagFiltersProps } from "./tag-filters-props";
 
 export function getItemsTags<T>(props: TagFiltersProps<T>) {
@@ -15,5 +16,7 @@ export function getItemsTags<T>(props: TagFiltersProps<T>) {
 
   const tagsFieldValuesUniq = uniq(tagsFieldValuesString);
 
-  return tagsFieldValuesUniq;
+  const tagsFieldValuesUniqWithoutAll = without(tagsFieldValuesUniq, ALL);
+
+  return tagsFieldValuesUniqWithoutAll;
 }

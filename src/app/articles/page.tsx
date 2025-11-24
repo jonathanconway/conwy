@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import {
   ArticlesList,
   ArticlesTagFilters,
@@ -14,20 +16,22 @@ export default function Page() {
   const items = pickAndCombineListItems<Post>([articles, micros]);
 
   return (
-    <PageLayout
-      selectedNavPath="/articles"
-      main={
-        <>
-          <Fragment>
-            <articlesFragment.content />
-          </Fragment>
+    <Suspense>
+      <PageLayout
+        selectedNavPath="/articles"
+        main={
+          <>
+            <Fragment>
+              <articlesFragment.content />
+            </Fragment>
 
-          <ArticlesTagFilters items={items} />
+            <ArticlesTagFilters items={items} />
 
-          <ArticlesList items={items} />
-        </>
-      }
-    />
+            <ArticlesList items={items} />
+          </>
+        }
+      />
+    </Suspense>
   );
 }
 

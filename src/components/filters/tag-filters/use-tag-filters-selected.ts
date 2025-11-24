@@ -1,14 +1,24 @@
 "use client";
 
-import { useSessionStorage } from "@/framework/client";
+import { kebabCase } from "lodash";
+import { useSearchParams } from "next/navigation";
 
-import { DEFAULT_SELECTED_TAGS } from "./default-selected-tags";
+import { ALL } from "./default-selected-tags";
 
 export function useTagFiltersSelected(contentType: string) {
-  const [selectedTags, setSelectedTags] = useSessionStorage(
-    `conwy-${contentType}-filters`,
-    DEFAULT_SELECTED_TAGS,
+  const searchParamKey = `${contentType}-tag`;
+
+  const searchParams = useSearchParams();
+
+  const selectedTags = Array.from(
+    searchParams.get(searchParamKey)?.split(",") ?? [ALL],
   );
+
+  function setSelectedTags(newSelectedTags: readonly string[]) {
+    const params = new URLSearchParams();
+    params.set(searchParamKey, newSelectedTags.map(kebabCase).join(","));
+    window.history.pushState(null, "", `?${params.toString()}`);
+  }
 
   return {
     selectedTags,

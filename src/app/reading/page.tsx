@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import {
   BooksList,
   Fragment,
@@ -10,20 +12,22 @@ import { readingFragment } from "@/content/fragments";
 
 export default function Page() {
   return (
-    <PageLayout
-      selectedNavPath="/reading"
-      main={
-        <Stack gap={1}>
-          <ResponsiveMdHalf>
-            <Fragment>
-              <readingFragment.content />
-            </Fragment>
-          </ResponsiveMdHalf>
+    <Suspense>
+      <PageLayout
+        selectedNavPath="/reading"
+        main={
+          <Stack gap={1}>
+            <ResponsiveMdHalf>
+              <Fragment>
+                <readingFragment.content />
+              </Fragment>
+            </ResponsiveMdHalf>
 
-          <BooksList />
-        </Stack>
-      }
-    />
+            <BooksList />
+          </Stack>
+        }
+      />
+    </Suspense>
   );
 }
 

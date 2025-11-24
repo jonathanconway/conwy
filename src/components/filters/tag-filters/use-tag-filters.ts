@@ -1,9 +1,7 @@
-import { uniq, without } from "lodash";
 import { plural } from "pluralize";
+import { useCallback } from "react";
 
-import { getAreAllSame } from "@/framework/client";
-
-import { ALL, DEFAULT_SELECTED_TAGS } from "./default-selected-tags";
+import { ALL } from "./default-selected-tags";
 import { getItemsTags } from "./get-items-tags";
 import { TagFiltersProps } from "./tag-filters-props";
 import { useTagFiltersSelected } from "./use-tag-filters-selected";
@@ -27,36 +25,16 @@ export function useTagFilters<T>(params: UseTagFiltersParams<T>) {
 
   const allTags = getItemsTags(params);
 
-  function onSelectTag(tag: string) {
-    return () => {
-      if (tag === ALL) {
-        setSelectedTags([ALL]);
-        return;
-      }
-
-      if (getAreAllSame(selectedTags, allTags)) {
+  const onSelectTag = useCallback(
+    (tag: string) => {
+      return () => {
         setSelectedTags([tag]);
-        return;
-      }
+      };
+    },
+    [selectedTags],
+  );
 
-      if (selectedTags.includes(tag)) {
-        const selectedTagsWithoutTagOrAll = without(
-          uniq([...selectedTags, tag]),
-          ALL,
-          tag,
-        );
-        if (selectedTagsWithoutTagOrAll.length === 0) {
-          setSelectedTags(DEFAULT_SELECTED_TAGS);
-        } else {
-          setSelectedTags(selectedTagsWithoutTagOrAll);
-        }
-        return;
-      }
-      setSelectedTags(without(uniq([...selectedTags, tag]), ALL));
-    };
-  }
-
-  const displayTags = ["All", ...allTags];
+  const displayTags = [ALL, ...allTags];
 
   return {
     title,

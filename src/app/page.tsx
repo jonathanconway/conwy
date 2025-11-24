@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { AboutMe, ArticlesRecentList, PageLayout } from "@/components";
 import * as articles from "@/content/articles";
 import * as micros from "@/content/micros";
@@ -10,14 +12,16 @@ export default function Home() {
   });
 
   return (
-    <PageLayout
-      main={
-        <>
-          <AboutMe />
+    <Suspense>
+      <PageLayout
+        main={
+          <>
+            <AboutMe />
 
-          <ArticlesRecentList items={items} />
-        </>
-      }
-    />
+            <ArticlesRecentList items={items} />
+          </>
+        }
+      />
+    </Suspense>
   );
 }

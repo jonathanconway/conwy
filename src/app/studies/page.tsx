@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import {
   Fragment,
   PageLayout,
@@ -10,20 +12,22 @@ import { studiesFragment } from "@/content/fragments";
 
 export default function Page() {
   return (
-    <PageLayout
-      selectedNavPath="/studies"
-      main={
-        <Stack gap={1}>
-          <ResponsiveMdHalf>
-            <Fragment>
-              <studiesFragment.content />
-            </Fragment>
-          </ResponsiveMdHalf>
+    <Suspense>
+      <PageLayout
+        selectedNavPath="/studies"
+        main={
+          <Stack gap={1}>
+            <ResponsiveMdHalf>
+              <Fragment>
+                <studiesFragment.content />
+              </Fragment>
+            </ResponsiveMdHalf>
 
-          <StudiesList />
-        </Stack>
-      }
-    />
+            <StudiesList />
+          </Stack>
+        }
+      />
+    </Suspense>
   );
 }
 

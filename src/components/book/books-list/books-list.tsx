@@ -13,7 +13,7 @@ export function BooksList() {
   const { filteredItems } = useTagFiltersResults({
     items: books,
     contentType: "book",
-    tagField: "category",
+    tagField: "meta.category",
   });
 
   return (
