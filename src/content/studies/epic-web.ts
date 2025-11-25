@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework/client";
+import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
 
 export const epicWebStudy: Study = {
   title: "Epic React",
@@ -11,5 +11,5 @@ export const epicWebStudy: Study = {
   credential: undefined,
   mark: undefined,
   description: undefined,
-  category: "Software Development",
+  category: StudyCategories.SoftwareDevelopment,
 };

@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework/client";
+import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
 
 export const networkAdministrationHornsbyCollegeOfTafeStudy: Study = {
   title: "Network Administration",
@@ -18,5 +18,5 @@ export const networkAdministrationHornsbyCollegeOfTafeStudy: Study = {
       url: "/images/studies/network-administration-tafe/network-administration-tafe-certificate.pdf",
     },
   ],
-  category: "Cloud",
+  category: StudyCategories.Cloud,
 };

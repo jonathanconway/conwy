@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework/client";
+import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
 
 export const interactionDesignSydneyUniStudy: Study = {
   title: "Interaction Design and Electronic Arts",
@@ -17,5 +17,5 @@ export const interactionDesignSydneyUniStudy: Study = {
       url: "/images/studies/interaction-design-sydney-uni/interaction-design-sydney-uni-certificate.pdf",
     },
   ],
-  category: "Design",
+  category: StudyCategories.Design,
 };

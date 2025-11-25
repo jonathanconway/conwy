@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework/client";
+import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
 
 export const testingJavascriptStudy: Study = {
   title: "Testing Javascript",
@@ -11,5 +11,5 @@ export const testingJavascriptStudy: Study = {
   credential: undefined,
   mark: undefined,
   description: undefined,
-  category: "Software Development",
+  category: StudyCategories.SoftwareDevelopment,
 };

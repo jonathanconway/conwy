@@ -1,3 +1,4 @@
+import { StudyCategory } from "./study-category";
 import { StudyStatus } from "./study-status";
 
 export interface Study {
@@ -11,7 +12,7 @@ export interface Study {
   readonly credential?: string;
   readonly mark?: string;
   readonly description?: string;
-  readonly category: string;
+  readonly category: StudyCategory;
   readonly links?: readonly {
     readonly title?: string;
     readonly url: string;

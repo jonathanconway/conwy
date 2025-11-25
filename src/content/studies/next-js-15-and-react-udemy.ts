@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework/client";
+import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
 
 export const nextJs15AndReactUdemyStudy: Study = {
   title: "Next.js 15 and React",
@@ -17,5 +17,5 @@ export const nextJs15AndReactUdemyStudy: Study = {
       url: "http://ude.my/UC-488fdf56-580f-41d1-907a-0151e4b71dc0",
     },
   ],
-  category: "Software Development",
+  category: StudyCategories.SoftwareDevelopment,
 };

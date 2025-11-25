@@ -1,4 +1,4 @@
-import { Study, StudyStatuses } from "@/framework/client";
+import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
 
 export const secureCodeWarriorJavascriptStudy: Study = {
   title: "Secure Development Assessment - Javascript Basic",
@@ -9,5 +9,5 @@ export const secureCodeWarriorJavascriptStudy: Study = {
   mark: "94%",
   status: StudyStatuses.Completed,
   links: [],
-  category: "Software Development",
+  category: StudyCategories.SoftwareDevelopment,
 };
