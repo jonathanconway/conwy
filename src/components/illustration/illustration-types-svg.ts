@@ -1,0 +1,48 @@
+import { IllustrationTypes } from "./illustration-types";
+import {
+  Box,
+  Bug,
+  Code,
+  ComputerScreen,
+  ComputerScreenWithBugAndCode,
+  ComputerScreenWithEarth,
+  ComputerScreenWithEarthAndNeuralNet,
+  Earth,
+  Exercise,
+  KeyboardKey,
+  KeyboardShortcuts,
+  NeuralNet,
+  Page,
+  PageWithTicksAndCrosses,
+  Person,
+  Robot,
+  StickFigure,
+  StickFigureJumping,
+  Tick,
+  UserFlow,
+} from "./illustrations";
+
+export const ILLUSTRATION_TYPE_SVGS = {
+  [IllustrationTypes.Box]: Box,
+  [IllustrationTypes.Bug]: Bug,
+  [IllustrationTypes.Code]: Code,
+  [IllustrationTypes.ComputerScreen]: ComputerScreen,
+  [IllustrationTypes.ComputerScreenWithBugAndCode]:
+    ComputerScreenWithBugAndCode,
+  [IllustrationTypes.ComputerScreenWithEarth]: ComputerScreenWithEarth,
+  [IllustrationTypes.ComputerScreenWithEarthAndNeuralNet]:
+    ComputerScreenWithEarthAndNeuralNet,
+  [IllustrationTypes.Earth]: Earth,
+  [IllustrationTypes.Exercise]: Exercise,
+  [IllustrationTypes.KeyboardKey]: KeyboardKey,
+  [IllustrationTypes.KeyboardShortcuts]: KeyboardShortcuts,
+  [IllustrationTypes.NeuralNet]: NeuralNet,
+  [IllustrationTypes.Page]: Page,
+  [IllustrationTypes.PageWithTicksAndCrosses]: PageWithTicksAndCrosses,
+  [IllustrationTypes.Person]: Person,
+  [IllustrationTypes.Robot]: Robot,
+  [IllustrationTypes.StickFigure]: StickFigure,
+  [IllustrationTypes.StickFigureJumping]: StickFigureJumping,
+  [IllustrationTypes.Tick]: Tick,
+  [IllustrationTypes.UserFlow]: UserFlow,
+} as const;

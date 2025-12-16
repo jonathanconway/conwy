@@ -12,10 +12,10 @@ import {
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
-import illustrationTypesSvgGen from "./illustration-types-svg.gen";
-import illustrationTypesGen from "./illustration-types.gen";
-import illustrationFnGen from "./illustration.fn.gen";
+import { illustrationTypesSvgGen } from "./illustration-types-svg.gen";
+import { illustrationTypesGen } from "./illustration-types.gen";
 import { IllustrationGenParams } from "./illustration.params";
+import { illustrationGen } from "./illustration_.gen";
 import illustrationsIndexGen from "./illustrations.index.gen";
 
 export async function illustration(params: IllustrationGenParams) {
@@ -30,12 +30,18 @@ export async function illustration(params: IllustrationGenParams) {
   const illustrationsTypesPath = `${illustrationPath}/illustration-types.ts`;
   const illustrationsTypesSrc = readFileSync(illustrationsTypesPath).toString();
 
+  const illustrationsTypesSvgPath = `${illustrationPath}/illustration-types-svg.ts`;
+  const illustrationsTypesSvgSrc = readFileSync(
+    illustrationsTypesSvgPath,
+  ).toString();
+
   const templateParams = {
     ...params,
     nameComponent,
     nameComponentProps,
     illustrationPath,
     illustrationsTypesSrc,
+    illustrationsTypesSvgSrc,
   };
 
   // fileWrite(
@@ -43,17 +49,27 @@ export async function illustration(params: IllustrationGenParams) {
   //   illustrationFnGen(templateParams),
   // );
 
+  const illustrationTypesGenOutput = illustrationTypesGen(templateParams);
+  // fileWrite(illustrationsTypesPath, illustrationTypesGenOutput);
+  // await runPrettier(illustrationsTypesPath);
+
+  const illustrationTypesSvgGenOutput = illustrationTypesSvgGen(templateParams);
+  console.log("illustrationsTypesSvgPath", illustrationsTypesSvgPath);
+  console.log(illustrationTypesSvgGenOutput);
+  // fileWrite(illustrationsTypesSvgPath, illustrationTypesSvgGenOutput);
+  // await runPrettier(illustrationsTypesSvgPath);
+
+  const illustrationComponentPath = `${illustrationsPath}/${name}.tsx`;
+  const illustrationComponentGenOutpt = illustrationGen(templateParams);
+  // fileWrite(illustrationComponentPath, illustrationComponentGenOutpt);
+  // await runPrettier(illustrationComponentPath);
+
   // fileAppendAndSortLines(
   //   `${illustrationsPath}/index.ts`,
   //   illustrationsIndexGen(templateParams),
   // );
 
-  illustrationTypesGen(templateParams);
-  // fileWrite(illustrationsTypesPath, illustrationTypesGen(templateParams));
-  // runPrettier(illustrationsTypesPath);
-
-  // fileWrite(illustrationsTypesPath, illustrationTypesSvgGen(templateParams));
-  // runPrettier(illustrationsTypesPath);
+  //-----------------------
 
   // fileAppendToConstObject(
   //   `${illustrationPath}/illustration-types.ts`,

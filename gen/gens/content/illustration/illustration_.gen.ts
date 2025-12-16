@@ -1,6 +1,6 @@
 import { IllustrationGenTemplateParams } from "./illustration.params";
 
-export default ({
+export const illustrationGen = ({
   nameComponent,
   nameComponentProps,
   description,

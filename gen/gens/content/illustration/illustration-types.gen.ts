@@ -4,7 +4,7 @@ import * as tsParser from "recast/parsers/typescript";
 
 import { IllustrationGenTemplateParams } from "./illustration.params";
 
-export default ({
+export const illustrationTypesGen = ({
   name,
   nameComponent,
   illustrationsTypesSrc,

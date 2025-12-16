@@ -26,7 +26,7 @@ export async function book(params: BookGenParams) {
     kebabCase(category?.toLowerCase()) ?? BookCategories.SoftwareDevelopment,
   );
 
-  const bookGenTemplateParams: BookGenTemplateParams = {
+  const templateParams: BookGenTemplateParams = {
     ...params,
 
     title: titleCase(name),
@@ -37,10 +37,12 @@ export async function book(params: BookGenParams) {
   };
 
   const bookPath = `${booksPath}/${name}.ts`;
-  fileWrite(bookPath, bookGen(bookGenTemplateParams));
+  const bookGenOutput = bookGen(templateParams);
+  fileWrite(bookPath, bookGenOutput);
   runPrettier(bookPath);
 
   const booksIndexPath = `${booksPath}/index.ts`;
-  fileAppendAndSortLines(booksIndexPath, booksIndexGen(bookGenTemplateParams));
+  const bookIndexGenOutput = booksIndexGen(templateParams);
+  fileAppendAndSortLines(booksIndexPath, bookIndexGenOutput);
   runPrettier(booksIndexPath);
 }

@@ -17,7 +17,9 @@ export function folderWrite(folderPath: string) {
 export function fileWrite(filePath: string, contents: string) {
   const fullPath = getFullPath(filePath);
 
-  writeFileSync(fullPath, contents);
+  writeFileSync(fullPath, contents, {
+    flag: "w",
+  });
 }
 
 export function fileAppendAndSortLines(filePath: string, contents: string) {

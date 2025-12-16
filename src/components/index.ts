@@ -20,6 +20,7 @@ export * from "./heading";
 export * from "./ideas";
 export * from "./icon-button";
 export * from "./icon";
+export * from "./illustration";
 export * from "./image-cascade";
 export * from "./image-modal";
 export * from "./image";
