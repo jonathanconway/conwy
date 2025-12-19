@@ -2,6 +2,7 @@ export * from "./ai-for-developers";
 export * from "./ai-patterns";
 export * from "./code-reviews";
 export * from "./combinatorial-testing";
+export * from "./designerly-cv";
 export * from "./diagramming-react";
 export * from "./diagramming-ts";
 export * from "./front-end-observability";
