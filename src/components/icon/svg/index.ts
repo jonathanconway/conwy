@@ -23,6 +23,7 @@ export * from "./open-in-new";
 export * from "./product-hunt";
 export * from "./person";
 export * from "./quote";
+export * from "./signal";
 export * from "./substack";
 export * from "./telegram";
 export * from "./twitter";

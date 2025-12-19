@@ -41,6 +41,12 @@ const CONTACTS = [
     href: "https://web.telegram.org/k/#@conw_y",
   },
   {
+    iconType: IconTypes.Signal,
+    label: "Signal",
+    id: "@conwy.70",
+    href: "https://signal.me/#eu/M42htT3Khv5c1GIsCFskgvWvKZd--cILZl1SGhFpndJoQOvoPr1G2a9DeMq1Hezb",
+  },
+  {
     iconType: IconTypes.Goodreads,
     label: "Goodreads",
     href: "https://www.goodreads.com/review/list/54406240?shelf=read",
