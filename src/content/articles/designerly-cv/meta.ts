@@ -11,7 +11,12 @@ export const meta: ArticleMeta = {
   mainImage: {
     src: "/images/articles/designerly-cv/main.jpg",
   },
-  socialLinks: [],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.LinkedIn,
+      url: "https://www.linkedin.com/pulse/how-i-built-my-designerly-cv-jonathan-conway-nxzrc",
+    },
+  ],
   discussionLinks: [],
   isPinned: true,
 };
