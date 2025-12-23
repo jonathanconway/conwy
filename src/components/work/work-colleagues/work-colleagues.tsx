@@ -19,16 +19,16 @@ export function WorkColleagues(props: WorkProjectsProps) {
       <ul>
         <ListExpandable
           listItems={props.colleagueRelationships.map(
-            ({ colleague: { fullName, links }, relationshipType }) => (
-              <li key={fullName} className={styles.item}>
+            ({ colleague, relationshipType }) => (
+              <li key={colleague.fullName} className={styles.item}>
                 <Link
                   size={TextSizes.sm}
-                  href={links[0].url}
+                  href={colleague.meta.links[0].url}
                   icon={IconTypes.Person}
                   tooltip={{ contents: sentenceCase(relationshipType) }}
                   target="_blank"
                 >
-                  {fullName}
+                  {colleague.fullName}
                 </Link>
               </li>
             ),

@@ -1,7 +1,7 @@
-import { SocialLink } from "../social-link";
+import { Content } from "../content";
 
-export interface Colleague {
-  readonly slug: string;
+import { ColleagueMeta } from "./colleague-meta";
+
+export interface Colleague extends Content<"colleague", ColleagueMeta> {
   readonly fullName: string;
-  readonly links: readonly SocialLink[];
 }

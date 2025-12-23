@@ -6,7 +6,9 @@ import * as styles from "./aside.css";
 
 type AsideProps = HTMLProps<HTMLElement>;
 
-export function Aside({ className, children, ...restProps }: AsideProps) {
+export function Aside(props: AsideProps) {
+  const { className, children, ...restProps } = props;
+
   return (
     <aside className={className ?? styles.aside} {...restProps}>
       <Fragment>{children}</Fragment>

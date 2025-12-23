@@ -1,8 +1,10 @@
-import { MDXContent } from "mdx/types";
+import { JSX } from "react";
+
+import { Content } from "../content";
 
 import { WorkMeta } from "./work-meta";
 
-export interface Work {
-  readonly meta: WorkMeta;
-  readonly content: MDXContent;
+export interface Work extends Content<"work", WorkMeta> {
+  readonly blurbLong: JSX.Element;
+  readonly blurbShort?: JSX.Element;
 }

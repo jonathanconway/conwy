@@ -6,12 +6,6 @@ export interface ArticleBodyProps {
   readonly article: Article_;
 }
 
-export function ArticleBody({
-  article: { content: Content },
-}: ArticleBodyProps) {
-  return (
-    <Fragment>
-      <Content />
-    </Fragment>
-  );
+export function ArticleBody(props: ArticleBodyProps) {
+  return <Fragment>{props.article.content}</Fragment>;
 }

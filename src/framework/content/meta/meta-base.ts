@@ -1,7 +1,5 @@
-import { Image } from "../image";
+import { Slug } from "../slug";
 
 export interface MetaBase {
-  readonly slug: string;
-  readonly title?: string;
-  readonly mainImage?: Image;
+  readonly slug: Slug;
 }

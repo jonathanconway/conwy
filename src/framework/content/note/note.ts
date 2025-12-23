@@ -1,8 +1,9 @@
-import { MDXContent } from "mdx/types";
+import { JSX } from "react";
+
+import { Content } from "../content";
 
 import { NoteMeta } from "./note-meta";
 
-export interface Note {
-  readonly meta: NoteMeta;
-  readonly content: MDXContent;
+export interface Note extends Content<"note", NoteMeta> {
+  readonly content: JSX.Element;
 }

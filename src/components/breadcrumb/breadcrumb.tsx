@@ -3,10 +3,12 @@ import { Link } from "../link";
 import * as styles from "./breadcrumb.css";
 
 interface BreadcrumbProps {
-  readonly segments: readonly {
-    readonly url?: string;
-    readonly title: string;
-  }[];
+  readonly segments: readonly BreadcrumbPropsSegment[];
+}
+
+interface BreadcrumbPropsSegment {
+  readonly url?: string;
+  readonly title: string;
 }
 
 export function Breadcrumb(props: BreadcrumbProps) {

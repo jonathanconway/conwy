@@ -9,10 +9,10 @@ interface IdeaProps {
   readonly idea: Idea_;
 }
 
-export function Idea({ idea }: IdeaProps) {
+export function Idea(props: IdeaProps) {
   return (
     <Stack direction={StackDirections.Column} gap={0.5}>
-      <Fragment>{idea.content}</Fragment>
+      <Fragment>{props.idea.content}</Fragment>
     </Stack>
   );
 }

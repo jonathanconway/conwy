@@ -1,19 +1,8 @@
-import { Url } from "../url";
+import { Content } from "../content";
 
-import { ToolSection } from "./tool-sections";
+import { ToolMeta } from "./tool-meta";
 
 /**
- * `Tool` is something I use frequently – either software or a physical device or belonging.
+ * A `Tool` is something I use frequently – either software or a physical device or belonging.
  */
-export interface Tool {
-  readonly slug: string;
-  readonly title: string;
-  readonly category?: string;
-  readonly url?: Url;
-  readonly operatingSystems?: readonly string[];
-  readonly mainImage?: string;
-  readonly description?: string;
-  readonly date: string;
-  readonly usage?: string;
-  readonly section: ToolSection;
-}
+export interface Tool extends Content<"tool", ToolMeta> {}

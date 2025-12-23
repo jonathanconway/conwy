@@ -15,15 +15,15 @@ interface ToolProps {
 
 export function Tool(props: ToolProps) {
   return (
-    <LinkBox href={props.tool.url} target="_blank">
+    <LinkBox href={props.tool.meta.url} target="_blank">
       <ContentListItem
         mainSlot={
           <>
-            {props.tool.mainImage && (
+            {props.tool.meta.mainImage && (
               <div className={styles.toolImageContainer}>
                 <Image
-                  src={props.tool.mainImage}
-                  alt={`Icon for ${props.tool.title}`}
+                  src={props.tool.meta.mainImage}
+                  alt={`Icon for ${props.tool.meta.title}`}
                   width={32}
                   height={32}
                   style={{ width: "auto", height: "2rem" }}
@@ -31,17 +31,19 @@ export function Tool(props: ToolProps) {
               </div>
             )}
 
-            <LinkBoxTitle>{props.tool.title}</LinkBoxTitle>
+            <LinkBoxTitle>{props.tool.meta.title}</LinkBoxTitle>
 
-            {props.tool.category && (
-              <Text type={TextTypes.Small}>{props.tool.category}</Text>
+            {props.tool.meta.category && (
+              <Text type={TextTypes.Small}>{props.tool.meta.category}</Text>
             )}
 
-            {props.tool.description && <Text>{props.tool.description}</Text>}
+            {props.tool.meta.description && (
+              <Text>{props.tool.meta.description}</Text>
+            )}
 
-            {props.tool.operatingSystems && (
+            {props.tool.meta.operatingSystems && (
               <Text type={TextTypes.Small}>
-                {props.tool.operatingSystems.join(", ")}
+                {props.tool.meta.operatingSystems.join(", ")}
               </Text>
             )}
           </>

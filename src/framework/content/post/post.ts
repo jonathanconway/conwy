@@ -1,5 +1,7 @@
-import { PostMeta } from "./post-meta";
+import { Article } from "../article";
+import { Micro } from "../micro";
 
-export interface Post<TMeta extends PostMeta = PostMeta> {
-  readonly meta: TMeta;
-}
+/**
+ * A `Post` is a dated content item listed on the homepage.
+ */
+export type Post = Article | Micro;

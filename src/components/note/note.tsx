@@ -1,8 +1,6 @@
 import { Note as Note_ } from "@/framework/client";
 
 import { Fragment } from "../fragments";
-import { Heading } from "../heading";
-import { Stack } from "../stack";
 import { Text } from "../text";
 
 import { NoteSource } from "./note-source";
@@ -13,7 +11,7 @@ interface NoteProps {
 }
 
 export function Note({ note }: NoteProps) {
-  const { meta: noteMeta, content: Content } = note;
+  const { meta: noteMeta, content } = note;
 
   return (
     <div className={styles.container}>
@@ -32,9 +30,7 @@ export function Note({ note }: NoteProps) {
           <div className={styles.blurb}>
             {noteMeta.blurb ?? noteMeta.shortBlurb}
           </div>
-          <Fragment>
-            <Content />
-          </Fragment>
+          <Fragment>{content}</Fragment>
         </div>
 
         <div className={styles.aside}></div>

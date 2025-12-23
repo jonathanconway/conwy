@@ -3,8 +3,8 @@ import { Idea } from "./idea";
 export function createIdeaMock(): Idea {
   return {
     type: "idea",
-    slug: "mock-idea",
     meta: {
+      slug: "mock-idea",
       title: "Mock idea`",
     },
     content: <>Content</>,

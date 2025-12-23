@@ -2,6 +2,7 @@ import { Micro } from "@/framework/client";
 
 import { meta } from "./meta";
 
-export const goodSystemsRedundancyMicro = {
+export const goodSystemsRedundancyMicro: Micro = {
+  type: "micro",
   meta,
-} as Micro;
+};

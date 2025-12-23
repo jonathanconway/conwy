@@ -1,5 +1,5 @@
-import { WorkProject } from "@/framework/client";
+import { WorkMetaProject } from "@/framework/client";
 
 export interface WorkProjectsProps {
-  readonly projects: readonly WorkProject[];
+  readonly projects: readonly WorkMetaProject[];
 }

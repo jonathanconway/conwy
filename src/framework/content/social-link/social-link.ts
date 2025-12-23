@@ -1,7 +1,7 @@
+import { Link } from "../link";
+
 import { SocialLinkType } from "./social-link-type";
 
-export interface SocialLink {
+export interface SocialLink extends Link {
   readonly type: SocialLinkType;
-  readonly url: string;
-  readonly title?: string;
 }

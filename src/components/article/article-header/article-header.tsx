@@ -12,11 +12,12 @@ export interface ArticleHeaderProps {
   readonly article: Article_;
 }
 
-export function ArticleHeader({
-  article: {
-    meta: { date, title, tags, slug },
-  },
-}: ArticleHeaderProps) {
+export function ArticleHeader(props: ArticleHeaderProps) {
+  const {
+    article: {
+      meta: { date, title, tags, slug },
+    },
+  } = props;
   const historyUrl = `${info.repoUrl}/commits/main/src/content/articles/${slug}/content.mdx`;
 
   return (

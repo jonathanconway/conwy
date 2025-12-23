@@ -41,7 +41,7 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allIdeaMetas = Object.values(ideas);
+  const allIdeaMetas = Object.values(ideas).map((item) => item.meta);
   return allIdeaMetas;
 }
 
@@ -49,9 +49,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   const ideaModule = await import(`@/content/ideas/${params.slug}`);
   const idea = Object.values(ideaModule)[0] as Idea_;
-  const title = idea.meta.title;
+  const title = idea.meta.title.toLowerCase();
 
   return {
-    title: `${site.title} - idea - ${title.toLowerCase()}`,
+    title: `${site.title} - idea - ${title}`,
   };
 }

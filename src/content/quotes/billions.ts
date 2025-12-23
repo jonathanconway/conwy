@@ -1,7 +1,10 @@
 import { Quote } from "@/framework/client";
 
 export const billionsQuote: Quote = {
-  author: "Sergiu Celibidache",
+  type: "quote",
   text: "How many ‘nos’ are there? Billions. And how many ‘yeses’? Just one.",
-  slug: "billions",
+  meta: {
+    author: "Sergiu Celibidache",
+    slug: "billions",
+  },
 };

@@ -1,4 +1,3 @@
-import { Stack } from "@/components/stack";
 import { Study as Study_, isNotNil } from "@/framework/client";
 
 import { ContentListItem } from "../../content-list";
@@ -14,19 +13,23 @@ interface StudyProps {
   readonly study: Study_;
 }
 
-export function Study({
-  study: {
-    title,
-    mainUrl,
-    credential,
-    type,
-    institution,
-    date,
-    description,
-    mark,
-    links,
-  },
-}: StudyProps) {
+export function Study(props: StudyProps) {
+  const {
+    study: {
+      meta: {
+        title,
+        mainUrl,
+        credential,
+        type,
+        institution,
+        date,
+        description,
+        mark,
+        links,
+      },
+    },
+  } = props;
+
   const details = [credential, mark, institution, type, date]
     .filter(isNotNil)
     .join(" • ");

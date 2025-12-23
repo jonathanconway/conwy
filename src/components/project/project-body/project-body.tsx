@@ -6,12 +6,6 @@ interface ProjectBodyProps {
   readonly project: Project_;
 }
 
-export function ProjectBody({
-  project: { content: Content },
-}: ProjectBodyProps) {
-  return (
-    <Fragment>
-      <Content />
-    </Fragment>
-  );
+export function ProjectBody(props: ProjectBodyProps) {
+  return <Fragment>{props.project.content}</Fragment>;
 }

@@ -1,3 +1,3 @@
 export * from "./micro";
 export * from "./micro-meta";
-export * from "./micro-meta.mocks";
+export * from "./micro.mocks";

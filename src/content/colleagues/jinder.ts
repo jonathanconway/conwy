@@ -1,12 +1,15 @@
 import { Colleague, SocialLinkTypes } from "@/framework/client";
 
 export const jinderColleague: Colleague = {
-  slug: "jinder",
+  type: "colleague",
   fullName: "Jinder Sidhu",
-  links: [
-    {
-      type: SocialLinkTypes.LinkedIn,
-      url: "https://www.linkedin.com/in/jinder",
-    },
-  ],
+  meta: {
+    slug: "jinder",
+    links: [
+      {
+        type: SocialLinkTypes.LinkedIn,
+        url: "https://www.linkedin.com/in/jinder",
+      },
+    ],
+  },
 };

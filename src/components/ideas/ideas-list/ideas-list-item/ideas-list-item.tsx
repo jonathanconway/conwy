@@ -14,8 +14,8 @@ interface IdeasListItemProps {
 
 export function IdeasListItem({ idea }: IdeasListItemProps) {
   return (
-    <li key={idea.slug} className={styles.ideasListItem}>
-      <LinkBox href={`/ideas/${idea.slug}`}>
+    <li key={idea.meta.slug} className={styles.ideasListItem}>
+      <LinkBox href={`/ideas/${idea.meta.slug}`}>
         <Stack direction={StackDirections.Column} gap={0.5}>
           <LinkBoxTitle>{idea.meta.title}</LinkBoxTitle>
           <Fragment>{idea.blurb}</Fragment>

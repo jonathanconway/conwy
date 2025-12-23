@@ -6,7 +6,6 @@ import { meta } from "./meta";
 
 export const clothingRentalIdea: Idea = {
   type: "idea",
-  slug: "clothing-rental",
   meta,
   blurb: <Blurb />,
   content: <Content />,

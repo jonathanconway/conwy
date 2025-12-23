@@ -1,13 +1,16 @@
 import { Tool, ToolSections } from "@/framework/client";
 
 export const audacityTool: Tool = {
-  section: ToolSections.App,
-  slug: "audacity",
-  title: "Audacity",
-  category: "Audio Editor",
-  date: "2024-12-06",
-  operatingSystems: ["MacOS"],
-  url: "https://www.audacityteam.org",
-  description: "Audio editing and recording app.",
-  mainImage: "/images/tools/audacity.svg",
+  type: "tool",
+  meta: {
+    section: ToolSections.App,
+    slug: "audacity",
+    title: "Audacity",
+    category: "Audio Editor",
+    date: "2024-12-06",
+    operatingSystems: ["MacOS"],
+    url: "https://www.audacityteam.org",
+    description: "Audio editing and recording app.",
+    mainImage: "/images/tools/audacity.svg",
+  },
 };

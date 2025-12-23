@@ -4,7 +4,7 @@ import "@/components";
 import { PageLayout, Quote, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as quotes from "@/content/quotes";
-import { Quote as Quote_ } from "@/framework/client";
+import { Quote as Quote_, sentenceCase } from "@/framework/client";
 
 import { PageProps } from "../../[slug]/types";
 
@@ -27,7 +27,7 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allQuoteMetas = Object.values(quotes);
+  const allQuoteMetas = Object.values(quotes).map((item) => item.meta);
   return allQuoteMetas;
 }
 
@@ -35,9 +35,9 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   const quoteModule = await import(`@/content/quotes/${params.slug}`);
   const quote = Object.values(quoteModule)[0] as Quote_;
-  const title = quote.text;
+  const title = sentenceCase(quote.meta.slug).toLowerCase();
 
   return {
-    title: `${site.title} - quote - ${title.toLowerCase()}`,
+    title: `${site.title} - quote - ${title}`,
   };
 }

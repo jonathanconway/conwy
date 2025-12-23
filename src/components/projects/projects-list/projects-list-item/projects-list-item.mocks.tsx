@@ -1,5 +1,7 @@
-import { PROJECT_META_MOCK } from "@/framework/client";
+import { createProjectMock } from "@/framework/client";
 
-export const PROJECTS_LIST_ITEM_MOCK = {
-  projectMeta: PROJECT_META_MOCK,
-};
+export function createProjectsListItemMock() {
+  return {
+    projectMeta: createProjectMock().meta,
+  };
+}

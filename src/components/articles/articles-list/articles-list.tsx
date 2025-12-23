@@ -12,7 +12,9 @@ interface ArticlesListProps {
   readonly items: readonly Post[];
 }
 
-export function ArticlesList({ items }: ArticlesListProps) {
+export function ArticlesList(props: ArticlesListProps) {
+  const { items } = props;
+
   const { filteredItems } = useTagFiltersResults({
     items,
     contentType: "article",

@@ -9,8 +9,8 @@ import { Text, TextSizes, TextTypes } from "../text";
 
 export function ToolsSections() {
   const toolsItems = Object.values(tools);
-  const toolsOrdered = orderBy(toolsItems, (tool) => tool.title);
-  const toolsBySection = groupBy(toolsOrdered, (tool) => tool.section);
+  const toolsOrdered = orderBy(toolsItems, (tool) => tool.meta.title);
+  const toolsBySection = groupBy(toolsOrdered, (tool) => tool.meta.section);
   const sections = Object.values(ToolSections);
 
   return (

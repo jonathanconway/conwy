@@ -6,7 +6,6 @@ import { meta } from "./meta";
 
 export const inflationLinkedSavingsAccountIdea: Idea = {
   type: "idea",
-  slug: "inflation-linked-savings-account",
   meta,
   blurb: <Blurb />,
   content: <Content />,

@@ -14,16 +14,10 @@ import * as styles from "./articles-list-item.css";
 
 export type ArticlesListItemProps = ArticleMeta;
 
-export function ArticlesListItem({
-  date,
-  slug,
-  title,
-  blurb,
-  shortBlurb,
-  socialLinks,
-  type,
-  mainImage,
-}: ArticlesListItemProps) {
+export function ArticlesListItem(props: ArticlesListItemProps) {
+  const { date, slug, title, blurb, shortBlurb, socialLinks, type, mainImage } =
+    props;
+
   return (
     <LinkBox href={`articles/${slug}`}>
       <ContentListItem

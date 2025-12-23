@@ -1,13 +1,16 @@
 import { Tool, ToolSections } from "@/framework/client";
 
 export const coolorsTool: Tool = {
-  section: ToolSections.Website,
-  slug: "coolors",
-  title: "Coolors",
-  category: "Color",
-  date: "2024-12-07",
-  operatingSystems: ["Web"],
-  url: "https://coolors.co/",
-  description: "The super fast color palettes generator.",
-  mainImage: "/images/tools/coolors.png",
+  type: "tool",
+  meta: {
+    section: ToolSections.Website,
+    slug: "coolors",
+    title: "Coolors",
+    category: "Color",
+    date: "2024-12-07",
+    operatingSystems: ["Web"],
+    url: "https://coolors.co/",
+    description: "The super fast color palettes generator.",
+    mainImage: "/images/tools/coolors.png",
+  },
 };

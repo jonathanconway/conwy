@@ -11,9 +11,8 @@ export interface ArticleSidebarProps {
   readonly articleHeadings: readonly ArticleHeading[];
 }
 
-export function ArticleSidebarHeadings({
-  articleHeadings,
-}: ArticleSidebarProps) {
+export function ArticleSidebarHeadings(props: ArticleSidebarProps) {
+  const { articleHeadings } = props;
   const { selectedHeadingId } =
     useArticleSidebarHeadingsHighlighter(articleHeadings);
 

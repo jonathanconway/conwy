@@ -1,11 +1,9 @@
-import { Url } from "../url";
+import { JSX } from "react";
 
-export interface Quote {
-  readonly slug: string;
-  readonly text: string;
-  readonly author: string;
-  readonly source?: {
-    readonly url?: Url;
-    readonly title: string;
-  };
+import { Content } from "../content";
+
+import { QuoteMeta } from "./quote-meta";
+
+export interface Quote extends Content<"quote", QuoteMeta> {
+  readonly text: string | JSX.Element;
 }

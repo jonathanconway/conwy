@@ -1,7 +1,8 @@
+import { MetaBase } from "../client";
+
 import { ContentType } from "./content-types";
 
-export interface Content<TType extends ContentType, TMeta extends object> {
+export interface Content<TType extends ContentType, TMeta extends MetaBase> {
   readonly type: TType;
-  readonly slug: string;
   readonly meta: TMeta;
 }

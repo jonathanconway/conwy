@@ -1,30 +1,20 @@
+export * from "./amaysim";
+export * from "./bupa";
 export * from "./cibc";
+export * from "./coin";
 export * from "./coles";
+export * from "./community-engine";
 export * from "./demonz";
 export * from "./dta";
 export * from "./fiserv";
+export * from "./mycastingnet";
+export * from "./news-limited";
+export * from "./ninemsn";
 export * from "./optus";
+export * from "./razorfish";
+export * from "./refugee-connect";
 export * from "./revolut";
 export * from "./service-nsw";
+export * from "./tal";
 export * from "./villa-plus";
 export * from "./wooliesx";
-export * from "./refugee-connect";
-
-export * from "./amaysim";
-
-export * from "./ninemsn";
-
-export * from "./tal";
-
-export * from "./bupa";
-
-export * from "./community-engine";
-
-export * from "./news-limited";
-
-export * from "./mycastingnet";
-
-export * from "./coin";
-
-export * from "./razorfish";
-

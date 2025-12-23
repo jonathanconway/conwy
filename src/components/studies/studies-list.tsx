@@ -31,7 +31,7 @@ export function StudiesList() {
             <SectionHeading>{sentenceCase(section)}</SectionHeading>
 
             {studies.map((study) => (
-              <Study key={study.slug} study={study} />
+              <Study key={study.meta.slug} study={study} />
             ))}
           </div>
         ))}

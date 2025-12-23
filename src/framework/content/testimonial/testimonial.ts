@@ -1,10 +1,10 @@
-import { DateTime } from "../date-time";
+import { DateTimeString } from "../date-time";
 import { Url } from "../url";
 import { WorkMeta } from "../work";
 
 export interface Testimonial {
   readonly authorTitle?: string;
-  readonly date?: DateTime;
+  readonly date?: DateTimeString;
   readonly content: string;
   readonly linkedInUrl?: Url;
 }

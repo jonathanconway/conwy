@@ -11,7 +11,7 @@ export function IdeasList() {
   return (
     <ContentList>
       {ideas.map((idea) => (
-        <IdeasListItem key={idea.slug} idea={idea} />
+        <IdeasListItem key={idea.meta.slug} idea={idea} />
       ))}
     </ContentList>
   );

@@ -1,8 +1,9 @@
-import { MDXContent } from "mdx/types";
+import { JSX } from "react";
+
+import { Content } from "../content";
 
 import { ArticleMeta } from "./article-meta";
 
-export interface Article {
-  readonly meta: ArticleMeta;
-  readonly content: MDXContent;
+export interface Article extends Content<"article", ArticleMeta> {
+  readonly content: JSX.Element;
 }

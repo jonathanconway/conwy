@@ -1,7 +1,5 @@
 import { orderBy, sortBy, uniq } from "lodash";
 
-import { toPicked } from "../../utils";
-
 import { Post } from "./post";
 
 export function pickAndCombineListItems<T extends Post>(
@@ -10,9 +8,7 @@ export function pickAndCombineListItems<T extends Post>(
   const items = itemSets.flatMap((itemSet) => Object.values(itemSet));
   const itemsSorted = sortPosts(items);
 
-  const itemsSortedPicked = itemsSorted.map(toPicked("meta"));
-
-  return itemsSortedPicked;
+  return itemsSorted;
 }
 
 function sortPosts(posts: readonly Post[]): readonly Post[] {
@@ -34,6 +30,6 @@ export function getPinnedPosts({
   const postsPinned = postsAll.filter((post) => post.meta.isPinned);
   const postsPinnedSliced = postsPinned.slice(0, limit);
   const postsPinnedSlicedSorted = sortPosts(postsPinnedSliced);
-  const postsPinnedSlicedPicked = postsPinnedSlicedSorted.map(toPicked("meta"));
-  return postsPinnedSlicedPicked;
+
+  return postsPinnedSlicedSorted;
 }

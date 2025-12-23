@@ -12,9 +12,9 @@ import * as styles from "./tools-list.css";
 
 export function ToolsList() {
   const toolsItems = Object.values(tools);
-  const toolsOrdered = orderBy(toolsItems, (tool) => tool.title);
+  const toolsOrdered = orderBy(toolsItems, (tool) => tool.meta.title);
   const toolsSections = Object.values(ToolSections);
-  const toolsBySection = groupBy(toolsOrdered, (tool) => tool.section);
+  const toolsBySection = groupBy(toolsOrdered, (tool) => tool.meta.section);
 
   return (
     <>
@@ -24,7 +24,7 @@ export function ToolsList() {
 
           <ContentList>
             {toolsBySection[section].map((tool) => (
-              <Tool key={tool.slug} tool={tool} />
+              <Tool key={tool.meta.slug} tool={tool} />
             ))}
           </ContentList>
         </div>

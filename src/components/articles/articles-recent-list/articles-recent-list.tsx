@@ -12,7 +12,9 @@ interface ArticlesRecentListProps {
   readonly items: readonly Post[];
 }
 
-export function ArticlesRecentList({ items }: ArticlesRecentListProps) {
+export function ArticlesRecentList(props: ArticlesRecentListProps) {
+  const { items } = props;
+
   return (
     <Stack>
       <Heading level={2}>Pinned posts</Heading>

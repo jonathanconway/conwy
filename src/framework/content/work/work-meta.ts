@@ -4,6 +4,9 @@ import { MetaBase } from "../meta";
 import { SocialLink } from "../social-link";
 import { Testimonial } from "../testimonial";
 
+import { WorkMetaProject } from "./work-meta-project";
+import { WorkMetaTech } from "./work-meta-tech";
+
 export interface WorkMeta extends MetaBase {
   readonly startDate: string;
   readonly endDate: string;
@@ -16,29 +19,18 @@ export interface WorkMeta extends MetaBase {
 
   readonly jobTitle: string;
 
+  readonly mainImage?: Image;
   readonly images: readonly Image[];
 
-  readonly techs: readonly WorkTech[];
+  readonly techs: readonly WorkMetaTech[];
 
   readonly feedbacks: readonly Testimonial[];
 
-  readonly projects: readonly WorkProject[];
+  readonly projects: readonly WorkMetaProject[];
 
   readonly socialLinks: readonly SocialLink[];
 
   readonly type: "work";
 
   readonly colleagueRelationships?: readonly ColleagueRelationship[];
-}
-
-export interface WorkTech {
-  readonly categoryName: string;
-  readonly items: readonly {
-    readonly itemName: string;
-  }[];
-}
-
-export interface WorkProject {
-  readonly title: string;
-  readonly date?: string;
 }

@@ -14,9 +14,9 @@ export interface ArticleDiscussionInlineDisqusProps {
   readonly articleMeta: ArticleMeta;
 }
 
-export function ArticleDiscussionInlineDisqus({
-  articleMeta,
-}: ArticleDiscussionInlineDisqusProps) {
+export function ArticleDiscussionInlineDisqus(
+  props: ArticleDiscussionInlineDisqusProps,
+) {
   const articlePath = usePathname();
 
   return (
@@ -26,7 +26,7 @@ export function ArticleDiscussionInlineDisqus({
         config={{
           url: `${packageInfo.homepage}/${articlePath}`,
           identifier: articlePath,
-          title: articleMeta.title,
+          title: props.articleMeta.title,
         }}
       />
     </Collapsible>

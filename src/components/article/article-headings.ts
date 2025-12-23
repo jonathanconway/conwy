@@ -37,7 +37,7 @@ function getNextChildOfTypeAndNotType(
 export function getArticleHeadings(
   article: Article_,
 ): readonly ArticleHeading[] {
-  const content = article.content?.({});
+  const content = article.content;
   const children: readonly ReactElement[] = content?.props?.children ?? [];
 
   const headingElements = children.filter(byComponentType(MdxH2));

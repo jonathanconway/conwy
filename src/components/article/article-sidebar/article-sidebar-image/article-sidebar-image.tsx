@@ -8,7 +8,9 @@ export interface ArticleSidebarImageProps {
   readonly meta: ArticleMeta;
 }
 
-export function ArticleSidebarImage({ meta }: ArticleSidebarImageProps) {
+export function ArticleSidebarImage(props: ArticleSidebarImageProps) {
+  const { meta } = props;
+
   if (!meta.mainImage) {
     return null;
   }

@@ -1,7 +1,10 @@
 import { Quote } from "@/framework/client";
 
 export const eatQuote: Quote = {
-  author: "Michael Pollan",
+  type: "quote",
   text: "Eat food. Not too much. Mostly plants.",
-  slug: "eat",
+  meta: {
+    author: "Michael Pollan",
+    slug: "eat",
+  },
 };
