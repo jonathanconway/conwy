@@ -1,9 +1,5 @@
 import { style } from "@vanilla-extract/css";
 
-export const container = style({
-  marginTop: "2rem",
-});
-
 export const discussion = style({
   display: "flex",
   flexDirection: "row",

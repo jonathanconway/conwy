@@ -41,6 +41,7 @@
     "@mui/material": "^7.3.2",
     "@next/mdx": "^15.5.3",
     "@vanilla-extract/css": "^1.17.4",
+    "disqus-react": "^1.1.7",
     "lodash": "^4.17.21",
     "luxon": "^3.7.2",
     "marked": "^16.3.0",

@@ -1,9 +1,9 @@
 import { Article } from "@/framework/client";
 
-import { SocialLinksListItem } from "../../social-links";
+import { SocialLinksListItem } from "../../../social-links";
 
-import * as styles from "./article-discussion-link.css";
-import { getArticleDiscussionLinksDetails } from "./article-discussion-link.utils";
+import * as styles from "./article-discussion-links.css";
+import { getArticleDiscussionLinksDetails } from "./article-discussion-links.utils";
 
 export interface ArticleDiscussionLinkProps {
   readonly article: Article;
@@ -19,7 +19,7 @@ export function ArticleDiscussionLink(props: ArticleDiscussionLinkProps) {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
       {discussionLinksDetails.map(({ socialLink, commentCount, likeCount }) => (
         <div key={socialLink.url} className={styles.discussion}>
           <SocialLinksListItem socialLink={socialLink} />

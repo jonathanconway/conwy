@@ -5,7 +5,6 @@ import { colors, rounded } from "../../styling";
 export const container = style({
   display: "flex",
   flexDirection: "column",
-  marginBottom: "2rem",
   gap: "0.75rem",
 });
 
