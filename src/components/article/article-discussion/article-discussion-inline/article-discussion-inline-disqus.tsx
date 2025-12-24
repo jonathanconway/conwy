@@ -18,14 +18,14 @@ export function ArticleDiscussionInlineDisqus(
   props: ArticleDiscussionInlineDisqusProps,
 ) {
   const articlePath = usePathname();
-
+  console.log("ArticleDiscussionInlineDisqus articlePath", articlePath);
   return (
     <Collapsible title="Comments">
       <DiscussionEmbed
         shortname="conwy"
         config={{
-          url: `${packageInfo.homepage}/${articlePath}`,
-          identifier: articlePath,
+          url: `${packageInfo.homepage}${articlePath}`,
+          identifier: articlePath.replace("/", ""),
           title: props.articleMeta.title,
         }}
       />
