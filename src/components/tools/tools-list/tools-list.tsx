@@ -4,10 +4,10 @@ import pluralize from "pluralize";
 import * as tools from "@/content/tools";
 import { ToolSections, sentenceCase } from "@/framework/client";
 
-import { ContentList } from "../content-list";
-import { SectionHeading } from "../heading";
+import { ContentList } from "../../content-list";
+import { SectionHeading } from "../../heading";
 
-import { Tool } from "./tool";
+import { ToolsListItem } from "./tools-list-item";
 import * as styles from "./tools-list.css";
 
 export function ToolsList() {
@@ -24,7 +24,7 @@ export function ToolsList() {
 
           <ContentList>
             {toolsBySection[section].map((tool) => (
-              <Tool key={tool.meta.slug} tool={tool} />
+              <ToolsListItem key={tool.meta.slug} tool={tool} />
             ))}
           </ContentList>
         </div>

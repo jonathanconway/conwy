@@ -2,18 +2,18 @@ import Image from "next/image";
 
 import { Tool as Tool_ } from "@/framework/client";
 
-import { ContentListItem } from "../../content-list";
-import { LinkBox, LinkBoxTitle } from "../../link-box";
-import { Text } from "../../text";
-import { TextTypes } from "../../text/text-type";
+import { ContentListItem } from "../../../content-list";
+import { LinkBox, LinkBoxTitle } from "../../../link-box";
+import { Text } from "../../../text";
+import { TextTypes } from "../../../text/text-type";
 
-import * as styles from "./tool.css";
+import * as styles from "./tools-list-item.css";
 
-interface ToolProps {
+interface ToolsListItemProps {
   readonly tool: Tool_;
 }
 
-export function Tool(props: ToolProps) {
+export function ToolsListItem(props: ToolsListItemProps) {
   return (
     <LinkBox href={props.tool.meta.url} target="_blank">
       <ContentListItem

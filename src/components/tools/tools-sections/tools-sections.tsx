@@ -4,8 +4,8 @@ import pluralize from "pluralize";
 import * as tools from "@/content/tools";
 import { ToolSections, sentenceCase } from "@/framework/client";
 
-import { Link } from "../link";
-import { Text, TextSizes, TextTypes } from "../text";
+import { Link } from "../../link";
+import { Text, TextSizes, TextTypes } from "../../text";
 
 export function ToolsSections() {
   const toolsItems = Object.values(tools);
