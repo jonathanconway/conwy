@@ -5,9 +5,7 @@ import { useSearchParams } from "next/navigation";
 
 import { ALL } from "./default-selected-tags";
 
-export function useTagFiltersSelected(contentType: string) {
-  const searchParamKey = `${contentType}-tag`;
-
+export function useTagFiltersSelected(searchParamKey: string) {
   const searchParams = useSearchParams();
 
   const selectedTags = Array.from(
@@ -15,7 +13,7 @@ export function useTagFiltersSelected(contentType: string) {
   );
 
   function setSelectedTags(newSelectedTags: readonly string[]) {
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(searchParams);
     params.set(searchParamKey, newSelectedTags.map(kebabCase).join(","));
     window.history.pushState(null, "", `?${params.toString()}`);
   }

@@ -5,6 +5,7 @@ import { get, isArray } from "lodash";
 import { getAreSomeSame } from "@/framework/client";
 
 import { ALL } from "./default-selected-tags";
+import { createTagFiltersParamKey } from "./tag-filters-param-key";
 import { useTagFiltersSelected } from "./use-tag-filters-selected";
 
 export interface UseTagFiltersParams<T> {
@@ -14,7 +15,9 @@ export interface UseTagFiltersParams<T> {
 }
 
 export function useTagFiltersResults<T>(params: UseTagFiltersParams<T>) {
-  const { selectedTags } = useTagFiltersSelected(params.contentType);
+  const { selectedTags } = useTagFiltersSelected(
+    createTagFiltersParamKey(params),
+  );
 
   const filteredItems = selectedTags.includes(ALL)
     ? params.items
@@ -27,7 +30,10 @@ export function useTagFiltersResults<T>(params: UseTagFiltersParams<T>) {
         }
       });
 
+  const isFiltered = !(selectedTags.includes(ALL) || selectedTags.length === 0);
+
   return {
     filteredItems,
+    isFiltered,
   };
 }

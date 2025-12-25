@@ -14,12 +14,7 @@ export function TagFilters<T>(props: TagFiltersProps<T>) {
 
   return (
     <MobileCollapsible title={title}>
-      <div
-        className={
-          displayTags.length > 5 ? styles.containerMany : styles.containerFew
-        }
-        aria-description={title}
-      >
+      <div className={styles.container} aria-description={title}>
         {displayTags.map((tag) => {
           const isSelected = selectedTags.includes(tag);
 

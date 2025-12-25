@@ -3,6 +3,7 @@ import { useCallback } from "react";
 
 import { ALL } from "./default-selected-tags";
 import { getItemsTags } from "./get-items-tags";
+import { createTagFiltersParamKey } from "./tag-filters-param-key";
 import { TagFiltersProps } from "./tag-filters-props";
 import { useTagFiltersSelected } from "./use-tag-filters-selected";
 
@@ -20,7 +21,7 @@ export function useTagFilters<T>(params: UseTagFiltersParams<T>) {
   const title = `Filter ${plural(params.contentType)} by ${getTagFieldLabel(params)}`;
 
   const { selectedTags, setSelectedTags } = useTagFiltersSelected(
-    params.contentType,
+    createTagFiltersParamKey(params),
   );
 
   const allTags = getItemsTags(params);

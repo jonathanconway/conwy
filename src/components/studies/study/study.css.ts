@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import * as headingMixins from "../../heading/heading.mixins";
 import * as linkMixins from "../../link/link.mixins";
 
 export const row = style({
@@ -7,10 +8,6 @@ export const row = style({
   flexDirection: "row",
   gap: "0.5rem",
   alignContent: "center",
-});
-
-globalStyle(`${row} > *`, {
-  // display: "contents",
 });
 
 export const linksList = style({
@@ -29,4 +26,9 @@ export const linksListItem = style({
       content: "•",
     },
   },
+});
+
+export const headingStyle = style({
+  ...headingMixins.h5,
+  fontWeight: "500",
 });

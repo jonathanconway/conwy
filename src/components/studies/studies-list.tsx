@@ -13,22 +13,40 @@ import { Study } from "./study";
 export function StudiesList() {
   const studyItems = Object.values(studies_);
 
-  const { filteredItems: studies } = useTagFiltersResults({
+  const studiesCategoryTagFiltersParams = {
     items: studyItems,
     contentType: "study",
-    tagField: "category",
-  });
+    tagField: "meta.category",
+  };
+  const { filteredItems: studiesFilteredByCategory } = useTagFiltersResults(
+    studiesCategoryTagFiltersParams,
+  );
 
-  const { studiesBySectionEntries } = getStudiesList(studies);
+  const studiesStatusTagFiltersParams = {
+    items: studiesFilteredByCategory,
+    contentType: "study",
+    tagField: "meta.status",
+  };
+  const {
+    filteredItems: studiesFilteredByCategoryAndStatus,
+    isFiltered: isFilteredByCategory,
+  } = useTagFiltersResults(studiesStatusTagFiltersParams);
+
+  const { studiesBySectionEntries } = getStudiesList(
+    studiesFilteredByCategoryAndStatus,
+  );
 
   return (
     <>
-      <TagFilters contentType="study" items={studyItems} tagField="category" />
+      <TagFilters {...studiesCategoryTagFiltersParams} />
+      <TagFilters {...studiesStatusTagFiltersParams} />
 
       <div className={styles.sectionsList}>
         {studiesBySectionEntries.map(([section, studies]) => (
           <div key={section} className={styles.studiesList}>
-            <SectionHeading>{sentenceCase(section)}</SectionHeading>
+            {!isFilteredByCategory && (
+              <SectionHeading>{sentenceCase(section)}</SectionHeading>
+            )}
 
             {studies.map((study) => (
               <Study key={study.meta.slug} study={study} />
