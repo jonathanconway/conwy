@@ -1,5 +1,7 @@
 import { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
 
+import { Link as Link_ } from "@/framework/client";
+
 import { IconType } from "../icon";
 import { TextSize } from "../text/text-size";
 
@@ -17,4 +19,5 @@ export type LinkProps = DetailedHTMLProps<
   readonly size?: TextSize;
   readonly contentsType?: LinkContentsType;
   readonly layoutType?: LinkLayoutType;
+  readonly link?: Link_;
 };

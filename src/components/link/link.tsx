@@ -1,62 +1,26 @@
 "use client";
 
 import NextLink from "next/link";
-import { MouseEvent } from "react";
-
-import { cn } from "@/framework/client";
 
 import { Icon, IconTypes } from "../icon";
-import * as textSizeStyles from "../text/text-size/text-size.css";
 import { withTooltip } from "../tooltip";
 
-import { LinkLayoutTypes } from "./link-layout-type";
+import { getLinkAttributes } from "./get-link-values";
 import { LinkProps } from "./link-props";
 import * as linkStyles from "./link.css";
 
 export function Link_(props: LinkProps) {
   const {
-    className,
+    nextLink,
+    iconLeft,
     children,
-    ref,
-    showOpenInNew: _showOpenInNew,
-    bracketedItems,
+    showOpenInNew,
     showOpenPopup,
     download,
-    href = "javascript:",
-    icon,
-    size,
-    layoutType = LinkLayoutTypes.Inline,
-    onClick,
-    ...restProps
-  } = props;
-
-  const showOpenInNew =
-    restProps.target === "_blank" &&
-    props.showOpenInNew !== false &&
-    !props.download;
-
-  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (!href) {
-      event.preventDefault();
-    }
-    onClick?.(event);
-  };
-
-  const sizeStyle = size ? textSizeStyles[size] : undefined;
-
-  const layoutStyle = {
-    [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
-    [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
-  }[layoutType];
-
+  } = getLinkAttributes(props);
   return (
-    <NextLink
-      className={cn(className ?? linkStyles.link, sizeStyle, layoutStyle)}
-      href={href}
-      onClick={handleClick}
-      {...restProps}
-    >
-      {icon && <Icon className={linkStyles.linkIcon} icon={icon} />}
+    <NextLink {...nextLink}>
+      {iconLeft && <Icon className={linkStyles.linkIcon} icon={iconLeft} />}
 
       {children}
 
