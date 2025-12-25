@@ -3,12 +3,11 @@
 import { Quote } from "@/framework/client";
 
 import { BlockQuotePullQuote } from "../../aside";
-import { Link } from "../../link";
-import { LinkBox, LinkBoxTitle } from "../../link-box";
+import { LinkBox } from "../../link-box";
 import { Stack, StackDirections } from "../../stack";
-import { Text, TextExpandable, TextTypes } from "../../text";
-import { formatQuoteAuthorName } from "../quote.utils";
+import { Text, TextExpandable } from "../../text";
 
+import { QuoteAttribution } from "./quote-attribution";
 import * as styles from "./quotes-list-item.css";
 
 interface QuotesListItemProps {
@@ -24,24 +23,11 @@ export function QuotesListItem({ quote }: QuotesListItemProps) {
       >
         <BlockQuotePullQuote className={styles.quotePullQuote}>
           <Stack direction={StackDirections.Column} gap={0.5}>
-            <LinkBoxTitle>
+            <Text>
               <TextExpandable height="5rem">{quote.text}</TextExpandable>
-            </LinkBoxTitle>
-
-            <Text type={TextTypes.Body}>
-              – {formatQuoteAuthorName(quote.meta.author)}
             </Text>
 
-            {quote.meta.source &&
-              (quote.meta.source.url ? (
-                <Text type={TextTypes.Body}>
-                  <Link href={quote.meta.source.url} target="_blank">
-                    {quote.meta.source.title}
-                  </Link>
-                </Text>
-              ) : (
-                <Text type={TextTypes.Body}>{quote.meta.source.title}</Text>
-              ))}
+            <QuoteAttribution quote={quote} />
           </Stack>
         </BlockQuotePullQuote>
       </LinkBox>
