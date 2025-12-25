@@ -8,5 +8,6 @@ export * from "./judgements";
 export * from "./nature-questioning";
 export * from "./not-enough-time";
 export * from "./perfection";
+export * from "./right-view";
 export * from "./something-you-like";
 export * from "./wise-person-suffers";
