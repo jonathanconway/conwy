@@ -21,6 +21,7 @@ export * from "./hand-brake";
 export * from "./html-color-picker";
 export * from "./i-fun-box";
 export * from "./imagemagick";
+export * from "./inkscape";
 export * from "./json-viewer";
 export * from "./jsoning";
 export * from "./keepass-xc";
