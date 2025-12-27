@@ -1,4 +1,4 @@
-import { Community } from "@/framework/client";
+import { Community, CommunityCategories } from "@/framework/client";
 
 import BlurbShort from "./blurb-short.mdx";
 
@@ -8,6 +8,7 @@ export const devCommunity: Community = {
     slug: "dev",
     title: "Dev",
     url: "https://dev.to",
+    category: CommunityCategories.SoftwareDevelopment,
     mainImage: {
       src: "/images/communities/dev.webp",
     },

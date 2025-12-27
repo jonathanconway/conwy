@@ -8,7 +8,7 @@ export const communityIndexGen = ({
 }: CommunityGenTemplateParams) =>
   `
 
-import { Community } from "@/framework/client";
+import { Community, CommunityCategories } from "@/framework/client";
 
 import BlurbShort from "./blurb-short.mdx";
 
@@ -21,6 +21,7 @@ export const ${nameRootObject}: Community = {
     mainImage: {
       src: "/images/communities/${name}.png",
     },
+    category: CommunityCategories.SoftwareDevelopment,
     myProfileUrl: "",
     myPosts: [],
   },

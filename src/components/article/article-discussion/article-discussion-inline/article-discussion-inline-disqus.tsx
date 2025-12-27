@@ -18,7 +18,7 @@ export function ArticleDiscussionInlineDisqus(
   props: ArticleDiscussionInlineDisqusProps,
 ) {
   const articlePath = usePathname();
-  console.log("ArticleDiscussionInlineDisqus articlePath", articlePath);
+
   return (
     <Collapsible title="Comments">
       <DiscussionEmbed
