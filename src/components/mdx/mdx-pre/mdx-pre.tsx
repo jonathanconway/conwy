@@ -1,12 +1,20 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import {
+  Component,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  ReactElement,
+  ReactNode,
+} from "react";
 
 import "./mdx-pre.css";
 import * as mixins from "./mdx-pre.mixins";
 
-export type MdxPreProps = DetailedHTMLProps<
+type HTMLPreElementProps = DetailedHTMLProps<
   HTMLAttributes<HTMLPreElement>,
   HTMLPreElement
 >;
+
+export type MdxPreProps = HTMLPreElementProps;
 
 export function MdxPre({
   className,
@@ -14,7 +22,10 @@ export function MdxPre({
   style,
   ...restProps
 }: MdxPreProps) {
-  if ((children as any).props.className === "language-mermaid--svg") {
+  if (
+    (children as ReactElement<HTMLPreElementProps>).props.className ===
+    "language-mermaid--svg"
+  ) {
     return <p>{children}</p>;
   }
 

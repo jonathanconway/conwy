@@ -4,6 +4,7 @@ import { MouseEvent } from "react";
 
 import { cn } from "@/framework/client";
 
+import { TextSizes } from "../text";
 import * as textSizeStyles from "../text/text-size/text-size.css";
 
 import { LinkLayoutTypes } from "./link-layout-type";
@@ -38,7 +39,7 @@ export function getLinkValues(props: LinkProps) {
     onClick?.(event);
   };
 
-  const sizeStyle = size ? textSizeStyles[size] : undefined;
+  const sizeStyle = textSizeStyles[size ?? TextSizes.sm];
 
   const layoutStyle = {
     [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,

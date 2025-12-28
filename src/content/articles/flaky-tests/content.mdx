@@ -1,0 +1,449 @@
+Flaky tests are tests that produce inconsistent and non-deterministic results, sometimes passing and sometimes failing. They can undermine the reliability of testing processes and complicate software development by masking real issues and wasting time.
+
+Flaky tests are particularly difficult to debug and fix because of their non-determinism. We cannot simply go through the usual development cycle of test → modify → re-test. This is because we cannot reliably reproduce the error on each re-test, and thus, cannot know whether any single modification has corrected it.
+
+Rather than going all in on one tactic, for flaky tests, I prefer to have a grab-bag of techniques at my disposal. I'll pick and choose one or tactics from this grab bag, based on the situation and context.
+
+In this article I'll share my grab-bag of techniques. These are tactics I've used myself or seen used by others with success.
+
+There are two basic categories of tactics:
+1. **Solutions:** actually fixing the flaky tests
+2. **Mitigations:** minimising harm when the flaky tests cannot be fixed
+
+The examples are in Jest and Playwright, as that is what I use in most of my work environments, but similar principles likely apply to other tools.
+
+But before diving into tactics, let's take a brief step back and look at first reproducing the flakiness.
+
+## Reproducing flakiness
+
+A fundamental idea in software testing is to reproduce a bug.
+
+As mentioned previously, flaky tests are difficult to reproduce consistently because their failure is non-deterministic: sometimes they fail sometimes not.
+
+There are a couple of options here:
+
+- Running the test repeatedly to generate failures
+- Observing prior test failures in logs
+
+### Running the test repeatedly to generate failures
+
+We cannot reproduce the failure on a single run but we might have a chance on multiple runs.
+
+Assuming Jest and a `test` script, we can use a command like this to repeatedly run a test:
+
+```bash
+for i in {1..20};
+do (
+  npm run test -- '{test_file}' --no-watch ||
+  (echo "Failed after $i attempts" && break)
+);
+done
+```
+
+(Replace `{test_file}` with your test path and filename).
+
+Some test frameworks provide this re-running capability out-of-the-box. Here's how to do it [with the Playwright CLI](https://playwright.dev/docs/test-cli):
+
+```bash
+npx playwright test {test_file} --repeat-each=20 --fail-on-flaky-tests
+```
+
+Additionally, we could simulate failure conditions, to increase the failure rate for reproduction purposes.
+
+For example:
+- Simulating slower CPU and/or fewer cores
+- Simulating lower available memory
+- Simulating slower network speeds
+
+Some technologies for enacting these simulations include:
+- **Virtual machines:** Running the tests in a Virtual Machine with slow configuration.
+- **Containers:** Running the tests in a container, such as a Docker container, with slow configuration.
+- **Test runners:** Configuring the test runner itself to run tests slower.
+
+#### Virtual machine
+
+Using [VirtualBox](https://www.virtualbox.org) or similar, we can configure limited resources. VirtualBox allows [limiting CPU count and processing cap](https://www.virtualbox.org/manual/topics/working-with-vms.html#ct_settings-window).
+
+![Screenshot of VirtualBox with Processor Settings open](/images/articles/flaky-tests/ubuntu-settings-cpu-screenshot.png)
+
+#### Container
+
+Using [Docker](https://www.docker.com) or similar, we can configure limited resources. Docker allows this via [CPU arguments](https://docs.docker.com/engine/containers/resource_constraints/#cpu).
+
+For example, we could create a Dockerfile for our app:
+
+```docker
+FROM node:22.12.0-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+```
+
+And use it run our tests, with constrained CPU, like this:
+```bash
+docker run --cpu-shares 2048 tests npm run test
+```
+
+#### Test runner
+
+In Jest, we can try one or more of:
+1. Turning off the cache using [`--no-cache`](https://jestjs.io/docs/cli#--cache)
+2. Turning off multiple workers using [`--runInBand`](https://jestjs.io/docs/cli#--runinband)
+3. Increasing the worker count, using [`--maxWorkers`](https://jestjs.io/docs/configuration#maxworkers-number--string)
+
+> Aside: More on 3.: by running a higher number of workers than CPU cores, we effectively add more workload to our machine, causing it to run slower. This can help create conditions that will reproduce a test's flakiness.
+
+### Observing prior test failures in logs
+
+Alternately/additionally, we can try to gather information about the failures we have had so far.
+
+For example, if a test is being flaky in CI, we can gather log output from the CI environment and examine it to search for clues.
+
+![Screenshot of Github actions UI with test failure](/images/articles/flaky-tests/github-actions-workflow-failed-job.jpg)
+
+Maybe we can learn something about the cause of the failures by observing phenomena related to the failures.
+
+<table cellSpacing="10px">
+  <thead>
+    <tr>
+      <th align="left">👀 Phenomena</th>
+      <th align="left">🚨 Implications</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="left" valign="top">
+        <p>Test fails at a certain time of day</p>
+      </td>
+      <td align="left" valign="top">
+        Issue with date/time logic<br />
+        Issue with resource in a particular availability zone
+      </td>
+    </tr>
+    <tr>
+      <td align="left" valign="top">
+        <p>Test fails only when modified</p>
+      </td>
+      <td align="left" valign="top">
+        Issue with caching
+      </td>
+    </tr>
+    <tr>
+      <td align="left" valign="top">
+        <p>Test fails when the CI server is being heavily utilised</p>
+      </td>
+      <td align="left" valign="top">
+        Issue with test being vulnerable to resource availability
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+> Aside: Tip: [Structured logging](https://newrelic.com/blog/log/structured-logging) with detailed information about resource usage, date/time and other data can help to expose more information about test failure in logs. Such info can be logged on test failures. For example, in Jest, we can handle the [`afterEach`](https://jestjs.io/docs/setup-teardown) hook in a [setupFile](https://jestjs.io/docs/configuration#setupfiles-array) and inspect [`testInfo.failed`]. Structured logs can be generated using a library such as [structured-log](https://github.com/structured-log/structured-log).
+
+## Solving flakiness
+
+This section covers possible solutions to flaky tests.
+
+Some solutions might become evident from examining output after reproducing flakiness. In other cases, it might be worth experimenting with various solutions in a "try-and-see" approach.
+
+- Await your elements
+- Keep your promises
+- Reduce test size
+- Reduce test file size
+- Reduce the number of workers
+- Clean up at the end
+- Optimise the application under test
+- Disable resource-intensive application features when running in tests
+- Increase timeouts
+
+### Await your elements
+
+Problem: Operations occur before the DOM has completed loading. For example, the test tries to click a button inside a dialog before the dialog has loaded.
+
+Solution: Wait until elements have been rendered before performing operations that depend on them.
+
+❌
+```ts
+const deleteButton = screen.getByText("Delete");
+await userEvent.click(deleteButton);
+
+const confirmButton = screen.getByRole("button", { name: "Confirm" });
+await userEvent.click(confirmButton);
+```
+
+✅
+```ts
+const deleteButton = screen.getByText("Delete");
+await userEvent.click(deleteButton);
+
+
+await screen.findByRole("dialog");
+
+const confirmButton = await screen.findByRole("button", { name: "Confirm" })
+await userEvent.click(confirmButton);
+```
+
+### Keep your promises
+
+Problem: Test operations are being done before Promises on which they rely have been completed. For example, an async API call is made, but the test runs an operation that depends on the API result before the promise has completed.
+
+Solution: Wait for calls to have been made, using, say, a "completed" flag.
+
+❌
+```tsx
+jest.spyOn(accountsApi, "getAccounts").mockResolvedValue([{
+  accountId: 1234,
+  isPrimary: true,
+}]);
+jest.spyOn(accountDetailsApi, "getAccountDetails").mockResolvedValue({
+  accountId: 1234,
+  balance: 10,
+  accountName: "Jack's Primary Account",
+});
+
+render(<PrimaryAccountDetails />);
+
+const heading = screen.getByRole("heading", { level: 2 });
+expect(heading).toHaveText("Jack's Primary Account");
+```
+
+✅
+```tsx
+jest.spyOn(accountsApi, "getAccounts").mockResolvedValue([{
+  accountId: 1234,
+  isPrimary: true,
+}]);
+jest.spyOn(accountDetailsApi, "getAccountDetails").mockResolvedValue({
+  accountId: 1234,
+  balance: 10,
+  accountName: "Jack's Primary Account",
+});
+
+render(<PrimaryAccountDetails />);
+
+await waitFor(() => {
+  expect(accountsApi.getAccounts).toHaveBeenCalled();
+});
+await waitFor(() => {
+  expect(accountsApi.getAccountDetails).toHaveBeenCalled();
+});
+
+const heading = screen.getByRole("heading", { level: 2 });
+expect(heading).toHaveText("Jack's Primary Account");
+```
+
+### Reduce test size
+
+Problem: A test is very long and, thus, times out before being completed.
+
+Solution: Reduce test size.
+
+Even if we prefer longer integration-style tests, as recommended by Kent C. Dodds in [Write fewer, longer tests], there can still be ways to reduce the size of our tests while preserving their scope.
+
+For example:
+- Remove operations that are incidental and not really required for the test to exercise the code.
+- Remove operations that are already covered by other tests.
+- Simplify operations. For example, retrieve a DOM element directly where possible, rather than traversing multiple parent/child elements unnecessarily.
+
+
+### Reduce test file size
+ 
+Problem: Test files are large. Processing each large file ties up system resources (especially processor usage), causing other tests to time out.
+
+Solution: Reduce test file size.
+
+One way is to split up test files by function or component.
+
+> - orders-pending.test.tsx
+> - orders-delivered.test.tsx
+> - orders-cancelled.test.tsx
+> - orders-previous.test.tsx
+
+Or we could use numbering or lettering system.
+
+>  - small-test-01.test.tsx
+>  - small-test-02.test.tsx
+>  - small-test-03.test.tsx
+
+>  - small-test-a.test.tsx
+>  - small-test-b.test.tsx
+>  - small-test-c.test.tsx
+
+### Reduce the number of workers
+
+Problem: Jest allows the maximum number of workers to be configured via the [`maxWorkers`](https://jestjs.io/docs/configuration#maxworkers-number--string) setting. However, if this exceeds the number of CPU cores on the machine, the processor may be forced to split execution time between multiple threads. This may cause tests to take longer than expected to execute, resulting in timeouts. This problem may only occur on CI environments, where CPU resources may be more limited, making it tricky to identify.
+
+Solution: Check the CPU configuration of the CI environment if possible. Try reducing the `maxWorkers` setting or even eliminating it. (Jest defaults to the number of cores available on the machine, which is usually the safest bet.)
+
+### Clean up at the end
+
+Problem: Tests leave behind "uncollected garbage", such as memory usage, threads, promises, etc. This slows down the test suite as a whole, making some tests flaky.
+
+Solution: Cleaning up after each test reduces resource demand on the test runner, which reduces the occurrence of flakiness.
+
+Note that the flaky test itself might not be the culprit here, but rather, some or all other test(s) as a whole generating garbage. This uncollected garbage might only be noticeable when all tests are run together in CI, not when running an individual test on its own. This can make the "uncollected garbage" issue tricky to detect. It might only be detectable by trial-and-error – say, observing resource usage on the whole test suite over repeated runs.
+
+
+### Increase timeouts
+
+Most test frameworks provide allow timeouts to be configured.
+
+Increasing the timeout allows tests to run longer without failing, which may solve flakiness.
+
+- Jest has [testTimeout](https://jestjs.io/docs/configuration#testtimeout-number) configuration and the [timeout](https://jestjs.io/docs/api#testname-fn-timeout) parameter
+- Playwright has [timeout configuration](https://playwright.dev/docs/test-timeouts) and [test.slow()](https://playwright.dev/docs/api/class-test#test-slow) (called within a test)
+
+Downside: Increasing timeouts too much or globally might allow performance issues to creep into the application. Timeouts should be increased only on flaky tests if possible, and we should find ways to enure those features continue perform adequately for end-users.
+
+### Optimise the application under test
+
+Problem: The application we're testing is itself buggy or just slow. If the application itself is slow, then the automated tests that exercise it will probably also be slow, leading to flakiness.
+
+Solution: Find slow points in the application under test and optimise their performance.
+
+To find slow points, we can add timer statements to different parts of the test or application.
+
+```js
+console.time("Fetch user details");
+const userDetails = await fetchUserDetails();
+console.timeLog("Fetch user details");
+```
+
+We can also try rigorous [manual testing](/articles/manual-testing), combined with performance tooling, such as [Chrome Devtools Performance tab](https://developer.chrome.com/docs/devtools/performance).
+
+Techniques to improve performance can then be applied – see: [improving performance in React apps](/articles/react-performance).
+
+## Mitigating flakiness
+
+So maybe we've tried all the above and nothing has worked. In that case, we can consider mitigation – approaches that reduce the impact of the problem without solving it entirely.
+
+These might be used temporarily as an emergency resort or permanently if considered a reasonable compromise.
+
+- Disable resource-intensive application features when running in tests
+- Reconfigure test runners
+- Tag known flaky tests and configure accordingly
+- Use a different kind of test
+- Use a different method of verification
+
+### Disable resource-intensive application features when running in tests
+
+Problem: Some features of our application may be resource-intensive, causing flakiness, while not offering much value in an automated testing context.
+
+Mitigation: Disable resource-intensive features for test environment only.
+
+Certain application features may be inherently resource intensive and not needed to verify correctness for a given automated test.
+
+Common examples:
+- Animations (even when implemented with CSS transitions only can create drag)
+- Graphics (large complex DOM-heavy graphics and loaded as part of a page, such as 3D sprites in Canvas or complex SVGs)
+- Event Subscriptions (say, to backend events via WebSockets)
+
+These features can be disabled only for test execution, via, say, feature flags.
+
+### Reconfigure test runners
+
+Problem: Flakiness produced by resource-constrained environments is not worth the cost savings of the resource constraints.
+
+Mitigation: Increase resources to get better value for investment, such as higher developer productivity during a critical period.
+
+Depending on the cause, test flakiness might be drastically reduced in the short-term by simply beefing up resources on the test runners. Depending on the organisation, business context, timeframe, etc. this might be an optimal approach.
+
+For example, suppose a legacy system is scheduled to be decommissioned in a few weeks, with a newer, totally re-written version already performing well in canary testing and ready to be rolled out next week. If the legacy system has a lot of flaky tests, blocking developers from deploying changes during that short space of a few weeks, it might make sense to increase resources just to unblock developers. Engineer time is more valuable and costly than brute resource usage.
+
+Or suppose the business context is seasonally sensitive, such as an online retailer experiencing very high demand during holiday periods. During this period there is a high velocity of new feature releases, requiring a large number of automated tests of varying quality to run smoothly. Here, trading off resource cost for feature velocity might be worthwhile, at least during the peak period.
+
+### Tag known flaky tests and configure accordingly
+
+Problem: Flaky tests block the whole pipeline, interfering with delivery velocity.
+
+Mitigation: Separate flaky tests from non-flaky tests, to ensure that they run correctly or at least do not disrupt other tests.
+
+Many test frameworks allow tags to be applied to tests, allowing those tests to be grouped and treated as a unit, for separate execution, separate configuration, or some other kind of separation.
+
+Flaky tests, once identified, can be grouped in this way for special treatment.
+
+In Playwright, [test tags](https://playwright.dev/docs/test-annotations#tag-tests) can be included in the test name:
+```js
+test('test full report @flaky', async ({ page }) => {
+  // ...
+});
+```
+
+In Jest, a similar effect can be achieved by regex filtering the test name using the [testNamePattern](https://jestjs.io/docs/cli#--testnamepatternregex) config setting:
+
+package.json:
+```json
+  ...,
+  "scripts": {
+    ...,
+    "test": "jest --testNamePattern='^(?!.*\@flaky).*$'",
+    "test-flaky": "jest  --testNamePattern='^(.*\@flaky).*$'",
+    ...,
+  },
+  ...,
+```
+
+Once separated, flaky tests might be treated in various ways:
+
+- **Separate environment:** for example, run flaky tests on an instance with more resources (CPU, memory), faster network connections, etc.
+- **Separate lifecycle:** for example, run flaky tests periodically, so that they are still useful but do not block non-flaky tests.
+- **Separate execution style:** for example, re-try the flaky test more times than other tests so that they don't fail
+
+### Use a different kind of test
+
+Full end-to-end browser tests are known to be more flaky than traditional unit or unit-style integration tests. This is due to the performance overhead of loading a whole browser, loading the whole application at once, triggering interactions with whole DOM elements and waiting for feedback.
+
+We could instead shift some of these tests to integration-style unit tests. Described in Kent C. Dodd's famous article [Static vs Unit vs Integration vs E2E Testing for Frontend Apps](https://kentcdodds.com/blog/static-vs-unit-vs-integration-vs-e2e-tests#integration), these tests can cover entire user flows (such as logging in) while mocking the calls that could otherwise call flakiness, such as server-side API calls.
+
+Another option, for tests target intermittent but approximately deterministic behaviour, is to use fuzzy logic to verify that behaviour. For example, suppose we need to exercise some behaviour that operates on the current date and time, but for some reason cannot control the current date and time by mocking. If the test assertion does not need to have millisecond-level precision, perhaps we could instead assert against a range considered correct.
+
+❌
+```javascript
+  expect(timeAfterClickPause.getTime()).toEqual(new Date(2026, 3, 1, 13, 1, 1).getTime());
+```
+
+✅
+```javascript
+  expect(timeAfterClickPause.getYear()).toEqual(2026);
+  expect(timeAfterClickPause.getMonth()).toEqual(3);
+  expect(timeAfterClickPause.getDate()).toEqual(1);
+  expect(timeAfterClickPause.getHours()).toEqual(13);
+  expect(timeAfterClickPause.getMinutes()).toEqual(1);
+  expect(timeAfterClickPause.getSeconds()).toEqual(1);
+```
+
+### Use a different method of verification
+
+If our automated test is trying to exercise something that is inherently prone to intermittent failure, within no acceptable margin of error, perhaps we need a different method of verification altogether.
+
+For example, there is probably no good way to write an automated test for generating the next Bitcoin hash on the official fork. (Until/unless we get quantum computing in the cloud, in which case, any crypto-based business model might be in jeopardy!) For this case, we would probably need to wait until we have a large and engaged enough user base and then apply observability.
+
+Various methods of verification that might fit the scenario:
+
+- **Local browser tests:** tests that are run locally and manually by engineers, not in CI.
+- **Monitoring / observability:** simply provide observability into a feature without necessarily testing it. Failures can be surfaced in a dashboard or alert. Downside of this method: we risk catching a failure too late, after it has already affected a significant number of users before being discovered.
+- **Manual testing:** periodically manually test a feature in a prod-like environment.
+- **Visual diff testing:** automatically capture screenshots of the application or component, raising alerts when differences are detected. Causes of differences can be sought by, say, comparing versions of the code base (using [`git bisect`](https://git-scm.com/docs/git-bisect) or similar).
+
+## Conclusion
+
+Flaky tests undermine testing processes, developer morale and ultimately product reliability. So it's important to address them. Unfortunately fixing flaky tests can be more difficult than consistently failing tests, due to their non-determinism.
+
+Difficulties reproducing flaky tests can be addressed by:
+- Running the test repeatedly to generate failures
+- Observing prior test failures in logs
+
+Flaky tests can be dealt with by:
+- **Solutions:** Optimising async or time-sensitive code, optimising test or file size to smooth test runner execution, configuring the test runner itself (workers, timeouts) or optimising the application under test.
+- **Mitigations:** Disabling application features that tend to induce flakiness, increasing test runner resources (temporarily or permanently), separating flaky tests (say, by tagging) or opting for a different kind of test or verification.
+
+
+## Further reading
+
+- https://www.mindfulchase.com/explore/troubleshooting-tips/troubleshooting-jest-fixing-slow-tests,-flaky-behavior,-and-memory-leaks.html
+- https://jestjs.io/docs/troubleshooting
+- https://htalbot.dev/posts/debugging-slow-jest-tests
+- https://andreyluiz.com/posts/optimizing-jest-performance/
+- https://jestjs.io/blog/2016/03/11/javascript-unit-testing-performance
