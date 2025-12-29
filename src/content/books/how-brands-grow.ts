@@ -1,6 +1,6 @@
 import { Book, BookCategories, BookStatuses } from "@/framework/content/book";
 
-import { howBrandsGrowNotesSlug } from "../notes/how-brands-grow/slug";
+import { howBrandsGrowNoteSlug } from "../notes/how-brands-grow/slug";
 
 export const howBrandsGrowBook: Book = {
   meta: {
@@ -11,7 +11,6 @@ export const howBrandsGrowBook: Book = {
     title: "How Brands Grow",
     url: "http://www.amazon.com/How-Brands-Grow-What-Marketers/dp/0195573560",
     category: BookCategories.Business,
-
-    notesSlug: howBrandsGrowNotesSlug,
+    notesSlug: howBrandsGrowNoteSlug,
   },
 };

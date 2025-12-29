@@ -1,4 +1,4 @@
-import { kebabCase } from "lodash";
+import { isArray, isFunction, kebabCase } from "lodash";
 import { FunctionComponent, JSXElementConstructor, ReactElement } from "react";
 
 import { Article as Article_ } from "@/framework/client";
@@ -37,10 +37,15 @@ function getNextChildOfTypeAndNotType(
 export function getArticleHeadings(
   article: Article_,
 ): readonly ArticleHeading[] {
-  const content = article.content;
-  const children: readonly ReactElement[] = content?.props?.children ?? [];
+  if (!isFunction(article.content.type)) {
+    return [];
+  }
+  const contentMdx = article.content.type();
+  const children: readonly ReactElement[] = contentMdx?.props?.children ?? [];
 
-  const headingElements = children.filter(byComponentType(MdxH2));
+  const headingElements = isArray(children)
+    ? children.filter(byComponentType(MdxH2))
+    : [];
 
   const headingTitles = headingElements.map((headingElement) =>
     (headingElement.props as any)?.children?.toString(),

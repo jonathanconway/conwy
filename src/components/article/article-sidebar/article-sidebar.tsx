@@ -15,7 +15,6 @@ export interface ArticleSidebarProps {
 export function ArticleSidebar(props: ArticleSidebarProps) {
   const { article } = props;
 
-  //  todo: put this in sidebar headings instead
   const articleHeadings = getArticleHeadings(article);
 
   return (

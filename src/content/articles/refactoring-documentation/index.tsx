@@ -3,7 +3,8 @@ import { Article } from "@/framework/client";
 import Content from "./content.mdx";
 import { meta } from "./meta";
 
-export const refactoringDocumentationArticle = {
+export const refactoringDocumentationArticle: Article = {
+  type: "article",
   meta,
   content: <Content />,
-} as Article;
+};

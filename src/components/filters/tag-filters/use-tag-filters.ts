@@ -1,6 +1,8 @@
 import { plural } from "pluralize";
 import { useCallback } from "react";
 
+import { sentenceCase } from "@/framework/client";
+
 import { ALL } from "./default-selected-tags";
 import { getItemsTags } from "./get-items-tags";
 import { createTagFiltersParamKey } from "./tag-filters-param-key";
@@ -8,10 +10,6 @@ import { TagFiltersProps } from "./tag-filters-props";
 import { useTagFiltersSelected } from "./use-tag-filters-selected";
 
 type UseTagFiltersParams<T> = TagFiltersProps<T>;
-
-function sentenceCase(input: string) {
-  return input.split("-").join(" ").toLowerCase();
-}
 
 function getTagFieldLabel<T>(params: UseTagFiltersParams<T>) {
   return sentenceCase(String(params.tagField.split(".").slice(-1)[0]));

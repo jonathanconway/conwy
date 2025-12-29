@@ -1,5 +1,4 @@
-import { ArticleMeta } from "@/framework/client";
-import { PostTags } from "@/framework/content/post/post-tags";
+import { ArticleMeta, PostTags } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Generic HOC creator pattern for React",

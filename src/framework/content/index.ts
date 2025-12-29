@@ -3,6 +3,7 @@ export * from "./book";
 export * from "./colleague";
 export * from "./community";
 export * from "./content-types";
+export * from "./content-import-by-slug";
 export * from "./fragment";
 export * from "./idea";
 export * from "./image";

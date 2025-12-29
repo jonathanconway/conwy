@@ -2,13 +2,13 @@ import { howBrandsGrowBook } from "@/content/books/how-brands-grow";
 import { Note } from "@/framework/client";
 
 import Content from "./content.mdx";
-import { howBrandsGrowNotesSlug } from "./slug";
+import { howBrandsGrowNoteSlug } from "./slug";
 
-export const howBrandsGrowNotes: Note = {
+export const howBrandsGrowNote: Note = {
   type: "note",
   meta: {
     source: howBrandsGrowBook.meta,
-    slug: howBrandsGrowNotesSlug,
+    slug: howBrandsGrowNoteSlug,
     date: "2025-04-18",
     tags: [],
     socialLinks: [],

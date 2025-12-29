@@ -1,3 +1,5 @@
+import { camelCase, upperFirst } from "lodash";
+
 import { isNotNil } from "./typing";
 
 export function hashString(input: string) {
@@ -19,4 +21,8 @@ export function sentenceCase(input = "") {
   const a = input.substring(0, 1).toUpperCase();
   const b = input.substring(1).toLowerCase();
   return `${a}${b}`;
+}
+
+export function pascalCase(input = "") {
+  return upperFirst(camelCase(input));
 }

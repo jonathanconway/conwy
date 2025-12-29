@@ -12,8 +12,10 @@ interface ArticleTableOfContentsProps {
   readonly article: Article;
 }
 
-export function ArticleTableOfContents(props: ArticleTableOfContentsProps) {
-  const articleHeadings = getArticleHeadings(props.article);
+export async function ArticleTableOfContents(
+  props: ArticleTableOfContentsProps,
+) {
+  const articleHeadings = await getArticleHeadings(props.article);
 
   if (articleHeadings.length < 2) {
     return null;

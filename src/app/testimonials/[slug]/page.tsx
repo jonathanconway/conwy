@@ -4,15 +4,15 @@ import { PageLayout } from "@/components";
 import { Work } from "@/components/work";
 import { site } from "@/content";
 import * as works from "@/content/works";
-import { Work as Work_ } from "@/framework/client";
+import { Work as Work_, importContentBySlug } from "@/framework/client";
+
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
-  const workModule = await import(`@/content/works/${params.slug}`);
-  const workModuleItems = Object.values(workModule);
-  const work = workModuleItems[0] as Work_;
-  
+
+  const work = importContentBySlug<Work_>(works, "work", params.slug);
+
   return <PageLayout selectedNavPath="/work" main={<Work work={work} />} />;
 }
 
@@ -23,11 +23,14 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const workModule = await import(`@/content/works/${params.slug}`);
-  const work = Object.values(workModule)[0] as Work_;
+
+  const work = importContentBySlug<Work_>(works, "work", params.slug);
+
   const client = work.meta.client;
+  const clientTitle = client.toLowerCase();
+  const title = `${site.title} - work - ${clientTitle}`;
 
   return {
-    title: `${site.title} - work - ${client.toLowerCase()}`,
+    title,
   };
 }

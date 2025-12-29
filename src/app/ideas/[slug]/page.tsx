@@ -4,15 +4,14 @@ import "@/components";
 import { Breadcrumb, Idea, PageLayout, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as ideas from "@/content/ideas";
-import { Idea as Idea_ } from "@/framework/client";
+import { Idea as Idea_, importContentBySlug } from "@/framework/client";
 
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
-  const ideaModule = await import(`@/content/ideas/${params.slug}`);
-  const ideaModuleItems = Object.values(ideaModule);
-  const idea = ideaModuleItems[0] as Idea_;
+
+  const idea = importContentBySlug<Idea_>(ideas, "idea", params.slug);
 
   return (
     <PageLayout
@@ -47,8 +46,9 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const ideaModule = await import(`@/content/ideas/${params.slug}`);
-  const idea = Object.values(ideaModule)[0] as Idea_;
+
+  const idea = importContentBySlug<Idea_>(ideas, "idea", params.slug);
+
   const title = idea.meta.title.toLowerCase();
 
   return {

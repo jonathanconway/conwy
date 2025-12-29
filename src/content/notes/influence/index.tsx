@@ -2,13 +2,13 @@ import { influenceBook } from "@/content/books/influence";
 import { Note } from "@/framework/client";
 
 import Content from "./content.mdx";
-import { influenceNotesSlug } from "./slug";
+import { influenceNoteSlug } from "./slug";
 
-export const influenceNotes: Note = {
+export const influenceNote: Note = {
   type: "note",
   meta: {
     source: influenceBook.meta,
-    slug: influenceNotesSlug,
+    slug: influenceNoteSlug,
     date: "2025-04-13",
     tags: [],
     socialLinks: [],
