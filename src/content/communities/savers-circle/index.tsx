@@ -2,14 +2,14 @@ import { Community, CommunityCategories } from "@/framework/client";
 
 import BlurbShort from "./blurb-short.mdx";
 
-export const rationalReminderCommunity: Community = {
+export const saversCircleCommunity: Community = {
   type: "community",
   meta: {
-    slug: "rational-reminder",
-    title: "Rational Reminder",
-    url: "https://community.rationalreminder.ca",
+    slug: "savers-circle",
+    title: "Savers Circle",
+    url: "https://www.skool.com/savers-circle-3790",
     mainImage: {
-      src: "/images/communities/rational-reminder.png",
+      src: "/images/communities/savers-circle.jpg",
     },
     category: CommunityCategories.Investing,
     myPosts: [],

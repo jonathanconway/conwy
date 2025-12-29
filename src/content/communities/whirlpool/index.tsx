@@ -12,7 +12,6 @@ export const whirlpoolCommunity: Community = {
     mainImage: {
       src: "/images/communities/whirlpool.png",
     },
-    myProfileUrl: "",
     myPosts: [],
   },
   blurbShort: <BlurbShort />,

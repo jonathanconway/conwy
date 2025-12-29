@@ -15,7 +15,7 @@ export interface CommunityMeta extends MetaBase {
 
   readonly category: CommunityCategory;
 
-  readonly myProfileUrl: Url;
+  readonly myProfileUrl?: Url;
   readonly myPosts: readonly CommunityMetaMyPost[];
 }
 

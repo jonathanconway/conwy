@@ -22,7 +22,6 @@ export const ${nameRootObject}: Community = {
       src: "/images/communities/${name}.png",
     },
     category: CommunityCategories.SoftwareDevelopment,
-    myProfileUrl: "",
     myPosts: [],
   },
   blurbShort: <BlurbShort />,

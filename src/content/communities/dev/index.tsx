@@ -12,7 +12,6 @@ export const devCommunity: Community = {
     mainImage: {
       src: "/images/communities/dev.webp",
     },
-    myProfileUrl: "",
     myPosts: [],
   },
   blurbShort: <BlurbShort />,

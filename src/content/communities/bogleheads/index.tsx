@@ -12,7 +12,6 @@ export const bogleheadsCommunity: Community = {
       src: "/images/communities/bogleheads.svg",
     },
     category: CommunityCategories.Investing,
-    myProfileUrl: "",
     myPosts: [],
   },
   blurbShort: <BlurbShort />,
