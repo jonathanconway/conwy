@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-markdown";
 import "prismjs/components/prism-mermaid";
 import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-typescript";

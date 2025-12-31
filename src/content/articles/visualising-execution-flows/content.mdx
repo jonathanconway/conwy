@@ -55,17 +55,17 @@ Here's that code example again, with the relevant lines highlighted:
  
 <MdxPre data-line="4-6" className="line-numbers">
   <MdxCode className="language-java">{`
-class LoginResource {
-  ...
-  private Response login(String username, String password) {
-    if (this.userAuthProvider.isValidUser(username, password)) {
-      this.sessionProvider.setCurrentUser(username);
-      return new Response(200, "Login succeeded.");
-    } else {
-      return new Response(401, "User credentials are invalid.");
+  class LoginResource {
+    ...
+    private Response login(String username, String password) {
+      if (this.userAuthProvider.isValidUser(username, password)) {
+        this.sessionProvider.setCurrentUser(username);
+        return new Response(200, "Login succeeded.");
+      } else {
+        return new Response(401, "User credentials are invalid.");
+      }
     }
   }
-}
 `}
   </MdxCode>
 </MdxPre>
@@ -91,17 +91,17 @@ Here's the code example once more, with the relevant lines highlighted:
 
 <MdxPre data-line="4, 7-8" className="line-numbers">
   <MdxCode className="language-java">{`
-class LoginResource {
-  ...
-  private Response login(String username, String password) {
-    if (this.userAuthProvider.isValidUser(username, password)) {
-      this.sessionProvider.setCurrentUser(username);
-      return new Response(200, "Login succeeded.");
-    } else {
-      return new Response(401, "User credentials are invalid.");
+  class LoginResource {
+    ...
+    private Response login(String username, String password) {
+      if (this.userAuthProvider.isValidUser(username, password)) {
+        this.sessionProvider.setCurrentUser(username);
+        return new Response(200, "Login succeeded.");
+      } else {
+        return new Response(401, "User credentials are invalid.");
+      }
     }
   }
-}
 `}
   </MdxCode>
 </MdxPre>
@@ -146,17 +146,17 @@ Supposing there was a `RegisterResource` class having a `register` method, as sh
 
 <MdxPre>
   <MdxCode className="language-java">{`
-class RegisterResource {
-  ...
-  private Response register(String username, String password) {
-    if (this.userAuthProvider.isValidUser(username, password)) {
-      this.sessionProvider.setCurrentUser(username);
-      return new Response(200, "Login succeeded.");
-    } else {
-      this.userAuthProvider.registerUser(username, password);
+  class RegisterResource {
+    ...
+    private Response register(String username, String password) {
+      if (this.userAuthProvider.isValidUser(username, password)) {
+        this.sessionProvider.setCurrentUser(username);
+        return new Response(200, "Login succeeded.");
+      } else {
+        this.userAuthProvider.registerUser(username, password);
+      }
     }
   }
-}
 `}
   </MdxCode>
 </MdxPre>

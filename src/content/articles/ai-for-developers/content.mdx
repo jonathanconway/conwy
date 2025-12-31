@@ -55,7 +55,7 @@ The script takes as an argument the path to a file in that repo. It then uses `g
 
 Here's a sample of the output from running it on [a file in the NextJS repository](https://github.com/vercel/next.js/blob/fd0bc9466e42ec313ce92c58e2a5c2c157e63f54/packages/next/src/shared/lib/head.tsx):
 
-```
+```bash
 $ list_authors packages/next/src/shared/lib/head.tsx
 Authors who have edited 'packages/next/src/shared/lib/head.tsx':
 Adam Stankiewicz <sheerun@sher.pl>
@@ -79,33 +79,23 @@ Another technique is to provide just the code for one function or code block and
 
 Here's an example of a prompt I might use:
 
-> Copyable: Please write a Jest unit test for a Typescript function.
->
->
-> The unit test should have the following it blocks:
-> 1. returns a list of dates between the two dates passed
-> 2. returns an empty array if two identical dates are passed
-> 3. throws an error if null is passed
->
-> Please write tests that satisfy the above it blocks.
->
-> Here is the Typescript function:
->
-> \`\`\`
->
-> function calculateDaysBetweenDates (begin, end) \{
->
->   var beginDate = new Date (begin) ;
->
->   var endDate = new Date(end) ;
->
->   var days = Math. round (endDate - beginDate) / (1000 * 60 * 60 * 24) ) ;
->
->   return days;
->
-> }
->
-> \`\`\`
+```
+Copyable: Please write a Jest unit test for a Typescript function.
+The unit test should have the following it blocks:
+1. returns a list of dates between the two dates passed
+2. returns an empty array if two identical dates are passed
+3. throws an error if null is passed
+Please write tests that satisfy the above it blocks.
+Here is the Typescript function:
+'''
+function calculateDaysBetweenDates (begin, end) \{
+  var beginDate = new Date (begin) ;
+  var endDate = new Date(end) ;
+  var days = Math. round (endDate - beginDate) / (1000 * 60 * 60 * 24) ) ;
+  return days;
+}
+'''
+```
 
 ## Summarising conversations
 

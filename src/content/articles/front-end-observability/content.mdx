@@ -58,34 +58,34 @@ Let's log two structured events:
 
 <MdxPre data-line="3-9, 18-24" className="line-numbers">
   <MdxCode className="language-javascript">{`
-const handleClickSave = async (e) => {
-  if (othersAndThisStakesSum <= 100) {
-    captureEvent({
-      message: "useShareholderStakeEditor/changeStakeValid",
-      tags: event.tags,
-      contexts: {
-        ["useShareholderStakeEditor/changeStakeValid"]: event.data,
-      },
-    });
+  const handleClickSave = async (e) => {
+    if (othersAndThisStakesSum <= 100) {
+      captureEvent({
+        message: "useShareholderStakeEditor/changeStakeValid",
+        tags: event.tags,
+        contexts: {
+          ["useShareholderStakeEditor/changeStakeValid"]: event.data,
+        },
+      });
 
-    await patchShareholderStake({
-      id: shareholder.id,
-      stake,
-    });
+      await patchShareholderStake({
+        id: shareholder.id,
+        stake,
+      });
 
-    refreshShareholders();
-  } else {
-    captureEvent({
-      message: "useShareholderStakeEditor/changeStakeSumError",
-      tags: event.tags,
-      contexts: {
-        ["useShareholderStakeEditor/changeStakeSumError"]: event.data,
-      },
-    });
+      refreshShareholders();
+    } else {
+      captureEvent({
+        message: "useShareholderStakeEditor/changeStakeSumError",
+        tags: event.tags,
+        contexts: {
+          ["useShareholderStakeEditor/changeStakeSumError"]: event.data,
+        },
+      });
 
-    showShareholderStakeError();
+      showShareholderStakeError();
+    }
   }
-}
 `}
   </MdxCode>
 </MdxPre>
