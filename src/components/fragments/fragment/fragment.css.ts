@@ -81,7 +81,6 @@ const pre = {
   ...rounded.md,
   whiteSpace: "pre-wrap",
   fontSize: "0.875rem",
-  lineHeight: "1.25rem",
 };
 
 globalStyle(`${fragment} pre[class*=language-][class*=language-]`, pre);
