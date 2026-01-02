@@ -1,3 +1,4 @@
+import { orderBy } from "lodash";
 import { plural } from "pluralize";
 import { useCallback } from "react";
 
@@ -33,7 +34,7 @@ export function useTagFilters<T>(params: UseTagFiltersParams<T>) {
     [selectedTags],
   );
 
-  const displayTags = [ALL, ...allTags];
+  const displayTags = [ALL, ...orderBy(allTags)];
 
   return {
     title,

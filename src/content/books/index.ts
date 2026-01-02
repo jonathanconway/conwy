@@ -79,6 +79,7 @@ export * from "./the-seven-sins-of-memory";
 export * from "./the-sovereign-individual";
 export * from "./the-storm-before-the-calm";
 export * from "./the-success-equation";
+export * from "./the-tibetan-yoga-of-breath";
 export * from "./think-twice";
 export * from "./thinking-fast-and-slow";
 export * from "./tidy-first";
