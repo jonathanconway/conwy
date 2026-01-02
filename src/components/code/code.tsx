@@ -3,6 +3,9 @@
 import { isString } from "lodash";
 import Prism from "prismjs";
 import "prismjs";
+import "prismjs/plugins/toolbar/prism-toolbar.css";
+import "prismjs/plugins/toolbar/prism-toolbar.js";
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-markdown";
