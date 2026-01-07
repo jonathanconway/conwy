@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 import { rounded, text } from "../styling";
 import { vars } from "../theme";
@@ -12,6 +12,10 @@ export const aside = style({
   borderStyle: "solid",
   borderColor: vars.aside.border.color,
   backgroundColor: vars.aside.background.color,
+});
+
+globalStyle(`${aside} > *:first-child`, {
+  paddingTop: 0,
 });
 
 export const asideHeading = style({

@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import {
   ArticlesList,
   ArticlesTagFilters,
-  Fragment,
+  MdxWrapper,
   PageLayout,
 } from "@/components";
 import { site } from "@/content";
@@ -21,9 +21,7 @@ export default function Page() {
         selectedNavPath="/articles"
         main={
           <>
-            <Fragment>
-              <articlesFragment.content />
-            </Fragment>
+            <MdxWrapper>{articlesFragment.content}</MdxWrapper>
 
             <ArticlesTagFilters items={items} />
 

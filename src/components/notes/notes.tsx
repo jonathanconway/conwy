@@ -8,7 +8,9 @@ interface NotesProps {
   readonly noteMetas: readonly NoteMeta[];
 }
 
-export function Notes({ noteMetas }: NotesProps) {
+export function Notes(props: NotesProps) {
+  const { noteMetas } = props;
+
   const sortedWorkHistoryListItems = sortNoteMetas(noteMetas);
 
   return (

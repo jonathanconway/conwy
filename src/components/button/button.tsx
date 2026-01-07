@@ -8,15 +8,22 @@ type ButtonProps = HTMLProps<HTMLButtonElement> & {
   readonly isSelected?: boolean;
 };
 
-export function Button({ selected, type, ...restProps }: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const {
+    className = cn(
+      styles.buttonBase,
+      props.selected ? styles.buttonSelected : styles.buttonUnselected,
+    ),
+    selected,
+    type,
+    ...restProps
+  } = props;
+
   return (
     <button
-      {...restProps}
       type={type as HTMLButtonElement["type"]}
-      className={cn(
-        styles.buttonBase,
-        selected ? styles.buttonSelected : styles.buttonUnselected,
-      )}
+      className={className}
+      {...restProps}
     />
   );
 }

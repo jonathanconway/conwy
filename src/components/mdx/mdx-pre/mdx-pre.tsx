@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import * as styles from "./mdx-pre.css";
+import "./mdx-pre.css";
 import * as mixins from "./mdx-pre.mixins";
 
 export type MdxPreProps = DetailedHTMLProps<
@@ -16,7 +16,6 @@ export function MdxPre({
 }: MdxPreProps) {
   return (
     <pre
-      className={styles.pre}
       style={{
         ...restProps,
         ...mixins.preInline,

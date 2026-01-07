@@ -14,7 +14,7 @@ export function ToolsSections() {
   const sections = Object.values(ToolSections);
 
   return (
-    <ul>
+    <Text type={TextTypes.UnorderedList}>
       {sections.map((section) => (
         <li key={section}>
           <Link href={`#${kebabCase(pluralize(section))}`} size={TextSizes.sm}>
@@ -23,6 +23,6 @@ export function ToolsSections() {
           <Text type={TextTypes.Small}>({toolsBySection[section].length})</Text>
         </li>
       ))}
-    </ul>
+    </Text>
   );
 }

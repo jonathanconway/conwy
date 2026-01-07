@@ -1,11 +1,10 @@
-import { TwoColLayout } from "@/components/layouts";
 import { Community as Community_ } from "@/framework/client";
 
 import { ContentListItem } from "../../../content-list";
-import { Fragment } from "../../../fragments";
 import { Image } from "../../../image";
 import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
+import { MdxWrapper } from "../../../mdx";
 
 import * as styles from "./communities-list-item.css";
 
@@ -36,7 +35,7 @@ export function CommunitiesListItem(props: CommunitiesListItemProps) {
               />
             </LinkBoxTitle>
 
-            <Fragment>{props.community.blurbShort}</Fragment>
+            <MdxWrapper>{props.community.blurbShort}</MdxWrapper>
           </>
         }
       />

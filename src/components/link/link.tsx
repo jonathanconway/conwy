@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import { Icon, IconTypes } from "../icon";
 import { withTooltip } from "../tooltip";
 
-import { getLinkAttributes } from "./get-link-values";
+import { getLinkValues } from "./get-link-values";
 import { LinkProps } from "./link-props";
 import * as linkStyles from "./link.css";
 
@@ -17,7 +17,8 @@ export function Link_(props: LinkProps) {
     showOpenInNew,
     showOpenPopup,
     download,
-  } = getLinkAttributes(props);
+  } = getLinkValues(props);
+
   return (
     <NextLink {...nextLink}>
       {iconLeft && <Icon className={linkStyles.linkIcon} icon={iconLeft} />}

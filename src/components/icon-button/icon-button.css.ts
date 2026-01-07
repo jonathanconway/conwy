@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 import * as buttonStyles from "../button/button.css";
 import * as buttonMixins from "../button/button.mixins";
+import * as iconMixins from "../icon/icon.mixins";
 import { rounded } from "../styling";
 
 export const iconButtonBase = style({
@@ -26,7 +27,7 @@ export const iconButtonDisabled = style({
 });
 
 export const icon = style({
-  pointerEvents: "none",
+  ...iconMixins.iconContainer,
 });
 
 export const iconButtonIconDisabled = style({

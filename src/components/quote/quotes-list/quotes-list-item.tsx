@@ -14,7 +14,9 @@ interface QuotesListItemProps {
   readonly quote: Quote;
 }
 
-export function QuotesListItem({ quote }: QuotesListItemProps) {
+export function QuotesListItem(props: QuotesListItemProps) {
+  const { quote } = props;
+
   return (
     <li key={quote.meta.slug} className={styles.quotesListItem}>
       <LinkBox

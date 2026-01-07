@@ -24,7 +24,8 @@ import * as styles from "./code.css";
 
 type CodeProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
-export function Code({ className, children, ...restProps }: CodeProps) {
+export function Code(props: CodeProps) {
+  const { className = styles.code,  children, ...restProps } = props;
   const codeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export function Code({ className, children, ...restProps }: CodeProps) {
 
   return (
     <code
-      className={className ?? styles.code}
+      className={className}
       ref={codeRef}
       {...restProps}
       suppressHydrationWarning

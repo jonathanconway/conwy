@@ -1,10 +1,4 @@
-import {
-  Fragment,
-  // Link,
-  Notes,
-  PageLayout,
-  ResponsiveMdHalf, // Text,
-} from "@/components";
+import { MdxWrapper, Notes, PageLayout, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import { notesFragment } from "@/content/fragments";
 import * as notes from "@/content/notes";
@@ -12,7 +6,6 @@ import { getNoteMetas } from "@/framework/client";
 
 export default function Page() {
   const noteMetas = getNoteMetas(notes);
-  // const testimonialsCount = getTestimonials(works).length;
 
   return (
     <PageLayout
@@ -20,16 +13,7 @@ export default function Page() {
       main={
         <>
           <ResponsiveMdHalf>
-            <Fragment>
-              <notesFragment.content />
-              <p>
-                {/* <Link href="/testimonials" size={TextSizes.sm}>
-                  Testimonials
-                </Link> */}
-
-                {/* <Text type={TextTypes.Small}> ({testimonialsCount})</Text> */}
-              </p>
-            </Fragment>
+            <MdxWrapper>{notesFragment.content}</MdxWrapper>
           </ResponsiveMdHalf>
 
           <Notes noteMetas={noteMetas} />
@@ -40,5 +24,5 @@ export default function Page() {
 }
 
 export const metadata = {
-  title: `${site.title} - work`,
+  title: `${site.title} - commentaries`,
 };

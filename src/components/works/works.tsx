@@ -8,7 +8,8 @@ interface WorksProps {
   readonly workMetas: readonly WorkMeta[];
 }
 
-export function Works({ workMetas }: WorksProps) {
+export function Works(props: WorksProps) {
+  const { workMetas } = props;
   const sortedWorkHistoryListItems = sortWorkMetas(workMetas);
 
   return (

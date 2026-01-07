@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import * as iconMixins from "../../icon/icon.mixins";
 import { colors, media, text } from "../../styling";
 import { vars } from "../../theme";
 
@@ -22,9 +23,13 @@ export const checkbox = style({
   display: "none",
 });
 
-export const expandButton = style({});
+export const expandButton = style({
+  ...iconMixins.iconContainer,
+});
 
-export const collapseButton = style({});
+export const collapseButton = style({
+  ...iconMixins.iconContainer,
+});
 
 export const header = style({
   display: "none",

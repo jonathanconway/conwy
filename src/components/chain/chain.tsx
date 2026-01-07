@@ -10,12 +10,14 @@ interface ChainProps extends HTMLProps<HTMLDivElement> {
   readonly children: readonly ReactNode[];
 }
 
-export function Chain({ className, children, ...restProps }: ChainProps) {
+export function Chain(props: ChainProps) {
+  const { className = styles.chain, children, ...restProps } = props;
+
   const renderableChildren = children.filter(isNotNil);
   const maxChildIndex = renderableChildren.length - 1;
 
   return (
-    <div {...restProps} className={className ?? styles.chain}>
+    <div className={className} {...restProps}>
       {renderableChildren.map((child, childIndex) => (
         <span key={childIndex} className={styles.part}>
           {child}

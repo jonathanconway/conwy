@@ -1,5 +1,5 @@
 import {
-  Fragment,
+  MdxWrapper,
   PageLayout,
   QuotesList,
   ResponsiveMdHalf,
@@ -15,9 +15,7 @@ export default function QuotesPage() {
       main={
         <Stack gap={1}>
           <ResponsiveMdHalf>
-            <Fragment>
-              <quotesFragment.content />
-            </Fragment>
+            <MdxWrapper>{quotesFragment.content}</MdxWrapper>
           </ResponsiveMdHalf>
 
           <QuotesList />

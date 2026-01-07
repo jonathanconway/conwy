@@ -1,8 +1,8 @@
-import { MDXContent } from "mdx/types";
+import { JSX } from "react";
 
 /**
  * A `Fragment` is a piece of generic content that can be re-used anywhere within the site.
  */
 export interface Fragment {
-  readonly content: MDXContent;
+  readonly content: JSX.Element;
 }

@@ -1,5 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+import "./mdx-li.css";
+
 export type MdxLIProps = DetailedHTMLProps<
   HTMLAttributes<HTMLLIElement>,
   HTMLLIElement

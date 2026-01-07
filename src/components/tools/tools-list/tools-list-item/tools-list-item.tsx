@@ -4,6 +4,7 @@ import { Tool as Tool_ } from "@/framework/client";
 
 import { ContentListItem } from "../../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
+import { Stack } from "../../../stack";
 import { Text } from "../../../text";
 import { TextTypes } from "../../../text/text-type";
 
@@ -37,15 +38,19 @@ export function ToolsListItem(props: ToolsListItemProps) {
               <Text type={TextTypes.Small}>{props.tool.meta.category}</Text>
             )}
 
-            {props.tool.meta.description && (
-              <Text>{props.tool.meta.description}</Text>
-            )}
+            <Stack gap={0.25}>
+              {props.tool.meta.description && (
+                <Text type={TextTypes.Summary}>
+                  {props.tool.meta.description}
+                </Text>
+              )}
 
-            {props.tool.meta.operatingSystems && (
-              <Text type={TextTypes.Small}>
-                {props.tool.meta.operatingSystems.join(", ")}
-              </Text>
-            )}
+              {props.tool.meta.operatingSystems && (
+                <Text type={TextTypes.Small}>
+                  {props.tool.meta.operatingSystems.join(", ")}
+                </Text>
+              )}
+            </Stack>
           </>
         }
       />

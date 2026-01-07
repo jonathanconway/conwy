@@ -20,7 +20,7 @@ export function Testimonial({
 }: TestimonialProps) {
   return (
     <Box key={content}>
-      <Stack gap={0.5}>
+      <Stack gap={0.25}>
         <div className={styles.feedbackItemQuote}>{content}</div>
 
         <Stack gap={0.25}>

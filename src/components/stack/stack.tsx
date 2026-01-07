@@ -19,7 +19,9 @@ function stringifySizeRem(gap?: SizeRem) {
   return gap;
 }
 
-export function Stack({ direction = "column", gap, children }: StackProps) {
+export function Stack(props: StackProps) {
+  const { direction = "column", gap, children } = props;
+
   return (
     <div
       className={cn(

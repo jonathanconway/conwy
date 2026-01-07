@@ -2,6 +2,8 @@ import { style } from "@vanilla-extract/css";
 
 import { vars } from "../theme";
 
+import * as mixins from "./icon.mixins";
+
 export const checkboxCircle = style({
   fill: "transparent",
   stroke: vars.icon.checkbox.color,
@@ -11,11 +13,7 @@ export const checkboxPath = style({
   fill: vars.icon.checkbox.color,
 });
 
-export const iconContainer = style({
-  position: "relative",
-  display: "inline-block",
-  pointerEvents: "none",
-});
+export const iconContainer = style(mixins.iconContainer);
 
 export const iconSvg = style({
   width: "100%",

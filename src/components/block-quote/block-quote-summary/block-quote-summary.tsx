@@ -5,12 +5,12 @@ import * as styles from "./block-quote-summary.css";
 type BlockQuoteSummaryProps = HTMLProps<HTMLQuoteElement>;
 
 export function BlockQuoteSummary({
-  className,
+  className = styles.summaryContainer,
   children,
   ...restProps
 }: BlockQuoteSummaryProps) {
   return (
-    <blockquote className={className ?? styles.summaryContainer} {...restProps}>
+    <blockquote className={className} {...restProps}>
       TL;DR: {children}
     </blockquote>
   );

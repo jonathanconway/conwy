@@ -1,8 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { TypeOfConst } from "@/framework/client";
-
-import * as styles from "./heading.css";
+import { Text, TextTypes } from "../text";
 
 export type HeadingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
@@ -11,48 +9,19 @@ export type HeadingProps = DetailedHTMLProps<
   readonly level?: 1 | 2 | 3 | 4 | 5;
 };
 
-const HeadingLevels = {
-  H1: "h1",
-  H2: "h2",
-  H3: "h3",
-  H4: "h4",
-  H5: "h5",
-} as const;
+/**
+ * `Heading` is a convenience component for `Text` of type `heading`.
+ * @param param0
+ * @returns
+ */
+export function Heading({ level = 1, ...restProps }: HeadingProps) {
+  const type = {
+    1: TextTypes.Heading1,
+    2: TextTypes.Heading2,
+    3: TextTypes.Heading3,
+    4: TextTypes.Heading4,
+    5: TextTypes.Heading5,
+  }[level];
 
-type HeadingLevel = TypeOfConst<typeof HeadingLevels>;
-
-const HEADING_LEVEL_DETAILS: Record<
-  number,
-  {
-    readonly element: HeadingLevel;
-    readonly className: string;
-  }
-> = {
-  1: {
-    element: "h1",
-    className: styles.h1,
-  },
-  2: {
-    element: "h2",
-    className: styles.h2,
-  },
-  3: {
-    element: "h3",
-    className: styles.h3,
-  },
-  4: {
-    element: "h4",
-    className: styles.h4,
-  },
-  5: {
-    element: "h5",
-    className: styles.h5,
-  },
-};
-
-export function Heading({ level, className, ...restProps }: HeadingProps) {
-  const details = HEADING_LEVEL_DETAILS[level ?? 1];
-  const Element = details.element;
-
-  return <Element className={className ?? details.className} {...restProps} />;
+  return <Text type={type} {...restProps} />;
 }

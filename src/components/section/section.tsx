@@ -10,7 +10,7 @@ export function Section(props: SectionProps) {
     <div className={styles.container} {...restProps}>
       <Label as="h4">{props.label}</Label>
 
-      {props.children}
+      {children}
     </div>
   );
 }

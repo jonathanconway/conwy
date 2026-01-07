@@ -1,11 +1,12 @@
+import { GlobalStyleRule } from "@vanilla-extract/css";
+
 import * as boxMixins from "../box/box.mixins";
 import { media, text } from "../styling";
 import * as textMixins from "../text/text.mixins";
 
-export const table = {
+export const table: GlobalStyleRule = {
   marginTop: "1rem",
   borderSpacing: 0,
-  // todo: remove
   borderCollapse: "unset",
   ...text.size.sm,
   ...boxMixins.boxBorderStructural,
@@ -53,7 +54,7 @@ export const tableCellHeader = {
 
 export const tableCellBody = {
   ...tableCell,
-  fontSize: "0.875rem",
+  // fontSize: "0.875rem",
   borderBottom: "none",
 };
 

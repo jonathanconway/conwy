@@ -10,7 +10,7 @@ import { LinkLayoutTypes } from "./link-layout-type";
 import { LinkProps } from "./link-props";
 import * as linkStyles from "./link.css";
 
-export function getLinkAttributes(props: LinkProps) {
+export function getLinkValues(props: LinkProps) {
   const {
     ref,
     showOpenInNew: _showOpenInNew,
@@ -32,6 +32,7 @@ export function getLinkAttributes(props: LinkProps) {
   const href = props.link?.url ?? props.href ?? "javascript:";
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    console.log("get-link-values handleClick");
     if (!href) {
       event.preventDefault();
     }
@@ -57,7 +58,7 @@ export function getLinkAttributes(props: LinkProps) {
     nextLink: {
       className,
       href,
-      handleClick,
+      onClick: handleClick,
       ...restProps,
     },
     iconLeft,

@@ -20,14 +20,9 @@ type ${nameComponentProps} = HTMLProps<HTMLDivElement> & {};
  * ${description}
  */
 export function ${nameComponent}(props: ${nameComponentProps}) {
+  const { className = styles.${name}, ...restProps } = props;
   return (
-    <div
-      {...props}
-      className={cn(
-        styles.${name},
-        props.className,
-      )}
-    />
+    <div className={className} {...restProps} />
   );
 }
 

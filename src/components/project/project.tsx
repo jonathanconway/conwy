@@ -16,48 +16,50 @@ interface ProjectProps {
   readonly project: Project_;
 }
 
-export function Project({ project }: ProjectProps) {
-  const { meta: projectMeta } = project;
+export function Project(props: ProjectProps) {
+  const {
+    project: { meta },
+  } = props;
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.headerLeft}>
           <div className={styles.headerLeftImage}>
-            <ProjectMainImage projectMeta={projectMeta} />
+            <ProjectMainImage projectMeta={meta} />
           </div>
 
           <div className={styles.headerLeftTitle}>
-            <Heading level={2}>{projectMeta.title}</Heading>
+            <Heading level={2}>{meta.title}</Heading>
 
-            <div className={styles.blurb}>{projectMeta.blurb}</div>
+            <div className={styles.blurb}>{meta.blurb}</div>
           </div>
         </div>
 
         <div className={styles.headerRight}>
-          <ProjectNav projectMeta={projectMeta} />
+          <ProjectNav projectMeta={meta} />
         </div>
       </div>
 
       <div className={styles.main}>
         <div className={styles.body}>
           <Section label="Summary">
-            <ProjectBody project={project} />
+            <ProjectBody project={props.project} />
           </Section>
         </div>
 
         <div className={styles.aside}>
           <div className={styles.techAndOtherContainer}>
-            <ProjectTechs projectMeta={projectMeta} />
+            <ProjectTechs projectMeta={meta} />
 
             <div className={styles.otherContainer}>
-              <ProjectLinks projectMeta={projectMeta} />
+              <ProjectLinks projectMeta={meta} />
 
-              <ProjectPlatforms projectMeta={projectMeta} />
+              <ProjectPlatforms projectMeta={meta} />
             </div>
           </div>
 
-          <ProjectImageCascade projectMeta={project.meta} />
+          <ProjectImageCascade projectMeta={meta} />
         </div>
       </div>
     </div>

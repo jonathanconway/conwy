@@ -9,7 +9,7 @@ import { LinkBoxProps } from "./link-box-props";
 import * as styles from "./link-box.css";
 
 export function LinkBox_(props: LinkBoxProps) {
-  const { className, href, ...restProps } = props;
+  const { className = styles.linkBox, href, ...restProps } = props;
 
   const handleClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
@@ -33,7 +33,7 @@ export function LinkBox_(props: LinkBoxProps) {
 
   return (
     <Link
-      className={props.className ?? styles.linkBox}
+      className={className}
       href={String(props.href)}
       onClick={handleClick}
       {...restProps}

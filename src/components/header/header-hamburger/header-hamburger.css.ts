@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import * as iconMixins from "../../icon/icon.mixins";
 import { colors, media } from "../../styling";
 import { vars } from "../../theme";
 
@@ -8,6 +9,8 @@ export const hiddenCheckbox = style({
 });
 
 export const icon = style({
+  ...iconMixins.iconContainer,
+
   color: vars.headerHamburger.icon.color,
   display: "none",
 

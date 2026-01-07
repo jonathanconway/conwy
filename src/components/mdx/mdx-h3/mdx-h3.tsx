@@ -2,6 +2,8 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 import { Heading } from "../../heading";
 
+import "./mdx-h3.css";
+
 export type MdxH3Props = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement

@@ -7,7 +7,8 @@ interface SocialLinksListProps {
   readonly socialLinks: readonly SocialLink[];
 }
 
-export function SocialLinksList({ socialLinks }: SocialLinksListProps) {
+export function SocialLinksList(props: SocialLinksListProps) {
+  const { socialLinks } = props;
   if (!socialLinks) {
     return null;
   }

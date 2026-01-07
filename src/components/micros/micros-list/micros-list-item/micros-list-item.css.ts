@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { merge } from "lodash";
 
+import * as iconMixins from "../../../icon/icon.mixins";
 import * as linkMixins from "../../../link/link.mixins";
 import { rounded, text } from "../../../styling";
 import * as textMixins from "../../../text/text.mixins";
@@ -21,6 +22,7 @@ export const decorationContainer = style({
 });
 
 export const decoration = style({
+  ...iconMixins.iconContainer,
   width: "100%",
   height: "100%",
 });

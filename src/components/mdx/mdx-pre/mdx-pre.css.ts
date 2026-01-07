@@ -1,14 +1,10 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { globalStyle } from "@vanilla-extract/css";
 
-import { focusOutline } from "../../focus-outline";
+import * as textMixins from "../../text/text.mixins";
+import { mdx } from "../mdx-wrapper/mdx-wrapper.css";
 
-export const pre = style({
-  marginTop: 0,
-  marginBottom: 0,
-  overflow: "visible",
-  ...focusOutline,
-});
+globalStyle(`${mdx} pre[class*=language-][class*=language-]`, textMixins.pre);
 
-globalStyle(`${pre} code`, {
+globalStyle(`${mdx} pre code`, {
   border: "none",
 });

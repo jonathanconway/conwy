@@ -1,5 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+import "./mdx-ul.css";
+
 export type MdxULProps = DetailedHTMLProps<
   HTMLAttributes<HTMLUListElement>,
   HTMLUListElement

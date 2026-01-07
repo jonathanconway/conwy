@@ -13,12 +13,10 @@ export function isBackdrop(element: HTMLElement) {
 }
 
 export function Backdrop(props: BackdropProps) {
-  const { className, ...restProps } = props;
+  const {
+    className = cn(props.className ?? styles.backdrop, BACKDROP_CLASS),
+    ...restProps
+  } = props;
 
-  return (
-    <div
-      className={cn(className ?? styles.backdrop, BACKDROP_CLASS)}
-      {...restProps}
-    ></div>
-  );
+  return <div className={className} {...restProps} />;
 }

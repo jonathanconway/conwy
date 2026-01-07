@@ -12,12 +12,12 @@ const BOX_TYPE_STYLES = {
   [BoxTypes.Structural]: styles.structural,
 };
 
-export function Box({
-  className,
-  type = BoxTypes.Decorative,
-  ...restProps
-}: BoxProps) {
-  return (
-    <div className={className ?? BOX_TYPE_STYLES[type]} {...restProps}></div>
-  );
+export function Box(props: BoxProps) {
+  const {
+    type = BoxTypes.Decorative,
+    className = BOX_TYPE_STYLES[props.type ?? BoxTypes.Decorative],
+    ...restProps
+  } = props;
+
+  return <div className={className} {...restProps} />;
 }

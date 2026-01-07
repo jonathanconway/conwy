@@ -10,7 +10,7 @@ export const xs = {
 
 export const sm = {
   fontSize: "0.875rem" /* 14px */,
-  lineHeight: "1.25rem" /* 20px */,
+  lineHeight: "1.5rem" /* 20px */,
 };
 
 export const md = {

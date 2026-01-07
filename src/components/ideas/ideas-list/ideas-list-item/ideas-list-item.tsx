@@ -2,7 +2,6 @@
 
 import { Idea as Idea_ } from "@/framework/client";
 
-import { Fragment } from "../../../fragments";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { Stack, StackDirections } from "../../../stack";
 
@@ -18,7 +17,7 @@ export function IdeasListItem({ idea }: IdeasListItemProps) {
       <LinkBox href={`/ideas/${idea.meta.slug}`}>
         <Stack direction={StackDirections.Column} gap={0.5}>
           <LinkBoxTitle>{idea.meta.title}</LinkBoxTitle>
-          <Fragment>{idea.blurb}</Fragment>
+          {idea.blurb}
         </Stack>
       </LinkBox>
     </li>

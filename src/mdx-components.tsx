@@ -7,6 +7,7 @@ import {
   MdxH1,
   MdxH2,
   MdxH3,
+  MdxH4,
   MdxImg,
   MdxKbd,
   MdxLI,
@@ -25,6 +26,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h1: MdxH1,
     h2: MdxH2,
     h3: MdxH3,
+    h4: MdxH4,
     img: MdxImg,
     kbd: MdxKbd, // todo: doesn't work for some reason, need to debug
     li: MdxLI,
@@ -33,6 +35,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     pre: MdxPre,
     ul: MdxUL,
     table: MdxTable,
+    // todo: implement `wrapper: MdxWrapper,` while not breaking table of contents headings
     ...components,
   };
 }

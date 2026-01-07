@@ -1,16 +1,15 @@
 import { SvgIconProps } from "@mui/material";
 import { FC } from "react";
 
-import { cn } from "@/framework/client";
-
 import * as styles from "./icon.css";
 import * as mixins from "./icon.mixins";
 
 export function withMaterialIcon(MaterialIcon: FC<SvgIconProps>) {
-  return function Icon({ className, ...restProps }: SvgIconProps) {
+  return function Icon(props: SvgIconProps) {
+    const { className = styles.iconMaterial, ...restProps } = props;
     return (
       <MaterialIcon
-        className={cn(className, styles.iconMaterial)}
+        className={className}
         style={mixins.iconMaterialStyleOverrides}
         {...restProps}
       />

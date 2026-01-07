@@ -1,6 +1,6 @@
 import {
   ContactDetails,
-  Fragment,
+  MdxWrapper,
   PageLayout,
   TwoColLayout,
 } from "@/components";
@@ -14,9 +14,7 @@ export default function Contact() {
       main={
         <TwoColLayout>
           <div>
-            <Fragment>
-              <contactFragment.content />
-            </Fragment>
+            <MdxWrapper>{contactFragment.content}</MdxWrapper>
 
             <ContactDetails />
           </div>

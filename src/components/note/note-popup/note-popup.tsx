@@ -3,8 +3,6 @@
 import { ReactNode } from "react";
 import { Tooltip as Tooltip_ } from "react-tooltip";
 
-import { Fragment } from "../../fragments";
-
 import * as styles from "./note-popup.css";
 import { useNotePopup } from "./note-popup.hook";
 import * as mixins from "./note.mixins";
@@ -43,7 +41,7 @@ export function NotePopup(props: NotePopupProps) {
       classNameArrow={styles.tooltipArrow}
       opacity={1}
     >
-      <Fragment>{props.children}</Fragment>
+      {props.children}
     </Tooltip_>
   );
 }

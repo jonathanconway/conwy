@@ -12,7 +12,13 @@ import * as styles from "./app-layout.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export function AppLayout({ children }: { readonly children: ReactNode }) {
+interface AppLayoutProps {
+  readonly children: ReactNode;
+}
+
+export function AppLayout(props: AppLayoutProps) {
+  const { children } = props;
+
   useFocusOutline();
 
   return (

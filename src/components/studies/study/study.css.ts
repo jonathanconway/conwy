@@ -1,7 +1,7 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-import * as headingMixins from "../../heading/heading.mixins";
 import * as linkMixins from "../../link/link.mixins";
+import * as textMixins from "../../text/text.mixins";
 
 export const row = style({
   display: "inline-flex",
@@ -29,6 +29,6 @@ export const linksListItem = style({
 });
 
 export const headingStyle = style({
-  ...headingMixins.h5,
+  ...textMixins.h5,
   fontWeight: "500",
 });

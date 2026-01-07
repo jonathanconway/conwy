@@ -7,17 +7,11 @@ import {
 
 import * as tableMixins from "./table.mixins";
 
-export const table = style(tableMixins.table as ComplexStyleRule);
-
-export const tableCell = style(tableMixins.tableCell as ComplexStyleRule);
+export const table = style(tableMixins.table);
 
 globalStyle(
   `${table} th, ${table} td`,
   tableMixins.tableCell as GlobalStyleRule,
-);
-
-export const tableHeaderCell = style(
-  tableMixins.tableCellHeader as ComplexStyleRule,
 );
 
 globalStyle(

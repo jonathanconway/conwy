@@ -8,7 +8,8 @@ interface TestimonialsProps {
   readonly testimonials: readonly Testimonial_[];
 }
 
-export function Testimonials({ testimonials }: TestimonialsProps) {
+export function Testimonials(props: TestimonialsProps) {
+  const { testimonials } = props;
   return (
     <ContentList>
       {testimonials.map((testimonial) => (

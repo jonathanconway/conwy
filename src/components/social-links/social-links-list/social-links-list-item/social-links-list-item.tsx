@@ -9,7 +9,8 @@ interface SocialLinksListItemProps {
   readonly socialLink: SocialLink;
 }
 
-export function SocialLinksListItem({ socialLink }: SocialLinksListItemProps) {
+export function SocialLinksListItem(props: SocialLinksListItemProps) {
+  const { socialLink } = props;
   return (
     <Link
       key={socialLink.url}

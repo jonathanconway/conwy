@@ -1,11 +1,11 @@
 import { Project as Project_ } from "@/framework/client";
 
-import { Fragment } from "../../fragments";
+import { MdxWrapper } from "../../mdx";
 
 interface ProjectBodyProps {
   readonly project: Project_;
 }
 
 export function ProjectBody(props: ProjectBodyProps) {
-  return <Fragment>{props.project.content}</Fragment>;
+  return <MdxWrapper>{props.project.content}</MdxWrapper>;
 }

@@ -1,8 +1,8 @@
 import {
-  Fragment,
   Link,
+  MdxWrapper,
   PageLayout,
-  ResponsiveMdHalf,
+  Stack,
   Text,
   TextSizes,
   TextTypes,
@@ -21,23 +21,21 @@ export default function Page() {
     <PageLayout
       selectedNavPath="/work"
       main={
-        <>
-          <ResponsiveMdHalf>
-            <Fragment>
-              <workFragment.content />
+        <Stack gap={1}>
+          <div>
+            <MdxWrapper>{workFragment.content}</MdxWrapper>
 
-              <p>
-                <Link href="/testimonials" size={TextSizes.sm}>
-                  Testimonials
-                </Link>
+            <Text type={TextTypes.Paragraph}>
+              <Link href="/testimonials" size={TextSizes.sm}>
+                Testimonials
+              </Link>
 
-                <Text type={TextTypes.Small}> ({testimonialsCount})</Text>
-              </p>
-            </Fragment>
-          </ResponsiveMdHalf>
+              <Text type={TextTypes.Small}> ({testimonialsCount})</Text>
+            </Text>
+          </div>
 
           <Works workMetas={workMetas} />
-        </>
+        </Stack>
       }
     />
   );

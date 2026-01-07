@@ -12,7 +12,8 @@ interface QuoteProps {
   readonly quote: Quote_;
 }
 
-export function Quote({ quote }: QuoteProps) {
+export function Quote(props: QuoteProps) {
+  const { quote } = props;
   return (
     <BlockQuotePullQuote>
       <Stack direction={StackDirections.Column} gap={0.5}>

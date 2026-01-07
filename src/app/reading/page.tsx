@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import {
   BooksList,
-  Fragment,
+  MdxWrapper,
   PageLayout,
   ResponsiveMdHalf,
   Stack,
@@ -18,9 +18,7 @@ export default function Page() {
         main={
           <Stack gap={1}>
             <ResponsiveMdHalf>
-              <Fragment>
-                <readingFragment.content />
-              </Fragment>
+              <MdxWrapper>{readingFragment.content}</MdxWrapper>
             </ResponsiveMdHalf>
 
             <BooksList />

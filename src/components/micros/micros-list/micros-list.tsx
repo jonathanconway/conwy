@@ -9,7 +9,9 @@ export interface MicrosListProps {
   readonly microMetas: readonly MicroMeta[];
 }
 
-export function MicrosList({ microMetas }: MicrosListProps) {
+export function MicrosList(props: MicrosListProps) {
+  const { microMetas } = props;
+
   return (
     <div className={styles.container}>
       {microMetas

@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import * as iconMixins from "../../icon/icon.mixins";
 import { text } from "../../styling";
 
 export const item = style({
@@ -12,6 +13,7 @@ export const title = style({
 });
 
 export const icon = style({
+  ...iconMixins.iconContainer,
   width: "1rem",
   height: "1rem",
   display: "inline-block",

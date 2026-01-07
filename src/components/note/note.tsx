@@ -1,6 +1,5 @@
 import { Note as Note_ } from "@/framework/client";
 
-import { Fragment } from "../fragments";
 import { Text } from "../text";
 
 import { NoteSource } from "./note-source";
@@ -10,8 +9,10 @@ interface NoteProps {
   readonly note: Note_;
 }
 
-export function Note({ note }: NoteProps) {
-  const { meta: noteMeta, content } = note;
+export function Note(props: NoteProps) {
+  const {
+    note: { meta, content },
+  } = props;
 
   return (
     <div className={styles.container}>
@@ -20,17 +21,16 @@ export function Note({ note }: NoteProps) {
           <div className={styles.headerLeftTitle}>
             <Text>Notes on...</Text>
 
-            <NoteSource noteMeta={note.meta} />
+            <NoteSource noteMeta={meta} />
           </div>
         </div>
       </div>
 
       <div className={styles.main}>
         <div>
-          <div className={styles.blurb}>
-            {noteMeta.blurb ?? noteMeta.shortBlurb}
-          </div>
-          <Fragment>{content}</Fragment>
+          <div className={styles.blurb}>{meta.blurb ?? meta.shortBlurb}</div>
+
+          {content}
         </div>
 
         <div className={styles.aside}></div>

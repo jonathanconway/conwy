@@ -2,6 +2,7 @@ import { WorkMeta } from "@/framework/client";
 
 import { ContentListItem, ContentListItemImage } from "../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../link-box";
+import { Stack } from "../../stack";
 import { Text } from "../../text";
 import { TextTypes } from "../../text/text-type";
 
@@ -23,9 +24,11 @@ export function WorkListItem(props: WorkListItemProps) {
 
             <Text type={TextTypes.SubTitle}>{workMeta.jobTitle}</Text>
 
-            <Text type={TextTypes.Body}>{workMeta.blurbShort}</Text>
+            <Stack gap={0.5}>
+              <Text type={TextTypes.Summary}>{workMeta.blurbShort}</Text>
 
-            <Text type={TextTypes.Small}>Tech: {techNames}</Text>
+              <Text type={TextTypes.Small}>Tech: {techNames}</Text>
+            </Stack>
           </>
         }
         asideSlot={

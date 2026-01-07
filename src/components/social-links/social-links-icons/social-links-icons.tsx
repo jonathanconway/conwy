@@ -9,7 +9,8 @@ export interface SocialLinksIconsProps {
   readonly socialLinks: readonly SocialLink[];
 }
 
-export function SocialLinksIcons({ socialLinks }: SocialLinksIconsProps) {
+export function SocialLinksIcons(props: SocialLinksIconsProps) {
+  const { socialLinks } = props;
   return (
     <div className={styles.container}>
       {socialLinks.map((socialLink) => (

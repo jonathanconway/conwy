@@ -1,6 +1,6 @@
 import {
   Breadcrumb,
-  Fragment,
+  MdxWrapper,
   PageLayout,
   ResponsiveMdHalf,
 } from "@/components";
@@ -15,7 +15,6 @@ export async function PagePage(props: PageProps) {
   const page = importContentBySlug<Page_>(pages, "page", params.slug);
 
   const title = page.meta.title;
-  const Content = page.content;
 
   return (
     <PageLayout
@@ -30,9 +29,7 @@ export async function PagePage(props: PageProps) {
           />
 
           <ResponsiveMdHalf>
-            <Fragment>
-              <Content />
-            </Fragment>
+            <MdxWrapper>{page.content}</MdxWrapper>
           </ResponsiveMdHalf>
         </>
       }

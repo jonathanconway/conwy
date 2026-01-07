@@ -4,6 +4,7 @@ import * as styles from "./table.css";
 
 type TableProps = HTMLProps<HTMLTableElement>;
 
-export function Table({ className, ...restProps }: TableProps) {
-  return <table className={className ?? styles.table} {...restProps}></table>;
+export function Table(props: TableProps) {
+  const { className = styles.table, ...restProps } = props;
+  return <table className={className} {...restProps}></table>;
 }

@@ -1,10 +1,13 @@
-import { ElementType, HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 import { TextType } from "./text-type";
 
-export type TextProps = HTMLAttributes<ElementType> &
+export type TextProps<T extends HTMLElement = HTMLElement> = DetailedHTMLProps<
+  HTMLAttributes<T>,
+  T
+> &
   TextStyleProps & {
-    readonly as?: string;
+    readonly as?: React.HTMLElementType;
   };
 
 export interface TextStyleProps {
