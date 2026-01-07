@@ -1,3 +1,4 @@
+import { TextSizes, TextTypes } from "@/components/text";
 import { Community as Community_ } from "@/framework/client";
 
 import { ContentListItem } from "../../../content-list";
@@ -5,6 +6,7 @@ import { Image } from "../../../image";
 import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { MdxWrapper } from "../../../mdx";
+import { Text } from "../../../text";
 
 import * as styles from "./communities-list-item.css";
 
@@ -27,15 +29,23 @@ export function CommunitiesListItem(props: CommunitiesListItemProps) {
             </div>
 
             <LinkBoxTitle>
-              <Link
-                link={{
-                  url: props.community.meta.url,
-                  title: props.community.meta.title,
-                }}
-              />
+              <Link href={props.community.meta.url} target="_blank">
+                {props.community.meta.title}
+              </Link>
             </LinkBoxTitle>
 
             <MdxWrapper>{props.community.blurbShort}</MdxWrapper>
+
+            {props.community.meta.profileLink && (
+              <Link
+                href={props.community.meta.profileLink.url}
+                target="_blank"
+                showOpenInNew
+                size={TextSizes.xs}
+              >
+                {props.community.meta.profileLink.title ?? "My Profile"}
+              </Link>
+            )}
           </>
         }
       />

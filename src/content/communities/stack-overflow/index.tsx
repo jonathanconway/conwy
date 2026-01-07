@@ -9,11 +9,14 @@ export const stackOverflowCommunity: Community = {
     title: "StackOverflow",
     url: "http://stackoverflow.com",
     category: CommunityCategories.SoftwareDevelopment,
-    myProfileUrl: "https://forum.devtalk.com/u/conwy/summary",
+    profileLink: {
+      url: "https://stackoverflow.com/users/23341/jonathan",
+      title: "jonathan",
+    },
     mainImage: {
       src: "/images/communities/stackoverflow.svg",
     },
-    myPosts: [],
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };

@@ -12,7 +12,7 @@ export const saversCircleCommunity: Community = {
       src: "/images/communities/savers-circle.jpg",
     },
     category: CommunityCategories.Investing,
-    myPosts: [],
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };

@@ -15,13 +15,15 @@ export interface CommunityMeta extends MetaBase {
 
   readonly category: CommunityCategory;
 
-  readonly myProfileUrl?: Url;
-  readonly myPosts: readonly CommunityMetaMyPost[];
+  readonly profileLink?: Link;
+  readonly profilePosts: readonly CommunityProfilePost[];
 }
 
-export interface CommunityMetaMyPost extends Link {
+export interface CommunityProfilePost {
   readonly slug: Slug;
   readonly date: DateTimeString;
+  readonly title: string;
+  readonly url: Url;
 
   readonly viewCount?: number;
   readonly commentCount?: number;

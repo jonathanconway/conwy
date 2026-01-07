@@ -12,7 +12,7 @@ export const bogleheadsCommunity: Community = {
       src: "/images/communities/bogleheads.svg",
     },
     category: CommunityCategories.Investing,
-    myPosts: [],
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };

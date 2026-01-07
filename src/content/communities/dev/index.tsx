@@ -12,7 +12,11 @@ export const devCommunity: Community = {
     mainImage: {
       src: "/images/communities/dev.webp",
     },
-    myPosts: [],
+    profileLink: {
+      url: "https://dev.to/conw_y",
+      title: "conw_y",
+    },
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };

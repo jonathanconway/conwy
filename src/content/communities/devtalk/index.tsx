@@ -12,8 +12,11 @@ export const devTalkCommunity: Community = {
     mainImage: {
       src: "/images/communities/devtalk.png",
     },
-    myProfileUrl: "https://stackoverflow.com/users/23341/jonathan",
-    myPosts: [],
+    profileLink: {
+      url: "https://forum.devtalk.com/u/conwy/summary",
+      title: "conwy",
+    },
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };

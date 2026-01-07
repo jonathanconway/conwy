@@ -12,7 +12,7 @@ export const whirlpoolCommunity: Community = {
     mainImage: {
       src: "/images/communities/whirlpool.png",
     },
-    myPosts: [],
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };

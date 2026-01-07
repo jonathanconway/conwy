@@ -12,7 +12,11 @@ export const rationalReminderCommunity: Community = {
       src: "/images/communities/rational-reminder.png",
     },
     category: CommunityCategories.Investing,
-    myPosts: [],
+    profilePosts: [],
+    profileLink: {
+      url: "https://community.rationalreminder.ca/u/conwy/summary",
+      title: "conwy",
+    },
   },
   blurbShort: <BlurbShort />,
 };

@@ -12,7 +12,7 @@ export const moneyMustacheCommunity: Community = {
       src: "/images/communities/money-mustache.ico",
     },
     category: CommunityCategories.Investing,
-    myPosts: [],
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };

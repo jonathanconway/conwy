@@ -12,7 +12,7 @@ export const ministryOfTestingCommunity: Community = {
       src: "/images/communities/ministry-of-testing.png",
     },
     category: CommunityCategories.SoftwareDevelopment,
-    myPosts: [],
+    profilePosts: [],
   },
   blurbShort: <BlurbShort />,
 };
