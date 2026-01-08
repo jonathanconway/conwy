@@ -14,6 +14,7 @@ export * from "./content-list";
 export * from "./copyable";
 export * from "./date";
 export * from "./focus-outline";
+export * from "./follows";
 export * from "./footer";
 export * from "./header";
 export * from "./heading";

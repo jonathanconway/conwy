@@ -59,6 +59,7 @@ export function getLinkValues(props: LinkProps) {
       className,
       href,
       onClick: handleClick,
+      download,
       ...restProps,
     },
     iconLeft,

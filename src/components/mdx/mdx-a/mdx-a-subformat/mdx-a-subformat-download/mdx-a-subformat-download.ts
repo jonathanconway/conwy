@@ -15,7 +15,7 @@ export function getADownloadSubformatProps(props: MdxAProps): LinkProps {
   }
 
   const children = childrenText.split("Download: ")[1];
-  const download = children;
+  const download = true;
   const target = "_blank";
 
   return {
