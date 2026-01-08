@@ -1,3 +1,4 @@
+export * from "./a-life-of-happiness-and-fulfillment";
 export * from "./algorithms-specialization-stanford-university-via-coursera";
 export * from "./calculus-coursera";
 export * from "./chat-gpt-prompt-engineering-for-developers-deep-learning-ai";

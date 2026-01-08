@@ -1,25 +1,27 @@
 import { TypeOfConst } from "../../utils";
 
 export const StudyCategories = {
-  ComputerScience: "computer-science",
-  Mathematics: "mathematics",
   ArtificialIntelligence: "artificial-intelligence",
-  Finance: "finance",
-  SoftwareDevelopment: "software-development",
-  Design: "design",
-  Philosophy: "philosophy",
   Cloud: "cloud",
+  ComputerScience: "computer-science",
+  Design: "design",
+  Finance: "finance",
+  Mathematics: "mathematics",
+  Philosophy: "philosophy",
+  Psychology: "psychology",
+  SoftwareDevelopment: "software-development",
 } as const;
 
 export type StudyCategory = TypeOfConst<typeof StudyCategories>;
 
 export const STUDY_CATEGORY_LABELS = {
-  [StudyCategories.ComputerScience]: "Computer Science",
-  [StudyCategories.Mathematics]: "Mathematics",
   [StudyCategories.ArtificialIntelligence]: "Artificial Intelligence",
-  [StudyCategories.Finance]: "Finance",
-  [StudyCategories.SoftwareDevelopment]: "Software Development",
-  [StudyCategories.Design]: "Design",
-  [StudyCategories.Philosophy]: "Philosophy",
   [StudyCategories.Cloud]: "Cloud",
+  [StudyCategories.ComputerScience]: "Computer Science",
+  [StudyCategories.Design]: "Design",
+  [StudyCategories.Finance]: "Finance",
+  [StudyCategories.Mathematics]: "Mathematics",
+  [StudyCategories.Philosophy]: "Philosophy",
+  [StudyCategories.Psychology]: "Psychology",
+  [StudyCategories.SoftwareDevelopment]: "Software Development",
 };
