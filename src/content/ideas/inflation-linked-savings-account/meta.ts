@@ -1,6 +1,6 @@
 import { IdeaMeta } from "@/framework/client";
 
 export const meta: IdeaMeta = {
-  slug: "emergency-virtual-triage",
+  slug: "inflation-linked-savings-account",
   title: "Inflation-linked savings account",
 };
