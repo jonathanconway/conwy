@@ -16,30 +16,33 @@ export const toolGen = ({
 import { Tool, ToolSections } from "@/framework/client";
 
 export const ${nameRootObject}: Tool = {
-  slug: "${name}",
-  title: "${title}",
-  section: ToolSections.${sectionEnumName},
-  date: "${date}",
-  mainImage: "/images/tools/${name}.png",${
-    operatingSystems
-      ? `
-  operatingSystems: [${operatingSystems.map((os) => `"${os}"`).join(", ")}],`
-      : ""
-  }${
-    url
-      ? `
-  url: "${url}",`
-      : ""
-  }${
-    category
-      ? `
-  category: "${category}",`
-      : ""
-  }${
-    description
-      ? `
-  description: "${description}",`
-      : ""
+  type: "tool",
+  meta: {
+    slug: "${name}",
+    title: "${title}",
+    section: ToolSections.${sectionEnumName},
+    date: "${date}",
+    mainImage: "/images/tools/${name}.png",${
+      operatingSystems
+        ? `
+    operatingSystems: [${operatingSystems.map((os) => `"${os}"`).join(", ")}],`
+        : ""
+    }${
+      url
+        ? `
+    url: "${url}",`
+        : ""
+    }${
+      category
+        ? `
+    category: "${category}",`
+        : ""
+    }${
+      description
+        ? `
+    description: "${description}",`
+        : ""
+    }
   }
 };
 
