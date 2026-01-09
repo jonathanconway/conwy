@@ -1,6 +1,7 @@
 export * from "./array";
 export * from "./logic";
 export * from "./props";
+export * from "./object";
 export * from "./strings";
 export * from "./text";
 export * from "./typing";
