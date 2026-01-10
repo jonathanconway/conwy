@@ -1,4 +1,4 @@
-import { Quote } from "@/framework/client";
+import { Quote, assert } from "@/framework/client";
 
 import { Link } from "../../link";
 import { Text, TextSizes, TextTypes } from "../../text";
@@ -36,9 +36,22 @@ function QuoteAttributionLine2({ quote }: QuoteAttributionProps) {
 }
 
 function QuoteAttributionAuthor({ quote }: QuoteAttributionProps) {
+  assert(quote.meta.author);
+
+  if (quote.meta.author?.url) {
+    return (
+      <Text type={TextTypes.Body}>
+        –{" "}
+        <Link href={quote.meta.author.url} target="_blank" size={TextSizes.sm}>
+          {quote.meta.author.title}
+        </Link>
+      </Text>
+    );
+  }
+
   return (
     <Text type={TextTypes.Body}>
-      – {formatQuoteAuthorName(quote.meta.author ?? "")}
+      – {formatQuoteAuthorName(quote.meta.author.title ?? "")}
     </Text>
   );
 }
