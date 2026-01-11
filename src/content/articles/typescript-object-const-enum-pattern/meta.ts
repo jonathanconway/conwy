@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Object const enum pattern for Typescript",
@@ -10,6 +10,11 @@ export const meta: ArticleMeta = {
   mainImage: {
     src: "/images/articles/typescript-object-const-enum-pattern/main.jpg",
   },
-  socialLinks: [],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Github,
+      url: "https://gist.github.com/jonathanconway/a192942e3a4cb640a5cd4d2d321df917"
+    }
+  ],
   discussionLinks: [],
 };
