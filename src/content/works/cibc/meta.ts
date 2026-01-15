@@ -46,7 +46,12 @@ export const meta: WorkMeta = {
       date: "2019-06-26",
     },
   ],
-  images: [],
+  images: [
+    {
+      src: "reconstruction-screenshot-001.jpg",
+      alt: "Partial reconstruction of filtering interface",
+    },
+  ],
   slug: "cibc",
   tags: [],
   type: "work",

@@ -51,6 +51,10 @@ export const meta: WorkMeta = {
       categoryName: "breeze-js",
       items: [],
     },
+    {
+      categoryName: "Azure RP",
+      items: [],
+    },
   ],
   projects: [
     {

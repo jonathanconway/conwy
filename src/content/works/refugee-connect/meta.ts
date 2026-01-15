@@ -28,6 +28,51 @@ export const meta: WorkMeta = {
       alt: "Mobile prototype",
       notes: [],
     },
+    {
+      src: "refugee-connect-pres-7.png",
+      alt: "Presentation slide 7",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-pres-2.png",
+      alt: "Presentation slide 2",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-pres-3.png",
+      alt: "Presentation slide 3",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-pres-4.png",
+      alt: "Presentation slide 4",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-pres-5.png",
+      alt: "Presentation slide 5",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-pres-6.png",
+      alt: "Presentation slide 6",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-pres-8.png",
+      alt: "Presentation slide 8",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-prototype-1.png",
+      alt: "Prototype sample 1",
+      notes: [],
+    },
+    {
+      src: "refugee-connect-prototype-2.png",
+      alt: "Prototype sample 2",
+      notes: [],
+    },
   ],
   slug: "refugee-connect",
   tags: [],
