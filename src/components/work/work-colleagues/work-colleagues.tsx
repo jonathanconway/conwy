@@ -2,7 +2,7 @@ import { TextSizes } from "@/components/text";
 import { sentenceCase } from "@/framework/client";
 
 import { IconTypes } from "../../icon";
-import { Link } from "../../link";
+import { Link, LinkLayoutTypes } from "../../link";
 import { ListExpandable } from "../../list";
 import { Section } from "../../section";
 
@@ -27,6 +27,7 @@ export function WorkColleagues(props: WorkProjectsProps) {
                   icon={IconTypes.Person}
                   tooltip={{ contents: sentenceCase(relationshipType) }}
                   target="_blank"
+                  layoutType={LinkLayoutTypes.Compact}
                 >
                   {colleague.fullName}
                 </Link>
