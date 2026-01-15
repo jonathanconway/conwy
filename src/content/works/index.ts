@@ -11,6 +11,7 @@ export * from "./mycastingnet";
 export * from "./news-limited";
 export * from "./ninemsn";
 export * from "./optus";
+export * from "./radar-comms";
 export * from "./razorfish";
 export * from "./refugee-connect";
 export * from "./revolut";
