@@ -5,7 +5,7 @@ import { Quote } from "@/framework/client";
 import { BlockQuotePullQuote } from "../../aside";
 import { LinkBox } from "../../link-box";
 import { Stack, StackDirections } from "../../stack";
-import { Text, TextExpandable, TextTypes } from "../../text";
+import { Text, TextTypes } from "../../text";
 
 import { QuoteAttribution } from "./quote-attribution";
 import * as styles from "./quotes-list-item.css";
@@ -25,9 +25,7 @@ export function QuotesListItem(props: QuotesListItemProps) {
       >
         <BlockQuotePullQuote className={styles.quotePullQuote}>
           <Stack direction={StackDirections.Column} gap={0.5}>
-            <Text type={TextTypes.Body}>
-              <TextExpandable height="5rem">{quote.text}</TextExpandable>
-            </Text>
+            <Text type={TextTypes.Body}>{quote.text}</Text>
 
             <QuoteAttribution quote={quote} />
           </Stack>

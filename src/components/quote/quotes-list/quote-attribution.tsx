@@ -38,28 +38,28 @@ function QuoteAttributionLine2({ quote }: QuoteAttributionProps) {
 function QuoteAttributionAuthor({ quote }: QuoteAttributionProps) {
   assert(quote.meta.author);
 
+  const formattedQuoteAuthorName = formatQuoteAuthorName(
+    quote.meta.author.title,
+  );
+
   if (quote.meta.author?.url) {
     return (
       <Text type={TextTypes.Body}>
         –{" "}
         <Link href={quote.meta.author.url} target="_blank" size={TextSizes.sm}>
-          {quote.meta.author.title}
+          {formattedQuoteAuthorName}
         </Link>
       </Text>
     );
   }
 
-  return (
-    <Text type={TextTypes.Body}>
-      – {formatQuoteAuthorName(quote.meta.author.title ?? "")}
-    </Text>
-  );
+  return <Text type={TextTypes.Small}>– {formattedQuoteAuthorName}</Text>;
 }
 
 function QuoteAttributionSource({ quote }: QuoteAttributionProps) {
   if (quote.meta.source?.url) {
     return (
-      <Link href={quote.meta.source.url} target="_blank" size={TextSizes.sm}>
+      <Link href={quote.meta.source.url} target="_blank" size={TextSizes.xs}>
         {quote.meta.source.title}
       </Link>
     );
