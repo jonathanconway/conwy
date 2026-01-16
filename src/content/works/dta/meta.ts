@@ -117,7 +117,14 @@ export const meta: WorkMeta = {
     },
     {
       categoryName: "golang",
-      items: [],
+      items: [
+        {
+          itemName: "html/template",
+        },
+        {
+          itemName: "net/http",
+        },
+      ],
     },
     {
       categoryName: "postgres",
