@@ -46,6 +46,18 @@ export const meta: WorkMeta = {
         {
           itemName: "leaflet",
         },
+        {
+          itemName: "rxjs",
+        },
+        {
+          itemName: "redux",
+        },
+        {
+          itemName: "ngxs",
+        },
+        {
+          itemName: "cdk",
+        },
       ],
     },
     {
@@ -57,10 +69,17 @@ export const meta: WorkMeta = {
       items: [],
     },
     {
+      categoryName: "playwright",
+      items: [],
+    },
+    {
       categoryName: "graphql",
       items: [
         {
           itemName: "apollo-angular",
+        },
+        {
+          itemName: "graphiql",
         },
       ],
     },
@@ -77,8 +96,16 @@ export const meta: WorkMeta = {
       items: [],
     },
     {
+      categoryName: "figma",
+      items: [],
+    },
+    {
       categoryName: "ai",
       items: [{ itemName: "brain-js" }],
+    },
+    {
+      categoryName: "ios",
+      items: [{ itemName: "swift" }, { itemName: "swift-ui" }],
     },
   ],
   projects: [

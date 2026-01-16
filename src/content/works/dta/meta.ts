@@ -101,7 +101,14 @@ export const meta: WorkMeta = {
   techs: [
     {
       categoryName: "react",
-      items: [],
+      items: [
+        {
+          itemName: "styled-components",
+        },
+        {
+          itemName: "storybook",
+        },
+      ],
     },
     {
       categoryName: "react-native",
@@ -117,7 +124,14 @@ export const meta: WorkMeta = {
     },
     {
       categoryName: "golang",
-      items: [],
+      items: [
+        {
+          itemName: "html/template",
+        },
+        {
+          itemName: "net/http",
+        },
+      ],
     },
     {
       categoryName: "postgres",
@@ -125,6 +139,10 @@ export const meta: WorkMeta = {
     },
     {
       categoryName: "docker",
+      items: [],
+    },
+    {
+      categoryName: "sketch",
       items: [],
     },
     {

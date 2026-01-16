@@ -1,7 +1,31 @@
 import { meta } from "./meta";
 
-- Hired to plan and build from scratch **Rubix** – a Web-based logistics platform used by Woolworths delivery workers and contractors.
-- Built a library of core controls and services, along with authentication, testing and deployment infrastructure.
+Hired to plan and build from scratch **Rubix** – a Web-based logistics platform hosting various applications used by Woolworths delivery workers and contractors.
+
+## Rubix 
+
 - Rubix and its first application, OTA Tracker, were released to production within the first six months.
-- Moved the entire codebase to an Nx-based mono-repo and SingleSPA-based micro-frontend with minimal disruption. Optimised CI build+test time down to < 5 minutes per app.
-- Multiple teams built on the Rubix platform and Rubix now runs 6 apps, with 16 developers across 3 teams.
+- Built a library of core controls and services, with testing and deployment infrastructure.
+- Used Figma to single-handedly design early prototypes of Rubix.
+- Set up Nx-based mono-repo and SingleSPA-based micro-frontend.
+- Set up CI/CD pipelines, hosting setup and DNS routing in Azure.
+- Integrated with Woolworths Active Directory for authorization using Keycloak Angular adapter.
+- Migrated team to new mono-repo with minimal disruption.
+- Optimised CI build+test time down to < 5 minutes per app.
+- Multiple teams built on the Rubix platform and Rubix runs 6 apps, with 16 developers across 3 teams.
+
+## On-Time Arrival Tracker (OTA) app
+
+- Used Web Workers, sparse array pattern and Angular CDK virtualised scrolling for fast, efficient scrolling over massive realtime driver data.
+- Prototyped iOS version of the app in Swift/SwiftUI.
+
+## Street Service Time app
+
+- Built a geographic polygon tool for recording service times at a street level (using LeafletJS and integrating OpenStreetMap and other providers).
+- Performed comparison of mapping services to find optimal combinations of price and capability and presented findings to senior stakeholders.
+
+## Front End Chapter
+
+- Provided mentorship and leadership within the WooliesX Front End Chapter
+- Prototyped enhanced search component using neutral nets (using BrainJS)
+- Prototypes component-level automated visual regression diff testing (using Playwright)
