@@ -108,14 +108,26 @@ export const techAndFeedbackContainer = style({
   },
 });
 
-export const techContainer = style({ display: "flex", flex: 1 });
+export const techContainer = style({
+  display: "flex",
+
+  "@media": {
+    [media.mdAndUp]: {
+      width: "50%",
+    },
+  },
+});
 
 export const otherContainer = style({
   display: "flex",
-  flex: 1,
   flexDirection: "column",
   gap: "1.5rem",
-  width: "50%",
+
+  "@media": {
+    [media.mdAndUp]: {
+      width: "50%",
+    },
+  },
 });
 
 export const techListItem = style({
