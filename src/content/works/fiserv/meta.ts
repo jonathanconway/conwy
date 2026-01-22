@@ -54,6 +54,26 @@ export const meta: WorkMeta = {
         },
       ],
     },
+    {
+      src: "fiserv-06.png",
+      alt: "Screenshot",
+      notes: [],
+    },
+    {
+      src: "fiserv-07.png",
+      alt: "Screenshot",
+      notes: [],
+    },
+    {
+      src: "fiserv-08.png",
+      alt: "Screenshot",
+      notes: [],
+    },
+    {
+      src: "fiserv-09.png",
+      alt: "Screenshot",
+      notes: [],
+    },
   ],
   slug: "fiserv",
   tags: [],
