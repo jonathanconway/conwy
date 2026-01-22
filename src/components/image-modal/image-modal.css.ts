@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
 import { boxBorderDecorative } from "../box/box.mixins";
+import * as modalMixins from "../modal/modal.mixins";
 import { media, rounded } from "../styling";
 import { vars } from "../theme";
 
@@ -10,6 +11,12 @@ export const imageModalButtonsContainer = style({
   top: 0,
   right: 0,
   gap: "0.5rem",
+});
+
+export const imageModal = style({
+  ...modalMixins.modal,
+  width: "80vw",
+  height: "90vh",
 });
 
 export const imageModalMain = style({
@@ -37,6 +44,7 @@ export const image = style({
   width: "100%",
   height: "auto",
   maxHeight: "80vh",
+  maxWidth: "unset",
   padding: "0.375rem",
   ...rounded.lg,
   borderWidth: "2px",
@@ -45,11 +53,11 @@ export const image = style({
   backgroundColor: vars.layout.body.background.color,
 
   "@media": {
-    [media.lessThanLg]: {
-      maxWidth: "100%",
-    },
-    [media.lgAndUp]: {
-      maxWidth: "70vw",
-    },
+    // [media.lessThanLg]: {
+    //   maxWidth: "100%",
+    // },
+    // [media.lgAndUp]: {
+    //   maxWidth: "70vw",
+    // },
   },
 });

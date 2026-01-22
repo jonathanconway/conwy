@@ -3,6 +3,8 @@ import { style } from "@vanilla-extract/css";
 import { colors, media, rounded, text } from "../styling";
 import { vars } from "../theme";
 
+import * as mixins from "./modal.mixins";
+
 export const backdrop = style({
   position: "fixed",
   display: "flex",
@@ -14,31 +16,7 @@ export const backdrop = style({
   backgroundColor: colors.black_50,
 });
 
-export const modal = style({
-  position: "relative",
-  display: "flex",
-  flexDirection: "column",
-  gap: "1rem",
-  zIndex: 10,
-  margin: "auto",
-  padding: "1rem",
-  ...rounded.lg,
-  backgroundColor: vars.imageModal.background.color,
-  borderWidth: "1px",
-  borderColor: colors.stone_600,
-  borderStyle: "solid",
-
-  "@media": {
-    [media.md]: {
-      marginLeft: "2rem",
-      marginRight: "2rem",
-    },
-    [media.sm]: {
-      marginLeft: "1rem",
-      marginRight: "1rem",
-    },
-  },
-});
+export const modal = style(mixins.modal);
 
 export const modalHeader = style({
   display: "flex",

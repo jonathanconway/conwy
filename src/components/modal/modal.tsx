@@ -18,7 +18,7 @@ export function Modal(props: ModalProps) {
     <Backdrop onClick={handleBackdropClick}>
       <ModalFocusTrapSink onFocus={handleTrapInputFocus} />
 
-      <dialog className={styles.modal} ref={modalRef}>
+      <dialog className={props.className ?? styles.modal} ref={modalRef}>
         <header className={styles.modalHeader}>
           {props.title && (
             <Heading level={2} className={styles.modalTitle}>
