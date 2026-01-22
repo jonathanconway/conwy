@@ -72,16 +72,38 @@ export const meta: WorkMeta = {
           itemName: "WCF",
         },
         {
+          itemName: "WebAPI",
+        },
+        {
           itemName: "FluentValidation",
         },
         {
-          itemName: "CQRS",
+          itemName: "Log4Net",
+        },
+        {
+          itemName: "AutoMapper",
+        },
+        {
+          itemName: "AutoFac",
+        },
+        {
+          itemName: "NuGet",
+        },
+        {
+          itemName: "ADO.NET",
         },
       ],
     },
     {
       categoryName: "SQL Server",
-      items: [],
+      items: [
+        {
+          itemName: "T-SQL",
+        },
+        {
+          itemName: "Execution Plans",
+        },
+      ],
     },
     {
       categoryName: "Javascript",
@@ -91,6 +113,20 @@ export const meta: WorkMeta = {
         },
         {
           itemName: "QUnit",
+        },
+        {
+          itemName: "RequireJS",
+        },
+      ],
+    },
+    {
+      categoryName: "CSS",
+      items: [
+        {
+          itemName: "LESS",
+        },
+        {
+          itemName: "CSS3",
         },
       ],
     },
@@ -113,6 +149,22 @@ export const meta: WorkMeta = {
     {
       categoryName: "Selenium",
       items: [],
+    },
+    {
+      categoryName: "Design Patterns",
+      items: [
+        {
+          itemName: "CQRS",
+        },
+      ],
+    },
+    {
+      categoryName: "Git",
+      items: [
+        {
+          itemName: "PoshGit",
+        },
+      ],
     },
   ],
   projects: [
@@ -138,8 +190,13 @@ export const meta: WorkMeta = {
   socialLinks: [
     {
       type: SocialLinkTypes.Website,
-      url: "http://fiserv.com/",
-      title: "Fiserv website",
+      url: "https://www.fiserv.com",
+      title: "Fiserv",
+    },
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://www.westpac.com.au",
+      title: "Westpac",
     },
   ],
 };
