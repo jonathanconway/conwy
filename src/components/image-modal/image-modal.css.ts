@@ -17,6 +17,11 @@ export const imageModal = style({
   ...modalMixins.modal,
   width: "80vw",
   height: "90vh",
+  "@media": {
+    [media.lessThanMd]: {
+      width: "90%",
+    },
+  },
 });
 
 export const imageModalMain = style({
@@ -25,6 +30,7 @@ export const imageModalMain = style({
   gap: "2rem",
   justifyContent: "center",
   flex: 1,
+  height: "100%",
 
   "@media": {
     [media.lessThanLg]: {
@@ -38,6 +44,9 @@ export const imageModalMain = style({
 
 export const imageContainer = style({
   position: "relative",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 export const image = style({

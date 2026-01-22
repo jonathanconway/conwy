@@ -46,4 +46,6 @@ export const modalToolbar = style({
   gap: "0.5rem",
 });
 
-export const modalMain = style({});
+export const modalMain = style({
+  flex: 1,
+});
