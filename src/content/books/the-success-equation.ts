@@ -5,7 +5,7 @@ export const theSuccessEquationBook: Book = {
     type: "book",
     slug: "the-success-equation",
     authors: ["Michael MAUBOUSSIN"],
-    status: BookStatuses.Reading,
+    status: BookStatuses.Finished,
     title: "The Success Equation",
     url: "https://en.wikipedia.org/wiki/Michael_J._Mauboussin",
     category: BookCategories.Business,
