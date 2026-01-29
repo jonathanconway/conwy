@@ -62,6 +62,9 @@ export const meta: WorkMeta = {
         {
           itemName: "tailwind",
         },
+        {
+          itemName: "zustand",
+        },
       ],
     },
     {
@@ -79,11 +82,43 @@ export const meta: WorkMeta = {
         {
           itemName: "sns",
         },
+        {
+          itemName: "cloud-watch",
+        },
       ],
     },
     {
       categoryName: "nextjs",
-      items: [],
+      items: [
+        {
+          itemName: "nextjs-14",
+        },
+        {
+          itemName: "next-intl",
+        },
+      ],
+    },
+    {
+      categoryName: "observability",
+      items: [
+        {
+          itemName: "datadog",
+        },
+        {
+          itemName: "sentry",
+        },
+      ],
+    },
+    {
+      categoryName: "ci",
+      items: [
+        {
+          itemName: "circle-ci",
+        },
+        {
+          itemName: "sentry",
+        },
+      ],
     },
   ],
   projects: [
