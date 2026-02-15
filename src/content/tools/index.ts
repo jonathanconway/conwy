@@ -4,6 +4,7 @@ export * from "./beyond-compare";
 export * from "./built-with";
 export * from "./calculator-net";
 export * from "./calibre";
+export * from "./can-i-use";
 export * from "./color-slurp";
 export * from "./coolors";
 export * from "./draw";
