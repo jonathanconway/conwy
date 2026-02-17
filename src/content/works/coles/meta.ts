@@ -99,10 +99,13 @@ export const meta: WorkMeta = {
       title: "Coles Plus account",
     },
     {
-      title: "Edit Payment",
+      title: "Checkout Payment - Card, PayPal",
     },
     {
-      title: "Trolley Messaging",
+      title: "Edit Details - Card, PayPal, Address",
+    },
+    {
+      title: "Trolley Discount Messaging",
     },
     {
       title: "Early Access Windows",
