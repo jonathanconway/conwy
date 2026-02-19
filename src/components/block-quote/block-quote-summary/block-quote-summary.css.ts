@@ -16,6 +16,10 @@ export const summaryContainer = style({
   ...text.size.sm,
 });
 
-globalStyle(`${summaryContainer} > *`, {
+globalStyle(`${summaryContainer} > p`, {
   display: "inline",
+});
+
+globalStyle(`${summaryContainer} > ul`, {
+  display: "block",
 });

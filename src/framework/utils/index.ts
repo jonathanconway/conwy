@@ -1,5 +1,6 @@
 export * from "./array";
 export * from "./assert";
+export * from "./hashing";
 export * from "./logic";
 export * from "./object";
 export * from "./props";

@@ -1,3 +1,4 @@
+export * from "./ai-concepts";
 export * from "./ai-for-developers";
 export * from "./ai-patterns";
 export * from "./code-reviews";

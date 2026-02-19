@@ -14,6 +14,9 @@ export function MdxPre({
   style,
   ...restProps
 }: MdxPreProps) {
+  if ((children as any).props.className === "language-mermaid") {
+    return children;
+  }
   return (
     <pre
       style={{

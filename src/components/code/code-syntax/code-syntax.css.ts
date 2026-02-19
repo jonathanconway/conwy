@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import * as boxMixins from "../box/box.mixins";
-import { rounded, text } from "../styling";
+import * as boxMixins from "../../box/box.mixins";
+import { rounded, text } from "../../styling";
 
 // todo: because of prismjs; find a way to remove the !important 's
 

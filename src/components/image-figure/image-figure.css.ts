@@ -24,7 +24,9 @@ const imgBase = {
   filter: vars.imageFigure.filter,
 };
 
-export const img = style(imgBase);
+export const img = style({
+  ...imgBase,
+});
 
 export const imgSized = style({
   ...imgBase,
