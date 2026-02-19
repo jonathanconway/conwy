@@ -98,3 +98,15 @@ export function recreateDirSync(path: string) {
 export function getRootPath() {
   return __dirname.split(".next")[0];
 }
+
+export function getFolderFileTree(path: string) {
+  const foldersFiles: string[] = [];
+  for (const folderFile of readdirSync(path)) {
+    const pathFilename = join(path, folderFile);
+    foldersFiles.push(pathFilename);
+    if (lstatSync(pathFilename).isDirectory()) {
+      foldersFiles.push(...getFolderFileTree(pathFilename));
+    }
+  }
+  return foldersFiles;
+}

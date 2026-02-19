@@ -14,6 +14,7 @@ export function CodeRenderedMermaid(props: CodeRenderedProps) {
   const imagePathName = `/images${currentPathName}`;
 
   const childrenText = props.children?.toString().trim() ?? "";
+
   const commentLines = childrenText
     .trim()
     .split("\n")

@@ -176,6 +176,8 @@ Suppose we wanted to make some notes of the execution flows we discovered. Maybe
 Let's start with the first flow – successful login:
 
 ```mermaid
+flowchart
+
 LoginResource::login
   --->|userName,password| UserAuthProvider::isValidUser
   ---|true| LoginResource::login
@@ -189,6 +191,8 @@ LoginResource::login
 Then the second flow – successful login:
 
 ```mermaid
+flowchart
+
 LoginResource::login
 
   --->|userName,password| UserAuthProvider::isValidUser
@@ -200,6 +204,8 @@ LoginResource::login
 And the final flow – register:
 
 ```mermaid
+flowchart
+
 LoginResource::register
   --->|userName,password| UserAuthProvider::isValidUser
   ---|true| LoginResource::register
@@ -222,6 +228,8 @@ Did you notice the textual format used in the previous section to notate the exe
 Let's deep-dive into that.
 
 ```mermaid
+flowchart
+
 Class::methodCalling
   --->|parameters| Class::methodBeingCalled
   ---|return values| Class::methodCalling
@@ -238,6 +246,8 @@ We can chain these together to notate a sequence of consecutive calls.
 For example:
 
 ```mermaid
+flowchart
+
 Class1::method
   --->|parameters| Class2::method
   --->|parameters| Class3::method
@@ -283,16 +293,18 @@ function retry(action, times, count = 1) {
 We can notate this execution flow, including the closure, using the nested closure, multiple calls, row/column and indirect call notations given above, in the following manner:
 
 ```mermaid
+
 flowchart
-  retry
-    -.->|action, times=3| retry/handleTimeout
-    ---> action
-    ---|false| retry/handleTimeout
-    --->|action, times=3, 2| retry
-    -.->|action, times=3, count=2| retry/handleTimeout
-    ---> action
-    ---|true| retry/handleTimeout
-    ---retry
+
+retry
+  -.->|action, times=3| retry/handleTimeout
+  ---> action
+  ---|false| retry/handleTimeout
+  --->|action, times=3, 2| retry
+  -.->|action, times=3, count=2| retry/handleTimeout
+  ---> action
+  ---|true| retry/handleTimeout
+  ---retry
 ```
 
 ## Visualising with Mermaid
@@ -309,20 +321,9 @@ Also, in these examples, we add numbered circular nodes (e.g. <code>---n1((1))</
 
 The following is how our two earlier Java examples – login success and login failure – render in Mermaid:
 
-<MdxMermaid item={meta} alt="Login success flow example rendered by Mermaid">{`
-graph
-LoginResource::login
-  ---n1((1))
-  --->|userName,password| UserAuthProvider::isValidUser
-  ---n2((2))
-  --->|false| LoginResource::login
-  ---n3((3))
-  --->|401,'Login failed. Invalid credentials.'| Response::constructor
-  ---n4((4))
-  ---LoginResource::login
-`}</MdxMermaid>
+```mermaid--svg
+%% @description Login success flow example rendered by Mermaid
 
-<MdxMermaid item={meta} alt="Login failure flow example rendered by Mermaid">{`
 graph
 LoginResource::login
   ---n1((1))
@@ -333,11 +334,28 @@ LoginResource::login
   --->|401,'Login failed. Invalid credentials.'| Response::constructor
   ---n4((4))
   ---LoginResource::login
-`}</MdxMermaid>
+```
+
+```mermaid--svg
+%% @description Login failure flow example rendered by Mermaid
+
+graph
+LoginResource::login
+  ---n1((1))
+  --->|userName,password| UserAuthProvider::isValidUser
+  ---n2((2))
+  --->|false| LoginResource::login
+  ---n3((3))
+  --->|401,'Login failed. Invalid credentials.'| Response::constructor
+  ---n4((4))
+  ---LoginResource::login
+```
 
 And here's the Javascript example:
 
-<MdxMermaid item={meta} alt="Javascript recursive function example rendered by Mermaid">{`
+```mermaid--svg
+%% @description Javascript recursive function example rendered by Mermaid
+
 graph
 retry
   ---n1((1))
@@ -356,7 +374,7 @@ retry
   ---|true| retry/handleTimeout
   ---n8((8))
   ---retry
-`}</MdxMermaid>
+```
 
 Notice that we've added small numbered circles, indicating the order in which the calls occur. This makes the flow a bit easier to navigate.
 

@@ -32,7 +32,6 @@ export function getLinkValues(props: LinkProps) {
   const href = props.link?.url ?? props.href ?? "javascript:";
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    console.log("get-link-values handleClick");
     if (!href) {
       event.preventDefault();
     }

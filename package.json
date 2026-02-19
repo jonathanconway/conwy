@@ -30,13 +30,16 @@
     "start:watch": "concurrently \"npm run start\" \"npm run build:watch\"",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "test": "vitest"
+    "test": "vitest",
+    "tool:custom": "npx tsx ./src/tools/exec.ts",
+    "tool:custom:all": "npx tsx ./src/tools/exec.ts --all"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
+    "@mermaid-js/mermaid-cli": "^11.12.0",
     "@mui/icons-material": "^7.3.2",
     "@mui/material": "^7.3.2",
     "@next/mdx": "^15.5.3",
@@ -49,6 +52,7 @@
     "next": "^15.5.9",
     "pluralize": "^8.0.0",
     "prismjs": "^1.30.0",
+    "puppeteer": "^23.11.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-responsive": "^10.0.1",
