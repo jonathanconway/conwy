@@ -18,6 +18,11 @@ export function getImageWidthHeightFromSize({
         width: 100,
         height: 100,
       };
+    case ImageSizes.IconXSmall:
+      return {
+        width: 16,
+        height: 16,
+      };
     case ImageSizes.IconSmall:
       return {
         width: 32,

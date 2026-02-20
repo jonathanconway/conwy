@@ -35,15 +35,12 @@ export function CodeRenderedMermaid(props: CodeRenderedProps) {
   const height = "100%";
 
   return (
-    <>
-      <ImageFigure
-        className=""
-        src={src}
-        alt={alt}
-        title={title}
-        width={width}
-        height={height}
-      />
-    </>
+    <ImageFigure
+      src={src}
+      alt={alt}
+      title={title}
+      width={width}
+      height={height}
+    />
   );
 }

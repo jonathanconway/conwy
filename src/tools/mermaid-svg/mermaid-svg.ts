@@ -1,5 +1,11 @@
 import { execSync } from "child_process";
-import { readFileSync, readdirSync, rmSync, writeFileSync } from "fs";
+import {
+  existsSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "fs";
 import { JSDOM } from "jsdom";
 import { marked } from "marked";
 import { join } from "path";
@@ -68,9 +74,23 @@ function toolMermaidSvgForContentMdxMermaidBlock(
 
   const mdFilename = `mermaid-${hash}.md`;
   const svgFilename = `mermaid-${hash}.svg`;
+  const svgVariantFilename = `mermaid-${hash}-1.svg`;
 
   const mdImagePathFilename = join(imagePath, mdFilename);
   const svgImagePathFilename = join(imagePath, svgFilename);
+  const svgVariantImagePathFilename = join(imagePath, svgVariantFilename);
+
+  console.log(`Checking ${svgImagePathFilename}.`);
+  if (existsSync(svgImagePathFilename)) {
+    console.log(`${svgImagePathFilename} exists.`);
+    return;
+  }
+
+  console.log(`Checking ${svgVariantImagePathFilename}.`);
+  if (existsSync(svgVariantImagePathFilename)) {
+    console.log(`${svgVariantImagePathFilename} exists.`);
+    return;
+  }
 
   const exportMd = `\`\`\`mermaid\n${mermaidBlock}\n\`\`\``;
 
@@ -79,5 +99,5 @@ function toolMermaidSvgForContentMdxMermaidBlock(
   const cmd = `npx mmdc -i "${mdImagePathFilename}" -o "${svgImagePathFilename}" && rm ${mdImagePathFilename}`;
   execSync(cmd);
 
-  console.log(`✅ Generated ${svgImagePathFilename}.`);
+  console.log(`✅ Generated ${svgVariantImagePathFilename}.`);
 }

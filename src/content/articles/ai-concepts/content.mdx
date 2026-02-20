@@ -2,9 +2,10 @@
 > - **Prompts** and **Commands** issued by humans to Assistants
 > - **Assistants** that use LLM technology to provide useful output
 > - **Models** (LLM) that Assistants query
-> - **Skills** that augment Assistants
+> - **Skills** and **Tools** that augment Assistants with useful capabilities
 > - **Commands** issued by humans to Assistants for immediate action
 > - **Agents** and **Sub Agents** that complete tasks autonomously
+> - **Plan mode** issued by humans to Assistants for immediate action
 
 I've seen certain questions of definition coming up lately among colleagues and the tech community, in relation to AI assistant and tooling.
 
@@ -13,6 +14,16 @@ What is an Agent? What is the difference between Skills and Agents? How should I
 In this article, I will try to clarify these concepts. I'll provide a clear definition of each of them, when they're used and how they relate to eachother. 
 
 I'll aim to do all this in an Assistant-agnostic way, so you can use them with Claude Code, OpenAI Codex or any other Assistant or framework.
+
+## Context
+
+I don't pretend to be an expert on this topic. But writing about it is fun. We can all learn better by teaching others and I encourage you to also write on AI. I can also offer a less biased view and possibly a more relatable perspective, being just a typical software engineer.
+
+AI, as an idea, has been around [since at least the 1950s](https://en.wikipedia.org/wiki/Lisp_(programming_language)), and, depending on your definition, perhaps even since ancient times. Recently it has been undergoing a period of dramatic evolution and popularisation, thanks in part to cheap high-scale microchip production, [advances in model design](https://en.wikipedia.org/wiki/AI_boom) and economic imperatives.
+
+By my own estimation, we are entering the Deployment phase of Perez' Technological Surge Cycle, with respect to AI. At this time, the conceptual framework is beginning to solidify and key companies and products are becoming established.
+
+![Perez Technological Surge Cycles](/images/articles/ai-concepts/perez-cycles.png)
 
 ## Definitions
 
@@ -24,10 +35,15 @@ Assistants are typically implemented as mass market software applications by maj
 
 Predominant assistants, at the time of writing, are:
 
-- Claude Code
-- GitHub Copilot
-- OpenAI Codex
-- Google Antigravity
+- ![](/images/articles/ai-concepts/claude.ico?size=icon-xsmall) [Claude Code](https://claude.com/product/claude-code)
+- ![](/images/articles/ai-concepts/copilot.ico?size=icon-xsmall) [GitHub Copilot](http://copilot.microsoft.com)
+- ![](/images/articles/ai-concepts/openai.ico?size=icon-xsmall) [OpenAI Codex](http://openai.com)
+- ![](/images/articles/ai-concepts/antigravity.ico?size=icon-xsmall) [Google Antigravity](https://antigravity.google)
+- ![](/images/articles/ai-concepts/cursor.png?size=icon-xsmall) [Cursor](https://cursor.com)
+
+Up-and-coming smaller players include:
+
+- ![](/images/articles/ai-concepts/vercel.ico?size=icon-xsmall) [V0 by Vercel](https://v0.app)
 
 ```mermaid--svg
 %% @description Assistant and relationship to Human and Model
@@ -60,6 +76,8 @@ Predominant large language models / model series (LLMs), at the time of writing,
 
 Some Assistants allow you to select a model to use. For example, Claude Code allows you to select between different models in the Opus series, such as Opus 1, Opus 2 and Opus Pro. This allows you to select the most appropriate model for your use case, based on factors such as performance, cost, etc.
 
+> Note: RAG (Retrieval Augmented Search) is a software pattern by which Assistants can look up additional information to supplement that found in models. This can allow Assistants to incorporate more up-to-date or detailed information, from weather forecasts to stock prices.
+
 ```mermaid--svg
 %% @description Model with examples
 
@@ -70,6 +88,12 @@ Model["📀 Model"]
 GPT -->|is a| Model
 Opus -->|is a| Model
 Gemeni -->|is a| Model
+
+Assistant["🤖 Assistant"]
+Model -->|is used by| Assistant
+
+RAG["Retrieval Augmented Search (RAG)"]
+Model -->|is combined with| RAG
 ```
 
 ### Prompt
@@ -80,7 +104,7 @@ Good prompts are specific and carefully structured so as to generate useful resu
 
 Prompts are typically written by humans (or re-used from shared prompt libraries) and submitted via a web interface, command line interface or IDE extension.
 
-For example:
+Prompt interfaces:
 
 - Claude
   - Web interface: https://claude.ai
@@ -89,7 +113,10 @@ For example:
   - Web interface: https://copilot.microsoft.com
   - IDE extension: https://code.visualstudio.com/docs/copilot/overview (VS Code)
 
-However, prompts can also be generated on-the-fly by software, including Agents. For example, a customer support agent could receive support requests from customers and convert them into prompts which generate a suitable conversational reply from an Assistant.
+Prompt libraries:
+- 
+
+Prompts can also be generated on-the-fly by software, including Agents. For example, a customer support agent could receive support requests from customers and convert them into prompts which generate a suitable conversational reply from an Assistant.
 
 ### Agent
 
@@ -189,7 +216,6 @@ Examples:
 - https://github.com/forrestchang/andrej-karpathy-skills
 <br />
 
-
 ```mermaid--svg
 %% @description Skill utilised by Agent to perform Task
 
@@ -242,6 +268,40 @@ end
 
 end
 ```
+
+### Tool
+
+Similar to a skill, a tool augments an assistant.
+
+The difference between a skill and a tool, from what I can tell, is that a tool is integrated more directly into an assistant via purpose-built software.
+
+For example, [MCPs (Model Context Protocol)](https://en.wikipedia.org/wiki/Model_Context_Protocol) are a category of AI tool, built by developers, allow Assistants to connect to external data sources or perform actions via a web (HTTP) interface.
+
+Comparison of skill vs tool:
+
+<table>
+<thead>
+<tr>
+<th width="50%">Skill</th>
+<th width="50%">Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Augments an Agent with additional capabilities</td>
+<td>Augments an Agent with additional capabilities</td>
+</tr>
+<tr>
+<td>Is implemented or applied by an end-user or application developer</td>
+<td>Is implemented by software engineers at a product vendor, such as a cloud service, hosting provider, etc</td>
+</tr>
+<tr>
+<td>May be written in a more human format, such as a SKILL.md file</td>
+<td>Is typically written in a programming language (such as Typescript, Python, Java, etc) with a software interface (such as HTTP for MCPs)</td>
+</tr>
+</tbody>
+</table>
+
 
 ### Command
 
@@ -354,3 +414,11 @@ flowchart
       </tr>
   </tbody>
 </table>
+
+## Further reading
+
+- [Claude Code docs](https://code.claude.com/docs)
+- [Claude Code tutorial (NetNinja)](https://www.youtube.com/playlist?list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY)
+- [OpenAI Codex tutorial (NetNinja)](https://www.youtube.com/watch?v=tIb_TzVNbDM)
+- [A Guide to Which AI to Use in the Agentic Era (Ethan MOLLICK)](https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the)
+- [Algorithms (Panos LOURIDAS)](https://direct.mit.edu/books/book/4869/Algorithms)

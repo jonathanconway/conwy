@@ -15,7 +15,7 @@ export function MdxPre({
   ...restProps
 }: MdxPreProps) {
   if ((children as any).props.className === "language-mermaid--svg") {
-    return children;
+    return <p>{children}</p>;
   }
 
   return (
