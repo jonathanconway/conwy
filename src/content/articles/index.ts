@@ -1,6 +1,7 @@
 export * from "./ai-concepts";
 export * from "./ai-for-developers";
 export * from "./ai-patterns";
+export * from "./ai-replacement";
 export * from "./code-reviews";
 export * from "./combinatorial-testing";
 export * from "./designerly-cv";
