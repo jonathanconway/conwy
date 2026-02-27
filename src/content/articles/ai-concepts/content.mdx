@@ -7,23 +7,17 @@
 > - **Agents** and **Sub Agents** that complete tasks autonomously
 > - **Plan mode** issued by humans to Assistants for immediate action
 
-I've seen certain questions of definition coming up lately among colleagues and the tech community, in relation to AI assistant and tooling.
+> Pull-quote: So I now seem to be able to lay it down as a general rule that whatever I perceive very clearly and distinctly is true.
+>
+> – DESCARTES • _Third Meditation_
 
-What is an Agent? What is the difference between Skills and Agents? How should I decide which to use when?
+I've seen questions of definition come up lately around AI.
 
-In this article, I will try to clarify these concepts. I'll provide a clear definition of each of them, when they're used and how they relate to eachother. 
+What is an agent? What is the difference between skills and agents? How should I decide which to use when?
 
-I'll aim to do all this in an Assistant-agnostic way, so you can use them with Claude Code, OpenAI Codex or any other Assistant or framework.
+In this article, I will try to clarify these into "clear and distinct" concepts. To provide a clear definition of each, when they're used and how they relate to eachother.
 
-## Context
-
-I don't pretend to be an expert on this topic. But writing about it is fun. We can all learn better by teaching others and I encourage you to also write on AI. I can also offer a less biased view and possibly a more relatable perspective, being just a typical software engineer.
-
-AI, as an idea, has been around [since at least the 1950s](https://en.wikipedia.org/wiki/Lisp_(programming_language)), and, depending on your definition, perhaps even since ancient times. Recently it has been undergoing a period of dramatic evolution and popularisation, thanks in part to cheap high-scale microchip production, [advances in model design](https://en.wikipedia.org/wiki/AI_boom) and economic imperatives.
-
-By my own estimation, we are entering the Deployment phase of Perez' Technological Surge Cycle, with respect to AI. At this time, the conceptual framework is beginning to solidify and key companies and products are becoming established.
-
-![Perez Technological Surge Cycles](/images/articles/ai-concepts/perez-cycles.png)
+I'll aim to do all this in an assistant-agnostic way, so you can use them with Claude Code, OpenAI Codex or any other assistant or framework.
 
 ## Definitions
 
@@ -44,9 +38,10 @@ Predominant assistants, at the time of writing, are:
 Up-and-coming smaller players include:
 
 - ![](/images/articles/ai-concepts/vercel.ico?size=icon-xsmall) [V0 by Vercel](https://v0.app)
+- ![](/images/articles/ai-concepts/devin.ico?size=icon-xsmall) [Devin](https://devin.ai)
 
 ```mermaid--svg
-%% @description Assistant and relationship to Human and Model
+%% @description Assistant and its relationship to human and model
 
 flowchart
 
@@ -64,22 +59,24 @@ Assistant["🤖 Assistant"]
 Model["📀 Model"]
 ```
 
+![Screenshot of Claude Code interactive prompt interface](/images/articles/ai-concepts/claudecode.png)
+
 ### Model
 
 A model is, at core, a very big [vector database](https://en.wikipedia.org/wiki/Vector_database). This is a kind of database in which searches can be done semantically, by similarity. This structure and search interface, at a large scale, is what enables models to take human language as input and provide useful output.
 
-Predominant large language models / model series (LLMs), at the time of writing, include:
+Vector search algorithms and databases have been around since the early days of Google, but it's only more recently that the technology was generalised to widely available database systems and combined with deep learning algorithms to produce large language models (LLMs).
+
+Predominant large language models at the time of writing, include:
 
 - [GPT series](https://en.wikipedia.org/wiki/Generative_pre-trained_transformer) from OpenAI
 - [Claude Opus series](https://en.wikipedia.org/wiki/Claude_(language_model)) from Anthropic
 - [Gemeni](https://en.wikipedia.org/wiki/Gemini_(language_model)) from Google
 
-Some Assistants allow you to select a model to use. For example, Claude Code allows you to select between different models in the Opus series, such as Opus 1, Opus 2 and Opus Pro. This allows you to select the most appropriate model for your use case, based on factors such as performance, cost, etc.
-
-> Note: RAG (Retrieval Augmented Search) is a software pattern by which Assistants can look up additional information to supplement that found in models. This can allow Assistants to incorporate more up-to-date or detailed information, from weather forecasts to stock prices.
+Many assistants allow you to select which model you want them to use. For example, Claude Code allows you to select between various Opus series models, Sonnet and others. You can select the most appropriate model for your use case, based on factors such as performance, cost and specialisation.
 
 ```mermaid--svg
-%% @description Model with examples
+%% @description Predominant large language models
 
 flowchart
 
@@ -91,16 +88,60 @@ Gemeni -->|is a| Model
 
 Assistant["🤖 Assistant"]
 Model -->|is used by| Assistant
+```
+
+An extension of models is RAG (Retrieval Augmented Search), a software pattern by which assistants can look up additional information to supplement that found in models. This can allow assistants to incorporate more up-to-date or detailed information than is found in models, such as weather forecasts or stock prices. New models are published every few months or so, similar to software update cycles, whereas RAG can enable information to be looked up on demand, such as when the assistant is prompted.
+
+```mermaid--svg
+%% @description Model - RAG interaction
+
+flowchart
+
+Model["📀 Model"]
 
 RAG["Retrieval Augmented Search (RAG)"]
-Model -->|is combined with| RAG
+Model -->|looks up data on-demand| RAG
+
+Example1["Example: 🌤️ Weather forecast"]
+Example2["Example: 📈 Stock prices"]
+RAG --> Example1
+RAG --> Example2
 ```
 
 ### Prompt
 
-Prompts are texts written in human-language and submitted to Assistants for processing.
+Prompts are texts written in human-language and submitted to assistants for processing, either by humans or agents.
 
-Good prompts are specific and carefully structured so as to generate useful results from Assistants.  Prompt engineering is the art and science of writing effective prompts.
+```mermaid--svg
+%% @description Human-assistant prompting
+
+flowchart
+
+Human["😎 Human"]
+Prompt["💬 Prompt"]
+Agent["🖥️ Agent"]
+Assistant["🤖 Assistant"]
+
+Human -->|engineers| Prompt
+Prompt --> Assistant
+```
+
+```mermaid--svg
+%% @description Agent-assistant prompting
+
+flowchart
+
+Developer["😎 Developer"]
+Prompt["💬 Prompt"]
+Agent["🖥️ Agent"]
+Assistant["🤖 Assistant"]
+
+Developer -->|engineers| Agent
+Agent -->|generates| Prompt
+Prompt --> Assistant
+```
+
+Good prompts are specific and carefully structured so as to generate useful results from assistants.  Prompt engineering is the art and science of writing effective prompts.
 
 Prompts are typically written by humans (or re-used from shared prompt libraries) and submitted via a web interface, command line interface or IDE extension.
 
@@ -113,10 +154,79 @@ Prompt interfaces:
   - Web interface: https://copilot.microsoft.com
   - IDE extension: https://code.visualstudio.com/docs/copilot/overview (VS Code)
 
-Prompt libraries:
-- 
+![Screenshot of ChatGPT prompt interface](/images/articles/ai-concepts/chatgptprompt.png)
 
-Prompts can also be generated on-the-fly by software, including Agents. For example, a customer support agent could receive support requests from customers and convert them into prompts which generate a suitable conversational reply from an Assistant.
+Prompt libraries:
+- https://github.com/0xeb/TheBigPromptLibrary
+- https://github.com/karpathy/LLM101n
+
+Prompts can also be generated on-the-fly by software, including agents. For example, a customer support agent could receive support requests from customers and convert them into prompts which generate a suitable conversational reply from an assistant.
+
+### Context
+
+> Pull-quote: Context engineering is the ”…delicate art and science of filling the context window with just the right information for the next step.”
+
+Context is information provided in addition to prompts to query a model for useful results. This includes information, rules, memory, and tools that shape how the model interprets the query.
+
+Context information helps to narrow and focus the model search to get a more useful result. In a way, it's analogous to how `WHERE`/`AND` clauses add specificity to an SQL query, to get a more precise and correct result from a relational database search.
+
+The total amount of information the system can process at once is called the "context window".
+
+Context can include one or more of the following:
+
+- System prompt
+- User prompt
+- Long-term memory
+- Retrieval Augmented Generation (RAG)
+- Output definitions
+
+#### System prompt
+
+A prompt that defines the model’s role, boundaries, and behavior. This layer can include rules, examples, guardrails, and style requirements that persist across turns. It's like the instructions to an actor in a play, prior to handing them the script.
+
+Example: You are a senior designer using the Lightning design system.
+
+#### User prompt
+
+This is the immediate request — the short-lived, task-specific input that tells the model what to do right now.
+
+Previous prompts can live in context in the sense that they can condition responses to future prompts.  Previous prompts forming state or conversation history act as short-term memory, giving the model continuity across turns by including prior dialog, reasoning steps, and decisions.
+
+#### Long-term memory
+
+Long-term memory is persistent and spans many sessions. It contains durable preferences, stable facts, project summaries, or information the system is designed to reintroduce later.
+
+Examples of long-term memory are touched on in this article and include:
+- Skills
+- Agent definitions
+- Documentation
+
+#### Retrieval Augmented Generation (RAG)
+
+Discussed in a separate heading in this article, RAG involves models being connected to external data sources such as live data feeds or structured data in databases.
+
+RAG can also be considered part of context, as it can make up part of the information provided to the model prior to prompts.
+
+#### Output definitions
+
+Structured output definitions tell the model exactly how its response should be formatted — for example, requiring a JSON object, a table, or a specific schema.
+
+Example:
+
+```python
+data_json = { "resturant employees" :[ 
+    {"name":"Shyam", "email":"shyamjaiswal@gmail.com"},
+    {"name":"Bob", "email":"bob32@gmail.com"},
+    {"name":"Jai", "email":"jai87@gmail.com"}
+]}
+
+prompt = f"""
+Translate the following python dictionary from JSON to an HTML \
+table with column headers and title: {data_json}
+"""
+response = get_completion(prompt)
+print(response)
+```
 
 ### Agent
 
@@ -128,7 +238,7 @@ Agents can run autonomously – that is, without direct human initiation. For ex
 
 Agents are typically implemented as customised software programs, written by software engineers in languages such as Python, Typescript, etc. They are structured as a loop, referred to as an "agent loop", where the application cycles continuously between taking input, making decisions and taking actions.
 
-Agents can call APIs provided by Assistants, such as Claude Agent SDK, to utilise LLM capabilities and perform certain actions.
+Agents can call APIs provided by assistants, such as Claude Agent SDK, to utilise LLM capabilities and perform certain actions.
 
 ```mermaid--svg
 %% @description Agent with Trigger, Agent Loop and Assistant API
@@ -150,23 +260,23 @@ AssistantAPI["📚 Assistant API"]
 
 ### Sub Agent
 
-A Sub Agent is an agent that is called by another agent, to perform a more specific task. Sub Agent are used to break down complex tasks into smaller, more manageable pieces, and to allow for better modularity and separation of concerns.
+A sub agent is an agent that is called by another agent, to perform a more specific task. Sub agent are used to break down complex tasks into smaller, more manageable pieces, and to allow for better modularity and separation of concerns.
 
-Sub Agents are typically implemented as customized software programs (possibly containerized), code libraries and/or configuration for Assistants, such as an agents folder.
+Sub agents are typically implemented as customized software programs (possibly containerized), code libraries and/or configuration for assistants, such as an agents folder.
 
-Sub Agents, being modular, can:
+Sub agents, being modular, can:
 - Be re-used across multiple agents
 - Be scaled independently for high demand, cost reduction, performance, etc.
-- Be combined with other Sub Agents to collaborate in multi-agent workflows
+- Be combined with other sub agents to collaborate in multi-agent workflows
 
-For example, Sub Agent could be run in parallel as serverless functions, which could be scaled horizontally to a handle large number of requests, scaled elastically to minimise costs, etc.
+For example, sub agent could be run in parallel as serverless functions, which could be scaled horizontally to a handle large number of requests, scaled elastically to minimise costs, etc.
 
 Examples:
 
 - https://github.com/VoltAgent/awesome-claude-code-subagents
 
 ```mermaid--svg
-%% @description Agent and Sub Agents pattern
+%% @description Agent and sub agents pattern
 
 flowchart
 
@@ -180,7 +290,7 @@ Agent-->SubAgent3["🖥️ Sub Agent 3"]
 <br />
 
 ```mermaid--svg
-%% @description Sub Agent Multi-Agent pattern
+%% @description Sub agent multi-agent pattern
 
 flowchart LR
 
@@ -192,7 +302,14 @@ SubAgent3-->SubAgent4["🖥️ Sub Agent 4"]
 
 ### Skill
 
-A skill is a specific capability or function that an Agent or Assistant can perform. Skills are typically implemented packages combining an Agent-friendly description, instructions on when to use them and any resources needed to apply the skill, such as code files, images, etc.
+A skill is a capability that an agent or assistant can be augmented with and applied to some relevant task.
+
+A skills is typically made up of:
+- Brief written description
+- "When to use" written guidance
+- Resources, if needed, such as code files, images, etc.
+
+When it first loads up, an assistant can index its library of skills by description and written guidance. Subsequently, when a performing a task, the assistant can use the "when to use" guidance to determine which skill(s) are relevant and apply those that match. When a relevant skill is found, then its resources can be loaded.
 
 For example, a skill for "designing a front end interface" might include:
 
@@ -202,7 +319,7 @@ For example, a skill for "designing a front end interface" might include:
 - Packaged resources: 
   - PDF file containing branding guidelines, color palette, typography rules, etc.
 
-An Agent or Assistant will read the Skill description and "When to use" instructions to determine when to apply the skill. When the skill applies, they will then access the files inside the skill package in order to apply the skill and perform the task.
+An assistant will read the skill description and "When to use" instructions to determine when to apply the skill, such as when the task involves building a front end interface, such as a dashboard. If the skill matches, the assistant will then access the files inside the skill package in order to apply the skill and perform the task. In this example, it will access the PDF file and use the information to design the front end interface of the dashboard.
 
 I have heard skills referred to as the "arms and legs" of an agent. Similarly to how humans arms and legs allow us to perform a wide variety of tasks, skills allow agents to perform a wide variety of tasks by augmenting them them with specific capabilities and functions. Just as arms and legs can be used for different purposes (e.g., walking, running, grasping objects), skills can be used for different purposes (e.g., summarizing text, generating code, answering questions).
 
@@ -217,7 +334,7 @@ Examples:
 <br />
 
 ```mermaid--svg
-%% @description Skill utilised by Agent to perform Task
+%% @description Skill utilised by agent to perform task
 
 flowchart
 
@@ -273,9 +390,9 @@ end
 
 Similar to a skill, a tool augments an assistant.
 
-The difference between a skill and a tool, from what I can tell, is that a tool is integrated more directly into an assistant via purpose-built software.
+The difference between a skill and a tool is that a tool is integrated more directly into an assistant via purpose-built software.
 
-For example, [MCPs (Model Context Protocol)](https://en.wikipedia.org/wiki/Model_Context_Protocol) are a category of AI tool, built by developers, allow Assistants to connect to external data sources or perform actions via a web (HTTP) interface.
+For example, [MCPs (Model Context Protocol)](https://en.wikipedia.org/wiki/Model_Context_Protocol) are a category of AI tool, built by developers, allow assistants to connect to external data sources or perform actions via a web (HTTP) interface.
 
 Comparison of skill vs tool:
 
@@ -288,8 +405,8 @@ Comparison of skill vs tool:
 </thead>
 <tbody>
 <tr>
-<td>Augments an Agent with additional capabilities</td>
-<td>Augments an Agent with additional capabilities</td>
+<td>Augments an agent with additional capabilities</td>
+<td>Augments an agent with additional capabilities</td>
 </tr>
 <tr>
 <td>Is implemented or applied by an end-user or application developer</td>
@@ -302,10 +419,9 @@ Comparison of skill vs tool:
 </tbody>
 </table>
 
-
 ### Command
 
-A command is a specific instruction for an Assistant to run immediately, typically provided by a human in real time.
+A command is a specific instruction for an assistant to run immediately, typically provided by a human in real time.
 
 Commands could be considered an AI equivalent of system commands, scripts, macros, etc.
 
@@ -317,7 +433,14 @@ Examples:
 - `/setup` - setup the development environment
 - `/review` - perform code review
 
-## Relationships
+## Other concepts
+
+Some other concepts here, in no particular order, which I consider important enough to mention but not important enough to merit a whole section.
+
+- **Plan mode**: This refers to the ability of an assistant to provide a plan for completing an action, rather than immediately performing the action. For example, to provide an implementation plan prior to implementing a code change or a design sketch prior to producing a full fledged design. When interacting with an assistant directly, plan mode allows the human the opportunity to review and perhaps request changes to the plan. When used in an agent, plan mode allows the agent to refine the assistant's output using the same (or another) assistant. This fits in to the "making decisions" part of the decide-act loop in agents.
+- **Plugins**: Some assistants allow various pieces of context – such as skills, commands, etc. – to be packaged together, published on a market place and consumed by other engineers. This marketplace could be either internal or external to their organisation. These packages are referred to as plugins and are the AI equivalent of packages in open-source. [Claude Code plugins](https://claude.com/plugins) are one example.
+
+## How the concepts connect
 
 The following diagram roughly maps out how the concepts relate to eachother.
 
@@ -340,15 +463,15 @@ flowchart
 ```
 
 🤖 Assistant-based:
-- Humans issues Prompts and Commands to Assistants
-- Assistants query Models and use the results to return useful outputs back to Humans
-- Assistants are augmented by Skills, helping them complete tasks they would otherwise struggle with
+- Humans issue prompts and commands to assistants
+- Assistants query models and use the results to return useful outputs back to humans
+- Assistants are augmented by skills, helping them complete tasks they would otherwise struggle with
 
 🖥️ Agent-based:
-- Humans set up Agents in order to complete tasks autonomously
-- Agents delegate work to Sub Agents
-- Agents call Assistant APIs for AI capabilities
-- Assistants query Models and use the results to return useful outputs back to Agents
+- Humans set up agents in order to complete tasks autonomously
+- Agents delegate work to sub agents
+- Agents call assistant APIs for AI capabilities
+- Assistants query models and use the results to return useful outputs back to agents
 
 ## When to use
 
@@ -373,7 +496,7 @@ flowchart
         <td>Model</td>
         <td>
           <ul>
-            <li>Selecting an appropriate model for an Assistant to use</li>
+            <li>Selecting an appropriate model for an assistant to use</li>
           </ul>
         </td>
       </tr>
@@ -397,7 +520,7 @@ flowchart
         <td>Skills</td>
         <td>
           <ul>
-            <li>Helping an Assistant become more capable, if it struggles to perform certain tasks correctly</li>
+            <li>Helping an assistant become more capable, if it struggles to perform certain tasks correctly</li>
             <li>Developing reusable capabilities that can be composed into larger AI solutions</li>
             <li>Sharing capabilities across teams and/or the broader community</li>
           </ul>
@@ -407,7 +530,7 @@ flowchart
         <td>Commands</td>
         <td>
           <ul>
-            <li>Providing specific instructions for an Assistant to execute immediately</li>
+            <li>Providing specific instructions for an assistant to execute immediately</li>
             <li>Triggering specific actions or workflows within an AI system</li>
           </ul>
         </td>
@@ -421,4 +544,6 @@ flowchart
 - [Claude Code tutorial (NetNinja)](https://www.youtube.com/playlist?list=PL4cUxeGkcC9g4YJeBqChhFJwKQ9TRiivY)
 - [OpenAI Codex tutorial (NetNinja)](https://www.youtube.com/watch?v=tIb_TzVNbDM)
 - [A Guide to Which AI to Use in the Agentic Era (Ethan MOLLICK)](https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the)
-- [Algorithms (Panos LOURIDAS)](https://direct.mit.edu/books/book/4869/Algorithms)
+- [ChatGPT Prompt Engineering for Developers](https://learn.deeplearning.ai/courses/chatgpt-prompt-eng)
+- [AI as Exoskeleton](https://www.kasava.dev/blog/ai-as-exoskeleton)
+- [How I use Claude Code](https://boristane.com/blog/how-i-use-claude-code/)

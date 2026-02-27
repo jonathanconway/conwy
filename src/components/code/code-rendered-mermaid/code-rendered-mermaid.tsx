@@ -4,6 +4,8 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { ImageFigure } from "@/components/image-figure";
 import { generateHash, isNotNil } from "@/framework/client";
 
+import * as styles from "./code-rendered-mermaid.css";
+
 type CodeRenderedProps = DetailedHTMLProps<
   HTMLAttributes<HTMLElement>,
   HTMLElement
@@ -36,6 +38,7 @@ export function CodeRenderedMermaid(props: CodeRenderedProps) {
 
   return (
     <ImageFigure
+      className={styles.imageFigure}
       src={src}
       alt={alt}
       title={title}
