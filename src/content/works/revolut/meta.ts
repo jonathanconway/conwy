@@ -115,6 +115,9 @@ export const meta: WorkMeta = {
           itemName: "groovy",
         },
         {
+          itemName: "intellij-idea",
+        },
+        {
           itemName: "junit",
         },
       ],
