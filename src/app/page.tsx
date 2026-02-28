@@ -8,7 +8,7 @@ import { getPinnedPosts } from "@/framework/client";
 export default function Home() {
   const items = getPinnedPosts({
     itemSets: [articles, micros],
-    limit: 10,
+    limit: 15,
   });
 
   return (

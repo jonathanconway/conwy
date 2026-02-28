@@ -33,7 +33,9 @@ The hard part often isn't the highest level concepts, but the foundations you ne
 
 ## Benefits of drawing, visualising
 
-Using a high quality notebook and pen helped with enjoyment and motivation to study! Fleshing out problems on paper, down to the fine details, helped me to see how the pieces of a problem fit together, which was quite fascinating. <MdxImg alt="Scan of drawings I made while studying sinusoidal curves" src="/images/articles/studying-calculus/studying-calculus-1.jpg" width={300} />
+Using a high quality notebook and pen helped with enjoyment and motivation to study! Fleshing out problems on paper, down to the fine details, helped me to see how the pieces of a problem fit together, which was quite fascinating.
+
+![Scan of drawings I made while studying sinusoidal curves](/images/articles/studying-calculus/studying-calculus-1.jpg?width=300)
 
 ## Geometric analogies
 
@@ -69,7 +71,70 @@ Prof David mentioned this in one of the videos on Leibniz notation. Amazing, ric
 
 ## Mathematics as a language
 
-Sometimes thinking of a mathematical idea as language or "description" helped me understand it. Rather than trying to understand a concept's full meaning immediately, I try to think of it as a just label – in object-oriented programmer-speak, a "class". Then I gradually add "properties" or "attributes" to that label as my understanding increases. For example, I found this method useful for understanding [Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than thinking of it as a particular number (which stumped me for a while) I found it better to think of it as the *criteria* for some number which I don't yet know. In SQL programming terms: a `SELECT` statement, with multiple `WHERE`/`AND` clauses, which yields a single scalar result which is _e_. In these terms, *e* is "the number which yields has a slope (rise over run) of 1 at 1", etc. Thinking this way helped me reason about the use of *e* in graphs.
+Sometimes thinking of a mathematical idea as language, or a set of concepts, helped me to understand it better.
+
+Rather than trying to understand a concept's full meaning immediately, I tried first to think of it as a just label, which could then be gradually enriched with attributes and relationships, until I eventually had a more complete understanding of its meaning.
+
+I was also able to leverage tools of thinking I was already familiar with, as a programmer, such as object-oriented (OO) modelling and relational database querying (SQL).
+
+I found this learning technique helpful with understanding the concept of the derivative:
+
+> ### Concept: Derivative
+>
+> Attributes:
+> - It is a tool which can be applied to a function over the domain of real numbers
+> - It can be defined as the limit of the function to which it is applied (that is, the value the function approaches as its input gets closer to some limit)
+> - It is additive - you can add derivatives together, forming a new derivative, which is the derivative of the two functions added together
+
+In object-oriented programmer-speak:
+
+- The `Derivative` class...
+  - Supports methods:
+    - `add` (with `Derivative` as parameter and return type)
+    - `calculate` (with `RealNumber` as return type)
+
+```mermaid--svg
+classDiagram
+
+  class Derivative {
+      +Derivative add(addend: Derivative)
+      +RealNumber calculate(input: Function~RealNumber~)
+  }
+```
+
+In this way I was able to use my skill with object oriented (OO) modelling as a "bridge" to help me obtain an understanding of a mathematical concept.
+
+By gradually building up and enriching in my mind these characteristics of the derivative (often meditating on them during long walks) I gradually started to develop an understanding of its basic nature. This helped me a later to understand the role the derivative plays in the bigger scheme of things, such as when differentiating and integrating. A lot of this meditation involved connecting the concept to other concepts I was more familiar with, such as functions, real numbers and basic arithmetic.
+
+Another case where this technique helped was in understanding [Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than trying to think of it as a particular number (which stumped me for a while) I found it better to think of it as the *criteria* for some particular number.
+
+In relation database terms, I imagined a `SELECT` statement used to find Euler's number from a list of famous mathematical constants. It might include multiple `WHERE` or `AND` clauses, but yield a single result: _e_ itself.
+
+The criteria would be:
+- Is a real number
+- Is larger than 1
+- Is the limit, as _n_ goes to infinity, of 1 plus 1 over _n_ all raised to the _n_ power
+
+I won't try to write the full SQL query. 😅 But at a high level, it might start off like this:
+
+```sql
+SELECT *
+FROM MathConstants
+WHERE NumberType = 'REAL_NUMBER'
+AND Value > 1
+```
+
+## Growth can be deceptive
+
+Toward the end of the course, I learned about the logistic function, which produces an S-curve that limits exponential growth.
+
+Applying this to the notion of time, I stumbled upon what I consider to be a profound truth about life: **fast, apparently endless growth can taper off quite suddenly**! It will deceptively appear that a trend still has momentum, as the ground gained thus-far is not lost. But make no mistake, if growth slows, the slowdown will eventually be felt.
+
+With a conceptual understanding of limits to growth, one can mentally get "ahead of the curve" and plan for a future non-growth or steady state scenario.
+
+![Example of a sigmoid curve](/images/articles/studying-calculus/example-sigmoid-curve.svg)
+
+https://www.desmos.com/calculator/t8xi2q4p9m
 
 ## Directions for further study
 
