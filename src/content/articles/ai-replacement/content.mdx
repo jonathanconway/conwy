@@ -1,16 +1,27 @@
+<div style={{ float: "right", marginLeft: "3rem", marginBottom: "3rem" }}>
+  ![](/images/articles/ai-replacement/missed-calls.png)
+</div>
+
 I recently [finished a contract](/work/anz) and updated my job seeker profile. I didn't mark myself as available or make any job applications – I simply updated my profile. Within days I had received many phone calls from internal and external recruiters and scheduled many job interviews.
 
 In those job interviews, I deliberately avoided any mention of AI, to [avoid biasing](https://www.nngroup.com/articles/leading-questions/) the conversation. Surprise (or not) – practically no one I interviewed with ever brought AI up! No, apparently those who are actually hiring software developers still care about software development skills. Not only (or even primarily) AI prompting skills.
 
+- If AI ***is already replacing*** engineers, I'm not seeing it yet. And we're already 2 months in to the new year!
+- If AI is ***about to replace*** engineers, I suppose it must go in the "hasn't happened just yet" bucket, along with [nuclear apocalypse](https://thebulletin.org/doomsday-clock/), [US debt default](https://www.usdebtclock.org) and [widespread self-driving cars](https://en.wikipedia.org/wiki/Self-driving_car).
+
 > Pull-quote: Surprise (or not) – practically no one I interviewed with ever brought AI up!
-
-If AI ***is already replacing*** engineers, I'm not seeing it yet. And we're already 2 months in to the new year!
-
-If AI is ***about to replace*** engineers, I suppose it must go in the "hasn't happened just yet" bucket, along with [nuclear apocalypse](https://thebulletin.org/doomsday-clock/), [US debt default](https://www.usdebtclock.org) and [widespread self-driving cars](https://en.wikipedia.org/wiki/Self-driving_car).
 
 ## What the numbers say about jobs
 
-In the US, the [BLS projects 15% growth](https://www.bls.gov/ooh/Computer-and-Information-Technology/Software-developers.htm?utm_source=chatgpt.com) for software developers, considered "much faster than average". (ChatGPT helped me find that 🙂) The story is similar in [Australia and India](https://en.wikipedia.org/wiki/Software_engineering_demographics#Relation_to_IT_demographics). If statistics don't lie, software developers are at most being augmented rather than replaced.
+In the US, the [BLS projects 15% growth](https://www.bls.gov/ooh/Computer-and-Information-Technology/Software-developers.htm?utm_source=chatgpt.com) for software developers, considered "much faster than average". (ChatGPT helped me find that 🙂)
+
+The story is similar in [Australia and India](https://en.wikipedia.org/wiki/Software_engineering_demographics#Relation_to_IT_demographics).
+
+> “The unemployment rate has been a little lower than expected and measures of labour underutilisation remain at low rates. Growth in the Wage Price Index has eased from its peak, but broader measures of wages growth continue to be strong and growth in unit labour costs remains high.”
+>
+>  – [Media Release • 3 February 2026 • Monetary Policy Board • Reserve Bank of Australia](https://www.rba.gov.au/media-releases/2026/mr-26-03.html)
+
+If statistics don't lie, software developers are at most being augmented rather than replaced.
 
 ![Software Developers Percent change in employment, projected 2024–34 from BLS](https://conwy.co/images/articles/ai-replacement/bls-dev-growth.png?size=small) 
 
@@ -26,12 +37,12 @@ It's hard to get more specific statistics or other hard evidence to understand w
 
 But here are a few hunches, based on my own observations:
 
-- **Inertia.** Humans resist change. Most businesses are run by groups of humans. So hiring decisions won't immediately influenced by AI considerations because so many people simply have not mentally caught up yet.
-- **Disruption.** It's true that some businesses are undergoing massive short-term change and laying off hundreds of workers. For example, some traditional banks are being disrupted by Fintech and even some tech firms are themselves being disrupted by other tech firms. There is nothing new or distinctly "AI-ish" about all this disruption. It is known as [creative destruction](https://en.wikipedia.org/wiki/Creative_destruction) and is baked in to the [capitalist mode of production](https://en.wikipedia.org/wiki/Capitalist_mode_of_production_(Marxist_theory)).
-- **Switching costs / risks.** Businesses cannot, or are unwilling to, take the risk of immediately decommissioning legacy systems and switching to AI. As long as legacy systems stay in place, legacy engineers are needed to maintain them. For example, banks are still known to run their settlement systems on old versions of Java and Oracle.
-- **Technical debt and concept drift.** While AI can initially add a lot of high quality value fast to a software project with pre-existing strong foundations, as with human developers, small mistakes can be made. These can accumulate over time, leading to an overall decline in quality or "tech debt". If there is a large amount of complex code containing subtle errors, it is not obvious that AI can tools can clean it instead of humans. AI models also have a somewhat similar issue of [concept drift](https://en.wikipedia.org/wiki/Concept_drift), where the model lags changes in the real world which invalidate its outputs.
-- **Complexity of AI.** Everyone focuses on consumer AI tools like ChatGPT, which are simple enough for a child to use. But businesses-oriented AI tools, such as coding assistants (e.g. Claude Code), are more complex and require careful, structured, specific prompts and/or other context to be provided. The complexity level of using these AI tools is on a similar order to traditional software development.
-- **Limitations of AI.** Coding might be automated, but coding is rarely the only task developers are hired for. There are certain general tasks AI still cannot really do. For example, anything involving fine-motor physical activities, such as swiping at the security gates and selecting an elevator floor, is not yet widely available as a humanoid robot at a reasonable price. Some businesses still require such manual, physical processes, and thus, still need to hire a real human to be perform them. Yes, this is still the case in 2026. If you question why this is the case, please refer back to "1. Inertia".
+- 🧠 **Inertia.** Humans resist change. Most businesses are run by groups of humans. So hiring decisions are not immediately influenced by AI considerations because so many people simply have not mentally caught up yet.
+- 💥 **Disruption.** It's true that some businesses are undergoing massive short-term change and laying off hundreds of workers. For example, some traditional banks are being disrupted by Fintech and even some tech firms are themselves being disrupted by other tech firms. There is nothing new or distinctly "AI-ish" about all this disruption. It is known as [creative destruction](https://en.wikipedia.org/wiki/Creative_destruction) and is baked in to the [capitalist mode of production](https://en.wikipedia.org/wiki/Capitalist_mode_of_production_(Marxist_theory)).
+- 🪖 **Switching costs / risks.** Businesses cannot, or are unwilling to, take the risk of immediately decommissioning legacy systems and switching to AI. As long as legacy systems stay in place, legacy engineers are needed to maintain them. For example, banks are still known to run their settlement systems on old versions of Java and Oracle.
+- 🗑️ **Technical debt and concept drift.** While AI can initially add a lot of high quality value fast to a software project with pre-existing strong foundations, as with human developers, small mistakes can be made. These can accumulate over time, leading to an overall decline in quality or "tech debt". If there is a large amount of complex code containing subtle errors, it is not obvious that AI can tools can clean it instead of humans. AI models also have a somewhat similar issue of [concept drift](https://en.wikipedia.org/wiki/Concept_drift), where the model lags changes in the real world which invalidate its outputs.
+- 🔧 **Complexity of AI.** Consumer-focussed AI tools like ChatGPT are simple enough for a child to use. But businesses-oriented AI tools, such as coding assistants (e.g. Claude Code), are more complex and require careful, structured, specific prompts and/or other context to be provided. The complexity level of using these AI tools is on a similar order to traditional software development.
+- 🤚 **Limitations of AI.** Coding might be automated, but coding is rarely the only task developers are hired for. There are certain general tasks AI still cannot really do. For example, swiping a card at security gates, selecting an elevator floor, entering a meeting room and conversing with the attendees in a human way is not yet widely available in the form of a talking humanoid robot at a reasonable price. Some businesses still require such manual, physical processes, and thus, still need to hire a real human to be perform them. Yes, this is still the case in 2026. If you question why this is the case, please refer back to **• 🧠 Inertia**.
 
 Taken together, these hunches would seem to predict a "short-term growth with long-term limits" scenario. Rather than a straightforward exponential growth curve, an S-curve with initial growth followed by tapering off as limits are realised might be more accurate. A [logistic function](https://en.wikipedia.org/wiki/Logistic_function), if you will (which I learned about from [studying calculus](https://conwy.co/articles/studying-calculus)).
 
@@ -52,11 +63,11 @@ Here are a few of my hunches on why this narrative persists:
 AI adoption might initially be on an exponential growth curve, but on further investigation, there may be limits to that growth.
 
 - **Inertia:** humans resist big sudden changes.
-- **Disruption:** change is to be expected, and is not necessarily all about AI or replacement.
+- **Disruption:** change is to be expected anyway, independent of AI or replacement.
 - **Switching costs and risks:** legacy sometimes makes better business sense.
-- **Technical debt and concept drift:** accumulation of coding errors made by agents requiring clean up and models lagging changes in the real world.
-- **Complexity of AI:** replacing certain occupations with AI doesn't eliminate the need for certain other occupations, such as maintaining AI systems.
-- **Limitations of AI:** AI cannot currently fill all jobs, even if we all wanted it to.
+- **Technical debt and concept drift:** coding errors accumulate, models drift from reality.
+- **Complexity of AI:** AI itself can require human maintainers.
+- **Limitations of AI:** AI cannot currently fill all available jobs, even if we all wanted it to.
 
 None of the above is meant to suggest that we should ignore AI, hesitate in investigating and adopting AI where it fits or reactively try to stop AI. My main points is that it seems premature to assume that AI will replace traditional software developers or development, and much less that it will eliminate altogether the demand for highly-skilled and appropriately compensated human labour.
 
