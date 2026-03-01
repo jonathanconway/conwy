@@ -92,7 +92,7 @@ In Jest, we can try one or more of:
 2. Turning off multiple workers using [`--runInBand`](https://jestjs.io/docs/cli#--runinband)
 3. Increasing the worker count, using [`--maxWorkers`](https://jestjs.io/docs/configuration#maxworkers-number--string)
 
-> Aside: More on 3.: by running a higher number of workers than CPU cores, we effectively add more workload to our machine, causing it to run slower. This can help create conditions that will reproduce a test's flakiness.
+> Aside: By running a higher number of workers than CPU cores, we effectively add more workload to our machine, causing it to run slower. This can help create conditions that will reproduce a test's flakiness.
 
 ### Observing prior test failures in logs
 
@@ -273,9 +273,13 @@ Or we could use numbering or lettering system.
 
 ### Reduce the number of workers
 
-Problem: Jest allows the maximum number of workers to be configured via the [`maxWorkers`](https://jestjs.io/docs/configuration#maxworkers-number--string) setting. However, if this exceeds the number of CPU cores on the machine, the processor may be forced to split execution time between multiple threads. This may cause tests to take longer than expected to execute, resulting in timeouts. This problem may only occur on CI environments, where CPU resources may be more limited, making it tricky to identify.
+Problem: Test runners such as Jest may be greedy and fail to balance resource usage between tests when running many tests in parallel on resource-constrained environments such as CI
 
-Solution: Check the CPU configuration of the CI environment if possible. Try reducing the `maxWorkers` setting or even eliminating it. (Jest defaults to the number of cores available on the machine, which is usually the safest bet.)
+Solution: Check the CPU configuration of the CI if possible. Try to reduce the number of simultaneously running tests by configuring the test runner.
+
+Contrary to our human intuition ("more is better") it may be better to reduce the number of simultaneously running tests. This is because test runners can be greedy and consume as many resources as possible at any given time (CPU, memory, etc). Running multiple tests at once can cause resource usage to become imbalanced, as tests compete with eachother for resources. 
+
+The solution may be to reduce the maximum number of workers. Jest allows this to be configured via the [`maxWorkers`](https://jestjs.io/docs/configuration#maxworkers-number--string) setting. However, if this exceeds the number of CPU cores on the machine, the processor may be forced to split execution time between multiple threads. This may cause tests to take longer than expected to execute, resulting in timeouts. This problem may only occur on CI environments, where CPU resources may be more limited, making it tricky to identify. Try reducing the `maxWorkers` setting or even eliminating it. (Jest defaults to the number of cores available on the machine, which is usually the safest bet.)
 
 ### Clean up at the end
 
@@ -284,7 +288,6 @@ Problem: Tests leave behind "uncollected garbage", such as memory usage, threads
 Solution: Cleaning up after each test reduces resource demand on the test runner, which reduces the occurrence of flakiness.
 
 Note that the flaky test itself might not be the culprit here, but rather, some or all other test(s) as a whole generating garbage. This uncollected garbage might only be noticeable when all tests are run together in CI, not when running an individual test on its own. This can make the "uncollected garbage" issue tricky to detect. It might only be detectable by trial-and-error – say, observing resource usage on the whole test suite over repeated runs.
-
 
 ### Increase timeouts
 
@@ -447,3 +450,9 @@ Flaky tests can be dealt with by:
 - https://htalbot.dev/posts/debugging-slow-jest-tests
 - https://andreyluiz.com/posts/optimizing-jest-performance/
 - https://jestjs.io/blog/2016/03/11/javascript-unit-testing-performance
+- https://engineering.rently.com/slow-running-jest-test-cases-how-to-optimise-it/
+- https://mindfulchase.com/explore/troubleshooting-tips/troubleshooting-jest-fixing-slow-tests,-flaky-behavior,-and-memory-leaks.html
+- https://stackoverflow.com/questions/45087018/jest-simple-tests-are-slow
+- https://dev.to/playwright/how-to-reproduce-ci-failures-locally-in-playwright-lfl
+- https://medium.com/adobetech/improve-jest-runner-performance-a8f56708ba94
+- https://jestjs.io/docs/troubleshooting#tests-are-extremely-slow-on-docker-andor-continuous-integration-ci-server
