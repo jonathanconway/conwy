@@ -6,9 +6,12 @@ Rather than going all in on one tactic, for flaky tests, I prefer to have a grab
 
 In this article I'll share my grab-bag of techniques. These are tactics I've used myself or seen used by others with success.
 
-There are two basic categories of tactics:
+First we try to reproduce and diagnose the flakiness.
+
+Then, once we have a (hopefully firm) notion of the cause, we can apply solutions or mitigations.
+
 1. **Solutions:** actually fixing the flaky tests
-2. **Mitigations:** minimising harm when the flaky tests cannot be fixed
+2. **Mitigations:** minimising harm, impact, cost, etc. for flaky tests we cannot fix
 
 The examples are in Jest and Playwright, as that is what I use in most of my work environments, but similar principles likely apply to other tools.
 
@@ -16,13 +19,13 @@ But before diving into tactics, let's take a brief step back and look at first r
 
 ## Reproducing flakiness
 
-A fundamental idea in software testing is to reproduce a bug.
+Fundamental to addressing any kind of software bug is **reproducing** it.
 
-As mentioned previously, flaky tests are difficult to reproduce consistently because their failure is non-deterministic: sometimes they fail sometimes not.
+But how do you reproduce a flaky test? As discussed above, flaky tests are difficult to reproduce consistently because their failure is non-deterministic: sometimes they fail sometimes not.
 
 There are a couple of options here:
 
-- Running the test repeatedly to generate failures
+- Running the test repeatedly to generate a mass of failures
 - Observing prior test failures in logs
 
 ### Running the test repeatedly to generate failures
@@ -48,12 +51,14 @@ Some test frameworks provide this re-running capability out-of-the-box. Here's h
 npx playwright test {test_file} --repeat-each=20 --fail-on-flaky-tests
 ```
 
-Additionally, we could simulate failure conditions, to increase the failure rate for reproduction purposes.
+To increase the failure rate for reproduction purposes, we can simulate failure conditions.
 
 For example:
 - Simulating slower CPU and/or fewer cores
 - Simulating lower available memory
 - Simulating slower network speeds
+
+These failure conditions will give us more failures, which may hopefully resolve in faster diagnosis of the cause.
 
 Some technologies for enacting these simulations include:
 - **Virtual machines:** Running the tests in a Virtual Machine with slow configuration.
@@ -140,7 +145,21 @@ Maybe we can learn something about the cause of the failures by observing phenom
   </tbody>
 </table>
 
-> Aside: Tip: [Structured logging](https://newrelic.com/blog/log/structured-logging) with detailed information about resource usage, date/time and other data can help to expose more information about test failure in logs. Such info can be logged on test failures. For example, in Jest, we can handle the [`afterEach`](https://jestjs.io/docs/setup-teardown) hook in a [setupFile](https://jestjs.io/docs/configuration#setupfiles-array) and inspect [`testInfo.failed`]. Structured logs can be generated using a library such as [structured-log](https://github.com/structured-log/structured-log).
+> Aside: **Tip:** [Structured logging](https://newrelic.com/blog/log/structured-logging) with detailed information about resource usage, date/time and other data can help to expose more information about test failure in logs. Such info can be logged on test failures. For example, in Jest, we can handle the [`afterEach`](https://jestjs.io/docs/setup-teardown) hook in a [setupFile](https://jestjs.io/docs/configuration#setupfiles-array) and inspect [`testInfo.failed`]. Structured logs can be generated using a library such as [structured-log](https://github.com/structured-log/structured-log).
+
+## Diagnosing flakiness
+
+If we are able to reproduce flakiness, the root cause become clear with diagnosis.
+
+Similar to diagnosing regular bugs, we can diagnose flaky tests by making small changes and measuring the results. With flaky test rates, rather than a single pass/fail, we measure the overall pass/fail rate. A significantly lower percentage of failures can be correlated with a code change to help uncover the cause of the failure.
+
+> Aside: **Warning:** It's important here to emphasise *failure of the test to run properly* rather than just *failure of the test*. A flaky test might give false-positives, passing intermittently when it should be failing.
+
+Some of the usual diagnostic techniques can be applied along with 
+
+- **Debugging:** using debugging tools to step through and/or console statements to observe behaviour of the test and/or application during test execution
+- **Comparing recent versions:** using [`git bisect`](https://git-scm.com/docs/git-bisect) or similar to compare results between recent versions of the branch
+- **Process of elimination:** removing parts of code and measuring results, to "eliminate" irrelevant parts and identify parts that are actually causing flakiness
 
 ## Solving flakiness
 
@@ -374,18 +393,16 @@ test('test full report @flaky', async ({ page }) => {
 });
 ```
 
-In Jest, a similar effect can be achieved by regex filtering the test name using the [testNamePattern](https://jestjs.io/docs/cli#--testnamepatternregex) config setting:
+In Jest, a similar effect can be achieved by passing a carefully written regex to the [testNamePattern](https://jestjs.io/docs/cli#--testnamepatternregex) config setting:
 
 package.json:
 ```json
+"scripts": {
   ...,
-  "scripts": {
-    ...,
-    "test": "jest --testNamePattern='^(?!.*\@flaky).*$'",
-    "test-flaky": "jest  --testNamePattern='^(.*\@flaky).*$'",
-    ...,
-  },
+  "test": "jest --testNamePattern='^(?!.*\@flaky).*$'",
+  "test-flaky": "jest  --testNamePattern='^(.*\@flaky).*$'",
   ...,
+},
 ```
 
 Once separated, flaky tests might be treated in various ways:
@@ -404,7 +421,8 @@ Another option, for tests target intermittent but approximately deterministic be
 
 ❌
 ```javascript
-  expect(timeAfterClickPause.getTime()).toEqual(new Date(2026, 3, 1, 13, 1, 1).getTime());
+  expect(timeAfterClickPause.getTime())
+    .toEqual(new Date(2026, 3, 1, 13, 1, 1).getTime());
 ```
 
 ✅
