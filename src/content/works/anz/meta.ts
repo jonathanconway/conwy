@@ -113,6 +113,11 @@ export const meta: WorkMeta = {
     },
     {
       type: SocialLinkTypes.Website,
+      url: "https://securitybrief.com.au/story/anz-to-launch-password-less-web-banking-with-enhanced-security",
+      title: "ANZ Plus Media Coverage",
+    },
+    {
+      type: SocialLinkTypes.Website,
       url: "https://anz.com.au/",
       title: "ANZ Official Website",
     },
