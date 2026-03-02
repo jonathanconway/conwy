@@ -1,0 +1,186 @@
+import { meta } from "./meta";
+
+> Pull-quote: “The word 'isomorphism' applies when two complex structures can be mapped onto each other, in such a way that to each part of one structure there is a corresponding part in the other structure, where "corresponding" means that the two part play similar roles in their respective structures.”
+>
+> – Douglas HOFSTADTER
+>
+> <small>[Gödel, Escher, Bach](/books/godel-escher-bach) • Meaning and Form in Mathematics • pp. 57</small>
+
+I've seen various trends come and go in code folder and file structure.
+
+The two big ones in the front-end space seem to have been:
+
+- Function-focussed. `📁 controllers`, `📁 views`, `📁 models`, etc...
+- Feature-focussed. `📁 posts`, `📁 comments`, `📁 likes`, etc...
+
+There have been various efforts to combine them, such as the [feature-sliced design](https://feature-sliced.design/blog/frontend-folder-structure).
+
+For example, we can have:
+
+- `📁 posts`
+  - `📁 controllers`
+    - `📄 list.ts`
+    - `📄 detail.ts`
+    - `📄 create.ts`
+    - `📄 delete.ts`
+  - `📁 views`
+    - `📄 list.tsx`
+    - `📄 detail.tsx`
+    - `📄 create.tsx`
+    - `📄 deleted-message.tsx`
+  - `📁 models`
+    - `📄 post.ts`
+- `📁 comments`
+  - `📁 controllers`
+    - `...`
+  - `📁 views`
+    - `...`
+  - `📁 models`
+    - `...`
+- `📁 likes`
+  - `...`
+
+Overall I like the above strategy. But I wanted to take it one step further.
+
+You see... sometimes I feel I want to have the best of both worlds. A bit of functional and a bit of feature.
+
+- Some kinds of things seem to fit neatly into a single feature.
+  - `📁 posts`
+  - `📁 comments`
+  - `📁 likes`
+- Other kinds of things seem to make more sense as functional pieces.
+  - `📁 use-local-storage-hook`
+  - `📁 fetch-util`
+  - `📁 recessed-border-mixin`.
+
+What I've settled on is: consistency in naming with freedom in ordering.
+
+## Rules
+
+Here are the rules of the self-similar folder pattern:
+
+1. Any word can be pluralized: `comment` => `comments`.
+2. Any word can be combined with any other word (or combination of words) by a dash: `delete`, `comment` => `delete-comment`.
+3. Any word (or combination of words) can be used to name a folder or file, at any nesting level.
+
+## Process 
+
+First we start with listing all of the unique "naming words" or tokens in our present file/folder structure (non-pluralized):
+
+<table>
+  <tbody>
+    <tr>
+      <td>border</td>
+      <td>comment</td>
+      <td>controller</td>
+      <td>create</td>
+    </tr>
+    <tr>
+      <td>delete</td>
+      <td>deleted</td>
+      <td>detail</td>
+      <td>fetch</td>
+    </tr>
+    <tr>
+      <td>get</td>
+      <td>hook</td>
+      <td>like</td>
+      <td>list</td>
+    </tr>
+    <tr>
+      <td>local</td>
+      <td>mixin</td>
+      <td>model</td>
+      <td>post</td>
+    </tr>
+    <tr>
+      <td>recessed</td>
+      <td>relieved</td>
+      <td>storage</td>
+      <td>use</td>
+    </tr>
+    <tr>
+      <td>util</td>
+      <td>view</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+Then we group similar words, based on how they seem to be used in the system and how they seem to naturally fit together. (Note that words can be re-used as many times as needed.)
+
+> Aside: This technique has long been known in UX design as [card sorting](https://en.wikipedia.org/wiki/Card_sorting).
+
+- `border`, `recessed`, `mixin`
+- `comment`, `list`, `create`, `delete`
+- `post`, `detail`, `list`, `create`, `delete`
+- `like`, `list`, `create`, `delete`
+- etc...
+
+It becomes clear that certain **functions** cluster around a single **feature**. For example, `post` has `detail`, `list`, `create` and `delete`. For these cases, we adopt feature grouping.
+
+It becomes similarly clear that certain **functions** stand alone or group with other similar functions. For example, `border` variants `recessed` and `relieved` are each a kind of `mixin`, which I consider a function not a feature. For these cases, we adopt function grouping.
+
+Based on the groupings, we order the words by priority:
+
+
+And then nest them in order.
+
+The end-result:
+
+- `📁 posts`
+  - `📁 controllers`
+    - `📄 list.ts`
+    - `📄 detail.ts`
+    - `📄 create.ts`
+    - `📄 delete.ts`
+  - `📁 views`
+    - `📄 list.tsx`
+    - `📄 detail.tsx`
+    - `📄 create.tsx`
+    - `📄 deleted-message.tsx`
+  - `📁 models`
+    - `📄 post.ts`
+  - `📁 hooks`
+    - `📄 like-post.ts`
+- `📁 comments`
+  - `📁 controllers`
+    - `...`
+  - `📁 views`
+    - `...`
+  - `📁 models`
+    - `...`
+- `📁 likes`
+  - `...`
+- `📁 hooks`
+  - `📁 local-storage`
+    - `📄 hook`
+- `📁 utils`
+  - `📁 fetch`
+    - `📄 get.ts`
+    - `📄 delete.ts`
+    - `📄 post.ts`
+- `📁 mixins`
+  - `📁 border`
+    - `📄 recessed.ts`
+    - `📄 relieved.ts`
+
+Notice that this folder structure exhibits a kind of **self-similarity**.
+
+For example:
+- `detail` can appear within either `controllers` (as a controller) or `views` (as a view).
+- `controllers`, `views` and `models` can appear within features `posts`, `comments` and `likes`.
+- `hooks` can be grouped together with other hooks, such as `local-storage`/`hook.ts`, but alternatively, they can be grouped with a feature, such as `posts`/`hooks`/`like.ts`.
+
+This self-similarity makes the folder structure extremely powerful yet flexible. Any word can be a unit of re-use, but no word is "locked in" to only appearing in one part of the structure. The form is extremely flexible, yet also extremely rigorous.
+
+## When to use
+
+It requires effort and teamwork to keep this kind of folder structure well organised. Card sorting is a high-energy, collaborative activity. So this folder structure is probably not a good fit for all scenarios.
+
+If you are a team of, say, Ruby engineers, in a medium-sized corporation, who want to play it safe and follow an established pattern, there's nothing wrong with going function-based. The enemy here is risk of losing control.
+
+If you are a startup, who need to move fast, and don't have time for any hand-wavy card-sorting UX nonsense, there's nothing wrong with going feature-based. The enemy here is time.
+
+Where I see the sweet-spot for this kind of structure is a long-term cleanup operation in a fairly complex project but a small team of very experienced polyglot programmers. Lots of collaboration, lots of care, but also lots of autonomy. The enemy here is complexity of the code itself, and a technique that accepts complexity without succumbing to it is probably the right tool for the job.

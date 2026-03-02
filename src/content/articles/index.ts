@@ -18,6 +18,7 @@ export * from "./mock-data";
 export * from "./parallel-loading-react";
 export * from "./react-generic-hoc-pattern";
 export * from "./refactoring-documentation";
+export * from "./self-similar-folder-pattern";
 export * from "./simulating-states";
 export * from "./studying-calculus";
 export * from "./subformats";
