@@ -6,6 +6,7 @@ export const sdCardTool: Tool = {
     slug: "sd-card",
     title: "SD Cards",
     section: ToolSections.Belonging,
+    category: "Physical Storage",
     date: "2025-11-16",
     mainImage: "/images/tools/sd-card.png",
     operatingSystems: [],
