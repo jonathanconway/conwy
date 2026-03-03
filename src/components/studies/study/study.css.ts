@@ -1,6 +1,7 @@
-import { style } from "@vanilla-extract/css";
+import { ComplexStyleRule, style } from "@vanilla-extract/css";
 
 import * as linkMixins from "../../link/link.mixins";
+import * as textSizeMixins from "../../text/text-size/text-size.mixins";
 import * as textMixins from "../../text/text.mixins";
 
 export const row = style({
@@ -19,6 +20,7 @@ export const linksList = style({
 
 export const linksListItem = style({
   ...linkMixins.link,
+  ...textSizeMixins.xs,
   display: "contents",
 
   selectors: {
