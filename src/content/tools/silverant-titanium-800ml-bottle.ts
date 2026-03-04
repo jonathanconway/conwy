@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const silverantTitanium800mlBottleTool: Tool = {
+export const silverantTitanium800MlBottleTool: Tool = {
   type: "tool",
   meta: {
     slug: "silverant-titanium-800ml-bottle",

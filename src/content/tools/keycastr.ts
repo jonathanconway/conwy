@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const keyCastrTool: Tool = {
+export const keycastrTool: Tool = {
   type: "tool",
   meta: {
     section: ToolSections.App,

@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const inkScapeTool: Tool = {
+export const inkscapeTool: Tool = {
   type: "tool",
   meta: {
     section: ToolSections.App,

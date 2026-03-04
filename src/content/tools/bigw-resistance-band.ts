@@ -1,6 +1,6 @@
 import { Tool, ToolSections } from "@/framework/client";
 
-export const kmartResistanceBandTool: Tool = {
+export const bigwCircuitResistanceBandTool: Tool = {
   type: "tool",
   meta: {
     section: ToolSections.Belonging,
