@@ -6,8 +6,14 @@ import { rounded, text } from "../styling";
 import { vars } from "../theme";
 
 export const container = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
+});
+
+export const cascadeContainer = style({
   position: "relative",
-  height: "10rem",
+  margin: "auto",
 });
 
 const imageBorder = {
@@ -81,8 +87,23 @@ export const image = style({
   width: "auto",
 });
 
+export const selectedImageContainer = style({
+  display: "inline-flex",
+  alignContent: "center",
+  margin: "auto",
+});
+
+export const selectedImage = style({
+  ...rounded.regular,
+  pointerEvents: "none",
+  margin: "auto",
+  maxHeight: "100%",
+  width: "auto",
+});
+
 export const nav = style({
   display: "flex",
   flexDirection: "row",
+  justifyContent: "end",
   gap: "0.5rem",
 });

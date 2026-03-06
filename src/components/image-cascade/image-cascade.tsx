@@ -20,10 +20,12 @@ function ImageCascade_(props: ImageCascadeProps) {
   const {
     isCascade,
     items,
+    selectedItem,
     openedItem,
     handleNextClick,
     handlePreviousClick,
     handleImageClick,
+    handleImageKeyDown,
     handleImageModalCloseClick,
   } = useImageCascade({
     items: images,
@@ -35,19 +37,27 @@ function ImageCascade_(props: ImageCascadeProps) {
   }
 
   return (
-    <>
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <div
+        className={styles.cascadeContainer}
+        style={inlineStyles.cascadeContainer}
+      >
         {items?.map((image, imageIndex) => (
           <Tooltip
             key={`image-cascade-item-${image.src}`}
             contents={image.alt ?? image.title ?? `Image #${imageIndex}`}
           >
-            <div
-              role="button"
+            <button
               tabIndex={0}
+              type="button"
               className={styles.imageContainer}
-              style={inlineStyles.imageContainer(props, imageIndex)}
+              style={inlineStyles.imageContainer({
+                images,
+                imageIndex,
+                isSelected: selectedItem === image,
+              })}
               onClick={handleImageClick(image)}
+              onKeyDown={handleImageKeyDown(image)}
             >
               {isCascade && (
                 <span className={styles.imageNumber}>
@@ -64,10 +74,28 @@ function ImageCascade_(props: ImageCascadeProps) {
                   height={IMAGE_CASCADE_SIZE_PX.height}
                 />
               </div>
-            </div>
+            </button>
           </Tooltip>
         ))}
       </div>
+
+      {selectedItem && (
+        <button
+          tabIndex={0}
+          type="button"
+          className={styles.selectedImageContainer}
+          onClick={handleImageClick(selectedItem)}
+          onKeyDown={handleImageKeyDown(selectedItem)}
+        >
+          <Image
+            className={styles.selectedImage}
+            src={selectedItem.src}
+            alt={selectedItem.src}
+            width={IMAGE_CASCADE_SIZE_PX.width * 2}
+            height={IMAGE_CASCADE_SIZE_PX.height * 2}
+          />
+        </button>
+      )}
 
       {isCascade && (
         <div className={styles.nav}>
@@ -93,7 +121,7 @@ function ImageCascade_(props: ImageCascadeProps) {
           onClose={handleImageModalCloseClick}
         />
       )}
-    </>
+    </div>
   );
 }
 

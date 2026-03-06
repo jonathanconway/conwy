@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 
 import { useImageCascadeUrl } from "./use-image-cascade-url.hook";
 
@@ -26,18 +26,8 @@ interface UseImageCascadeState<T> {
   readonly openedItem?: T;
 }
 
-function rotate<T>(input: readonly T[], index: number) {
-  return [
-    ...input.slice(index),
-    ...[...input]
-      .reverse()
-      .slice(input.length - index)
-      .reverse(),
-  ];
-}
-
 export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
-  const sourceItems = [...params.items].reverse();
+  const sourceItems = params.items;
 
   const imageCascadeUrl = useImageCascadeUrl(params);
 
@@ -48,15 +38,13 @@ export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
 
   const { selectedItem, openedItem } = state;
 
-  const selectedIndex = sourceItems.indexOf(selectedItem);
-
-  const items = rotate(sourceItems, selectedIndex);
+  const items = sourceItems;
 
   const handlePreviousClick = () => {
     const selectedItemIndex = sourceItems.indexOf(state.selectedItem);
 
     const newIndex =
-      selectedItemIndex === sourceItems.length - 1 ? 0 : selectedItemIndex + 1;
+      selectedItemIndex === 0 ? sourceItems.length - 1 : selectedItemIndex - 1;
 
     const newSelectedItem = sourceItems[newIndex];
 
@@ -69,7 +57,7 @@ export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
     const selectedItemIndex = sourceItems.indexOf(state.selectedItem);
 
     const newIndex =
-      selectedItemIndex === 0 ? sourceItems.length - 1 : selectedItemIndex - 1;
+      selectedItemIndex === sourceItems.length - 1 ? 0 : selectedItemIndex + 1;
 
     const newSelectedItem = sourceItems[newIndex];
 
@@ -100,6 +88,15 @@ export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
     }));
   };
 
+  const handleImageKeyDown = (openedItem: T) => (event: KeyboardEvent) => {
+    if (event.key === "ENTER") {
+      setState((previousState) => ({
+        ...previousState,
+        openedItem,
+      }));
+    }
+  };
+
   const isCascade = params.items.length > 1;
 
   return {
@@ -111,6 +108,7 @@ export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
     handleNextClick,
     handleTabClick,
     handleImageClick,
+    handleImageKeyDown,
     handleImageModalCloseClick,
   };
 }
