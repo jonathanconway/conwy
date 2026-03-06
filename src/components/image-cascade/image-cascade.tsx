@@ -40,7 +40,7 @@ function ImageCascade_(props: ImageCascadeProps) {
     <div className={styles.container}>
       <div
         className={styles.cascadeContainer}
-        style={inlineStyles.cascadeContainer}
+        style={inlineStyles.cascadeContainer(props)}
       >
         {items?.map((image, imageIndex) => (
           <Tooltip
@@ -101,13 +101,21 @@ function ImageCascade_(props: ImageCascadeProps) {
         <div className={styles.nav}>
           <IconButton
             icon={IconTypes.ArrowChevronLeft}
-            tooltip={{ key: "previous", contents: "Previous" }}
+            tooltip={{
+              key: "previous",
+              contents: "Previous",
+              responsiveVisibility: { sm: false },
+            }}
             onClick={handlePreviousClick}
           />
 
           <IconButton
             icon={IconTypes.ArrowChevronRight}
-            tooltip={{ key: "next", contents: "Next" }}
+            tooltip={{
+              key: "next",
+              contents: "Next",
+              responsiveVisibility: { sm: false },
+            }}
             onClick={handleNextClick}
           />
         </div>

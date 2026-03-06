@@ -3,12 +3,15 @@ import { Image as Image_ } from "@/framework/client";
 import { vars } from "../theme";
 
 import { IMAGE_CASCADE_SIZE_PX } from "./image-cascade-size";
-import { ImageCascadeProps } from "./image-cascade.types";
 
-export const cascadeContainer = {
+interface CascadeContainerProps {
+  readonly images: readonly Image_[];
+}
+
+export const cascadeContainer = ({ images }: CascadeContainerProps) => ({
   width: IMAGE_CASCADE_SIZE_PX.width * 2,
-  height: IMAGE_CASCADE_SIZE_PX.height * 2,
-};
+  height: IMAGE_CASCADE_SIZE_PX.height * 2 + images.length * 5,
+});
 
 interface ImageContainerProps {
   readonly images: readonly Image_[];
