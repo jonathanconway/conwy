@@ -1,0 +1,14 @@
+import { ToolMeta, ToolSections } from "@/framework/client";
+
+export const meta: ToolMeta = {
+  section: ToolSections.CommandLineTool,
+  slug: "yt-dlp",
+  title: "yt-dlp",
+  category: "Video Downloader",
+  date: "2024-12-07",
+  operatingSystems: ["MacOS"],
+  url: "https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#readme",
+  description:
+    "Feature-rich command-line audio/video downloader with support for thousands of sites",
+  mainImage: "/images/tools/terminal.png",
+};

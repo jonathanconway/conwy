@@ -1,0 +1,13 @@
+import { ToolMeta, ToolSections } from "@/framework/client";
+
+export const meta: ToolMeta = {
+  section: ToolSections.App,
+  slug: "libation",
+  title: "Libation",
+  category: "Audiobook Downloader",
+  date: "2024-12-06",
+  operatingSystems: ["MacOS", "Windows", "Linux"],
+  url: "https://getlibation.com/",
+  description: "App to manage your Audible books.",
+  mainImage: "/images/tools/libation.png",
+};

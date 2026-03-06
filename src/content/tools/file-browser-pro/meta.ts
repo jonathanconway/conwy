@@ -1,0 +1,14 @@
+import { ToolMeta, ToolSections } from "@/framework/client";
+
+export const meta: ToolMeta = {
+  section: ToolSections.MobileApp,
+  slug: "file-browser-pro",
+  title: "FileBrowserPro",
+  category: "File Management",
+  date: "2025-08-16",
+  operatingSystems: ["iOS"],
+  url: "https://www.stratospherix.com/products/filebrowserprofessional/",
+  description:
+    "Access all your media and other files from one app on iPhone and iPad.",
+  mainImage: "/images/tools/filebrowserpro.webp",
+};
