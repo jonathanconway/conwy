@@ -95,6 +95,17 @@ export const meta: WorkMeta = {
         },
       ],
     },
+    {
+      categoryName: "ai",
+      items: [
+        {
+          itemName: "claude-code",
+        },
+        {
+          itemName: "github-copilot",
+        },
+      ],
+    },
   ],
   projects: [
     { title: "Contacts List" },

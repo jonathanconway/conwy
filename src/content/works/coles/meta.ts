@@ -93,6 +93,14 @@ export const meta: WorkMeta = {
       categoryName: "mastercard-payments-gateway",
       items: [],
     },
+    {
+      categoryName: "dynatrace",
+      items: [],
+    },
+    {
+      categoryName: "sentry",
+      items: [],
+    },
   ],
   projects: [
     {
