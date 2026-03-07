@@ -98,7 +98,9 @@ export function getChildrenText(children: ReactNode): string {
         }
         if ("children" in children.props) {
           if (isObject(children.props.children)) {
-            return getChildrenText(children.props.children as ReactNode)?.trim();
+            return getChildrenText(
+              children.props.children as ReactNode,
+            )?.trim();
           }
         }
       }
@@ -134,12 +136,18 @@ export function removeFirstChildPrefix(
     if ("props" in children) {
       if (isObject(children.props)) {
         if ("children" in children.props) {
-          if (isObject(children.props.children) || isString(children.props.children)) {
+          if (
+            isObject(children.props.children) ||
+            isString(children.props.children)
+          ) {
             return {
               ...children,
               props: {
                 ...children.props,
-                children: removeFirstChildPrefix(prefix, children.props.children as ReactNode),
+                children: removeFirstChildPrefix(
+                  prefix,
+                  children.props.children as ReactNode,
+                ),
               },
             };
           }

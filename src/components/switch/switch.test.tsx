@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+
 import { Switch } from "./switch";
 import { SWITCH_PROPS_MOCK } from "./switch.mocks";
 

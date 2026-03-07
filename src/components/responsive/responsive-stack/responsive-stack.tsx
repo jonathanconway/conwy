@@ -55,7 +55,7 @@ export function ResponsiveStack(props: ResponsiveStackProps) {
     Object.entries(props).map(([propKey, propValue]) => [
       propKey,
       getIsBreakpointsMap(propValue)
-        ? propValue[breakpoint] ?? getFallbackPropValue(propValue, breakpoint)
+        ? (propValue[breakpoint] ?? getFallbackPropValue(propValue, breakpoint))
         : propValue,
     ]),
   ) as unknown as StackProps;

@@ -15,5 +15,5 @@ export function Redirect(props: RedirectProps) {
       window.location.href = props.redirectUrl;
     }, 1000);
   });
-  return <></>
+  return <></>;
 }
