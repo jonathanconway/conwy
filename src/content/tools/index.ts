@@ -38,6 +38,7 @@ export * from "./mermaid";
 export * from "./minaal-backpack";
 export * from "./mokku";
 export * from "./net-news-wire";
+export * from "./nitecore-nb-10000";
 export * from "./obsidian";
 export * from "./obs-studio";
 export * from "./progressive-downloader";
