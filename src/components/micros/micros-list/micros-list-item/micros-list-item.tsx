@@ -5,7 +5,7 @@ import {
   ContentListItemBlurb,
   ContentListItemType,
 } from "../../../content-list";
-import { Date } from "../../../date";
+import { DateView } from "../../../date";
 import { Icon, IconTypes } from "../../../icon";
 import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
@@ -29,7 +29,7 @@ export function MicrosListItem({
         mainSlot={
           <>
             <LinkBoxTitle className={styles.date}>
-              <Date>{props.microMeta.date}</Date>
+              <DateView>{props.microMeta.date}</DateView>
             </LinkBoxTitle>
 
             {/* todo: tidy up */}

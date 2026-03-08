@@ -1,4 +1,4 @@
-import { Date, DateFormats } from "@/components/date";
+import { DateFormats, DateView } from "@/components/date";
 import { IconTypes } from "@/components/icon";
 import { LinkLayoutTypes } from "@/components/link/link-layout-type";
 import { Stack } from "@/components/stack";
@@ -32,7 +32,7 @@ export function Testimonial({
 
               date && (
                 <div className={styles.feedbackItemDate}>
-                  <Date format={DateFormats.Short}>{date}</Date>
+                  <DateView format={DateFormats.Short}>{date}</DateView>
                 </div>
               ),
             ]}

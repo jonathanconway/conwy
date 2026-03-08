@@ -1,7 +1,8 @@
+import { TextSizes } from "@/components/text";
 import { Article as Article_ } from "@/framework/client";
 
 import { info } from "../../../info";
-import { Date } from "../../date";
+import { DateView } from "../../date";
 import { Heading } from "../../heading";
 import { Link } from "../../link";
 
@@ -27,8 +28,10 @@ export function ArticleHeader(props: ArticleHeaderProps) {
       </Heading>
 
       <div className={styles.line1}>
-        <span>{<Date>{date}</Date>}</span> •
-        <Link href={historyUrl}>History</Link>
+        <span>{<DateView>{date}</DateView>}</span> •
+        <Link href={historyUrl} size={TextSizes.xs}>
+          History
+        </Link>
       </div>
 
       <ArticleHeaderTags tags={tags} />

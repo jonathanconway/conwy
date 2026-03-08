@@ -6,7 +6,7 @@ import {
   ContentListItemImage,
   ContentListItemType,
 } from "../../../content-list";
-import { Date } from "../../../date";
+import { DateView } from "../../../date";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
 
@@ -24,7 +24,7 @@ export function ArticlesListItem(props: ArticlesListItemProps) {
         mainSlot={
           <>
             <div className={styles.date}>
-              <Date>{date}</Date>
+              <DateView>{date}</DateView>
             </div>
 
             <LinkBoxTitle>{title}</LinkBoxTitle>

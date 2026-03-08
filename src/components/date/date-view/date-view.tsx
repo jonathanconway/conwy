@@ -1,8 +1,8 @@
 import { DateTime } from "luxon";
 
-import { DateFormat, DateFormats } from "./date-format";
+import { DateFormat, DateFormats } from "./date-view-format";
 
-export interface DateProps {
+export interface DateViewProps {
   readonly children: string;
   readonly formatString?: string;
   readonly format?: DateFormat;
@@ -16,7 +16,7 @@ const DATE_FORMAT_STRINGS = {
   [DateFormats.Short]: DATE_FORMAT_STRING_SHORT,
 };
 
-function getFormatString(props: DateProps) {
+function getFormatString(props: DateViewProps) {
   if (props.formatString) {
     return props.formatString;
   }
@@ -28,7 +28,7 @@ function getFormatString(props: DateProps) {
   return DATE_FORMAT_STRING_FULL;
 }
 
-export function Date(props: DateProps) {
+export function DateView(props: DateViewProps) {
   const formatString = getFormatString(props);
 
   return (
