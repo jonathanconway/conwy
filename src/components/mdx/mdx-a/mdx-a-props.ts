@@ -1,3 +1,3 @@
-import { Link } from "../../link";
+import { LinkProps } from "../../link";
 
-export type MdxAProps = Parameters<typeof Link>[0];
+export type MdxAProps = LinkProps;

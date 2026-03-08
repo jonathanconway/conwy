@@ -1,4 +1,9 @@
-import { Breadcrumb, MdxWrapper, PageLayout, Testimonials } from "@/components";
+import {
+  Breadcrumb,
+  MdxContainer,
+  PageLayout,
+  Testimonials,
+} from "@/components";
 import { site } from "@/content";
 import { testimonialsFragment } from "@/content/fragments";
 import * as works from "@/content/works";
@@ -24,7 +29,7 @@ export default function Page() {
             ]}
           />
 
-          <MdxWrapper>{testimonialsFragment.content}</MdxWrapper>
+          <MdxContainer>{testimonialsFragment.content}</MdxContainer>
 
           <Testimonials testimonials={testimonials} />
         </>

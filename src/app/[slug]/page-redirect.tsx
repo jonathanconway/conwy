@@ -1,5 +1,5 @@
 import {
-  MdxWrapper,
+  MdxContainer,
   PageLayout,
   Redirect as RedirectComponent,
 } from "@/components";
@@ -16,7 +16,7 @@ export async function PageRedirect(props: PageProps) {
     <PageLayout
       main={
         <div>
-          <MdxWrapper>{redirectFragment.content}</MdxWrapper>
+          <MdxContainer>{redirectFragment.content}</MdxContainer>
 
           <RedirectComponent redirectUrl={redirectUrl} />
         </div>

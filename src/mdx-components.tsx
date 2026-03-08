@@ -9,13 +9,18 @@ import {
   MdxH3,
   MdxH4,
   MdxImg,
-  MdxKbd,
   MdxLI,
   MdxOL,
   MdxP,
   MdxPre,
+  MdxTBody,
+  MdxTHead,
   MdxTable,
+  MdxTd,
+  MdxTh,
+  MdxTr,
   MdxUL,
+  MdxWrapper,
 } from "./components";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -28,14 +33,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: MdxH3,
     h4: MdxH4,
     img: MdxImg,
-    kbd: MdxKbd, // todo: doesn't work for some reason, need to debug
     li: MdxLI,
     ol: MdxOL,
     p: MdxP,
     pre: MdxPre,
     ul: MdxUL,
     table: MdxTable,
-    // todo: implement `wrapper: MdxWrapper,` while not breaking table of contents headings
+    tbody: MdxTBody,
+    thead: MdxTHead,
+    tr: MdxTr,
+    th: MdxTh,
+    td: MdxTd,
+    wrapper: MdxWrapper,
     ...components,
   };
 }

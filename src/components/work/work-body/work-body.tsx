@@ -1,6 +1,6 @@
 import { Work as Work_ } from "@/framework/client";
 
-import { MdxWrapper } from "../../mdx";
+import { MdxContainer } from "../../mdx";
 import { Section } from "../../section";
 
 export interface WorkBodyProps {
@@ -14,7 +14,7 @@ export function WorkBody(props: WorkBodyProps) {
 
   return (
     <Section label="Duties + Achievements">
-      <MdxWrapper>{blurbLong}</MdxWrapper>
+      <MdxContainer>{blurbLong}</MdxContainer>
     </Section>
   );
 }

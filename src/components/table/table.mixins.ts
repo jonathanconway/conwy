@@ -54,8 +54,11 @@ export const tableCellHeader = {
 
 export const tableCellBody = {
   ...tableCell,
-  // fontSize: "0.875rem",
   borderBottom: "none",
+};
+
+export const tableCellBodyTop = {
+  borderTop: "none",
 };
 
 export const tableCellBodyBottom = {

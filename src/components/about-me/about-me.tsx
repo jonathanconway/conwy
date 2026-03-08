@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { aboutMeFragment } from "@/content/fragments";
 
-import { MdxWrapper } from "../mdx";
+import { MdxContainer } from "../mdx";
 import { ResponsiveMdHalf } from "../responsive";
 
 import * as styles from "./about-me.css";
@@ -22,7 +22,7 @@ export function AboutMe() {
             height={80}
           />
 
-          <MdxWrapper>{aboutMeFragment.content}</MdxWrapper>
+          <MdxContainer>{aboutMeFragment.content}</MdxContainer>
         </div>
       </ResponsiveMdHalf>
     </div>

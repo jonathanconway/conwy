@@ -1,4 +1,9 @@
-import { MdxWrapper, Notes, PageLayout, ResponsiveMdHalf } from "@/components";
+import {
+  MdxContainer,
+  Notes,
+  PageLayout,
+  ResponsiveMdHalf,
+} from "@/components";
 import { site } from "@/content";
 import { notesFragment } from "@/content/fragments";
 import * as notes from "@/content/notes";
@@ -13,7 +18,7 @@ export default function Page() {
       main={
         <>
           <ResponsiveMdHalf>
-            <MdxWrapper>{notesFragment.content}</MdxWrapper>
+            <MdxContainer>{notesFragment.content}</MdxContainer>
           </ResponsiveMdHalf>
 
           <Notes noteMetas={noteMetas} />

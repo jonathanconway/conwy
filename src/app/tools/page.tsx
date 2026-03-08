@@ -1,5 +1,5 @@
 import {
-  MdxWrapper,
+  MdxContainer,
   PageLayout,
   ResponsiveStack,
   Stack,
@@ -21,12 +21,12 @@ export default function Page() {
             }}
           >
             <Stack>
-              <MdxWrapper>{toolsFragment.content}</MdxWrapper>
+              <MdxContainer>{toolsFragment.content}</MdxContainer>
 
               <ToolsSections />
             </Stack>
 
-            <MdxWrapper>{toolsSidebarFragment.content}</MdxWrapper>
+            <MdxContainer>{toolsSidebarFragment.content}</MdxContainer>
           </ResponsiveStack>
 
           <ToolsList />

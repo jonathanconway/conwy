@@ -1,5 +1,4 @@
 import Image from "next/image";
-import pluralize from "pluralize";
 
 import { ItemMeta } from "@/framework/client";
 

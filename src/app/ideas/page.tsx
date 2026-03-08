@@ -1,6 +1,6 @@
 import {
   IdeasList,
-  MdxWrapper,
+  MdxContainer,
   PageLayout,
   ResponsiveMdHalf,
   Stack,
@@ -15,7 +15,7 @@ export default async function IdeasPage() {
       main={
         <Stack gap={2}>
           <ResponsiveMdHalf>
-            <MdxWrapper>{ideasFragment.content}</MdxWrapper>
+            <MdxContainer>{ideasFragment.content}</MdxContainer>
           </ResponsiveMdHalf>
 
           <IdeasList />

@@ -1,4 +1,4 @@
-import { CommunitiesList, MdxWrapper, PageLayout } from "@/components";
+import { CommunitiesList, MdxContainer, PageLayout } from "@/components";
 import { site } from "@/content";
 import { communitiesFragment } from "@/content/fragments/communities";
 
@@ -8,7 +8,7 @@ export default function Page() {
       selectedNavPath="/communities"
       main={
         <>
-          <MdxWrapper>{communitiesFragment.content}</MdxWrapper>
+          <MdxContainer>{communitiesFragment.content}</MdxContainer>
 
           <CommunitiesList />
         </>

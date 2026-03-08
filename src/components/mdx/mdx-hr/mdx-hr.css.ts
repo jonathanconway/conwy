@@ -1,6 +1,6 @@
 import { globalStyle } from "@vanilla-extract/css";
 
-import { mdx } from "../mdx-wrapper/mdx-wrapper.css";
+import { mdx } from "../mdx-container/mdx-container.css";
 
 const hr = {
   marginTop: "1rem",

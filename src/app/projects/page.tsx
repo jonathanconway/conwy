@@ -1,4 +1,4 @@
-import { MdxWrapper, PageLayout, ProjectsList } from "@/components";
+import { MdxContainer, PageLayout, ProjectsList } from "@/components";
 import { site } from "@/content";
 import { projectsFragment } from "@/content/fragments";
 import * as projects from "@/content/projects";
@@ -12,7 +12,7 @@ export default function Projects() {
       selectedNavPath="/projects"
       main={
         <>
-          <MdxWrapper>{projectsFragment.content}</MdxWrapper>
+          <MdxContainer>{projectsFragment.content}</MdxContainer>
 
           <ProjectsList projectMetas={projectMetas} />
         </>

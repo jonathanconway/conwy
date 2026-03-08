@@ -3,7 +3,7 @@
 import { Idea as Idea_ } from "@/framework/client";
 
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
-import { MdxWrapper } from "../../../mdx";
+import { MdxContainer } from "../../../mdx";
 import { Stack, StackDirections } from "../../../stack";
 
 import * as styles from "./ideas-list-item.css";
@@ -19,7 +19,7 @@ export function IdeasListItem({ idea }: IdeasListItemProps) {
         <Stack direction={StackDirections.Column} gap={0.5}>
           <LinkBoxTitle>{idea.meta.title}</LinkBoxTitle>
 
-          <MdxWrapper>{idea.blurb}</MdxWrapper>
+          <MdxContainer>{idea.blurb}</MdxContainer>
         </Stack>
       </LinkBox>
     </li>

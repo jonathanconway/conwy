@@ -1,6 +1,6 @@
 import {
   Link,
-  MdxWrapper,
+  MdxContainer,
   PageLayout,
   Stack,
   Text,
@@ -23,7 +23,7 @@ export default function Page() {
       main={
         <Stack gap={1}>
           <div>
-            <MdxWrapper>{workFragment.content}</MdxWrapper>
+            <MdxContainer>{workFragment.content}</MdxContainer>
 
             <Text type={TextTypes.Paragraph}>
               <Link href="/testimonials" size={TextSizes.sm}>

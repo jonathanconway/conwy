@@ -5,7 +5,7 @@ import { ContentListItem } from "../../../content-list";
 import { Image } from "../../../image";
 import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
-import { MdxWrapper } from "../../../mdx";
+import { MdxContainer } from "../../../mdx";
 import { Text } from "../../../text";
 
 import * as styles from "./communities-list-item.css";
@@ -34,7 +34,7 @@ export function CommunitiesListItem(props: CommunitiesListItemProps) {
               </Link>
             </LinkBoxTitle>
 
-            <MdxWrapper>{props.community.blurbShort}</MdxWrapper>
+            <MdxContainer>{props.community.blurbShort}</MdxContainer>
 
             {props.community.meta.profileLink && (
               <Link

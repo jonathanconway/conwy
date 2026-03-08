@@ -1,6 +1,6 @@
 import {
   Breadcrumb,
-  MdxWrapper,
+  MdxContainer,
   PageLayout,
   ResponsiveMdHalf,
 } from "@/components";
@@ -29,7 +29,7 @@ export async function PagePage(props: PageProps) {
           />
 
           <ResponsiveMdHalf>
-            <MdxWrapper>{page.content}</MdxWrapper>
+            <MdxContainer>{page.content}</MdxContainer>
           </ResponsiveMdHalf>
         </>
       }
