@@ -1,6 +1,6 @@
 ---
 name: frontend-developer
-description: "Use when building complete frontend features in the Neds applications using Typescript language and React, NextJS framework and fundamental HTML and CSS."
+description: "Use when building complete frontend features in the conwy project using Typescript language and React, NextJS framework and fundamental HTML and CSS."
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

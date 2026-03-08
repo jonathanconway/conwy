@@ -22,25 +22,49 @@ This file provides guidance to AI agents when working with code in this reposito
 
 **Remember:** Always check for @AGENTS.local.md first - it's your navigation guide when present
 
-### Available Sub Agents
+### Agents
 
-All Sub Agent definitions can be found in `./.ai/agents` folder.
+An agent is a definition of a persona, tools and a scope of responsibility, used to configure a worker with instructions so it can perform tasks autonomously.
 
-Each Sub Agent definition is defined in its own file, whose name is suffixed with `.md`.
+#### How to use agents
 
-### Available Commands
+- Read the role definition of the agent in the `.ai/agents/\*/AGENT.md` (what it should do)
+- Be guided by AGENT.md rules (how it should behave)
+- Use skills from `.ai/skills/\*/SKILL.md` (specialized workflows)
 
-If command names in this file differ from `package.json` scripts, `package.json` is authoritative.
+All Agent definitions can be found in `./.ai/agents` folder.
+Each Agent definition is defined in its own file, named `AGENT.md`.
 
-All Commands definitions can be found in `./.ai/commands` folder.
+#### Available agents
 
-Each Sub Agent definition is defined in its own file, whose name is suffixed with `.md`.
+- `front-end-developer`: Senior frontend developer specializing in modern web applications, building high quality user interfaces. (File: `.ai/agents/front-end-developer/AGENT.md`)
 
-### Available Skills
+### Commands
+
+A command is a named procedure (often mapping to one or more shell/package scripts) for repeatable actions like setup, build, test, or release.
+
+#### How to use commands
+
+All Command definitions can be found in `./.ai/commands` folder.
+Each Command definition is defined in its own file, named `COMMAND.md`.
+
+### Skills
+
+A skill is a set of local instructions stored in a `SKILL.md` file.
+
+#### How to use skills
+
+- Trigger rules: If the user mentions a skill name (e.g. `$commit` or `commit`), use that skill for this turn.
+- Discovery: Load only the referenced skill file first; follow linked files only if needed.
+- Execution: Prefer skill-provided scripts/commands over re-implementing steps.
+- Missing skill: If a named skill does not exist, state that and continue with best-effort fallback.
 
 All Skill definitions can be found in `./.ai/skills` folder.
+Each Skill definition is defined in its own file, named `SKILL.md`.
 
-Each Sub Agent definition is defined in its own file, whose name is suffixed with `.md`.
+#### Available skills
+
+- `commit`: Create valid commit messages, run commitlint, and perform `git commit`. (File: `.ai/skills/commit/SKILL.md`)
 
 ### Environment Constraints
 
