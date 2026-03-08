@@ -159,7 +159,7 @@ But on my own website, it will render like this:
 
 ## Use cases
 
-I think the subformats concept could be useful in the following senario:
+I think the subformats concept could be useful in the following senarios:
 
 - You want to use a popular/common format or standard (such as Markdown) *and*
 - You want to add certain custom features not natively supported by that format *and*
@@ -175,3 +175,22 @@ Based on these situations I can think of the following use cases for subformats:
 ## Caveat
 
 If the underlying format will support your use case in the near future, or there is a simpler alternative technique, then a subformat might be better avoided. This is a very specific tool for a very small subset of use cases.
+
+## Examples
+
+- [conwy.co](https://github.com/jonathanconway/conwy) project (this website)
+  - `<a>`
+    - [Subformat](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-a/mdx-a-subformat/mdx-a-subformat.ts)
+    - [Download](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-a/mdx-a-subformat/mdx-a-subformat-download/mdx-a-subformat-download.ts)
+    - [Popup Note Link](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-a/mdx-a-subformat/mdx-a-subformat-popup-note-link/mdx-a-subformat-popup-note-link.ts)
+  - `<blockquote>`
+    - [Copyable](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-blockquote/mdx-blockquote-subformat/mdx-blockquote-subformat-copyable/mdx-blockquote-subformat-copyable.ts)
+    - [Subformat](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-blockquote/mdx-blockquote-subformat/mdx-blockquote-subformat.ts)
+    - [Aside](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-blockquote/mdx-blockquote-subformat/mdx-blockquote-subformat-aside/mdx-blockquote-aside.ts)
+    - [Subformat Result](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-blockquote/mdx-blockquote-subformat/mdx-blockquote-subformat-result.ts)
+    - [Summary](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-blockquote/mdx-blockquote-subformat/mdx-blockquote-subformat-summary/mdx-blockquote-subformat-summary.ts)
+    - [Pull Quote](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-blockquote/mdx-blockquote-subformat/mdx-blockquote-subformat-pull-quote/mdx-blockquote-subformat-pull-quote.ts)
+  - `<img>`
+    - [Size](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-img/mdx-img-subformat/mdx-img-subformat-size/mdx-img-subformat-size.ts)
+  - `<p>`
+    - [Popup Note](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-p/mdx-p-subformat/mdx-p-subformat-popup-note/mdx-p-subformat-popup-note.ts)
