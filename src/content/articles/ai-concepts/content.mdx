@@ -19,9 +19,7 @@ In this article, I will try to clarify these into "clear and distinct" concepts.
 
 I'll aim to do all this in an assistant-agnostic way, so you can use them with Claude Code, OpenAI Codex or any other assistant or framework.
 
-## Definitions
-
-### Assistant
+## Assistant
 
 An assistant is a piece of software that takes human input and uses LLM technology to provide a useful output, such as a reply, code changes, etc.
 
@@ -39,6 +37,8 @@ Up-and-coming smaller players include:
 
 - ![](/images/articles/ai-concepts/vercel.ico?size=icon-xsmall) [V0 by Vercel](https://v0.app)
 - ![](/images/articles/ai-concepts/devin.ico?size=icon-xsmall) [Devin](https://devin.ai)
+- ![](/images/articles/ai-concepts/roo-code.ico?size=icon-xsmall) [Roo Code](https://roocode.com)
+- ![](/images/articles/ai-concepts/lovable.svg?size=icon-xsmall) [Lovable](https://lovable.dev/)
 
 ```mermaid--svg
 %% @description Assistant and its relationship to human and model
@@ -61,7 +61,7 @@ Model["📀 Model"]
 
 ![Screenshot of Claude Code interactive prompt interface](/images/articles/ai-concepts/claudecode.png)
 
-### Model
+## Model
 
 A model is, at core, a very big [vector database](https://en.wikipedia.org/wiki/Vector_database). This is a kind of database in which searches can be done semantically, by similarity. This structure and search interface, at a large scale, is what enables models to take human language as input and provide useful output.
 
@@ -108,7 +108,7 @@ RAG --> Example1
 RAG --> Example2
 ```
 
-### Prompt
+## Prompt
 
 Prompts are texts written in human-language and submitted to assistants for processing, either by humans or agents.
 
@@ -162,7 +162,7 @@ Prompt libraries:
 
 Prompts can also be generated on-the-fly by software, including agents. For example, a customer support agent could receive support requests from customers and convert them into prompts which generate a suitable conversational reply from an assistant.
 
-### Context
+## Context
 
 > Pull-quote: Context engineering is the ”…delicate art and science of filling the context window with just the right information for the next step.”
 
@@ -180,19 +180,19 @@ Context can include one or more of the following:
 - Retrieval Augmented Generation (RAG)
 - Output definitions
 
-#### System prompt
+## System prompt
 
 A prompt that defines the model’s role, boundaries, and behavior. This layer can include rules, examples, guardrails, and style requirements that persist across turns. It's like the instructions to an actor in a play, prior to handing them the script.
 
 Example: You are a senior designer using the Lightning design system.
 
-#### User prompt
+## User prompt
 
 This is the immediate request — the short-lived, task-specific input that tells the model what to do right now.
 
 Previous prompts can live in context in the sense that they can condition responses to future prompts.  Previous prompts forming state or conversation history act as short-term memory, giving the model continuity across turns by including prior dialog, reasoning steps, and decisions.
 
-#### Long-term memory
+## Long-term memory
 
 Long-term memory is persistent and spans many sessions. It contains durable preferences, stable facts, project summaries, or information the system is designed to reintroduce later.
 
@@ -201,13 +201,13 @@ Examples of long-term memory are touched on in this article and include:
 - Agent definitions
 - Documentation
 
-#### Retrieval Augmented Generation (RAG)
+## Retrieval Augmented Generation (RAG)
 
 Discussed in a separate heading in this article, RAG involves models being connected to external data sources such as live data feeds or structured data in databases.
 
 RAG can also be considered part of context, as it can make up part of the information provided to the model prior to prompts.
 
-#### Output definitions
+## Output definitions
 
 Structured output definitions tell the model exactly how its response should be formatted — for example, requiring a JSON object, a table, or a specific schema.
 
@@ -228,7 +228,7 @@ response = get_completion(prompt)
 print(response)
 ```
 
-### Agent
+## Agent
 
 An agent is a piece of software that take input (human and/or otherwise), runs autonomously and uses LLM technology to make decisions and take actions, likely to produce a useful outcome, such as customer support requests being actioned, code being written and deployed, etc.
 
@@ -258,11 +258,13 @@ Agent-->AssistantAPI
 AssistantAPI["📚 Assistant API"]
 ```
 
-### Sub Agent
+## Sub Agent
 
-A sub agent is an agent that is called by another agent, to perform a more specific task. Sub agent are used to break down complex tasks into smaller, more manageable pieces, and to allow for better modularity and separation of concerns.
+A sub agent is an agent that is called by an assistant or another agent, to perform a more specialised role autonomously. Sub agent can be used to break down complex tasks into smaller, more manageable pieces, and to allow for more specialised agents to handle them in the background.
 
-Sub agents are typically implemented as customized software programs (possibly containerized), code libraries and/or configuration for assistants, such as an agents folder.
+Sub agents run in a separate execution context from the main agent context. For this reason, assistants such as Claude Code may require context (such as skills, etc) to be defined for each sub-agent.
+
+Sub agents can be implemented as customized software programs (possibly containerized), code libraries and/or configuration for assistants, such as in an agents folder. Sub agents might run as [separate instances of the same assistant as with Claude Code](https://code.claude.com/docs/en/sub-agents#manage-subagent-context).
 
 Sub agents, being modular, can:
 - Be re-used across multiple agents
@@ -300,7 +302,7 @@ SubAgent2-->SubAgent3["🖥️ Sub Agent 3"]
 SubAgent3-->SubAgent4["🖥️ Sub Agent 4"]
 ```
 
-### Skill
+## Skill
 
 A skill is a capability that an agent or assistant can be augmented with and applied to some relevant task.
 
@@ -326,6 +328,7 @@ I have heard skills referred to as the "arms and legs" of an agent. Similarly to
 Skills, being modular, can:
 - Be re-used across multiple agents and assistants
 - Be shared across teams and the community, for example via private or public repositories of skills
+- Can reduce the burden of loading everything into the main context file, instead loading their context only when matched, thus reducing token cost 
 
 Examples:
 
@@ -387,7 +390,7 @@ end
 end
 ```
 
-### Tool
+## Tool
 
 Similar to a skill, a tool augments an assistant.
 
@@ -420,7 +423,7 @@ Comparison of skill vs tool:
 </tbody>
 </table>
 
-### Command
+## Command
 
 A command is a specific instruction for an assistant to run immediately, typically provided by a human in real time.
 
@@ -434,14 +437,32 @@ Examples:
 - `/setup` - setup the development environment
 - `/review` - perform code review
 
-## Other concepts
+## Plan mode
 
-Some other concepts here, in no particular order, which I consider important enough to mention but not important enough to merit a whole section.
+This refers to the ability of an assistant to provide a plan for completing an action, rather than immediately performing the action. For example, to provide an implementation plan prior to implementing a code change or a design sketch prior to producing a full fledged design. When interacting with an assistant directly, plan mode allows the human the opportunity to review and perhaps request changes to the plan. When used in an agent, plan mode allows the agent to refine the assistant's output using the same (or another) assistant. This fits in to the "making decisions" part of the decide-act loop in agents.
 
-- **Plan mode**: This refers to the ability of an assistant to provide a plan for completing an action, rather than immediately performing the action. For example, to provide an implementation plan prior to implementing a code change or a design sketch prior to producing a full fledged design. When interacting with an assistant directly, plan mode allows the human the opportunity to review and perhaps request changes to the plan. When used in an agent, plan mode allows the agent to refine the assistant's output using the same (or another) assistant. This fits in to the "making decisions" part of the decide-act loop in agents.
-- **Plugins**: Some assistants allow various pieces of context – such as skills, commands, etc. – to be packaged together, published on a market place and consumed by other engineers. This marketplace could be either internal or external to their organisation. These packages are referred to as plugins and are the AI equivalent of packages in open-source. [Claude Code plugins](https://claude.com/plugins) are one example.
+## Plugins
 
-## How the concepts connect
+Selected pieces of context – such as skills, commands, etc. – can be packaged together, published on a market place and consumed by other projects, either within an organization or publicly. These packages are referred to as plugins and are the AI equivalent of packages in open-source. [Claude Code plugins](https://claude.com/plugins) are one implementation.
+
+## Hooks
+
+Hooks are instructions for an agent that run at specific points in the lifecycle of an agent session.
+
+Different from a skill (which is matched by its description) a hook is triggered when a specific lifecycle event occurs.
+
+(In this respect, they are conceptually similar to hooks in [React](https://react.dev/reference/react/hooks) or [VueJS](https://vuejs.org/guide/essentials/lifecycle.html), which run at specific points in the component lifecycle.)
+
+Examples of [Claude Code agent session events](https://code.claude.com/docs/en/hooks):
+
+- SessionStart - When a session begins or resumes
+- UserPromptSubmit - When you submit a prompt, before Claude processes it
+- PreToolUse - Before a tool call executes. Can block it
+- Notification - When Claude Code sends a notification
+- Stop - When Claude finishes responding
+- SessionEnd - When a session terminates
+
+## Relationships between concepts
 
 The following diagram roughly maps out how the concepts relate to eachother.
 
@@ -451,6 +472,7 @@ The following diagram roughly maps out how the concepts relate to eachother.
 flowchart
     Human["🤷 Human"] -->|sets up| Agent["🖥️ Agent"]
     Assistant["🤖 Assistant"] -->|queries| Model["📀 Model"]
+    Assistant["🤖 Assistant"] -->|can run in| PlanMode["📐 Plan Mode"]
     AssistantAPI["🤖 Assistant API"] -->|queries| Model["📀 Model"]
     Agent["🖥️ Agent"] -->|calls| SubAgent["🖥️ Sub Agent"]
     SubAgent["🖥️ Sub Agent"] -->|calls| SubAgent["🖥️ Sub Agent"]
@@ -461,6 +483,12 @@ flowchart
     Command["⚡️ Command"] -->|is executed by| Assistant["🤖 Assistant"]
     Agent["🖥️ Agent"] -->|calls| AssistantAPI["☁ Assistant API"]
     SubAgent["🖥️ Sub Agent"] -->|calls| AssistantAPI["☁ Assistant API"]
+    Plugin["🔌 Plugin"] -->|packages| Command
+    Plugin["🔌 Plugin"] -->|packages| Agent
+    Plugin["🔌 Plugin"] -->|packages| SubAgent
+    Plugin["🔌 Plugin"] -->|packages| Skill
+    Plugin["🔌 Plugin"] -->|shared between| Project1["🏢 Project"]
+    Plugin["🔌 Plugin"] -->|shared between| Project2["🏢 Project"]
 ```
 
 🤖 Assistant-based:
@@ -549,3 +577,4 @@ flowchart
 - [OpenAI Codex tutorial (NetNinja)](https://www.youtube.com/watch?v=tIb_TzVNbDM)
 - [A Guide to Which AI to Use in the Agentic Era (Ethan MOLLICK)](https://www.oneusefulthing.org/p/a-guide-to-which-ai-to-use-in-the)
 - [AI as Exoskeleton](https://www.kasava.dev/blog/ai-as-exoskeleton)
+- [From Weeks to Hours: Building My Website with Agentic AI Pair Programming • Sam SWERCZEK](https://www.samswerczek.com/blog/from-weeks-to-hours-building-my-website-with-agentic-ai-pair-programming)
