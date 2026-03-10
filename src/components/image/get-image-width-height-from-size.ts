@@ -13,6 +13,10 @@ export function getImageWidthHeightFromSize({
   height,
 }: GetImageWidthHeightFromSizeParams) {
   switch (size) {
+    case ImageSizes.FillWidth:
+      return {
+        width: "100%",
+      };
     case ImageSizes.IconMedium:
       return {
         width: 100,

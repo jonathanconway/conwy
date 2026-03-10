@@ -13,32 +13,41 @@ import { useImageFigure } from "./use-image-figure.hook";
 export function ImageFigure(props: ImageFigureProps) {
   const { isModalOpen, handleImageLinkClick, onModalClose } = useImageFigure();
   const { size } = props;
-  const { width, height } = getImageWidthHeightFromSize(props);
+  const { width = props.width, height = props.height } =
+    getImageWidthHeightFromSize(props);
 
   const srcBlobOrString = props.image?.src ?? props.src ?? "";
   const src = isString(srcBlobOrString) ? srcBlobOrString : "";
 
   const alt = props.image?.alt ?? props.alt;
   const title = props.title ?? alt;
-  const caption = title ?? alt;
+  const caption = title;
+
+  const image = (
+    <ImageFigureLink
+      src={src}
+      alt={alt}
+      title={title}
+      width={width}
+      height={height}
+      size={size}
+      onImageLinkClick={handleImageLinkClick}
+    />
+  );
 
   return (
     <>
-      <figure className={styles.container} suppressHydrationWarning>
-        <ImageFigureLink
-          src={src}
-          alt={alt}
-          title={title}
-          width={width}
-          height={height}
-          size={size}
-          onImageLinkClick={handleImageLinkClick}
-        />
+      {caption ? (
+        <figure className={styles.container} suppressHydrationWarning>
+          {image}
 
-        {caption && (
-          <figcaption className={styles.figCaption}>▲ {caption}</figcaption>
-        )}
-      </figure>
+          {caption && (
+            <figcaption className={styles.figCaption}>▲ {caption}</figcaption>
+          )}
+        </figure>
+      ) : (
+        image
+      )}
 
       {isModalOpen && (
         <ImageModal
