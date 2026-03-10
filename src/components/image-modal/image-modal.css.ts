@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 import { boxBorderDecorative } from "../box/box.mixins";
 import * as modalMixins from "../modal/modal.mixins";
@@ -47,6 +47,11 @@ export const imageContainer = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  width: "100%",
+});
+
+globalStyle(`${imageContainer} > div`, {
+  width: "100%",
 });
 
 export const image = style({
@@ -57,16 +62,6 @@ export const image = style({
   padding: "0.375rem",
   ...rounded.lg,
   borderWidth: "2px",
-  // todo: come up with an abstraction
   borderColor: boxBorderDecorative.borderColor,
   backgroundColor: vars.layout.body.background.color,
-
-  "@media": {
-    // [media.lessThanLg]: {
-    //   maxWidth: "100%",
-    // },
-    // [media.lgAndUp]: {
-    //   maxWidth: "70vw",
-    // },
-  },
 });
