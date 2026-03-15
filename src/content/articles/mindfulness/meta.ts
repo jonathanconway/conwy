@@ -5,7 +5,7 @@ export const meta: ArticleMeta = {
   blurb: "",
   shortBlurb:
     "Experiences practicing mindfulness meditation, from a sample size of one.",
-  date: "2024-09-13",
+  createdDate: "2024-09-13",
   slug: "mindfulness",
   type: "article",
   tags: [PostTags.Life],

@@ -6,7 +6,7 @@ export const meta: ArticleMeta = {
     "AI can do a lot of cool things, but replacing engineers seems unlikely.",
   shortBlurb:
     "AI can do a lot of cool things, but replacing engineers seems unlikely.",
-  date: "2026-02-28",
+  createdDate: "2026-02-28",
   slug: "ai-replacement",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
@@ -15,5 +15,5 @@ export const meta: ArticleMeta = {
   },
   socialLinks: [],
   discussionLinks: [],
-  isPinned: true,
+  isPinned: false,
 };

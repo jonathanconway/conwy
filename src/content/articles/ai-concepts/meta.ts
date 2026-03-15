@@ -6,7 +6,7 @@ export const meta: ArticleMeta = {
     "Defining core concepts on which AI tooling is based, to gain deeper insight and think more strategically about how best to use AI tools.",
   shortBlurb:
     "Defining core concepts on which AI tooling is based, to gain deeper insight and think more strategically about how best to use AI tools.",
-  date: "2026-02-18",
+  createdDate: "2026-02-18",
   slug: "ai-concepts",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],

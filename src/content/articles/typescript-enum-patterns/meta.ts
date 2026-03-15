@@ -3,7 +3,8 @@ import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 export const meta: ArticleMeta = {
   title: "Enum patterns for Typescript",
   blurb: "My favourite patterns for enumerations in Typescript",
-  date: "2026-03-15",
+  createdDate: "2025-01-09",
+  updatedDate: "2026-03-15",
   slug: "typescript-enum-patterns",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],

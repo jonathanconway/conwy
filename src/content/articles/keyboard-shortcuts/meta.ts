@@ -3,7 +3,7 @@ import { ArticleMeta, PostTags } from "@/framework/client";
 export const meta: ArticleMeta = {
   title: "Keyboard shortcuts",
   blurb: "My favourite keystrokes for getting stuff done fast",
-  date: "2025-01-21",
+  createdDate: "2025-01-21",
   slug: "keyboard-shortcuts",
   type: "article",
   mainImage: {

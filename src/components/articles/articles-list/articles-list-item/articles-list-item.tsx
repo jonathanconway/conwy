@@ -15,8 +15,18 @@ import * as styles from "./articles-list-item.css";
 export type ArticlesListItemProps = ArticleMeta;
 
 export function ArticlesListItem(props: ArticlesListItemProps) {
-  const { date, slug, title, blurb, shortBlurb, socialLinks, type, mainImage } =
-    props;
+  const {
+    createdDate,
+    updatedDate,
+    slug,
+    title,
+    blurb,
+    shortBlurb,
+    socialLinks,
+    type,
+    mainImage,
+  } = props;
+  const date = updatedDate ?? createdDate;
 
   return (
     <LinkBox href={`articles/${slug}`}>

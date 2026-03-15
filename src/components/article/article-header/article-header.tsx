@@ -16,7 +16,7 @@ export interface ArticleHeaderProps {
 export function ArticleHeader(props: ArticleHeaderProps) {
   const {
     article: {
-      meta: { date, title, tags, slug },
+      meta: { createdDate, updatedDate, title, tags, slug },
     },
   } = props;
   const historyUrl = `${info.repoUrl}/commits/main/src/content/articles/${slug}/content.mdx`;
@@ -28,7 +28,24 @@ export function ArticleHeader(props: ArticleHeaderProps) {
       </Heading>
 
       <div className={styles.line1}>
-        <span>{<DateView>{date}</DateView>}</span> •
+        <span>
+          <label htmlFor="article-created-date">Created: </label>
+          <span id="article-created-date">
+            <DateView>{createdDate}</DateView>
+          </span>
+        </span>
+        {updatedDate && (
+          <>
+            •
+            <span>
+              <label htmlFor="article-updated-date">Updated: </label>
+              <span id="article-updated-date">
+                <DateView>{updatedDate}</DateView>
+              </span>
+            </span>
+          </>
+        )}
+        •
         <Link href={historyUrl} size={TextSizes.xs}>
           History
         </Link>

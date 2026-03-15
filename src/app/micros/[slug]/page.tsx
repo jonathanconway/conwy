@@ -25,7 +25,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
   const micro = importContentBySlug<Micro_>(micros, "micro", params.slug);
 
-  const microTitle = micro.meta.date.toLowerCase();
+  const microTitle = micro.meta.createdDate.toLowerCase();
   const title = `${site.title} - micro - ${microTitle}`;
 
   return {

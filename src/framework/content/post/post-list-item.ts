@@ -12,7 +12,11 @@ export function pickAndCombineListItems<T extends Post>(
 }
 
 function sortPosts(posts: readonly Post[]): readonly Post[] {
-  return orderBy(posts, "meta.date", "desc");
+  return orderBy(
+    posts,
+    (post) => post.meta.updatedDate ?? post.meta.createdDate,
+    ["desc"],
+  );
 }
 
 export function getItemsTags(items: readonly Post[]) {

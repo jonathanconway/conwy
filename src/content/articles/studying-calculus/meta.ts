@@ -5,7 +5,7 @@ export const meta: ArticleMeta = {
   blurb: "Reflections on studying a subject outside my usual comfort zone.",
   shortBlurb:
     "Reflections on studying a subject outside my usual comfort zone.",
-  date: "2024-09-10",
+  createdDate: "2024-09-10",
   slug: "studying-calculus",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],

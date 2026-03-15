@@ -7,7 +7,7 @@ export function createMicroMock(): Micro {
     type: "micro",
     meta: {
       blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
-      date: "2023-09-02",
+      createdDate: "2023-09-02",
       slug: "front-end-observability",
       tags: ["software-development"],
       type: "micro",

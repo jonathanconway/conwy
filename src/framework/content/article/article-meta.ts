@@ -6,7 +6,8 @@ import { SocialLink } from "../social-link";
 export interface ArticleMeta extends MetaBase {
   readonly type: "article";
   readonly title: string;
-  readonly date: string;
+  readonly createdDate: string;
+  readonly updatedDate?: string;
 
   readonly blurb: string;
   readonly shortBlurb?: string;

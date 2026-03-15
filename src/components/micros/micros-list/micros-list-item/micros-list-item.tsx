@@ -29,7 +29,7 @@ export function MicrosListItem({
         mainSlot={
           <>
             <LinkBoxTitle className={styles.date}>
-              <DateView>{props.microMeta.date}</DateView>
+              <DateView>{props.microMeta.createdDate}</DateView>
             </LinkBoxTitle>
 
             {/* todo: tidy up */}

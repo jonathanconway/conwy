@@ -58,7 +58,7 @@ export async function buildRssFeed() {
   <subtitle>Blog articles by ${packageInfo.author.name}</subtitle>
   <link href="${packageInfo.homepage}/feed.xml" rel="self"/>
   <link href="${packageInfo.homepage}/"/>
-  <updated>${new Date(articleMetas[0].date).toISOString()}</updated>
+  <updated>${new Date(articleMetas[0].createdDate).toISOString()}</updated>
   <id>${packageInfo.homepage}</id>
   <author>
     <name>${packageInfo.author.name}</name>
@@ -71,7 +71,7 @@ export async function buildRssFeed() {
   <entry>
     <title>${articleMeta.title}</title>
     <link href="https://conwy.co/articles/${articleMeta.slug}" />
-    <updated>${new Date(articleMetas[0].date).toISOString()}</updated>
+    <updated>${new Date(articleMetas[0].updatedDate ?? articleMetas[0].createdDate).toISOString()}</updated>
     <id>${articleMeta.slug}</id>
     <content xml:lang="en" type="html">${articleEscapedHTMLs[articleMeta.slug]}</content>
   </entry>

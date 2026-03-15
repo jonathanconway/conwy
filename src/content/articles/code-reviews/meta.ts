@@ -4,7 +4,7 @@ export const meta: ArticleMeta = {
   title: "Streamlining code reviews",
   blurb:
     "Having a good code review process can make code reviews easier, more enjoyable and higher quality",
-  date: "2023-08-06",
+  createdDate: "2023-08-06",
   slug: "code-reviews",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],

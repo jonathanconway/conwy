@@ -2,7 +2,7 @@ import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: MicroMeta = {
   blurb: `Installing @obsdmd, adding my pre-existing notes folder and everything just working is a great #ux! An examplar for software interoperability.`,
-  date: "2024-09-17",
+  createdDate: "2024-09-17",
   slug: "installing-obsdmd-adding-my-pre",
   tags: [PostTags.Design],
   type: "micro",

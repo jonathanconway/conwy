@@ -11,7 +11,7 @@ export function createArticleMock(): Article {
       slug: "front-end-observability",
       title: "Front end observability",
       blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
-      date: "2023-09-02",
+      createdDate: "2023-09-02",
       tags: [PostTags.SoftwareDevelopment],
       type: "article",
       socialLinks: [
@@ -45,7 +45,7 @@ export function createArticleMock2(): Article {
       title: "Streamlining code reviews",
       blurb:
         "Having a good code review process can make code reviews easier, more enjoyable and higher quality",
-      date: "2023-08-06",
+      createdDate: "2023-08-06",
       type: "article",
       tags: [PostTags.SoftwareDevelopment, PostTags.Design],
       socialLinks: [

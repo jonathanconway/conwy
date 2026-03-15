@@ -5,7 +5,7 @@ export const meta: ArticleMeta = {
   blurb: "",
   shortBlurb:
     "Review of simulation techniques and ideas for structuring and documenting simulations.",
-  date: "2025-02-12",
+  createdDate: "2025-02-12",
   slug: "simulating-states",
   type: "article",
   mainImage: {

@@ -4,7 +4,8 @@ import { SocialLink } from "../social-link";
 
 export interface MicroMeta extends MetaBase {
   readonly type: "micro";
-  readonly date: string;
+  readonly createdDate: string;
+  readonly updatedDate?: string;
 
   readonly blurb: string;
 

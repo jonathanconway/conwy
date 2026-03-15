@@ -6,7 +6,7 @@ export const meta: ArticleMeta = {
     "Here I offer three simple tests you can run on all of your web pages or application screens right now, to assess their accessibility.",
   shortBlurb:
     "Three simple tests you can run on your applications to assess their accessibility.",
-  date: "2023-07-02",
+  createdDate: "2023-07-02",
   slug: "three-tests-accessibility",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
