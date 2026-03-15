@@ -33,7 +33,7 @@ export const imgSized = style({
   ...imgBase,
   maxWidth: "100%",
   maxHeight: "20rem",
-  width: "100%",
+  width: "auto",
   height: "auto",
 });
 
