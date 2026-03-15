@@ -1,5 +1,10 @@
-import { isArray, isFunction, kebabCase } from "lodash";
-import { FunctionComponent, JSXElementConstructor, ReactElement } from "react";
+import { isFunction, kebabCase, truncate } from "lodash";
+import {
+  FunctionComponent,
+  JSX,
+  JSXElementConstructor,
+  ReactElement,
+} from "react";
 
 import { Article as Article_ } from "@/framework/client";
 
@@ -24,52 +29,28 @@ function byComponentType(componentType: FunctionComponent) {
   ) => getIsComponentType(element, componentType);
 }
 
-function getNextChildOfTypeAndNotType(
-  children: readonly ReactElement[],
-  fromElement: ReactElement,
-  componentType: FunctionComponent,
-) {
-  const nextChildren = children.slice(children.indexOf(fromElement) + 1);
-
-  return nextChildren.find((child) => getIsComponentType(child, componentType));
-}
-
 export function getArticleHeadings(
   article: Article_,
 ): readonly ArticleHeading[] {
   if (!isFunction(article.content.type)) {
     return [];
   }
-  const contentMdx = article.content.type();
-  const children: readonly ReactElement[] = contentMdx?.props?.children ?? [];
 
-  const headingElements = isArray(children)
-    ? children.filter(byComponentType(MdxH2))
-    : [];
+  const headingElements = (article.content
+    .type()
+    ._owner?.props.article.content.type()
+    ?.props.children.type({})
+    ?.props.children.filter(byComponentType(MdxH2)) ?? []) as JSX.Element[];
 
   const headingTitles = headingElements.map((headingElement) =>
-    (headingElement.props as any)?.children?.toString(),
+    headingElement?.props.children?.toString(),
   );
-
-  const headingShortTitles = headingElements.map((headingElement) => {
-    const nextChild = getNextChildOfTypeAndNotType(
-      children,
-      headingElement,
-      MdxH2,
-    );
-
-    if (!nextChild) {
-      return undefined;
-    }
-
-    return undefined;
-  });
 
   const headingElementHeadings = headingElements.map(
     (_, headingElementIndex) => {
       const title = headingTitles[headingElementIndex];
       const id = kebabCase(title);
-      const shortTitle = headingShortTitles[headingElementIndex];
+      const shortTitle = truncate(title, { length: 30 });
 
       return {
         title,
