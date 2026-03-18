@@ -1,11 +1,11 @@
 import { Article } from "@/framework/client";
 
-import { ArticleDiscussionInlineDisqus } from "./article-discussion-inline-disqus";
+import { ArticleDiscussionInlineGisqus } from "./article-discussion-inline-gisqus";
 
 export interface ArticleDiscussionInlineProps {
   readonly article: Article;
 }
 
 export function ArticleDiscussionInline(props: ArticleDiscussionInlineProps) {
-  return <ArticleDiscussionInlineDisqus articleMeta={props.article.meta} />;
+  return <ArticleDiscussionInlineGisqus />;
 }
