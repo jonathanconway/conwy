@@ -81,18 +81,18 @@ export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
     imageCascadeUrl.handleClose();
   };
 
-  const handleImageClick = (openedItem: T) => () => {
+  const handleImageClick = (selectedItem: T) => () => {
     setState((previousState) => ({
       ...previousState,
-      openedItem,
+      selectedItem,
     }));
   };
 
-  const handleImageKeyDown = (openedItem: T) => (event: KeyboardEvent) => {
+  const handleImageKeyDown = (selectedItem: T) => (event: KeyboardEvent) => {
     if (event.key === "ENTER") {
       setState((previousState) => ({
         ...previousState,
-        openedItem,
+        selectedItem,
       }));
     }
   };
