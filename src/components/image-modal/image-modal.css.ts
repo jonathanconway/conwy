@@ -55,7 +55,7 @@ globalStyle(`${imageContainer} > div`, {
 });
 
 export const image = style({
-  width: "100%",
+  margin: "auto",
   height: "auto",
   maxHeight: "80vh",
   maxWidth: "unset",

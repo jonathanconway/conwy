@@ -27,6 +27,8 @@ function ImageCascade_(props: ImageCascadeProps) {
     handleImageClick,
     handleImageKeyDown,
     handleImageModalCloseClick,
+    handleSelectedImageClick,
+    handleSelectedImageKeyDown,
   } = useImageCascade({
     items: images,
     isUrlAddressable,
@@ -84,8 +86,8 @@ function ImageCascade_(props: ImageCascadeProps) {
           tabIndex={0}
           type="button"
           className={styles.selectedImageContainer}
-          onClick={handleImageClick(selectedItem)}
-          onKeyDown={handleImageKeyDown(selectedItem)}
+          onClick={handleSelectedImageClick(selectedItem)}
+          onKeyDown={handleSelectedImageKeyDown(selectedItem)}
         >
           <Image
             className={styles.selectedImage}

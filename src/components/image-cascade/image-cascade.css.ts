@@ -46,11 +46,6 @@ export const imageContainer = style({
   cursor: "pointer",
   backgroundColor: vars.layout.body.background.color,
   ...imageContainerBase,
-
-  ":hover": {
-    // todo: generalize
-    borderColor: vars.link.hover.text.color,
-  },
 });
 
 export const imageInner = style({
@@ -88,9 +83,12 @@ export const image = style({
 });
 
 export const selectedImageContainer = style({
+  ...imageContainerBase,
   display: "inline-flex",
   alignContent: "center",
   margin: "auto",
+  cursor: "pointer",
+  overflow: "hidden",
 });
 
 export const selectedImage = style({
