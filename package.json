@@ -16,6 +16,7 @@
   "scripts": {
     "build": "next build",
     "build-gh-pages": "npm run build:all && touch out/.nojekyll",
+    "rebuild-gh-pages": "rm -rf .next out && npm run build-gh-pages",
     "build:all": "next build && npm run build:custom:all",
     "build:custom": "npx tsx ./src/builders/exec.ts",
     "build:custom:all": "npx tsx ./src/builders/exec.ts --all",

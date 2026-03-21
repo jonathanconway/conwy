@@ -38,8 +38,8 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allArticleMetas = Object.values(works).map((item) => item.meta);
-  return allArticleMetas;
+  const allWorkMetas = Object.values(works).map((item) => item.meta);
+  return allWorkMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
