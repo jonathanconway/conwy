@@ -1,4 +1,4 @@
-import { isFunction, kebabCase, truncate } from "lodash";
+import { isFunction, kebabCase } from "lodash";
 import {
   FunctionComponent,
   JSX,
@@ -36,29 +36,32 @@ export function getArticleHeadings(
     return [];
   }
 
-  const headingElements = (article.content
-    .type()
-    ._owner?.props.article.content.type()
-    ?.props.children.type({})
-    ?.props.children.filter(byComponentType(MdxH2)) ?? []) as JSX.Element[];
+  const mdxH2Elements = getArticleContentMdxH2Elements(article);
 
-  const headingTitles = headingElements.map((headingElement) =>
-    headingElement?.props.children?.toString(),
+  const headingTitles = mdxH2Elements.map((headingElement) =>
+    headingElement?.props?.children?.toString(),
   );
 
-  const headingElementHeadings = headingElements.map(
-    (_, headingElementIndex) => {
-      const title = headingTitles[headingElementIndex];
-      const id = kebabCase(title);
-      const shortTitle = truncate(title, { length: 30 });
+  const headingElementHeadings = mdxH2Elements.map((_, headingElementIndex) => {
+    const title = headingTitles[headingElementIndex];
+    const id = kebabCase(title);
+    const shortTitle = title;
 
-      return {
-        title,
-        id,
-        shortTitle,
-      };
-    },
-  );
+    return {
+      title,
+      id,
+      shortTitle,
+    };
+  });
 
   return [{ id: "top", title: "Intro" }, ...headingElementHeadings];
+}
+
+function getArticleContentMdxH2Elements(article: Article_) {
+  const articleContentChildren =
+    article?.content?.type()?.props?.children?.type({}) ?? [];
+  const articleContentMdxH2Elements =
+    (articleContentChildren?.props?.children.filter(byComponentType(MdxH2)) ??
+      []) as JSX.Element[];
+  return articleContentMdxH2Elements;
 }
