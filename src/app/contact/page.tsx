@@ -1,9 +1,11 @@
 import {
   ContactDetails,
+  ContactForm,
   MdxContainer,
   PageLayout,
   TwoColLayout,
 } from "@/components";
+import "@/components/contact";
 import { site } from "@/content";
 import { contactFragment } from "@/content/fragments/contact";
 
@@ -18,7 +20,7 @@ export default function Contact() {
 
             <ContactDetails />
           </div>
-          <div data-tf-live="01J5CTN8SVZAQS11N9ZXMN3RRQ"></div>
+          <ContactForm />
         </TwoColLayout>
       }
     />

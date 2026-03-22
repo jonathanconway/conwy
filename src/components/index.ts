@@ -9,7 +9,7 @@ export * from "./carousel";
 export * from "./chain";
 export * from "./collapsible";
 export * from "./communities";
-export * from "./contact-details";
+export * from "./contact";
 export * from "./content-list";
 export * from "./copyable";
 export * from "./date";

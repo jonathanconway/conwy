@@ -4,12 +4,12 @@ import { media } from "../../styling";
 
 export const container = style({
   display: "flex",
-  flexDirection: "column",
+  flexDirection: "row",
   gap: "2rem",
 
   "@media": {
     [media.sm]: {
-      flexDirection: "row",
+      flexDirection: "column",
     },
   },
 });

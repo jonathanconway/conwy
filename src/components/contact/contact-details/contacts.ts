@@ -1,4 +1,4 @@
-import { IconTypes } from "../icon";
+import { IconTypes } from "../../icon";
 
 export const CONTACTS = [
   {
