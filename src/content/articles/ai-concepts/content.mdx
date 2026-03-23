@@ -39,6 +39,7 @@ Up-and-coming smaller players include:
 - ![](/images/articles/ai-concepts/devin.ico?size=icon-xsmall) [Devin](https://devin.ai)
 - ![](/images/articles/ai-concepts/roo-code.ico?size=icon-xsmall) [Roo Code](https://roocode.com)
 - ![](/images/articles/ai-concepts/lovable.svg?size=icon-xsmall) [Lovable](https://lovable.dev/)
+- ![](/images/articles/ai-concepts/opencode.ico?size=icon-xsmall) [OpenCode](https://opencode.ai/)
 
 ```mermaid--svg
 %% @description Assistant and its relationship to human and model
@@ -264,6 +265,8 @@ A sub agent is an agent that is called by an assistant or another agent, to perf
 
 Sub agents run in a separate execution context from the main agent context. For this reason, assistants such as Claude Code may require context (such as skills, etc) to be defined for each sub-agent.
 
+A key benefit of sub agents is that they allow context to reduced to ***only as much as the sub agent needs*** rather than the whole context. This helps us to keep context minimal, which is good for accuracy, performance and cost (by reducing token usage).
+
 Sub agents can be implemented as customized software programs (possibly containerized), code libraries and/or configuration for assistants, such as in an agents folder. Sub agents might run as [separate instances of the same assistant as with Claude Code](https://code.claude.com/docs/en/sub-agents#manage-subagent-context).
 
 Sub agents, being modular, can:
@@ -324,6 +327,8 @@ For example, a skill for "designing a front end interface" might include:
 An assistant will read the skill description and "When to use" instructions to determine when to apply the skill, such as when the task involves building a front end interface, such as a dashboard. If the skill matches, the assistant will then access the files inside the skill package in order to apply the skill and perform the task. In this example, it will access the PDF file and use the information to design the front end interface of the dashboard.
 
 I have heard skills referred to as the "arms and legs" of an agent. Similarly to how humans arms and legs allow us to perform a wide variety of tasks, skills allow agents to perform a wide variety of tasks by augmenting them them with specific capabilities and functions. Just as arms and legs can be used for different purposes (e.g., walking, running, grasping objects), skills can be used for different purposes (e.g., summarizing text, generating code, answering questions).
+
+A key benefit of skills is that they allow context to added ***on an as-needed basis*** rather than in every prompt. This helps us to keep context minimal, which is good for accuracy and performance and cost (by reducing token usage).
 
 Skills, being modular, can:
 - Be re-used across multiple agents and assistants
