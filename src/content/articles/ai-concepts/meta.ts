@@ -9,7 +9,7 @@ export const meta: ArticleMeta = {
   createdDate: "2026-02-18",
   slug: "ai-concepts",
   type: "article",
-  tags: [PostTags.SoftwareDevelopment],
+  tags: [PostTags.Learning],
   mainImage: {
     src: "/images/articles/ai-concepts/main.png",
   },

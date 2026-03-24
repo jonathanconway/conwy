@@ -8,7 +8,7 @@ export const meta: ArticleMeta = {
   createdDate: "2024-09-10",
   slug: "studying-calculus",
   type: "article",
-  tags: [PostTags.SoftwareDevelopment],
+  tags: [PostTags.Learning],
   mainImage: {
     src: "/images/articles/studying-calculus/main.jpg",
   },

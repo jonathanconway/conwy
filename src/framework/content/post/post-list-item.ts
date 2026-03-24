@@ -25,15 +25,12 @@ export function getItemsTags(items: readonly Post[]) {
 
 export function getPinnedPosts({
   itemSets,
-  limit,
 }: {
   readonly itemSets: readonly Record<string, Post>[];
-  readonly limit: number;
 }): readonly Post[] {
   const postsAll = itemSets.map((itemSet) => Object.values(itemSet)).flat();
   const postsPinned = postsAll.filter((post) => post.meta.isPinned);
-  const postsPinnedSliced = postsPinned.slice(0, limit);
-  const postsPinnedSlicedSorted = sortPosts(postsPinnedSliced);
+  const postsPinnedSlicedSorted = sortPosts(postsPinned);
 
   return postsPinnedSlicedSorted;
 }
