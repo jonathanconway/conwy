@@ -15,13 +15,13 @@ In this pattern, a `const` is declared, which holds the enum items as key-value 
 Here's the pattern:
 
 ```ts
-const Enums = {
-  Entry1: "value1",
-  Entry2: "value2",
-  Entry3: "value3",
+const ≪Enums≫ = {
+  ≪Entry1≫: "≪value1≫",
+  ≪Entry2≫: "≪value2≫",
+  ≪Entry3≫: "≪value3≫",
 } as const;
 
-type Enum = TypeOfConst<typeof Enums>;
+type ≪Enum≫ = TypeOfConst<typeof ≪Enums≫>;
 ```
 
 Note the `as const` on the `const` declaration. This tells Typescript to infer the type of `Enums` by its specific key/value entries, rather than as generic string dictionary. When the `Enum` type is inferred, it will be equivalent of the following:
@@ -119,10 +119,10 @@ In this pattern, a `class` is declared, which holds the enum items as static fie
 Here's the pattern:
 
 ```ts
-export class Enum {
-  static Entry1 = new Enum("value1");
-  static Entry2 = new Enum("value2");
-  static Entry3 = new Enum("value3");
+export class ≪Enum≫ {
+  static ≪Entry1≫ = new Enum("≪value1≫");
+  static ≪Entry2≫ = new Enum("≪value2≫");
+  static ≪Entry3≫ = new Enum("≪value3≫");
 
   /** @internal */
   private _value: string;

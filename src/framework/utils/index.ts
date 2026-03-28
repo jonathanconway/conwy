@@ -8,3 +8,4 @@ export * from "./props";
 export * from "./strings";
 export * from "./text";
 export * from "./typing";
+export * from "./wait-for";

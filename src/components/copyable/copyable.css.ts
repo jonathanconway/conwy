@@ -9,15 +9,6 @@ export const toolbarContainer = style({
   top: 0,
   right: 0,
   padding: "1rem",
-  opacity: 0.25,
-
-  ":hover": {
-    opacity: 1,
-  },
-
-  ":focus-within": {
-    opacity: 1,
-  },
 });
 
 export const contentContainer = style({});

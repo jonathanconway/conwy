@@ -1,3 +1,3 @@
 # Ignore due to import ordering.
 # `prism-toolbar` import needs to run before `prism-copy-to-clipboard`.
-src/components/code/code.tsx
+src/components/code/code-syntax/code-syntax.tsx

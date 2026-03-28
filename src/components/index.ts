@@ -24,6 +24,7 @@ export * from "./icon";
 export * from "./image-cascade";
 export * from "./image-modal";
 export * from "./image";
+export * from "./inline-template-filler";
 export * from "./kbd";
 export * from "./layouts";
 export * from "./link-box";
