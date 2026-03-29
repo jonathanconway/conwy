@@ -64,4 +64,10 @@ export const image = style({
   borderWidth: "2px",
   borderColor: boxBorderDecorative.borderColor,
   backgroundColor: vars.layout.body.background.color,
+
+  "@media": {
+    [media.lessThanMd]: {
+      width: "100%",
+    },
+  },
 });
