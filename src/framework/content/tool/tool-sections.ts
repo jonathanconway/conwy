@@ -7,6 +7,7 @@ export const ToolSections = {
   Website: "website",
   BrowserExtension: "browser-extension",
   Belonging: "belonging",
+  Misc: "misc",
 } as const;
 
 export type ToolSection = TypeOfConst<typeof ToolSections>;
