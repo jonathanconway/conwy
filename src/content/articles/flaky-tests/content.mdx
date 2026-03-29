@@ -173,6 +173,7 @@ Some solutions might become evident from examining output after reproducing flak
 - Reduce test file size
 - Reduce the number of workers
 - Clean up at the end
+- Optimise test code
 - Optimise the application under test
 - Disable resource-intensive application features when running in tests
 - Increase timeouts
@@ -266,7 +267,6 @@ For example:
 - Remove operations that are already covered by other tests.
 - Simplify operations. For example, retrieve a DOM element directly where possible, rather than traversing multiple parent/child elements unnecessarily.
 
-
 ### Reduce test file size
  
 Problem: Test files are large. Processing each large file ties up system resources (especially processor usage), causing other tests to time out.
@@ -318,6 +318,21 @@ Increasing the timeout allows tests to run longer without failing, which may sol
 - Playwright has [timeout configuration](https://playwright.dev/docs/test-timeouts) and [test.slow()](https://playwright.dev/docs/api/class-test#test-slow) (called within a test)
 
 Downside: Increasing timeouts too much or globally might allow performance issues to creep into the application. Timeouts should be increased only on flaky tests if possible, and we should find ways to enure those features continue perform adequately for end-users.
+
+Where the test framework allows it, longer-running integration-style tests or end-to-end tests can be decomposed into steps, which can have their own custom timeouts set. This allows the test runner to spend more time where it counts (i.e. where it reduces flakiness) without spending too long where a test really should fail (i.e. where the code is system under test is actually wrong). Playwright has [`test.step`](https://playwright.dev/docs/api/class-test#test-step), which can be passed a [`timeout`](https://playwright.dev/docs/api/class-test#test-step-option-timeout) parameter.
+
+### Optimise test code
+
+Problem: The test code is slow, leading to flakiness from timeouts during execution.
+
+Solution: Find slow points in the test code and optimise their performance.
+
+Test code can be optimised in various ways, including:
+
+- Caching values that are otherwise lengthy to re-compute.
+- Using more efficient algorithms or data structures. For example, array traversal could be replaced with indexed lookup.
+- Optimising DOM traversal. This can include caching and re-using elements, using more efficient selectors, or avoiding unnecessary DOM access.
+
 
 ### Optimise the application under test
 
@@ -474,3 +489,5 @@ Flaky tests can be dealt with by:
 - https://dev.to/playwright/how-to-reproduce-ci-failures-locally-in-playwright-lfl
 - https://medium.com/adobetech/improve-jest-runner-performance-a8f56708ba94
 - https://jestjs.io/docs/troubleshooting#tests-are-extremely-slow-on-docker-andor-continuous-integration-ci-server
+- https://www.codewithjason.com/how-i-fix-flaky-tests/
+- https://www.codewithjason.com/what-causes-flaky-tests/
