@@ -1,4 +1,15 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import {
+  aliFathiehColleague,
+  andyVuColleague,
+  felicityEvanColleague,
+  markSchwanethalColleague,
+} from "@/content/colleagues";
+import { jackDinhColleague } from "@/content/colleagues/jack-dinh";
+import {
+  ColleagueRelationshipTypes,
+  SocialLinkTypes,
+  WorkMeta,
+} from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "ANZ Bank",
@@ -131,6 +142,28 @@ export const meta: WorkMeta = {
       type: SocialLinkTypes.Website,
       url: "https://anz.com.au/",
       title: "ANZ Official Website",
+    },
+  ],
+  colleagueRelationships: [
+    {
+      colleague: aliFathiehColleague,
+      relationshipType: ColleagueRelationshipTypes.Coworker,
+    },
+    {
+      colleague: andyVuColleague,
+      relationshipType: ColleagueRelationshipTypes.Coworker,
+    },
+    {
+      colleague: jackDinhColleague,
+      relationshipType: ColleagueRelationshipTypes.Coworker,
+    },
+    {
+      colleague: markSchwanethalColleague,
+      relationshipType: ColleagueRelationshipTypes.Coworker,
+    },
+    {
+      colleague: felicityEvanColleague,
+      relationshipType: ColleagueRelationshipTypes.Manager,
     },
   ],
 };
