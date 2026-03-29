@@ -42,11 +42,18 @@ export const meta: WorkMeta = {
   type: "work",
   techs: [
     {
-      categoryName: "Angular 1.3",
-      items: [],
+      categoryName: "angular 1.3",
+      items: [
+        {
+          itemName: "angular-formly",
+        },
+        {
+          itemName: "gulp",
+        },
+      ],
     },
     {
-      categoryName: "Salesforce",
+      categoryName: "salesforce",
       items: [
         {
           itemName: "Apex",
