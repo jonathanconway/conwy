@@ -16,7 +16,7 @@ export function ArticlesRecentListSection(
 ) {
   const sectionItems = props.items
     .filter((item) => item.meta.tags.includes(props.postTag))
-    .slice(0, 3);
+    .slice(0, 6);
 
   const postTagTitle = POST_TAG_TITLES[props.postTag];
 
