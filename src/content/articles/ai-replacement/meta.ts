@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "AI replacement theory – a critique",
@@ -13,7 +13,18 @@ export const meta: ArticleMeta = {
   mainImage: {
     src: "/images/articles/ai-replacement/main.png",
   },
-  socialLinks: [],
-  discussionLinks: [],
-  isPinned: false,
+  socialLinks: [
+    {
+      type: SocialLinkTypes.LinkedIn,
+      url: "https://www.linkedin.com/pulse/ai-replacement-theory-critique-jonathan-conway-iaj7c/",
+    },
+  ],
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.LinkedIn,
+      url: "https://www.linkedin.com/feed/update/urn:li:activity:7442373218612719616?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7442373218612719616%2C7442382675270778880%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287442382675270778880%2Curn%3Ali%3Aactivity%3A7442373218612719616%29",
+      likeCount: 2,
+    },
+  ],
+  isPinned: true,
 };
