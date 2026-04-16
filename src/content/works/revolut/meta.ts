@@ -124,7 +124,27 @@ export const meta: WorkMeta = {
     },
     {
       categoryName: "sql",
-      items: [],
+      items: [
+        {
+          itemName: "postgres",
+        },
+      ],
+    },
+    {
+      categoryName: "cloud",
+      items: [
+        {
+          itemName: "gcp",
+        },
+      ],
+    },
+    {
+      categoryName: "monitoring",
+      items: [
+        {
+          itemName: "sentry",
+        },
+      ],
     },
     {
       categoryName: "architecture",
@@ -174,6 +194,16 @@ export const meta: WorkMeta = {
     },
     {
       title: "Document folder management",
+    },
+    {
+      title: "Employee portal integration with Revelio",
+    },
+    {
+      title: "Streaming analytics ETL integration",
+    },
+    {
+      title:
+        "Business registration Backoffice integration - Dunn & Bradstreet, Companies House",
     },
     {
       title: "Region-specific features",

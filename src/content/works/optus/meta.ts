@@ -85,6 +85,9 @@ export const meta: WorkMeta = {
         {
           itemName: "cloud-watch",
         },
+        {
+          itemName: "cloud-formation",
+        },
       ],
     },
     {
