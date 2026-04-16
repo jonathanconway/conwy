@@ -1,11 +1,10 @@
-import { TextSizes } from "@/components/text";
 import { Article as Article_ } from "@/framework/client";
 
-import { info } from "../../../info";
 import { DateView } from "../../date";
 import { Heading } from "../../heading";
-import { Link } from "../../link";
 
+import { ArticleHeaderHistoryLink } from "./article-header-history-link";
+import { ArticleHeaderSubscribeLink } from "./article-header-subscribe-link";
 import { ArticleHeaderTags } from "./article-header-tags";
 import * as styles from "./article-header.css";
 
@@ -16,10 +15,9 @@ export interface ArticleHeaderProps {
 export function ArticleHeader(props: ArticleHeaderProps) {
   const {
     article: {
-      meta: { createdDate, updatedDate, title, tags, slug },
+      meta: { createdDate, updatedDate, title, tags },
     },
   } = props;
-  const historyUrl = `${info.repoUrl}/commits/main/src/content/articles/${slug}/content.mdx`;
 
   return (
     <div className={styles.container}>
@@ -45,10 +43,8 @@ export function ArticleHeader(props: ArticleHeaderProps) {
             </span>
           </>
         )}
-        •
-        <Link href={historyUrl} size={TextSizes.xs}>
-          History
-        </Link>
+        • <ArticleHeaderHistoryLink article={props.article} />
+        • <ArticleHeaderSubscribeLink article={props.article} />
       </div>
 
       <ArticleHeaderTags tags={tags} />
