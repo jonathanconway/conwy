@@ -1,5 +1,6 @@
 export * from "./articles";
 export * from "./books";
+export * from "./checklists";
 export * from "./communities";
 export * from "./ideas";
 export * from "./micros";

@@ -2,7 +2,7 @@
 
 import { ReactNode, useId, useRef } from "react";
 
-import { Heading } from "../../heading";
+import { Heading, HeadingLevels } from "../../heading";
 import { Icon, IconTypes } from "../../icon";
 
 import * as styles from "./mobile-collapsible.css";
@@ -27,7 +27,7 @@ export function MobileCollapsible(props: MobileCollapsibleProps) {
       />
 
       <label className={styles.header} htmlFor={inputId}>
-        <Heading level={3} className={styles.title}>
+        <Heading level={HeadingLevels.Level3} className={styles.title}>
           {props.title}
         </Heading>
 

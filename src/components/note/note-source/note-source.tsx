@@ -3,7 +3,7 @@ import { NoteMeta } from "@/framework/client";
 
 import { BookAuthors } from "../../book";
 import { ContentTypeIcon } from "../../content-type";
-import { Heading } from "../../heading";
+import { Heading, HeadingLevels } from "../../heading";
 import { Stack, StackDirections } from "../../stack";
 import { Text, TextTypes } from "../../text";
 

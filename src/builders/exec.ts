@@ -1,9 +1,11 @@
 import { chain, startCase } from "lodash";
 
+import { builderOrders } from "./builder-orders";
 import * as builders from "./index";
+import { Orders } from "./orders";
 
 function generateBuilderCLIName(builderFnName: string) {
-  return chain(builderFnName).kebabCase().replace("build-", "");
+  return chain(builderFnName).kebabCase().replace("build-", "").value();
 }
 
 const buildersByCLIName = chain(Object.entries(builders))
@@ -14,14 +16,41 @@ const buildersByCLIName = chain(Object.entries(builders))
   .fromPairs()
   .value();
 
-if (process.argv.includes("--all")) {
-  Object.entries(buildersByCLIName).forEach(([builderName, builder]) => {
-    console.log(`Running ${startCase(builderName)} build`);
+const [all, orderPre, orderPost] = [
+  process.argv.includes("--all"),
+  process.argv.includes("--order=pre"),
+  process.argv.includes("--order=post"),
+];
 
-    builder();
-  });
-} else {
-  const builderName = process.argv[2];
-  console.log(`Running ${startCase(builderName)} build`);
-  buildersByCLIName[builderName]();
+switch (true) {
+  case all && orderPre: {
+    builderOrders[Orders.Pre].forEach((builder) => {
+      const builderName = generateBuilderCLIName(builder.name);
+      console.log(`Running ${startCase(builderName)} build`);
+      builder();
+    });
+  }
+
+  case all && orderPost: {
+    builderOrders[Orders.Post].forEach((builder) => {
+      const builderName = generateBuilderCLIName(builder.name);
+      console.log(`Running ${startCase(builderName)} build`);
+      builder();
+    });
+  }
+
+  case all && !orderPre && !orderPost: {
+    Object.entries(buildersByCLIName).forEach(([builderName, builder]) => {
+      console.log(`Running ${startCase(builderName)} build`);
+
+      builder();
+    });
+    break;
+  }
+
+  default: {
+    const builderName = process.argv[2];
+    console.log(`Running ${startCase(builderName)} build`);
+    buildersByCLIName[builderName]();
+  }
 }

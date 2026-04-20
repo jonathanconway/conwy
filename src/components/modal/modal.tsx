@@ -1,7 +1,7 @@
 "use client";
 
 import { Backdrop } from "../backdrop";
-import { Heading } from "../heading";
+import { Heading, HeadingLevels } from "../heading";
 import { IconTypes } from "../icon";
 import { IconButton } from "../icon-button";
 
@@ -21,7 +21,7 @@ export function Modal(props: ModalProps) {
       <dialog className={props.className ?? styles.modal} ref={modalRef}>
         <header className={styles.modalHeader}>
           {props.title && (
-            <Heading level={2} className={styles.modalTitle}>
+            <Heading level={HeadingLevels.Level2} className={styles.modalTitle}>
               {props.title}
             </Heading>
           )}

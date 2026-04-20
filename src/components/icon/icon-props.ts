@@ -1,9 +1,8 @@
-import { SvgIconProps } from "@mui/material";
+import { HTMLProps } from "react";
 
-import { SvgProps } from "./icon-svg-props";
 import { IconType } from "./icon-types";
 
-export type IconProps = (SvgProps | SvgIconProps) & {
+export type IconProps = Omit<HTMLProps<HTMLSpanElement>, "size"> & {
   readonly icon: IconType;
   readonly size?: string;
   readonly color?: string;

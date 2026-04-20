@@ -8,7 +8,6 @@ import { NoteSource } from "./note-source";
 export interface NoteMeta {
   readonly slug: NoteSlug;
   readonly date: DateTimeString;
-  readonly title?: string;
 
   readonly blurb: string;
   readonly shortBlurb?: string;

@@ -1,7 +1,7 @@
 import { Study as Study_, isNotNil } from "@/framework/client";
 
 import { ContentListItem } from "../../content-list";
-import { Heading } from "../../heading";
+import { Heading, HeadingLevels } from "../../heading";
 import { Link } from "../../link";
 import { List } from "../../list";
 import { Text, TextSizes } from "../../text";
@@ -38,7 +38,7 @@ export function Study(props: StudyProps) {
     <ContentListItem
       mainSlot={
         <>
-          <Heading level={5} className={styles.headingStyle}>
+          <Heading level={HeadingLevels.Level5} className={styles.headingStyle}>
             {mainUrl ? (
               <Link href={mainUrl} target="_blank">
                 {title}

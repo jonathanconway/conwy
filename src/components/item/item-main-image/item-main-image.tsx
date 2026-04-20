@@ -16,7 +16,7 @@ export function ItemMainImage<TMeta extends ItemMeta>(
 ) {
   const { itemMeta, titleKey, ...restProps } = props;
 
-  if (!itemMeta.mainImage?.src) {
+  if (!("mainImage" in itemMeta) || !itemMeta.mainImage?.src) {
     return;
   }
 

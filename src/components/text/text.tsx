@@ -7,7 +7,7 @@ import * as styles from "./text.css";
 
 export function Text<T extends HTMLElement = HTMLElement>(props: TextProps<T>) {
   const {
-    className = styles[props.type as keyof typeof styles],
+    className = props.className ?? styles[props.type as keyof typeof styles],
     type = TextTypes.Body,
     as,
     ...restProps
@@ -15,5 +15,5 @@ export function Text<T extends HTMLElement = HTMLElement>(props: TextProps<T>) {
   const details = TEXT_TYPES_DETAILS[type];
   const Element = (as ?? details.element) as ElementType;
 
-  return <Element className={className} {...restProps}></Element>;
+  return <Element className={className} {...restProps} />;
 }

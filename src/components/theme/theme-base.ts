@@ -5,6 +5,8 @@ import { blockQuoteSummaryThemeBase } from "../block-quote/block-quote-summary/b
 import { blockQuoteThemeBase } from "../block-quote/block-quote.css-theme";
 import { boxThemeBase } from "../box/box.css-theme";
 import { buttonThemeBase } from "../button/button.css-theme";
+import { checkboxThemeBase } from "../checkbox/checkbox.css-theme";
+import { checklistThemeBase } from "../checklist/checklist.css-theme";
 import { codeThemeBase } from "../code/code.css-theme";
 import { contentListItemThemeBase } from "../content-list/content-list-item/content-list-item.css-theme";
 import { footerThemeBase } from "../footer/footer.css-theme";
@@ -34,6 +36,8 @@ export const themeBase = {
   blockQuoteSummary: blockQuoteSummaryThemeBase,
   box: boxThemeBase,
   button: buttonThemeBase,
+  checkbox: checkboxThemeBase,
+  checklist: checklistThemeBase,
   code: codeThemeBase,
   contentListItem: contentListItemThemeBase,
   footer: footerThemeBase,

@@ -1,10 +1,12 @@
-import { Heading } from "../heading";
+import { Heading, HeadingLevels } from "../heading";
 
 export function createAsidePropsMock() {
   return {
     children: (
       <>
-        <Heading level={4}>Sketching execution flows</Heading>
+        <Heading level={HeadingLevels.Level4}>
+          Sketching execution flows
+        </Heading>
 
         <p>
           Observe that we don&apos;t have to cover the flows exhaustively, nor

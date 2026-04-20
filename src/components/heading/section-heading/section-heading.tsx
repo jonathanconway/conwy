@@ -2,6 +2,7 @@ import { kebabCase } from "lodash";
 import { HTMLProps } from "react";
 
 import { Heading } from "../heading";
+import { HeadingLevels } from "../heading-level";
 
 import * as styles from "./section-heading.css";
 
@@ -14,7 +15,7 @@ export function SectionHeading({
   const id = kebabCase(children?.toString());
 
   return (
-    <Heading level={3} id={id} {...restProps}>
+    <Heading level={HeadingLevels.Level3} id={id} {...restProps}>
       <a className={styles.link} href={`#${id}`}>
         {children}
 

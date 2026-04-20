@@ -7,6 +7,8 @@ import { blockQuoteSummaryThemeDark } from "../block-quote/block-quote-summary/b
 import { blockQuoteThemeDark } from "../block-quote/block-quote.css-theme";
 import { boxThemeDark } from "../box/box.css-theme";
 import { buttonThemeDark } from "../button/button.css-theme";
+import { checkboxThemeDark } from "../checkbox/checkbox.css-theme";
+import { checklistThemeDark } from "../checklist/checklist.css-theme";
 import { codeThemeDark } from "../code/code.css-theme";
 import { contentListItemThemeDark } from "../content-list/content-list-item/content-list-item.css-theme";
 import { footerThemeDark } from "../footer/footer.css-theme";
@@ -38,6 +40,8 @@ export const themeDarkClass = createTheme(vars, {
   blockQuoteSummary: blockQuoteSummaryThemeDark,
   box: boxThemeDark,
   button: buttonThemeDark,
+  checkbox: checkboxThemeDark,
+  checklist: checklistThemeDark,
   code: codeThemeDark,
   contentListItem: contentListItemThemeDark,
   footer: footerThemeDark,

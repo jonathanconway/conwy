@@ -22,8 +22,6 @@ export const li = style(textMixins.li);
 
 export const pre = style(textMixins.pre);
 
-// export const figure = style(textMixins.figure);
-
 export const image = style(textMixins.image);
 
 export const table = style(textMixins.table);

@@ -8,7 +8,6 @@ export function createNoteMock(): Note {
     type: "note",
     content: <></>,
     meta: {
-      title: "Front end observability",
       blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
       date: "2023-09-02",
       slug: "influence",
@@ -24,7 +23,6 @@ export function createNoteMock2(): Note {
     type: "note",
     content: <></>,
     meta: {
-      title: "Streamlining code reviews",
       blurb:
         "Having a good code review process can make code reviews easier, more enjoyable and higher quality",
       date: "2023-08-06",

@@ -1,5 +1,3 @@
-export const notePattern = new RegExp(/Note (0|[1-9][0-9]*):/g);
+export const NOTE_A_ID_PREFIX = `user-content-fnref-`;
 
-export const NOTE_ID_PREFIX = "note-";
-
-export const NOTE_HREF_PREFIX = `#${NOTE_ID_PREFIX}`;
+export const NOTE_CONTENT_ID_PREFIX = `user-content-fn-`;

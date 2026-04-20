@@ -8,6 +8,7 @@ export * from "./designerly-cv";
 export * from "./diagramming-react";
 export * from "./diagramming-ts";
 export * from "./flaky-tests";
+export * from "./front-end-development-checklist";
 export * from "./front-end-observability";
 export * from "./interaction-wireframes";
 export * from "./keyboard-shortcuts";

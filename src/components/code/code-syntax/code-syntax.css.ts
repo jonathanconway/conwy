@@ -13,8 +13,9 @@ export const code = style({
   display: "inline",
   ...rounded.md,
   ...boxMixins.boxBorderDecorative,
-  ...text.size.sm,
 } as any);
+
+globalStyle(`pre > ${code}`, text.size.sm);
 
 export const toolbar = style({
   position: "absolute",

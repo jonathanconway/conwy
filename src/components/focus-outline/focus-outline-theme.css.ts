@@ -20,7 +20,7 @@ globalStyle(`${themeFocusOutlineEnabledClass} *:focus`, {
 
 globalStyle(`${themeFocusOutlineEnabledClass} *:focus:after`, {
   position: "absolute",
-  content: " ",
+  // content: " ",
   top: "-2px",
   right: "-2px",
   bottom: "-2px",

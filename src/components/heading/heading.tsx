@@ -2,11 +2,13 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 import { Text, TextTypes } from "../text";
 
+import { HeadingLevel } from "./heading-level";
+
 export type HeadingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement
 > & {
-  readonly level?: 1 | 2 | 3 | 4 | 5;
+  readonly level?: HeadingLevel;
 };
 
 /**

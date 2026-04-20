@@ -7,9 +7,14 @@ import * as styles from "./icon.css";
 const DEFAULT_SIZE = "1rem";
 
 function Icon_(props: IconProps) {
-  const IconSvg = ICON_TYPE_SVGS[props.icon];
-
-  const { className = styles.iconContainer } = props;
+  const {
+    icon,
+    className = styles.iconContainer,
+    id,
+    size,
+    ...restProps
+  } = props;
+  const IconSvg = ICON_TYPE_SVGS[icon];
 
   return (
     /*
@@ -18,14 +23,15 @@ function Icon_(props: IconProps) {
         - className needs to be on the container for the hover colours to be applied.
     */
     <span
-      id={props.id}
+      id={id}
       className={className}
       style={{
-        width: props.size ?? DEFAULT_SIZE,
-        height: props.size ?? DEFAULT_SIZE,
+        width: size ?? DEFAULT_SIZE,
+        height: size ?? DEFAULT_SIZE,
       }}
+      {...restProps}
     >
-      <IconSvg className={styles.iconSvg} icon={props.icon} />
+      <IconSvg className={styles.iconSvg} icon={icon} />
 
       {/* Explanation: Overlay needs to absorb mouse events for tooltip and hover effects to work simultaneously. */}
       <span className={styles.iconOverlay}></span>

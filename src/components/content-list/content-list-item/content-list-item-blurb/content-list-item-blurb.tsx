@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { Text, TextTypes } from "../../../text";
+import { Text, TextSizes, TextTypes } from "../../../text";
 
 import * as styles from "./content-list-item-blurb.css";
 

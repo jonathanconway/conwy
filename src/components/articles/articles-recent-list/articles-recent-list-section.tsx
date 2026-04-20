@@ -1,7 +1,7 @@
 import { Post, PostTag } from "@/framework/client";
 import { POST_TAG_TITLES } from "@/framework/client";
 
-import { Heading } from "../../heading";
+import { Heading, HeadingLevels } from "../../heading";
 import { Link } from "../../link";
 import { Text } from "../../text";
 import { ArticlesList } from "../articles-list";
@@ -22,7 +22,7 @@ export function ArticlesRecentListSection(
 
   return (
     <>
-      <Heading level={2}>{postTagTitle}</Heading>
+      <Heading level={HeadingLevels.Level2}>{postTagTitle}</Heading>
 
       <ArticlesList items={sectionItems} />
 

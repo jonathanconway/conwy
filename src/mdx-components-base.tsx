@@ -1,0 +1,54 @@
+import { FunctionComponent } from "react";
+
+import {
+  MdxA,
+  MdxBlockquote,
+  MdxCode,
+  MdxH1,
+  MdxH2,
+  MdxH3,
+  MdxH4,
+  MdxImg,
+  MdxInput,
+  MdxLi,
+  MdxOL,
+  MdxP,
+  MdxPre,
+  MdxSection,
+  MdxTBody,
+  MdxTHead,
+  MdxTable,
+  MdxTd,
+  MdxTh,
+  MdxTr,
+  MdxUl,
+  MdxWrapper,
+} from "./components";
+import { HasChildrenOptional } from "./framework/client";
+
+export const mdxComponents: Record<
+  string,
+  FunctionComponent<HasChildrenOptional>
+> = {
+  a: MdxA,
+  blockquote: MdxBlockquote,
+  code: MdxCode,
+  h1: MdxH1,
+  h2: MdxH2,
+  h3: MdxH3,
+  h4: MdxH4,
+  img: MdxImg,
+  input: MdxInput,
+  li: MdxLi,
+  ol: MdxOL,
+  p: MdxP,
+  pre: MdxPre,
+  ul: MdxUl,
+  table: MdxTable,
+  tbody: MdxTBody,
+  thead: MdxTHead,
+  tr: MdxTr,
+  th: MdxTh,
+  td: MdxTd,
+  wrapper: MdxWrapper,
+} as const;

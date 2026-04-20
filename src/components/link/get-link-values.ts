@@ -39,7 +39,7 @@ export function getLinkValues(props: LinkProps) {
     onClick?.(event);
   };
 
-  const sizeStyle = textSizeStyles[size ?? TextSizes.sm];
+  const sizeStyle = size ? textSizeStyles[size] : {};
 
   const layoutStyle = {
     [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
