@@ -123,6 +123,23 @@ export const meta: WorkMeta = {
         },
       ],
     },
+    {
+      categoryName: "architecture",
+      items: [
+        {
+          itemName: "event-based",
+        },
+        {
+          itemName: "serverless",
+        },
+        {
+          itemName: "publish-subscribe",
+        },
+        {
+          itemName: "rest",
+        },
+      ],
+    },
   ],
   projects: [
     {

@@ -58,13 +58,31 @@ export const meta: WorkMeta = {
           itemName: "monitor",
         },
         {
+          itemName: "monitor-alerts",
+        },
+        {
           itemName: "open-telemetry",
         },
       ],
     },
     {
-      categoryName: "prismic",
-      items: [],
+      categoryName: "cms",
+      items: [
+        {
+          itemName: "prismic",
+        },
+      ],
+    },
+    {
+      categoryName: "architecture",
+      items: [
+        {
+          itemName: "domain-driven-design",
+        },
+        {
+          itemName: "micro-services",
+        },
+      ],
     },
   ],
   projects: [

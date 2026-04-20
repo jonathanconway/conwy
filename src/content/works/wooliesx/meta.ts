@@ -107,6 +107,29 @@ export const meta: WorkMeta = {
       categoryName: "ios",
       items: [{ itemName: "swift" }, { itemName: "swift-ui" }],
     },
+    {
+      categoryName: "architecture",
+      items: [
+        {
+          itemName: "mono-repo",
+        },
+        {
+          itemName: "micro-frontend",
+        },
+        {
+          itemName: "micro-service",
+        },
+        {
+          itemName: "internal-component-library",
+        },
+        {
+          itemName: "module-federation",
+        },
+        {
+          itemName: "internal-package-distribution",
+        },
+      ],
+    },
   ],
   projects: [
     {

@@ -117,6 +117,23 @@ export const meta: WorkMeta = {
         },
       ],
     },
+    {
+      categoryName: "architecture",
+      items: [
+        {
+          itemName: "mono-repo",
+        },
+        {
+          itemName: "component-composition",
+        },
+        {
+          itemName: "internal-component-library",
+        },
+        {
+          itemName: "bff",
+        },
+      ],
+    },
   ],
   projects: [
     { title: "Contacts List" },

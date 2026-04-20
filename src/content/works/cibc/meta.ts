@@ -89,6 +89,20 @@ export const meta: WorkMeta = {
       categoryName: "sql-server",
       items: [],
     },
+    {
+      categoryName: "architecture",
+      items: [
+        {
+          itemName: "micro-services",
+        },
+        {
+          itemName: "container-orchestration",
+        },
+        {
+          itemName: "internal-component-library",
+        },
+      ],
+    },
   ],
   projects: [
     {

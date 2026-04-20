@@ -150,16 +150,19 @@ export const meta: WorkMeta = {
       categoryName: "architecture",
       items: [
         {
-          itemName: "ddd",
+          itemName: "domain-driven-design",
         },
         {
-          itemName: "bdd",
+          itemName: "behavior-driven-design",
         },
         {
           itemName: "event-driven",
         },
         {
           itemName: "micro-services",
+        },
+        {
+          itemName: "micro-frontend",
         },
         {
           itemName: "monolith",
