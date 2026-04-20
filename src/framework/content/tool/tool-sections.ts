@@ -6,6 +6,7 @@ export const ToolSections = {
   CommandLineTool: "command-line-tool",
   Website: "website",
   BrowserExtension: "browser-extension",
+  IdeExtension: "ide-extension",
   Belonging: "belonging",
   Misc: "misc",
 } as const;
