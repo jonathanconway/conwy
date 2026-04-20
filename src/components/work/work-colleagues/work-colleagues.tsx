@@ -22,7 +22,7 @@ export function WorkColleagues(props: WorkProjectsProps) {
             ({ colleague, relationshipType }) => (
               <li key={colleague.fullName} className={styles.item}>
                 <Link
-                  size={TextSizes.sm}
+                  size={TextSizes.xs}
                   href={colleague.meta.links[0].url}
                   icon={IconTypes.Person}
                   tooltip={{ contents: sentenceCase(relationshipType) }}

@@ -1,8 +1,12 @@
 import {
   aliFathiehColleague,
   andyVuColleague,
+  changezShaikhColleague,
   felicityEvanColleague,
+  larsMagnusColleague,
   markSchwanethalColleague,
+  mattVioliColleague,
+  mehranFarshadmehrColleague,
 } from "@/content/colleagues";
 import { jackDinhColleague } from "@/content/colleagues/jack-dinh";
 import {
@@ -171,15 +175,31 @@ export const meta: WorkMeta = {
       relationshipType: ColleagueRelationshipTypes.Coworker,
     },
     {
+      colleague: changezShaikhColleague,
+      relationshipType: ColleagueRelationshipTypes.Manager,
+    },
+    {
+      colleague: felicityEvanColleague,
+      relationshipType: ColleagueRelationshipTypes.Manager,
+    },
+    {
       colleague: jackDinhColleague,
       relationshipType: ColleagueRelationshipTypes.Coworker,
+    },
+    {
+      colleague: larsMagnusColleague,
+      relationshipType: ColleagueRelationshipTypes.Manager,
     },
     {
       colleague: markSchwanethalColleague,
       relationshipType: ColleagueRelationshipTypes.Coworker,
     },
     {
-      colleague: felicityEvanColleague,
+      colleague: mattVioliColleague,
+      relationshipType: ColleagueRelationshipTypes.Manager,
+    },
+    {
+      colleague: mehranFarshadmehrColleague,
       relationshipType: ColleagueRelationshipTypes.Manager,
     },
   ],
