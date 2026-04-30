@@ -1,5 +1,6 @@
 import { Note as Note_ } from "@/framework/client";
 
+import { MdxContainer } from "../mdx";
 import { Text } from "../text";
 
 import { NoteSource } from "./note-source";
@@ -19,7 +20,7 @@ export function Note(props: NoteProps) {
       <div className={styles.header}>
         <div className={styles.headerLeft}>
           <div className={styles.headerLeftTitle}>
-            <Text>Notes on...</Text>
+            <Text type="body">Notes on...</Text>
 
             <NoteSource noteMeta={meta} />
           </div>
@@ -30,7 +31,7 @@ export function Note(props: NoteProps) {
         <div>
           <div className={styles.blurb}>{meta.blurb ?? meta.shortBlurb}</div>
 
-          {content}
+          <MdxContainer>{content}</MdxContainer>
         </div>
 
         <div className={styles.aside}></div>

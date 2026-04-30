@@ -24,7 +24,7 @@ export function NotesListItemSource(props: NotesListItemSourceProps) {
         {props.noteMeta.title ?? props.noteMeta.source.title}
       </LinkBoxTitle>
 
-      <Text>
+      <Text type={TextTypes.Label}>
         <BookAuthors authors={props.noteMeta.source.authors} />
       </Text>
     </Stack>

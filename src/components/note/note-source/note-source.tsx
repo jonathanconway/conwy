@@ -24,7 +24,7 @@ export function NoteSource(props: NoteSourceProps) {
         {props.noteMeta.title ?? props.noteMeta.source.title}
       </Heading>
 
-      <Text>
+      <Text type={TextTypes.Label}>
         <BookAuthors authors={props.noteMeta.source.authors} />
       </Text>
     </Stack>

@@ -1,12 +1,12 @@
 import { style } from "@vanilla-extract/css";
 
-import { media, text } from "../styling";
+import { media } from "../styling";
 
 export const container = style({
   position: "relative",
   display: "flex",
   flexDirection: "column",
-  gap: "2rem",
+  gap: "1rem",
 
   "@media": {
     [media.sm]: {
@@ -54,27 +54,11 @@ export const headerLeftTitle = style({
   gap: "1rem",
 });
 
-export const headerRight = style({ flex: 1 });
-
-export const client = style({ marginTop: 0 });
-
-export const jobTitle = style({
-  fontWeight: 600,
-  "@media": {
-    [media.mdAndUp]: {
-      ...text.size.sm,
-    },
-    [media.sm]: {
-      ...text.size.xs,
-    },
-  },
-});
-
 export const main = style({
   display: "flex",
   flex: 1,
   flexDirection: "row",
-  gap: "2rem",
+  gap: "1rem",
 
   "@media": {
     [media.sm]: {
@@ -92,41 +76,4 @@ export const aside = style({
   flexDirection: "column",
   gap: "1.5rem",
   "@media": { [media.mdAndUp]: { flex: 1 } },
-});
-
-export const techAndFeedbackContainer = style({
-  display: "flex",
-  gap: "1rem",
-
-  "@media": {
-    [media.sm]: {
-      flexDirection: "column",
-    },
-    [media.mdAndUp]: {
-      flexDirection: "row",
-    },
-  },
-});
-
-export const techContainer = style({ display: "flex", flex: 1 });
-
-export const otherContainer = style({
-  display: "flex",
-  flex: 1,
-  flexDirection: "column",
-  gap: "1.5rem",
-  width: "50%",
-});
-
-export const techListItem = style({
-  marginTop: "0.5rem",
-  ...text.size.sm,
-});
-
-export const techSubList = style({ marginLeft: "0.5rem" });
-
-export const techSubListItem = style({
-  ...text.size.xs,
-  display: "inline-block",
-  marginRight: "0.5rem",
 });
