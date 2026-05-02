@@ -4,6 +4,8 @@ import { cn } from "@/framework/client";
 
 import { SizeRem } from "../styling";
 
+import { StackDirections } from "./stack-direction";
+import { StackDistributions } from "./stack-distribution";
 import { StackProps } from "./stack-props";
 import * as styles from "./stack.css";
 
@@ -20,14 +22,19 @@ function stringifySizeRem(gap?: SizeRem) {
 }
 
 export function Stack(props: StackProps) {
-  const { direction = "column", gap, children } = props;
+  const { direction = "column", distribution, gap, children } = props;
+
+  const className = cn(
+    styles.stackBase,
+    direction === StackDirections.Column ? styles.stackColumn : styles.stackRow,
+    distribution === StackDistributions.Even
+      ? styles.stackDistributionEven
+      : styles.stackDistributionFlow,
+  );
 
   return (
     <div
-      className={cn(
-        styles.stackBase,
-        direction === "column" ? styles.stackColumn : styles.stackRow,
-      )}
+      className={className}
       style={{
         ...(gap
           ? {

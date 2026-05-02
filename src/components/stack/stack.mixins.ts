@@ -11,8 +11,11 @@ export const stackColumn: ComplexStyleRule = {
 
 export const stackRow: ComplexStyleRule = {
   flexDirection: "row",
+  alignItems: "center",
 };
 
-export const stackImmediateChildren: GlobalStyleRule = {
+export const stackChildrenDistributionEven: GlobalStyleRule = {
   flex: 1,
 };
+
+export const stackChildrenDistributionFlow: GlobalStyleRule = {};

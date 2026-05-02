@@ -8,4 +8,18 @@ export const stackColumn = style(mixins.stackColumn);
 
 export const stackRow = style(mixins.stackRow);
 
-globalStyle(`${stackBase} > *`, mixins.stackImmediateChildren);
+export const stackDistributionEven = style({});
+
+globalStyle(
+  `${stackDistributionEven} > *`,
+  mixins.stackChildrenDistributionEven,
+);
+
+export const stackDistributionFlow = style(
+  mixins.stackChildrenDistributionFlow,
+);
+
+globalStyle(
+  `${stackDistributionFlow} > *`,
+  mixins.stackChildrenDistributionFlow,
+);

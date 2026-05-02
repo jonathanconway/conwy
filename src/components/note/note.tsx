@@ -1,10 +1,12 @@
 import { Note as Note_ } from "@/framework/client";
 
+import { Breadcrumb } from "../breadcrumb";
+import { MainAsideLayout } from "../layouts";
 import { MdxContainer } from "../mdx";
+import { Stack } from "../stack";
 import { Text } from "../text";
 
 import { NoteSource } from "./note-source";
-import * as styles from "./note.css";
 
 interface NoteProps {
   readonly note: Note_;
@@ -16,26 +18,28 @@ export function Note(props: NoteProps) {
   } = props;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.headerLeft}>
-          <div className={styles.headerLeftTitle}>
-            <Text type="body">Notes on...</Text>
+    <MainAsideLayout
+      main={
+        <Stack gap={2}>
+          <Stack gap={1}>
+            <Breadcrumb
+              segments={[
+                {
+                  title: "Notes",
+                  url: "/notes",
+                },
+                {
+                  title: meta.source.title,
+                },
+              ]}
+            />
 
             <NoteSource noteMeta={meta} />
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.main}>
-        <div>
-          <div className={styles.blurb}>{meta.blurb ?? meta.shortBlurb}</div>
+          </Stack>
 
           <MdxContainer>{content}</MdxContainer>
-        </div>
-
-        <div className={styles.aside}></div>
-      </div>
-    </div>
+        </Stack>
+      }
+    />
   );
 }
