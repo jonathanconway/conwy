@@ -27,9 +27,9 @@ export function Stack(props: StackProps) {
   const className = cn(
     styles.stackBase,
     direction === StackDirections.Column ? styles.stackColumn : styles.stackRow,
-    distribution === StackDistributions.Even
-      ? styles.stackDistributionEven
-      : styles.stackDistributionFlow,
+    distribution === StackDistributions.Flow
+      ? styles.stackDistributionFlow
+      : styles.stackDistributionEven,
   );
 
   return (
