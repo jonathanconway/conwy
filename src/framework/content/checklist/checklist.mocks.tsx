@@ -8,8 +8,6 @@ export function createChecklistMock(): Checklist {
       slug: "front-end-observability",
       title: "Front end observability",
       blurb: "",
-      items: [],
-      tagGroups: [],
     },
   };
 }

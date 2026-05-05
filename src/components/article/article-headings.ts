@@ -20,7 +20,14 @@ function getIsComponentType(
   element: ReactElement<unknown, string | JSXElementConstructor<unknown>>,
   componentType: FunctionComponent,
 ) {
-  return (element.type as Function)?.name === componentType.name;
+  const elementTypeFunctionName = (element.type as Function)?.name;
+  const componentTypeName = componentType.name;
+  console.log(
+    "getIsComponentType",
+    `<${elementTypeFunctionName}>`,
+    `<${componentTypeName}>`,
+  );
+  return elementTypeFunctionName === componentTypeName;
 }
 
 function byComponentType(componentType: FunctionComponent) {
@@ -37,7 +44,7 @@ export function getArticleHeadings(
   }
 
   const mdxH2Elements = getArticleContentMdxH2Elements(article);
-
+  console.log("getArticleHeadings", mdxH2Elements);
   const headingTitles = mdxH2Elements.map((headingElement) =>
     headingElement?.props?.children?.toString(),
   );

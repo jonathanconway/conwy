@@ -53,13 +53,33 @@ Here I provide a general front end development checklist. But typically I will c
 
 Of course, much of good coding practice can and should be automated away. We have compilers, linters, formatters and, more recently, AI agents. What remains will likely consist of broader or more abstract thinking, requiring a human.
 
-Coding checklists can be input into AI agents. For example: a coding checklist can be included in an agent "code review" skill, helping the agent to provide useful feedback and even action the feedback itself. The checklist can be broken down into sections, each having guidance on when the agent should read it. This follows the principle of progressive disclosure, minimising context use and streamlining agent performance.
-
-Despite AI agents possibly being able to do most of the heavy lifting, I think it's still important to review code myself, just to be sure.
+However, despite AI agents possibly being able to do most of the heavy lifting of writing and reviewing code, I think it's still important to review agent output myself, just to be sure. As Mike Mason points out in a blog post, we don't really know the quality of AI generated code until we read it ourselves.
 
 > Pull-quote:“Both things are true: there is good architecture in Claude Code, and there is also an incomprehensible mess. That's actually the point. **You don't get to know which is which without reading the code**.”
 >
 > – Mike Mason • [The Code You're Not Reading](https://mikemason.ca/writing/ai-slop-code-april-2026/) <small>(bold mine)</small>
+
+Checklists can serve as a valuable input into AI agents.
+
+Firstly, a checklist can be included in an agent "code review" skill, helping the agent to provide useful feedback and even action the feedback itself. The checklist can be broken down into sections, each having guidance on when the agent should read it. This follows the principle of progressive disclosure, minimising context use and streamlining agent performance.
+
+Secondly, a checklist can to form prompts, by helping me to know what kinds of questions to ask or how to frame prompts.
+
+For example, suppose I was prompting AI to implement a server-side call to retrieve a list of contacts.
+
+> Implement a new endpoint, `/contacts-list`, which returns a JSON-formatted list of contacts.
+> It should retrieve contacts from the `getContacts` gRPC endpoint on the `ContactsService`.
+
+Consulting the checklist, I might notice the following item:
+
+> - [ ] Cache service-service or service-database calls to improve performance.<br />For example, in a NextJS backend, wrap API service calls in `cache`.<br /> #general--caching #nfr--performance
+
+With this awareness, I could include in my prompt an instruction to cache service calls:
+
+> Implement a new endpoint, `/contacts-list`, which returns a JSON-formatted list of contacts.
+> It should retrieve contacts from the `getContacts` gRPC endpoint on the `ContactsService`.
+> Make sure the API call is cached by wrapping it in a NextJS `cache` function call.
+
 
 ### Continuous improvement
 
@@ -103,11 +123,11 @@ To minimise the risk of missing something important, I set up the filters to be 
 
 ## Front End Development Checklist
 
-<br />
-<ContentEmbed slug="front-end-development" type={ContentTypes.Checklist} />
+Here is the link: [Front End Development Checklist](/checklists/front-end-development).
 
 ## Further reading
 
 ### Cognitive biases
 
 - [Book: The Checklist Manifesto • Atul GAWANDE](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
+- [Book: The Programmer's Brain • Felienne HERMANS](https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/)

@@ -1,31 +1,9 @@
-import { Tree } from "../../utils";
-import { Link } from "../link";
 import { MetaBase } from "../meta";
+
+import { ChecklistMetaExtensions } from "./checklist-meta-extensions/checklist-meta-extensions";
 
 export interface ChecklistMeta extends MetaBase {
   readonly title: string;
   readonly blurb: string;
-  readonly items: readonly ChecklistItem[];
-  readonly tagGroups: readonly ChecklistTagGroup[];
-  readonly itemsByHeadingText: Tree<string, ChecklistItem>;
+  readonly extensions?: ChecklistMetaExtensions;
 }
-
-export interface ChecklistTagGroup {
-  readonly name: string;
-  readonly title: string;
-  readonly tags: readonly ChecklistTag[];
-}
-
-export interface ChecklistTag {
-  readonly tagGroupName: string;
-  readonly name: string;
-  readonly title: string;
-}
-
-export interface ChecklistItem {
-  readonly name: string;
-  readonly tags: readonly ChecklistTag[];
-  readonly links: readonly ChecklistItemLink[];
-}
-
-export type ChecklistItemLink = Link;

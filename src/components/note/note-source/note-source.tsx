@@ -14,9 +14,7 @@ interface NoteSourceProps {
 export function NoteSource(props: NoteSourceProps) {
   return (
     <Stack direction={StackDirections.Column} gap={0.25}>
-      <Heading level={2}>
-        {props.noteMeta.title ?? props.noteMeta.source.title}
-      </Heading>
+      <Heading level={2}>{props.noteMeta.source.title}</Heading>
 
       <Stack
         direction={StackDirections.Row}

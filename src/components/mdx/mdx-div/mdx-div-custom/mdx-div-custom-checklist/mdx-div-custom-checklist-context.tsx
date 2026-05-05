@@ -2,7 +2,14 @@
 
 import { ReactNode, createContext, useContext, useState } from "react";
 
-import { ChecklistMeta, ChecklistTag } from "@/framework/client";
+import {
+  ChecklistMeta,
+  ChecklistTag,
+  isNotNil,
+  titleCase,
+} from "@/framework/client";
+
+import { useTagFiltersSelected } from "../../../../filters";
 
 export interface MdxDivCustomChecklistContextProps {
   readonly checklistMeta: ChecklistMeta;
@@ -33,20 +40,41 @@ export const MdxDivCustomChecklistContext_ = createContext<
 export const MdxDivCustomChecklistContext = (
   props: MdxDivCustomChecklistContextProps,
 ) => {
-  const [state, setState] = useState<MdxDivCustomChecklistContextState>();
+  const { selectedTags, setSelectedTags } =
+    useTagFiltersSelected("checklist-filter");
+
+  // const [state, setState] = useState<MdxDivCustomChecklistContextState>();
 
   function handleChangeSelectedFilters(
     selectedFilters: readonly ChecklistTag[],
   ) {
-    setState((prevState) => ({
-      ...prevState,
-      selectedFilters,
-    }));
+    // setState((prevState) => ({
+    //   ...prevState,
+    //   selectedFilters,
+    // }));
+    const newSelectedTags = selectedFilters.map((filter) =>
+      [filter.tagGroupName, filter.name].join("--"),
+    );
+    console.log("handleChangeSelectedFilters", newSelectedTags);
+    setSelectedTags(newSelectedTags);
   }
+
+  const allFilters = props.checklistMeta.extensions?.tagGroups.flatMap(
+    (tagGroup) => tagGroup.tags,
+  );
 
   const value: MdxDivCustomChecklistContextValue = {
     checklistMeta: props.checklistMeta,
-    selectedFilters: state?.selectedFilters ?? [],
+    selectedFilters: selectedTags
+      .map((selectedTag) => {
+        if (selectedTag === "all") {
+          return;
+        }
+        console.log("selectedTag", selectedTag);
+        const [tagGroupName, name] = selectedTag.split("--");
+        return { tagGroupName, name, title: titleCase(name) };
+      })
+      .filter(isNotNil),
     onChangeSelectedFilters: handleChangeSelectedFilters,
   };
 

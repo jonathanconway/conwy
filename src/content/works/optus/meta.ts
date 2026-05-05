@@ -88,6 +88,9 @@ export const meta: WorkMeta = {
         {
           itemName: "cloud-formation",
         },
+        {
+          itemName: "amplify-js",
+        },
       ],
     },
     {

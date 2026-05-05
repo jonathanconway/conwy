@@ -6,7 +6,7 @@
 ## Requirements [^requirements]
 
 - [ ] Ensure all and only the original requirements satisfied.<br /> #general--requirements #nfr--correctness
-- [ ] Ensure non-functional requirements addressed, correctly applied and properly prioritised.<br />For example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br /> #general--requirements
+- [ ] Ensure non-functional requirements addressed, correctly applied and prioritised with appropriate trade-offs.<br />For example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br /> #general--requirements
 - [ ] For changes that affect many execution paths, performance may be more critical, as slowness will have a massive impact.<br /> #general--requirements
 - [ ] Don't build features not explicitly documented in requirements.<br /> When in doubt, ask for clarification and/or update requirements.<br /> #general--requirements
 

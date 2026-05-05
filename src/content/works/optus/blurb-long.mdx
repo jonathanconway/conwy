@@ -1,3 +1,11 @@
 - Worked on **SubHub** backend auth flows for customers to activate third-party content subscriptions (Google One).
-- Built most of **Agent SubHub** frontend. Used by sales and support agents to manage customer accounts.
+  - Lambda functions and API Gateway configuration, handling all stages of the OAuth2 flow between SubHub and Google via Boingo third-party IdP.
+  - Lambda function version and stage management to maintain backwards compatibility.
+  - Logging and monitoring code and use of CloudWatch and DataDog to diagnose issues.
+- Built **Agent SubHub** frontend. Used by sales and support agents to manage customer accounts.
+  - Authentication single-sign-on (SSO) link, connecting from legacy system to new Agent SubHub, using pre-signed URL, with AWS Cognito integration.
+  - Front end built with React, Jotai, AWS AmplifyJS.
+  - Styled with TailwindCSS using `classNames` for maintainability and theme variables for custom branding.
 - Contributed to **Credit Offer** feature: backend components for scheduling and sending notification emails.
+  - Lambda functions handling DynamoDB updates via Event Source Mapping, with before/after checking and logic to determine customer credit offer eligibility.
+  - DynamoDB querying and schema changes.

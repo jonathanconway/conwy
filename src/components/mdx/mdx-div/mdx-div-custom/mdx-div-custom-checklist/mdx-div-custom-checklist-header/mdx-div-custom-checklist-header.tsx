@@ -18,11 +18,13 @@ export function MdxDivCustomChecklistHeader(
     <Stack>
       <ChecklistDownload checklistMeta={props.checklistMeta} />
 
-      <ChecklistFilters
-        tagGroups={props.checklistMeta.tagGroups}
-        selectedTags={mdxDivCustomChecklistContext.selectedFilters}
-        onChange={mdxDivCustomChecklistContext.onChangeSelectedFilters}
-      />
+      {props.checklistMeta.extensions && (
+        <ChecklistFilters
+          tagGroups={props.checklistMeta.extensions.tagGroups}
+          selectedTags={mdxDivCustomChecklistContext.selectedFilters}
+          onChange={mdxDivCustomChecklistContext.onChangeSelectedFilters}
+        />
+      )}
     </Stack>
   );
 }

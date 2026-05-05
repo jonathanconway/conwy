@@ -1,15 +1,23 @@
+import { readFileSync } from "fs";
 import { Metadata } from "next";
 
-import { buildChecklists } from "@/builders";
 import { ChecklistPage } from "@/components";
 import { site } from "@/content";
 import * as checklists from "@/content/checklists";
 import {
   Checklist as Checklist_,
+  generateChecklistMetaExtensions,
   importContentBySlug,
 } from "@/framework/client";
 
 import { PageProps } from "../../[slug]/types";
+
+function getChecklistMd(slug: string) {
+  const checklistMdFilePathName = `${process.cwd()}/src/content/checklists/${slug}/content.mdx`;
+  const checklistMd = readFileSync(checklistMdFilePathName).toString();
+
+  return checklistMd;
+}
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
@@ -20,7 +28,22 @@ export default async function Page(props: PageProps) {
     params.slug,
   );
 
-  return <ChecklistPage checklist={checklist} />;
+  const checklistMd = getChecklistMd(checklist.meta.slug);
+
+  const extensions = await generateChecklistMetaExtensions(
+    checklist.meta,
+    checklistMd,
+  );
+
+  const checklistWithMetaExtensions: Checklist_ = {
+    ...checklist,
+    meta: {
+      ...checklist.meta,
+      extensions,
+    },
+  };
+
+  return <ChecklistPage checklist={checklistWithMetaExtensions} />;
 }
 
 export async function generateStaticParams() {
@@ -35,8 +58,6 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
     "checklist",
     params.slug,
   );
-
-  buildChecklists([checklist.meta]);
 
   const checklistTitle = checklist.meta.title.toLowerCase();
   return {
