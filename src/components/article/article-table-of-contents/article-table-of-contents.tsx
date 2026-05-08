@@ -6,7 +6,6 @@ import { List } from "../../list";
 import { Responsive } from "../../responsive";
 import { Breakpoints } from "../../styling";
 import { TextSizes } from "../../text";
-import { getArticleHeadings } from "../article-headings";
 
 interface ArticleTableOfContentsProps {
   readonly article: Article;
@@ -15,8 +14,7 @@ interface ArticleTableOfContentsProps {
 export async function ArticleTableOfContents(
   props: ArticleTableOfContentsProps,
 ) {
-  const articleHeadings = await getArticleHeadings(props.article);
-
+  const articleHeadings = props.article.meta.extensions?.articleHeadings ?? [];
   if (articleHeadings.length < 2) {
     return null;
   }

@@ -3,18 +3,14 @@ import { Metadata } from "next";
 import { Article } from "@/components";
 import { site } from "@/content";
 import * as articles from "@/content/articles";
+import { getArticle } from "@/framework";
 import { Article as Article_, importContentBySlug } from "@/framework/client";
 
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
-
-  const article = importContentBySlug<Article_>(
-    articles,
-    "article",
-    params.slug,
-  );
+  const article = await getArticle(params.slug);
 
   return <Article article={article} />;
 }

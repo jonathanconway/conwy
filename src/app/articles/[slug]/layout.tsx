@@ -1,7 +1,13 @@
 import { ReactNode } from "react";
 
 import { ArticleLayout, ArticleSidebar } from "@/components";
-import { Article as Article_ } from "@/framework/client";
+import { getArticle, readContentMdx } from "@/framework";
+import {
+  Article as Article_,
+  ContentTypes,
+  generateArticleMetaExtensions,
+  importContentBySlug,
+} from "@/framework/client";
 
 interface LayoutProps {
   readonly children: ReactNode;
@@ -10,8 +16,8 @@ interface LayoutProps {
 
 export default async function Layout(props: LayoutProps) {
   const params = await props.params;
-  const articleModule = await import(`@/content/articles/${params.slug}`);
-  const article = Object.values(articleModule)[0] as Article_;
+
+  const article = await getArticle(params.slug);
 
   return (
     <ArticleLayout

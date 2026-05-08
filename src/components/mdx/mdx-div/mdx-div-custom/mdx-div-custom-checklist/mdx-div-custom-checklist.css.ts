@@ -9,7 +9,7 @@ export const mdxDivCustomChecklistBody = style({
 // This will be due to being excluded by the current filter.
 globalStyle(
   [
-    `${mdxDivCustomChecklistBody} h1:not(:has(+ ul li))`,
+    `${mdxDivCustomChecklistBody} h1:not(:has(+ h2:has(+ ul li)))`,
     `${mdxDivCustomChecklistBody} h2:not(:has(+ ul li))`,
     `${mdxDivCustomChecklistBody} h3:not(:has(+ ul li))`,
     `${mdxDivCustomChecklistBody} h4:not(:has(+ ul li))`,

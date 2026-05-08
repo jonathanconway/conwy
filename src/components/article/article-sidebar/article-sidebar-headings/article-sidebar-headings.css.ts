@@ -33,4 +33,11 @@ export const link = style({
   ...linkMixins.link,
   overflow: "hidden",
   textOverflow: "ellipsis",
+
+  "@media": {
+    [media.lgAndUp]: {
+      // Only on larger screens; otherwise, a wide link might blow out the page width.
+      whiteSpace: "nowrap",
+    },
+  },
 });

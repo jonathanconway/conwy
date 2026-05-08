@@ -3,7 +3,9 @@ import { MetaBase } from "../meta";
 import { PostTag } from "../post";
 import { SocialLink } from "../social-link";
 
-export interface ArticleMeta extends MetaBase {
+import { ArticleMetaExtensions } from "./article-meta-extensions";
+
+export interface ArticleMeta extends MetaBase<ArticleMetaExtensions> {
   readonly type: "article";
   readonly title: string;
   readonly createdDate: string;

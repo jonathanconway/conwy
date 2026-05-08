@@ -2,8 +2,7 @@ import { MetaBase } from "../meta";
 
 import { ChecklistMetaExtensions } from "./checklist-meta-extensions/checklist-meta-extensions";
 
-export interface ChecklistMeta extends MetaBase {
+export interface ChecklistMeta extends MetaBase<ChecklistMetaExtensions> {
   readonly title: string;
   readonly blurb: string;
-  readonly extensions?: ChecklistMetaExtensions;
 }

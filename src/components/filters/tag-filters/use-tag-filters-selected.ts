@@ -9,7 +9,7 @@ export function useTagFiltersSelected(searchParamKey: string) {
 
   const selectedTags = Array.from(
     searchParams.get(searchParamKey)?.split(",") ?? [ALL],
-  );
+  ).filter((searchParamValue) => searchParamValue.trim() !== "");
 
   function setSelectedTags(newSelectedTags: readonly string[]) {
     const params = new URLSearchParams(searchParams);

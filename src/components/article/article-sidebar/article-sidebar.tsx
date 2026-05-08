@@ -1,7 +1,5 @@
 import { Article as Article_ } from "@/framework/client";
 
-import { getArticleHeadings } from "../article-headings";
-
 import { ArticleSidebarContainer } from "./article-sidebar-container";
 import { ArticleSidebarHeadings } from "./article-sidebar-headings";
 import { ArticleSidebarImage } from "./article-sidebar-image";
@@ -15,16 +13,14 @@ export interface ArticleSidebarProps {
 export function ArticleSidebar(props: ArticleSidebarProps) {
   const { article } = props;
 
-  const articleHeadings = getArticleHeadings(article);
-
   return (
     <ArticleSidebarContainer>
       <div className={styles.container}>
-        <ArticleSidebarHeadings articleHeadings={articleHeadings} />
+        <ArticleSidebarHeadings articleMeta={article.meta} />
 
         <ArticleSidebarLinks articleMeta={article.meta} />
 
-        <ArticleSidebarImage meta={article.meta} />
+        <ArticleSidebarImage articleMeta={article.meta} />
       </div>
     </ArticleSidebarContainer>
   );

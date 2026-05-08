@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 import { ChecklistPage } from "@/components";
 import { site } from "@/content";
@@ -43,7 +44,11 @@ export default async function Page(props: PageProps) {
     },
   };
 
-  return <ChecklistPage checklist={checklistWithMetaExtensions} />;
+  return (
+    <Suspense>
+      <ChecklistPage checklist={checklistWithMetaExtensions} />
+    </Suspense>
+  );
 }
 
 export async function generateStaticParams() {
