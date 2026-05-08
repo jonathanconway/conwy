@@ -14,5 +14,6 @@ export * from "./perfection";
 export * from "./right-view";
 export * from "./something-you-like";
 export * from "./success";
+export * from "./treasures";
 export * from "./unknown";
 export * from "./wise-person-suffers";
