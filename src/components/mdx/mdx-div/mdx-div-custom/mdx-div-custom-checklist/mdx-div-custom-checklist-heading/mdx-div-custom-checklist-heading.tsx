@@ -1,7 +1,8 @@
+"use client";
+
 import { isArray } from "lodash";
 
 import {
-  assert,
   getTreeSubBranchByBranch,
   getTreeSubBranchDescendantsCount,
 } from "@/framework/client";
@@ -55,15 +56,25 @@ function createChecklistSectionHeadingProps(
 export function MdxDivCustomChecklistHeading(
   props: MdxDivCustomChecklistHeadingProps,
 ) {
-  const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
+  // const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
 
-  const checklistSectionHeadingProps = createChecklistSectionHeadingProps(
-    props,
-    mdxDivCustomChecklistContext,
+  // const checklistSectionHeadingProps = createChecklistSectionHeadingProps(
+  //   props,
+  //   mdxDivCustomChecklistContext,
+  // );
+  // if (checklistSectionHeadingProps) {
+  //   return (
+  //     <>
+  //       ChecklistSectionHeading
+  //       <ChecklistSectionHeading {...checklistSectionHeadingProps} />
+  //     </>
+  //   );
+  // }
+
+  return (
+    <>
+      Heading
+      <Heading {...props} />
+    </>
   );
-  if (checklistSectionHeadingProps) {
-    return <ChecklistSectionHeading {...checklistSectionHeadingProps} />;
-  }
-
-  return <Heading {...props} />;
 }

@@ -18,7 +18,7 @@ async function buildChecklistDownloadMd(checklistMeta: ChecklistMeta) {
   mkDirSyncIfNotExists(checklistDownloadMdFilePath);
 
   const checklistDownloadMdFilePathName = `${checklistDownloadMdFilePath}/${slug}.md`;
-  const checklistMdBody = checklistMd.split("-----")[1];
+  const checklistMdBody = checklistMd.split("{/* ----- */}").slice(1).join("");
   writeFileSync(checklistDownloadMdFilePathName, checklistMdBody);
 }
 
