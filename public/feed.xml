@@ -2441,7 +2441,7 @@ Many who worked with me will know I&#39;m a big fan of checklists. A good checkl
 - **It helps me organise my thinking.** Get clarity on what matters and doesn&#39;t matter; avoid getting overloaded.
 - **It helps me identify blind-spots.** Common human biases (such as confirmation bias) and also my own individual biases (from past experiences).
 
-Professional software construction and code review are complex tasks involving many elements. For example, software projects may involve tens or even hundreds of interrelated modules. Up to 18 non-functional requirements have been identified, any number of which might be important.
+Professional software construction and code review are complex tasks involving many elements. For example, software projects may involve tens or even hundreds of interrelated modules. Up to 18 [non-functional requirements](https://en.wikipedia.org/wiki/Non-functional_requirement) have been identified, any number of which might be important.
 
 But research has shown that the human mind is limited. We can only work with a finite number of concepts at a given time. Felienne Hermans discussed this in her book on programmer cognition.
 
@@ -2459,7 +2459,7 @@ Additionally, as research has shown, the human mind can be affected by cognitive
 
 Surgeon and author Atul Gawande famously wrote a book about checklists, demonstrating their use in overcoming such biases in various mission-critical contexts, from passenger flights to hospital operating rooms. The same principles can be applied to front end development, when tasks are complex and quality matters.
 
-&gt; Pull-quote: “Checklists seem to provide protection against such failures. They remind us of the minimum necessary steps and make them explicit They not only offer the possibility of verification but also instill a kind of discipline of higher performance.”
+&gt; Pull-quote: “Checklists seem to provide protection against such failures. They remind us of the minimum necessary steps and make them explicit. They not only offer the possibility of verification but also instill a kind of discipline of higher performance.”
 &gt;
 &gt; – [Atul GAWANDE • The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
 
@@ -2480,13 +2480,33 @@ Here I provide a general front end development checklist. But typically I will c
 
 Of course, much of good coding practice can and should be automated away. We have compilers, linters, formatters and, more recently, AI agents. What remains will likely consist of broader or more abstract thinking, requiring a human.
 
-Coding checklists can be input into AI agents. For example: a coding checklist can be included in an agent &quot;code review&quot; skill, helping the agent to provide useful feedback and even action the feedback itself. The checklist can be broken down into sections, each having guidance on when the agent should read it. This follows the principle of progressive disclosure, minimising context use and streamlining agent performance.
-
-Despite AI agents possibly being able to do most of the heavy lifting, I think it&#39;s still important to review code myself, just to be sure.
+However, despite AI agents possibly being able to do most of the heavy lifting of writing and reviewing code, I think it&#39;s still important to review agent output myself, just to be sure. As Mike Mason points out in a blog post, we don&#39;t really know the quality of AI generated code until we read it ourselves.
 
 &gt; Pull-quote:“Both things are true: there is good architecture in Claude Code, and there is also an incomprehensible mess. That&#39;s actually the point. **You don&#39;t get to know which is which without reading the code**.”
 &gt;
 &gt; – Mike Mason • [The Code You&#39;re Not Reading](https://mikemason.ca/writing/ai-slop-code-april-2026/) (bold mine)
+
+Checklists can serve as a valuable input into AI agents.
+
+Firstly, a checklist can be included in an agent &quot;code review&quot; skill, helping the agent to provide useful feedback and even action the feedback itself. The checklist can be broken down into sections, each having guidance on when the agent should read it. This follows the principle of progressive disclosure, minimising context use and streamlining agent performance.
+
+Secondly, a checklist can to form prompts, by helping me to know what kinds of questions to ask or how to frame prompts.
+
+To pick a random example: suppose I was prompting AI to implement a server-side call to retrieve a list of contacts.
+
+&gt; Implement a new endpoint, `/contacts-list`, which returns a JSON-formatted list of contacts.
+&gt; It should retrieve contacts from the `getContacts` gRPC endpoint on the `ContactsService`.
+
+Consulting the checklist, I might notice the following item:
+
+&gt; - [ ] Cache service-service or service-database calls to improve performance.For example, in a NextJS backend, wrap API service calls in `cache`. #general--caching #nfr--performance
+
+With this awareness, I could include in my prompt an instruction to cache service calls:
+
+&gt; Implement a new endpoint, `/contacts-list`, which returns a JSON-formatted list of contacts.
+&gt; It should retrieve contacts from the `getContacts` gRPC endpoint on the `ContactsService`.
+&gt; Make sure the API call is cached by wrapping it in a NextJS `cache` function call.
+
 
 ### Continuous improvement
 
@@ -2530,15 +2550,17 @@ To minimise the risk of missing something important, I set up the filters to be 
 
 ## Front End Development Checklist
 
+Here is the link:
 
+
+  
 
 
 ## Further reading
 
-### Cognitive biases
-
 - [Book: The Checklist Manifesto • Atul GAWANDE](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
-</content>
+- [Book: The Programmer&#39;s Brain • Felienne HERMANS](https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/)
+- [Book: Thinking, Fast and Slow • Daniel KAHNEMAN](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow)</content>
   </entry>
   
 
