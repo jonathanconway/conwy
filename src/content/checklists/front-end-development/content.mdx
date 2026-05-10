@@ -3,12 +3,17 @@
 
 
 
-## High-Level
+{/* ----- */}
 
 
 
 
-### Requirements [^requirements]
+## General
+
+
+
+
+### General - Requirements [^requirements]
 
 - [ ] Ensure non-functional requirements addressed, correctly applied and prioritised with appropriate trade-offs.<br />
   For example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br />
@@ -24,7 +29,7 @@
 
 
 
-### Solution design [^solution-design]
+### General - Solution design [^solution-design]
 
 - [ ] Keep it simple, don't over-engineer.<br />
   #general--solution-design
@@ -47,8 +52,86 @@
 
 
 
+### General - Cleanness [^cleanness]
 
-### Architecture [^architecture]
+- [ ] Check for subtle logic errors.<br />
+  False-positives. Checking for `true` when you should check for `false` or vice-versa.<br />
+  Confusing inclusive vs. exclusive ranges. *Between* 1 and 5 vs. *from* 1 to 5.<br />
+  Coercing truthy/falsy values to get an incorrect boolean result.<br />
+  Off-by-one errors. For example: starting a loop from 1 in a 0-based array.<br />
+  Filtering operations. Exclusive vs. inclusive lists. And vs. or operators.<br />
+  #general--cleanness
+- [ ] Test long sequences of actions and make sure the result at the end is exactly as expected.<br />
+  #general--cleanness
+- [ ] Check for typos, accidental keystrokes, inadvertent capitalisation.<br />
+  #general--cleanness
+- [ ] Input values in unexpectedly large quantities, in an unexpected format or null/empty values.<br />
+  #general--cleanness
+- [ ] Test with correctly formatted but illogical values.<br />
+  For example: a date that is the 32nd of the month.<br />
+  #general--cleanness
+- [ ] Add a larger than normal number of items to a list.<br />
+  #general--cleanness
+- [ ] Run multiple instances of the application at once and verify that it still works properly.<br />
+  #general--cleanness
+- [ ] Values vs. references.<br />
+  #general--cleanness
+- [ ] Check for memory leaks.<br />
+  Example: in Javascript, Maps that reference DOM nodes that no longer exist.<br />
+  Example: in RXJS, subscriptions to observables that you forgot to unsubscribe.<br />
+  Use tools for diagnosing memory leaks. For example: Chrome Developer Tools - Performance tab.<br />
+  #general--cleanness
+- [ ] Check for code executing too often.<br />
+  #general--cleanness
+- [ ] Check things that look and behave very similarly, but are qualitatively different.<br />
+  #general--cleanness
+- [ ] Null-checks.<br />
+  #general--cleanness
+- [ ] Async data dependencies.<br />
+  #general--cleanness
+- [ ] Browser/OS upgrades.<br />
+  #general--cleanness
+- [ ] Devices, screen sizes and zoom factors.<br />
+  #general--cleanness
+- [ ] Date and time handling and formatting.<br />
+  #general--cleanness
+- [ ] Numeric values, such as currency.<br />
+  #general--cleanness
+- [ ] Load testing.<br />
+  #general--cleanness
+- [ ] Requirements vs solution.<br />
+  #general--cleanness
+- [ ] Make sure you're running the expected version of the application when using it locally.<br />
+  #general--cleanness
+- [ ] Check in multiple environments.<br />
+  For example: make sure it works not only in Dev environment, but also in UAT and Prod environments.<br />
+  #general--cleanness
+- [ ] On finding a bug, search for similar bugs and fix them too.<br />
+  #general--cleanness
+- [ ] Errors of commission vs. omission.<br />
+  When adding new code, be careful that it doesn't cause an error.<br />
+  Similarly, when adding new code, be careful that you didn't *forget* to include something, which might cause an error.<br />
+  #general--cleanness
+- [ ] Don't consume a data source where in some contexts it might not be available.<br />
+  #general--cleanness
+- [ ] Re-testing after merge or rebase.<br />
+  #general--cleanness
+- [ ] Ensure all remote API calls are working correctly.<br />
+  Including: HTTP requests, web-sockets connections, etc.<br />
+  #general--cleanness
+- [ ] Check browser issue lists regularly to ensure changes do not break your application.<br />
+  [Website: Chromium issues](https://issues.chromium.org/issues?q=status:open)<br />
+  [Website: Firefox bugs](https://bugzilla.mozilla.org/describecomponents.cgi?product=Firefox)<br />
+  [Website: Safari &amp; Web | Apple Developer Forums](https://developer.apple.com/forums/topics/safari-and-web-topic)<br />
+  [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
+  #general--cleanness
+
+[^cleanness]: Cleanness refers to the absence of bugs or other mistakes in the application and code.
+
+
+
+
+### General - Architecture [^architecture]
 
 - [ ] Codebase<br />
   One codebase tracked in revision control, many deploys<br />
@@ -99,7 +182,7 @@
   [Article: The 12 Factor App - Admin processes](https://12factor.net/admin-processes)<br />
   #general--architecture
 
-[^architecture]: Architecture items in this checklist relate to code that influences, or is influenced by, architecture decisions.
+[^architecture]: Architecture items refer architecture as it in influences, or is influenced by, the front end.
 
 
 
@@ -113,18 +196,18 @@
 
 - [ ] Choose appropriate state management facility, considering all available options.<br />
   Scoped variable, Global variable, Component state, Context state, Global state, URL, Local/session storage, In-browser database, Server-side.<br />
-  #general--state
+  #concern--state
 - [ ] Represent state to the user.<br />
   For example: URL path/querystring.<br />
-  #general--state
+  #concern--state
 - [ ] Keep on server state that is sensitive or otherwise belongs there.<br />
-  #general--state
+  #concern--state
 - [ ] Avoid contradictions or inconsistencies in state if possible.<br />
   At least, within the same state structure. Clearly document any contradictions.<br />
-  #general--state
+  #concern--state
 - [ ] Avoid duplicated or redundant state.<br />
   Use calculated/memoized fields.<br />
-  #general--state
+  #concern--state
 
 [^state]: State refers to any kind of state management in the application.
 
@@ -134,15 +217,15 @@
 ### Errors [^errors]
 
 - [ ] Handle expected errors only.<br />
-  #general-errors
+  #concerns-errors
 - [ ] Use global error handling to ensure exceptions don't break the whole app and block the user.<br />
-  #general-errors
+  #concerns-errors
 - [ ] Don't handle exceptions without re-throwing unless it's necessary.<br />
   For example: a bug in the API that can't be resolved just yet. If necessary, thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
-  #general-errors #nfr--correctness
+  #concerns-errors #nfr--correctness
 - [ ] Define exceptions / errors out of existence where possible.<br />
   [Book: A Philosophy of Software Design, Ch 10](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
-  #general--code #general--errors
+  #general--errors
 
 [^errors]: Errors covers errors or exceptions that might occur within the application and how they are dealt with.
 
@@ -153,20 +236,20 @@
 
 - [ ] Invalidate a cache when the same data needs to be fetched freshly in a different context.<br />
   Use invalidation tags if available.<br />
-  #general--caching #nfr--correctness
+  #concern--caching #nfr--correctness
 - [ ] Avoid use of `localStorage`, `sessionStorage` and similar where possible.<br />
   As they introduce complications and maintenance overhead.<br />
-  #general--caching #nfr--maintainability
+  #concern--caching #nfr--maintainability
 - [ ] Select `localStorage`  vs `sessionStorage` correctly depending on how long data needs to live.<br />
-  #general--caching
+  #concern--caching
 - [ ] Cache service-service or service-database calls to improve performance.<br />
   For example: in a NextJS backend, wrap API service calls in `cache`.<br />
-  #general--caching #nfr--performance
+  #concern--caching #nfr--performance
 - [ ] When choosing caching strategy, consider whether cached call is idempotent, and treat appropriately.<br />
-  #general--caching
+  #concern--caching
 - [ ] Consider additional layer of caching for calls made many times.<br />
   For example: each item in a long list of items.<br />
-  #general--caching
+  #concern--caching
 
 [^caching]: Caching refers to storage of values, over various time-scales, for faster retrieval by the application.
 
@@ -177,11 +260,11 @@
 
 - [ ] Careful with locally sorting server-requested data.<br />
   Might not play nicely with server-side pagination.<br />
-  #general--paging-sorting
+  #concern--paging-sorting
 - [ ] Represent totals correctly – total of all items vs. current page items.<br />
-  #general--paging-sorting
+  #concern--paging-sorting
 - [ ] Ordering of paging vs. sorting – apply sort beforehand.<br />
-  #general--paging-sorting
+  #concern--paging-sorting
 
 [^paging-sorting]: Paging and sorting covers paging (or infinite scroll) and sorting (or ordering) of data sets in the application.
 
@@ -191,20 +274,20 @@
 ### Localisation [^localisation]
 
 - [ ] Localise all the text, and keep in a separate file or service.<br />
-  #general--localisation
+  #concern--localisation
 - [ ] Look for similar words/phrases and re-use for consistency.<br />
-  #general--localisation
+  #concern--localisation
 - [ ] Use readable, understandable naming for localisation keys.<br />
-  #general--localisation
+  #concern--localisation
 - [ ] Use consistent, hierarchical naming for localisation keys.<br />
   Similar sense of structure as for components or feature folders.<br />
-  #general--localisation
+  #concern--localisation
 - [ ] Put language and locale in URL.<br />
   For example: `mysite.com/en/AU/foo/bar`.<br />
-  #general--localisation
+  #concern--localisation
 - [ ] Search for other surrounding/similar/related localisation keys.<br />
   Make sure they are named and positioned consistently and hierarchically.<br />
-  #general--localisation #nfr--maintainability
+  #concern--localisation #nfr--maintainability
 
 [^localisation]: Localisation refers to the ability of the application to adapt to varying local factors, such as time-zone, language and formatting conventions.
 
@@ -214,38 +297,38 @@
 ### Feature flags [^feature-flags]
 
 - [ ] Put feature behind a feature flag as needed.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Don't add in shared package, keep in application code, so it can be properly specific.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Minimise usage of feature flags.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Ensure there is a removal or maintenance plan.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Check flag once at the highest level to avoid checking repeatedly at lower levels.<br />
   For example: if a flag turns off a whole list, put the if at the list level, not the list item level.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Regression test. Features not controlled by a feature flag should remain unaffected.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Hide or disable a whole page or route if its feature flag is off.<br />
   For example: prevent early disclosure or tip-off if we don't want the public to be aware of an upcoming feature.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Ensure the right people know about a feature flag.<br />
   For example: product-wide concern vs. engineering-only. Or inter-team concern vs. team-specific. Make sure appropriate people are informed.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Descriptions and any commentary should be accurate.<br />
   Check accuracy with regards to purpose of the flag, code and behaviour impacted, release dates, removal plan, etc.<br />
-  #general--feature-flags #general--documentation
+  #concern--feature-flags #concern--documentation
 - [ ] Ensure feature flag is applied to correct environment if configurable.<br />
   For example: dev only or also UAT and Prod.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Use case for feature flag: feature requires pen-testing before going live.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Ensure feature flag is added to relevant lists, documentation, etc.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Ensure feature flag is added to relevant back-end systems, configuration files, databases, etc.<br />
-  #general--feature-flags
+  #concern--feature-flags
 - [ ] Ensure feature flag is configured to be writeable via cookies or similar, if appropriate and required.<br />
-  #general--feature-flags
+  #concern--feature-flags
 
 [^feature-flags]: Feature flags refer to configuration settings that turn features on or off.
 
@@ -255,11 +338,11 @@
 ### Analytics [^analytics]
 
 - [ ] Add analytics code if needed.<br />
-  #general--analytics
+  #concern--analytics
 - [ ] Make sure names / labels / tags passed are correct. Not excessive or insufficient.<br />
-  #general--analytics
+  #concern--analytics
 - [ ] Check analytics calls, make sure they're not either excessive or being suppressed somehow.<br />
-  #general--analytics
+  #concern--analytics
 
 [^analytics]: Analytics refers to reporting of web application traffic and events, helping stakeholders understand user behavior and improve it.
 
@@ -272,78 +355,78 @@
 
 - [ ] Choose the right kind of test.<br />
   UI tests, Unit tests, Integration tests, E2E tests, Browser tests, PACT tests, Visual diff tests.<br />
-  #general--tests
+  #concern--tests
 - [ ] Prefer integration tests.<br />
   [Blog: Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)<br />
-  #general--tests
+  #concern--tests
 - [ ] Think about what value each test adds.<br />
-  #general--tests
+  #concern--tests
 - [ ] Break specific parts of the code under test and ensure tests fail in correct ways.<br />
-  #general--tests
+  #concern--tests
 - [ ] Keep tests small and concise.<br />
-  #general--tests
+  #concern--tests
 - [ ] Encode knowledge of how the code works in the test.<br />
-  #general--tests
+  #concern--tests
 - [ ] Don't overly nest describe blocks.<br />
-  #general--tests
+  #concern--tests
 - [ ] Don't overly split describe blocks such as many describe blocks that only have one test block inside.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use test utils/helpers where they can simplify test code.<br />
-  #general--tests
+  #concern--tests
 - [ ] Minimise test running time.<br />
-  #general--tests
+  #concern--tests
 - [ ] Eliminate errors and warnings in console when running test.<br />
-  #general--tests
+  #concern--tests
 - [ ] Name tests appropriately.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use immutable `const` where possible. Alternately, split into utility functions or before/after blocks.<br />
-  #general--tests
+  #concern--tests
 - [ ] Place tests in appropriate folder with appropriate meaningful filename.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use `beforeAll` rather than `beforeEach` where possible to minimise overhead.<br />
-  #general--tests
+  #concern--tests
 - [ ] Avoid `data-testid` if desired. Prefer to query by title, label, aria role, etc.<br />
   [Blog: Test IDs are an a11y smell](https://tkdodo.eu/blog/test-ids-are-an-a11y-smell)<br />
-  #general--tests
+  #concern--tests
 - [ ] Use appropriate formatting and values for `data-testid` - short, kebab-case, appropriate identifier.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use descriptive names rather than indexes for `const`s destructured from arrays.<br />
   For example: `usernameLabel` rather than `label0`.<br />
-  #general--tests
+  #concern--tests
 - [ ] Avoid `beforeEach`, prefer to keep setup in individual tests.<br />
-  #general--tests
+  #concern--tests
 - [ ] No need to cover behaviour built-in to the framework.<br />
-  #general--tests
+  #concern--tests
 - [ ] Group test code into chunks and give each a descriptive comment, for readability.<br />
-  #general--tests
+  #concern--tests
 - [ ] Keep tests in the right file. Split or combine as needed.<br />
-  #general--tests
+  #concern--tests
 - [ ] Think about how the test could fail, write the test test to fail, make it pass.<br />
-  #general--tests
+  #concern--tests
 - [ ] Improve or extend test data to more precisely capture test target and failure cases.<br />
-  #general--tests
+  #concern--tests
 - [ ] Only cover behaviour, including errors, that we expect to happen.<br />
-  #general--tests
+  #concern--tests
 
 #### Tests - Manual
 
 - [ ] Manually test the application, exercising every important code path impacted.<br />
   #nfr--correctness
 - [ ] Prioritise testing effort. For example: test high impact stuff first, then easy-to-test stuff, then the rest.<br />
-  #general--tests
+  #concern--tests
 - [ ] Test Required input fields - they should not accept blank spaces, strange characters, etc.<br />
-  #general--tests
+  #concern--tests
 - [ ] Test fields with extreme values, For example: very low or high numbers or very long strings.<br />
-  #general--tests
+  #concern--tests
 - [ ] Perform actions fast and/or with simulated slow conditions and ensure no breakage.<br />
-  #general--tests
+  #concern--tests
 - [ ] Test Lists, tables with very large data-sets, if expected, and ensure they scale.<br />
-  #general--tests
+  #concern--tests
 - [ ] Exercise every important code path that might be impacted by your change.<br />
-  #general--tests
+  #concern--tests
 - [ ] Consider whether a "transfer" type transaction should be supported with the same source and destination.<br />
   For example: sending a message to oneself, paying oneself, etc.<br />
-  #general--tests
+  #concern--tests
 - [ ] Test all paths that can lead to a particular piece of code running.<br />
   Not just the path that you're currently focussed on.<br />
    #nfr--correctness
@@ -354,166 +437,166 @@
 #### Tests - Unit
 
 - [ ] Maximise code coverage.<br />
-  #general--tests
+  #concern--tests
 - [ ] Put common behaviour (such as rendering) in functions rather than repeating in each test block.<br />
-  #general--tests
+  #concern--tests
 - [ ] Don't perform axe tests redundantly in unit tests, prefer E2E such as Playwright, as it's more realistic.<br />
-  #general--tests
+  #concern--tests
 - [ ] When mocking APIs, assert they were called with correct parameters (inside the mock function declaration).<br />
-  #general--tests
+  #concern--tests
 - [ ] No need to necessarily write unit tests if behaviour already covered by higher level (such as integration) and they are adding no value.<br />
-  #general--tests
+  #concern--tests
 
 #### Tests - Mocking
 
 - [ ] Mock structure - should be aligned with Backend API specs.<br />
-  #general--tests
+  #concern--tests
 - [ ] Mock values should be realistic, close to real data.<br />
-  #general--tests
+  #concern--tests
 - [ ] Keep mock objects as clean and simple as possible.<br />
-  #general--tests
+  #concern--tests
 - [ ] Clear mocks between assertions; this makes each assertion independent and prevents false positives.<br />
-  #general--tests
+  #concern--tests
 - [ ] Avoid mocking whole modules.<br />
   [Blog: Alternatives to module mocks in your unit tests](https://reacttdd.com/alternatives-to-module-mocks/)<br />
-  #general--tests
+  #concern--tests
 - [ ] Use mock data specific to your test, to avoid your test breaking when mock data changes.<br />
-  #general--tests
+  #concern--tests
 - [ ] Be careful about re-using mock data.<br />
   It can create a lot of complexity. Sometimes it's better to just completely declare the whole mock separately in each unit test, especially if the mocks can be kept very simple and only take maybe a few lines.<br />
-  #general--tests
+  #concern--tests
 - [ ] When mocks get big and complex, put a "base mock" in a separate mocks file and re-use it.<br />
   In each test, create an individual constant, using spread operator with type assertions.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use typed `assert` statements to traverse mocks with a deep nested structure and lots of nested optional fields.<br />
-  #general--tests
+  #concern--tests
 - [ ] Avoid importing lots of mocks from many different sources.<br />
   It's a sign that the tests or underlying code is highly coupled and needs to be broken down a bit or abstracted more.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use object cloning and assignment to set deeply nested field values as an alternative to complicated, deeply nested spread operators.<br />
-  #general--tests
+  #concern--tests
 - [ ] Mock endpoints such as network calls. Don't make real network calls inside unit tests.<br />
-  #general--tests
+  #concern--tests
 - [ ] No need to add full mocks or test coverage for features that are still under incremental development and behind feature flags, and where regression testing is adequate.<br />
-  #general--tests
+  #concern--tests
 
 #### Tests - Assertions
 
 - [ ] Nice error messages on test failure if possible.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use Regex pattern when asserting absences, so tests cover a wider range of failure cases.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use literals when asserting presences, so tests cover a narrower range of success cases, and so that failures are very clear.<br />
-  #general--tests
+  #concern--tests
 - [ ] When asserting on collections, assert on expected length first, so test breaks earlier and faster, and failure is faster to debug.<br />
-  #general--tests
+  #concern--tests
 - [ ] Assert counterfactuals. For example expect element not to exist.<br />
-  #general--tests
+  #concern--tests
 - [ ] Simplify big asserts.<br />
-  #general--tests
+  #concern--tests
 - [ ] Careful about modifying large asserts - make sure original intent is preserved.<br />
-  #general--tests
+  #concern--tests
 - [ ] Assert number of times function is called.<br />
-  #general--tests
+  #concern--tests
 - [ ] Omit field in asserted objects/arrays that aren't actually needed for the assertion to be correct and add value.<br />
-  #general--tests
+  #concern--tests
 - [ ] Ensure each and every assert works correctly in the failure cases.<br />
   Remove or modify code under test so that it fails.<br />
-  #general--tests
+  #concern--tests
 - [ ] Assert on parameter values of function calls.<br />
-  #general--tests
+  #concern--tests
 - [ ] Don't include unnecessary assertions.<br />
   For example: if clicking a button as part of an integration test, you don't necessarily need to assert on the button itself – its label, size, etc. – if the button is not the primary focus of the test.<br />
-  #general--tests
+  #concern--tests
 
 #### Tests - Assertions - Jest
 
 - [ ] Assert `toBe(true)` rather than `toBeTruthy()` if the expected value is exactly `true`.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Prefer explicit checks for existence (such as `.toBeInTheDocument()`) over more ambiguous checks (such as `.toBeTruthy()`).<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Assert on specific field values with dot notation (`foo.bar`) rather than cumbersome deeply nested `objectContains` or similar.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 
 #### Tests - React
 
 - [ ] use `<Component>` as easily recognisable title for component tests.<br />
-  #general--tests #framework--react
+  #concern--tests #framework--react
 - [ ] Use `exact: false` and/or `selector: "foo"` to select elements by partial text matching; more accurate than just using a `RegExp`.<br />
-  #general--tests #framework--react
+  #concern--tests #framework--react
 
 #### Tests - Jest
 
 - [ ] Use `waitForNextUpdate` when testing hooks rather than wrapping in `waitFor`.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Only use `waitFor` (avoid `act`) and explicitly wait for a side-effect (some text to appear, callback to be called, etc).<br />
   [Blog: Understanding act](https://reacttdd.com/understanding-act/)<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Use `waitFor` and `queryBy*` when asserting that an element was *not* rendered.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Don't use free-standing `wait`, wrap the code in `wait(() => { ... })` block.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Check far async causing unit test breakage to not get picked up by test.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Use helpers: `makeAxiosError`, `mockRoles`.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Avoid `waitFor` blocks. Just use `findBy*` where possible. Simpler.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Prefer `userEvent` rather than `fireEvent`, it's a higher abstraction level.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Call `userEvent.setup()` and use its return value, to isolate it per-test.<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 - [ ] Don't use `jest.mock`. Prefer `jest.spyOn`.<br />
   [StackOverflow Post: Why use `spyOn` with mock implementation rather than `jest.fn`?](https://stackoverflow.com/a/64930781/23341)<br />
-  #general--tests #framework--jest #language--javascript
+  #concern--tests #framework--jest #language--javascript
 
 #### Tests - Reliability
 
 - [ ] Use `void` rather than `async` prefix with `renderAsyncComponent`, then wait for one of its elements to render (using `findBy*` or `waitFor` block).<br />
   This avoids a race condition between the component loading and test logic that expects it to have loaded.<br />
-  #general--tests
+  #concern--tests
 - [ ] Always `await` calls to `userEvent` such as `userEvent.click()`, etc.<br />
-  #general--tests
+  #concern--tests
 - [ ] Run the test many times repeatedly to test for flakiness (time permitting).<br />
-  #general--tests
+  #concern--tests
 - [ ] Add longer timeouts, where necessary, to prevent timeout failures.<br />
   Add to test locators, assertions or whole test files.<br />
-  #general--tests
+  #concern--tests
 - [ ] When there's a chain of API calls, see if you can wait for each to evaluate first, before asserting, to reduce likelihood of flakiness.<br />
-  #general--tests
+  #concern--tests
 - [ ] Don't assert on animation events like aria-busy if they cause flakiness.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use `getBy` subsequently, once component has loaded. Using `findBy` on the first component, to wait for it to be loaded, followed by `getBy` to assert on the loaded elements.<br />
-  #general--tests
+  #concern--tests
 
 #### Tests - E2E
 
 - [ ] Add if needed.<br />
-  #general--tests
+  #concern--tests
 - [ ] Log a task for it, if it's involved work.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use `test.step` to divide the internals of a test into smaller, well described sub-tests.<br />
-  #general--tests
+  #concern--tests
 - [ ] When in doubt, remove code under test and ensure test assertions fail appropriately.<br />
-  #general--tests
+  #concern--tests
 - [ ] Be mindful when writing E2E tests to reduce flakiness and slowness.<br />
-  #general--tests
+  #concern--tests
 - [ ] After navigation or reload, wait for page to load before continuing.<br />
-  #general--tests
+  #concern--tests
 - [ ] Use `toBeInViewport` vs `toBeVisible` appropriately, depending on how the elements are rendering.<br />
-  #general--tests
+  #concern--tests
 - [ ] condense element lookup into one expect if possible rather than multiple DOM accesses and traversals, which take up time.<br />
-  #general--tests
+  #concern--tests
 - [ ] Remove unnecessary `test.slow` or `test.setTimeout`.<br />
-  #general--tests
+  #concern--tests
 - [ ] Add accessibility tests (such as `axe`).<br />
-  #general--tests
+  #concern--tests
 - [ ] Clear input before populating with new value.<br />
-  #general--tests
+  #concern--tests
 - [ ] Run tests and check for accessibility violations as "warn" entries in console.<br />
-  #general--tests
+  #concern--tests
 - [ ] Avoid checks that are redundant because the code would have failed by that point.<br />
-  #general--tests
+  #concern--tests
 
 [^tests]: Tests refers to test specification and implementation, used to verify correctness and quality of the application. Both manual and automated testing is covered here.
 
@@ -523,10 +606,10 @@
 ### Version control [^version-control]
 
 - [ ] Rebase on main/master regularly.<br />
-  #general--version-control
+  #concern--version-control
 - [ ] Write readable, well formatted commits.<br />
   Use [Conventional Commits](https://www.conventionalcommits.org) or whatever format the team agrees on.
-  #general--version-control #general--documentation
+  #concern--version-control #concern--documentation
 
 [^version-control]: Version control system (VCS), such as Git or Mercurial.
 
@@ -536,47 +619,48 @@
 ### Logging, monitoring and observability [^monitoring-logging-and-observability]
 
 - [ ] Remove logging, observability or other diagnostics if not intended to go into prod.<br />
-  #general--logging-monitoring-and-observability #nfr--observability
+  #concern--logging-monitoring-and-observability #nfr--observability
 - [ ] Add observability or other diagnostics if intended to go into prod.<br />
-  #general--logging-monitoring-and-observability #nfr--observability
+  #concern--logging-monitoring-and-observability #nfr--observability
 
 [^monitoring-logging-and-observability]: Logging (for debugging purposes) and monitoring and observability (for understanding system performance and behavior).
+
 
 
 
 ### Pull request [^pull-request]
 
 - [ ] Keep small and focussed, split where needed to keep each PR small.<br />
-  #general--pull-request #nfr--readability 
+  #concern--pull-request #nfr--readability 
 - [ ] Include links to task, designs, requirements, specifications, etc.<br />
-  #general--pull-request #general--documentation
+  #concern--pull-request #concern--documentation
 - [ ] Ensure that all automated checks pass before sending the PR for review.<br />
-  #general--pull-request
+  #concern--pull-request
 - [ ] Make sure everything is provided for devs to checkout and test from scratch.<br />
   For example: installation instructions, credentials, test accounts.<br />
-  #general--pull-request #nfr--testability
+  #concern--pull-request #nfr--testability
 - [ ] Create preview / staging site.<br />
   And include instructions to access if needed.<br />
-  #general--pull-request
+  #concern--pull-request
 - [ ] Apply changes in separate commits to allow history to be viewed and discussed.<br />
-  #general--pull-request
+  #concern--pull-request
 - [ ] Remove temporary settings before setting PR to Open.<br />
   For example: temporary test-only configurations or feature flag settings.<br />
-  #general--pull-request
+  #concern--pull-request
 - [ ] Review with stakeholders (design, analysts, etc) before merge, if needed.<br />
-  #general--pull-request #nfr--correctness
+  #concern--pull-request #nfr--correctness
 - [ ] Split functional and non-functional changes into separate PRs.<br />
-  #general--pull-request
+  #concern--pull-request
 - [ ] Split features and bug fixes or refactoring into separate PRS.<br />
-  #general--pull-request
+  #concern--pull-request
 - [ ] In description and inline comments, address non-functional requirements (NFRs).<br />
   Accessibility, performance, security, etc.<br />
-  #general--pull-request
+  #concern--pull-request
 - [ ] Seriously consider any AI bot suggestion.<br />
-  #general--pull-request #general--ai
+  #concern--pull-request #general--ai
 - [ ] Regression-test everything after actioning PR feedback.<br />
   In case the actioning of the feedback itself contained a bug.<br />
-  #general--pull-request
+  #concern--pull-request
 
 [^pull-request]: Pull request items relate to pull request process and structure.
 
@@ -587,70 +671,70 @@
 
 - [ ] Add `README.md`.<br />
   Detail what this is and link to other docs for specific details.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Add how to install instructions.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Add how to contribute instructions in `CONTRIBUTING.md`.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Ensure it is as easy as possible for new starters to get started.<br />
   Try installing and running the application yourself, from scratch, as if a new joiner. Go through some of the major flows.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Ensure new starters can readily find information needed.<br />
   For example: ensure documentation is available and searchable.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] In lists of steps, avoid one step getting too big.<br />
   Split out to separate steps as needed.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] In lists of steps, avoid too many small steps that are closely related.<br />
   Merge into a bigger step as needed.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Ensure steps are clearly indicated as "required", if necessary.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Ensure code samples match up with instructions.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Check if design, code, documentation, etc. need to be updated so they are all consistent.<br />
-  #general--documentation #nfr--correctness
+  #concern--documentation #nfr--correctness
 
 #### Documentation - Comments
 
 - [ ] Describe the why not the what, let the code describe the what.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Describe “why not” to communicate why one solution was chosen over another seemingly better solution.<br />
   For example: "We went with z. Why not y? Because z.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Comment anything that needs fixing later with `TODO` only if that's the convention.<br />
   Otherwise, log an appropriate ticket.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Describe function parameters, object fields, types, interfaces, constants, etc. with JSDoc comments, if not apparent.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Describe advanced features the consumer is unlikely to know.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Add warnings where needed.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Use shorter, more precise sentences.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Communicate intent.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Use information-dense words.<br />
   For example: refer to the name of a software pattern rather than explaining the whole thing.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Don't include anything likely to create tedious maintenance overhead.<br />
   Such as specific amounts, etc.<br />
-  #general--documentation
+  #concern--documentation
 
 #### Documentation - Commits
 
 - [ ] Explain **why** not what, audience is seeing it through git blame.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Brief, respect people's time.<br />
-  #general--documentation
+  #concern--documentation
 
 #### Documentation - Bug Reports
 
 - [ ] Expected vs actual and reproduction steps and test data.<br />
-  #general--documentation
+  #concern--documentation
 - [ ] Dig into the code to find out why and report what you found.<br />
-  #general--documentation
+  #concern--documentation
 
 [^documentation]: Documentation refers to written documentation, code comments or self-documenting code.
 
@@ -762,7 +846,7 @@
 - [ ] Use expanded syntax for function declaration where it helps.<br />
   That is: `function foo() { ... }` in Typescript.<br />
   For example: this makes it easier to insert logging or other statements if you know they will be needed.<br />
-  #general--maintainability
+  #nfr--maintainability
 
 [^maintainability]: Maintainability refers to the ease with which the software can be modified, updated, or repaired over time.
 
@@ -772,10 +856,10 @@
 ### Testability [^testability]
 
 - [ ] Allow space for log statements to be easily inserted.<br />
-  #general--testability
+  #nfr--testability
 - [ ] Use interface-based designs, to allow functions, classes, etc. to be isolated for unit testing.<br />
   [Book: The Art of Unit Testing, 11.2.2, pp. 222 • Roy OSHEROV](https://www.artofunittesting.com)<br />
-  #general--testability
+  #nfr--testability
 
 [^testability]: Testability refers to the degree to which software can be effectively tested. 
 
@@ -870,7 +954,7 @@
 - [ ] Use lightweight plain HTML elements where possible, For example: `<div>` instead of `<Box>`.<br />
   #nfr--accessibility #language--html
 - [ ] No new errors in unit tests such as Axe, including whole page scan.<br />
-  #nfr--accessibility #language--javascript #general--tests
+  #nfr--accessibility #language--javascript #concern--tests
 - [ ] For loading indicators, apply `role=status` and include "Loading" text in nested, screen-reader-only element.<br />
   [Docs: Bootstrap - Spinners](https://getbootstrap.com/docs/4.5/components/spinners/) <br />
   #language--html #nfr--accessibility
@@ -882,7 +966,7 @@
   #nfr--accessibility
 - [ ] Test IDs probably mean elements aren't specified well enough by semantically, by tag name, aria tags, etc.<br />
   [Blog: Test IDs are an a11y smell](https://tkdodo.eu/blog/test-ids-are-an-a11y-smell)<br />
-  #nfr--accessibility #general--tests
+  #nfr--accessibility #concern--tests
 
 #### Accessibility - Perceivable
 
@@ -1247,6 +1331,8 @@
 - [ ] Fall back to sensible defaults for unexpected values.<br />
   For example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
   #nfr--robustness
+- [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
+  #nfr--robustness
 
 [^robustness]: Robustness is the ability of software systems to react appropriately to abnormal conditions.
 
@@ -1289,12 +1375,12 @@
   #nfr--reliability
 - [ ] Check parameters and early return / throw if unexpected.<br />
   Use typed `assert` if possible, for conciseness.<br />
-  #general--code #nfr--reliability #nfr--correctness #language--typescript
+  #nfr--reliability #nfr--correctness #language--typescript
 - [ ] Avoid code that dynamically accesses other code without the developer being aware, and might break if that code changes.<br />
-  #general--code #nfr--reliability #nfr--maintainability
+  #nfr--reliability #nfr--maintainability
 - [ ] Perform impact analysis if adding an entry in some structure.<br />
   For example: dictionary, enum, etc. Be careful that there isn't some code that dynamically operates on that structure, which is impacted.<br />
-  #general--code #nfr--reliability #nfr--correctness
+  #nfr--reliability #nfr--correctness
 
 [^reliability]: Reliability refers to the probability the application will operate with minimal (or acceptable) level of failures.
 
@@ -1421,7 +1507,7 @@
   #nfr--security
 - [ ] Careful to avoid private data being leaked via logs.<br />
   For example: PII [^pii] or secrets.<br />
-  #general--logging-monitoring-and-observability #nfr--observability
+  #nfr--security #concern--logging-monitoring-and-observability #nfr--observability
 
 [^security]: Security refers to protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
 [^pii]: Personally Identifiable Information
@@ -1431,7 +1517,7 @@
 
 ### Usability [^usability]
 
-[^usability]: Items in this checklist relate to the user interface usability and overall user experience.
+[^usability]: Items in this checklist relate to the user interface usability and overall user experience.<br />
 
 
 
@@ -1439,15 +1525,15 @@
 #### Usability - Interactions
 
 - [ ] Handle error states with helpful messages and feedback.<br />
-  #general--design
+  #nfr--usability #usability--interaction
 - [ ] Handle loading states with appropriate visual / textual cues, without breaking anything.<br />
-  #general--design
+  #nfr--usability #usability--interaction
 - [ ] Smooth loading states, eliminate weird artefacts, distortion, etc.<br />
-  #general--design
+  #nfr--usability #usability--interaction
 - [ ] Always represent user's input even if invalid; show validation alongside invalid value.<br />
-  #general--design
+  #nfr--usability #usability--interaction
 - [ ] Responsive, snappy, instant feedback even if it's just transition to a loading state.<br />
-  #general--design
+  #nfr--usability #usability--interaction
 
 
 
@@ -1455,18 +1541,18 @@
 #### Usability - Modals
 
 - [ ] Capture focus on open.<br />
-  #general--design
+  #nfr--usability #usability--modals
 - [ ] Easily closable.<br />
-  #general--design
+  #nfr--usability #usability--modals
 - [ ] Use modal props, not conditional rendering, to support animation on modal open/close.<br />
-  #general--design
+  #nfr--usability #usability--modals
 - [ ] Present the outcome of a multi-step process in a way that makes sense to the user.<br />
   For example: making a transfer in a banking app should results in a success screen with summary of the details; also the transfer should be shown in the transactions list.<br />
-  #general--design
+  #nfr--usability #usability--modals
 - [ ] Careful when consuming context inside a modal – ensure it works in every case where the modal appears.<br />
-  #general--design
+  #nfr--usability #usability--modals
 - [ ] Ensure `Esc` keypress is handled, as a way to quickly close the modal.<br />
-  #general--design
+  #nfr--usability #usability--modals
 
 
 
@@ -1474,46 +1560,54 @@
 #### Usability - Visual design
 
 - [ ] Light/dark mode.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Accessible colour contrast.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] High-contrast mode for applications that will be used under bright light, outdoors, etc.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Large tapping surface area for applications that will be used on-the-go, during movement or on unstable surfaces.<br />
   For example: hand-held device that will be used on a construction site.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Compare with design, ensure alignment.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Should conform to general UI guidelines if provided.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Disable / hide actions if a system error will make them inaccessible.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Whole button should be clickable, not just part of it.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Loading indicators.<br />
   Spinners, indicators or skeletons.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 - [ ] Correct mouse pointer.<br />
-  #general--design
+  #nfr--usability #usability--visual-design
 
 
 
 
-#### Usability - Text
+#### Usability - Text [^text]
 
 - [ ] Shorten very long text and ensure it does not break layout.<br />
   Use ellipsis, wrap or summarise and add "more" button.<br />
-  #general--design
+  #nfr--usability #usability--text
 - [ ] Consistent casing.<br />
-  #general--design
+  #nfr--usability #usability--text
 - [ ] Correct localisation / internationalisation as needed.<br />
-  #general--design
+  #nfr--usability #usability--text
 - [ ] Sort lists correctly. For example: alphabetically.<br />
-  #general--design
+  #nfr--usability #usability--text
 - [ ] Avoid user seeing duplicate labels / names of things and getting confused.<br />
-  #general--design
+  #nfr--usability #usability--text
 - [ ] Unless specified otherwise, all text rendered should be selectable and copyable.<br />
-  #general--design
+  #nfr--usability #usability--text
+- [ ] Run basic spelling and grammar check.<br />
+  #nfr--usability #usability--text
+- [ ] Use consistent phrasing, formatting.<br />
+  #nfr--usability #usability--text
+- [ ] Use slanted single-quotes where possible instead of instead of straight.<br />
+  #nfr--usability #usability--text
+
+[^text]: Text items relate to code used to convey textual information to the user.
 
 
 
@@ -1521,13 +1615,13 @@
 #### Usability - Design system
 
 - [ ] Use correct layout components.<br />
-  #general--design
+  #nfr--usability #usability--design-system
 - [ ] Use existing design system patterns or library components, don't re-invent.<br />
-  #general--design
+  #nfr--usability #usability--design-system
 - [ ] Make sure look & feel is broadly consistent with the rest of the site; question the design as needed.<br />
-  #general--design
+  #nfr--usability #usability--design-system
 - [ ] Careful not to accidentally deviate from design system by blindly following design mock-up.<br />
-  #general--design
+  #nfr--usability #usability--design-system
 
 
 
@@ -1535,13 +1629,13 @@
 #### Usability - Component library
 
 - [ ] Before using custom classes, props, etc. check if it's part of component library already.<br />
-  #general--design
+  #nfr--usability #usability--component-library
 - [ ] Keep component library version up-to-date.<br />
-  #general--design
+  #nfr--usability #usability--component-library
 - [ ] Prefer to use component props where possible rather than manual CSS styling.<br />
-  #general--design
+  #nfr--usability #usability--component-library
 - [ ] Look for usage examples in component library and keep consistent with them.<br />
-  #general--design
+  #nfr--usability #usability--component-library
 
 
 
@@ -1549,52 +1643,35 @@
 #### Usability - Transitions and errors
 
 - [ ] Minimise Cumulative Layout Shift (CLS).<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Handle errors that can occur in a user friendly way.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Handle failed requests as errors.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Handle loading states with appropriate visual / textual cues, without breaking anything.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Smooth state transitions to/from loading and error.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Eliminate weird artefacts, distortion, etc.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Error pages for failed full page loads.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Ensure any update to a value in one place reflected in the value in another place.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Ensure any update on one device is reflected on other devices.<br />
-  #general--design #nfr--usability
+  #nfr--usability #usability--transitions-and-errors
 
 
 
 
-
-#### Usability - Content [^content]
-
-- [ ] Run basic spelling and grammar check.<br />
-  #general--content
-- [ ] Use consistent phrasing, formatting.<br />
-  #general--content
-- [ ] Use slanted single-quotes where possible instead of instead of straight.<br />
-  #general--content
-
-[^content]: Content items relate to code used to convey textual information to the user.
-
-
-
-
-#### Usability - Date and time [^date-and-time]
+#### Usability - Date and time
 
 - [ ] Ensure multiple time-zones are supported if necessary. Test with simulated time-zone.<br />
-  #general--date-and-time
+  #nfr--usability #usability--date-and-time
 - [ ] Formatting date or time values should follow user's locale format and show value in correct time-zone.<br />
-  #general--date-and-time
+  #nfr--usability #usability--date-and-time
 - [ ] Ensure time-zone differences between hosting location and user's browser location do not create issues.<br />
-  #general--date-and-time
-
-[^date-and-time]: Date and time items relate to code and systems that deal with date and time directly or are impacted by date and time factors such as the user's time-zone.
+  #nfr--usability #usability--date-and-time
 
 
 
@@ -1603,9 +1680,9 @@
 
 - [ ] Format numeric values correctly.<br />
   For example: currencies should use correct comma and currency symbol or code if needed.<br />
-  #general--numbers
+  #nfr--usability #usability--numbers
 - [ ] Parse numeric values received as a string to the correct number format.<br />
-  #general--numbers
+  #nfr--usability #usability--numbers
 
 [^numbers]: Numbers items relate to code and systems that deal with numeric values.
 
@@ -1616,174 +1693,190 @@
 
 - [ ] Do not handle button click while in loading or saving state.<br />
   Use ally attrs appropriately.<br />
-  #general--forms #nfr--reliability
+  #nfr--usability #usability--forms #nfr--reliability
 - [ ] Don't disable buttons when form is in invalid state.<br />
   [Article: Do not disable buttons](https://marcoheine.com/blog/do-not-disable-buttons)<br />
-  #general--forms #nfr--accessibility
+  #nfr--usability #usability--forms #nfr--accessibility
 - [ ] Careful not to let initial values be wiped when there's a background data refresh.<br />
-  #general--forms
+  #nfr--usability #usability--forms
 - [ ] Consider whether one input should filter another input.<br />
   For example: transfer from one account to another should nat allow transfer from one account to itself.<br />
-  #general--forms #nfr--usability
+  #nfr--usability #usability--forms
 - [ ] Pre-fill field values where it improves usability.<br />
-  #general--forms #nfr--usability
+  #nfr--usability #usability--forms
 - [ ] Order similar sequences of elements similarly.<br />
   For example: From and To accounts should be ordered the same for Payment as for Transfer.<br />
-  #general--forms #nfr--usability
+  #nfr--usability #usability--forms
 - [ ] Careful not to allow multiple rapid form submits or actions.<br />
   This could expose automated DOS attacks.<br />
-  #general--forms #nfr--security
+  #usability--forms #nfr--security
 - [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
-  #general--forms #nfr--usability
+  #nfr--usability #usability--forms
 - [ ] Display validations summary at the top of the form if possible, with summarised listing of invalid fields.<br />
-  #general--forms #nfr--security
+  #nfr--usability #usability--forms #nfr--security
 
 [^forms]: Forms refers to collections of inputs that users fill in with data on a web page.
 
 
 
 
-## Coding
+## Code
 
 
 
 
-### Code [^code]
-
-[^code]: Code refers to any kind of code in any language.
+### Code - General [^code-general]
 
 - [ ] Use clean code.<br />
   Scan the code quickly and ensure it is understandable.<br />
   Minimal - remove unnecessary code. Simple - use "boring" code.<br />
-  #general--code #nfr--simplicity #nfr--readability
+  #code--general #nfr--simplicity #nfr--readability
 - [ ] Use library and language facilities correctly. Don't re-invent the wheel.<br />
-  #general--code #nfr--readability #nfr--performance #nfr--reliability
+  #nfr--readability #nfr--performance #nfr--reliability
 - [ ] Check for typos (accidental keystrokes) or accidental mis-spellings.<br />
-  #general--code
+  #code--general
 - [ ] Ensure pass-by-value vs. pass-by-reference are being used correctly.<br />
-  #general--code
+  #code--general 
+
+[^code-general]: Code - general refers to any kind of code in any language.
+
+
+
 
 #### Code - Structure
 
 - [ ] Don't clutter shared folders like atoms with components only used in one file.<br />
   Just declare them inline in that file.<br />
-  #general--code
+  #code--structure
 - [ ] Deep classes, shallow interfaces.<br />
   [Book: A Philosophy of Software Design, Ch 4](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
-  #general--code
+  #code--structure
 - [ ] Define overly complex structures out of existence.<br />
   Change the design so that they are unnecessary.<br />
-  #general--code #nfr--readability #nfr--maintainability
+  #code--structure #nfr--readability #nfr--maintainability
 - [ ] Use a more specific structure (function, variable, etc) if appropriate.<br />
-  #general--code
+  #code--structure
 - [ ] Re-use an existing structure (function, variable, etc) if appropriate.<br />
   Move it to a shared folder/package/module and export.<br />
-  #general--code
+  #code--structure
 - [ ] Re-use code in a higher-level folder/package/module where possible.<br />
-  #general--code
+  #code--structure
 - [ ] Keep list entries in alphabetical order when adding or moving, if that's the convention.<br />
-  #general--code
+  #code--structure
 - [ ] Don't add specific things to generic components.<br />
-  #general--code
+  #code--structure
 - [ ] Move code to a common/shared module if appropriate.<br />
-  #general--code
+  #code--structure
 - [ ] Move code to a more specific module or deeper sub-folder if appropriate.<br />
-  #general--code
+  #code--structure
 - [ ] Move common data to a higher-level function and pass down (or otherwise share) to more lower-level functions.<br />
-  #general--code
+  #code--structure
 - [ ] Pull a file up to a higher folder level if it is consumed by sub-folders of that level.<br />
-  #general--code
+  #code--structure
 - [ ] Look at other adjacent or nearby similar constructs and think about how they should be modified (or left the same).<br />
-  #general--code
+  #code--structure
 - [ ] Don't extract functions that are extremely trivial, where there is no complexity to hide.<br />
   For example: it doesn't make sense to extract: `foo > 0` to `isGreaterThanZero`. Having a whole separate function for something so trivial does not add value.<br />
-  #general--code
+  #code--structure
 - [ ] Don't do barrel exports.<br />
   [Blog: Please Stop Using Barrel Files](https://tkdodo.eu/blog/please-stop-using-barrel-files)<br />
-  #general--code
+  #code--structure
+
+
 
 
 #### Code - Naming
 
 - [ ] Simple plain English as much as possible.<br />
-  #general--code
+  #code--naming
 - [ ] Choose specific words carefully and deliberately.<br />
-  #general--code
+  #code--naming
 - [ ] Use names that won't go out of date in future.<br />
-  #general--code
+  #code--naming
 - [ ] Use consistent prefixes. pronouns, similar.<br />
   For example: `has{Foo}` if that's the convention in the code-base. Prefix booleans with `is`, `can`, `has`, `should`, etc.<br />
-  #general--code
+  #code--naming
 - [ ] Use consistent pluralisation.<br />
   For example: `Features` vs `Feature`.<br />
-  #general--code
+  #code--naming
 - [ ] Use specific rather than generic names, where that's clearer.<br />
-  #general--code
+  #code--naming
 - [ ] Use consistent casing.<br />
   For example: `camelCase`, `PascalCase`, etc.<br />
-  #general--code
+  #code--naming
 - [ ] Reference appropriate units.<br />
   For example: dollars, pixels, etc.<br />
-  #general--code
+  #code--naming
 - [ ] Include important information.<br />
   For example: `plaintextPassword` if that matters for security.<br />
-  #general--code
+  #code--naming
 - [ ] Think about how long name should be.<br />
   Keep it as short as possible.<br />
-  #general--code
+  #code--naming
 - [ ] Use name formatting to pack extra information.<br />
   For example: local members prefixed with `l`.<br />
-  #general--code
+  #code--naming
 - [ ] Name ranges intuitively.<br />
   For example: min/max for inclusive limits, first/last for inclusive ranges.<br />
-  #general--code
+  #code--naming
 - [ ] Match expectations of consumers.<br />
   For example: don't name expensive calculation like a simple "getter".<br />
-  #general--code
+  #code--naming
 - [ ] Enum values should match up with keys and use correct formatting.<br />
   For example: `snake-case`.<br />
-  #general--code
+  #code--naming
 - [ ] Avoid single-letter or otherwise cryptic names.<br />
-  #general--code
+  #code--naming
 - [ ] Naming should be intuitive.<br />
-  #general--code
+  #code--naming
 - [ ] Name files consistent with their main purpose, main export, etc.<br />
-  #general--code
+  #code--naming
 - [ ] Use longer names with rigorous prefixing, to prevent name clashes, where that's likely.<br />
-  #general--code
+  #code--naming#general--code
 - [ ] Avoid duplicating names within the same structure.<br />
   For example: don't name a variable inside a function the same as the containing function.<br />
-  #general--code
+  #code--naming
 - [ ] Structural naming, when important.<br />
   Have a hierarchy, such as FooBar, FooBarBaz, FooBiz, etc.<br />
-  #general--code
+  #code--naming
+
+
+
 
 #### Code - Removing or modifying
 
 - [ ] When adding or removing an item in a hard-coded set, be careful of the impact.<br />
   For example: when changing an enumeration, check that there isn't any code that dynamically loops over it, which gets inadvertently impacted.<br />
-  #general--code
+  #code--removing-or-modifying
 - [ ] If code is removed, also find and remove now-unused / "orphaned" code.<br />
-  #general--code #nfr--readability #nfr--maintainability.<br />
+  #code--removing-or-modifying #nfr--readability #nfr--maintainability.<br />
 - [ ] Careful when modifying big complex statements or code blocks.<br />
   Ensure original meaning and function is preserved.<br />
-  #general--code #nfr--readability #nfr--correctness
+  #code--removing-or-modifying #nfr--readability #nfr--correctness
+
+
+
 
 #### Code - Logic
 
 - [ ] Check for off-by-one errors.<br />
-  #general--code
+  #code--logic
 - [ ] Check for false-positives.<br />
   For example: a `true` check that seems superficially correct, but is actually the wrong way round.<br />
-  #general--code
+  #code--logic
 - [ ] Check for expressions being implicitly coerced to incorrect boolean values.<br />
   For example: `if (foo)` where `foo` is assumed to evaluate to `false` under certain conditions, but actually does not.<br />
-  #general--code
+  #code--logic
 - [ ] Incorrect filtering, such as excluding when you intended to include.<br />
-  #general--code
+  #code--logic
 - [ ] Mixing destructive and non-destructive set operations, resulting in missing items.<br />
   For example: slicing first then sorting.<br />
-  #general--code
+  #code--logic
+
+
+
+
+# Language
 
 
 
@@ -1815,10 +1908,10 @@
 
 - [ ] Ensure API request parameters and response fields are used correctly.<br />
   Verify with Backend developers if uncertain and ensure correct usage is clearly spelled out in code or documented somewhere.<br />
-  #nfr--correctness #backend-calls
+  #language--javascript #nfr--correctness #backend-calls
 - [ ] Check for bad values returned from API calls.<br />
   Ensure they're logged and handled as smoothly as possible from user's perspective.<br />
-  #nfr--correctness
+  #language--javascript #nfr--correctness
 
 [^javascript]: Javascript items relate to Javascript and code that compiles to Javascript, such as Typescript.
 
@@ -1909,7 +2002,7 @@
 
 
 
-## Frameworks
+## Framework
 
 
 
@@ -2014,7 +2107,7 @@
   [Blog: Persisting React State in localStorage](https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/)<br />
   #framework--react
 
-#### React - Bug prevention
+#### React - Cleanness
 
 - [ ] Ensure a hook does not depend context which is not available.<br />
   If context is not available, it should not break the app when the hook is rendered.<br />
@@ -2033,11 +2126,6 @@
   #framework--react
 
 [^react]: React refers to code that runs on the React framework.
-
-
-
-
-## Frameworks
 
 
 
@@ -2082,7 +2170,7 @@
 #### NextJS - Caching
 
 - [ ] When using `cache`, provide separate params, don't use `params` object.<br />
-  #framework--nextjs #general--caching
+  #framework--nextjs #concern--caching
 
 [^nextjs]: NextJS refers to code that runs on the NextJS framework.
 
@@ -2141,6 +2229,20 @@
 
 
 
+### Patterns - Micro front end
+
+- [ ] When looking for an existing structure (function, component, etc) to re-use, check other micro front end apps or modules.<br />
+  #patterns--micro-front-end
+- [ ] Consider pros and cons when deciding whether to implement micro front ends.<br />
+  Pros: Incremental upgrades; Simple, decoupled codebases; Independent deployment; Autonomous teams<br />
+  Const: Payload size; Environment differences; Operational and governance complexity<br />
+  [Article: Micro Frontends - martinfowler.com](https://martinfowler.com/articles/micro-frontends.html)<br />
+  [Website: Micro Frontends](https://microfrontends.com)<br />
+  #patterns--micro-front-end
+
+
+
+
 ## Pipeline
 
 
@@ -2156,7 +2258,7 @@
 
 
 
-### Package [^package]
+### Packages [^packages]
 
 - [ ] Put dependencies in the right category - developer vs. production.<br />
   [Blog: Categorize Your Dependencies](https://antfu.me/posts)<br />
@@ -2166,7 +2268,7 @@
 - [ ] Careful about supply-chain vulnerabilities. Ensure packages being consumed do not contain significant vulnerabilities.<br />
   #general--package #nfr--security
 
-[^package]: Package covers management of packages, such as third-party libraries, either consumed by or exposed by the application.
+[^packages]: Package covers management of packages, such as third-party libraries, either consumed by or exposed by the application.
 
 
 
@@ -2198,7 +2300,7 @@
 
 
 
-### Appendix
+## Appendix
 
 #### Non-functional requirements (NFRs)
 
@@ -2232,51 +2334,130 @@
 
 
 
-### References
+## References
 
-#### Accessibility
 
-- [Article: Checklist - The A11y Project](https://www.a11yproject.com/checklist/)
 
-#### Bug prevention
+### Requirements
 
-- [Website: Chromium Issues](https://issues.chromium.org/issues)
+### Solution design
 
-#### Coding style
+- [Blog • Brad WESTNESS](https://brad.westness.cc)
+
+### Cleanness
+
+- [Website: Chromium issues](https://issues.chromium.org/issues?q=status:open)<br />
+- [Website: Firefox bugs](https://bugzilla.mozilla.org/describecomponents.cgi?product=Firefox)<br />
+- [Website: Safari &amp; Web | Apple Developer Forums](https://developer.apple.com/forums/topics/safari-and-web-topic)<br />
+- [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
+
+### Architecture
+
+- [Website: The 12 Factor App](https://12factor.net)
+
+### State
+
+### Errors
+
+### Caching
+
+### Paging and sorting
+
+### Localisation
+
+### Feature flags
+
+### Analytics
+
+### Tests
+
+- [Book: Software Testing - A Craftsman's Approach • Paul JORGENSEN](https://www.routledge.com/Software-Testing-A-Craftsmans-Approach-Fifth-Edition/Jorgensen-DeVries/p/book/9780367767624)
+- [Book: The Art of Unit Testing • Roy OSHEROV](https://www.artofunittesting.com)
+
+
+### Version control
+
+### Logging, monitoring and observability
+
+### Pull request
+
+### Documentation
+
+### Achievability
+
+### Simplicity
+
+### Availability
+
+### Correctness
+
+### Readability
 
 - [Book: The Art of Readable Code • Dustin BOSWELL](https://www.oreilly.com/library/view/the-art-of/9781449318482/)
 
-#### Code structure
+### Maintainability
+
+### Testability
+
+### Scalability
+
+### Observability
+
+### Portability
+
+### Adaptability
+
+### Compatibility
+
+- [Tool: Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
+
+### Accessibility
+
+- [Article: Checklist - The A11y Project](https://www.a11yproject.com/checklist/)
+
+### Performance
+
+- [Wiki: Flash of unstyled content - Wikipedia](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
+
+### Robustness 
+
+### Reliability
+
+### Economy
+
+### Security
+
+### Usability
+
+- [Blog • Marco HEINE](https://marcoheine.com/blog)
+
+### Code
 
 - [Book: A Philosophy of Software Design • John OUSTERHOUT](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)
 
-#### Web
+### Javascript
 
-- [Blog • Lars Magnus KLAVENES](https://larsmagnus.co/blog)
-- [Blog • Marco HEINE](https://marcoheine.com/blog)
-- [Blog • Brad WESTNESS](https://brad.westness.cc)
-- [Blog • Anthony FU](https://antfu.me/posts)
+- [Blog: I Code It • Juntao QIU](https://www.icodeit.com.au)
+- [2ality – JavaScript and more](https://2ality.com)
+- [ECMAScript News](https://ecmascript.news/archive.html)
+
+### Typescript
+
+- [TkDodo's blog • Dominik](https://tkdodo.eu/blog)
+- [Pro TypeScript - Second Edition](https://stevefenton.co.uk/publications/pro-typescript/)
+- [Website: Basarat](https://basarat.com)
+- [Website: The TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+
+### HTML
 
 - [Articles: MDN Web Docs](https://developer.mozilla.org)
 - [Articles: web.dev](https://web.dev/articles)
 
-- [Wiki: Flash of unstyled content - Wikipedia](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
+### CSS
 
-- [Tool: Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
+- [Blog • Lars Magnus KLAVENES](https://larsmagnus.co/blog)
 
-#### Javascript
-
-- [Blog: I Code It • Juntao QIU](https://www.icodeit.com.au)
-
-#### Typescript
-
-- [TkDodo's blog • Dominik](https://tkdodo.eu/blog)
-
-#### NextJS
-
-- [Next.js by Vercel - The React Framework • Vercel](https://nextjs.org)
-
-#### React
+### React
 
 - [Blog • Kent C. DODDS](https://kentcdodds.com/blog)
 - [Docs: React Reference Overview • React Team](https://react.dev/reference)
@@ -2287,22 +2468,30 @@
 - [Blog • Alex SIDORENKO](https://alexsidorenko.com/blog)
 - [Blog • Marco HEINE](https://marcoheine.com)
 
-#### Architecture
+### NextJS
 
-- [Website: The 12 Factor App](https://12factor.net)
+- [Next.js by Vercel - The React Framework • Vercel](https://nextjs.org)
 
-#### Testing
-
-- [Book: Software Testing - A Craftsman's Approach • Paul JORGENSEN](https://www.routledge.com/Software-Testing-A-Craftsmans-Approach-Fifth-Edition/Jorgensen-DeVries/p/book/9780367767624)
-- [Book: The Art of Unit Testing • Roy OSHEROV](https://www.artofunittesting.com)
-
-#### Patterns - Object Oriented Programming (OOP)
+### Patterns
 
 - [Book: Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns)
 - [Book: Object Oriented Software Construction • Bertrand MEYER](https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction)
-
-#### Patterns - Functional Programming (FP)
-
 - [Website: Patterns.dev](https://www.patterns.dev)
+- [Article: Micro Frontends - martinfowler.com](https://martinfowler.com/articles/micro-frontends.html)
+- [Website: Micro Frontends](https://microfrontends.com)
+
+### Configuration
+
+### Packages
+
+- [Blog • Anthony FU](https://antfu.me/posts)
+
+### Build
+
+### Deployment
+
+### Appendix
+
+### References
 
 

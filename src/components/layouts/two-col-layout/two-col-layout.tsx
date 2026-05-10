@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from "react";
 
 import * as styles from "./two-col-layout.css";

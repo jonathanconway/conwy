@@ -3,9 +3,11 @@
 import { orderBy } from "lodash";
 import { useMemo } from "react";
 
+import { Button } from "../../button";
 import { Collapsible } from "../../collapsible";
 import { Filters } from "../../filters";
 import { Group } from "../../group";
+import { TwoColLayout } from "../../layouts/two-col-layout";
 
 import { ChecklistFiltersProps } from "./checklist-filters-props";
 import * as styles from "./checklist-filters.css";
@@ -27,9 +29,20 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
     props.onChange(selectedTags);
   }
 
+  function handleClearClick() {
+    props.onChange([]);
+  }
+
   return (
     <Collapsible title="Filter by Tag">
       <div className={styles.container}>
+        <TwoColLayout>
+          <span></span>
+
+          <Button onClick={handleClearClick}>Clear</Button>
+          {/* <Button>Clear</Button> */}
+        </TwoColLayout>
+
         {tagGroupsWithItemsOrdered.map((tagGroup) => (
           <Group key={tagGroup.name} title={tagGroup.title}>
             <Filters
