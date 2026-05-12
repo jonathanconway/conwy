@@ -16,17 +16,12 @@ export type MdxH3Props = DetailedHTMLProps<
 >;
 
 export function MdxH3(props: MdxH3Props) {
-  // const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
-  // if (mdxDivCustomChecklistContext) {
-  //   return (
-  //     <MdxDivCustomChecklistHeading level={HeadingLevels.Level4} {...props} />
-  //   );
-  // }
+  const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
+  if (mdxDivCustomChecklistContext) {
+    return (
+      <MdxDivCustomChecklistHeading level={HeadingLevels.Level4} {...props} />
+    );
+  }
 
-  return (
-    <>
-      h4
-      <Heading level={HeadingLevels.Level4} {...props} />
-    </>
-  );
+  return <Heading level={HeadingLevels.Level4} {...props} />;
 }

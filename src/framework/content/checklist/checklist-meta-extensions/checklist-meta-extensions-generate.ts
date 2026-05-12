@@ -3,6 +3,7 @@ import { chunk, fromPairs, trim, uniq } from "lodash";
 import { marked } from "marked";
 
 import {
+  REGEXP_WHITESPACE,
   Tree,
   addTreeSubBranchChildren,
   addTreeSubBranchPath,
@@ -92,7 +93,7 @@ export async function generateChecklistMetaExtensions(
   const tagGroups = produceChecklistTagGroups(items, tagTitles);
 
   const checklistMetaExtension: ChecklistMetaExtensions = {
-    items,
+    items: [],
     tagGroups,
     itemsByHeadingText,
   };
@@ -170,11 +171,12 @@ function produceTagTitles(checklistMd$: CheerioAPI): Record<string, string> {
 
 function parseChecklistItemTags(checklistItemText: string) {
   const checklistItemTagNames = checklistItemText
-    .split(" ")
+    .split(REGEXP_WHITESPACE)
     .map(trim)
     .filter(isNotNil)
     .filter((part) => part.startsWith("#"))
     .map((part) => part.replace("#", ""));
+
   const checklistItemTags: ChecklistTag[] = checklistItemTagNames.map(
     parseChecklistItemTag,
   );

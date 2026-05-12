@@ -1,6 +1,4 @@
-"use client";
-
-import { isArray } from "lodash";
+import { isArray, isString } from "lodash";
 
 import {
   getTreeSubBranchByBranch,
@@ -8,7 +6,6 @@ import {
 } from "@/framework/client";
 
 import { ChecklistSectionHeading } from "../../../../../checklist";
-import { Heading } from "../../../../../heading";
 import {
   MdxDivCustomChecklistContextValue,
   useMdxDivCustomChecklistContext,
@@ -24,28 +21,32 @@ function createChecklistSectionHeadingProps(
     return;
   }
 
-  if (!isArray(props.children)) {
+  const headingText = (() => {
+    if (!props.children) {
+      return;
+    }
+
+    if (isString(props.children)) {
+      return props.children.trim();
+    }
+
+    if (isArray(props.children)) {
+      return String(props.children[0]).trim();
+    }
+  })();
+
+  if (!headingText) {
     return;
   }
-
-  const headingText = props.children?.[0].toString().trim();
 
   const sectionDetails = getTreeSubBranchByBranch(
     mdxDivCustomChecklistContext.checklistMeta.extensions.itemsByHeadingText,
     headingText,
   );
 
-  if (
-    !(
-      sectionDetails &&
-      (sectionDetails.children.length > 0 ||
-        sectionDetails?.subBranches.length > 0)
-    )
-  ) {
-    return;
-  }
-
-  const itemsCount = getTreeSubBranchDescendantsCount(sectionDetails);
+  const itemsCount = sectionDetails
+    ? getTreeSubBranchDescendantsCount(sectionDetails)
+    : 0;
 
   return {
     ...props,
@@ -56,25 +57,13 @@ function createChecklistSectionHeadingProps(
 export function MdxDivCustomChecklistHeading(
   props: MdxDivCustomChecklistHeadingProps,
 ) {
-  // const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
+  const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
 
-  // const checklistSectionHeadingProps = createChecklistSectionHeadingProps(
-  //   props,
-  //   mdxDivCustomChecklistContext,
-  // );
-  // if (checklistSectionHeadingProps) {
-  //   return (
-  //     <>
-  //       ChecklistSectionHeading
-  //       <ChecklistSectionHeading {...checklistSectionHeadingProps} />
-  //     </>
-  //   );
-  // }
-
-  return (
-    <>
-      Heading
-      <Heading {...props} />
-    </>
+  const checklistSectionHeadingProps = createChecklistSectionHeadingProps(
+    props,
+    mdxDivCustomChecklistContext,
   );
+  if (checklistSectionHeadingProps) {
+    return <ChecklistSectionHeading {...checklistSectionHeadingProps} />;
+  }
 }

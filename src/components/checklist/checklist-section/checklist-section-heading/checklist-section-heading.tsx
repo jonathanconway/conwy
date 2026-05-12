@@ -8,6 +8,11 @@ import { ChecklistSectionHeadingProps } from "./checklist-section-heading-props"
 
 export function ChecklistSectionHeading(props: ChecklistSectionHeadingProps) {
   const { children, itemsCount, ...restProps } = props;
+
+  if (itemsCount === 0) {
+    return;
+  }
+
   return (
     <Heading {...restProps}>
       <Stack

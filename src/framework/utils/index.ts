@@ -9,6 +9,7 @@ export * from "./react-children";
 export * from "./react-element";
 export * from "./react-node";
 export * from "./react-props";
+export * from "./regexp";
 export * from "./strings";
 export * from "./text";
 export * from "./tree";

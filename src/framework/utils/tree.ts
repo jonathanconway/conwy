@@ -128,6 +128,7 @@ export function getTreeSubBranchDescendantsCount<TBranch, TLeaf>(
   tree: Tree<TBranch, TLeaf>,
 ): number {
   const childrenCount = tree.children.length;
+  // const subBranchesCount = tree.subBranches.length;
 
   const descendantsCount = tree.subBranches.reduce(
     (previousValue, currentValue) =>
@@ -142,19 +143,44 @@ export function getTreeSubBranchByBranch<TBranch, TLeaf>(
   tree: Tree<TBranch, TLeaf>,
   branch: TBranch,
 ): Maybe<Tree<TBranch, TLeaf>> {
-  const subBranchAtPathFirst = tree.subBranches.find(
-    (subBranch) => subBranch.branch === branch,
-  );
-  if (subBranchAtPathFirst) {
-    return subBranchAtPathFirst;
+  if (tree.branch === branch) {
+    // console.log(
+    //   "getTreeSubBranchByBranch 1",
+    //   `<${tree.branch}>`,
+    //   `<${branch}>`,
+    // );
+    return tree;
   }
 
+  // const subBranchAtPathFirst = tree.subBranches.find(
+  //   (subBranch) => subBranch.branch === branch,
+  // );
+  // if (subBranchAtPathFirst) {
+  //   return subBranchAtPathFirst;
+  // }
+
   for (const subBranch of tree.subBranches) {
-    const subSubBranchMatched = subBranch.subBranches.find((subSubBranch) =>
-      getTreeSubBranchByBranch(subSubBranch, branch),
-    );
+    const subSubBranchMatched = getTreeSubBranchByBranch(subBranch, branch);
     if (subSubBranchMatched) {
+      // console.log(
+      //   "getTreeSubBranchByBranch 2",
+      //   `<${subBranch.branch}>`,
+      //   `<${branch}>`,
+      // );
       return subSubBranchMatched;
     }
   }
+}
+
+export function getTreeLeavesFiltered<TBranch, TLeaf>(
+  tree: Tree<TBranch, TLeaf>,
+  filter: (child: TLeaf) => boolean,
+): Tree<TBranch, TLeaf> {
+  return {
+    ...tree,
+    children: tree.children.filter(filter),
+    subBranches: tree.subBranches.map((subBranch) =>
+      getTreeLeavesFiltered(subBranch, filter),
+    ),
+  };
 }

@@ -36,13 +36,6 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
   return (
     <Collapsible title="Filter by Tag">
       <div className={styles.container}>
-        <TwoColLayout>
-          <span></span>
-
-          <Button onClick={handleClearClick}>Clear</Button>
-          {/* <Button>Clear</Button> */}
-        </TwoColLayout>
-
         {tagGroupsWithItemsOrdered.map((tagGroup) => (
           <Group key={tagGroup.name} title={tagGroup.title}>
             <Filters
@@ -54,6 +47,12 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
             />
           </Group>
         ))}
+
+        <TwoColLayout justifyContent="space-between">
+          <Button onClick={handleClearClick}>Clear</Button>
+
+          <span></span>
+        </TwoColLayout>
       </div>
     </Collapsible>
   );

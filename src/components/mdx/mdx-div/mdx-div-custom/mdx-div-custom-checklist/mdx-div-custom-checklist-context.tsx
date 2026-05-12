@@ -1,10 +1,12 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useState } from "react";
+import { intersection } from "lodash";
+import { ReactNode, createContext, useContext, useMemo } from "react";
 
 import {
   ChecklistMeta,
   ChecklistTag,
+  getTreeLeavesFiltered,
   isNotNil,
   titleCase,
 } from "@/framework/client";
@@ -33,8 +35,10 @@ export const MdxDivCustomChecklistContext_ = createContext<
 export const MdxDivCustomChecklistContext = (
   props: MdxDivCustomChecklistContextProps,
 ) => {
-  const { selectedTags, setSelectedTags } =
-    useTagFiltersSelected("checklist-filter");
+  const { selectedTags, setSelectedTags } = useTagFiltersSelected(
+    "checklist-filter",
+    [],
+  );
 
   function handleChangeSelectedFilters(
     selectedFilters: readonly ChecklistTag[],
@@ -45,8 +49,37 @@ export const MdxDivCustomChecklistContext = (
     setSelectedTags(newSelectedTags);
   }
 
+  const itemsByHeadingText = props.checklistMeta.extensions
+    ?.itemsByHeadingText ?? {
+    branch: "",
+    children: [],
+    subBranches: [],
+  };
+
+  const itemsByHeadingTextFiltered = useMemo(
+    () =>
+      selectedTags.length === 0
+        ? itemsByHeadingText
+        : getTreeLeavesFiltered(itemsByHeadingText, (child) => {
+            const childTags = child.tags.map(
+              (tag) => `${tag.tagGroupName}--${tag.name}`,
+            );
+
+            return intersection(childTags, selectedTags).length > 0;
+          }),
+    [itemsByHeadingText, selectedTags],
+  );
+
   const value: MdxDivCustomChecklistContextValue = {
-    checklistMeta: props.checklistMeta,
+    checklistMeta: {
+      ...props.checklistMeta,
+      extensions: props.checklistMeta.extensions
+        ? {
+            ...props.checklistMeta.extensions,
+            itemsByHeadingText: itemsByHeadingTextFiltered,
+          }
+        : undefined,
+    },
     selectedFilters: selectedTags
       .map((selectedTag) => {
         if (selectedTag === "all") {

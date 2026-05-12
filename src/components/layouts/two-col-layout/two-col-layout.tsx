@@ -1,13 +1,5 @@
-"use client";
-
-import { CSSProperties, ReactNode } from "react";
-
+import { TwoColLayoutProps } from "./two-col-layout-props";
 import * as styles from "./two-col-layout.css";
-
-interface TwoColLayoutProps {
-  readonly children: [ReactNode, ReactNode];
-  readonly justifyContent?: CSSProperties["justifyContent"];
-}
 
 export function TwoColLayout(props: TwoColLayoutProps) {
   const { justifyContent = "center" } = props;

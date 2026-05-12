@@ -35,6 +35,11 @@ export default async function Page(props: PageProps) {
     checklist.meta,
     checklistMd,
   );
+  console.log(
+    "extensions",
+    // extensions?.itemsByHeadingText.subBranches[0].subBranches[0].children,
+  );
+  console.dir(extensions, { depth: 50 });
 
   const checklistWithMetaExtensions: Checklist_ = {
     ...checklist,

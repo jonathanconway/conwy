@@ -4,11 +4,14 @@ import { useSearchParams } from "next/navigation";
 
 import { ALL } from "./default-selected-tags";
 
-export function useTagFiltersSelected(searchParamKey: string) {
+export function useTagFiltersSelected(
+  searchParamKey: string,
+  defaultFilters = [ALL],
+) {
   const searchParams = useSearchParams();
 
   const selectedTags = Array.from(
-    searchParams.get(searchParamKey)?.split(",") ?? [ALL],
+    searchParams.get(searchParamKey)?.split(",") ?? defaultFilters,
   ).filter((searchParamValue) => searchParamValue.trim() !== "");
 
   function setSelectedTags(newSelectedTags: readonly string[]) {
