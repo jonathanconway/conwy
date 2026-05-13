@@ -1,3 +1,4 @@
+import { DateTimeString } from "../date-time";
 import { MetaBase } from "../meta";
 
 import { ChecklistMetaExtensions } from "./checklist-meta-extensions/checklist-meta-extensions";
@@ -5,4 +6,5 @@ import { ChecklistMetaExtensions } from "./checklist-meta-extensions/checklist-m
 export interface ChecklistMeta extends MetaBase<ChecklistMetaExtensions> {
   readonly title: string;
   readonly blurb: string;
+  readonly updatedDate: DateTimeString;
 }

@@ -1,4 +1,5 @@
-import { IconTypes } from "./icon-types";
+import { IconComponent } from "./icon-component";
+import { IconType, IconTypes } from "./icon-types";
 import {
   ArrowChevronDown,
   ArrowChevronLeft,
@@ -34,7 +35,7 @@ import {
   YouTube,
 } from "./svg";
 
-export const ICON_TYPE_SVGS = {
+export const ICON_TYPE_SVGS: Partial<Record<IconType, IconComponent>> = {
   [IconTypes.ArrowChevronDown]: ArrowChevronDown,
   [IconTypes.ArrowChevronLeft]: ArrowChevronLeft,
   [IconTypes.ArrowChevronRight]: ArrowChevronRight,

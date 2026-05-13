@@ -5,7 +5,7 @@ import { SVG_PROPS_COMMON, SvgProps } from "./icon-svg-props";
 import * as styles from "./icon.css";
 
 export function withSvgIcon(SvgIcon: FC<SvgProps>) {
-  return function Icon(props: IconProps) {
+  return function Icon(props: SvgProps) {
     const { className = styles.iconSvg, ...restProps } = props;
 
     return (

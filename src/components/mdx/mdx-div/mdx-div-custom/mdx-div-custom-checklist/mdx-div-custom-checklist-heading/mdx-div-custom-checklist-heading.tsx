@@ -51,6 +51,7 @@ function createChecklistSectionHeadingProps(
   return {
     ...props,
     itemsCount,
+    headingText,
   };
 }
 
@@ -63,6 +64,7 @@ export function MdxDivCustomChecklistHeading(
     props,
     mdxDivCustomChecklistContext,
   );
+
   if (checklistSectionHeadingProps) {
     return <ChecklistSectionHeading {...checklistSectionHeadingProps} />;
   }

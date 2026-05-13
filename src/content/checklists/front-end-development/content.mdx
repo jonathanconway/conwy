@@ -217,12 +217,12 @@
 ### Errors [^errors]
 
 - [ ] Handle expected errors only.<br />
-  #concerns-errors
+  #concerns--errors
 - [ ] Use global error handling to ensure exceptions don't break the whole app and block the user.<br />
-  #concerns-errors
+  #concerns--errors
 - [ ] Don't handle exceptions without re-throwing unless it's necessary.<br />
   For example: a bug in the API that can't be resolved just yet. If necessary, thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
-  #concerns-errors #nfr--correctness
+  #concerns--errors #nfr--correctness
 - [ ] Define exceptions / errors out of existence where possible.<br />
   [Book: A Philosophy of Software Design, Ch 10](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #general--errors
@@ -746,7 +746,7 @@
 
 
 
-### Achievability [^achievability]
+### NFR - Achievability [^achievability]
 
 - [ ] Can the task be achieved within given parameters in a timely manner?<br />
   If not, consider splitting up, re-prioritising, re-defining, etc.<br />
@@ -757,7 +757,7 @@
 
 
 
-### Simplicity [^simplicity]
+### NFR - Simplicity [^simplicity]
 
 - [ ] Can the task or code change be avoided altogether?<br />
   #nfr--simplicity
@@ -767,7 +767,7 @@
 
 
 
-### Availability [^availability]
+### NFR - Availability [^availability]
 
 - [ ] Can certain systems go down during peak periods? Can we cater for those scenarios to minimise disruption to users?<br />
   #nfr--availability
@@ -777,7 +777,7 @@
 
 
 
-### Correctness [^correctness]
+### NFR - Correctness [^correctness]
 
 - [ ] Ensure all and only the original requirements satisfied.<br />
   #nfr--correctness #general--requirements
@@ -787,7 +787,7 @@
 
 
 
-### Readability [^readability]
+### NFR - Readability [^readability]
 
 - [ ] Order code blocks, elements, etc. sensibly.<br />
   For example: order CSS properties with layout first, then color, etc.<br />
@@ -840,7 +840,7 @@
 
 
 
-### Maintainability [^maintainability]
+### NFR - Maintainability [^maintainability]
 
 - [ ] Use expanded syntax for function declaration where it helps.<br />
   That is: `function foo() { ... }` in Typescript.<br />
@@ -852,7 +852,7 @@
 
 
 
-### Testability [^testability]
+### NFR - Testability [^testability]
 
 - [ ] Allow space for log statements to be easily inserted.<br />
   #nfr--testability
@@ -865,7 +865,7 @@
 
 
 
-### Scalability [^scalability]
+### NFR - Scalability [^scalability]
 
 - [ ] Use well tested, documented and supported third-party frameworks, which can grow with the application.<br />
   #nfr--scalability
@@ -875,7 +875,7 @@
 
 
 
-### Observability [^observability]
+### NFR - Observability [^observability]
 
 - [ ] Don't suppress errors when it would be more proper to let them surface.<br />
   For example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
@@ -889,7 +889,7 @@
 
 
 
-### Portability [^portability]
+### NFR - Portability [^portability]
 
 - [ ] Use portable tooling that is supported on multiple operating systems and platforms.<br />
   For example: NPM works on Windows, Linux and Mac, so it is more portable than, say, Nuget.<br />
@@ -900,7 +900,7 @@
 
 
 
-### Adaptability [^adaptability]
+### NFR - Adaptability [^adaptability]
 
 - [ ] Use progressive enhancement when basic features need to work in non-standard browser environments.<br />
   #nfr--adaptability
@@ -910,7 +910,7 @@
 
 
 
-### Compatibility [^compatibility]
+### NFR - Compatibility [^compatibility]
 
 - [ ] Test on all major browsers <br />
   Chrome, Edge, Firefox, Safari, Opera, etc.<br />
@@ -919,7 +919,7 @@
   [Tool: CanIUse](http://caniuse.com)<br />
   #nfr--compatibility
 
-#### Compatibility - Screen sizes
+#### NFR - Compatibility - Screen sizes
 
 - [ ] Use shortcuts where component library makes them available.<br />
   For example: `tablet-and-larger` rather than `tablet, desktop, wide`.<br />
@@ -929,13 +929,13 @@
 - [ ] Take advantage of container queries.<br />
   #nfr--compatibility
 
-#### Compatibility - Offline
+#### NFR - Compatibility - Offline
 
 - [ ] Use service workers to enable offline access.<br />
   [Article: Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)<br />
   #nfr--compatibility
 
-#### Compatibility - Mobile devices
+#### NFR - Compatibility - Mobile devices
 
 - [ ] Use web application manifest to enable the site to be saved and run as an app-like experience on a phone.<br />
   [Article: Web application manifest](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)<br />
@@ -946,7 +946,7 @@
 
 
 
-### Accessibility [^accessibility]
+### NFR - Accessibility [^accessibility]
 
 - [ ] Use semantic HTML elements.<br />
   #nfr--accessibility #language--html
@@ -967,7 +967,7 @@
   [Blog: Test IDs are an a11y smell](https://tkdodo.eu/blog/test-ids-are-an-a11y-smell)<br />
   #nfr--accessibility #concern--tests
 
-#### Accessibility - Perceivable
+#### NFR - Accessibility - Perceivable
 
 - [ ] Screen can be navigated with screen-reader.<br />
   #nfr--accessibility
@@ -978,21 +978,21 @@
 - [ ] Items navigated in the correct order by screen-reader.<br />
   #nfr--accessibility
 
-#### Accessibility - Operable
+#### NFR - Accessibility - Operable
 
 - [ ] All important elements and controls can be accessed with keyboard only.<br />
   #nfr--accessibility
 - [ ] Avoid nested clickable regions. Just choose one element to be clickable.<br />
   #nfr--accessibility
 
-#### Accessibility - Understandable
+#### NFR - Accessibility - Understandable
 
 - [ ] Use simple, plain language.<br />
   #nfr--accessibility
 - [ ] Use definition lists to define terms that are not commonly understood.<br />
   #nfr--accessibility
 
-#### Accessibility - Robust
+#### NFR - Accessibility - Robust
 
 - [ ] Elements render correctly with all common screen-sizes.<br />
   Ideally: wide desktop, desktop, tablet, mobile. And: vertical and horizontal.<br />
@@ -1002,7 +1002,7 @@
 - [ ] Text scales correctly with zoom.<br />
   #nfr--accessibility
 
-#### Accessibility - Content
+#### NFR - Accessibility - Content
 
 - [ ] Use plain language and avoid figures of speech, idioms, and complicated metaphors.<br />
   [Article: WCAG - Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html)<br />
@@ -1014,7 +1014,7 @@
   [Article: WCAG - Visual Presentation](https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html)<br />
   #nfr--accessibility #accessibility--content
 
-#### Accessibility - Global code
+#### NFR - Accessibility - Global code
 
 - [ ] Validate your HTML.<br />
   [Article: WCAG - Parsing](https://www.w3.org/WAI/WCAG22/Understanding/parsing.html)<br />
@@ -1044,7 +1044,7 @@
   [Article: WCAG - Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)<br />
   #nfr--accessibility #accessibility--global-code
 
-#### Accessibility - Keyboard
+#### NFR - Accessibility - Keyboard
 
 - [ ] Make sure there is a visible focus style for interactive elements that are navigated to via keyboard input.<br />
   [Article: WCAG - Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)<br />
@@ -1056,7 +1056,7 @@
   [Article: WCAG - Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)<br />
   #nfr--accessibility #accessibility--keyboard
 
-#### Accessibility - Images
+#### NFR - Accessibility - Images
 
 - [ ] Make sure that all <code>img</code> elements have an <code>alt</code> attribute.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
@@ -1071,7 +1071,7 @@
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
   #nfr--accessibility #accessibility--images
 
-#### Accessibility - Headings
+#### NFR - Accessibility - Headings
 
 - [ ] Use heading elements to introduce content.<br />
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
@@ -1086,13 +1086,13 @@
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--headings
 
-#### Accessibility - Lists
+#### NFR - Accessibility - Lists
 
 - [ ] Use list elements (<code>ol</code>, <code>ul</code>, and <code>dl</code> elements) for list content.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--lists
 
-#### Accessibility - Controls
+#### NFR - Accessibility - Controls
 
 - [ ] Use the <code>a</code> element for links.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
@@ -1113,7 +1113,7 @@
   [Article: WCAG - Giving users advanced warning when opening a new window](https://www.w3.org/WAI/WCAG22/Techniques/general/G201)<br />
   #nfr--accessibility #accessibility--controls
 
-#### Accessibility - Tables
+#### NFR - Accessibility - Tables
 
 - [ ] Use the <code>table</code> element to describe tabular data.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
@@ -1125,7 +1125,7 @@
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--tables
 
-#### Accessibility - Forms
+#### NFR - Accessibility - Forms
 
 - [ ] All inputs in a form are associated with a corresponding <code>label</code> element.<br />
   [Article: WCAG - On Input](https://www.w3.org/WAI/WCAG22/Understanding/on-input.html)<br />
@@ -1146,7 +1146,7 @@
   [Article: WCAG - Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)<br />
   #nfr--accessibility #accessibility--forms
 
-#### Accessibility - Media
+#### NFR - Accessibility - Media
 
 - [ ] Make sure that media does not autoplay.<br />
   [Article: WCAG - Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html)<br />
@@ -1158,7 +1158,7 @@
   [Article: WCAG - Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)<br />
   #nfr--accessibility #accessibility--media
 
-#### Accessibility - Video
+#### NFR - Accessibility - Video
 
 - [ ] Confirm the presence of captions.<br />
   [Article: WCAG - Captions](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html)<br />
@@ -1167,13 +1167,13 @@
   [Article: WCAG - Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)<br />
   #nfr--accessibility #accessibility--video
 
-#### Accessibility - Audio
+#### NFR - Accessibility - Audio
 
 - [ ] Confirm that transcripts are available.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
   #nfr--accessibility #accessibility--audio
 
-#### Accessibility - Appearance
+#### NFR - Accessibility - Appearance
 
 - [ ] Check your content in specialized browsing modes.<br />
   [Article: WCAG - Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)<br />
@@ -1194,7 +1194,7 @@
   [Article: WCAG - Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)<br />
   #nfr--accessibility #accessibility--appearance
 
-#### Accessibility - Animation
+#### NFR - Accessibility - Animation
 
 - [ ] Ensure animations are subtle and do not flash too much.<br />
   [Article: WCAG - Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)<br />
@@ -1206,7 +1206,7 @@
   [Article: WCAG - Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html)<br />
   #nfr--accessibility #accessibility--animation
 
-#### Accessibility - Color contrast
+#### NFR - Accessibility - Color contrast
 
 - [ ] Check the contrast for all normal-sized text.<br />
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
@@ -1227,7 +1227,7 @@
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
   #nfr--accessibility #accessibility--color-contrast
 
-#### Accessibility - Mobile and touch
+#### NFR - Accessibility - Mobile and touch
 
 - [ ] Check that the site can be rotated to any orientation.<br />
   [Article: WCAG - Orientation](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html)<br />
@@ -1247,7 +1247,7 @@
 
 
 
-### Performance [^performance]
+### NFR - Performance [^performance]
 
 - [ ] Use early-return, ordered from cheapest to most expensive operations, when a sequence of checks need to be done, to minimise unnecessary processing.<br />
   #nfr--performance
@@ -1325,7 +1325,7 @@
 
 
 
-### Robustness  [^robustness]
+### NFR - Robustness  [^robustness]
 
 - [ ] Fall back to sensible defaults for unexpected values.<br />
   For example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
@@ -1338,7 +1338,7 @@
 
 
 
-### Reliability [^reliability]
+### NFR - Reliability [^reliability]
 
 - [ ] If the change alters the inputs being received and passed to the Backend, ensure those won't break.<br />
   #nfr--reliability
@@ -1386,7 +1386,7 @@
 
 
 
-### Economy [^economy]
+### NFR - Economy [^economy]
 
 - [ ] Minimise operating cost by offloading processing, storage, etc. to the client side.<br />
   #nfr--economy
@@ -1402,9 +1402,9 @@
 
 
 
-### Security [^security]
+### NFR - Security [^security]
 
-- [ ] Careful what you send in requests over non-HTTPS.<br />
+- [ ] Prefer HTTPS wherever possible and be careful what you send over non-HTTPS.<br />
   #nfr--security
 - [ ] Disable after first click to protect against "click jacking" or rapidly repeated submissions / spamming.<br />
   Use delay, debounce or other rate limiting<br />
@@ -1472,7 +1472,9 @@
   Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
   #nfr--security
 - [ ] Careful consuming third-party packages or components from untrusted sources.<br />
-  Minimise use of third-party packages. Check for vulnerabilities on trusted news sources. Use an automated checker such as [Dependabot](https://github.com/dependabot) if possible.<br />
+  Minimise use of third-party packages. Check for vulnerabilities on trusted news sources. Use automated checkers and tools if possible.<br />
+  [Tool: Dependabot](https://github.com/dependabot)<br />
+  [Tool: Snyk](https://snyk.io)<br />
   [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
   #nfr--security
 - [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
@@ -1514,6 +1516,18 @@
   [Blog: React Blog](https://react.dev/blog)<br />
   [Blog: React Blog](https://react.dev/blog)<br />
   #nfr--security
+- [ ] Keep all secrets or sensitive data in a secret vault or store.<br />
+  For example: API keys, database credentials, etc.<br />
+  [Tool: HashiCorp Vault](https://www.vaultproject.io)<br />
+  [Tool: AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)<br />
+  [Tool: Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/)<br />
+  [Tool: Google Cloud Secret Manager](https://cloud.google.com/secret-manager)<br />
+  #nfr--security
+- [ ] Follow best practices when dealing with JWTs (JSON Web Tokens).<br />
+  Use strong signing algorithms. Keep the secret key secure. Set appropriate token expiration times. Ensure tokens are validated on the server side. Never put sensitive data in the payload.<br />
+  [Article: JWT Best Practices](https://auth0.com/docs/security/tokens/json-web-tokens-best-practices)<br />
+  [Article: What Are JSON Web Tokens (JWT)?](https://www.freecodecamp.org/news/what-are-json-web-tokens-jwt)<br />
+  #nfr--security
 
 [^security]: Security refers to protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
 [^pii]: Personally Identifiable Information
@@ -1521,14 +1535,14 @@
 
 
 
-### Usability [^usability]
+### NFR - Usability [^usability]
 
 [^usability]: Items in this checklist relate to the user interface usability and overall user experience.<br />
 
 
 
 
-#### Usability - Interactions
+#### NFR - Usability - Interactions
 
 - [ ] Handle error states with helpful messages and feedback.<br />
   #nfr--usability #usability--interaction
@@ -1544,7 +1558,7 @@
 
 
 
-#### Usability - Modals
+#### NFR - Usability - Modals
 
 - [ ] Capture focus on open.<br />
   #nfr--usability #usability--modals
@@ -1563,7 +1577,7 @@
 
 
 
-#### Usability - Visual design
+#### NFR - Usability - Visual design
 
 - [ ] Light/dark mode.<br />
   #nfr--usability #usability--visual-design
@@ -1591,7 +1605,7 @@
 
 
 
-#### Usability - Text [^text]
+#### NFR - Usability - Text [^text]
 
 - [ ] Shorten very long text and ensure it does not break layout.<br />
   Use ellipsis, wrap or summarise and add "more" button.<br />
@@ -1618,7 +1632,7 @@
 
 
 
-#### Usability - Design system
+#### NFR - Usability - Design system
 
 - [ ] Use correct layout components.<br />
   #nfr--usability #usability--design-system
@@ -1632,7 +1646,7 @@
 
 
 
-#### Usability - Component library
+#### NFR - Usability - Component library
 
 - [ ] Before using custom classes, props, etc. check if it's part of component library already.<br />
   #nfr--usability #usability--component-library
@@ -1646,7 +1660,7 @@
 
 
 
-#### Usability - Transitions and errors
+#### NFR - Usability - Transitions and errors
 
 - [ ] Minimise Cumulative Layout Shift (CLS).<br />
   #nfr--usability #usability--transitions-and-errors
@@ -1670,7 +1684,7 @@
 
 
 
-#### Usability - Date and time
+#### NFR - Usability - Date and time
 
 - [ ] Ensure multiple time-zones are supported if necessary. Test with simulated time-zone.<br />
   #nfr--usability #usability--date-and-time
@@ -1682,7 +1696,7 @@
 
 
 
-#### Usability - Numbers [^numbers]
+#### NFR - Usability - Numbers [^numbers]
 
 - [ ] Format numeric values correctly.<br />
   For example: currencies should use correct comma and currency symbol or code if needed.<br />
@@ -1695,7 +1709,7 @@
 
 
 
-#### Usability - Forms [^forms]
+#### NFR - Usability - Forms [^forms]
 
 - [ ] Do not handle button click while in loading or saving state.<br />
   Use ally attrs appropriately.<br />
@@ -1882,12 +1896,12 @@
 
 
 
-# Language
+## Language
 
 
 
 
-### Javascript [^javascript]
+### Language - Javascript [^javascript]
 
 - [ ] Use map with inline lookup rather than `switch`.<br />
   Like this: `{ key1: "value1", key2: "value2", ... }[key]`.<br />
@@ -1910,7 +1924,7 @@
   [Article: Implementing Dynamic Import and Code Splitting](https://www.icodeit.com.au/posts/dynamic-import)<br />
   #language--javascript #nfr--performance
 
-#### Javascript - API calls
+#### Language - Javascript - API calls
 
 - [ ] Ensure API request parameters and response fields are used correctly.<br />
   Verify with Backend developers if uncertain and ensure correct usage is clearly spelled out in code or documented somewhere.<br />
@@ -1924,7 +1938,7 @@
 
 
 
-### Typescript [^typescript]
+### Language - Typescript [^typescript]
 
 - [ ] Don't unnecessarily cast to a type or specify a type, where it is already implicitly or explicitly cast or specified.<br />
   #language--typescript
@@ -1980,7 +1994,7 @@
 
 
 
-### HTML [^html]
+### Language - HTML [^html]
 
 - [ ] Semantic HTML - Group related controls.<br />
   #language--html
@@ -1995,7 +2009,7 @@
 
 
 
-### CSS [^css]
+### Language - CSS [^css]
 
 - [ ] For size and spacing, use appropriate units, preferring rems and percentages.<br />
   #language--css
@@ -2013,7 +2027,7 @@
 
 
 
-### React [^react]
+### Framework - React [^react]
 
 - [ ] Remove unnecessary fragments.<br />
   #framework--react
@@ -2037,7 +2051,7 @@
   [Blog: useMemo and useCallback](https://www.joshwcomeau.com/react/usememo-and-usecallback/)<br />
   #framework--react
 
-#### React - Props
+#### Framework - React - Props
 
 - [ ] Keep props as simple as possible.<br />
   Avoid deep complex nested structures where possible.<br />
@@ -2060,13 +2074,13 @@
   [Blog: What is prop drilling and how to avoid it](https://marcoheine.com/blog/what-is-prop-drilling-and-how-to-avoid-it)<br />
   #framework--react
 
-#### React - JSX
+#### Framework - React - JSX
 
 - [ ] When rendering dynamic array of objects, provide `key` prop and make sure value is suitable.<br />
   That is, not just `index` if items might change order or if item in same position might need to re-render.<br />
   #framework--react
 
-#### React - Components
+#### Framework - React - Components
 
 - [ ] Order and group a component's inner structures sensibly.<br />
   For example: constants, hook calls, event handlers, util functions then return with JSX.<br />
@@ -2079,7 +2093,7 @@
 - [ ] Consider conditional rendering, where we expect the value being displayed might be falsy (`null`, `undefined`, `false`, etc).<br />
   #framework--react
 
-#### React - Hooks
+#### Framework - React - Hooks
 
 - [ ] Use intuitive field names in the hook result object if appropriate.<br />
   For example: `return { orders }` instead of `return { data }`.<br />
@@ -2099,7 +2113,7 @@
   It might crash the app unexpectedly.<br />
   #framework--react 
 
-#### React - State
+#### Framework - React - State
 
 - [ ] Keep state as local as possible.<br />
   #framework--react
@@ -2113,20 +2127,20 @@
   [Blog: Persisting React State in localStorage](https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/)<br />
   #framework--react
 
-#### React - Cleanness
+#### Framework - React - Cleanness
 
 - [ ] Ensure a hook does not depend context which is not available.<br />
   If context is not available, it should not break the app when the hook is rendered.<br />
   #framework--react
 
-#### React - Performance
+#### Framework - React - Performance
 
 - [ ] Combine `useMemo` where helpful.<br />
   #framework--react
 - [ ] Memoise whole component where helpful using `memo`.<br />
   #framework--react
 
-#### React - Forms
+#### Framework - React - Forms
 
 - [ ] When disabling all fields, pass "disabled" to useForm hook (react-hook-form) and ensure it's passed.<br />
   #framework--react
@@ -2136,7 +2150,7 @@
 
 
 
-### NextJS [^nextjs]
+### Framework - NextJS [^nextjs]
 
 - [ ] Only use "server only" or "client only" where necessary.<br />
   Server components are by default. Only need explicit "client only" to manipulate the dom or "server only" to ensure security for sensitive logic.<br />
@@ -2167,13 +2181,13 @@
   NextJS seems to cancel them.<br />
   #framework--nextjs
 
-#### NextJS - Security
+#### Framework - NextJS - Security
 
 - [ ] Put `"use server"` at the top for sensitive server-side functions.<br />
   Prevents them ever being shared with the client.<br />
   #framework--nextjs #nfr--security
 
-#### NextJS - Caching
+#### Framework - NextJS - Caching
 
 - [ ] When using `cache`, provide separate params, don't use `params` object.<br />
   #framework--nextjs #concern--caching
@@ -2183,7 +2197,7 @@
 
 
 
-## Principles and patterns
+## Patterns
 
 
 
@@ -2254,7 +2268,7 @@
 
 
 
-### Configuration [^configuration]
+### Pipeline - Configuration [^configuration]
 
 - [ ] Ensure entries are in alphabetic order, where that is the standard.<br />
   #nfr--consistency #general--configuration
@@ -2264,7 +2278,7 @@
 
 
 
-### Packages [^packages]
+### Pipeline - Packages [^packages]
 
 - [ ] Put dependencies in the right category - developer vs. production.<br />
   [Blog: Categorize Your Dependencies](https://antfu.me/posts)<br />
@@ -2279,7 +2293,7 @@
 
 
 
-### Build [^build]
+### Pipeline - Build [^build]
 
 - [ ] Cache or otherwise re-use dependencies that don’t change often, to speed up the build.<br />
   [Article: PNPM GitHub Actions Cache](https://theodorusclarence.com/shorts/github/pnpm-github-actions-cache)<br />
@@ -2290,7 +2304,7 @@
 
 
 
-### Deployment [^deployment]
+### Pipeline - Deployment [^deployment]
 
 - [ ] Time deployment to minimise disruption.<br />
   For example: avoid deploying during peak or critical usage periods if possible.<br />
@@ -2304,200 +2318,5 @@
 {/* ----- */}
 
 
-
-
-## Appendix
-
-#### Non-functional requirements (NFRs)
-
-- Achievability
-- Simplicity
-- Availability
-- Correctness
-- Readability
-- Maintainability
-- Security
-- Testability 
-- Accessibility 
-- Performance
-- Reliability
-- Scalability
-- Usability
-- Observability
-- Portability
-- Compatibility
-- Adaptability
-- Economy
-
-#### SOLID principles
-
-- Single-responsibility
-- Open-closed
-- Liskov substitution
-- Interface segregation
-- Dependency inversion
-
-
-
-
-## References
-
-
-
-### Requirements
-
-### Solution design
-
-- [Blog • Brad WESTNESS](https://brad.westness.cc)
-
-### Cleanness
-
-- [Website: Chromium issues](https://issues.chromium.org/issues?q=status:open)<br />
-- [Website: Firefox bugs](https://bugzilla.mozilla.org/describecomponents.cgi?product=Firefox)<br />
-- [Website: Safari &amp; Web | Apple Developer Forums](https://developer.apple.com/forums/topics/safari-and-web-topic)<br />
-- [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
-
-### Architecture
-
-- [Website: The 12 Factor App](https://12factor.net)
-
-### State
-
-### Errors
-
-### Caching
-
-### Paging and sorting
-
-### Localisation
-
-### Feature flags
-
-### Analytics
-
-### Tests
-
-- [Book: Software Testing - A Craftsman's Approach • Paul JORGENSEN](https://www.routledge.com/Software-Testing-A-Craftsmans-Approach-Fifth-Edition/Jorgensen-DeVries/p/book/9780367767624)
-- [Book: The Art of Unit Testing • Roy OSHEROV](https://www.artofunittesting.com)
-
-
-### Version control
-
-### Logging, monitoring and observability
-
-### Pull request
-
-### Documentation
-
-### Achievability
-
-### Simplicity
-
-### Availability
-
-### Correctness
-
-### Readability
-
-- [Book: The Art of Readable Code • Dustin BOSWELL](https://www.oreilly.com/library/view/the-art-of/9781449318482/)
-
-### Maintainability
-
-### Testability
-
-### Scalability
-
-### Observability
-
-### Portability
-
-### Adaptability
-
-### Compatibility
-
-- [Tool: Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
-
-### Accessibility
-
-- [Article: Checklist - The A11y Project](https://www.a11yproject.com/checklist/)
-
-### Performance
-
-- [Wiki: Flash of unstyled content - Wikipedia](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
-
-### Robustness 
-
-### Reliability
-
-### Economy
-
-### Security
-
-### Usability
-
-- [Blog • Marco HEINE](https://marcoheine.com/blog)
-
-### Code
-
-- [Book: A Philosophy of Software Design • John OUSTERHOUT](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)
-
-### Javascript
-
-- [Blog: I Code It • Juntao QIU](https://www.icodeit.com.au)
-- [2ality – JavaScript and more](https://2ality.com)
-- [ECMAScript News](https://ecmascript.news/archive.html)
-
-### Typescript
-
-- [TkDodo's blog • Dominik](https://tkdodo.eu/blog)
-- [Pro TypeScript - Second Edition](https://stevefenton.co.uk/publications/pro-typescript/)
-- [Website: Basarat](https://basarat.com)
-- [Website: The TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-
-### HTML
-
-- [Articles: MDN Web Docs](https://developer.mozilla.org)
-- [Articles: web.dev](https://web.dev/articles)
-
-### CSS
-
-- [Blog • Lars Magnus KLAVENES](https://larsmagnus.co/blog)
-
-### React
-
-- [Blog • Kent C. DODDS](https://kentcdodds.com/blog)
-- [Docs: React Reference Overview • React Team](https://react.dev/reference)
-- [Blog: overreacted • Dan ABRAMOV](https://overreacted.io)
-- [Advanced React - Book and Video Course • Nadia MAKAREVICH](https://www.advanced-react.com)
-- [Blog: React articles • Josh W. Comeau • Josh W. COMEAU](https://www.joshwcomeau.com/react)
-- [Blog: ReactTDD.com - JavaScript testing techniques for React applications • Daniel IRVINE](https://reacttdd.com)
-- [Blog • Alex SIDORENKO](https://alexsidorenko.com/blog)
-- [Blog • Marco HEINE](https://marcoheine.com)
-
-### NextJS
-
-- [Next.js by Vercel - The React Framework • Vercel](https://nextjs.org)
-
-### Patterns
-
-- [Book: Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns)
-- [Book: Object Oriented Software Construction • Bertrand MEYER](https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction)
-- [Website: Patterns.dev](https://www.patterns.dev)
-- [Article: Micro Frontends - martinfowler.com](https://martinfowler.com/articles/micro-frontends.html)
-- [Website: Micro Frontends](https://microfrontends.com)
-
-### Configuration
-
-### Packages
-
-- [Blog • Anthony FU](https://antfu.me/posts)
-
-### Build
-
-### Deployment
-
-### Appendix
-
-### References
 
 

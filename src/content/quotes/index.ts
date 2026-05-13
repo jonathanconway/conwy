@@ -1,5 +1,6 @@
 export * from "./beautiful";
 export * from "./billions";
+export * from "./cook";
 export * from "./eat";
 export * from "./everything-spiritual";
 export * from "./feel";

@@ -212,12 +212,12 @@
 ### Errors [^errors]
 
 - [ ] Handle expected errors only.<br />
-  #concerns-errors
+  #concerns--errors
 - [ ] Use global error handling to ensure exceptions don't break the whole app and block the user.<br />
-  #concerns-errors
+  #concerns--errors
 - [ ] Don't handle exceptions without re-throwing unless it's necessary.<br />
   For example: a bug in the API that can't be resolved just yet. If necessary, thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
-  #concerns-errors #nfr--correctness
+  #concerns--errors #nfr--correctness
 - [ ] Define exceptions / errors out of existence where possible.<br />
   [Book: A Philosophy of Software Design, Ch 10](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #general--errors
@@ -818,7 +818,6 @@
 - [ ] Instead of making all object fields optional, just make whole object optional.<br />
   #nfr--readability
 - [ ] Extract filtering, mapping and other logic to nicely named pure functions.<br />
-  For example: `flights.filter(byDestination(foo))` or `invitees.map(toFullName)`.<br />
   #nfr--readability
 - [ ] Use idiomatic coding style.<br />
   As appropriate to the language and frameworks in the current code base.<br />
@@ -1468,7 +1467,9 @@
   Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
   #nfr--security
 - [ ] Careful consuming third-party packages or components from untrusted sources.<br />
-  Minimise use of third-party packages. Check for vulnerabilities on trusted news sources. Use an automated checker such as [Dependabot](https://github.com/dependabot) if possible.<br />
+  Minimise use of third-party packages. Check for vulnerabilities on trusted news sources. Use automated checkers and tools if possible.<br />
+  [Tool: Dependabot](https://github.com/dependabot)<br />
+  [Tool: Snyk](https://snyk.io)<br />
   [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
   #nfr--security
 - [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
@@ -1503,6 +1504,13 @@
 - [ ] Careful to avoid private data being leaked via logs.<br />
   For example: PII [^pii] or secrets.<br />
   #nfr--security #concern--logging-monitoring-and-observability #nfr--observability
+- [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
+  [Blog: Socket](https://socket.dev/blog)<br />
+  [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
+  [Blog: The latest Next.js news](https://nextjs.org/blog)<br />
+  [Blog: React Blog](https://react.dev/blog)<br />
+  [Blog: React Blog](https://react.dev/blog)<br />
+  #nfr--security
 
 [^security]: Security refers to protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
 [^pii]: Personally Identifiable Information
@@ -1871,12 +1879,12 @@
 
 
 
-# Language
+## Language
 
 
 
 
-### Javascript [^javascript]
+### Language - Javascript [^javascript]
 
 - [ ] Use map with inline lookup rather than `switch`.<br />
   Like this: `{ key1: "value1", key2: "value2", ... }[key]`.<br />
@@ -2288,205 +2296,5 @@
 [^deployment]: Deployment covers issues related to deploying the built application to an environment.
 
 
-
-
-
-
-
-
-
-## Appendix
-
-#### Non-functional requirements (NFRs)
-
-- Achievability
-- Simplicity
-- Availability
-- Correctness
-- Readability
-- Maintainability
-- Security
-- Testability 
-- Accessibility 
-- Performance
-- Reliability
-- Scalability
-- Usability
-- Observability
-- Portability
-- Compatibility
-- Adaptability
-- Economy
-
-#### SOLID principles
-
-- Single-responsibility
-- Open-closed
-- Liskov substitution
-- Interface segregation
-- Dependency inversion
-
-
-
-
-## References
-
-
-
-### Requirements
-
-### Solution design
-
-- [Blog • Brad WESTNESS](https://brad.westness.cc)
-
-### Cleanness
-
-- [Website: Chromium issues](https://issues.chromium.org/issues?q=status:open)<br />
-- [Website: Firefox bugs](https://bugzilla.mozilla.org/describecomponents.cgi?product=Firefox)<br />
-- [Website: Safari &amp; Web | Apple Developer Forums](https://developer.apple.com/forums/topics/safari-and-web-topic)<br />
-- [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
-
-### Architecture
-
-- [Website: The 12 Factor App](https://12factor.net)
-
-### State
-
-### Errors
-
-### Caching
-
-### Paging and sorting
-
-### Localisation
-
-### Feature flags
-
-### Analytics
-
-### Tests
-
-- [Book: Software Testing - A Craftsman's Approach • Paul JORGENSEN](https://www.routledge.com/Software-Testing-A-Craftsmans-Approach-Fifth-Edition/Jorgensen-DeVries/p/book/9780367767624)
-- [Book: The Art of Unit Testing • Roy OSHEROV](https://www.artofunittesting.com)
-
-
-### Version control
-
-### Logging, monitoring and observability
-
-### Pull request
-
-### Documentation
-
-### Achievability
-
-### Simplicity
-
-### Availability
-
-### Correctness
-
-### Readability
-
-- [Book: The Art of Readable Code • Dustin BOSWELL](https://www.oreilly.com/library/view/the-art-of/9781449318482/)
-
-### Maintainability
-
-### Testability
-
-### Scalability
-
-### Observability
-
-### Portability
-
-### Adaptability
-
-### Compatibility
-
-- [Tool: Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/)
-
-### Accessibility
-
-- [Article: Checklist - The A11y Project](https://www.a11yproject.com/checklist/)
-
-### Performance
-
-- [Wiki: Flash of unstyled content - Wikipedia](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)
-
-### Robustness 
-
-### Reliability
-
-### Economy
-
-### Security
-
-### Usability
-
-- [Blog • Marco HEINE](https://marcoheine.com/blog)
-
-### Code
-
-- [Book: A Philosophy of Software Design • John OUSTERHOUT](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)
-
-### Javascript
-
-- [Blog: I Code It • Juntao QIU](https://www.icodeit.com.au)
-- [2ality – JavaScript and more](https://2ality.com)
-- [ECMAScript News](https://ecmascript.news/archive.html)
-
-### Typescript
-
-- [TkDodo's blog • Dominik](https://tkdodo.eu/blog)
-- [Pro TypeScript - Second Edition](https://stevefenton.co.uk/publications/pro-typescript/)
-- [Website: Basarat](https://basarat.com)
-- [Website: The TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-
-### HTML
-
-- [Articles: MDN Web Docs](https://developer.mozilla.org)
-- [Articles: web.dev](https://web.dev/articles)
-
-### CSS
-
-- [Blog • Lars Magnus KLAVENES](https://larsmagnus.co/blog)
-
-### React
-
-- [Blog • Kent C. DODDS](https://kentcdodds.com/blog)
-- [Docs: React Reference Overview • React Team](https://react.dev/reference)
-- [Blog: overreacted • Dan ABRAMOV](https://overreacted.io)
-- [Advanced React - Book and Video Course • Nadia MAKAREVICH](https://www.advanced-react.com)
-- [Blog: React articles • Josh W. Comeau • Josh W. COMEAU](https://www.joshwcomeau.com/react)
-- [Blog: ReactTDD.com - JavaScript testing techniques for React applications • Daniel IRVINE](https://reacttdd.com)
-- [Blog • Alex SIDORENKO](https://alexsidorenko.com/blog)
-- [Blog • Marco HEINE](https://marcoheine.com)
-
-### NextJS
-
-- [Next.js by Vercel - The React Framework • Vercel](https://nextjs.org)
-
-### Patterns
-
-- [Book: Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns)
-- [Book: Object Oriented Software Construction • Bertrand MEYER](https://en.wikipedia.org/wiki/Object-Oriented_Software_Construction)
-- [Website: Patterns.dev](https://www.patterns.dev)
-- [Article: Micro Frontends - martinfowler.com](https://martinfowler.com/articles/micro-frontends.html)
-- [Website: Micro Frontends](https://microfrontends.com)
-
-### Configuration
-
-### Packages
-
-- [Blog • Anthony FU](https://antfu.me/posts)
-
-### Build
-
-### Deployment
-
-### Appendix
-
-### References
 
 

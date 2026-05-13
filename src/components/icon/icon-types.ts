@@ -14,6 +14,7 @@ export const IconTypes = {
   Dev: "dev",
   Download: "download",
   Email: "email",
+  PointRightFinger: "point-right-finger",
   Github: "github",
   Goodreads: "goodreads",
   HamburgerMenu: "hamburger-menu",

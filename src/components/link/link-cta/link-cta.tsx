@@ -1,3 +1,4 @@
+import { Icon, IconTypes } from "../../icon";
 import { Image } from "../../image";
 import { LinkBox, LinkBoxDescription, LinkBoxTitle } from "../../link-box";
 import { StackDistributions } from "../../stack";
@@ -13,7 +14,8 @@ export function LinkCta(props: LinkCtaProps) {
         distribution={StackDistributions.Flow}
         gap={1}
       >
-        <Stack direction={StackDirections.Column} gap={0.5}>
+        <Icon icon={IconTypes.PointRightFinger} size="2.5rem" />
+        <Stack direction={StackDirections.Column} gap={0.125}>
           <LinkBoxTitle>{props.title}</LinkBoxTitle>
           <LinkBoxDescription>{props.description}</LinkBoxDescription>
         </Stack>

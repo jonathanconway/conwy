@@ -5,4 +5,5 @@ export const meta: ChecklistMeta = {
   slug: "front-end-development",
   blurb:
     "Covers common front end development concerns. Includes front end frameworks and languages, and non-functional requirements such as accessibility and security.",
+  updatedDate: "2026-05-13",
 };

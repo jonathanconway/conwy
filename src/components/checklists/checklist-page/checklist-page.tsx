@@ -1,40 +1,28 @@
-import { Breadcrumb } from "../../breadcrumb";
-import { Heading } from "../../heading";
 import { MainAsideLayout } from "../../layouts";
 import { MdxContainer, MdxDivCustomChecklist } from "../../mdx";
 import { Stack } from "../../stack";
 
+import { ChecklistPageHeader } from "./checklist-page-header";
 import { ChecklistPageProps } from "./checklist-page-props";
+import { ChecklistPageSidebar } from "./checklist-page-sidebar";
 
 export function ChecklistPage(props: ChecklistPageProps) {
-  const { checklist } = props;
-
   return (
     <MainAsideLayout
       main={
         <Stack gap={2}>
-          <Stack gap={1}>
-            <Breadcrumb
-              segments={[
-                {
-                  title: "Checklists",
-                  url: "/checklists",
-                },
-                {
-                  title: checklist.meta.title,
-                },
-              ]}
-            />
-            <Heading level={2}>{checklist.meta.title} checklist</Heading>
-          </Stack>
+          <ChecklistPageHeader checklist={props.checklist} />
 
           <MdxContainer>
             <MdxDivCustomChecklist checklist={props.checklist}>
-              {checklist.content}
+              {props.checklist.content}
             </MdxDivCustomChecklist>
           </MdxContainer>
+
+          <MdxContainer>{props.checklist.endnotes}</MdxContainer>
         </Stack>
       }
+      aside={<ChecklistPageSidebar checklistMeta={props.checklist.meta} />}
     />
   );
 }

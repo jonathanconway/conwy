@@ -16,7 +16,11 @@ export function useTagFiltersSelected(
 
   function setSelectedTags(newSelectedTags: readonly string[]) {
     const params = new URLSearchParams(searchParams);
-    params.set(searchParamKey, newSelectedTags.join(","));
+    if (newSelectedTags.length === 0) {
+      params.delete(searchParamKey);
+    } else {
+      params.set(searchParamKey, newSelectedTags.join(","));
+    }
     window.history.pushState(null, "", `?${params.toString()}`);
   }
 
