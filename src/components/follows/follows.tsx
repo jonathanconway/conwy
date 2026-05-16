@@ -2,6 +2,8 @@ import follows from "@/content/pages/follows/follows.json";
 
 import { SectionHeading } from "../heading";
 import { Link } from "../link";
+import { UnorderedList } from "../list";
+import { ListItem } from "../list/list-item";
 
 export function Follows() {
   const followsEntries = Object.entries(follows);
@@ -12,13 +14,13 @@ export function Follows() {
         <div key={section}>
           <SectionHeading>{section}</SectionHeading>
 
-          <ul>
+          <UnorderedList>
             {items.map((item) => (
-              <li key={item.url}>
+              <ListItem key={item.url}>
                 <Link key={item.url} link={item} />
-              </li>
+              </ListItem>
             ))}
-          </ul>
+          </UnorderedList>
         </div>
       ))}
     </>

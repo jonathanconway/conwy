@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useArticleSidebarContainer() {
+export function useContentSidebarContainer() {
   const [isScrolledDown, setIsScrolledDown] = useState(false);
 
   const deferredUpdateIsScrolledDown = () => {

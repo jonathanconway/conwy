@@ -2,9 +2,9 @@ import { HTMLProps } from "react";
 
 import * as styles from "./list.css";
 
-type ListProps = HTMLProps<HTMLUListElement>;
+type UnorderedListProps = HTMLProps<HTMLUListElement>;
 
-export function List(props: ListProps) {
+export function UnorderedList(props: UnorderedListProps) {
   const { className = styles.list, ...restProps } = props;
 
   return <ul className={className} {...restProps} />;

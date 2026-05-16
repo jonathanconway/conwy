@@ -3,7 +3,7 @@ import { Study as Study_, isNotNil } from "@/framework/client";
 import { ContentListItem } from "../../content-list";
 import { Heading, HeadingLevels } from "../../heading";
 import { Link } from "../../link";
-import { List } from "../../list";
+import { UnorderedList } from "../../list";
 import { Text, TextSizes } from "../../text";
 import { TextTypes } from "../../text/text-type";
 
@@ -51,7 +51,7 @@ export function Study(props: StudyProps) {
           <Text type={TextTypes.Small}>{details}</Text>
 
           {Boolean(links?.length) && (
-            <List className={styles.linksList}>
+            <UnorderedList className={styles.linksList}>
               {links?.map(({ url, title }) => (
                 <li key={url}>
                   <Link
@@ -64,7 +64,7 @@ export function Study(props: StudyProps) {
                   </Link>
                 </li>
               ))}
-            </List>
+            </UnorderedList>
           )}
 
           {description && <Text>{description}</Text>}

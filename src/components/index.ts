@@ -14,6 +14,7 @@ export * from "./communities";
 export * from "./contact";
 export * from "./content-embed";
 export * from "./content-list";
+export * from "./content-page";
 export * from "./content-type";
 export * from "./copyable";
 export * from "./date";

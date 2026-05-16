@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 import { Checklist } from "./checklist";
 
 export function createChecklistMock(): Checklist {
@@ -9,6 +11,7 @@ export function createChecklistMock(): Checklist {
       slug: "front-end-observability",
       title: "Front end observability",
       blurb: "",
+      updatedDate: DateTime.now().toFormat("yyyy-MM-dd"),
     },
   };
 }

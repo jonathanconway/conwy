@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Self-similar: a versatile folder pattern for code",
@@ -11,7 +11,13 @@ export const meta: ArticleMeta = {
   mainImage: {
     src: "/images/articles/self-similar-folder-pattern/main.png",
   },
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/self-similar-a-versatile-folder-pattern-for-code-d189",
+      likeCount: 4,
+    },
+  ],
   socialLinks: [],
-  discussionLinks: [],
   isPinned: true,
 };

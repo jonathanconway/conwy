@@ -1,8 +1,5 @@
 import { style } from "@vanilla-extract/css";
 
-export const list = style({
-  listStyle: "none",
-  display: "flex",
-  flexDirection: "column",
-  gap: "0.5rem",
-});
+import * as textMixins from "../text/text.mixins";
+
+export const list = style(textMixins.ul);

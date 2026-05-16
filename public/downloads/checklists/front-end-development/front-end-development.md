@@ -11,7 +11,7 @@
 ### General - Requirements [^requirements]
 
 - [ ] Ensure non-functional requirements addressed, correctly applied and prioritised with appropriate trade-offs.<br />
-  For example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br />
+  Example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br />
   #general--requirements
 - [ ] For changes that affect many execution paths, performance may be more critical, as slowness will have a massive impact.<br />
   #general--requirements
@@ -53,7 +53,7 @@
   False-positives. Checking for `true` when you should check for `false` or vice-versa.<br />
   Confusing inclusive vs. exclusive ranges. *Between* 1 and 5 vs. *from* 1 to 5.<br />
   Coercing truthy/falsy values to get an incorrect boolean result.<br />
-  Off-by-one errors. For example: starting a loop from 1 in a 0-based array.<br />
+  Off-by-one errors. Example: starting a loop from 1 in a 0-based array.<br />
   Filtering operations. Exclusive vs. inclusive lists. And vs. or operators.<br />
   #general--cleanness
 - [ ] Test long sequences of actions and make sure the result at the end is exactly as expected.<br />
@@ -63,7 +63,7 @@
 - [ ] Input values in unexpectedly large quantities, in an unexpected format or null/empty values.<br />
   #general--cleanness
 - [ ] Test with correctly formatted but illogical values.<br />
-  For example: a date that is the 32nd of the month.<br />
+  Example: a date that is the 32nd of the month.<br />
   #general--cleanness
 - [ ] Add a larger than normal number of items to a list.<br />
   #general--cleanness
@@ -74,32 +74,30 @@
 - [ ] Check for memory leaks.<br />
   Example: in Javascript, Maps that reference DOM nodes that no longer exist.<br />
   Example: in RXJS, subscriptions to observables that you forgot to unsubscribe.<br />
-  Use tools for diagnosing memory leaks. For example: Chrome Developer Tools - Performance tab.<br />
+  Use tools for diagnosing memory leaks. Example: Chrome Developer Tools - Performance tab.<br />
   #general--cleanness
 - [ ] Check for code executing too often.<br />
   #general--cleanness
-- [ ] Check things that look and behave very similarly, but are qualitatively different.<br />
+- [ ] Check things that look and behave superficially similarly, but are qualitatively different.<br />
+  Example: Two lists that appear identical but have different underlying data, where one of them might have an error.<br />
   #general--cleanness
-- [ ] Null-checks.<br />
+- [ ] Perform null-checks where values might be null.<br />
   #general--cleanness
-- [ ] Async data dependencies.<br />
+- [ ] Check for race conditions that might cause async, concurrent or parallel data loading to create errors.<br />
   #general--cleanness
-- [ ] Browser/OS upgrades.<br />
+- [ ] Ensure no breakage on various devices, operating systems (and versions), screen sizes and zoom factors.<br />
   #general--cleanness
-- [ ] Devices, screen sizes and zoom factors.<br />
+- [ ] Careful to ensure that inputs to formatting functions are always valid.<br />
+  Example: Numeric values, such as money amounts; date and time values; etc.<br />
+  Incorrectly formatted inputs can cause exceptions or unexpected behavior.<br />
+  [Article: Do you pre-format your time strings before using TimeSpan.Parse | SSW.Rules](https://www.ssw.com.au/rules/pre-format-your-time-strings-before-using-timespan-parse) <br />
   #general--cleanness
-- [ ] Date and time handling and formatting.<br />
-  #general--cleanness
-- [ ] Numeric values, such as currency.<br />
-  #general--cleanness
-- [ ] Load testing.<br />
-  #general--cleanness
-- [ ] Requirements vs solution.<br />
+- [ ] Perform load testing.<br />
   #general--cleanness
 - [ ] Make sure you're running the expected version of the application when using it locally.<br />
   #general--cleanness
 - [ ] Check in multiple environments.<br />
-  For example: make sure it works not only in Dev environment, but also in UAT and Prod environments.<br />
+  Example: make sure it works not only in Dev environment, but also in UAT and Prod environments.<br />
   #general--cleanness
 - [ ] On finding a bug, search for similar bugs and fix them too.<br />
   #general--cleanness
@@ -119,6 +117,11 @@
   [Website: Firefox bugs](https://bugzilla.mozilla.org/describecomponents.cgi?product=Firefox)<br />
   [Website: Safari &amp; Web | Apple Developer Forums](https://developer.apple.com/forums/topics/safari-and-web-topic)<br />
   [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
+  #general--cleanness
+- [ ] Store data in the correct mechanism, to prevent accidental loss or other data issues.<br />
+  [Docs: Storage options for your Amazon EC2 instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Storage.html)<br />
+  [Article: Do you know where to store your application's files? | SSW.Rules](https://www.ssw.com.au/rules/where-to-store-your-applications-files)<br />
+  [Article: Do you store Application-Level Settings in your database rather than configuration files when possible? | SSW.Rules](https://www.ssw.com.au/rules/store-application-level-settings-in-database-instead-of-configuration-files-when-possible)<br />
   #general--cleanness
 
 [^cleanness]: Cleanness refers to the absence of bugs or other mistakes in the application and code.
@@ -182,18 +185,28 @@
 
 
 
+## General - AI
+
+- [ ] Use AI for pair programming and code review.<br />
+  [Article: Do you use AI pair programming? | SSW.Rules](https://www.ssw.com.au/rules/ai-pair-programming)<br />
+  #general--ai
+
+
+
+
 ## Concerns
 
 
 
 
-### State [^state]
+### Concerns - State [^state]
 
-- [ ] Choose appropriate state management facility, considering all available options.<br />
+- [ ] Choose the most appropriate state management facility, considering all available options.<br />
   Scoped variable, Global variable, Component state, Context state, Global state, URL, Local/session storage, In-browser database, Server-side.<br />
+  [Article: Do you know the best practice for managing state? | SSW.Rules](https://www.ssw.com.au/rules/best-practice-for-managing-state)<br />
   #concern--state
 - [ ] Represent state to the user.<br />
-  For example: URL path/querystring.<br />
+  Example: URL path/querystring.<br />
   #concern--state
 - [ ] Keep on server state that is sensitive or otherwise belongs there.<br />
   #concern--state
@@ -209,14 +222,14 @@
 
 
 
-### Errors [^errors]
+### Concerns - Errors [^errors]
 
 - [ ] Handle expected errors only.<br />
   #concerns--errors
 - [ ] Use global error handling to ensure exceptions don't break the whole app and block the user.<br />
   #concerns--errors
 - [ ] Don't handle exceptions without re-throwing unless it's necessary.<br />
-  For example: a bug in the API that can't be resolved just yet. If necessary, thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
+  Example: a bug in the API that can't be resolved just yet. If necessary, thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
   #concerns--errors #nfr--correctness
 - [ ] Define exceptions / errors out of existence where possible.<br />
   [Book: A Philosophy of Software Design, Ch 10](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
@@ -227,7 +240,7 @@
 
 
 
-### Caching [^caching]
+### Concerns - Caching [^caching]
 
 - [ ] Invalidate a cache when the same data needs to be fetched freshly in a different context.<br />
   Use invalidation tags if available.<br />
@@ -238,12 +251,12 @@
 - [ ] Select `localStorage`  vs `sessionStorage` correctly depending on how long data needs to live.<br />
   #concern--caching
 - [ ] Cache service-service or service-database calls to improve performance.<br />
-  For example: in a NextJS backend, wrap API service calls in `cache`.<br />
+  Example: in a NextJS backend, wrap API service calls in `cache`.<br />
   #concern--caching #nfr--performance
 - [ ] When choosing caching strategy, consider whether cached call is idempotent, and treat appropriately.<br />
   #concern--caching
 - [ ] Consider additional layer of caching for calls made many times.<br />
-  For example: each item in a long list of items.<br />
+  Example: each item in a long list of items.<br />
   #concern--caching
 
 [^caching]: Caching refers to storage of values, over various time-scales, for faster retrieval by the application.
@@ -251,7 +264,7 @@
 
 
 
-### Paging and sorting [^paging-sorting]
+### Concerns - Paging and sorting [^paging-sorting]
 
 - [ ] Careful with locally sorting server-requested data.<br />
   Might not play nicely with server-side pagination.<br />
@@ -266,7 +279,7 @@
 
 
 
-### Localisation [^localisation]
+### Concerns - Localisation [^localisation]
 
 - [ ] Localise all the text, and keep in a separate file or service.<br />
   #concern--localisation
@@ -278,7 +291,7 @@
   Similar sense of structure as for components or feature folders.<br />
   #concern--localisation
 - [ ] Put language and locale in URL.<br />
-  For example: `mysite.com/en/AU/foo/bar`.<br />
+  Example: `mysite.com/en/AU/foo/bar`.<br />
   #concern--localisation
 - [ ] Search for other surrounding/similar/related localisation keys.<br />
   Make sure they are named and positioned consistently and hierarchically.<br />
@@ -289,8 +302,11 @@
 
 
 
-### Feature flags [^feature-flags]
+### Concerns - Feature flags [^feature-flags]
 
+- [ ] Use a purpose-built, full-features platform, where applicable.<br />
+  [Docs: LaunchDarkly](https://launchdarkly.com/docs/home)<br />
+  #concern--feature-flags
 - [ ] Put feature behind a feature flag as needed.<br />
   #concern--feature-flags
 - [ ] Don't add in shared package, keep in application code, so it can be properly specific.<br />
@@ -300,21 +316,21 @@
 - [ ] Ensure there is a removal or maintenance plan.<br />
   #concern--feature-flags
 - [ ] Check flag once at the highest level to avoid checking repeatedly at lower levels.<br />
-  For example: if a flag turns off a whole list, put the if at the list level, not the list item level.<br />
+  Example: if a flag turns off a whole list, put the if at the list level, not the list item level.<br />
   #concern--feature-flags
 - [ ] Regression test. Features not controlled by a feature flag should remain unaffected.<br />
   #concern--feature-flags
 - [ ] Hide or disable a whole page or route if its feature flag is off.<br />
-  For example: prevent early disclosure or tip-off if we don't want the public to be aware of an upcoming feature.<br />
+  Example: prevent early disclosure or tip-off if we don't want the public to be aware of an upcoming feature.<br />
   #concern--feature-flags
 - [ ] Ensure the right people know about a feature flag.<br />
-  For example: product-wide concern vs. engineering-only. Or inter-team concern vs. team-specific. Make sure appropriate people are informed.<br />
+  Example: product-wide concern vs. engineering-only. Or inter-team concern vs. team-specific. Make sure appropriate people are informed.<br />
   #concern--feature-flags
 - [ ] Descriptions and any commentary should be accurate.<br />
   Check accuracy with regards to purpose of the flag, code and behaviour impacted, release dates, removal plan, etc.<br />
   #concern--feature-flags #concern--documentation
 - [ ] Ensure feature flag is applied to correct environment if configurable.<br />
-  For example: dev only or also UAT and Prod.<br />
+  Example: dev only or also UAT and Prod.<br />
   #concern--feature-flags
 - [ ] Use case for feature flag: feature requires pen-testing before going live.<br />
   #concern--feature-flags
@@ -330,9 +346,14 @@
 
 
 
-### Analytics [^analytics]
+### Concerns - Analytics [^analytics]
 
 - [ ] Add analytics code if needed.<br />
+  #concern--analytics
+- [ ] Use a dedicated, full-featured third-party analytics platform, where applicable.<br />
+  [Platform: Google Analytics](https://marketingplatform.google.com/about/analytics/)<br />
+  [Platform: Adobe Analytics](https://experienceleague.adobe.com/en/browse/analytics)<br />
+  [Platform: Medallia AI](https://www.medallia.com/platform/analytics/)<br />
   #concern--analytics
 - [ ] Make sure names / labels / tags passed are correct. Not excessive or insufficient.<br />
   #concern--analytics
@@ -344,9 +365,9 @@
 
 
 
-### Tests [^tests]
+### Concerns - Tests [^tests]
 
-#### Tests - General
+#### Concerns - Tests - General
 
 - [ ] Choose the right kind of test.<br />
   UI tests, Unit tests, Integration tests, E2E tests, Browser tests, PACT tests, Visual diff tests.<br />
@@ -376,7 +397,8 @@
   #concern--tests
 - [ ] Use immutable `const` where possible. Alternately, split into utility functions or before/after blocks.<br />
   #concern--tests
-- [ ] Place tests in appropriate folder with appropriate meaningful filename.<br />
+- [ ] Place tests in appropriate folder with appropriate and meaningful filename.<br />
+  Use appropriate suffix, such as `.test.ts` or `.spec.ts`.<br />
   #concern--tests
 - [ ] Use `beforeAll` rather than `beforeEach` where possible to minimise overhead.<br />
   #concern--tests
@@ -386,7 +408,7 @@
 - [ ] Use appropriate formatting and values for `data-testid` - short, kebab-case, appropriate identifier.<br />
   #concern--tests
 - [ ] Use descriptive names rather than indexes for `const`s destructured from arrays.<br />
-  For example: `usernameLabel` rather than `label0`.<br />
+  Example: `usernameLabel` rather than `label0`.<br />
   #concern--tests
 - [ ] Avoid `beforeEach`, prefer to keep setup in individual tests.<br />
   #concern--tests
@@ -396,22 +418,23 @@
   #concern--tests
 - [ ] Keep tests in the right file. Split or combine as needed.<br />
   #concern--tests
-- [ ] Think about how the test could fail, write the test test to fail, make it pass.<br />
+- [ ] Cover all possible scenarios. Think about how the test could fail, write the test test to fail, make it pass.<br />
+  [Article: Code - Do you handle all possible scenarios? | SSW.Rules](https://www.ssw.com.au/rules/handle-unhappy-paths)<br />
   #concern--tests
 - [ ] Improve or extend test data to more precisely capture test target and failure cases.<br />
   #concern--tests
 - [ ] Only cover behaviour, including errors, that we expect to happen.<br />
   #concern--tests
 
-#### Tests - Manual
+#### Concerns - Tests - Manual
 
 - [ ] Manually test the application, exercising every important code path impacted.<br />
   #nfr--correctness
-- [ ] Prioritise testing effort. For example: test high impact stuff first, then easy-to-test stuff, then the rest.<br />
+- [ ] Prioritise testing effort. Example: test high impact stuff first, then easy-to-test stuff, then the rest.<br />
   #concern--tests
 - [ ] Test Required input fields - they should not accept blank spaces, strange characters, etc.<br />
   #concern--tests
-- [ ] Test fields with extreme values, For example: very low or high numbers or very long strings.<br />
+- [ ] Test fields with extreme values, Example: very low or high numbers or very long strings.<br />
   #concern--tests
 - [ ] Perform actions fast and/or with simulated slow conditions and ensure no breakage.<br />
   #concern--tests
@@ -420,16 +443,16 @@
 - [ ] Exercise every important code path that might be impacted by your change.<br />
   #concern--tests
 - [ ] Consider whether a "transfer" type transaction should be supported with the same source and destination.<br />
-  For example: sending a message to oneself, paying oneself, etc.<br />
+  Example: sending a message to oneself, paying oneself, etc.<br />
   #concern--tests
 - [ ] Test all paths that can lead to a particular piece of code running.<br />
   Not just the path that you're currently focussed on.<br />
    #nfr--correctness
 - [ ] Test all applications or APIs your changes might impact.<br />
-  For example: logic that affects both a customer facing website and a staff admin dashboard.<br />
+  Example: logic that affects both a customer facing website and a staff admin dashboard.<br />
 - [ ] Compare application before and after changes, to ensure there are no hidden regressions.
 
-#### Tests - Unit
+#### Concerns - Tests - Unit
 
 - [ ] Maximise code coverage.<br />
   #concern--tests
@@ -442,7 +465,7 @@
 - [ ] No need to necessarily write unit tests if behaviour already covered by higher level (such as integration) and they are adding no value.<br />
   #concern--tests
 
-#### Tests - Mocking
+#### Concerns - Tests - Mocking
 
 - [ ] Mock structure - should be aligned with Backend API specs.<br />
   #concern--tests
@@ -475,7 +498,7 @@
 - [ ] No need to add full mocks or test coverage for features that are still under incremental development and behind feature flags, and where regression testing is adequate.<br />
   #concern--tests
 
-#### Tests - Assertions
+#### Concerns - Tests - Assertions
 
 - [ ] Nice error messages on test failure if possible.<br />
   #concern--tests
@@ -485,7 +508,8 @@
   #concern--tests
 - [ ] When asserting on collections, assert on expected length first, so test breaks earlier and faster, and failure is faster to debug.<br />
   #concern--tests
-- [ ] Assert counterfactuals. For example expect element not to exist.<br />
+- [ ] Assert counterfactuals.<br />
+  Example: expect element not to exist.<br />
   #concern--tests
 - [ ] Simplify big asserts.<br />
   #concern--tests
@@ -501,10 +525,10 @@
 - [ ] Assert on parameter values of function calls.<br />
   #concern--tests
 - [ ] Don't include unnecessary assertions.<br />
-  For example: if clicking a button as part of an integration test, you don't necessarily need to assert on the button itself – its label, size, etc. – if the button is not the primary focus of the test.<br />
+  Example: if clicking a button as part of an integration test, you don't necessarily need to assert on the button itself – its label, size, etc. – if the button is not the primary focus of the test.<br />
   #concern--tests
 
-#### Tests - Assertions - Jest
+#### Concerns - Tests - Assertions - Jest
 
 - [ ] Assert `toBe(true)` rather than `toBeTruthy()` if the expected value is exactly `true`.<br />
   #concern--tests #framework--jest #language--javascript
@@ -513,14 +537,14 @@
 - [ ] Assert on specific field values with dot notation (`foo.bar`) rather than cumbersome deeply nested `objectContains` or similar.<br />
   #concern--tests #framework--jest #language--javascript
 
-#### Tests - React
+#### Concerns - Tests - React
 
 - [ ] use `<Component>` as easily recognisable title for component tests.<br />
   #concern--tests #framework--react
 - [ ] Use `exact: false` and/or `selector: "foo"` to select elements by partial text matching; more accurate than just using a `RegExp`.<br />
   #concern--tests #framework--react
 
-#### Tests - Jest
+#### Concerns - Tests - Jest
 
 - [ ] Use `waitForNextUpdate` when testing hooks rather than wrapping in `waitFor`.<br />
   #concern--tests #framework--jest #language--javascript
@@ -542,10 +566,10 @@
 - [ ] Call `userEvent.setup()` and use its return value, to isolate it per-test.<br />
   #concern--tests #framework--jest #language--javascript
 - [ ] Don't use `jest.mock`. Prefer `jest.spyOn`.<br />
-  [StackOverflow Post: Why use `spyOn` with mock implementation rather than `jest.fn`?](https://stackoverflow.com/a/64930781/23341)<br />
+  [Post: Why use `spyOn` with mock implementation rather than `jest.fn`?](https://stackoverflow.com/a/64930781/23341)<br />
   #concern--tests #framework--jest #language--javascript
 
-#### Tests - Reliability
+#### Concerns - Tests - Reliability
 
 - [ ] Use `void` rather than `async` prefix with `renderAsyncComponent`, then wait for one of its elements to render (using `findBy*` or `waitFor` block).<br />
   This avoids a race condition between the component loading and test logic that expects it to have loaded.<br />
@@ -564,7 +588,7 @@
 - [ ] Use `getBy` subsequently, once component has loaded. Using `findBy` on the first component, to wait for it to be loaded, followed by `getBy` to assert on the loaded elements.<br />
   #concern--tests
 
-#### Tests - E2E
+#### Concerns - Tests - E2E
 
 - [ ] Add if needed.<br />
   #concern--tests
@@ -598,20 +622,29 @@
 
 
 
-### Version control [^version-control]
+### Concerns - Version control [^version-control]
 
 - [ ] Rebase on main/master regularly.<br />
   #concern--version-control
-- [ ] Write readable, well formatted commits.<br />
-  Use [Conventional Commits](https://www.conventionalcommits.org) or whatever format the team agrees on.
+- [ ] Use a standard format for commit messages.<br />
+  Example: Conventional Commits. Or whatever format the team agrees on.<br />
+  [Website: Conventional Commits](https://www.conventionalcommits.org)<br />
+  [Tool: Commitizen](https://commitizen-tools.github.io/commitizen/)<br />
+  [Tool: Commitlint](https://commitlint.js.org/)<br />
   #concern--version-control #concern--documentation
+- [ ] Explain **why** not what, audience is seeing it through git blame.<br />
+  #concern--documentation
+- [ ] Brief, concise commit messages. Respect people's time.<br />
+  #concern--documentation
+
+
 
 [^version-control]: Version control system (VCS), such as Git or Mercurial.
 
 
 
 
-### Logging, monitoring and observability [^monitoring-logging-and-observability]
+### Concerns - Logging, monitoring and observability [^monitoring-logging-and-observability]
 
 - [ ] Remove logging, observability or other diagnostics if not intended to go into prod.<br />
   #concern--logging-monitoring-and-observability #nfr--observability
@@ -623,16 +656,20 @@
 
 
 
-### Pull request [^pull-request]
+### Concerns - Pull request [^pull-request]
 
 - [ ] Keep small and focussed, split where needed to keep each PR small.<br />
+  Prioritise short iteration cycles.<br />
   #concern--pull-request #nfr--readability 
 - [ ] Include links to task, designs, requirements, specifications, etc.<br />
+  #concern--pull-request #concern--documentation
+- [ ] Keep description small and structured. Hide details in collapsible sections or link to additional resources.<br />
+  [Book: Software Engineering at Google • Titus WINTERS, Tom MANSHRECK, Hyrum WRIGHT, Ch 9 - Code Review, pp. 178]<br />
   #concern--pull-request #concern--documentation
 - [ ] Ensure that all automated checks pass before sending the PR for review.<br />
   #concern--pull-request
 - [ ] Make sure everything is provided for devs to checkout and test from scratch.<br />
-  For example: installation instructions, credentials, test accounts.<br />
+  Example: installation instructions, credentials, test accounts.<br />
   #concern--pull-request #nfr--testability
 - [ ] Create preview / staging site.<br />
   And include instructions to access if needed.<br />
@@ -640,7 +677,7 @@
 - [ ] Apply changes in separate commits to allow history to be viewed and discussed.<br />
   #concern--pull-request
 - [ ] Remove temporary settings before setting PR to Open.<br />
-  For example: temporary test-only configurations or feature flag settings.<br />
+  Example: temporary test-only configurations or feature flag settings.<br />
   #concern--pull-request
 - [ ] Review with stakeholders (design, analysts, etc) before merge, if needed.<br />
   #concern--pull-request #nfr--correctness
@@ -662,10 +699,11 @@
 
 
 
-### Documentation [^documentation]
+### Concerns - Documentation [^documentation]
 
 - [ ] Add `README.md`.<br />
   Detail what this is and link to other docs for specific details.<br />
+  [Docs: About the repository README file - GitHub](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes)<br />
   #concern--documentation
 - [ ] Add how to install instructions.<br />
   #concern--documentation
@@ -675,7 +713,7 @@
   Try installing and running the application yourself, from scratch, as if a new joiner. Go through some of the major flows.<br />
   #concern--documentation
 - [ ] Ensure new starters can readily find information needed.<br />
-  For example: ensure documentation is available and searchable.<br />
+  Example: ensure documentation is available and searchable.<br />
   #concern--documentation
 - [ ] In lists of steps, avoid one step getting too big.<br />
   Split out to separate steps as needed.<br />
@@ -690,19 +728,30 @@
 - [ ] Check if design, code, documentation, etc. need to be updated so they are all consistent.<br />
   #concern--documentation #nfr--correctness
 
-#### Documentation - Comments
+[^documentation]: Documentation refers to written documentation, code comments or self-documenting code.
 
+
+
+
+### Concerns - Comments [^comments]
+
+- [ ] Use comments where they add value.<br />
+  [Article: Comments - Do you follow the code commenting standards? | SSW.Rules](https://www.ssw.com.au/rules/code-commenting)<br />
+  #concern--documentation
 - [ ] Describe the why not the what, let the code describe the what.<br />
   #concern--documentation
 - [ ] Describe “why not” to communicate why one solution was chosen over another seemingly better solution.<br />
-  For example: "We went with z. Why not y? Because z.<br />
+  Example: "We went with z. Why not y? Because z.<br />
   #concern--documentation
-- [ ] Comment anything that needs fixing later with `TODO` only if that's the convention.<br />
-  Otherwise, log an appropriate ticket.<br />
+- [ ] Instead of `TODO`, track maintenance work more visibly in a task-tracking system.<br />
+  [Article: Do you document "TODO" tasks? | SSW.Rules](https://www.ssw.com.au/rules/todo-tasks)<br />
   #concern--documentation
 - [ ] Describe function parameters, object fields, types, interfaces, constants, etc. with JSDoc comments, if not apparent.<br />
   #concern--documentation
-- [ ] Describe advanced features the consumer is unlikely to know.<br />
+- [ ] Describe advanced features or obscure code the reader is unlikely to understand.<br />
+  Example: use of `setTimeout` or browser hacks or device-specific APIs.<br />
+  [Article: Do you leave explanatory notes for non-standard code? | SSW.Rules](https://www.ssw.com.au/rules/leave-explanatory-notes-for-non-standard-code)<br />
+  [Article: Do you know what to do with a work around? | SSW.Rules](https://www.ssw.com.au/rules/what-to-do-with-a-work-around)<br />
   #concern--documentation
 - [ ] Add warnings where needed.<br />
   #concern--documentation
@@ -711,27 +760,32 @@
 - [ ] Communicate intent.<br />
   #concern--documentation
 - [ ] Use information-dense words.<br />
-  For example: refer to the name of a software pattern rather than explaining the whole thing.<br />
+  Example: refer to the name of a software pattern rather than explaining the whole thing.<br />
   #concern--documentation
-- [ ] Don't include anything likely to create tedious maintenance overhead.<br />
-  Such as specific amounts, etc.<br />
+- [ ] Don't include anything likely to create tedious maintenance overhead or go out-of-date.<br />
+  Such as specific amounts or date-specific information.<br />
+  [Article: Do you know the best way to track comments when your code is updated? | SSW.Rules](https://www.ssw.com.au/rules/comment-when-your-code-is-updated)<br />
+  #concern--documentation
+- [ ] Reference code derived from an external source.<br />
+  Example: Copied and pasted from Google, StackOverflow or AI.<br />
+  It is important to provide attribution to authors. It can also be helpful for future developers to have the source, when reading or diagnosing issues.<br />
+  [Article: Do you reference websites when you implement something you found on Google? | SSW.Rules](https://www.ssw.com.au/rules/reference-websites-when-you-implement-something-you-found-on-google)<br />
   #concern--documentation
 
-#### Documentation - Commits
 
-- [ ] Explain **why** not what, audience is seeing it through git blame.<br />
-  #concern--documentation
-- [ ] Brief, respect people's time.<br />
-  #concern--documentation
+[^comments]: Comments refer to code comments, which are annotations in the source code that explain the code.
 
-#### Documentation - Bug Reports
+
+
+
+### Concerns - Bug Reports [^bug-reports]
 
 - [ ] Expected vs actual and reproduction steps and test data.<br />
   #concern--documentation
 - [ ] Dig into the code to find out why and report what you found.<br />
   #concern--documentation
 
-[^documentation]: Documentation refers to written documentation, code comments or self-documenting code.
+[^bug-reports]: Bug reports refer to documented issues or defects in the software.
 
 
 
@@ -741,7 +795,7 @@
 
 
 
-### Achievability [^achievability]
+### NFR - Achievability [^achievability]
 
 - [ ] Can the task be achieved within given parameters in a timely manner?<br />
   If not, consider splitting up, re-prioritising, re-defining, etc.<br />
@@ -752,9 +806,14 @@
 
 
 
-### Simplicity [^simplicity]
+### NFR - Simplicity [^simplicity]
 
 - [ ] Can the task or code change be avoided altogether?<br />
+  #nfr--simplicity
+- [ ] Can we use a simpler platform that abstracts away building, deploying, and hosting?<br />
+  [Website: Netlify](https://www.netlify.com)<br />
+  [Website: Amplify](https://aws.amazon.com/amplify/)<br />
+  [Website: Heroku](https://www.heroku.com)<br />
   #nfr--simplicity
 
 [^simplicity]: Simplicity refers to how simple solutions are to understand and implement.
@@ -762,7 +821,7 @@
 
 
 
-### Availability [^availability]
+### NFR - Availability [^availability]
 
 - [ ] Can certain systems go down during peak periods? Can we cater for those scenarios to minimise disruption to users?<br />
   #nfr--availability
@@ -772,7 +831,7 @@
 
 
 
-### Correctness [^correctness]
+### NFR - Correctness [^correctness]
 
 - [ ] Ensure all and only the original requirements satisfied.<br />
   #nfr--correctness #general--requirements
@@ -782,38 +841,52 @@
 
 
 
-### Readability [^readability]
+### NFR - Readability [^readability]
 
 - [ ] Order code blocks, elements, etc. sensibly.<br />
-  For example: order CSS properties with layout first, then color, etc.<br />
+  Example: order CSS properties with layout first, then color, etc.<br />
   #nfr--readability
 - [ ] Ensure either the code is self-documenting or there are sufficient comments to aid understanding.<br />
   #nfr--readability
 - [ ] Simplify and flatten deeply nested structures for readability.<br />
-  For example; nested `if`, `switch` statements.<br />
+  Example: nested `if`, `switch` statements.<br />
   #nfr--readability
 - [ ] Replace multiple `if` statements with one `switch` statement or pattern matching if it improves readability.<br />
   #nfr--readability
+- [ ] Avoid double-negatives in conditionals.<br />
+  [Article: Do you avoid Double-Negative Conditionals in if-statements? | SSW.Rules](https://www.ssw.com.au/rules/avoid-double-negative-conditionals-in-if-statements)<br />
+  #nfr--readability
 - [ ] Use more condensed syntax where it improves readability.<br />
-  For example: inline conditionals (`x ? y : z`) for very simple logic.<br />
+  Example: inline conditionals (`x ? y : z`) for very simple logic.<br />
+  #nfr--readability
+- [ ] Use more expanded syntax or multiple lines where it improves readability.<br />
+  Example: spread message box code into multiple lines, for title, description, etc.<br />
+  [Article: Do you know how to format your MessageBox code? | SSW.Rules](https://www.ssw.com.au/rules/how-to-format-your-messagebox-code)<br />
   #nfr--readability
 - [ ] Avoid excessive use of condensed syntax where it impacts readability.<br />
-  For example: avoid complex nested ternaries, expand them into full `if` statements.<br />
+  Example: avoid complex nested ternaries, expand them into full `if` statements.<br />
   #nfr--readability
 - [ ] Split large function to smaller functions.<br />
   Function calls can be scanned more quickly for a high level overview.<br />
   #nfr--readability
+- [ ] Keep functions short.<br />
+  [Article: Do you refactor your code and keep methods short? | SSW.Rules](https://www.ssw.com.au/rules/refactor-your-code-and-keep-methods-short)<br />
+  #nfr--readability
+- [ ] Measure and minimise cyclomatic complexity.<br />
+  [Article: Do you know when functions are too complicated? | SSW.Rules](https://www.ssw.com.au/rules/know-when-functions-are-too-complicated)<br />
+  #nfr--readability
 - [ ] Group related statements with whitespace between.<br />
   #nfr--readability
 - [ ] Remove unnecessary or unused code where possible.<br />
-  For example: statements never executed, unused function parameters, branches never evaluated.<br />
+  Example: statements never executed, unused function parameters, branches never evaluated.<br />
   #nfr--readability
 - [ ] Check for accidental mis-formatting.<br />
-  For example: unnecessary or improper import order changes accidentally committed.<br />
+  Example: unnecessary or improper import order changes accidentally committed.<br />
   These might be accidentally committed due to problems with your formatter tool.<br />
   #nfr--readability
 - [ ] Pass single param object to a function rather than many parameters.<br />
-  This can make the calls to the function easier to read.<br />
+  Naming the parameters can make the calls to the function easier to read.<br />
+  [Article: Do you know when to use named parameters? | SSW.Rules](https://www.ssw.com.au/rules/when-to-use-named-parameters)<br />
   #nfr--readability
 - [ ] Instead of making all object fields optional, just make whole object optional.<br />
   #nfr--readability
@@ -827,7 +900,8 @@
   Alternately, clearly communicate and agree on targetted changes to coding style.<br />
   #nfr--readability
 - [ ] Leave it cleaner than you found it.<br />
-  For example: remove code that is no longer needed.<br />
+  Example: remove code that is no longer needed.<br />
+  [Article: Do you follow the boy scout rule? | SSW.Rules](https://www.ssw.com.au/rules/follow-boy-scout-rule)<br />
   #nfr--readability #nfr--maintainability
 
 [^readability]: Readability refers to how easy it is for a human to understand the intent (what), rationale (why), and logic (how) behind a piece of code.
@@ -835,11 +909,11 @@
 
 
 
-### Maintainability [^maintainability]
+### NFR - Maintainability [^maintainability]
 
 - [ ] Use expanded syntax for function declaration where it helps.<br />
   That is: `function foo() { ... }` in Typescript.<br />
-  For example: this makes it easier to insert logging or other statements if you know they will be needed.<br />
+  Example: this makes it easier to insert logging or other statements if you know they will be needed.<br />
   #nfr--maintainability
 
 [^maintainability]: Maintainability refers to the ease with which the software can be modified, updated, or repaired over time.
@@ -847,7 +921,7 @@
 
 
 
-### Testability [^testability]
+### NFR - Testability [^testability]
 
 - [ ] Allow space for log statements to be easily inserted.<br />
   #nfr--testability
@@ -860,7 +934,7 @@
 
 
 
-### Scalability [^scalability]
+### NFR - Scalability [^scalability]
 
 - [ ] Use well tested, documented and supported third-party frameworks, which can grow with the application.<br />
   #nfr--scalability
@@ -870,13 +944,13 @@
 
 
 
-### Observability [^observability]
+### NFR - Observability [^observability]
 
 - [ ] Don't suppress errors when it would be more proper to let them surface.<br />
-  For example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
+  Example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
   #nfr--observability
 - [ ] Ensure observability logs have high cardinality, high-dimensionality, and explorability.
-  For example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
+  Example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
   #nfr--observability
 
 [^observability]: Observability measures of how well internal states of a system can be inferred from its external outputs. 
@@ -884,18 +958,21 @@
 
 
 
-### Portability [^portability]
+### NFR - Portability [^portability]
 
 - [ ] Use portable tooling that is supported on multiple operating systems and platforms.<br />
-  For example: NPM works on Windows, Linux and Mac, so it is more portable than, say, Nuget.<br />
+  Example: NPM works on Windows, Linux and Mac, so it is more portable than, say, Nuget.<br />
   #nfr--portability
+- [ ] Avoid platform-specific calls or dependencies.<br />
+  Example: NPM scripts should not rely on Windows or Linux specific features. Use an abstraction library if needed, such as NodeMon for file watching.<br />
+  #nfr--portability #general--build
 
 [^portability]: Portability refers to the ease of transferring software to various hardware and software environments.
 
 
 
 
-### Adaptability [^adaptability]
+### NFR - Adaptability [^adaptability]
 
 - [ ] Use progressive enhancement when basic features need to work in non-standard browser environments.<br />
   #nfr--adaptability
@@ -905,7 +982,7 @@
 
 
 
-### Compatibility [^compatibility]
+### NFR - Compatibility [^compatibility]
 
 - [ ] Test on all major browsers <br />
   Chrome, Edge, Firefox, Safari, Opera, etc.<br />
@@ -914,23 +991,23 @@
   [Tool: CanIUse](http://caniuse.com)<br />
   #nfr--compatibility
 
-#### Compatibility - Screen sizes
+#### NFR - Compatibility - Screen sizes
 
 - [ ] Use shortcuts where component library makes them available.<br />
-  For example: `tablet-and-larger` rather than `tablet, desktop, wide`.<br />
+  Example: `tablet-and-larger` rather than `tablet, desktop, wide`.<br />
   #nfr--compatibility
 - [ ] Use a layout that works on all devices without device-specific overrides.<br />
   #nfr--compatibility
 - [ ] Take advantage of container queries.<br />
   #nfr--compatibility
 
-#### Compatibility - Offline
+#### NFR - Compatibility - Offline
 
 - [ ] Use service workers to enable offline access.<br />
   [Article: Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)<br />
   #nfr--compatibility
 
-#### Compatibility - Mobile devices
+#### NFR - Compatibility - Mobile devices
 
 - [ ] Use web application manifest to enable the site to be saved and run as an app-like experience on a phone.<br />
   [Article: Web application manifest](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)<br />
@@ -941,11 +1018,11 @@
 
 
 
-### Accessibility [^accessibility]
+### NFR - Accessibility [^accessibility]
 
 - [ ] Use semantic HTML elements.<br />
   #nfr--accessibility #language--html
-- [ ] Use lightweight plain HTML elements where possible, For example: `<div>` instead of `<Box>`.<br />
+- [ ] Use lightweight plain HTML elements where possible, Example: `<div>` instead of `<Box>`.<br />
   #nfr--accessibility #language--html
 - [ ] No new errors in unit tests such as Axe, including whole page scan.<br />
   #nfr--accessibility #language--javascript #concern--tests
@@ -962,7 +1039,7 @@
   [Blog: Test IDs are an a11y smell](https://tkdodo.eu/blog/test-ids-are-an-a11y-smell)<br />
   #nfr--accessibility #concern--tests
 
-#### Accessibility - Perceivable
+#### NFR - Accessibility - Perceivable
 
 - [ ] Screen can be navigated with screen-reader.<br />
   #nfr--accessibility
@@ -973,21 +1050,21 @@
 - [ ] Items navigated in the correct order by screen-reader.<br />
   #nfr--accessibility
 
-#### Accessibility - Operable
+#### NFR - Accessibility - Operable
 
 - [ ] All important elements and controls can be accessed with keyboard only.<br />
   #nfr--accessibility
 - [ ] Avoid nested clickable regions. Just choose one element to be clickable.<br />
   #nfr--accessibility
 
-#### Accessibility - Understandable
+#### NFR - Accessibility - Understandable
 
 - [ ] Use simple, plain language.<br />
   #nfr--accessibility
 - [ ] Use definition lists to define terms that are not commonly understood.<br />
   #nfr--accessibility
 
-#### Accessibility - Robust
+#### NFR - Accessibility - Robust
 
 - [ ] Elements render correctly with all common screen-sizes.<br />
   Ideally: wide desktop, desktop, tablet, mobile. And: vertical and horizontal.<br />
@@ -997,7 +1074,7 @@
 - [ ] Text scales correctly with zoom.<br />
   #nfr--accessibility
 
-#### Accessibility - Content
+#### NFR - Accessibility - Content
 
 - [ ] Use plain language and avoid figures of speech, idioms, and complicated metaphors.<br />
   [Article: WCAG - Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html)<br />
@@ -1009,7 +1086,7 @@
   [Article: WCAG - Visual Presentation](https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html)<br />
   #nfr--accessibility #accessibility--content
 
-#### Accessibility - Global code
+#### NFR - Accessibility - Global code
 
 - [ ] Validate your HTML.<br />
   [Article: WCAG - Parsing](https://www.w3.org/WAI/WCAG22/Understanding/parsing.html)<br />
@@ -1039,7 +1116,7 @@
   [Article: WCAG - Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)<br />
   #nfr--accessibility #accessibility--global-code
 
-#### Accessibility - Keyboard
+#### NFR - Accessibility - Keyboard
 
 - [ ] Make sure there is a visible focus style for interactive elements that are navigated to via keyboard input.<br />
   [Article: WCAG - Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)<br />
@@ -1051,7 +1128,7 @@
   [Article: WCAG - Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)<br />
   #nfr--accessibility #accessibility--keyboard
 
-#### Accessibility - Images
+#### NFR - Accessibility - Images
 
 - [ ] Make sure that all <code>img</code> elements have an <code>alt</code> attribute.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
@@ -1066,7 +1143,7 @@
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
   #nfr--accessibility #accessibility--images
 
-#### Accessibility - Headings
+#### NFR - Accessibility - Headings
 
 - [ ] Use heading elements to introduce content.<br />
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
@@ -1081,13 +1158,13 @@
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--headings
 
-#### Accessibility - Lists
+#### NFR - Accessibility - Lists
 
 - [ ] Use list elements (<code>ol</code>, <code>ul</code>, and <code>dl</code> elements) for list content.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--lists
 
-#### Accessibility - Controls
+#### NFR - Accessibility - Controls
 
 - [ ] Use the <code>a</code> element for links.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
@@ -1108,7 +1185,7 @@
   [Article: WCAG - Giving users advanced warning when opening a new window](https://www.w3.org/WAI/WCAG22/Techniques/general/G201)<br />
   #nfr--accessibility #accessibility--controls
 
-#### Accessibility - Tables
+#### NFR - Accessibility - Tables
 
 - [ ] Use the <code>table</code> element to describe tabular data.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
@@ -1120,7 +1197,7 @@
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--tables
 
-#### Accessibility - Forms
+#### NFR - Accessibility - Forms
 
 - [ ] All inputs in a form are associated with a corresponding <code>label</code> element.<br />
   [Article: WCAG - On Input](https://www.w3.org/WAI/WCAG22/Understanding/on-input.html)<br />
@@ -1141,7 +1218,7 @@
   [Article: WCAG - Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)<br />
   #nfr--accessibility #accessibility--forms
 
-#### Accessibility - Media
+#### NFR - Accessibility - Media
 
 - [ ] Make sure that media does not autoplay.<br />
   [Article: WCAG - Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html)<br />
@@ -1153,7 +1230,7 @@
   [Article: WCAG - Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)<br />
   #nfr--accessibility #accessibility--media
 
-#### Accessibility - Video
+#### NFR - Accessibility - Video
 
 - [ ] Confirm the presence of captions.<br />
   [Article: WCAG - Captions](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html)<br />
@@ -1162,13 +1239,13 @@
   [Article: WCAG - Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)<br />
   #nfr--accessibility #accessibility--video
 
-#### Accessibility - Audio
+#### NFR - Accessibility - Audio
 
 - [ ] Confirm that transcripts are available.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
   #nfr--accessibility #accessibility--audio
 
-#### Accessibility - Appearance
+#### NFR - Accessibility - Appearance
 
 - [ ] Check your content in specialized browsing modes.<br />
   [Article: WCAG - Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)<br />
@@ -1189,7 +1266,7 @@
   [Article: WCAG - Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)<br />
   #nfr--accessibility #accessibility--appearance
 
-#### Accessibility - Animation
+#### NFR - Accessibility - Animation
 
 - [ ] Ensure animations are subtle and do not flash too much.<br />
   [Article: WCAG - Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)<br />
@@ -1201,7 +1278,7 @@
   [Article: WCAG - Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html)<br />
   #nfr--accessibility #accessibility--animation
 
-#### Accessibility - Color contrast
+#### NFR - Accessibility - Color contrast
 
 - [ ] Check the contrast for all normal-sized text.<br />
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
@@ -1222,7 +1299,7 @@
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
   #nfr--accessibility #accessibility--color-contrast
 
-#### Accessibility - Mobile and touch
+#### NFR - Accessibility - Mobile and touch
 
 - [ ] Check that the site can be rotated to any orientation.<br />
   [Article: WCAG - Orientation](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html)<br />
@@ -1242,11 +1319,12 @@
 
 
 
-### Performance [^performance]
+### NFR - Performance [^performance]
 
 - [ ] Use early-return, ordered from cheapest to most expensive operations, when a sequence of checks need to be done, to minimise unnecessary processing.<br />
   #nfr--performance
 - [ ] Optimise algorithms, or replace them with calls to libraries / third-party implementations that have been optimised.<br />
+  [Book: Algorithms Illuminated • Tim ROUGHGARDEN](https://algorithmsilluminated.org/)
   #nfr--performance
 - [ ] Use indexed lookups instead of loops for random-access.<br />
   #nfr--performance
@@ -1262,7 +1340,7 @@
   [Article: First Input Delay (FID) - Glossary | MDN](https://developer.mozilla.org/en-US/docs/Glossary/First_input_delay)<br />
   #nfr--performance
 - [ ] Avoid or minimise Flash of Unstyled Content (FOUC).<br />
-  [Wiki: Flash of unstyled content ](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)<br />
+  [Wiki: Flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content)<br />
   #nfr--performance
 - [ ] Careful with triggering re-renters of large component trees in React.<br />
   [Book: Advanced React, Ch 2](https://www.advanced-react.com)<br />
@@ -1294,17 +1372,19 @@
 - [ ] Configure build system to use minification to compress scripts and stylesheets.<br />
   #nfr--performance
 - [ ] Use edge hosting (such as CDNs) to speed up user access.<br />
+  [Docs: AWS CloudFront](https://aws.amazon.com/cloudfront/)<br />
   #nfr--performance
 - [ ] Use parallelisation to reduce total task completion time.<br />
+  Example: use `Promise.all` to run multiple independent requests in parallel.<br />
   #nfr--performance
 - [ ] Increase resources depending on workloads.<br />
-  For example: compute-heavy workloads might require faster processors or data-heavy workloads might require more memory or storage.<br />
+  Example: compute-heavy workloads might require faster processors or data-heavy workloads might require more memory or storage.<br />
   #nfr--performance
 - [ ] Prefetch and cache data on startup that we know will be needed during the user's session.<br />
   #nfr--performance
 - [ ] Use async (micro-task) and/or timers (`setTimeout`, event queue) to defer processing, to improve responsiveness (perceived performance) to the user.<br />
   [Article: Window: setTimeout() method](https://developer.mozilla.org/en-US/docs/Web/API/Window/setTimeout)<br />
-  [Blog: https://www.crio.do/blog/why-settimeout-is-useful-2025-javascript-criodo/](https://www.crio.do/blog/why-settimeout-is-useful-2025-javascript-criodo/)<br />
+  [Blog: Why is setTimeout(fn, 0) sometimes useful? • criodo](https://www.crio.do/blog/why-settimeout-is-useful-2025-javascript-criodo/)<br />
   #nfr--performance
 - [ ] Use web worker to run background tasks separately from the main user interface thread.<br />
   [Article: An overview of web workers](https://web.dev/learn/performance/web-worker-overview)<br />
@@ -1320,10 +1400,10 @@
 
 
 
-### Robustness  [^robustness]
+### NFR - Robustness  [^robustness]
 
 - [ ] Fall back to sensible defaults for unexpected values.<br />
-  For example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
+  Example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
   #nfr--robustness
 - [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
   #nfr--robustness
@@ -1333,7 +1413,7 @@
 
 
 
-### Reliability [^reliability]
+### NFR - Reliability [^reliability]
 
 - [ ] If the change alters the inputs being received and passed to the Backend, ensure those won't break.<br />
   #nfr--reliability
@@ -1356,10 +1436,10 @@
 - [ ] Refresh and navigate back/forward - ensure it does not result in an error.<br />
   #nfr--reliability
 - [ ] Reset state after accessing the same context again.<br />
-  For example: a button that goes into loading state on click should likely reset after we close then re-open the same page/screen.<br />
+  Example: a button that goes into loading state on click should likely reset after we close then re-open the same page/screen.<br />
   #nfr--reliability
 - [ ] Format a value consistently wherever it appears.<br />
-  For example: format a date the same way in a date picker input control as display.<br />
+  Example: format a date the same way in a date picker input control as display.<br />
   #nfr--reliability
 - [ ] Careful with animations and timeouts.<br />
   Make sure to test, by quickly clicking/switching around, ensure it doesn't mess up.<br />
@@ -1373,7 +1453,13 @@
 - [ ] Avoid code that dynamically accesses other code without the developer being aware, and might break if that code changes.<br />
   #nfr--reliability #nfr--maintainability
 - [ ] Perform impact analysis if adding an entry in some structure.<br />
-  For example: dictionary, enum, etc. Be careful that there isn't some code that dynamically operates on that structure, which is impacted.<br />
+  Example: dictionary, enum, etc. Be careful that there isn't some code that dynamically operates on that structure, which is impacted.<br />
+  #nfr--reliability #nfr--correctness
+- [ ] Capture and log unexpected conditions of `if` or `switch` statements.<br />
+  [Book: Pro Typescript by Steve Fenton, Ch 1, pp. 23](https://stevefenton.co.uk/publications/pro-typescript/)<br />
+  #nfr--reliability #nfr--correctness
+- [ ] Consider minimising backward compatibility when it reduces overall code quality.<br />
+  [Article: Do you use good code over backward compatibility? | SSW.Rules](https://www.ssw.com.au/rules/use-good-code-over-backward-compatibility)<br />
   #nfr--reliability #nfr--correctness
 
 [^reliability]: Reliability refers to the probability the application will operate with minimal (or acceptable) level of failures.
@@ -1381,12 +1467,14 @@
 
 
 
-### Economy [^economy]
+### NFR - Economy [^economy]
 
 - [ ] Minimise operating cost by offloading processing, storage, etc. to the client side.<br />
   #nfr--economy
 - [ ] Compress assets before serving, to minimise hosting costs.<br />
   Apply GZip compression, asset minification and optimised image file formats.<br />
+  [Docs: Serve compressed files](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html)<br />
+  [Docs: Compression and Decompression](https://docs.nginx.com/nginx/admin-guide/web-server/compression)<br />
   #nfr--economy
 - [ ] Take advantage of client-side caching to minimise hosting costs.<br />
   Use caching headers and offline caching.<br />
@@ -1397,9 +1485,9 @@
 
 
 
-### Security [^security]
+### NFR - Security [^security]
 
-- [ ] Careful what you send in requests over non-HTTPS.<br />
+- [ ] Prefer HTTPS wherever possible and be careful what you send over non-HTTPS.<br />
   #nfr--security
 - [ ] Disable after first click to protect against "click jacking" or rapidly repeated submissions / spamming.<br />
   Use delay, debounce or other rate limiting<br />
@@ -1422,7 +1510,7 @@
 - [ ] Careful with calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
   #nfr--security
 - [ ] Careful with integrating with existing API already in Prod with different clients.<br />
-  For example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
+  Example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
   #nfr--security
 - [ ] Careful integrating via new flows that haven't been used before.<br />
   Make sure they're security vetted before going to Prod.<br />
@@ -1439,10 +1527,10 @@
   Be sure to request pen-testing as per processes in your organisation.<br />
   #nfr--security
 - [ ] Entering HTML entity into an input should not create a vulnerability.<br />
-  It might need to be sanitised when displayed back to the user, to avoid injection attack. For example: `<script>` should be sanitised so that the browser does not execute code within.<br />
+  It might need to be sanitised when displayed back to the user, to avoid injection attack. Example: `<script>` should be sanitised so that the browser does not execute code within.<br />
   #nfr--security
 - [ ] Use timeouts to reduce attack surface.<br />
-  For example: generated secure redirect URLs could timeout after a few minutes.<br />
+  Example: generated secure redirect URLs could timeout after a few minutes.<br />
   #nfr--security
 - [ ] If you render `<a href={user.website}>`, beware of the user whose website is `'javascript: stealYourPassword()'`.<br />
   #nfr--security
@@ -1453,7 +1541,7 @@
   Try to anticipate and address security issues as early as possible, such as in planning, design or build.<br />
   #nfr--security
 - [ ] Never put potentially sensitive data somewhere insecure.<br />
-  For example: client storage (`localStorage`, `sessionStorage`)<br />
+  Example: client storage (`localStorage`, `sessionStorage`)<br />
   #nfr--security
 - [ ] Avoid putting putting sensitive data in GET query-string parameters, headers, etc.<br />
   Even behind HTTP it might still show up in logs or other insecure places.<br />
@@ -1502,14 +1590,31 @@
   Strongly encrypt sensitive data in transit and at rest. Don't store sensitive data unnecessarily, especially client-side.<br />
   #nfr--security
 - [ ] Careful to avoid private data being leaked via logs.<br />
-  For example: PII [^pii] or secrets.<br />
+  Example: PII [^pii] or secrets.<br />
   #nfr--security #concern--logging-monitoring-and-observability #nfr--observability
 - [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
   [Blog: Socket](https://socket.dev/blog)<br />
-  [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
   [Blog: The latest Next.js news](https://nextjs.org/blog)<br />
   [Blog: React Blog](https://react.dev/blog)<br />
-  [Blog: React Blog](https://react.dev/blog)<br />
+  [Article: Do you monitor your application for vulnerabilities? | SSW.Rules](https://www.ssw.com.au/rules/monitor-packages-for-vulnerabilities)<br />
+  [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
+  #nfr--security
+- [ ] Keep all secrets or sensitive data in a secret vault or store.<br />
+  Example: API keys, database credentials, etc.<br />
+  [Platform: HashiCorp Vault](https://www.vaultproject.io)<br />
+  [Platform: AWS Secrets Manager](https://aws.amazon.com/secrets-manager/)<br />
+  [Platform: Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/)<br />
+  [Platform: Google Cloud Secret Manager](https://cloud.google.com/secret-manager)<br />
+  [Article: Do you store your secrets securely? | SSW.Rules](https://www.ssw.com.au/rules/store-your-secrets-securely)<br />
+  [Article: Do you share your developer secrets securely? | SSW.Rules](https://www.ssw.com.au/rules/share-your-developer-secrets-securely)<br />
+  #nfr--security
+- [ ] Follow best practices when dealing with JWTs (JSON Web Tokens).<br />
+  Use strong signing algorithms. Keep the secret key secure. Set appropriate token expiration times. Ensure tokens are validated on the server side. Never put sensitive data in the payload.<br />
+  [Article: JWT Best Practices](https://auth0.com/docs/security/tokens/json-web-tokens-best-practices)<br />
+  [Article: What Are JSON Web Tokens (JWT)?](https://www.freecodecamp.org/news/what-are-json-web-tokens-jwt)<br />
+  #nfr--security
+- [ ] Avoid clear-text email addresses in HTML.<br />
+  [Article: Do you avoid clear text email addresses in web pages? | SSW.Rules](https://www.ssw.com.au/rules/avoid-clear-text-email-addresses-in-web-pages)<br />
   #nfr--security
 
 [^security]: Security refers to protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
@@ -1518,14 +1623,14 @@
 
 
 
-### Usability [^usability]
+### NFR - Usability [^usability]
 
 [^usability]: Items in this checklist relate to the user interface usability and overall user experience.<br />
 
 
 
 
-#### Usability - Interactions
+#### NFR - Usability - Interactions
 
 - [ ] Handle error states with helpful messages and feedback.<br />
   #nfr--usability #usability--interaction
@@ -1541,7 +1646,7 @@
 
 
 
-#### Usability - Modals
+#### NFR - Usability - Modals
 
 - [ ] Capture focus on open.<br />
   #nfr--usability #usability--modals
@@ -1550,7 +1655,7 @@
 - [ ] Use modal props, not conditional rendering, to support animation on modal open/close.<br />
   #nfr--usability #usability--modals
 - [ ] Present the outcome of a multi-step process in a way that makes sense to the user.<br />
-  For example: making a transfer in a banking app should results in a success screen with summary of the details; also the transfer should be shown in the transactions list.<br />
+  Example: making a transfer in a banking app should results in a success screen with summary of the details; also the transfer should be shown in the transactions list.<br />
   #nfr--usability #usability--modals
 - [ ] Careful when consuming context inside a modal – ensure it works in every case where the modal appears.<br />
   #nfr--usability #usability--modals
@@ -1560,7 +1665,7 @@
 
 
 
-#### Usability - Visual design
+#### NFR - Usability - Visual design
 
 - [ ] Light/dark mode.<br />
   #nfr--usability #usability--visual-design
@@ -1569,7 +1674,7 @@
 - [ ] High-contrast mode for applications that will be used under bright light, outdoors, etc.<br />
   #nfr--usability #usability--visual-design
 - [ ] Large tapping surface area for applications that will be used on-the-go, during movement or on unstable surfaces.<br />
-  For example: hand-held device that will be used on a construction site.<br />
+  Example: hand-held device that will be used on a construction site.<br />
   #nfr--usability #usability--visual-design
 - [ ] Compare with design, ensure alignment.<br />
   #nfr--usability #usability--visual-design
@@ -1588,7 +1693,7 @@
 
 
 
-#### Usability - Text [^text]
+#### NFR - Usability - Text [^text]
 
 - [ ] Shorten very long text and ensure it does not break layout.<br />
   Use ellipsis, wrap or summarise and add "more" button.<br />
@@ -1597,7 +1702,7 @@
   #nfr--usability #usability--text
 - [ ] Correct localisation / internationalisation as needed.<br />
   #nfr--usability #usability--text
-- [ ] Sort lists correctly. For example: alphabetically.<br />
+- [ ] Sort lists correctly. Example: alphabetically.<br />
   #nfr--usability #usability--text
 - [ ] Avoid user seeing duplicate labels / names of things and getting confused.<br />
   #nfr--usability #usability--text
@@ -1615,7 +1720,7 @@
 
 
 
-#### Usability - Design system
+#### NFR - Usability - Design system
 
 - [ ] Use correct layout components.<br />
   #nfr--usability #usability--design-system
@@ -1629,7 +1734,7 @@
 
 
 
-#### Usability - Component library
+#### NFR - Usability - Component library
 
 - [ ] Before using custom classes, props, etc. check if it's part of component library already.<br />
   #nfr--usability #usability--component-library
@@ -1643,7 +1748,7 @@
 
 
 
-#### Usability - Transitions and errors
+#### NFR - Usability - Transitions and errors
 
 - [ ] Minimise Cumulative Layout Shift (CLS).<br />
   #nfr--usability #usability--transitions-and-errors
@@ -1663,11 +1768,15 @@
   #nfr--usability #usability--transitions-and-errors
 - [ ] Ensure any update on one device is reflected on other devices.<br />
   #nfr--usability #usability--transitions-and-errors
+- [ ] Notify the user in advance if a process will be long-running.<br />
+  [Article: Do you have the time taken in the status bar? | SSW.Rules](https://www.ssw.com.au/rules/show-time-taken-in-the-status-bar)<br />
+  [Article: Do you warn users before starting a long process? | SSW.Rules](https://www.ssw.com.au/rules/warn-users-before-starting-a-long-process)<br />
+  #nfr--usability #usability--transitions-and-errors
 
 
 
 
-#### Usability - Date and time
+#### NFR - Usability - Date and time
 
 - [ ] Ensure multiple time-zones are supported if necessary. Test with simulated time-zone.<br />
   #nfr--usability #usability--date-and-time
@@ -1679,10 +1788,10 @@
 
 
 
-#### Usability - Numbers [^numbers]
+#### NFR - Usability - Numbers [^numbers]
 
 - [ ] Format numeric values correctly.<br />
-  For example: currencies should use correct comma and currency symbol or code if needed.<br />
+  Example: currencies should use correct comma and currency symbol or code if needed.<br />
   #nfr--usability #usability--numbers
 - [ ] Parse numeric values received as a string to the correct number format.<br />
   #nfr--usability #usability--numbers
@@ -1692,7 +1801,7 @@
 
 
 
-#### Usability - Forms [^forms]
+#### NFR - Usability - Forms [^forms]
 
 - [ ] Do not handle button click while in loading or saving state.<br />
   Use ally attrs appropriately.<br />
@@ -1703,22 +1812,33 @@
 - [ ] Careful not to let initial values be wiped when there's a background data refresh.<br />
   #nfr--usability #usability--forms
 - [ ] Consider whether one input should filter another input.<br />
-  For example: transfer from one account to another should nat allow transfer from one account to itself.<br />
+  Example: transfer from one account to another should nat allow transfer from one account to itself.<br />
   #nfr--usability #usability--forms
 - [ ] Pre-fill field values where it improves usability.<br />
   #nfr--usability #usability--forms
 - [ ] Order similar sequences of elements similarly.<br />
-  For example: From and To accounts should be ordered the same for Payment as for Transfer.<br />
+  Example: From and To accounts should be ordered the same for Payment as for Transfer.<br />
   #nfr--usability #usability--forms
 - [ ] Careful not to allow multiple rapid form submits or actions.<br />
   This could expose automated DOS attacks.<br />
   #usability--forms #nfr--security
-- [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
-  #nfr--usability #usability--forms
-- [ ] Display validations summary at the top of the form if possible, with summarised listing of invalid fields.<br />
-  #nfr--usability #usability--forms #nfr--security
 
 [^forms]: Forms refers to collections of inputs that users fill in with data on a web page.
+
+
+
+
+#### NFR - Usability - Validation [^validation]
+
+- [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
+  #nfr--usability #usability--validation
+- [ ] Display validations summary at the top of the form if possible, with summarised listing of invalid fields.<br />
+  #nfr--usability #usability--validation #nfr--security
+- [ ] Validate email addresses.<br />
+  [Article: Do you use a regular expression to validate an email address? | SSW.Rules](https://www.ssw.com.au/rules/use-a-regular-expression-to-validate-an-email-address)<br />
+  #nfr--usability #usability--validation
+
+[^validation]: Validation refers to checking that user input is correct and providing feedback to the user if it is not.
 
 
 
@@ -1733,12 +1853,19 @@
 - [ ] Use clean code.<br />
   Scan the code quickly and ensure it is understandable.<br />
   Minimal - remove unnecessary code. Simple - use "boring" code.<br />
+  [Article: Do you know the difference between a 'smart' and a 'clever' developer? | SSW.Rules](https://www.ssw.com.au/rules/do-you-know-the-difference-between-a-clever-and-a-smart-developer)<br />
   #code--general #nfr--simplicity #nfr--readability
 - [ ] Use library and language facilities correctly. Don't re-invent the wheel.<br />
   #nfr--readability #nfr--performance #nfr--reliability
 - [ ] Check for typos (accidental keystrokes) or accidental mis-spellings.<br />
   #code--general
 - [ ] Ensure pass-by-value vs. pass-by-reference are being used correctly.<br />
+  #code--general 
+- [ ] Extract hard-coded values into constants, enums or configuration files.<br />
+  Example: Messages, global strings, magic numbers.<br />
+  [Article: Do you use Enums instead of hard coded strings? | SSW.Rules](https://www.ssw.com.au/rules/use-enums-instead-of-hard-coded-strings)<br />
+  [Article: Do you use resource file to store all the messages and global strings? | SSW.Rules](https://www.ssw.com.au/rules/use-resource-file-to-store-all-the-messages-and-global-strings)<br />
+  [Article: Use Enum Constants instead of Magic numbers? | SSW.Rules](https://www.ssw.com.au/rules/use-enum-constants-instead-of-magic-numbers)<br />
   #code--general 
 
 [^code-general]: Code - general refers to any kind of code in any language.
@@ -1759,8 +1886,12 @@
   #code--structure #nfr--readability #nfr--maintainability
 - [ ] Use a more specific structure (function, variable, etc) if appropriate.<br />
   #code--structure
-- [ ] Re-use an existing structure (function, variable, etc) if appropriate.<br />
+- [ ] Re-use an existing structure (function, variable, etc) if appropriate and to avoid duplication.<br />
   Move it to a shared folder/package/module and export.<br />
+  [Article: Do you look for duplicate code? | SSW.Rules](https://www.ssw.com.au/rules/avoid-code-duplication)<br />
+  #code--structure
+- [ ] Maintain separation of concerns.<br />
+  [Article: Do you maintain separation of concerns? | SSW.Rules](https://www.ssw.com.au/rules/maintain-separation-of-concerns)<br />
   #code--structure
 - [ ] Re-use code in a higher-level folder/package/module where possible.<br />
   #code--structure
@@ -1779,7 +1910,7 @@
 - [ ] Look at other adjacent or nearby similar constructs and think about how they should be modified (or left the same).<br />
   #code--structure
 - [ ] Don't extract functions that are extremely trivial, where there is no complexity to hide.<br />
-  For example: it doesn't make sense to extract: `foo > 0` to `isGreaterThanZero`. Having a whole separate function for something so trivial does not add value.<br />
+  Example: it doesn't make sense to extract: `foo > 0` to `isGreaterThanZero`. Having a whole separate function for something so trivial does not add value.<br />
   #code--structure
 - [ ] Don't do barrel exports.<br />
   [Blog: Please Stop Using Barrel Files](https://tkdodo.eu/blog/please-stop-using-barrel-files)<br />
@@ -1790,43 +1921,47 @@
 
 #### Code - Naming
 
+- [ ] Avoid spaces or unusual characters in names.<br />
+  [Article: Do you avoid using spaces in folder and file names? | SSW.Rules](https://www.ssw.com.au/rules/remove-spaces-from-your-folders-and-filename)<br />
+  #code--naming
 - [ ] Simple plain English as much as possible.<br />
   #code--naming
 - [ ] Choose specific words carefully and deliberately.<br />
   #code--naming
 - [ ] Use names that won't go out of date in future.<br />
+  [Article: Do you avoid using magic string when referencing property/variable names? | SSW.Rules](https://www.ssw.com.au/rules/avoid-using-magic-string-when-referencing-property-variable-names)<br />
   #code--naming
 - [ ] Use consistent prefixes. pronouns, similar.<br />
-  For example: `has{Foo}` if that's the convention in the code-base. Prefix booleans with `is`, `can`, `has`, `should`, etc.<br />
+  Example: `has{Foo}` if that's the convention in the code-base. Prefix booleans with `is`, `can`, `has`, `should`, etc.<br />
   #code--naming
 - [ ] Use consistent pluralisation.<br />
-  For example: `Features` vs `Feature`.<br />
+  Example: `Features` vs `Feature`.<br />
   #code--naming
 - [ ] Use specific rather than generic names, where that's clearer.<br />
   #code--naming
 - [ ] Use consistent casing.<br />
-  For example: `camelCase`, `PascalCase`, etc.<br />
+  Example: `camelCase`, `PascalCase`, etc.<br />
   #code--naming
 - [ ] Reference appropriate units.<br />
-  For example: dollars, pixels, etc.<br />
+  Example: dollars, pixels, etc.<br />
   #code--naming
 - [ ] Include important information.<br />
-  For example: `plaintextPassword` if that matters for security.<br />
+  Example: `plaintextPassword` if that matters for security.<br />
   #code--naming
 - [ ] Think about how long name should be.<br />
   Keep it as short as possible.<br />
   #code--naming
 - [ ] Use name formatting to pack extra information.<br />
-  For example: local members prefixed with `l`.<br />
+  Example: local members prefixed with `l`.<br />
   #code--naming
 - [ ] Name ranges intuitively.<br />
-  For example: min/max for inclusive limits, first/last for inclusive ranges.<br />
+  Example: min/max for inclusive limits, first/last for inclusive ranges.<br />
   #code--naming
 - [ ] Match expectations of consumers.<br />
-  For example: don't name expensive calculation like a simple "getter".<br />
+  Example: don't name expensive calculation like a simple "getter".<br />
   #code--naming
 - [ ] Enum values should match up with keys and use correct formatting.<br />
-  For example: `snake-case`.<br />
+  Example: `snake-case`.<br />
   #code--naming
 - [ ] Avoid single-letter or otherwise cryptic names.<br />
   #code--naming
@@ -1837,10 +1972,18 @@
 - [ ] Use longer names with rigorous prefixing, to prevent name clashes, where that's likely.<br />
   #code--naming#general--code
 - [ ] Avoid duplicating names within the same structure.<br />
-  For example: don't name a variable inside a function the same as the containing function.<br />
+  Example: don't name a variable inside a function the same as the containing function.<br />
   #code--naming
 - [ ] Structural naming, when important.<br />
   Have a hierarchy, such as FooBar, FooBarBaz, FooBiz, etc.<br />
+  #code--naming
+- [ ] Use a naming convention for event handlers vs. events.<br />
+  Example: `onClick` (event), `handleClick` (handler).<br />
+  [Article: Do you name your events properly? | SSW.Rules](https://www.ssw.com.au/rules/name-your-events-properly)<br />
+  #code--naming
+- [ ] Use a naming convention for booleans.<br />
+  Example: `isEnabled` ("is a"), `hasPermissions` ("has a"), `canEdit` ("can do"), `shouldShow` ("should do").<br />
+  [Article: Do you follow naming conventions for your Boolean Property? | SSW.Rules](https://www.ssw.com.au/rules/follow-naming-conventions-for-your-boolean-property)<br />
   #code--naming
 
 
@@ -1849,7 +1992,7 @@
 #### Code - Removing or modifying
 
 - [ ] When adding or removing an item in a hard-coded set, be careful of the impact.<br />
-  For example: when changing an enumeration, check that there isn't any code that dynamically loops over it, which gets inadvertently impacted.<br />
+  Example: when changing an enumeration, check that there isn't any code that dynamically loops over it, which gets inadvertently impacted.<br />
   #code--removing-or-modifying
 - [ ] If code is removed, also find and remove now-unused / "orphaned" code.<br />
   #code--removing-or-modifying #nfr--readability #nfr--maintainability.<br />
@@ -1864,16 +2007,16 @@
 
 - [ ] Check for off-by-one errors.<br />
   #code--logic
-- [ ] Check for false-positives.<br />
-  For example: a `true` check that seems superficially correct, but is actually the wrong way round.<br />
+- [ ] Check for issues around false-positives.<br />
+  Example: a `true` check that seems superficially correct, but is actually the wrong way round.<br />
   #code--logic
 - [ ] Check for expressions being implicitly coerced to incorrect boolean values.<br />
-  For example: `if (foo)` where `foo` is assumed to evaluate to `false` under certain conditions, but actually does not.<br />
+  Example: `if (foo)` where `foo` is assumed to evaluate to `false` under certain conditions, but actually does not.<br />
   #code--logic
 - [ ] Incorrect filtering, such as excluding when you intended to include.<br />
   #code--logic
 - [ ] Mixing destructive and non-destructive set operations, resulting in missing items.<br />
-  For example: slicing first then sorting.<br />
+  Example: slicing first then sorting.<br />
   #code--logic
 
 
@@ -1890,10 +2033,10 @@
   Like this: `{ key1: "value1", key2: "value2", ... }[key]`.<br />
   #language--javascript
 - [ ] Choose between third-party library like `lodash` vs. custom function or built-in Browser API.<br />
-  Correct solution depends on the context. For example: if minimising package size, a custom function might be best.<br />
+  Correct solution depends on the context. Example: if minimising package size, a custom function might be best.<br />
   #language--javascript
 - [ ] Explicitly compare value rather than using implicit `truthy/falsy` casting, for clarity.<br />
-  For example: `if (arr.length > 0)` is probably clearer than `if (arr.length)`.<br />
+  Example: `if (arr.length > 0)` is probably clearer than `if (arr.length)`.<br />
   #language--javascript
 - [ ] Remove unnecessary template strings.<br />
   #language--javascript
@@ -1906,8 +2049,17 @@
 - [ ] Use code splitting, dynamic import and/or lazy loading to speed up load times in complex applications.<br />
   [Article: Implementing Dynamic Import and Code Splitting](https://www.icodeit.com.au/posts/dynamic-import)<br />
   #language--javascript #nfr--performance
+- [ ] Use most appropriate syntax for string literals.<br />
+  For example, use template strings for multi-line strings or strings with embedded expressions. Use single quotes for strings containing double quotes and vice-versa.<br />
+  #language--javascript #nfr--readability
+- [ ] Prefer template strings over concatenation.<br />
+  Better readability and typically better performance.<br />
+  #language--javascript #nfr--readability
+- [ ] Follow a reputable style guide.<br />
+  [Website: Guidelines for writing JavaScript code examples | MDN](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript)<br />
+  #language--javascript
 
-#### Javascript - API calls
+#### Language - Javascript - API calls
 
 - [ ] Ensure API request parameters and response fields are used correctly.<br />
   Verify with Backend developers if uncertain and ensure correct usage is clearly spelled out in code or documented somewhere.<br />
@@ -1921,9 +2073,10 @@
 
 
 
-### Typescript [^typescript]
+### Language - Typescript [^typescript]
 
 - [ ] Don't unnecessarily cast to a type or specify a type, where it is already implicitly or explicitly cast or specified.<br />
+  [Article: Do you describe types sparsely? | SSW.Rules](https://www.ssw.com.au/rules/describe-types-sparsely)<br />
   #language--typescript
 - [ ] Don't use JSDocs to communicate type information where Typescript types can do it.<br />
   #language--typescript
@@ -1935,7 +2088,7 @@
 - [ ] Eliminate optional chaining operators where possible (`?.`, `!.`) by making the type non-nullish from the start.<br />
   #language--typescript
 - [ ] Use optional types and chaining operators (`?.`) if the value really might not exist.<br />
-  For example: when the API specification clearly states it might not exist, or if there have been cases in past when it did not exist.<br />
+  Example: when the API specification clearly states it might not exist, or if there have been cases in past when it did not exist.<br />
   #language--typescript
 - [ ] Observe where declared types are different from actual runtime values and fix where possible.<br />
   #language--typescript
@@ -1945,7 +2098,8 @@
 - [ ] Use empty array (`[]`) rather than `undefined` as the type of a list that is actually empty.<br />
   Use `undefined` rather than empty array (`[]`) where there is no list and this really needs to be treated distinctly from an empty list.<br />
   #language--typescript
-- [ ] Prefer all values to be typed; avoid `any` or `unknown` where possible.<br />
+- [ ] Prefer all values to be typed. Avoid `any` or `unknown` where possible.<br />
+  [Article: Do you avoid using “any”? | SSW.Rules](https://www.ssw.com.au/rules/avoid-using-any)<br />
   #language--typescript
 - [ ] Prefer `unknown` over `any` if unable to type.<br />
   #language--typescript
@@ -1964,12 +2118,42 @@
 - [ ] Move `assert`s to the top of the function body where possible for clarity.<br />
   #language--typescript
 - [ ] Avoid duck-typing. Where we must do duck-typing, prefer more explicit or informative checks.<br />
-  For example: `type === "duck"` and/or extract to a clearly named function, For example: `isDuck(value): value is Duck`.<br />
+  Example: `type === "duck"` and/or extract to a clearly named function, Example: `isDuck(value): value is Duck`.<br />
   #language--typescript
 - [ ] Keep interfaces / types as simple as possible.<br />
   Avoid deep complex nested structures where possible.<br />
   #language--typescript
 - [ ] Explicitly type const objects/arrays when using spread operator, defensively.<br />
+  #language--typescript
+- [ ] Use a better mechanism than `enum`.<br />
+  [Article: Enum patterns for Typescript - conwy.co](https://conwy.co/articles/typescript-enum-patterns)<br />
+  [Article: Do you know why to use const assertions instead of TypeScript enums? | SSW.Rules](https://www.ssw.com.au/rules/typescript-enums)<br />
+  #language--typescript
+- [ ] Use good OO design patterns.<br />
+  [Article: Do you follow good Object-Oriented design patterns? | SSW.Rules](https://www.ssw.com.au/rules/follow-good-object-oriented-design-patterns)<br />
+  #language--typescript
+- [ ] Use good Typescript configuration.<br />
+  [Article: Do you have good TypeScript configuration? | SSW.Rules](https://www.ssw.com.au/rules/good-typescript-configuration)<br />
+  #language--typescript
+- [ ] Avoid unnecessary exports.<br />
+  [Article: Do you only export what is necessary? | SSW.Rules](https://www.ssw.com.au/rules/only-export-what-is-necessary)<br />
+  #language--typescript
+- [ ] Check API requests and responses at runtime.<br />
+  [Article: Do you use Zod for runtime validation? | SSW.Rules](https://www.ssw.com.au/rules/use-zod-for-runtime-validation)<br />
+  [Tool: Zod](https://zod.dev)<br />
+  [Tool: Yup](https://yup-docs.vercel.app)<br />
+  #language--typescript
+- [ ] Generate API client interfaces using an appropriate tool.<br />
+  [Article: Practices - Do you generate strongly-typed interfaces for your DTOs? | SSW.Rules](https://www.ssw.com.au/rules/generate-interfaces-for-your-dtos)<br />
+  [Tool: NSwag](https://github.com/RicoSuter/NSwag)<br />
+  [Tool: BufBuild](https://buf.build/)<br />
+  [Tool: OpenAPI Generator](https://openapi-generator.tech/)<br />
+  [Tool: Hey API](https://heyapi.dev/)<br />
+  [Tool: Orval](https://orval.dev/)<br />
+  [Tool: Hey API](https://heyapi.dev/)<br />
+  #language--typescript
+- [ ] Follow a reputable style guide.<br />
+  [Website: Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)<br />
   #language--typescript
 
 [^typescript]: Typescript items relate to Typescript code.
@@ -1977,12 +2161,12 @@
 
 
 
-### HTML [^html]
+### Language - HTML [^html]
 
 - [ ] Semantic HTML - Group related controls.<br />
   #language--html
 - [ ] Semantic HTML - Use correct elements.<br />
-  For example: buttons for things that actually respond to clicks.<br />
+  Example: buttons for things that actually respond to clicks.<br />
   #language--html
 - [ ] Omit attributes that are not needed because the behaviour is enabled by default.<br />
   #language--html
@@ -1992,7 +2176,7 @@
 
 
 
-### CSS [^css]
+### Language - CSS [^css]
 
 - [ ] For size and spacing, use appropriate units, preferring rems and percentages.<br />
   #language--css
@@ -2010,14 +2194,23 @@
 
 
 
-### React [^react]
+### Framework - React [^react]
 
+- [ ] Use a well supported bootstrap tool when getting started.<br />
+  [Article: Do you know how to easily start a React project? | SSW.Rules](https://www.ssw.com.au/rules/how-to-easily-start-a-react-project)<br />
+  #framework--react
+- [ ] Use React-specific tools.<br />
+  [Tool: React Developer Tools | React](https://react.dev/learn/react-developer-tools)<br />
+  #framework--react
+- [ ] Find good example projects to learn best practices from.<br />
+  [Article: Do you know the best example projects – React? | SSW.Rules](https://www.ssw.com.au/rules/do-you-know-the-best-sample-applications)<br />
+  #framework--react
 - [ ] Remove unnecessary fragments.<br />
   #framework--react
 - [ ] Prefer custom hooks over HOCs and renderProps.<br />
   #framework--react
 - [ ] Avoid unnecessary re-rendering of child components.<br />
-  For example: do not pass prop values that change in ways that unnecessarily trigger rendering. Apply memoization as needed.<br />
+  Example: do not pass prop values that change in ways that unnecessarily trigger rendering. Apply memoization as needed.<br />
   #framework--react
 - [ ] Careful with use of context in ways that trigger unnecessary re-rendering.<br />
   Apply techniques as needed: memoization, split contexts, reducers, context selectors.<br />
@@ -2026,21 +2219,38 @@
 - [ ] Catch expected errors in event handlers, callbacks and other functions running outside the render lifecycle.<br />
   Use recommended techniques to handle them.<br />
   #framework--react
-- [ ] Catch expected errors in render lifecycle using error boundary.<br />
+- [ ] Use appropriate error handling facilities.<br />
+  `try/catch` for narrow error handling within component body or functions.<br />
+  `<Suspense>` for error handling on components as a whole and within component tree.<br />
+  `try/catch with Suspense` for async error handling.<br />
+  [Book: Advanced React, Ch 16, pp. 324](https://www.advanced-react.com)<br />
   #framework--react
 - [ ] Avoid `useEffect` and `useCallback` if possible.<br />
   Prefer inline calculation, `useMemo` or other techniques. But it is valid to use it for initial data loading.<br />
   [Blog: When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback)<br />
   [Blog: useMemo and useCallback](https://www.joshwcomeau.com/react/usememo-and-usecallback/)<br />
   #framework--react
+- [ ] Use a good quality web framework where it adds value.<br />
+  [Library: Next.js](https://nextjs.org/)<br />
+  [Library: Remix](https://remix.run/)<br />
+  #framework--react
+- [ ] Use a good quality data fetching library where it adds value.<br />
+  [Article: Do you know the best libraries to fetch data in React? | SSW.Rules](https://www.ssw.com.au/rules/fetch-data-react)<br />
+  [Library: TanStack Query](https://tanstack.com/query/v4/docs/framework/react/overview)<br />
+  [Library: SWR](https://swr.vercel.app/)<br />
+  [Library: RTKQuery](https://redux-toolkit.js.org/rtk-query/overview)<br />
+  #framework--react
+- [ ] Use a good quality routing library where it adds value.<br />
+  [Library: React Router](https://reactrouter.com/)<br />
+  #framework--react
 
-#### React - Props
+#### Framework - React - Props
 
 - [ ] Keep props as simple as possible.<br />
   Avoid deep complex nested structures where possible.<br />
   #framework--react
 - [ ] Re-use defined types in props, where that keeps the overall solution simpler and is ok for performance.<br />
-  For example: simpler rendering, co-located rendering related to that object.<br />
+  Example: simpler rendering, co-located rendering related to that object.<br />
   #framework--react
 - [ ] Remove unnecessary or unused props.<br />
   #framework--react
@@ -2048,6 +2258,7 @@
   [Blog: Don't call a React function component](https://kentcdodds.com/blog/dont-call-a-react-function-component)<br />
   #framework--react
 - [ ] Early return if we don't want to render anything; `return null`.<br />
+  [Article: Do you do your validation with Return? | SSW.Rules](https://www.ssw.com.au/rules/do-your-validation-with-exit-sub)<br />
   #framework--react
 - [ ] Don't pass props that are not needed because the behaviour is enabled by default.<br />
   #framework--react
@@ -2057,29 +2268,40 @@
   [Blog: What is prop drilling and how to avoid it](https://marcoheine.com/blog/what-is-prop-drilling-and-how-to-avoid-it)<br />
   #framework--react
 
-#### React - JSX
+#### Framework - React - JSX
 
 - [ ] When rendering dynamic array of objects, provide `key` prop and make sure value is suitable.<br />
   That is, not just `index` if items might change order or if item in same position might need to re-render.<br />
   #framework--react
+- [ ] Avoid direct DOM manipulation. Use JSX declaratively, as intended.<br />
+  #framework--react
 
-#### React - Components
+#### Framework - React - Components
 
-- [ ] Order and group a component's inner structures sensibly.<br />
-  For example: constants, hook calls, event handlers, util functions then return with JSX.<br />
+- [ ] Keep components small and focussed.<br />
+  Apply Single Responsibility Principle (SRP).<br />
+  [Article: Practices - Do you write small components? | SSW.Rules](https://www.ssw.com.au/rules/write-small-components)<br />
   #framework--react #nfr--readability
+- [ ] Order and group a component's inner structures sensibly.<br />
+  Example: constants, hook calls, event handlers, util functions then return with JSX.<br />
+  #framework--react #nfr--readability
+- [ ] Order and group a component's inner structures sensibly.<br />
+  Separate data fetching, data processing, and data display.<br />
+  Private fields and functions first, then public fields and methods.<br />
+  [Article: Do you properly separate concerns in components? | SSW.Rules](https://www.ssw.com.au/rules/angular-separate-component-concerns)<br />
+  #framework--angular #nfr--readability
 - [ ] When there are repeated similar component calls, consider extracting them to a common component.<br />
   #framework--react
 - [ ] Anticipate what might trigger unnecessary re-renders and reduce them.<br />
-  For example: instead of changing just 1-2 props, causing the whole component to re-render, extract just the changing parts to a separate component and rendering it inside `children` or a render prop.<br />
+  Example: instead of changing just 1-2 props, causing the whole component to re-render, extract just the changing parts to a separate component and rendering it inside `children` or a render prop.<br />
   #framework--react
 - [ ] Consider conditional rendering, where we expect the value being displayed might be falsy (`null`, `undefined`, `false`, etc).<br />
   #framework--react
 
-#### React - Hooks
+#### Framework - React - Hooks
 
 - [ ] Use intuitive field names in the hook result object if appropriate.<br />
-  For example: `return { orders }` instead of `return { data }`.<br />
+  Example: `return { orders }` instead of `return { data }`.<br />
   #framework--react
 - [ ] Careful about initialising return value of array to empty (`[]`) in hook without providing some kind of loading indicator.<br />
   Semantically, `[]` might mean it's empty, so maybe `undefined` or `null` is more accurate, during initial load or if there's an error on initial load.<br />
@@ -2096,11 +2318,22 @@
   It might crash the app unexpectedly.<br />
   #framework--react 
 
-#### React - State
+#### Framework - React - State
 
+- [ ] Use a good quality state management library where it adds value.<br />
+  [Library: Redux](https://react-redux.js.org/)<br />
+  [Library: Jotai](https://jotai.org/)<br />
+  [Library: Zustand](https://zustand.site/en/)<br />
+  [Library: Recoil](https://recoiljs.org/)<br />
+  [Library: Reselect](https://github.com/reduxjs/reselect)<br />
+  #framework--react
 - [ ] Keep state as local as possible.<br />
   #framework--react
 - [ ] Group related values into one memo / state object.<br />
+  #framework--react
+- [ ] Use `useReducer` when managing state with complex transitions.<br />
+  [Docs: useReducer - React](https://react.dev/reference/react/useReducer)<br />
+  [Article: Do you use these useful React Hooks? | SSW.Rules](https://www.ssw.com.au/rules/do-you-use-these-useful-react-hooks)<br />
   #framework--react
 - [ ] Don't mirror props in state.<br />
   #framework--react
@@ -2110,31 +2343,59 @@
   [Blog: Persisting React State in localStorage](https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/)<br />
   #framework--react
 
-#### React - Cleanness
+#### Framework - React - Cleanness
 
 - [ ] Ensure a hook does not depend context which is not available.<br />
   If context is not available, it should not break the app when the hook is rendered.<br />
   #framework--react
 
-#### React - Performance
+#### Framework - React - Performance
 
 - [ ] Combine `useMemo` where helpful.<br />
   #framework--react
 - [ ] Memoise whole component where helpful using `memo`.<br />
   #framework--react
 
-#### React - Forms
+#### Framework - React - UI
+
+- [ ] Use a good quality UI component library where it adds value.<br />
+  [Library: Material UI](https://mui.com/)<br />
+  [Library: Ant Design](https://ant.design/)<br />
+  [Library: Chakra UI](https://chakra-ui.com/)<br />
+  [Library: Tailwind CSS](https://tailwindcss.com/)<br />
+  [Library: Bootstrap](https://getbootstrap.com/)<br />
+  [Library: shadcn/ui](https://ui.shadcn.com/)<br />
+  [Article: Tools - Do you know the best UI framework for React? | SSW.Rules](https://www.ssw.com.au/rules/tools-do-you-know-the-best-ui-framework-for-react)<br />
+  #framework--react
+
+#### Framework - React - Forms
 
 - [ ] When disabling all fields, pass "disabled" to useForm hook (react-hook-form) and ensure it's passed.<br />
   #framework--react
 
 [^react]: React refers to code that runs on the React framework.
 
+#### Framework - React - Patterns
+
+- [ ] Apply React patterns correctly.<br />
+  Container/Presentational, HOC, Render Props, Hooks, Compound, Client-side Rendering, Server-side Rendering, Static Rendering, Incremental Static Generation, Progressive Hydration, Streaming Server-Side Rendering, React Server Components, React Stacks.<br />
+  [Website: Patterns.dev](https://www.patterns.dev/)<br />
+  #patterns--react
 
 
 
-### NextJS [^nextjs]
 
+### Framework - NextJS [^nextjs]
+
+- [ ] Use NextJS where it makes sense and adds value.<br />
+  [Article: Do you know why Next.js is great? | SSW.Rules](https://www.ssw.com.au/rules/why-nextjs-is-great)<br />
+  #framework--nextjs
+- [ ] Use appropriate data fetching mechanism.<br />
+  Server side: `getServerSideProps`, `getStaticProps`.<br />
+  Client side: API route.<br />
+  [Article: Do you know how to fetch data in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/fetch-data-nextjs)<br />
+  [Docs: Fetching Data in Next.js](https://nextjs.org/docs/app/getting-started/fetching-data)<br />
+  #framework--nextjs
 - [ ] Only use "server only" or "client only" where necessary.<br />
   Server components are by default. Only need explicit "client only" to manipulate the dom or "server only" to ensure security for sensitive logic.<br />
   #framework--nextjs
@@ -2143,7 +2404,7 @@
   [Docs: use – React](https://react.dev/reference/react/use#caveats)<br />
   #framework--nextjs
 - [ ] Server rendered components and server actions (data-fetching functions that execute server-side) should not do formatting that is client-dependent.<br />
-  For example: browser local date/time or light/dark mode. They should do server-side-appropriate processing and return data sufficient for the client-side to take over client-dependent work.<br />
+  Example: browser local date/time or light/dark mode. They should do server-side-appropriate processing and return data sufficient for the client-side to take over client-dependent work.<br />
   #framework--nextjs
 - [ ] Avoid "use client"; better to default to server rendering, for performance, and let NextJS apply client-side as needed.<br />
   Where it must be used, move it as far down the component tree as possible.<br />
@@ -2157,21 +2418,42 @@
   #framework--nextjs
 - [ ] Keep server actions in separate file.<br />
   #framework--nextjs
-- [ ] Careful creating an`error.tsx` when there are sub-folders.<br />
+- [ ] Careful creating an `error.tsx` when there are sub-folders.<br />
   It means that errors in the sub-folders bubble up to this file, which might not create the right UX.<br />
   #framework--nextjs
 - [ ] Careful With Server Action calls immediately before redirect.<br />
-  NextJS seems to cancel them.<br />
+  NextJS seems to cancel them. You may want to use `setTimeout` to defer redirection to the next tick.<br />
+  #framework--nextjs
+- [ ] Use dynamic imports to reduce load time in projects with large modules.<br />
+  [Article: Do you know when to use dynamic imports in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/dynamically-load-components)<br />
+  #framework--nextjs
+- [ ] Use dynamic routing where appropriate.<br />
+  [Docs: Dynamic Routes - NextJS](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)<br />
+  [Article: Do you know when to use dynamic imports in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/next-dynamic-routes)<br />
+  #framework--nextjs
+- [ ] Use NextJS built-in features to improve performance, user experience, accessibility, SEO and other concerns.<br />
+  [Docs: Dynamic Routes - NextJS](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)<br />
+  [Article: Core Web Vitals - NextJS | SSW.Rules](https://www.ssw.com.au/rules/core-web-vitals#next.js)<br />
+  [Article: Do you optimize web performance in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/optimize-web-performance-nextjs)<br />
+  #framework--nextjs
+- [ ] Use appropriate error handling facilities.<br />
+  `<Suspense>` boundaries for general error handling.<br />
+  `error.tsx` for specific error pages.<br />
+  [Docs: Custom Errors | NextJS](https://nextjs.org/docs/pages/building-your-application/routing/custom-error)<br />
+  [Docs: Error Handling | NextJS](https://nextjs.org/docs/pages/building-your-application/configuring/error-handling)<br />
   #framework--nextjs
 
-#### NextJS - Security
+#### Framework - NextJS - Security
 
 - [ ] Put `"use server"` at the top for sensitive server-side functions.<br />
   Prevents them ever being shared with the client.<br />
   #framework--nextjs #nfr--security
 
-#### NextJS - Caching
+#### Framework - NextJS - Caching
 
+- [ ] Use appropriate caching mechanisms.<br />
+  [Article: Do you know how to use NextJS caching system? | SSW.Rules](https://www.ssw.com.au/rules/use-nextjs-caching-system)<br />
+  #framework--nextjs #concern--caching
 - [ ] When using `cache`, provide separate params, don't use `params` object.<br />
   #framework--nextjs #concern--caching
 
@@ -2180,7 +2462,94 @@
 
 
 
-## Principles and patterns
+#### Framework - Angular [^angular]
+
+- [ ] Follow the official style guide.<br />
+  [Website: Angular coding style guide](https://angular.dev/style-guide)<br />
+  #framework--angular
+- [ ] Use Angular-specific tools.<br />
+  [Tool: Angular CLI | Angular](https://angular.io/cli)<br />
+  [Tool: Angular DevTools | Angular](https://angular.io/guide/devtools)<br />
+  [Tool: Redux DevTools | Angular](https://github.com/reduxjs/redux-devtools)<br />
+  [Article: Tools - Do you know what Angular Tools to install for an Angular project? | SSW.Rules](https://www.ssw.com.au/rules/angular-the-stuff-to-install)<br />
+  #framework--angular
+- [ ] Find good example projects to learn best practices from.<br />
+  [Source: Tour of Heroes | Angular](https://angular.io/tutorial/tour-of-heroes)<br />
+  [Source: ngrx Example App | NGRX](https://github.com/ngrx/platform/tree/master/projects/ngrx.io)<br />
+  [Article: Do you know the best example projects – Angular? | SSW.Rules](https://www.ssw.com.au/rules/the-best-sample-applications#ui---angular)<br />
+  #framework--angular
+- [ ] Use presentational and container pattern if applicable.<br />
+  [Article: Practices - Do you know to separate your Angular components into container and presentational? | SSW.Rules](https://www.ssw.com.au/rules/separate-your-angular-components-into-container-and-presentational)<br />
+  [Article: Angular Architecture - Container vs Presentational Components Common Design Pitfalls | Angular University](https://blog.angular-university.io/angular-component-design-how-to-avoid-custom-event-bubbling-and-extraneous-properties-in-the-local-component-tree/)<br />
+  #framework--angular
+- [ ] Put re-usable logic in a separate service.<br />
+  [Article: Practices - Do you use a Service to share reusable logic? | SSW.Rules](https://www.ssw.com.au/rules/use-a-service-to-share-reusable-logic)<br />
+  #framework--angular
+- [ ] Put re-usable UI code in a separate component.<br />
+  [Article: Practices - Do you write small components? | SSW.Rules](https://www.ssw.com.au/rules/write-small-components)<br />
+  #framework--angular
+- [ ] Put HTTP request clients in a separate service.<br />
+  #framework--angular
+- [ ] Use a good quality UI component library where it adds value.<br />
+  [Library: Angular Material](https://material.angular.io/)<br />
+  [Library: Angular CDK](https://www.npmjs.com/package/@angular/cdk)<br />
+  [Library: Bootstrap](https://getbootstrap.com/)<br />
+  [Article: Tools - Do you know the best UI framework for Angular? | SSW.Rules](https://www.ssw.com.au/rules/angular-best-ui-framework)<br />
+  #framework--angular
+- [ ] Use a good quality state management library where it adds value.<br />
+  [Library: NGRX](https://ngrx.io/)<br />
+  [Library: NGXS](https://www.ngxs.io/)<br />
+  #framework--angular
+- [ ] Use good quality Angular libraries where they add value.<br />
+  [Library: oidc-token-manager](https://github.com/IdentityModel/oidc-token-manager)<br />
+  [Library: NgxSpinner](https://www.npmjs.com/package/ngx-spinner)<br />
+  [Library: ngx-toastr](https://www.npmjs.com/package/ngx-toastr)<br />
+  [Library: apollo-angular](https://www.npmjs.com/package/apollo-angular)<br />
+  [Library: leaflet-geoman](https://www.npmjs.com/package/@geoman-io/leaflet-geoman-free)<br />
+  [Library: keycloak-angular](https://www.npmjs.com/package/keycloak-angular)<br />
+  [Library: ng-table-virtual-scroll](https://www.npmjs.com/package/ng-table-virtual-scroll)<br />
+  #framework--angular
+- [ ] Avoid direct DOM manipulation. Use Angular template logic declaratively, as intended.<br />
+  [Article: Practices - Do you avoid directly modifying the DOM from your components? | SSW.Rules](https://www.ssw.com.au/rules/avoid-the-dom-in-your-components)<br />
+  #framework--angular
+- [ ] Use simpler standalone components.<br />
+  [Article: Do you use standalone components? | SSW.Rules](https://www.ssw.com.au/rules/standalone-components)<br />
+  #framework--angular
+- [ ] Use appropriate error handling facilities.<br />
+  ErrorHandler provider for general error handling.<br />
+  `catchError` for specific error handling on HTTP responses.<br />
+  `HttpInterceptor` for intercepting HTTP requests and responses and handling errors by middleware.<br />
+  [Article: Do you know how to handle errors in Angular? | SSW.Rules](https://www.ssw.com.au/rules/angular-error-handling)<br />
+  #framework--angular
+- [ ] Use appropriate form type.<br />
+  Template-Driven Forms for simpler forms and faster implementation.<br />
+  Reactive Forms for complex forms with dynamic behavior.<br />
+  [Article: Do you know when to use Reactive Forms vs Template-driven Forms in Angular? | SSW.Rules](https://www.ssw.com.au/rules/angular-reactive-forms-vs-template-driver-forms)<br />
+  [Docs: Reactive forms | Angular](https://angular.dev/guide/forms/reactive-forms)<br />
+  #framework--angular
+- [ ] Use observables where applicable.<br />
+  [Article: Do you know how to use Observables? | SSW.Rules](https://www.ssw.com.au/rules/use-observables)<br />
+  #framework--angular
+
+[^angular]: Angular items apply to code that runs on the Angular framework.
+
+
+
+
+#### Framework - RxJS [^rxjs]
+
+- [ ] Close subscriptions when no longer used, such as when Angular component destructs.<br />
+  #framework--rxjs
+- [ ] Avoid subscriptions that merely transform then store data. Instead, use observables.<br />
+  #framework--rxjs
+
+[^rxjs]: RxJS items apply to code that uses the RxJS library.
+
+
+
+
+
+## Patterns
 
 
 
@@ -2198,6 +2567,9 @@
   #patterns--oop
 - [ ] Apply patterns where useful.<br />
   Abstract Factory, Adapter, Bridge, Builder, Chain of Responsibility, Command, Composite, Decorator, Facade, Factory Method, Flyweight, Interpreter, Iterator, Mediator, Memento, Observer, Prototype, Proxy, Singleton, State, Strategy, Template Method, Visitor.<br />
+  #patterns--oop
+- [ ] Declare accessibility explicitly, where clarity is needed.<br />
+  [Article: Do you declare member accessibility for all classes? | SSW.Rules](https://www.ssw.com.au/rules/declare-member-accessibility-for-all-classes)<br />
   #patterns--oop
 
 [^oop]: OOP refers to Object Oriented Programming principles, when and where they apply to the codes.
@@ -2222,16 +2594,6 @@
 
 
 
-### Patterns - React
-
-- [ ] Apply React patterns correctly.<br />
-  Container/Presentational, HOC, Render Props, Hooks, Compound, Client-side Rendering, Server-side Rendering, Static Rendering, Incremental Static Generation, Progressive Hydration, Streaming Server-Side Rendering, React Server Components, React Stacks.<br />
-  [Website: Patterns.dev](https://www.patterns.dev/)<br />
-  #patterns--react
-
-
-
-
 ### Patterns - Micro front end
 
 - [ ] When looking for an existing structure (function, component, etc) to re-use, check other micro front end apps or modules.<br />
@@ -2251,7 +2613,28 @@
 
 
 
-### Configuration [^configuration]
+### Pipeline - Developer environment [^developer-environment]
+
+- [ ] Use a good quality IDE.<br />
+  [Tool: Visual Studio Code](https://code.visualstudio.com/)<br />
+  [Tool: WebStorm](https://www.jetbrains.com/webstorm)<br />
+  [Article: Tools - Do you know the best IDE for Angular and React? | SSW.Rules](https://www.ssw.com.au/rules/how-to-get-your-machine-setup)<br />
+  #pipeline--developer-environment
+- [ ] Document and/or fix aspects of development environment setup that are difficult, tedious or error-prone.<br />
+  #pipeline--developer-environment
+- [ ] Use automated formatting tools and standard configuration.<br />
+  [Tool: Prettier](https://prettier.io/)<br />
+  [Article: Do you keep your code consistent using .editorconfig? | SSW.Rules](https://www.ssw.com.au/rules/consistent-code-style)<br />
+  #pipeline--developer-environment
+
+
+
+[^developer-environment]: Developer environment refers to the local development environment, such as IDE, code editor, etc.
+
+
+
+
+### Pipeline - Configuration [^configuration]
 
 - [ ] Ensure entries are in alphabetic order, where that is the standard.<br />
   #nfr--consistency #general--configuration
@@ -2261,22 +2644,54 @@
 
 
 
-### Packages [^packages]
+### Pipeline - Packages [^packages]
 
 - [ ] Put dependencies in the right category - developer vs. production.<br />
   [Blog: Categorize Your Dependencies](https://antfu.me/posts)<br />
   #general--package
 - [ ] Remove package that is made unnecessary due to the current code change.<br />
   #general--package
-- [ ] Careful about supply-chain vulnerabilities. Ensure packages being consumed do not contain significant vulnerabilities.<br />
+- [ ] Choose high quality dependencies.<br />
+  Actively maintained, with recent commits, releases and responsiveness to issues.<br />
+  Maintained by a credible individual or team.<br />
+  Well documented.<br />
+  Broadly used.<br />
+  Frequently re-used.<br />
+  Open and reviewable.<br />
+  Licensed properly.<br />
+  [Article: Do you choose the right dependencies? | SSW.Rules](https://www.ssw.com.au/rules/choose-dependencies-correctly)<br />
   #general--package #nfr--security
+- [ ] Careful about supply-chain vulnerabilities. Ensure packages being consumed do not contain significant vulnerabilities.<br />
+  [Article: Do you defend against package supply chain attacks? | SSW.Rules](https://www.ssw.com.au/rules/defend-against-package-supply-chain-attacks)<br />
+  #general--package #nfr--security
+- [ ] Use a good quality package manager.<br />
+  [Article: Do you know the best package manager for Node? | SSW.Rules](https://www.ssw.com.au/rules/best-package-manager-for-node)<br />
+  [Tool: pnpm](https://pnpm.io/)<br />
+  [Tool: npm](https://www.npmjs.com/)<br />
+  [Tool: Yarn](https://yarnpkg.com/)<br />
+  [Tool: Bun](https://bun.sh/)<br />
+  #general--package #framework--nodejs
+- [ ] Manage dependencies and keep them up-to-date and synchronised across repositories.<br />
+  [Tool: Dependabot](https://github.com/dependabot)<br />
+  [Tool: Renovate](https://github.com/renovatebot/renovate)<br />
+  [Tool: npm audit](https://docs.npmjs.com/cli/v10/commands/npm-audit)<br />
+  [Tool: SonarQube](https://www.sonarsource.com/products/sonarqube)<br />
+  [Article: Do you properly maintain your dependencies? | SSW.Rules](https://www.ssw.com.au/rules/maintain-dependencies-correctly)<br />
+  #general--package #nfr--security
+- [ ] Publish an audit log for your own releases.<br />
+  This process can be partially automated using a tool such as Release Please.<br />
+  [Tool: release-please](https://github.com/googleapis/release-please)<br />
+  [Article: Do you keep a package audit log? | SSW.Rules](https://www.ssw.com.au/rules/package-audit-log)<br />
+  #general--package
+
+
 
 [^packages]: Package covers management of packages, such as third-party libraries, either consumed by or exposed by the application.
 
 
 
 
-### Build [^build]
+### Pipeline - Build [^build]
 
 - [ ] Cache or otherwise re-use dependencies that don’t change often, to speed up the build.<br />
   [Article: PNPM GitHub Actions Cache](https://theodorusclarence.com/shorts/github/pnpm-github-actions-cache)<br />
@@ -2287,13 +2702,39 @@
 
 
 
-### Deployment [^deployment]
+### Pipeline - Deployment [^deployment]
 
 - [ ] Time deployment to minimise disruption.<br />
-  For example: avoid deploying during peak or critical usage periods if possible.<br />
+  Example: avoid deploying during peak or critical usage periods if possible.<br />
   #general--deployment
 
 [^deployment]: Deployment covers issues related to deploying the built application to an environment.
+
+
+
+
+### Pipeline - DevOps [^dev-ops]
+
+- [ ] Monitor statistics on build pipeline. Identify anomalies and action if necessary.<br />
+  Example: length of time builds and deployments take. Number of failed builds.<br />
+  #general--deployment #pipeline--devops
+- [ ] Monitor statistics on code and commits. Identify anomalies and action if necessary.<br />
+  Example: file count, line count, comment count, commit count, most changed files.<br />
+  [Article: Do you know how to get code line metrics? | SSW.Rules](https://www.ssw.com.au/rules/get-code-line-metrics)<br />
+  [Article: Do you use hotspot analysis to prioritize tech debt? | SSW.Rules](https://www.ssw.com.au/rules/prioritize-tech-debt)<br />
+  [Tool: CodeScene](https://codescene.com/)
+  [Tool: git-quick-stats](https://github.com/arzzen/git-quick-stats)
+  [Book: Your Code as a Crime Scene • Adam TORNHILL](https://pragprog.com/titles/atcrime/your-code-as-a-crime-scene/)
+  #general--deployment #pipeline--devops
+- [ ] Monitor code health statistics using appropriate tools.<br />
+  [Article: Do you use the Code Health Extensions in VS Code?](https://www.ssw.com.au/rules/do-you-use-the-code-health-extensions-in-vs-code)<br />
+  [Tool: Code Health Extension for VS Code](https://marketplace.visualstudio.com/items)
+  [Tool: CSSLint](https://www.npmjs.com/package/csslint)
+  [Tool: Biome](https://biomejs.dev/guides/getting-started/)
+  #general--deployment #pipeline--devops
+
+
+[^dev-ops]: DevOps covers issues related to the ongoing operation of the application in production, such as monitoring, logging, alerting, etc.
 
 
 

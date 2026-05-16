@@ -68,6 +68,14 @@ export const meta: WorkMeta = {
       ],
     },
     {
+      categoryName: "data",
+      items: [
+        {
+          itemName: "graphql",
+        },
+      ],
+    },
+    {
       categoryName: "aws",
       items: [
         {
@@ -90,6 +98,9 @@ export const meta: WorkMeta = {
         },
         {
           itemName: "amplify-js",
+        },
+        {
+          itemName: "app-sync",
         },
       ],
     },

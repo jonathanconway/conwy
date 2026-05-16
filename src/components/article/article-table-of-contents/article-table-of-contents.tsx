@@ -2,7 +2,7 @@ import { Article } from "@/framework/client";
 
 import { Collapsible } from "../../collapsible";
 import { Link } from "../../link";
-import { List } from "../../list";
+import { UnorderedList } from "../../list";
 import { Responsive } from "../../responsive";
 import { Breakpoints } from "../../styling";
 import { TextSizes } from "../../text";
@@ -22,7 +22,7 @@ export async function ArticleTableOfContents(
   return (
     <Responsive maxWidth={Breakpoints.md}>
       <Collapsible title="Table of contents">
-        <List>
+        <UnorderedList>
           {articleHeadings.map(({ id, title, shortTitle }) => (
             <li key={id}>
               {/* todo: instead of title, apply tooltip and only show on text overflow */}
@@ -36,7 +36,7 @@ export async function ArticleTableOfContents(
               </Link>
             </li>
           ))}
-        </List>
+        </UnorderedList>
       </Collapsible>
     </Responsive>
   );

@@ -1,6 +1,6 @@
 import { ChecklistMeta } from "@/framework/client";
 
-import { ArticleSidebarContainer } from "../../../article/article-sidebar/article-sidebar-container";
+import { ContentSidebarContainer } from "../../../content-page";
 
 import { ChecklistPageSidebarHeadings } from "./checklist-page-sidebar-headings";
 
@@ -10,8 +10,8 @@ interface ChecklistPageSidebarProps {
 
 export function ChecklistPageSidebar(props: ChecklistPageSidebarProps) {
   return (
-    <ArticleSidebarContainer>
+    <ContentSidebarContainer>
       <ChecklistPageSidebarHeadings checklistMeta={props.checklistMeta} />
-    </ArticleSidebarContainer>
+    </ContentSidebarContainer>
   );
 }

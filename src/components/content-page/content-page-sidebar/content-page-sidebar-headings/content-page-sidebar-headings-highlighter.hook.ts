@@ -54,7 +54,7 @@ function getActiveElementInViewport(headingElements: readonly Element[]) {
   }
 }
 
-export function useChecklistPageSidebarHeadingsHighlighter(
+export function useContentPageSidebarHeadingsHighlighter(
   sidebarHeadings: readonly string[],
 ) {
   const checklistHeadingIds = sidebarHeadings.map(kebabCase);
