@@ -7,6 +7,7 @@ import { cn } from "@/framework/client";
 
 import { useFocusOutline } from "../../focus-outline/use-focus-outline.hook";
 import { Scripts } from "../../scripts";
+import { Verifications } from "../../verifications";
 
 import * as styles from "./app-layout.css";
 
@@ -23,6 +24,7 @@ export function AppLayout(props: AppLayoutProps) {
 
   return (
     <html lang="en" className={cn(styles.html, inter.className)}>
+      <Verifications />
       <body className={styles.body}>{children}</body>
       <Scripts />
     </html>

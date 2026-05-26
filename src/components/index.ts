@@ -53,5 +53,6 @@ export * from "./text";
 export * from "./theme";
 export * from "./tools";
 export * from "./tooltip";
+export * from "./verifications";
 export * from "./work";
 export * from "./works";
