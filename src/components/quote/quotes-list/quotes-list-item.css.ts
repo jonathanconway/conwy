@@ -17,6 +17,7 @@ export const quoteLinkBox = style({
 
 export const quotePullQuote = style({
   ...pullQuoteMixins.pullQuote,
+  marginBottom: 0,
 
   ":hover": {
     backgroundColor: vars.linkBox.hover.background.color,
