@@ -1,4 +1,5 @@
 export * from "./beautiful";
+export * from "./beliefs";
 export * from "./billions";
 export * from "./eat";
 export * from "./everything-spiritual";
@@ -16,4 +17,5 @@ export * from "./something-you-like";
 export * from "./success";
 export * from "./treasures";
 export * from "./unknown";
+export * from "./vocation";
 export * from "./wise-person-suffers";
