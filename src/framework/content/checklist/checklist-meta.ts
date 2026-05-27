@@ -7,4 +7,6 @@ export interface ChecklistMeta extends MetaBase<ChecklistMetaExtensions> {
   readonly title: string;
   readonly blurb: string;
   readonly updatedDate: DateTimeString;
+  readonly tagTitles: Record<string, string>;
+  readonly tagGroupTitles: Record<string, string>;
 }

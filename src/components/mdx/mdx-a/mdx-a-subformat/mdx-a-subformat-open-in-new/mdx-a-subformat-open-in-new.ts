@@ -3,7 +3,7 @@ import { isString } from "lodash";
 import { LinkProps } from "../../../../link";
 import { MdxAProps } from "../../mdx-a-props";
 
-const OPEN_IN_NEW_PREFIXES = ["Book", "Article", "Blog"];
+const openInNewPrefixedPattern = new RegExp(/^[A-Z]([a-z].*):.*$/);
 
 export function getAOpenInNewProps(props: MdxAProps): LinkProps {
   if (!isString(props.children)) {
@@ -12,10 +12,8 @@ export function getAOpenInNewProps(props: MdxAProps): LinkProps {
 
   const childrenText = props.children?.toString();
 
-  const matchingPrefix = OPEN_IN_NEW_PREFIXES.find((prefix) =>
-    childrenText.startsWith(`${prefix}:`),
-  );
-  if (!matchingPrefix) {
+  const hasNewPrefixedPattern = openInNewPrefixedPattern.test(childrenText);
+  if (!hasNewPrefixedPattern) {
     return props;
   }
 

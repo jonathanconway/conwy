@@ -2,12 +2,12 @@
 
 import { intersection } from "lodash";
 
-import { ChecklistItem, ChecklistPropsSectionItem } from "../../../checklist";
+import { ChecklistItem } from "../../../checklist";
 import { useMdxDivCustomChecklistContext } from "../../mdx-div";
 
-export function MdxLiChecklistItemClient(props: {
-  readonly sectionItem: ChecklistPropsSectionItem;
-}) {
+import { MdxLiChecklistItemClientProps } from "./mdx-li-checklist-item-client-props";
+
+export function MdxLiChecklistItemClient(props: MdxLiChecklistItemClientProps) {
   const { sectionItem } = props;
 
   const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();

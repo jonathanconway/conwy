@@ -1,5 +1,5 @@
-import { CheerioAPI, load as cheerioLoad } from "cheerio";
-import { chunk, fromPairs, trim, uniq } from "lodash";
+import { load as cheerioLoad } from "cheerio";
+import { trim, uniq } from "lodash";
 import { marked } from "marked";
 
 import {
@@ -23,11 +23,6 @@ export async function generateChecklistMetaExtensions(
   checklistMeta: ChecklistMeta,
   checklistMd: string,
 ): Promise<ChecklistMetaExtensions | undefined> {
-  // const checklistMd = await getChecklistMd(checklistMeta.slug);
-  // if (!checklistMd) {
-  //   return;
-  // }
-
   const checklistMdHtml = await marked(checklistMd);
   const checklistMd$ = cheerioLoad(checklistMdHtml);
 
@@ -89,8 +84,8 @@ export async function generateChecklistMetaExtensions(
     }
   }
 
-  const tagTitles = produceTagTitles(checklistMd$);
-  const tagGroups = produceChecklistTagGroups(items, tagTitles);
+  const { tagTitles, tagGroupTitles } = checklistMeta;
+  const tagGroups = produceChecklistTagGroups(items, tagTitles, tagGroupTitles);
 
   const checklistMetaExtension: ChecklistMetaExtensions = {
     items: [],
@@ -122,12 +117,14 @@ function parseChecklistItem(checklistItemHtml: string) {
 function produceChecklistTagGroups(
   items: readonly ChecklistItem[],
   tagTitles: Record<string, string>,
+  tagGroupTitles: Record<string, string>,
 ) {
   const tagGroupsByName: Record<string, ChecklistTagGroup> = {};
   for (const item of items) {
     for (const tag of item.tags) {
       tagGroupsByName[tag.tagGroupName] = tagGroupsByName[tag.tagGroupName] ?? {
-        name: tag.tagGroupName,
+        name:
+          tagGroupTitles[tag.tagGroupName] ?? sentenceCase(tag.tagGroupName),
         title: tagTitles[tag.tagGroupName] ?? sentenceCase(tag.tagGroupName),
         tags: [],
       };
@@ -151,22 +148,6 @@ function produceChecklistTagGroups(
     }
   }
   return Object.values(tagGroupsByName);
-}
-
-function produceTagTitles(checklistMd$: CheerioAPI): Record<string, string> {
-  const $tagTitlesAsideEl = checklistMd$(
-    'aside[data-mdx-custom="checklist-tag-titles"]',
-  );
-  const $tagTitlesDefinitionEls = $tagTitlesAsideEl.find("dt, dd");
-  const tagTitlesDefinitionElTexts = $tagTitlesDefinitionEls
-    .map((_, $el) => checklistMd$($el).text())
-    .toArray();
-  const tagTitlesDefinitionElTextsChunked = chunk(
-    tagTitlesDefinitionElTexts,
-    2,
-  );
-  const tagTitlesDefinitionPairs = fromPairs(tagTitlesDefinitionElTextsChunked);
-  return tagTitlesDefinitionPairs;
 }
 
 function parseChecklistItemTags(checklistItemText: string) {
