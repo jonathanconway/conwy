@@ -185,16 +185,18 @@
   [Article: The 12 Factor App - Admin processes](https://12factor.net/admin-processes)<br />
   #general--architecture
 
-[^architecture]: Architecture items refer architecture as it in influences, or is influenced by, the front end.
+[^architecture]: Architecture items refer to architecture as it influences, or is influenced by, the front end.
 
 
 
 
-## General - AI
+### General - AI [^general-ai]
 
 - [ ] Use AI for pair programming and code review.<br />
   [Article: Do you use AI pair programming? | SSW.Rules](https://www.ssw.com.au/rules/ai-pair-programming)<br />
   #general--ai
+
+[^general-ai]: AI refers to Artificial Intelligence as it relates to front end development, such as coding assistants, code review and other tools, and also AI integrations.
 
 
 
@@ -2676,20 +2678,20 @@
 ### Pipeline - Configuration [^configuration]
 
 - [ ] Ensure entries are in alphabetic order, where that is the standard.<br />
-  #nfr--consistency #general--configuration
+  #pipeline--configuration #nfr--consistency
 
 [^configuration]: Configuration refers to configuration files and configuration-as-code, such as CI/CD, environment, feature flags, etc.
 
 
 
 
-### Pipeline - Packages [^packages]
+### Pipeline - Package [^package]
 
 - [ ] Put dependencies in the right category - developer vs. production.<br />
   [Blog: Categorize Your Dependencies](https://antfu.me/posts)<br />
-  #general--package
+  #pipeline--package
 - [ ] Remove package that is made unnecessary due to the current code change.<br />
-  #general--package
+  #pipeline--package
 - [ ] Choose high quality dependencies.<br />
   Actively maintained, with recent commits, releases and responsiveness to issues.<br />
   Maintained by a credible individual or team.<br />
@@ -2699,33 +2701,33 @@
   Open and reviewable.<br />
   Licensed properly.<br />
   [Article: Do you choose the right dependencies? | SSW.Rules](https://www.ssw.com.au/rules/choose-dependencies-correctly)<br />
-  #general--package #nfr--security
+  #pipeline--package #nfr--security
 - [ ] Careful about supply-chain vulnerabilities. Ensure packages being consumed do not contain significant vulnerabilities.<br />
   [Article: Do you defend against package supply chain attacks? | SSW.Rules](https://www.ssw.com.au/rules/defend-against-package-supply-chain-attacks)<br />
-  #general--package #nfr--security
+  #pipeline--package #nfr--security
 - [ ] Use a good quality package manager.<br />
   [Article: Do you know the best package manager for Node? | SSW.Rules](https://www.ssw.com.au/rules/best-package-manager-for-node)<br />
   [Tool: pnpm](https://pnpm.io/)<br />
   [Tool: npm](https://www.npmjs.com/)<br />
   [Tool: Yarn](https://yarnpkg.com/)<br />
   [Tool: Bun](https://bun.sh/)<br />
-  #general--package #framework--nodejs
+  #pipeline--package #framework--nodejs
 - [ ] Manage dependencies and keep them up-to-date and synchronised across repositories.<br />
   [Tool: Dependabot](https://github.com/dependabot)<br />
   [Tool: Renovate](https://github.com/renovatebot/renovate)<br />
   [Tool: npm audit](https://docs.npmjs.com/cli/v10/commands/npm-audit)<br />
   [Tool: SonarQube](https://www.sonarsource.com/products/sonarqube)<br />
   [Article: Do you properly maintain your dependencies? | SSW.Rules](https://www.ssw.com.au/rules/maintain-dependencies-correctly)<br />
-  #general--package #nfr--security
+  #pipeline--package #nfr--security
 - [ ] Publish an audit log for your own releases.<br />
   This process can be partially automated using a tool such as Release Please.<br />
   [Tool: release-please](https://github.com/googleapis/release-please)<br />
   [Article: Do you keep a package audit log? | SSW.Rules](https://www.ssw.com.au/rules/package-audit-log)<br />
-  #general--package
+  #pipeline--package
 
 
 
-[^packages]: Package covers management of packages, such as third-party libraries, either consumed by or exposed by the application.
+[^package]: Package covers management of packages, such as third-party libraries, either consumed by or exposed by the application.
 
 
 
@@ -2734,7 +2736,7 @@
 
 - [ ] Cache or otherwise re-use dependencies that don’t change often, to speed up the build.<br />
   [Article: PNPM GitHub Actions Cache](https://theodorusclarence.com/shorts/github/pnpm-github-actions-cache)<br />
-  #general--build
+  #pipeline--build
 
 [^build]: Build covers issues related to building the application for deployment to an environment.
 
@@ -2745,7 +2747,7 @@
 
 - [ ] Time deployment to minimise disruption.<br />
   Example: avoid deploying during peak or critical usage periods if possible.<br />
-  #general--deployment
+  #pipeline--deployment
 
 [^deployment]: Deployment covers issues related to deploying the built application to an environment.
 
@@ -2756,7 +2758,7 @@
 
 - [ ] Monitor statistics on build pipeline. Identify anomalies and action if necessary.<br />
   Example: length of time builds and deployments take. Number of failed builds.<br />
-  #general--deployment #pipeline--devops
+  #pipeline--devops
 - [ ] Monitor statistics on code and commits. Identify anomalies and action if necessary.<br />
   Example: file count, line count, comment count, commit count, most changed files.<br />
   [Article: Do you know how to get code line metrics? | SSW.Rules](https://www.ssw.com.au/rules/get-code-line-metrics)<br />
@@ -2764,13 +2766,13 @@
   [Tool: CodeScene](https://codescene.com/)
   [Tool: git-quick-stats](https://github.com/arzzen/git-quick-stats)
   [Book: Your Code as a Crime Scene • Adam TORNHILL](https://pragprog.com/titles/atcrime/your-code-as-a-crime-scene/)
-  #general--deployment #pipeline--devops
+  #pipeline--devops
 - [ ] Monitor code health statistics using appropriate tools.<br />
   [Article: Do you use the Code Health Extensions in VS Code?](https://www.ssw.com.au/rules/do-you-use-the-code-health-extensions-in-vs-code)<br />
   [Tool: Code Health Extension for VS Code](https://marketplace.visualstudio.com/items)
   [Tool: CSSLint](https://www.npmjs.com/package/csslint)
   [Tool: Biome](https://biomejs.dev/guides/getting-started/)
-  #general--deployment #pipeline--devops
+  #pipeline--devops
 
 
 [^dev-ops]: DevOps covers issues related to the ongoing operation of the application in production, such as monitoring, logging, alerting, etc.
