@@ -1,9 +1,4 @@
-> Aside: 🚧 Note: This is a work-in-progress. I am continuously improving it. I welcome your [comments and suggestions](/articles/front-end-development-checklist#article-discussion). You might find it idiosyncratic, as it is focussed on areas where I have experience. I encourage you to create your own checklists.
 
-
-
-
-{/* ----- */}
 
 
 
@@ -98,7 +93,7 @@
 - [ ] Careful to ensure that inputs to formatting functions are always valid.<br />
   Example: Numeric values, such as money amounts; date and time values; etc.<br />
   Incorrectly formatted inputs can cause exceptions or unexpected behavior.<br />
-  [Article: Do you pre-format your time strings before using TimeSpan.Parse | SSW.Rules](https://www.ssw.com.au/rules/pre-format-your-time-strings-before-using-timespan-parse)<br />
+  [Article: Do you pre-format your time strings before using TimeSpan.Parse | SSW.Rules](https://www.ssw.com.au/rules/pre-format-your-time-strings-before-using-timespan-parse) <br />
   #general--cleanness
 - [ ] Perform load testing.<br />
   #general--cleanness
@@ -192,9 +187,6 @@
 
 - [ ] Use AI for pair programming and code review.<br />
   [Article: Do you use AI pair programming? | SSW.Rules](https://www.ssw.com.au/rules/ai-pair-programming)<br />
-  #general--ai
-- [ ] Make site legible to AI agents and crawlers.<br />
-  [Article: Agent Readiness • Website Spec](https://specification.website/spec/agent-readiness/)<br />
   #general--ai
 
 [^general-ai]: AI refers to Artificial Intelligence as it relates to front end development, such as in coding assistance, code review and integrations.
@@ -548,9 +540,6 @@
   [Article: XML sitemaps • Website Spec](https://specification.website/spec/seo/xml-sitemaps/)<br />
   [Article: Sitemap index files • Website Spec](https://specification.website/spec/seo/sitemap-index/)<br />
   [Article: Image and video sitemap extensions • Website Spec](https://specification.website/spec/seo/image-sitemaps/)<br />
-  #concern--seo
-- [ ] Add Well-Known URIs.<br />
-  [Article: Well-Known URIs • Website Spec](https://specification.website/spec/well-known/)<br />
   #concern--seo
 - [ ] Keep URLs lowercase, hyphenated, descriptive of the content and shallow.<br />
   [Article: URL structure • Website Spec](https://specification.website/spec/seo/url-structure/)<br />
@@ -1113,7 +1102,7 @@
 
 ### NFR - Compatibility [^nfr-compatibility]
 
-- [ ] Test on all major browsers<br />
+- [ ] Test on all major browsers <br />
   Chrome, Edge, Firefox, Safari, Opera, etc.<br />
   #nfr--compatibility
 - [ ] Ensure browser features used are commonly supported.<br />
@@ -1175,7 +1164,7 @@
 - [ ] No new errors in unit tests such as Axe, including whole page scan.<br />
   #nfr--accessibility
 - [ ] For loading indicators, apply `role=status` and include "Loading" text in nested, screen-reader-only element.<br />
-  [Docs: Bootstrap - Spinners](https://getbootstrap.com/docs/4.5/components/spinners/)<br />
+  [Docs: Bootstrap - Spinners](https://getbootstrap.com/docs/4.5/components/spinners/) <br />
   #nfr--accessibility
 - [ ] Use ARIA attributes where appropriate.<br />
   Example: `aria-label` or `aria-labelled-by` (with matching id) to label elements.<br />
@@ -1187,9 +1176,6 @@
   #nfr--accessibility
 - [ ] Test IDs probably mean elements aren't specified well enough by semantically, by tag name, aria tags, etc.<br />
   [Blog: Test IDs are an a11y smell](https://tkdodo.eu/blog/test-ids-are-an-a11y-smell)<br />
-  #nfr--accessibility
-- [ ] Avoid accessibility overlays.<br />
-  [Article: Accessibility overlays • Website Spec](https://specification.website/spec/accessibility/accessibility-overlays/)<br />
   #nfr--accessibility
 
 [^nfr-accessibility]: Accessibility covers accessibility features and techniques to ensure usability by everyone, including people with disabilities.
@@ -1257,10 +1243,10 @@
 - [ ] Use plain language and avoid figures of speech, idioms, and complicated metaphors.<br />
   [Article: WCAG - Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html)<br />
   #nfr--accessibility #accessibility--content
-- [ ] Make sure that `button`, `a`, and `label` element content is unique and descriptive.<br />
+- [ ] Make sure that <code>button</code>, <code>a</code>, and <code>label</code> element content is unique and descriptive.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--content
-- [ ] Use left-aligned text for left-to-right (`LTR`) languages, and right-aligned text for right-to-left (`RTL`) languages.<br />
+- [ ] Use left-aligned text for left-to-right (<abbr>LTR</abbr>) languages, and right-aligned text for right-to-left (<abbr>RTL</abbr>) languages.<br />
   [Article: WCAG - Visual Presentation](https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html)<br />
   #nfr--accessibility #accessibility--content
 
@@ -1274,10 +1260,10 @@
 - [ ] Validate your HTML.<br />
   [Article: WCAG - Parsing](https://www.w3.org/WAI/WCAG22/Understanding/parsing.html)<br />
   #nfr--accessibility #accessibility--global-code
-- [ ] Use a `lang` attribute on the `html` element.<br />
+- [ ] Use a <code>lang</code> attribute on the <code>html</code> element.<br />
   [Article: WCAG - Language of Page](https://www.w3.org/WAI/WCAG22/Understanding/language-of-page.html)<br />
   #nfr--accessibility #accessibility--global-code
-- [ ] Provide a unique `title` for each page or view.<br />
+- [ ] Provide a unique <code>title</code> for each page or view.<br />
   [Article: WCAG - Page Titled](https://www.w3.org/WAI/WCAG22/Understanding/page-titled.html)<br />
   #nfr--accessibility #accessibility--global-code
 - [ ] Ensure that viewport zoom is not disabled.<br />
@@ -1289,13 +1275,13 @@
 - [ ] Ensure a linear content flow.<br />
   [Article: WCAG - Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)<br />
   #nfr--accessibility #accessibility--global-code
-- [ ] Avoid using the `autofocus` attribute.<br />
+- [ ] Avoid using the <code>autofocus</code> attribute.<br />
   [Article: WCAG - Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)<br />
   #nfr--accessibility #accessibility--global-code
 - [ ] Allow extending session timeouts.<br />
   [Article: WCAG - Timing Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html)<br />
   #nfr--accessibility #accessibility--global-code
-- [ ] Remove `title` attribute tooltips.<br />
+- [ ] Remove <code>title</code> attribute tooltips.<br />
   [Article: WCAG - Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)<br />
   #nfr--accessibility #accessibility--global-code
 
@@ -1332,7 +1318,7 @@
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
   [Article: Image alt text • Website Spec](https://specification.website/spec/accessibility/image-alt-text/)<br />
   #nfr--accessibility #accessibility--images
-- [ ] Make sure that decorative images use null `alt` (empty) attribute values.<br />
+- [ ] Make sure that decorative images use null <code>alt</code> (empty) attribute values.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
   #nfr--accessibility #accessibility--images
 - [ ] Provide a text alternative for complex images such as charts, graphs, and maps.<br />
@@ -1352,7 +1338,7 @@
 - [ ] Use heading elements to introduce content.<br />
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--headings
-- [ ] Use only one `h1` element per page or view.<br />
+- [ ] Use only one <code>h1</code> element per page or view.<br />
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--headings
 - [ ] Heading elements should be written in a logical sequence.<br />
@@ -1369,7 +1355,7 @@
 
 #### NFR - Accessibility - Lists [^nfr-accessibility-lists]
 
-- [ ] Use list elements (`ol`, `ul`, and `dl` elements) for list content.<br />
+- [ ] Use list elements (<code>ol</code>, <code>ul</code>, and <code>dl</code> elements) for list content.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--lists
 
@@ -1380,24 +1366,16 @@
 
 #### NFR - Accessibility - Controls [^nfr-accessibility-controls]
 
-- [ ] Prefer native elements where possible.<br />
-  Prefer native HTML interactive elements — `<button>`, `<a>`, `<details>`/`<summary>`, `<dialog>` — over divs with click handlers. You get keyboard support, focus management, and assistive-tech semantics for free.<br />
-  [Article: Native interactive elements • Website Spec](https://specification.website/spec/accessibility/native-interactive-elements/)<br />
-  #nfr--accessibility #accessibility--controls
-- [ ] Use the `a` element for links.<br />
+- [ ] Use the <code>a</code> element for links.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
-  #nfr--accessibility #accessibility--controls
-- [ ] Provide descriptive text for links. Avoid links and buttons with empty content.<br />
-  [Article: Descriptive link text • Website Spec](https://specification.website/spec/accessibility/link-text/)<br />
-  [Article: Empty links and buttons • Website Spec](https://specification.website/spec/accessibility/empty-links-buttons/)<br />
   #nfr--accessibility #accessibility--controls
 - [ ] Ensure that links are recognizable as links.<br />
   [Article: WCAG - Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)<br />
   #nfr--accessibility #accessibility--controls
-- [ ] Ensure that controls have `:focus` states.<br />
+- [ ] Ensure that controls have <code>:focus</code> states.<br />
   [Article: WCAG - Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html)<br />
   #nfr--accessibility #accessibility--controls
-- [ ] Use the `button` element for buttons.<br />
+- [ ] Use the <code>button</code> element for buttons.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--controls
 - [ ] Provide a skip link and make sure that it is visible when focused.<br />
@@ -1415,14 +1393,13 @@
 
 #### NFR - Accessibility - Tables [^nfr-accessibility-tables]
 
-- [ ] Use the `table` element to describe tabular data.<br />
+- [ ] Use the <code>table</code> element to describe tabular data.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
-  [Article: Accessible data tables • Website Spec](https://specification.website/spec/accessibility/data-tables/)<br />
   #nfr--accessibility #accessibility--tables
-- [ ] Use the `th` element for table headers (with appropriate `scope` attributes).<br />
+- [ ] Use the <code>th</code> element for table headers (with appropriate <code>scope</code> attributes).<br />
   [Article: WCAG - Parsing](https://www.w3.org/WAI/WCAG22/Understanding/parsing.html)<br />
   #nfr--accessibility #accessibility--tables
-- [ ] Use the `caption` element to provide a title for the table.<br />
+- [ ] Use the <code>caption</code> element to provide a title for the table.<br />
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--tables
 
@@ -1433,14 +1410,14 @@
 
 #### NFR - Accessibility - Forms [^nfr-accessibility-forms]
 
-- [ ] All inputs in a form are associated with a corresponding `label` element.<br />
+- [ ] All inputs in a form are associated with a corresponding <code>label</code> element.<br />
   [Article: WCAG - On Input](https://www.w3.org/WAI/WCAG22/Understanding/on-input.html)<br />
   [Article: Form labels • Website Spec](https://specification.website/spec/accessibility/form-labels/)<br />
   #nfr--accessibility #accessibility--forms
-- [ ] Use `fieldset` and `legend` elements where appropriate.<br />
+- [ ] Use <code>fieldset</code> and <code>legend</code> elements where appropriate.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--forms
-- [ ] Inputs use `autocomplete` where appropriate.<br />
+- [ ] Inputs use <code>autocomplete</code> where appropriate.<br />
   [Article: WCAG - Identify Input Purpose](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html)<br />
   #nfr--accessibility #accessibility--forms
 - [ ] Make sure that form input errors are displayed in list above the form after submission.<br />
@@ -1451,10 +1428,6 @@
   #nfr--accessibility #accessibility--forms
 - [ ] Make sure that error, warning, and success states are not visually communicated by just color.<br />
   [Article: WCAG - Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)<br />
-  [Article: Accessible form errors • Website Spec](https://specification.website/spec/accessibility/form-errors/)<br />
-  #nfr--accessibility #accessibility--forms
-- [ ] Use CSS selectors rather than Javascript to express form and component state.<br />
-  [Article: CSS state and relational selectors • Website Spec](https://specification.website/spec/accessibility/css-state-selectors/)<br />
   #nfr--accessibility #accessibility--forms
 
 [^nfr-accessibility-forms]: Forms allow people to enter information into a site for processing and manipulation. This includes things like sending messages and placing orders.
@@ -1483,7 +1456,6 @@
 
 - [ ] Confirm the presence of captions.<br />
   [Article: WCAG - Captions](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html)<br />
-  [Article: Captions and transcripts • Website Spec](https://specification.website/spec/accessibility/captions-and-transcripts/)<br />
   #nfr--accessibility #accessibility--video
 - [ ] Remove seizure triggers.<br />
   [Article: WCAG - Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)<br />
@@ -1498,7 +1470,6 @@
 
 - [ ] Confirm that transcripts are available.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
-  [Article: Captions and transcripts • Website Spec](https://specification.website/spec/accessibility/captions-and-transcripts/)<br />
   #nfr--accessibility #accessibility--audio
 
 [^nfr-accessibility-audio]: Audio-specific checks.
@@ -1540,9 +1511,8 @@
 - [ ] Provide a mechanism to pause background video.<br />
   [Article: WCAG - Pause, Stop, Hide](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html)<br />
   #nfr--accessibility #accessibility--animation
-- [ ] Make sure all animation obeys the `prefers-reduced-motion` media query.<br />
+- [ ] Make sure all animation obeys the <code>prefers-reduced-motion</code> media query.<br />
   [Article: WCAG - Animation from Interactions](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html)<br />
-  [Article: Reduced motion • Website Spec](https://specification.website/spec/accessibility/reduced-motion/)<br />
   #nfr--accessibility #accessibility--animation
 
 [^nfr-accessibility-animation]: Content that moves, either on its own, or when triggered by a person activating a control.
@@ -1568,7 +1538,7 @@
 - [ ] Check text that overlaps images or video.<br />
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
   #nfr--accessibility #accessibility--color-contrast
-- [ ] Check custom `::selection` colors.<br />
+- [ ] Check custom <code>::selection</code> colors.<br />
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
   #nfr--accessibility #accessibility--color-contrast
 
@@ -1587,13 +1557,9 @@
   #nfr--accessibility #accessibility--mobile-and-touch
 - [ ] Ensure that button and link icons can be activated with ease.<br />
   [Article: WCAG - Target Size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html)<br />
-  [Article: Touch target size • Website Spec](https://specification.website/spec/accessibility/touch-target-size/)<br />
   #nfr--accessibility #accessibility--mobile-and-touch
 - [ ] Ensure sufficient space between interactive items in order to provide a scroll area.<br />
   [Article: WCAG - Bypass Blocks](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html)<br />
-  #nfr--accessibility #accessibility--mobile-and-touch
-- [ ] Ensure form inputs are mobile-friendly.<br />
-  [Article: Mobile-friendly form inputs • Website Spec](https://specification.website/spec/accessibility/mobile-form-inputs/)<br />
   #nfr--accessibility #accessibility--mobile-and-touch
 
 [^nfr-accessibility-mobile-and-touch]: Mobile and touch covers items related to mobile and tablet users who need to use touch-based screens.
@@ -1624,9 +1590,7 @@
 - [ ] Minimise jank.<br />
   [Article: Jank - Glossary | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Jank)<br />
   #nfr--performance
-- [ ] Optimise Core Web Vitals (CWV).<br />
-  Largest contentful paint (LCP), Interaction to Next Paint (INP), Cumulative Layout Shift (CLS).<br />
-  [Article: Core Web Vitals (LCP, INP, CLS) • Website Spec](https://specification.website/spec/performance/core-web-vitals/)<br />
+- [ ] Minimise largest contentful paint (LCP).<br />
   [Article: Largest Contentful Paint - web.dev](https://web.dev/articles/lcp)<br />
   #nfr--performance
 - [ ] Minimise first input delay.<br />
@@ -1675,9 +1639,6 @@
 - [ ] Avoid "waterfall" requests - chains of dependent requests that, as a whole, take a long time to finish.<br />
   [Book: Advanced React, Ch 14](https://www.advanced-react.com)<br />
   #nfr--performance
-- [ ] Optimise image formats.<br />
-  [Article: Image optimisation • Website Spec](https://specification.website/spec/performance/image-optimization/)<br />
-  #nfr--performance
 - [ ] Use edge hosting (such as CDNs) to speed up user access.<br />
   [Platform: AWS CloudFront](https://aws.amazon.com/cloudfront)<br />
   [Platform: Azure CDN](https://azure.microsoft.com/en-us/products/cdn)<br />
@@ -1714,22 +1675,6 @@
 
 
 
-#### NFR - Performance - Assets [^nfr-performance-assets]
-
-- [ ] Optimise Web font loading.<br />
-  Ensure text is readable while the font loads.<br />
-  [Article: Web font loading • Website Spec](https://specification.website/spec/performance/font-loading/)<br />
-  #nfr--performance
-- [ ] Optimise the critical path for loading CSS and other render-blocking resources.<br />
-  [Article: Critical CSS and render-blocking resources • Website Spec](https://specification.website/spec/performance/critical-css/)<br />
-  [Article: Script loading — defer, async, module • Website Spec](https://specification.website/spec/performance/script-loading/)<br />
-  #nfr--performance
-
-[^nfr-performance-assets]: Assets refers to performance related to loading of static assets such as fonts, images, and stylesheets.
-
-
-
-
 #### NFR - Performance - Build [^nfr-performance-build]
 
 - [ ] Make imports specific, to keep bundle size small.<br />
@@ -1750,16 +1695,6 @@
 - [ ] Use caching to prevent redundant, expensive computations.<br />
   #nfr--performance
 - [ ] Prefetch and cache data on startup that we know will be needed during the user's session.<br />
-  [Article: Preload, prefetch, preconnect • Website Spec](https://specification.website/spec/performance/preload-prefetch-preconnect/)<br />
-  #nfr--performance
-- [ ] Lazy load images, iframes, and video.<br />
-  [Article: Lazy loading images, iframes, and video • Website Spec](https://specification.website/spec/performance/lazy-loading/)<br />
-  #nfr--performance
-- [ ] Use appropriate cache-control headers.<br />
-  [Article: Cache-Control headers • Website Spec](https://specification.website/spec/performance/cache-control/)<br />
-  #nfr--performance
-- [ ] Use No-Vary-Search header to signal reuse caches across query parameters.<br />
-  [Article: No-Vary-Search response header • Website Spec](https://specification.website/spec/performance/no-vary-search/)<br />
   #nfr--performance
 
 [^nfr-performance-caching]: 
@@ -1878,7 +1813,6 @@
 - [ ] Compress assets before serving, to minimise hosting costs.<br />
   Apply GZip compression, asset minification and optimised image file formats.<br />
   [Docs: Serve compressed files](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html)<br />
-  [Article: Compression (gzip, brotli, zstd) • Website Spec](https://specification.website/spec/performance/compression/)<br />
   [Docs: Compression and Decompression](https://docs.nginx.com/nginx/admin-guide/web-server/compression)<br />
   #nfr--economy
 - [ ] Take advantage of client-side caching to minimise hosting costs.<br />
@@ -2144,10 +2078,6 @@
   #nfr--usability #usability--text
 - [ ] Use slanted single-quotes where possible instead of instead of straight.<br />
   #nfr--usability #usability--text
-- [ ] Use `hidden="until-found"` for collapsible content.<br />
-  So that browser find-in-page, assistive tech, and search engines can still reach the text and auto-expand it.<br />
-  [Article: Hidden until found • Website Spec](https://specification.website/spec/accessibility/hidden-until-found/)<br />
-  #nfr--usability #usability--text
 
 [^nfr-usability-text]: Text items relate to code used to convey textual information to the user.
 
@@ -2208,18 +2138,18 @@
 
 
 
-#### NFR - Usability - Errors [^nfr-usability-errors]
+#### NFR - Usability - Transitions and errors [^nfr-usability-errors]
 
 - [ ] Handle errors that can occur in a user friendly way.<br />
-  #nfr--usability #usability--errors
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Handle failed requests as errors.<br />
-  #nfr--usability #usability--errors
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Handle loading states with appropriate visual / textual cues, without breaking anything.<br />
-  #nfr--usability #usability--errors
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Smooth state transitions to/from loading and error.<br />
-  #nfr--usability #usability--errors
+  #nfr--usability #usability--transitions-and-errors
 - [ ] Error pages for failed full page loads.<br />
-  #nfr--usability #usability--errors
+  #nfr--usability #usability--transitions-and-errors
 
 [^nfr-usability-errors]: Errors here refers to the display and handling of errors within the user interface from a usability perspective.
 
@@ -2281,21 +2211,6 @@
   #usability--forms #nfr--security
 
 [^nfr-usability-forms]: Forms refers to collections of inputs that users fill in with data on a web page.
-
-
-
-
-#### NFR - Usability - Validation [^nfr-usability-validation]
-
-- [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
-  #nfr--usability #usability--validation
-- [ ] Display validations summary at the top of the form if possible, with summarised listing of invalid fields.<br />
-  #nfr--usability #usability--validation #nfr--security
-- [ ] Validate email addresses.<br />
-  [Article: Do you use a regular expression to validate an email address? | SSW.Rules](https://www.ssw.com.au/rules/use-a-regular-expression-to-validate-an-email-address)<br />
-  #nfr--usability #usability--validation
-
-[^nfr-usability-validation]: Validation refers to checking that user input is correct and providing feedback to the user if it is not.
 
 
 
@@ -2683,45 +2598,44 @@
 - [ ] Use correct HTML, head and meta elements and attributes.<br />
   [Article: Foundations • Website Spec](https://specification.website/spec/foundations/)<br />
   #language--html
-- [ ] Ensure HTML has doctype.<br />
-  Every HTML document must start with `<!doctype html>` as its first line. This opts the browser into standards mode; without it, you get quirks mode and broken layout.<br />
-  [Article: The HTML doctype • Website Spec](https://specification.website/spec/foundations/doctype/)<br />
+- [ ] Ensure HTML has doctype.
+  Every HTML document must start with `<!doctype html>` as its first line. This opts the browser into standards mode; without it, you get quirks mode and broken layout.
+  [Article: The HTML doctype • Website Spec](https://specification.website/spec/foundations/doctype/)
   #language--html
-- [ ] Provide `lang` attribute on `<html>`.<br />
-  Set a valid BCP 47 language tag on the `<html>` element so screen readers, translators, search engines, and browsers know what language the page is in.<br />
-  [Article: The lang attribute on `<html>` • Website Spec](https://specification.website/spec/foundations/html-lang/)<br />
-  [Article: Document and parts language • Website Spec](https://specification.website/spec/accessibility/document-language/)<br />
+- [ ] Provide `lang` attribute on `<html>`.
+  Set a valid BCP 47 language tag on the `<html>` element so screen readers, translators, search engines, and browsers know what language the page is in.
+  [Article: The lang attribute on `<html>` • Website Spec]()
   #language--html
-- [ ] Provide all appropriate `<meta>` elements.<br />
-  `<meta charset>`, `<meta viewport>`, `<meta name="description">`, `<meta name="theme-color">`, `<meta name="color-scheme">`<br />
-  [Article: `<meta charset>` • Website Spec](https://specification.website/spec/foundations/meta-charset/)<br />
-  [Article: `<meta viewport>` • Website Spec](https://specification.website/spec/foundations/meta-viewport/)<br />
-  [Article: `<meta name="description">` • Website Spec](https://specification.website/spec/foundations/meta-description/)<br />
-  [Article: `<meta name="theme-color">` • Website Spec](https://specification.website/spec/foundations/theme-color/)<br />
-  [Article: `<meta name="color-scheme">` • Website Spec](https://specification.website/spec/foundations/color-scheme/)<br />
+- [ ] Provide all appropriate `<meta>` elements.
+  `<meta charset>`, `<meta viewport>`, `<meta name="description">`, `<meta name="theme-color">`, `<meta name="color-scheme">`
+  [Article: `<meta charset>` • Website Spec](https://specification.website/spec/foundations/meta-charset/)
+  [Article: `<meta viewport>` • Website Spec](https://specification.website/spec/foundations/meta-viewport/)
+  [Article: `<meta name="description">` • Website Spec](https://specification.website/spec/foundations/meta-description/)
+  [Article: `<meta name="theme-color">` • Website Spec](https://specification.website/spec/foundations/theme-color/)
+  [Article: `<meta name="color-scheme">` • Website Spec](https://specification.website/spec/foundations/color-scheme/)
   #language--html
-- [ ] Provide `<title>` and make it meaningful.<br />
-  [Article: `<title>` • Website Spec](https://specification.website/spec/foundations/title/)<br />
+- [ ] Provide `<title>` and make it meaningful.
+  [Article: `<title>` • Website Spec](https://specification.website/spec/foundations/title/)
   #language--html
-- [ ] Provide Canonical URL if multiple addresses serve the same content.<br />
-  [Article: `rel="canonical"` • Website Spec](https://specification.website/spec/foundations/canonical-url/)<br />
+- [ ] Provide Canonical URL if multiple addresses serve the same content.
+  [Article: `rel="canonical"` • Website Spec](https://specification.website/spec/foundations/canonical-url/)
   #language--html
-- [ ] Provide Favicons and app icons.<br />
-  [Article: Favicons and app icons • Website Spec](https://specification.website/spec/foundations/favicons/)<br />
+- [ ] Provide Favicons and app icons.
+  [Article: Favicons and app icons • Website Spec](https://specification.website/spec/foundations/favicons/)
   #language--html
-- [ ] Provide Open Graph protocol elements if appropriate.<br />
-  `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `og:site_name`.<br />
-  [Article: Open Graph protocol • Website Spec](https://specification.website/spec/foundations/open-graph/)<br />
+- [ ] Provide Open Graph protocol elements if appropriate.
+  `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `og:site_name`, 
+  [Article: Open Graph protocol • Website Spec]()
   #language--html
-- [ ] Provide feed discovery<br />
-  `rel="alternate"`<br />
-  [Article: Feed discovery • Website Spec](https://specification.website/spec/foundations/feed-discovery/)<br />
+- [ ] Provide feed discovery
+  `rel="alternate"`
+  [Article: Feed discovery • Website Spec](https://specification.website/spec/foundations/feed-discovery/)
   #language--html
-- [ ] Ensure any feed is well formed.<br />
-  [Article: Feed content hygiene • Website Spec](https://specification.website/spec/foundations/feed-hygiene/)<br />
+- [ ] Ensure any feed is well formed.
+  [Article: Feed content hygiene • Website Spec](https://specification.website/spec/foundations/feed-hygiene/)
   #language--html
-- [ ] Use Popover API for popovers, tooltips and similar elements, rather than custom implementations.<br />
-  [Article: Popover API • Website Spec](https://specification.website/spec/foundations/popover-api/)<br />
+- [ ] Use Popover API for popovers, tooltips and similar elements, rather than custom implementations.
+  [Article: Popover API • Website Spec](https://specification.website/spec/foundations/popover-api/)
   #language--html
 
 [^language-html]: HTML items relate to HTML and code that compiles to HTML, such as template syntax.
@@ -3270,7 +3184,7 @@
 - [ ] Use inheritance carefully and sparingly.<br />
   Avoid deep inheritance hierarchies that grow unmaintainable.<br />
   #patterns--oop
-- [ ] Apply OO patterns.<br />
+- [ ] Apply patterns where useful.<br />
   Abstract Factory, Adapter, Bridge, Builder, Chain of Responsibility, Command, Composite, Decorator, Facade, Factory Method, Flyweight, Interpreter, Iterator, Mediator, Memento, Observer, Prototype, Proxy, Singleton, State, Strategy, Template Method, Visitor.<br />
   #patterns--oop
 - [ ] Declare accessibility explicitly, where clarity is needed.<br />

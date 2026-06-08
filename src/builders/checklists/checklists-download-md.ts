@@ -14,7 +14,7 @@ async function buildChecklistDownloadMd(checklistMeta: ChecklistMeta) {
   const checklistMdFilePathName = `${process.cwd()}/src/content/checklists/${slug}/content.mdx`;
   const checklistMd = readFileSync(checklistMdFilePathName).toString();
 
-  const checklistDownloadMdFilePath = `${process.cwd()}/public/downloads/checklists/${slug}`;
+  const checklistDownloadMdFilePath = `${process.cwd()}/public/downloads/checklists/${slug}-checklist`;
   mkDirSyncIfNotExists(checklistDownloadMdFilePath);
 
   const checklistDownloadMdFilePathName = `${checklistDownloadMdFilePath}/${slug}.md`;

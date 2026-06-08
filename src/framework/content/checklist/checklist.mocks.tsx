@@ -12,6 +12,8 @@ export function createChecklistMock(): Checklist {
       title: "Front end observability",
       blurb: "",
       updatedDate: DateTime.now().toFormat("yyyy-MM-dd"),
+      tagGroupTitles: {},
+      tagTitles: {},
     },
   };
 }

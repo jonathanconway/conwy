@@ -10,7 +10,7 @@ export function ChecklistDownload(props: ChecklistDownloadProps) {
   const slug = props.checklistMeta.slug;
   return (
     <Link
-      href={`/downloads/checklists/${slug}/${slug}.md`}
+      href={`/downloads/checklists/${slug}/${slug}-checklist.md`}
       download
       size={TextSizes.xs}
     >

@@ -36,7 +36,9 @@ Surgeon and author Atul Gawande famously wrote a book about checklists, demonstr
 >
 > – [Atul GAWANDE • The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
 
-### How I use a checklist
+(Similar points about checklists were made by [Michael Mauboussin](https://www.jermainebrown.org/posts/michael-mauboussin-and-charlie-munger-checklists-tame-luck) and [Charlie Munger](https://www.jermainebrown.org/posts/the-psychology-hacks-behind-charlie-mungers-billion-dollar-decisions).)
+
+### How I use the checklist
 
 I use this coding checklist both to review my own work as well as to review others'.
 
@@ -45,9 +47,7 @@ I use this coding checklist both to review my own work as well as to review othe
 
 When scanning the list and picking items to check, I factor in what makes sense for my current team.
 
-### Variants of the checklist
-
-Here I provide a general front end development checklist. But typically I will create one variant of the checklist for each specific project I work on. This variant takes into account the unique differences and peculiarities of each project.
+In this article I provide a general front end development checklist. But typically I create separate variants of the checklist, one specialised to each project I work on. Each variant takes into account the unique aspects of each project.
 
 ### Automation and AI
 
@@ -61,7 +61,22 @@ However, despite AI agents possibly being able to do most of the heavy lifting o
 
 Checklists can serve as a valuable input into AI agents.
 
-Firstly, a checklist can be included in an agent "code review" skill, helping the agent to provide useful feedback and even action the feedback itself. The checklist can be broken down into sections, each having guidance on when the agent should read it. This follows the principle of progressive disclosure, minimising context use and streamlining agent performance.
+Firstly, a checklist can be fed to an AI assistant, prompting the agent to provide code review and useful feedback based on the checklist.
+
+```md
+Please review the code changes in the current branch.
+
+Look at the checklist in the file: `≪~/Downloads/front-end-development-checklist.md≫`.
+
+Identify which checklist items are relevant for this change.
+
+For each relevant checklist item:
+- Review the code change and evaluate whether complies or not.
+- List any checklist items for which the code change is not compliant.
+- For each non-complied checklist item, provide an explanation and recommendation on how to address it.
+```
+
+(Note: The checklist could potentially be broken into smaller sub-lists, each having a `"description"` with guidance on when the agent should read it. Following the principle of progressive disclosure, this would minimise context use and streamline agent performance and cost efficiency.)
 
 Secondly, a checklist can to form prompts, by helping me to know what kinds of questions to ask or how to frame prompts.
 
@@ -80,16 +95,13 @@ With this awareness, I could include in my prompt an instruction to cache servic
 > It should retrieve contacts from the `getContacts` gRPC endpoint on the `ContactsService`.
 > Make sure the API call is cached by wrapping it in a NextJS `cache` function call.
 
-
 ### Continuous improvement
 
-When I receive feedback on a code review, I incorporate that feedback into the checklist if not already there. I either add or modify an item. I also include a link or reference to the specific feedback comment that triggered the change. 
+When I receive feedback on a code review, I incorporate that feedback into the checklist if not already there. I either add or modify an item. I also include a link or reference to the specific feedback comment that triggered the change. Also I continuously learn from both personal experience and a broad and diverse array of resources. I incorporate that learning into my checklist.
 
-Also I continuously learn from a broad and diverse array of resources and incorporate that learning into my checklist. Without consulting these resources, my checklist might become biased to my own past experience. By continuously learning and improving, I can quickly fill gaps in my knowledge.
+Here, high quality resources are important. Without them, my checklist might become biased to my own past experience or based on "folklore" rather than time-tested and/or evidence-based facts. By striving to use industry leading resources, I can ensure the checklist provides high quality guidance. The resources I learn from include books, courses, podcasts, open-source code-bases and previous code reviews by team mates. You can find a non-exhaustive list of the publicly available resources linked in the checklist itself and also in the [Further reading](#further-reading) section of this article.
 
-The resources I learn from include books, courses, podcasts, open-source code-bases and previous code reviews by team mates. You can find a non-exhaustive list of the publicly available resources linked in the checklist itself and also in the [Further reading](#further-reading) section of this article.
-
-These practices combine to make the checklist a continuously improving system.
+This practice of continuous learning, research and improvement makes the checklist a living document and a continuously improving system.
 
 ```mermaid--svg
 flowchart TD
@@ -100,6 +112,22 @@ flowchart TD
     D["🎧 Podcasts"] -->|improve| A
     E["👬 Team mates"] -->|improve| A
 ```
+
+## Precedent-based model for code reviews in less mature teams
+
+Many – perhaps most – project teams are somewhat immature in their development practice. They lack the kind of thorough coding guidelines and best practices found in more mature and large-scale environments such as Google or Microsoft. This creates ambiguity around code reviews. What does good vs. bad code look like?
+
+I have found success with a "precedent-based model" for dealing with that ambiguity.
+
+Through discussions in pull requests and/or other avenues, specific decisions are made. For example, the decision to give a particular function a particular name. Over time, I collect these together in lists, from which I abstract broader guidelines. I keep track of these guidelines in a checklist specific to the organisation / project. Crucially, for each item, I maintain a link back to the original discussion (for example, a GitHub link to the specific pull request discussion thread).
+
+In subsequent code reviews, if a similar issue is being discussed, I can simply locate the closest matching guideline in the checklist and copy-paste it into the discussion, including the link back to the original discussion. The linkage to the prior discussion helps to ground the discussion and provides a precedent for my decision in that specific case.
+
+I found success with this approach, in the following ways:
+
+- In most cases, the team agree to stay consistent with the approach suggested by the link to the prior discussion. This agreement helps to drive consensus and move the pull request toward approval.
+- In some cases, a different approach is proposed. Agreement is found. I can improve the checklist by updating it with a link to this more recent discussion. Additionally, the team benefits by gaining more clarity over the reasoning behind the decision and also a sense of the broader approach being followed.
+- In a few cases, there is lively debate about which approach to follow. Here, the "precedent model" helps us to organise our thinking and to keep the discussion on-track. In the worst case, I can at least demonstrate effort and maintain forward momentum.
 
 ## Organising and filtering the checklist
 
@@ -120,19 +148,16 @@ I can filter the list down to only items that are likely to apply.
 
 To minimise the risk of missing something important, I set up the filters to be additive. That is, if I tick 2 filters, I see items covered by either and both of them. This maximises the number of _relevant_ checklist items that get shown while limiting them to a workable quantity.
 
-
 ## Front End Development Checklist
 
 Here is the link:
 
-<p>
-  <LinkCta
-    title="Front End Development Checklist"
-    description="Covers common front end development concerns. Includes front end frameworks and languages, and non-functional requirements such as accessibility and security."
-    href="/checklists/front-end-development"
-    imageSrc="/images/articles/front-end-development-checklist/main.png"
-  />
-</p>
+<LinkCta
+  title="Front End Development Checklist"
+  description="Covers common front end development concerns. Includes front end frameworks and languages, and non-functional requirements such as accessibility and security."
+  href="/checklists/front-end-development"
+  imageSrc="/images/articles/front-end-development-checklist/main.png"
+/>
 
 ## Further reading
 

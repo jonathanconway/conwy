@@ -10,6 +10,7 @@ export * from "./good-example";
 export * from "./habit";
 export * from "./investigate";
 export * from "./judgements";
+export * from "./legacy";
 export * from "./nature-questioning";
 export * from "./not-enough-time";
 export * from "./perfection";

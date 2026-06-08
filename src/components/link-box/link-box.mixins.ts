@@ -31,3 +31,7 @@ export const linkBox: ComplexStyleRule = {
     },
   },
 };
+
+export const linkBoxMaxWidth: ComplexStyleRule = {
+  maxWidth: "30rem",
+};

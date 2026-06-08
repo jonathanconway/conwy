@@ -40,6 +40,7 @@ async function mountInlineTemplateFillerNode(
   const elementsByToken: ElementsByToken = rootElement.elementsByToken ?? {};
 
   const elementTextContent = element.textContent?.trim() ?? "";
+
   const elementTextContentEscaped = elementTextContent
     .replaceAll("≪", "")
     .replaceAll("≫", "");

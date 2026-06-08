@@ -8,7 +8,7 @@ import { LinkCtaProps } from "./link-cta-props";
 
 export function LinkCta(props: LinkCtaProps) {
   return (
-    <LinkBox href={props.href} width="500px">
+    <LinkBox href={props.href} hasMaxWidth>
       <Stack
         direction={StackDirections.Row}
         distribution={StackDistributions.Flow}

@@ -1,19 +1,11 @@
 import { isArray, isObject, isString } from "lodash";
 import { ReactNode } from "react";
 
-import {
-  getChildrenText,
-  getSubformatChildrenStartingWithPrefix,
-  removeChildrenPrefix,
-  removeChildrenPrefixPattern,
-  removeFirstChildPrefix,
-} from "@/framework/client";
+import { removeFirstChildPrefix } from "@/framework/client";
 
 import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 
 const COPYABLE_PREFIX = "Copyable: ";
-
-export const copyablePrefixPattern = new RegExp(/Copyable: /g);
 
 function getTextContent(reactNode: ReactNode): string {
   if (isString(reactNode)) {

@@ -6,6 +6,7 @@ export * from "./open-to-debate";
 export * from "./rational-reminder";
 export * from "./economics-explained";
 export * from "./i-code-it";
+export * from "./last-week-in-aws";
 export * from "./goto-conferences";
 export * from "./beyond-coding";
 export * from "./gresham-college";
