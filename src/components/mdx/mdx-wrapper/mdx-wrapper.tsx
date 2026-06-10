@@ -5,6 +5,8 @@ import { ReactNode } from "react";
 
 import { isReactElement } from "@/framework/client";
 
+import "../mdx-hr/mdx-hr.css";
+
 import { MdxWrapperChild } from "./mdx-wrapper-child";
 import { MdxWrapperChildren } from "./mdx-wrapper-children";
 import { MdxWrapperProps } from "./mdx-wrapper.props";
