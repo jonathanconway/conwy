@@ -10,7 +10,7 @@ export const awsBuilderCommunity: Community = {
     url: "https://builder.aws.com/community",
     category: CommunityCategories.SoftwareDevelopment,
     mainImage: {
-      src: "/images/communities/aws-builder.webp",
+      src: "/images/communities/aws-builder.svg",
     },
     profilePosts: [],
   },

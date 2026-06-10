@@ -57,6 +57,7 @@ Up-and-coming smaller players include:
 - ![](/images/articles/ai-concepts/devin.ico?size=icon-xsmall) [Devin](https://devin.ai)
 - ![](/images/articles/ai-concepts/roo-code.ico?size=icon-xsmall) [Roo Code](https://roocode.com)
 - ![](/images/articles/ai-concepts/lovable.svg?size=icon-xsmall) [Lovable](https://lovable.dev/)
+- ![](/images/articles/ai-concepts/opencode.ico?size=icon-xsmall) [OpenCode](https://opencode.ai/)
 
 ```mermaid--svg
 %% @description Assistant and its relationship to human and model
@@ -281,6 +282,8 @@ A sub agent is an agent that is called by an assistant or another agent, to perf
 
 Sub agents run in a separate execution context from the main agent context. For this reason, assistants such as Claude Code may require context (such as skills, etc) to be defined for each sub-agent.
 
+A key benefit of sub agents is that they allow context to reduced to ***only as much as the sub agent needs*** rather than the whole context. This helps us to keep context minimal, which is good for accuracy, performance and cost (by reducing token usage).
+
 Sub agents can be implemented as customized software programs (possibly containerized), code libraries and/or configuration for assistants, such as in an agents folder. Sub agents might run as [separate instances of the same assistant as with Claude Code](https://code.claude.com/docs/en/sub-agents#manage-subagent-context).
 
 Sub agents, being modular, can:
@@ -341,6 +344,8 @@ For example, a skill for &quot;designing a front end interface&quot; might inclu
 An assistant will read the skill description and &quot;When to use&quot; instructions to determine when to apply the skill, such as when the task involves building a front end interface, such as a dashboard. If the skill matches, the assistant will then access the files inside the skill package in order to apply the skill and perform the task. In this example, it will access the PDF file and use the information to design the front end interface of the dashboard.
 
 I have heard skills referred to as the &quot;arms and legs&quot; of an agent. Similarly to how humans arms and legs allow us to perform a wide variety of tasks, skills allow agents to perform a wide variety of tasks by augmenting them them with specific capabilities and functions. Just as arms and legs can be used for different purposes (e.g., walking, running, grasping objects), skills can be used for different purposes (e.g., summarizing text, generating code, answering questions).
+
+A key benefit of skills is that they allow context to added ***on an as-needed basis*** rather than in every prompt. This helps us to keep context minimal, which is good for accuracy and performance and cost (by reducing token usage).
 
 Skills, being modular, can:
 - Be re-used across multiple agents and assistants
@@ -2123,6 +2128,7 @@ Some solutions might become evident from examining output after reproducing flak
 - Reduce test file size
 - Reduce the number of workers
 - Clean up at the end
+- Optimise test code
 - Optimise the application under test
 - Disable resource-intensive application features when running in tests
 - Increase timeouts
@@ -2198,7 +2204,6 @@ For example:
 - Remove operations that are already covered by other tests.
 - Simplify operations. For example, retrieve a DOM element directly where possible, rather than traversing multiple parent/child elements unnecessarily.
 
-
 ### Reduce test file size
  
 Problem: Test files are large. Processing each large file ties up system resources (especially processor usage), causing other tests to time out.
@@ -2250,6 +2255,21 @@ Increasing the timeout allows tests to run longer without failing, which may sol
 - Playwright has [timeout configuration](https://playwright.dev/docs/test-timeouts) and [test.slow()](https://playwright.dev/docs/api/class-test#test-slow) (called within a test)
 
 Downside: Increasing timeouts too much or globally might allow performance issues to creep into the application. Timeouts should be increased only on flaky tests if possible, and we should find ways to enure those features continue perform adequately for end-users.
+
+Where the test framework allows it, longer-running integration-style tests or end-to-end tests can be decomposed into steps, which can have their own custom timeouts set. This allows the test runner to spend more time where it counts (i.e. where it reduces flakiness) without spending too long where a test really should fail (i.e. where the code is system under test is actually wrong). Playwright has [`test.step`](https://playwright.dev/docs/api/class-test#test-step), which can be passed a [`timeout`](https://playwright.dev/docs/api/class-test#test-step-option-timeout) parameter.
+
+### Optimise test code
+
+Problem: The test code is slow, leading to flakiness from timeouts during execution.
+
+Solution: Find slow points in the test code and optimise their performance.
+
+Test code can be optimised in various ways, including:
+
+- Caching values that are otherwise lengthy to re-compute.
+- Using more efficient algorithms or data structures. For example, array traversal could be replaced with indexed lookup.
+- Optimising DOM traversal. This can include caching and re-using elements, using more efficient selectors, or avoiding unnecessary DOM access.
+
 
 ### Optimise the application under test
 
@@ -2398,7 +2418,9 @@ Flaky tests can be dealt with by:
 - https://stackoverflow.com/questions/45087018/jest-simple-tests-are-slow
 - https://dev.to/playwright/how-to-reproduce-ci-failures-locally-in-playwright-lfl
 - https://medium.com/adobetech/improve-jest-runner-performance-a8f56708ba94
-- https://jestjs.io/docs/troubleshooting#tests-are-extremely-slow-on-docker-andor-continuous-integration-ci-server</content>
+- https://jestjs.io/docs/troubleshooting#tests-are-extremely-slow-on-docker-andor-continuous-integration-ci-server
+- https://www.codewithjason.com/how-i-fix-flaky-tests/
+- https://www.codewithjason.com/what-causes-flaky-tests/</content>
   </entry>
   
 
@@ -2936,7 +2958,14 @@ Some additional convenience shortcuts can be added by [configuring iTerm2 key ma
 | ⌘ + ⇧ + ( [ / ] ) | Switch tab left / right                                         |
 | ⌘ + T                                   | Open new tab                                                    |
 | ⌘ + N                                   | Open new window                                                 |
-</content>
+
+## Other resources
+
+Here are some shortcuts others have shared:
+
+- [iTerm2 key mappings by Marius Schulz](https://mariusschulz.com/blog/keyboard-shortcuts-for-jumping-and-deleting-in-iterm2)
+- [My MacOS Shortcuts by Callum Silcock](https://callumsilcock.com/articles/my-macos-shortcuts)
+- [Visual Studio Code and Sublime Text cheat-sheets from Addy Osmani](https://www.facebook.com/addyosmaniofficial/posts/10155385510134601/)</content>
   </entry>
   
 
@@ -4491,8 +4520,16 @@ I&#39;ve seen various trends come and go in code folder and file structure.
 
 The two big ones in the front-end space seem to have been:
 
-- Function-focussed. `📁 controllers`, `📁 views`, `📁 models`, etc...
-- Feature-focussed. `📁 posts`, `📁 comments`, `📁 likes`, etc...
+- Function-focussed.
+  - `📁 controllers`
+  - `📁 views`
+  - `📁 models`
+  - etc...
+- Feature-focussed.
+  - `📁 posts`
+  - `📁 comments`
+  - `📁 likes`
+  - etc...
 
 There have been various efforts to combine them, such as the [feature-sliced design](https://feature-sliced.design/blog/frontend-folder-structure).
 
@@ -4530,9 +4567,9 @@ You see... sometimes I feel I want to have the best of both worlds. A bit of fun
   - `📁 comments`
   - `📁 likes`
 - Other kinds of things seem to make more sense as functional pieces.
-  - `📁 use-local-storage-hook`
-  - `📁 fetch-util`
-  - `📁 recessed-border-mixin`.
+  - `📁 hooks`
+  - `📁 utils`
+  - `📁 mixins`
 
 What I&#39;ve settled on is: consistency in naming with freedom in ordering.
 
@@ -5599,9 +5636,9 @@ In this pattern, a `const` is declared, which holds the enum items as key-value 
 Here&#39;s the pattern:
 
 ```ts
-const Enums =  as const;
+const ≪Enums≫ =  as const;
 
-type Enum = TypeOfConst;
+type ≪Enum≫ = TypeOfConst;
 ```
 
 Note the `as const` on the `const` declaration. This tells Typescript to infer the type of `Enums` by its specific key/value entries, rather than as generic string dictionary. When the `Enum` type is inferred, it will be equivalent of the following:
@@ -5684,7 +5721,7 @@ In this pattern, a `class` is declared, which holds the enum items as static fie
 Here&#39;s the pattern:
 
 ```ts
-export class Enum 
+export class ≪Enum≫ 
 
   getValue() 
 

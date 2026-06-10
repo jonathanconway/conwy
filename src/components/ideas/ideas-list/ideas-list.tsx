@@ -1,7 +1,7 @@
-"use client";
-
+// "use client";
 import { ContentList } from "@/components";
 import * as ideasMap from "@/content/ideas";
+import Blurb from "@/content/ideas/clothing-rental/blurb.mdx";
 
 import { IdeasListItem } from "./ideas-list-item";
 

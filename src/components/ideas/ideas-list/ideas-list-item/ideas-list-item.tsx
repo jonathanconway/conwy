@@ -16,7 +16,7 @@ export function IdeasListItem({ idea }: IdeasListItemProps) {
   return (
     <li key={idea.meta.slug} className={styles.ideasListItem}>
       <LinkBox href={`/ideas/${idea.meta.slug}`}>
-        <Stack direction={StackDirections.Column} gap={0.5}>
+        <Stack direction={StackDirections.Column} gap={0.000001}>
           <LinkBoxTitle>{idea.meta.title}</LinkBoxTitle>
 
           <MdxContainer>{idea.blurb}</MdxContainer>

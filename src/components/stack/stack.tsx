@@ -1,6 +1,6 @@
-import { isNumber } from "lodash";
+import { isNumber, isUndefined } from "lodash";
 
-import { cn } from "@/framework/client";
+import { cn, isNotNil } from "@/framework/client";
 
 import { SizeRem } from "../styling";
 
@@ -36,7 +36,7 @@ export function Stack(props: StackProps) {
     <div
       className={className}
       style={{
-        ...(gap
+        ...(!isUndefined(gap)
           ? {
               gap: stringifySizeRem(gap),
             }
