@@ -10,7 +10,7 @@ import {
 } from "../mdx-a-subformat";
 
 export function MdxAPopupNoteLink(props: MdxAProps) {
-  const [noteContent, setNoteContent] = useState("ssss");
+  const [noteContent, setNoteContent] = useState("");
 
   useEffect(() => {
     if (checkIsASubformatPopupNoteLinkProps(props)) {

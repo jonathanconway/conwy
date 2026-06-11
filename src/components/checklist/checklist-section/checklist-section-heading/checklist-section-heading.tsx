@@ -7,6 +7,7 @@ import { Stack, StackDirections } from "../../../stack";
 import { Text, TextTypes } from "../../../text";
 
 import { ChecklistSectionHeadingProps } from "./checklist-section-heading-props";
+import { CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME } from "./checklist-section-heading.const";
 
 export function ChecklistSectionHeading(props: ChecklistSectionHeadingProps) {
   const { children, itemsCount, headingText, ...restProps } = props;
@@ -22,6 +23,7 @@ export function ChecklistSectionHeading(props: ChecklistSectionHeadingProps) {
       distribution={StackDistributions.Flow}
     >
       <Stack
+        className={CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME}
         gap={0.5}
         direction={StackDirections.Row}
         distribution={StackDistributions.Flow}

@@ -2,8 +2,9 @@
 
 import { ReactNode } from "react";
 
-import { ChecklistMeta } from "@/framework/client";
+import { ChecklistMeta, cn } from "@/framework/client";
 
+import { MDX_DIV_CUSTOM_CHECKLIST_BODY_CLASS_NAME } from "./mdx-div-custom-checklist-client.const";
 import { MdxDivCustomChecklistContext } from "./mdx-div-custom-checklist-context";
 import { MdxDivCustomChecklistHeader } from "./mdx-div-custom-checklist-header/mdx-div-custom-checklist-header";
 import * as styles from "./mdx-div-custom-checklist.css";
@@ -16,11 +17,16 @@ interface MdxDivCustomChecklistClientProps {
 export function MdxDivCustomChecklistClient(
   props: MdxDivCustomChecklistClientProps,
 ) {
+  const bodyClassName = cn(
+    styles.mdxDivCustomChecklistBody,
+    MDX_DIV_CUSTOM_CHECKLIST_BODY_CLASS_NAME,
+  );
+
   return (
     <MdxDivCustomChecklistContext checklistMeta={props.checklistMeta}>
       <MdxDivCustomChecklistHeader checklistMeta={props.checklistMeta} />
 
-      <div className={styles.mdxDivCustomChecklistBody}>{props.children}</div>
+      <div className={bodyClassName}>{props.children}</div>
     </MdxDivCustomChecklistContext>
   );
 }
