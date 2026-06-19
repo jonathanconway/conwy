@@ -1,6 +1,7 @@
 import { load as cheerioLoad } from "cheerio";
-import { trim, uniq } from "lodash";
+import { isArray, isString, trim, uniq } from "lodash";
 import { marked } from "marked";
+import { ReactNode } from "react";
 
 import {
   REGEXP_WHITESPACE,
@@ -8,6 +9,7 @@ import {
   addTreeSubBranchChildren,
   addTreeSubBranchPath,
   isNotNil,
+  isReactNode,
   sentenceCase,
 } from "../../../utils";
 import { ChecklistMeta } from "../checklist-meta";
@@ -89,6 +91,7 @@ export async function generateChecklistMetaExtensions(
 
   const checklistMetaExtension: ChecklistMetaExtensions = {
     items: [],
+    itemsByName: {},
     tagGroups,
     itemsByHeadingText,
   };
@@ -96,18 +99,40 @@ export async function generateChecklistMetaExtensions(
   return checklistMetaExtension;
 }
 
+export function generateChecklistItemKey(title: string | ReactNode) {
+  if (!title) {
+    return "";
+  }
+
+  if (isString(title)) {
+    return title
+      .split(" ")
+      .slice(0, 3)
+      .filter((name) => !name.startsWith("#"))
+      .join("-")
+      .toLowerCase();
+  }
+
+  if (isArray(title)) {
+    return generateChecklistItemKey(title.map(String).join(" ").trim());
+  }
+
+  if (isReactNode(title)) {
+    return generateChecklistItemKey(title?.toString() ?? "");
+  }
+
+  return "";
+}
+
 function parseChecklistItem(checklistItemHtml: string) {
   const $ = cheerioLoad(checklistItemHtml);
   const checklistItemText = $.text().trim();
-  const name = checklistItemText
-    .split(" ")
-    .slice(0, 3)
-    .filter((name) => !name.startsWith("#"))
-    .join("-")
-    .toLowerCase();
+  const name = generateChecklistItemKey(checklistItemText);
   const tags = parseChecklistItemTags(checklistItemText);
+  const title = checklistItemText;
   const item: ChecklistItem = {
     name,
+    title,
     tags,
     links: [],
   };

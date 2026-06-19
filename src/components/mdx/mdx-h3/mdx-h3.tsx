@@ -2,11 +2,8 @@
 
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+import { ChecklistHeading, useChecklistContext } from "../../checklist";
 import { Heading, HeadingLevels } from "../../heading";
-import {
-  MdxDivCustomChecklistHeading,
-  useMdxDivCustomChecklistContext,
-} from "../mdx-div";
 
 import "./mdx-h3.css";
 
@@ -16,11 +13,9 @@ export type MdxH3Props = DetailedHTMLProps<
 >;
 
 export function MdxH3(props: MdxH3Props) {
-  const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
-  if (mdxDivCustomChecklistContext) {
-    return (
-      <MdxDivCustomChecklistHeading level={HeadingLevels.Level4} {...props} />
-    );
+  const checklistContext = useChecklistContext();
+  if (checklistContext) {
+    return <ChecklistHeading level={HeadingLevels.Level4} {...props} />;
   }
 
   return <Heading level={HeadingLevels.Level4} {...props} />;

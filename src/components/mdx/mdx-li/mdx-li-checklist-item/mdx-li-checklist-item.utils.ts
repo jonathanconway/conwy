@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 
 import {
   Maybe,
+  generateChecklistItemKey,
   hasProps,
   isNotNil,
   isReactElementOfType,
@@ -68,7 +69,10 @@ export function selectChecklistItemProps(children: ReactNode[]) {
 
   const tags = selectTags(ulLiElementChildrenWithoutInput).filter(isNotNil);
 
+  const name = generateChecklistItemKey(title);
+
   const item: ChecklistPropsSectionItem = {
+    name,
     title,
     details,
     tags,

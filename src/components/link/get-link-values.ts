@@ -4,12 +4,18 @@ import { MouseEvent } from "react";
 
 import { cn } from "@/framework/client";
 
-import { TextSizes } from "../text";
+import { IconTypes } from "../icon";
 import * as textSizeStyles from "../text/text-size/text-size.css";
 
 import { LinkLayoutTypes } from "./link-layout-type";
 import { LinkProps } from "./link-props";
 import * as linkStyles from "./link.css";
+
+function getLinkDefaultIcon(props: LinkProps) {
+  if (props.download) {
+    return IconTypes.Download;
+  }
+}
 
 export function getLinkValues(props: LinkProps) {
   const {
@@ -18,7 +24,7 @@ export function getLinkValues(props: LinkProps) {
     bracketedItems,
     showOpenPopup,
     download,
-    icon: iconLeft,
+    icon = getLinkDefaultIcon(props),
     size,
     layoutType = LinkLayoutTypes.Inline,
     onClick,
@@ -62,7 +68,7 @@ export function getLinkValues(props: LinkProps) {
       download,
       ...restProps,
     },
-    iconLeft,
+    icon,
     children,
     showOpenInNew,
     showOpenPopup,

@@ -19,6 +19,7 @@ export interface ChecklistPropsSection {
 }
 
 export interface ChecklistPropsSectionItem {
+  readonly name: string;
   readonly title: ReactNode;
   readonly details: ReactNode;
   readonly tags: readonly ChecklistPropsSectionItemTag[];

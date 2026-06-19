@@ -25,6 +25,7 @@ import { linkBoxThemeBase } from "../link-box/link-box.css-theme";
 import { linkThemeBase } from "../link/link.css-theme";
 import { microsListItemThemeBase } from "../micros/micros-list/micros-list-item/micros-list-item.css-theme";
 import { switchThemeBase } from "../switch/switch.css-theme";
+import { textBoxThemeBase } from "../text-box/text-box.css-theme";
 import { textThemeBase } from "../text/text.css-theme";
 import { tooltipThemeBase } from "../tooltip/tooltip.css-theme";
 
@@ -57,5 +58,6 @@ export const themeBase = {
   microsListItem: microsListItemThemeBase,
   switch: switchThemeBase,
   text: textThemeBase,
+  textBox: textBoxThemeBase,
   tooltip: tooltipThemeBase,
 };

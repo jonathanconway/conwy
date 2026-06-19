@@ -29,10 +29,6 @@ export function Tooltip(props: TooltipProps) {
   const id = useId().replaceAll(":", "");
   const descriptionId = `${id}-description`;
 
-  if (!contents) {
-    return children;
-  }
-
   const childObjects: readonly ReactNode[] = isArray(children)
     ? children
     : isObject(children)

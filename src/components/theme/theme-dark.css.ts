@@ -27,6 +27,7 @@ import { linkBoxThemeDark } from "../link-box/link-box.css-theme";
 import { linkThemeDark } from "../link/link.css-theme";
 import { microsListItemThemeDark } from "../micros/micros-list/micros-list-item/micros-list-item.css-theme";
 import { switchThemeDark } from "../switch/switch.css-theme";
+import { textBoxThemeDark } from "../text-box/text-box.css-theme";
 import { textThemeDark } from "../text/text.css-theme";
 import { tooltipThemeDark } from "../tooltip/tooltip.css-theme";
 
@@ -61,5 +62,6 @@ export const themeDarkClass = createTheme(vars, {
   microsListItem: microsListItemThemeDark,
   switch: switchThemeDark,
   text: textThemeDark,
+  textBox: textBoxThemeDark,
   tooltip: tooltipThemeDark,
 });

@@ -1,28 +1,20 @@
 "use client";
 
-import { intersection } from "lodash";
-
-import { ChecklistItem } from "../../../checklist";
-import { useMdxDivCustomChecklistContext } from "../../mdx-div";
+import { ChecklistItem, useChecklistContext } from "../../../checklist";
 
 import { MdxLiChecklistItemClientProps } from "./mdx-li-checklist-item-client-props";
 
 export function MdxLiChecklistItemClient(props: MdxLiChecklistItemClientProps) {
   const { sectionItem } = props;
 
-  const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
+  const checklistContext = useChecklistContext();
 
-  if (mdxDivCustomChecklistContext) {
-    const filteredTagNames = mdxDivCustomChecklistContext?.selectedFilters.map(
-      (tag) => tag.name,
-    );
-    if (filteredTagNames.length > 0) {
-      const sectionItemTagNames = sectionItem.tags.map((tag) => tag.tag);
-      if (intersection(filteredTagNames, sectionItemTagNames).length === 0) {
-        return;
-      }
+  if (checklistContext) {
+    if (
+      !checklistContext.checklistMeta.extensions?.itemsByName[sectionItem.name]
+    ) {
+      return;
     }
   }
-
   return <ChecklistItem item={sectionItem} />;
 }

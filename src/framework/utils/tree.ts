@@ -128,7 +128,6 @@ export function getTreeSubBranchDescendantsCount<TBranch, TLeaf>(
   tree: Tree<TBranch, TLeaf>,
 ): number {
   const childrenCount = tree.children.length;
-  // const subBranchesCount = tree.subBranches.length;
 
   const descendantsCount = tree.subBranches.reduce(
     (previousValue, currentValue) =>
@@ -144,29 +143,12 @@ export function getTreeSubBranchByBranch<TBranch, TLeaf>(
   branch: TBranch,
 ): Maybe<Tree<TBranch, TLeaf>> {
   if (tree.branch === branch) {
-    // console.log(
-    //   "getTreeSubBranchByBranch 1",
-    //   `<${tree.branch}>`,
-    //   `<${branch}>`,
-    // );
     return tree;
   }
-
-  // const subBranchAtPathFirst = tree.subBranches.find(
-  //   (subBranch) => subBranch.branch === branch,
-  // );
-  // if (subBranchAtPathFirst) {
-  //   return subBranchAtPathFirst;
-  // }
 
   for (const subBranch of tree.subBranches) {
     const subSubBranchMatched = getTreeSubBranchByBranch(subBranch, branch);
     if (subSubBranchMatched) {
-      // console.log(
-      //   "getTreeSubBranchByBranch 2",
-      //   `<${subBranch.branch}>`,
-      //   `<${branch}>`,
-      // );
       return subSubBranchMatched;
     }
   }
@@ -183,4 +165,10 @@ export function getTreeLeavesFiltered<TBranch, TLeaf>(
       getTreeLeavesFiltered(subBranch, filter),
     ),
   };
+}
+
+export function getTreeLeaves<TBranch, TLeaf>(
+  tree: Tree<TBranch, TLeaf>,
+): readonly TLeaf[] {
+  return [...tree.children, ...tree.subBranches.flatMap(getTreeLeaves)];
 }

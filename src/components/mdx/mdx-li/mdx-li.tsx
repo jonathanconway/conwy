@@ -1,6 +1,6 @@
 "use client";
 
-import { useMdxDivCustomChecklistContext } from "../mdx-div";
+import { useChecklistContext } from "../../checklist";
 
 import {
   MdxLiChecklistItem,
@@ -12,8 +12,9 @@ import * as styles from "./mdx-li.css";
 export function MdxLi(props: MdxLiProps) {
   const { className, ...restProps } = props;
 
-  const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
-  if (mdxDivCustomChecklistContext && checkIsChecklistItem(props)) {
+  const checklistContext = useChecklistContext();
+  // todo: match it up to extensions item
+  if (checklistContext && checkIsChecklistItem(props)) {
     return <MdxLiChecklistItem>{props.children}</MdxLiChecklistItem>;
   }
 

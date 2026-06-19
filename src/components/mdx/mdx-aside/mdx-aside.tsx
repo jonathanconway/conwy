@@ -3,13 +3,13 @@
 import { HTMLProps } from "react";
 
 import { Aside } from "../../aside";
-import { useMdxDivCustomChecklistContext } from "../mdx-div";
+import { useChecklistContext } from "../../checklist";
 
 type MdxAsideProps = HTMLProps<HTMLElement>;
 
 export function MdxAside(props: MdxAsideProps) {
-  const mdxDivCustomChecklistContext = useMdxDivCustomChecklistContext();
-  if (mdxDivCustomChecklistContext) {
+  const checklistContext = useChecklistContext();
+  if (checklistContext) {
     return;
   }
 

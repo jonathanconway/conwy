@@ -27,6 +27,7 @@ export const IconTypes = {
   Person: "person",
   ProductHunt: "product-hunt",
   Quote: "quote",
+  Search: "search",
   Signal: "signal",
   Substack: "substack",
   Telegram: "telegram",

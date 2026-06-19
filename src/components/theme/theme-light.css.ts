@@ -27,6 +27,7 @@ import { linkBoxThemeLight } from "../link-box/link-box.css-theme";
 import { linkThemeLight } from "../link/link.css-theme";
 import { microsListItemThemeLight } from "../micros/micros-list/micros-list-item/micros-list-item.css-theme";
 import { switchThemeLight } from "../switch/switch.css-theme";
+import { textBoxThemeLight } from "../text-box/text-box.css-theme";
 import { textThemeLight } from "../text/text.css-theme";
 import { tooltipThemeLight } from "../tooltip/tooltip.css-theme";
 
@@ -61,5 +62,6 @@ export const themeLightClass = createTheme(vars, {
   microsListItem: microsListItemThemeLight,
   switch: switchThemeLight,
   text: textThemeLight,
+  textBox: textBoxThemeLight,
   tooltip: tooltipThemeLight,
 });

@@ -11,6 +11,7 @@ export function createChecklistPropsMock(): ChecklistProps {
         level: 3,
         items: [
           {
+            name: "checklist-item-1",
             title: "Checklist item 1",
             details: "Checklist details 1",
             tags: [
