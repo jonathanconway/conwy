@@ -1,9 +1,18 @@
 import { MouseEventHandler, useId } from "react";
 
+import { cn } from "@/framework/client";
+
 import * as styles from "./switch.css";
 import { SwitchOption as SwitchOption_, SwitchProps } from "./switch.types";
 
 export function Switch(props: SwitchProps) {
+  const {
+    className = cn(styles.container, props.className),
+    options,
+    value,
+    onSelect,
+    ...restProps
+  } = props;
   const name = useId();
 
   const handleOptionClick = (option: SwitchOption_) => () => {
@@ -11,7 +20,7 @@ export function Switch(props: SwitchProps) {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={className} {...restProps}>
       {props.options.map((option) => (
         <SwitchOption
           key={option.name}

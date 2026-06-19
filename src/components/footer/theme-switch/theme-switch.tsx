@@ -24,6 +24,8 @@ export function ThemeSwitch() {
 
   return (
     <Switch
+      className="tracking-enabled"
+      aria-label="Select theme"
       options={options}
       value={optionsByKey[selectedTheme]}
       onSelect={handleClick}
