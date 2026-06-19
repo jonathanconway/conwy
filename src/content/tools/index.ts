@@ -16,6 +16,7 @@ export * from "./electric-candle-lighter";
 export * from "./eleven-reader";
 export * from "./ffmpeg";
 export * from "./file-browser-pro";
+export * from "./finetune";
 export * from "./fork";
 export * from "./freac";
 export * from "./free-ruler";
