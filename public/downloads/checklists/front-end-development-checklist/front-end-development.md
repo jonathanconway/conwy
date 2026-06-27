@@ -1,8 +1,4 @@
 
-
-
-
-
 ## General [^general]
 
 [^general]: General has sections related to general software engineering concerns, where they apply to front end development.
@@ -30,20 +26,18 @@
 
 - [ ] Keep it simple, don't over-engineer.<br />
   #general--solution-design
-- [ ] Check that the solution design you're using is up-to-date.<br />
-  #general--solution-design
 - [ ] Perform impact analysis.<br />
-  Measure how big the impact is. How many features, components, pages, products, apps, etc it impacts.<br />
-  [Blog: Organizing Your Code to Minimize the 'Blast Radius'](https://brad.westness.cc/2024/04/07/organizing-your-code-to-minimize-the-blast-radius/)<br />
   #general--solution-design
-- [ ] Longevity of the feature.<br />
-  Check if there a start/end date. Perhaps it is seasonal or otherwise periodic. Check if there is a plan for removal and/or maintenance.<br />
-  #general--solution-design #nfr--maintainability
+- [ ] Ensure the solution design is up-to-date with requirements and any other sources.<br />
+  #general--solution-design
 - [ ] Inherent vs accidental complexity.<br />
   Try to find a simpler solution.<br />
   #general--solution-design #nfr--readability #nfr--maintainability
 - [ ] Don't rely on assumptions that haven't been tested and verified.<br />
   #general--solution-design #nfr--correctness
+- [ ] Longevity of the feature.<br />
+  Check if there a start/end date. Perhaps it is seasonal or otherwise periodic. Check if there is a plan for removal and/or maintenance.<br />
+  #general--solution-design #nfr--maintainability
 
 [^general-solution-design]: Solution design in this checklist covers solution design as it applies to front end development tasks.
 
@@ -396,9 +390,9 @@
 ### Concern - Logging, monitoring and observability [^concern-monitoring-logging-and-observability]
 
 - [ ] Remove logging, observability or other diagnostics if not intended to go into prod.<br />
-  #concern--logging-monitoring-and-observability #nfr--observability
+  #concern--observability #nfr--observability
 - [ ] Add observability or other diagnostics if intended to go into prod.<br />
-  #concern--logging-monitoring-and-observability #nfr--observability
+  #concern--observability #nfr--observability
 
 [^concern-monitoring-logging-and-observability]: Logging (for debugging purposes) and monitoring and observability (for understanding system performance and behavior).
 
@@ -1073,7 +1067,7 @@
 - [ ] Don't suppress errors when it would be more proper to let them surface.<br />
   Example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
   #nfr--observability
-- [ ] Ensure observability logs have high cardinality, high-dimensionality, and explorability.
+- [ ] Ensure observability logs have high cardinality, high-dimensionality, and explorability.<br />
   Example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
   #nfr--observability
 
@@ -1169,7 +1163,7 @@
   [Article: Semantic HTML and landmarks • Website Spec](https://specification.website/spec/accessibility/semantic-html/)<br />
   #nfr--accessibility
 - [ ] Use lightweight plain HTML elements where possible, Example: `<div>` instead of `<Box>`.<br />
-  #nfr--accessibilit
+  #nfr--accessibility
 - [ ] No new errors in unit tests such as Axe, including whole page scan.<br />
   #nfr--accessibility
 - [ ] For loading indicators, apply `role=status` and include "Loading" text in nested, screen-reader-only element.<br />
@@ -1663,7 +1657,7 @@
 - [ ] Identity expensive algorithms and optimise them.<br />
   #nfr--performance
 
-[^nfr-performance-algorithms]: 
+[^nfr-performance-algorithms]: a
 
 
 
@@ -1683,7 +1677,7 @@
   [Platform: Vercel CDN](https://vercel.com/cdn)<br />
   #nfr--performance
 
-[^nfr-performance-network]: 
+[^nfr-performance-network]: a
 
 
 
@@ -1707,7 +1701,7 @@
 - [ ] Combine into one function operations that integrate many pieces of date into one structure, to avoid excessive calling/returning of functions.<br />
   #nfr--performance
 
-[^nfr-performance-resources]: 
+[^nfr-performance-resources]: a
 
 
 
@@ -1720,12 +1714,12 @@
   #nfr--performance
 - [ ] Use CSS containment to limit the scope of layout and rendering.<br />
   [Article: CSS containment • Website Spec](https://specification.website/spec/performance/css-containment/)<br />
-  #language--css
+  #nfr--performance #language--css
 - [ ] Use CSS scroll-driven animations.<br />
   [Article: Scroll-driven animations • Website Spec](https://specification.website/spec/performance/scroll-driven-animations/)<br />
-  #language--css
+  #nfr--performance #language--css
 
-[^nfr-performance-platform]: 
+[^nfr-performance-platform]: a
 
 
 
@@ -1759,7 +1753,7 @@
 - [ ] Configure build system to use minification to compress scripts and stylesheets.<br />
   #nfr--performance
 
-[^nfr-performance-build]: 
+[^nfr-performance-build]: a
 
 
 
@@ -1785,7 +1779,7 @@
   [Article: Back/forward cache (BFCache) • Website Spec](https://specification.website/spec/performance/bfcache/)<br />
   #nfr--performance
 
-[^nfr-performance-caching]: 
+[^nfr-performance-caching]: a
 
 
 
@@ -1799,7 +1793,7 @@
   [Article: An overview of web workers](https://web.dev/learn/performance/web-worker-overview)<br />
   #nfr--performance
 
-[^nfr-performance-concurrency]: 
+[^nfr-performance-concurrency]: a
 
 
 
@@ -1812,7 +1806,7 @@
 - [ ] Check for unnecessary render cycles (React) using Chrome Performance Tools or similar.<br />
   #nfr--performance
 
-[^nfr-performance-react]: 
+[^nfr-performance-react]: a
 
 
 
@@ -1833,7 +1827,7 @@
   #nfr--privacy
 - [ ] Audit and configure analytics services for privacy.<br />
   [Article: Privacy-respecting analytics • Website Spec](https://specification.website/spec/privacy/analytics-privacy/)<br />
-  #nfr--privacy
+  #nfr--privacy #concern--analytics
 - [ ] Minimise data collection.<br />
   Collect only data you need for a specific purpose, keep it only as long as needed (or regulations require), redact it if it leaks unnecessarily. Anonymise where possible.<br />
   [Article: Data minimisation • Website Spec](https://specification.website/spec/privacy/data-minimization/)<br />
@@ -2058,7 +2052,7 @@
   #nfr--security
 - [ ] Careful to avoid private data being leaked via logs.<br />
   Example: PII [^pii] or secrets.<br />
-  #nfr--security #concern--logging-monitoring-and-observability #nfr--observability
+  #nfr--observability #nfr--observability
 - [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
   [Blog: Socket](https://socket.dev/blog)<br />
   [Blog: The latest Next.js news](https://nextjs.org/blog)<br />
@@ -2377,6 +2371,50 @@
 
 
 
+#### NFR - Internationalisation and localisation [^nfr-internationalisation-and-localisation]
+
+- [ ] Use standardised URL pattern to indicate country and/or language.<br />
+  [Article: International URL structure • Website Spec](https://specification.website/spec/i18n/international-url-structure/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Use Internationalised Domain Names to encode the domain in user's own script.<br />
+  [Article: Internationalised Domain Names (IDN) • Website Spec](https://specification.website//spec/i18n/idn-support/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Use `hreflang` to tell search engines which language and regional URLs are available.<br />
+  [Article: hreflang for language and regional URLs • Website Spec](https://specification.website/spec/i18n/hreflang/)<br />
+  [Article: hreflang in XML sitemaps • Website Spec](https://specification.website/spec/i18n/sitemap-hreflang/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Localise page metadata.<br />
+  [Article: Localised page metadata • Website Spec](https://specification.website/spec/i18n/localised-metadata/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Mark sections that differ from the document language with `lang` if translatable `translate="no"` if not.<br />
+  [Article: lang attribute on inline content • Website Spec](https://specification.website/spec/i18n/lang-attribute/)<br />
+  [Article: translate attribute for untranslatable content • Website Spec](https://specification.website/spec/i18n/translate-attribute/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Avoid automatic IP-based language redirects.<br />
+  [Article: Avoid automatic IP-based language redirects • Website Spec](https://specification.website/spec/i18n/avoid-auto-geo-redirects/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Add a language switcher to the UI.<br />
+  [Article: Language switcher • Website Spec](https://specification.website/spec/i18n/language-switcher/)<br />
+  #nfr--internationalisation-and-localisation 
+- [ ] Cater to languages that read right-to-left or vertical, using appropriate attributes or CSS.
+  For right-to-left, set `dir="rtl"` and use CSS logical properties.<br />
+  For vertical, set CSS writing-mode.<br />
+  [Article: RTL and bidirectional text • Website Spec](https://specification.website/spec/i18n/rtl-support/)<br />
+  [Article: Writing modes and CJK line breaking • Website Spec](https://specification.website//spec/i18n/writing-modes/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Format dates, numbers, currency, and units should in the user's locale.<br />
+  [Article: Locale-aware content • Website Spec](https://specification.website//spec/i18n/locale-content/)<br />
+  #nfr--internationalisation-and-localisation
+- [ ] Pluralise appropriately for the language.<br />
+  Use CLDR plural categories — zero, one, two, few, many, other — via `Intl.PluralRules` instead of hard-coded 'item' vs 'items' logic.<br />
+  [Article: Plural rules and grammatical number • Website Spec](https://specification.website//spec/i18n/plural-rules/)<br />
+  #nfr--internationalisation-and-localisation
+
+[^nfr-internationalisation-and-localisation]: Internationalisation and localisation refer to the ability of the application to adapt to different languages, regional peculiarities and technical requirements of a target locale.
+
+
+
+
 ## Code [^code]
 
 [^code]: Code has sections related to front end code.
@@ -2640,7 +2678,7 @@
   Ensure they're logged and handled as smoothly as possible from user's perspective.<br />
   #language--javascript #nfr--correctness
 
-[^language-javascript-api-calls]: 
+[^language-javascript-api-calls]: a
 
 
 
@@ -2754,19 +2792,11 @@
   [Article: The lang attribute on `<html>` • Website Spec](https://specification.website/spec/foundations/html-lang/)<br />
   [Article: Document and parts language • Website Spec](https://specification.website/spec/accessibility/document-language/)<br />
   #language--html
-- [ ] Provide all appropriate `<meta>` elements.<br />
-  `<meta charset>`, `<meta viewport>`, `<meta name="description">`, `<meta name="theme-color">`, `<meta name="color-scheme">`<br />
-  [Article: `<meta charset>` • Website Spec](https://specification.website/spec/foundations/meta-charset/)<br />
-  [Article: `<meta viewport>` • Website Spec](https://specification.website/spec/foundations/meta-viewport/)<br />
-  [Article: `<meta name="description">` • Website Spec](https://specification.website/spec/foundations/meta-description/)<br />
-  [Article: `<meta name="theme-color">` • Website Spec](https://specification.website/spec/foundations/theme-color/)<br />
-  [Article: `<meta name="color-scheme">` • Website Spec](https://specification.website/spec/foundations/color-scheme/)<br />
+- [ ] Provide Canonical URL if multiple addresses serve the same content.<br />
+  [Article: `rel="canonical"` • Website Spec](https://specification.website/spec/foundations/canonical-url/)<br />
   #language--html
 - [ ] Provide `<title>` and make it meaningful.<br />
   [Article: `<title>` • Website Spec](https://specification.website/spec/foundations/title/)<br />
-  #language--html
-- [ ] Provide Canonical URL if multiple addresses serve the same content.<br />
-  [Article: `rel="canonical"` • Website Spec](https://specification.website/spec/foundations/canonical-url/)<br />
   #language--html
 - [ ] Provide Favicons and app icons.<br />
   [Article: Favicons and app icons • Website Spec](https://specification.website/spec/foundations/favicons/)<br />
@@ -2784,6 +2814,14 @@
   #language--html
 - [ ] Use Popover API for popovers, tooltips and similar elements, rather than custom implementations.<br />
   [Article: Popover API • Website Spec](https://specification.website/spec/foundations/popover-api/)<br />
+  #language--html
+- [ ] Provide all appropriate `<meta>` elements.<br />
+  `<meta charset>`, `<meta viewport>`, `<meta name="description">`, `<meta name="theme-color">`, `<meta name="color-scheme">`<br />
+  [Article: `<meta charset>` • Website Spec](https://specification.website/spec/foundations/meta-charset/)<br />
+  [Article: `<meta viewport>` • Website Spec](https://specification.website/spec/foundations/meta-viewport/)<br />
+  [Article: `<meta name="description">` • Website Spec](https://specification.website/spec/foundations/meta-description/)<br />
+  [Article: `<meta name="theme-color">` • Website Spec](https://specification.website/spec/foundations/theme-color/)<br />
+  [Article: `<meta name="color-scheme">` • Website Spec](https://specification.website/spec/foundations/color-scheme/)<br />
   #language--html
 
 [^language-html]: HTML items relate to HTML and code that compiles to HTML, such as template syntax.

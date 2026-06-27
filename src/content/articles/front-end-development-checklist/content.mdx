@@ -4,64 +4,44 @@ import FrontEndDevelopmentChecklist from "@/content/checklists/front-end-develop
 
 I thought I would share my front end development checklist.
 
-## Background
+## Why I use a checklist
 
-### Why I use a checklist
+Many who worked with me will know I'm a big fan of checklists. I think a good checklist can benefit you in several ways.
 
-Many who worked with me will know I'm a big fan of checklists. A good checklist benefits me in numerous ways.
+- **It helps you get started.** When the task ahead seems overwhelming, such as reviewing a giant pull request, I just start with the first checklist item and keep going from there.
+- **It helps you organise my thinking.** Get clarity on what matters and doesn't matter; avoid getting overloaded.
+- **It helps you identify blind-spots.** Common human biases (such as confirmation bias) and also your own individual biases (from past experiences).
 
-- **It helps me get started.** When the task ahead seems overwhelming, such as reviewing a giant pull request, I just start with the first checklist item and keep going from there.
-- **It helps me organise my thinking.** Get clarity on what matters and doesn't matter; avoid getting overloaded.
-- **It helps me identify blind-spots.** Common human biases (such as confirmation bias) and also my own individual biases (from past experiences).
+Professional software construction and code review are complex tasks involving many elements. Research shows that the human mind is limited and can only work with a finite number of concepts at a given time.
 
-Professional software construction and code review are complex tasks involving many elements. For example, software projects may involve tens or even hundreds of interrelated modules. Up to 18 [non-functional requirements](https://en.wikipedia.org/wiki/Non-functional_requirement) have been identified, any number of which might be important.
-
-But research has shown that the human mind is limited. We can only work with a finite number of concepts at a given time. Felienne Hermans discussed this in her book on programmer cognition.
-
-> Pull-quote: “Like the STM (short term memory), the working memory is only capable of processing two to six things at a time. In the context of working memory, this capacity is known as the cognitive load . When you are trying to solve a problem that involves too many elements that cannot be divided efficiently into chunks, your working memory will become “overloaded.””
+> Pull-quote: “the working memory is only capable of processing two to six things at a time ... When you are trying to solve a problem that involves too many elements ... your working memory will become “overloaded.””
 >
 > – [Felienne HERMANS • The Programmer's Brain](https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/) <small>(brackets mine)</small>
 
-Additionally, as research has shown, the human mind can be affected by cognitive flaws such as biased thinking. While we are capable of thinking rationally, our minds, in an attempt to conserve energy, often default to a shortcuts and heuristics. These can result in us making critical errors. Khaneman refers to these two modes of thinking as System 1 and System 2.
+Additionally, research shows the human mind can be affected by cognitive flaws and biased thinking. While we are _capable_ of thinking rationally, our minds, in an attempt to conserve energy, often default to a shortcuts and heuristics, leading to critical errors. In [_Thinking, Fast and Slow_](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow), cognitive psychologist Daniel Khaneman describes several of these errors, such as the anchoring effect (when people consider a particular value for an unknown quantity before estimating that quantity) and availability (when people focus on the information that is most readily available while overlooking other potentially important information).
 
-> Pull-quote: • System 1 operates automatically and quickly, with little or no effort and no sense of voluntary control.
->
-> • System 2 allocates attention to the effortful mental activities that demand it, including complex computations. The operations of System 2 are often associated with the subjective experience of agency, choice, and concentration.
->
-> – [Daniel KAHNEMAN • Thinking, Fast and Slow](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow)
-
-Surgeon and author Atul Gawande famously wrote a book about checklists, demonstrating their use in overcoming such biases in various mission-critical contexts, from passenger flights to hospital operating rooms. The same principles can be applied to front end development, when tasks are complex and quality matters.
+Checklist can help us overcome these biases and errors. Surgeon and author Atul Gawande famously wrote a book about this, demonstrating the use of checklists in mission-critical contexts from passenger flights to hospital operating rooms. The same principles can be applied to front end development, when tasks are complex and quality matters.
 
 > Pull-quote: “Checklists seem to provide protection against such failures. They remind us of the minimum necessary steps and make them explicit. They not only offer the possibility of verification but also instill a kind of discipline of higher performance.”
 >
 > – [Atul GAWANDE • The Checklist Manifesto](https://en.wikipedia.org/wiki/The_Checklist_Manifesto)
 
-(Similar points about checklists were made by [Michael Mauboussin](https://www.jermainebrown.org/posts/michael-mauboussin-and-charlie-munger-checklists-tame-luck) and [Charlie Munger](https://www.jermainebrown.org/posts/the-psychology-hacks-behind-charlie-mungers-billion-dollar-decisions).)
+Similar points about checklists have been made by [Michael Mauboussin](https://www.jermainebrown.org/posts/michael-mauboussin-and-charlie-munger-checklists-tame-luck) and [Charlie Munger](https://www.jermainebrown.org/posts/the-psychology-hacks-behind-charlie-mungers-billion-dollar-decisions).
 
-### How I use the checklist
+## How to use a development checklist
 
-I use this coding checklist both to review my own work as well as to review others'.
+You can use a development checklist in the following ways:
 
-- **Prior to submitting my changes for code review.** I check my work against the list. This allows me to anticipate and address any issues in advance, which reduces the code review burden on team mates and helps me to get faster approvals.
-- **When code reviewing others' changes.** I check others' work against the list. This allows me to deliver useful feedback and mentor team mates.
+- **Self-review, prior to submitting changes.** Check your work against the list. This gives you an opportunity to anticipate and address any issues in advance, which reduces the code review burden on team mates and helps you to get faster approvals.
+- **Code-review, on others' changes.** Check others' work against your checklist. You can deliver useful feedback and mentor colleagues.
 
-When scanning the list and picking items to check, I factor in what makes sense for my current team.
+When scanning the list and picking items to check, you can factor in what makes sense for your current team and project. In this article I provide a general front end development checklist. But you can create your own variants of the checklist, such as one for each project.
 
-In this article I provide a general front end development checklist. But typically I create separate variants of the checklist, one specialised to each project I work on. Each variant takes into account the unique aspects of each project.
+## Automation and AI
 
-### Automation and AI
+Checklist reviews can be partially or fully automated using AI assistants.
 
-Of course, much of good coding practice can and should be automated away. We have compilers, linters, formatters and, more recently, AI agents. What remains will likely consist of broader or more abstract thinking, requiring a human.
-
-However, despite AI agents possibly being able to do most of the heavy lifting of writing and reviewing code, I think it's still important to review agent output myself, just to be sure. As Mike Mason points out in a blog post, we don't really know the quality of AI generated code until we read it ourselves.
-
-> Pull-quote:“Both things are true: there is good architecture in Claude Code, and there is also an incomprehensible mess. That's actually the point. **You don't get to know which is which without reading the code**.”
->
-> – Mike Mason • [The Code You're Not Reading](https://mikemason.ca/writing/ai-slop-code-april-2026/) <small>(bold mine)</small>
-
-Checklists can serve as a valuable input into AI agents.
-
-Firstly, a checklist can be fed to an AI assistant, prompting the agent to provide code review and useful feedback based on the checklist.
+You can feed a checklist, along with the code, into an AI assistant, using a prompt such as the following:
 
 ```md
 Please review the code changes in the current branch.
@@ -76,52 +56,43 @@ For each relevant checklist item:
 - For each non-complied checklist item, provide an explanation and recommendation on how to address it.
 ```
 
-(Note: The checklist could potentially be broken into smaller sub-lists, each having a `"description"` with guidance on when the agent should read it. Following the principle of progressive disclosure, this would minimise context use and streamline agent performance and cost efficiency.)
+> Aside: If performance is poor or costing you a lot of tokens, one solution is to break down the checklist into smaller sub-lists. Each sub-list can have a `"description"` section, specifying the conditions under which the AI assistant read and use it. Following the principle of progressive disclosure, this can minimise context use and streamline AI performance and cost efficiency.
 
-Secondly, a checklist can to form prompts, by helping me to know what kinds of questions to ask or how to frame prompts.
+There are many other ways a checklist can be used with AI.
 
-To pick a random example: suppose I was prompting AI to implement a server-side call to retrieve a list of contacts.
+* When vibe-coding, include instructions for the AI assistant to self-review its work against the checklist, either in the prompt or in context files.
+* When using the AI assistant to generate a solution design, prompt it to self-review the solution design against the checklist.
+* Prompt the AI assistant to go review the whole code-base against the checklist and list cases where the items are not complied with.
 
-> Implement a new endpoint, `/contacts-list`, which returns a JSON-formatted list of contacts.
-> It should retrieve contacts from the `getContacts` gRPC endpoint on the `ContactsService`.
+## Continuous improvement
 
-Consulting the checklist, I might notice the following item:
+Feedback you receive in code reviews can be incorporated back into the checklist.
 
-> - [ ] Cache service-service or service-database calls to improve performance.<br />For example, in a NextJS backend, wrap API service calls in `cache`.<br /> #general--caching #nfr--performance
-
-With this awareness, I could include in my prompt an instruction to cache service calls:
-
-> Implement a new endpoint, `/contacts-list`, which returns a JSON-formatted list of contacts.
-> It should retrieve contacts from the `getContacts` gRPC endpoint on the `ContactsService`.
-> Make sure the API call is cached by wrapping it in a NextJS `cache` function call.
-
-### Continuous improvement
-
-When I receive feedback on a code review, I incorporate that feedback into the checklist if not already there. I either add or modify an item. I also include a link or reference to the specific feedback comment that triggered the change. Also I continuously learn from both personal experience and a broad and diverse array of resources. I incorporate that learning into my checklist.
-
-Here, high quality resources are important. Without them, my checklist might become biased to my own past experience or based on "folklore" rather than time-tested and/or evidence-based facts. By striving to use industry leading resources, I can ensure the checklist provides high quality guidance. The resources I learn from include books, courses, podcasts, open-source code-bases and previous code reviews by team mates. You can find a non-exhaustive list of the publicly available resources linked in the checklist itself and also in the [Further reading](#further-reading) section of this article.
-
-This practice of continuous learning, research and improvement makes the checklist a living document and a continuously improving system.
+This creates a cycle of continuous improvement, making the checklist a dynamic adaptive system.
 
 ```mermaid--svg
 flowchart TD
-    A["☑️ Checklist"]
+    A["☑️ Checklist"] -->|improves| B
+    B["⌨️ Code"] -->|is submitted for| D
     
-    B["📄 Blogs"] -->|improve| A
-    C["📚 Books"] -->|improve| A
-    D["🎧 Podcasts"] -->|improve| A
-    E["👬 Team mates"] -->|improve| A
+    D["💬 Code review"] -->|improves| A
 ```
+
+Other high quality resources that can be used as sources for checklist items include:
+
+- Books
+- Courses
+- Podcasts
+- Open-source
+- Feedback from past projects
+
+> Aside: You can find a list of [Resources](#resources) used in my [Front end development checklist](/checklists/front-end-development).
 
 ## Precedent-based model for code reviews in less mature teams
 
-Many – perhaps most – project teams are somewhat immature in their development practice. They lack the kind of thorough coding guidelines and best practices found in more mature and large-scale environments such as Google or Microsoft. This creates ambiguity around code reviews. What does good vs. bad code look like?
+For team projects, where I add/modify a checklist item in response to feedback, I like to include a link to specific feedback comment.
 
-I have found success with a "precedent-based model" for dealing with that ambiguity.
-
-Through discussions in pull requests and/or other avenues, specific decisions are made. For example, the decision to give a particular function a particular name. Over time, I collect these together in lists, from which I abstract broader guidelines. I keep track of these guidelines in a checklist specific to the organisation / project. Crucially, for each item, I maintain a link back to the original discussion (for example, a GitHub link to the specific pull request discussion thread).
-
-In subsequent code reviews, if a similar issue is being discussed, I can simply locate the closest matching guideline in the checklist and copy-paste it into the discussion, including the link back to the original discussion. The linkage to the prior discussion helps to ground the discussion and provides a precedent for my decision in that specific case.
+In subsequent code reviews, if a similar issue is being discussed, I can simply locate the closest matching guideline in the checklist and mention it in the discussion thread, with a link back to the original discussion. The linkage to the prior discussion helps to ground the discussion and provides a precedent for my decision in that specific case.
 
 I found success with this approach, in the following ways:
 
@@ -131,22 +102,15 @@ I found success with this approach, in the following ways:
 
 ## Organising and filtering the checklist
 
-With a checklist of 575 items and counting, you might well wonder: how can we ever have time to go through that many items?
+With a checklist of 575 items and counting, you might wonder how you'll ever have the time to go through that many items.
 
-My solution is to only use a subset of checklist items in each situation. So we group the checklist items into categories using tags and add a filter control. This allows us to quickly narrow down the list to a much more manageable size as needed.
+A solution is to only use a subset of checklist items in each situation.
 
-For example, suppose I'm reviewing a code change that only affects one build script written in Javascript.
+My Front end development checklist groups items into heading and also filterable tags. You can quickly narrow down the list to a much more manageable size by using the tag filters.
 
-I can filter the list down to only items that are likely to apply.
+For example, if you're reviewing a code change that only affects styling, you can filter by the CSS tag.
 
-- General
-  - ✅ Build
-  - ✅ Configuration
-  - ✅ Pull request
-- Language
-  - ✅ Javascript
 
-To minimise the risk of missing something important, I set up the filters to be additive. That is, if I tick 2 filters, I see items covered by either and both of them. This maximises the number of _relevant_ checklist items that get shown while limiting them to a workable quantity.
 
 ## Front End Development Checklist
 

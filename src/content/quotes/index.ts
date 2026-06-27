@@ -1,4 +1,6 @@
+export * from "./alchemists";
 export * from "./beautiful";
+export * from "./beings";
 export * from "./beliefs";
 export * from "./billions";
 export * from "./cook";

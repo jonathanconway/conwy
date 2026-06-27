@@ -1,12 +1,16 @@
-import { isArray, isString, kebabCase, trim } from "lodash";
+import { isArray, isObject, isString, kebabCase, trim } from "lodash";
 import { ReactNode } from "react";
 
 import {
+  ChecklistMeta,
+  ChecklistTag,
+  ChecklistTagGroup,
   Maybe,
   generateChecklistItemKey,
   hasProps,
   isNotNil,
   isReactElementOfType,
+  sentenceCase,
 } from "@/framework/client";
 
 import {
@@ -28,10 +32,13 @@ export function checkIsChecklistItem(props: MdxLiProps) {
 
   if (
     !(
-      hasProps(children[0]) &&
-      children[0].props &&
-      "type" in children[0].props &&
-      children[0].props.type === "checkbox"
+      // hasProps(children[0]) &&
+      (
+        isObject(children[0].props) &&
+        // children[0].props &&
+        "type" in children[0].props &&
+        children[0].props.type === "checkbox"
+      )
     )
   ) {
     return false;
@@ -40,9 +47,11 @@ export function checkIsChecklistItem(props: MdxLiProps) {
   return true;
 }
 
-export function selectChecklistItemProps(children: ReactNode[]) {
-  const ulLiElementChildren = children as ReactNode[];
-
+export function selectChecklistItemProps(
+  checklistMeta: ChecklistMeta,
+  children: ReactNode[],
+) {
+  const ulLiElementChildren = children;
   const ulLiElementChildrenWithoutInput = ulLiElementChildren.slice(1);
   if (!ulLiElementChildrenWithoutInput.findIndex) {
     return;
@@ -67,7 +76,10 @@ export function selectChecklistItemProps(children: ReactNode[]) {
 
   const links: readonly ReactNode[] = [];
 
-  const tags = selectTags(ulLiElementChildrenWithoutInput).filter(isNotNil);
+  const tags = selectTags(
+    ulLiElementChildrenWithoutInput,
+    checklistMeta,
+  ).filter(isNotNil);
 
   const name = generateChecklistItemKey(title);
 
@@ -94,7 +106,10 @@ export function removeTags(inputs: readonly ReactNode[]) {
   }) as readonly ReactNode[];
 }
 
-export function selectTags(input: readonly ReactNode[]) {
+export function selectTags(
+  input: readonly ReactNode[],
+  checklistMeta: ChecklistMeta,
+) {
   return input
     .filter(isString)
     .map(trim)
@@ -102,38 +117,30 @@ export function selectTags(input: readonly ReactNode[]) {
     .flatMap((part) => part.split(" ").map(trim).filter(isNotNil))
     .filter((part) => part.startsWith("#"))
     .filter(isNotNil)
-    .map(convertTagStringToTag);
+    .map(convertTagStringToTag(checklistMeta));
 }
 
-export function convertTagStringToTag(
-  tagString: string,
-): ChecklistPropsSectionItemTag {
-  tagString = tagString.replace("#", "");
-  if (tagString.includes("--")) {
-    const [group, tag] = tagString.split("--");
-    return {
-      group,
-      tag,
-    };
-  }
-  return {
-    group: "general",
-    tag: tagString,
-  };
-}
-
-function convertSectionTitleToTag(
-  sectionTitle?: Maybe<ReactNode>,
-): Maybe<ChecklistPropsSectionItemTag> {
-  if (!sectionTitle || !isString(sectionTitle)) {
-    return;
-  }
-
-  const group = "section";
-  const tag = kebabCase(sectionTitle);
-
-  return {
-    group,
-    tag,
+export function convertTagStringToTag(checklistMeta: ChecklistMeta) {
+  return (tagString: string): Maybe<ChecklistPropsSectionItemTag> => {
+    tagString = tagString.replace("#", "");
+    if (tagString.includes("--")) {
+      const [tagGroupName, tagName] = tagString.split("--");
+      const tag: ChecklistTag = {
+        name: tagName,
+        title: checklistMeta.tagTitles[tagName] ?? sentenceCase(tagName),
+        tagGroupName: tagGroupName,
+      };
+      const tagGroup: ChecklistTagGroup = {
+        name: tagGroupName,
+        title:
+          checklistMeta.tagGroupTitles[tagGroupName] ??
+          sentenceCase(tagGroupName),
+        tags: [tag],
+      };
+      return {
+        tagGroup,
+        tag,
+      };
+    }
   };
 }

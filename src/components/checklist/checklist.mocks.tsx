@@ -1,6 +1,11 @@
+import { sentenceCase } from "@/framework";
+
 import { Link } from "../link";
 
-import { ChecklistProps } from "./checklist-props";
+import {
+  ChecklistProps,
+  ChecklistPropsSectionItemTag,
+} from "./checklist-props";
 
 export function createChecklistPropsMock(): ChecklistProps {
   return {
@@ -15,14 +20,8 @@ export function createChecklistPropsMock(): ChecklistProps {
             title: "Checklist item 1",
             details: "Checklist details 1",
             tags: [
-              {
-                group: "group-1",
-                tag: "tag-1",
-              },
-              {
-                group: "group-1",
-                tag: "tag-2",
-              },
+              createChecklistTagMock("tagGroup1", "tagName1"),
+              createChecklistTagMock("tagGroup1", "tagName2"),
             ],
             links: [
               <Link key="link-1" href="http://article.com">
@@ -34,5 +33,23 @@ export function createChecklistPropsMock(): ChecklistProps {
         subSections: [],
       },
     ],
+  };
+}
+
+function createChecklistTagMock(
+  tagGroupName: string,
+  name: string,
+): ChecklistPropsSectionItemTag {
+  return {
+    tagGroup: {
+      name: tagGroupName,
+      tags: [],
+      title: sentenceCase(tagGroupName),
+    },
+    tag: {
+      name,
+      tagGroupName,
+      title: sentenceCase(name),
+    },
   };
 }

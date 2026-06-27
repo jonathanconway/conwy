@@ -12,13 +12,12 @@ export async function buildChecklistDownloadMds() {
 async function buildChecklistDownloadMd(checklistMeta: ChecklistMeta) {
   const { slug } = checklistMeta;
   const checklistMdFilePathName = `${process.cwd()}/src/content/checklists/${slug}/content.mdx`;
-  const checklistMd = readFileSync(checklistMdFilePathName).toString();
+  const checklistMdBody = readFileSync(checklistMdFilePathName).toString();
 
   const checklistDownloadMdFilePath = `${process.cwd()}/public/downloads/checklists/${slug}-checklist`;
   mkDirSyncIfNotExists(checklistDownloadMdFilePath);
 
   const checklistDownloadMdFilePathName = `${checklistDownloadMdFilePath}/${slug}.md`;
-  const checklistMdBody = checklistMd.split("{/* ----- */}")[1];
   writeFileSync(checklistDownloadMdFilePathName, checklistMdBody);
 }
 

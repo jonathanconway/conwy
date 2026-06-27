@@ -9,11 +9,10 @@ export function useSearchTextFilter() {
   const searchParamKey = "search";
 
   const [searchText, setSearchText] = useState(
-    // "",
     searchParams.get(searchParamKey) ?? "",
   );
 
-  function onChangeSearchText(newSearchText: string) {
+  function handleChangeSearchText(newSearchText: string) {
     setSearchText(newSearchText);
 
     setTimeout(() => updateSearchParamsSearchTextDebounced(newSearchText), 500);
@@ -36,6 +35,6 @@ export function useSearchTextFilter() {
 
   return {
     searchText,
-    onChangeSearchText,
+    handleChangeSearchText,
   };
 }

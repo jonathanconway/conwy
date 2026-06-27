@@ -5,4 +5,7 @@ export interface FiltersProps {
   readonly onChange: (selectedFilters: readonly Filter[]) => void;
 }
 
-export type Filter = string;
+export interface Filter {
+  readonly name: string;
+  readonly title: string;
+}

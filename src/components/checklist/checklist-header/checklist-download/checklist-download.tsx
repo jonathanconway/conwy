@@ -2,8 +2,15 @@
 
 import { MouseEvent } from "react";
 
+import {
+  TrackingEvents,
+  cn,
+  createTrackingClassName,
+} from "@/framework/client";
+
 import { IconTypes } from "../../../icon";
 import { Link } from "../../../link";
+import * as linkStyles from "../../../link/link.css";
 import { Stack, StackDirections, StackDistributions } from "../../../stack";
 import { TextSizes } from "../../../text";
 import { useTooltip } from "../../../tooltip";
@@ -16,6 +23,7 @@ import {
 
 export function ChecklistDownload(props: ChecklistDownloadProps) {
   const slug = props.checklistMeta.slug;
+  const trackingId = `${slug}-checklist`;
 
   const copyTooltip = useTooltip();
 
@@ -40,6 +48,14 @@ export function ChecklistDownload(props: ChecklistDownloadProps) {
         href={`/downloads/checklists/${slug}-checklist/${slug}-checklist.md`}
         download
         size={TextSizes.xs}
+        aria-label={`Download ${props.checklistMeta.title} checklist as Markdown`}
+        className={cn(
+          linkStyles.link,
+          createTrackingClassName(
+            TrackingEvents.Click,
+            `${trackingId}-download-md`,
+          ),
+        )}
         onClick={handleClickDownloadLink}
       >
         Download Markdown
@@ -51,6 +67,14 @@ export function ChecklistDownload(props: ChecklistDownloadProps) {
         href="#"
         icon={IconTypes.Copy}
         size={TextSizes.xs}
+        aria-label={`Copy ${props.checklistMeta.title} checklist as Markdown`}
+        className={cn(
+          linkStyles.link,
+          createTrackingClassName(
+            TrackingEvents.Click,
+            `${trackingId}-copy-md`,
+          ),
+        )}
         onClick={handleClickCopyLink}
       >
         Copy Markdown

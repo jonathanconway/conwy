@@ -9,12 +9,24 @@ export function MdxLiChecklistItemClient(props: MdxLiChecklistItemClientProps) {
 
   const checklistContext = useChecklistContext();
 
-  if (checklistContext) {
+  if (
+    !checklistContext?.checklistMeta.extensions?.itemsByName[sectionItem.name]
+  ) {
     if (
-      !checklistContext.checklistMeta.extensions?.itemsByName[sectionItem.name]
+      [
+        "use-css-containment-to-limit-the-scope-of-layout-and",
+        "use-css-scrolldriven-animations",
+      ].includes(sectionItem.name)
     ) {
-      return;
+      console.log("<MdxLiChecklistItemClient> 1", props.sectionItem);
+      console.log(
+        "<MdxLiChecklistItemClient> 2",
+        checklistContext?.checklistMeta.extensions?.itemsByName,
+      );
     }
+    // return <>notfound {props.sectionItem.name}</>;
+    return;
   }
+
   return <ChecklistItem item={sectionItem} />;
 }

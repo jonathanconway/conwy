@@ -5,6 +5,7 @@ import { Checklist } from "./checklist";
 export function createChecklistMock(): Checklist {
   return {
     type: "checklist",
+    startnotes: <></>,
     content: <></>,
     endnotes: <></>,
     meta: {

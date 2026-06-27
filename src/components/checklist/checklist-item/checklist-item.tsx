@@ -15,14 +15,16 @@ export function ChecklistItem(props: ChecklistItemProps) {
   const checklistItemId = useId();
 
   return (
-    <li className={styles.checklistLi}>
+    <li className={styles.checklistLi} id={props.item.name}>
       <label htmlFor={checklistItemId} className={styles.checklistLiLabel}>
         <ChecklistItemInput id={checklistItemId} />
         <ChecklistItemLabel>
           <ChecklistItemTitle>{props.item.title}</ChecklistItemTitle>
-          <ChecklistItemDetails>{props.item.details}</ChecklistItemDetails>
-          <ChecklistItemLinks>{props.item.links}</ChecklistItemLinks>
-          <ChecklistItemTags tags={props.item.tags} />
+          <div>
+            <ChecklistItemDetails>{props.item.details}</ChecklistItemDetails>
+            <ChecklistItemLinks>{props.item.links}</ChecklistItemLinks>
+            <ChecklistItemTags tags={props.item.tags} />
+          </div>
         </ChecklistItemLabel>
       </label>
     </li>

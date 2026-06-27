@@ -1,5 +1,5 @@
 import { load as cheerioLoad } from "cheerio";
-import { isArray, isString, trim, uniq } from "lodash";
+import { trim, uniq } from "lodash";
 import { marked } from "marked";
 import { ReactNode } from "react";
 
@@ -8,8 +8,9 @@ import {
   Tree,
   addTreeSubBranchChildren,
   addTreeSubBranchPath,
+  convertReactNodeToString,
   isNotNil,
-  isReactNode,
+  removeNonAlphaNumeric,
   sentenceCase,
 } from "../../../utils";
 import { ChecklistMeta } from "../checklist-meta";
@@ -79,8 +80,6 @@ export async function generateChecklistMetaExtensions(
           checklistItems,
         );
 
-        lastHeadingTexts.pop();
-
         break;
       }
     }
@@ -89,9 +88,13 @@ export async function generateChecklistMetaExtensions(
   const { tagTitles, tagGroupTitles } = checklistMeta;
   const tagGroups = produceChecklistTagGroups(items, tagTitles, tagGroupTitles);
 
+  const itemsByName = Object.fromEntries(
+    items.map((item) => [item.name, item]),
+  );
+
   const checklistMetaExtension: ChecklistMetaExtensions = {
-    items: [],
-    itemsByName: {},
+    items,
+    itemsByName,
     tagGroups,
     itemsByHeadingText,
   };
@@ -100,39 +103,47 @@ export async function generateChecklistMetaExtensions(
 }
 
 export function generateChecklistItemKey(title: string | ReactNode) {
-  if (!title) {
+  const titleString = convertReactNodeToString(title);
+  if (!titleString) {
     return "";
   }
 
-  if (isString(title)) {
-    return title
-      .split(" ")
-      .slice(0, 3)
-      .filter((name) => !name.startsWith("#"))
-      .join("-")
-      .toLowerCase();
-  }
-
-  if (isArray(title)) {
-    return generateChecklistItemKey(title.map(String).join(" ").trim());
-  }
-
-  if (isReactNode(title)) {
-    return generateChecklistItemKey(title?.toString() ?? "");
-  }
-
-  return "";
+  return titleString
+    .trim()
+    .split(/\s+/)
+    .slice(0, 10)
+    .map(removeNonAlphaNumeric)
+    .filter((name) => !name.startsWith("#"))
+    .join("-")
+    .toLowerCase();
 }
 
 function parseChecklistItem(checklistItemHtml: string) {
   const $ = cheerioLoad(checklistItemHtml);
+
+  let titleText = "";
+  let foundBr = false;
+
+  $("body")
+    .contents()
+    .each((_, node) => {
+      if (node.type === "tag" && node.name === "br") {
+        foundBr = true;
+        return;
+      }
+      if (!foundBr) {
+        titleText += $(node).text();
+      }
+    });
+
+  titleText = titleText.trim();
+  const name = generateChecklistItemKey(titleText);
   const checklistItemText = $.text().trim();
-  const name = generateChecklistItemKey(checklistItemText);
   const tags = parseChecklistItemTags(checklistItemText);
-  const title = checklistItemText;
+
   const item: ChecklistItem = {
     name,
-    title,
+    title: titleText,
     tags,
     links: [],
   };
@@ -145,32 +156,34 @@ function produceChecklistTagGroups(
   tagGroupTitles: Record<string, string>,
 ) {
   const tagGroupsByName: Record<string, ChecklistTagGroup> = {};
-  for (const item of items) {
-    for (const tag of item.tags) {
-      tagGroupsByName[tag.tagGroupName] = tagGroupsByName[tag.tagGroupName] ?? {
-        name:
-          tagGroupTitles[tag.tagGroupName] ?? sentenceCase(tag.tagGroupName),
-        title: tagTitles[tag.tagGroupName] ?? sentenceCase(tag.tagGroupName),
-        tags: [],
-      };
-      const tagsByName = Object.fromEntries(
-        [...tagGroupsByName[tag.tagGroupName].tags, tag].map((tag) => [
-          tag.name,
-          tag,
-        ]),
-      );
-      const tagNamesUniq = uniq(Object.keys(tagsByName));
-      const tagsUniq = tagNamesUniq.map((tagName) => tagsByName[tagName]);
-      const tagsUniqTitled = tagsUniq.map((tag) => ({
-        ...tag,
-        title: tagTitles[tag.name] ?? sentenceCase(tag.title),
-      }));
 
-      tagGroupsByName[tag.tagGroupName] = {
-        ...tagGroupsByName[tag.tagGroupName],
-        tags: tagsUniqTitled,
-      };
-    }
+  for (const itemTag of items.flatMap((item) => item.tags)) {
+    tagGroupsByName[itemTag.tagGroupName] = tagGroupsByName[
+      itemTag.tagGroupName
+    ] ?? {
+      name: itemTag.tagGroupName,
+      title:
+        tagGroupTitles[itemTag.tagGroupName] ??
+        sentenceCase(itemTag.tagGroupName),
+      tags: [],
+    };
+
+    const tagsByName = Object.fromEntries(
+      [...tagGroupsByName[itemTag.tagGroupName].tags, itemTag].map((tag) => [
+        tag.name,
+        tag,
+      ]),
+    );
+    const tagNamesUniq = uniq(Object.keys(tagsByName));
+    const tagsUniq = tagNamesUniq.map((tagName) => tagsByName[tagName]);
+    const tagsUniqTitled = tagsUniq.map((tag) => ({
+      ...tag,
+      title: tagTitles[tag.name] ?? sentenceCase(tag.title),
+    }));
+    tagGroupsByName[itemTag.tagGroupName] = {
+      ...tagGroupsByName[itemTag.tagGroupName],
+      tags: tagsUniqTitled,
+    };
   }
   return Object.values(tagGroupsByName);
 }

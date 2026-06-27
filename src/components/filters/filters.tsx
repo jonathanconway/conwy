@@ -3,11 +3,11 @@
 import { Checkbox } from "../checkbox";
 import { CheckboxBaseColors } from "../checkbox";
 
-import { FiltersProps } from "./filters-props";
+import { Filter, FiltersProps } from "./filters-props";
 import * as styles from "./filters.css";
 
 export function Filters(props: FiltersProps) {
-  function handleChange(filter: string) {
+  function handleChange(filter: Filter) {
     return () => {
       const newSelectedFilters = props.selectedFilters.includes(filter)
         ? props.selectedFilters.filter((f) => f !== filter)
@@ -24,10 +24,10 @@ export function Filters(props: FiltersProps) {
 
         return (
           <Checkbox
-            key={filter}
+            key={filter.name}
             checked={isSelected}
             baseColor={CheckboxBaseColors.Purple}
-            label={filter}
+            label={filter.title}
             onChange={handleChange(filter)}
           />
         );

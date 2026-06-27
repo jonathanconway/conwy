@@ -11,9 +11,9 @@ export function ChecklistItemTags(props: ChecklistItemTagsProps) {
   return (
     <div className={styles.tags}>
       {props.tags.map((tag) => (
-        <span key={tag.tag} className={styles.tag}>
-          <span className={styles.tagGroup}>{sentenceCase(tag.group)}</span>
-          <span className={styles.tagName}>{sentenceCase(tag.tag)}</span>
+        <span key={tag.tag.name} className={styles.tag}>
+          <span className={styles.tagGroup}>{tag.tagGroup.title}</span>
+          <span className={styles.tagName}>{tag.tag.title}</span>
         </span>
       ))}
     </div>

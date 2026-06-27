@@ -14,7 +14,7 @@ export const container = style({
     },
     [media.mdAndUp]: {
       display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)",
+      gridTemplateColumns: "repeat(4, 1fr)",
       columnGap: "0.5rem",
       rowGap: "0.5rem",
     },

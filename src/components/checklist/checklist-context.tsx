@@ -49,7 +49,7 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
     "checklist-filter",
     [],
   );
-  const { searchText, onChangeSearchText } = useSearchTextFilter();
+  const { searchText, handleChangeSearchText } = useSearchTextFilter();
 
   function handleChangeSelectedFilters(
     selectedFilters: readonly ChecklistTag[],
@@ -84,9 +84,6 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
       const searchTextLower = searchText.toLowerCase();
       itemsFiltering = getTreeLeavesFiltered(itemsFiltering, (child) => {
         const includes = child.title.toLowerCase().includes(searchTextLower);
-        if (includes) {
-          console.log("child.name", child.title, searchTextLower, includes);
-        }
         return includes;
       });
     }
@@ -103,6 +100,31 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
     return [filtered, filteredByName];
   }, [itemsByHeadingTextFiltered]);
 
+  const selectedFilters = useMemo(() => {
+    if (!props.checklistMeta.extensions) {
+      return [];
+    }
+
+    return selectedTags
+      .map((selectedTagName: string) => {
+        const [tagGroupName, tagName] = selectedTagName.split("--");
+        const selectedTagGroup = props.checklistMeta.extensions?.tagGroups.find(
+          (tagGroup) => tagGroup.name === tagGroupName,
+        );
+        if (!selectedTagGroup) {
+          return;
+        }
+
+        const selectedTag = selectedTagGroup?.tags.find(
+          (tag) =>
+            tag.tagGroupName === selectedTagGroup.name && tag.name === tagName,
+        );
+
+        return selectedTag;
+      })
+      .filter(isNotNil);
+  }, [selectedTags, props.checklistMeta]);
+
   const value: ChecklistContextValue = {
     checklistMeta: {
       ...props.checklistMeta,
@@ -116,19 +138,11 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
         : undefined,
     },
 
-    selectedFilters: selectedTags
-      .map((selectedTag) => {
-        if (selectedTag === "all") {
-          return;
-        }
-        const [tagGroupName, name] = selectedTag.split("--");
-        return { tagGroupName, name, title: titleCase(name) };
-      })
-      .filter(isNotNil),
+    selectedFilters,
     onChangeSelectedFilters: handleChangeSelectedFilters,
 
     searchText,
-    onChangeSearchText,
+    onChangeSearchText: handleChangeSearchText,
   };
 
   return <ChecklistContext_ value={value}>{props.children}</ChecklistContext_>;

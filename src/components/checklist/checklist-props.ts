@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { ChecklistTagGroup } from "@/framework/client";
+import { ChecklistTag, ChecklistTagGroup } from "@/framework/client";
 
 import { HeadingLevel } from "../heading";
 
@@ -27,6 +27,6 @@ export interface ChecklistPropsSectionItem {
 }
 
 export interface ChecklistPropsSectionItemTag {
-  readonly tag: string;
-  readonly group: string;
+  readonly tag: ChecklistTag;
+  readonly tagGroup: ChecklistTagGroup;
 }

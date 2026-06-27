@@ -11,12 +11,6 @@ import { LinkLayoutTypes } from "./link-layout-type";
 import { LinkProps } from "./link-props";
 import * as linkStyles from "./link.css";
 
-function getLinkDefaultIcon(props: LinkProps) {
-  if (props.download) {
-    return IconTypes.Download;
-  }
-}
-
 export function getLinkValues(props: LinkProps) {
   const {
     ref,
@@ -27,14 +21,12 @@ export function getLinkValues(props: LinkProps) {
     icon = getLinkDefaultIcon(props),
     size,
     layoutType = LinkLayoutTypes.Inline,
+    className: propsClassName,
     onClick,
     ...restProps
   } = props;
 
-  const showOpenInNew =
-    restProps.target === "_blank" &&
-    props.showOpenInNew !== false &&
-    !props.download;
+  const className = getLinkClassName(props);
 
   const href = props.link?.url ?? props.href ?? "javascript:";
 
@@ -45,23 +37,15 @@ export function getLinkValues(props: LinkProps) {
     onClick?.(event);
   };
 
-  const sizeStyle = size ? textSizeStyles[size] : {};
-
-  const layoutStyle = {
-    [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
-    [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
-  }[layoutType];
-
-  const className = cn(
-    props.className ?? linkStyles.link,
-    sizeStyle,
-    layoutStyle,
-  );
+  const showOpenInNew =
+    restProps.target === "_blank" &&
+    props.showOpenInNew !== false &&
+    !props.download;
 
   const children = props.link?.title ?? props.children;
 
   return {
-    nextLink: {
+    nextLinkProps: {
       className,
       href,
       onClick: handleClick,
@@ -74,4 +58,27 @@ export function getLinkValues(props: LinkProps) {
     showOpenPopup,
     download,
   };
+}
+
+function getLinkDefaultIcon(props: LinkProps) {
+  if (props.download) {
+    return IconTypes.Download;
+  }
+}
+
+function getLinkClassName(props: LinkProps) {
+  const sizeStyle = props.size ? textSizeStyles[props.size] : {};
+
+  const layoutStyle = {
+    [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
+    [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
+  }[props.layoutType ?? LinkLayoutTypes.Inline];
+
+  const className = cn(
+    props.className ?? linkStyles.link,
+    sizeStyle,
+    layoutStyle,
+  );
+
+  return className;
 }

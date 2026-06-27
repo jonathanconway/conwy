@@ -10,11 +10,11 @@ import { LinkProps } from "./link-props";
 import * as linkStyles from "./link.css";
 
 export function Link_(props: LinkProps) {
-  const { nextLink, icon, children, showOpenInNew, showOpenPopup } =
+  const { nextLinkProps, icon, children, showOpenInNew, showOpenPopup } =
     getLinkValues(props);
 
   return (
-    <NextLink {...nextLink}>
+    <NextLink {...nextLinkProps}>
       {icon && <Icon className={linkStyles.linkIcon} icon={icon} />}
 
       {children}

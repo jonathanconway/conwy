@@ -12,23 +12,29 @@ import { ChecklistPageSidebar } from "./checklist-page-sidebar";
 
 export function ChecklistPage(props: ChecklistPageProps) {
   return (
-    <ChecklistContext checklistMeta={props.checklist.meta}>
+    <>
+      <ChecklistContext checklistMeta={props.checklist.meta}>
+        <MainAsideLayout
+          main={
+            <Stack gap={2}>
+              <ChecklistPageHeader checklist={props.checklist} />
+
+              <MdxContainer>
+                <MdxContainer>{props.checklist.startnotes}</MdxContainer>
+
+                <ChecklistContainer checklistMeta={props.checklist.meta}>
+                  {props.checklist.content}
+                </ChecklistContainer>
+              </MdxContainer>
+            </Stack>
+          }
+          aside={<ChecklistPageSidebar />}
+        />
+      </ChecklistContext>
+
       <MainAsideLayout
-        main={
-          <Stack gap={2}>
-            <ChecklistPageHeader checklist={props.checklist} />
-
-            <MdxContainer>
-              <ChecklistContainer checklistMeta={props.checklist.meta}>
-                {props.checklist.content}
-              </ChecklistContainer>
-            </MdxContainer>
-
-            <MdxContainer>{props.checklist.endnotes}</MdxContainer>
-          </Stack>
-        }
-        aside={<ChecklistPageSidebar />}
+        main={<MdxContainer>{props.checklist.endnotes}</MdxContainer>}
       />
-    </ChecklistContext>
+    </>
   );
 }
