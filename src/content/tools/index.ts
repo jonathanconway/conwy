@@ -71,5 +71,6 @@ export * from "./utm";
 export * from "./uv-index";
 export * from "./vlc";
 export * from "./wave";
+export * from "./wuben-x4";
 export * from "./yt-dlp";
 export * from "./zhenmi-coffee-mug";
