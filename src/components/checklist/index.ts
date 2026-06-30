@@ -1,4 +1,5 @@
 export * from "./checklist-context";
+export * from "./checklist-container";
 export * from "./checklist-header";
 export * from "./checklist-heading";
 export * from "./checklist-item";

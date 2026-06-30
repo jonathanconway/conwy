@@ -1,23 +1,22 @@
 
 ## General [^general]
 
-[^general]: General has sections related to general software engineering concerns, where they apply to front end development.
+[^general]: General covers general front end engineering concerns.
 
 
 
 
 ### General - Requirements [^general-requirements]
 
-- [ ] Ensure non-functional requirements addressed, correctly applied and prioritised with appropriate trade-offs.<br />
+- [ ] Ensure non-functional requirements are addressed and prioritised according to appropriate trade-offs.<br />
   Example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br />
-  #general--requirements
-- [ ] For changes that affect many execution paths, performance may be more critical, as slowness will have a massive impact.<br />
+  Example: for requirements impacting many execution paths, performance may be more critical, as slowness will have a massive impact overall.<br />
   #general--requirements
 - [ ] Don't build features not explicitly documented in requirements.<br />
   When in doubt, ask for clarification and/or update requirements.<br />
   #general--requirements
 
-[^general-requirements]: Requirements items in this checklist cover requirements as they apply to front end development tasks.
+[^general-requirements]: Requirements covers requirements being addressed on a project.
 
 
 
@@ -39,7 +38,7 @@
   Check if there a start/end date. Perhaps it is seasonal or otherwise periodic. Check if there is a plan for removal and/or maintenance.<br />
   #general--solution-design #nfr--maintainability
 
-[^general-solution-design]: Solution design in this checklist covers solution design as it applies to front end development tasks.
+[^general-solution-design]: Solution design covers detailed plans for solving requirements.
 
 
 
@@ -88,7 +87,7 @@
   Example: Numeric values, such as money amounts; date and time values; etc.<br />
   Incorrectly formatted inputs can cause exceptions or unexpected behavior.<br />
   [Article: Do you pre-format your time strings before using TimeSpan.Parse | SSW.Rules](https://www.ssw.com.au/rules/pre-format-your-time-strings-before-using-timespan-parse)<br />
-  #general--cleanness
+  #general--cleanness #concern--date-time
 - [ ] Perform load testing.<br />
   #general--cleanness
 - [ ] Make sure you're running the expected version of the application when using it locally.<br />
@@ -116,63 +115,102 @@
   [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
   #general--cleanness
 
-[^general-cleanness]: Cleanness refers to the absence of bugs or other mistakes in the application and code.
+[^general-cleanness]: Cleanness covers absence of bugs or other mistakes in the application.
 
 
 
 
 ### General - Architecture [^general-architecture]
 
-- [ ] Codebase<br />
-  One codebase tracked in revision control, many deploys<br />
+[^general-architecture]: Architecture covers structural organization of the application.
+
+#### General - Architecture - Cloud Native [^general-architecture-cloud-native]
+
+- [ ] Immutable infrastructure.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  #general--architecture
+- [ ] Cloud Infrastructure.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Microservices.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+- [ ] API.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  #general--architecture
+- [ ] Service mesh.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  #general--architecture
+- [ ] Modern Design.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Micro services.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Backing Services.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Automation.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Containers and orchestration.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+- [ ] DevOps.<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+- [ ] Continuous integration and continuous delivery (CI/CD).<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+
+[^general-architecture-cloud-native]: Cloud Native covers the Cloud Native architectural approach that seeks to exploit the scale, elasticity, and resilience of cloud computing.
+
+
+
+
+#### General - Architecture - 12 Factor [^general-architecture-12-factor]
+
+- [ ] Codebase: One codebase tracked in revision control, many deploys.<br />
   [Article: The 12 Factor App - Codebase](https://12factor.net/codebase)<br />
   #general--architecture
-- [ ] Dependencies<br />
-  Explicitly declare and isolate dependencies<br />
+- [ ] Dependencies: Explicitly declare and isolate dependencies.<br />
   [Article: The 12 Factor App - Dependencies](https://12factor.net/dependencies)<br />
   #general--architecture
-- [ ] Config<br />
-  Store config in the environment<br />
+- [ ] Config: Store config in the environment.<br />
   [Article: The 12 Factor App - Config](https://12factor.net/config)<br />
   #general--architecture
-- [ ] Backing services<br />
-  Treat backing services as attached resources<br />
+- [ ] Backing services: Treat backing services as attached resources.<br />
   [Article: The 12 Factor App - Backing services](https://12factor.net/backing-services)<br />
   #general--architecture
-- [ ] Build, release, run<br />
-  Strictly separate build and run stages<br />
+- [ ] Build, release, run: Strictly separate build and run stages.<br />
   [Article: The 12 Factor App - Build, release, run](https://12factor.net/build-release-run)<br />
   #general--architecture
-- [ ] Processes<br />
-  Execute the app as one or more stateless processes<br />
+- [ ] Processes: Execute the app as one or more stateless processes.<br />
   [Article: The 12 Factor App - Processes](https://12factor.net/processes)<br />
   #general--architecture
-- [ ] Port binding<br />
-  Export services via port binding<br />
+- [ ] Port binding: Export services via port binding.<br />
   [Article: The 12 Factor App - Port binding](https://12factor.net/port-binding)<br />
   #general--architecture
-- [ ] Concurrency<br />
-  Scale out via the process model<br />
+- [ ] Concurrency: Scale out via the process model.<br />
   [Article: The 12 Factor App - Concurrency](https://12factor.net/concurrency)<br />
   #general--architecture
-- [ ] Disposability<br />
-  Maximize robustness with fast startup and graceful shutdown<br />
+- [ ] Disposability: Maximize robustness with fast startup and graceful shutdown.<br />
   [Article: The 12 Factor App - Disposability](https://12factor.net/disposability)<br />
   #general--architecture
-- [ ] Dev/prod parity<br />
-  Keep development, staging, and production as similar as possible<br />
+- [ ] Dev/prod parity: Keep development, staging, and production as similar as possible.<br />
   [Article: The 12 Factor App - Dev/prod parity](https://12factor.net/dev-prod-parity)<br />
   #general--architecture
-- [ ] Logs<br />
-  Treat logs as event streams<br />
+- [ ] Logs: Treat logs as event streams.<br />
   [Article: The 12 Factor App - Logs](https://12factor.net/logs)<br />
   #general--architecture
-- [ ] Admin processes<br />
-  Run admin/management tasks as one-off processes<br />
+- [ ] Admin processes: Run admin/management tasks as one-off processes.<br />
   [Article: The 12 Factor App - Admin processes](https://12factor.net/admin-processes)<br />
   #general--architecture
 
-[^general-architecture]: Architecture items refer architecture as it in influences, or is influenced by, the front end.
+[^general-architecture-12-factor]: 12 Factor covers 12 factor architecture - a methodology and set of best practices focussing on portability and resilience.
 
 
 
@@ -186,14 +224,14 @@
   [Article: Agent Readiness • Website Spec](https://specification.website/spec/agent-readiness/)<br />
   #general--ai
 
-[^general-ai]: AI refers to Artificial Intelligence as it relates to front end development, such as in coding assistance, code review and integrations.
+[^general-ai]: AI covers Artificial Intelligence such as coding assistance, code review and AI integrations.
 
 
 
 
 ## Concerns [^concerns]
 
-[^concerns]: Concerns has sections related to discreet concerns in front end development, such as state management and error handling.
+[^concerns]: Concerns cover specific areas of concern in front end development.
 
 
 
@@ -216,7 +254,7 @@
   Use calculated/memoized fields.<br />
   #concern--state
 
-[^concern-state]: State refers to any kind of state management in the application.
+[^concern-state]: State covers state management and related topics.
 
 
 
@@ -228,13 +266,13 @@
 - [ ] Use global error handling to ensure exceptions don't break the whole app and block the user.<br />
   #concern--errors
 - [ ] Don't handle exceptions without re-throwing unless it's necessary.<br />
-  Example: a bug in the API that can't be resolved just yet. If necessary, thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
+  Example: a bug in the API that can't be resolved just yet. Thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
   #concern--errors #nfr--correctness
 - [ ] Define exceptions / errors out of existence where possible.<br />
   [Book: A Philosophy of Software Design, Ch 10](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #general--errors
 
-[^concern-errors]: Errors covers errors or exceptions that might occur within the application and how they are dealt with.
+[^concern-errors]: Errors covers errors, exceptions and exception handling.
 
 
 
@@ -258,7 +296,7 @@
   Example: each item in a long list of items.<br />
   #concern--caching
 
-[^concern-caching]: Caching refers to storage of values, over various time-scales, for faster retrieval by the application.
+[^concern-caching]: Caching covers storage of values over various time-scales for faster retrieval.
 
 
 
@@ -273,7 +311,7 @@
 - [ ] Ordering of paging vs. sorting – apply sort beforehand.<br />
   #concern--paging-sorting
 
-[^concern-paging-sorting]: Paging and sorting covers paging (or infinite scroll) and sorting (or ordering) of data sets in the application.
+[^concern-paging-sorting]: Paging and sorting cover paging (and similar behaviours, such as infinite scroll) and sorting (or ordering) of data sets.
 
 
 
@@ -296,14 +334,14 @@
   Make sure they are named and positioned consistently and hierarchically.<br />
   #concern--localisation #nfr--maintainability
 
-[^concern-localisation]: Localisation refers to the ability of the application to adapt to varying local factors, such as time-zone, language and formatting conventions.
+[^concern-localisation]: Localisation refers to adaptation to varying local factors, such as time-zone, language, currency and formatting.
 
 
 
 
 ### Concern - Feature flags [^concern-feature-flags]
 
-- [ ] Use a purpose-built, full-features platform, where applicable.<br />
+- [ ] Use a purpose-built, full-features platform.<br />
   [Docs: LaunchDarkly](https://launchdarkly.com/docs/home)<br />
   #concern--feature-flags
 - [ ] Put feature behind a feature flag as needed.<br />
@@ -337,19 +375,19 @@
   #concern--feature-flags
 - [ ] Ensure feature flag is added to relevant back-end systems, configuration files, databases, etc.<br />
   #concern--feature-flags
-- [ ] Ensure feature flag is configured to be writeable via cookies or similar, if appropriate and required.<br />
+- [ ] Ensure feature flag is configured to be writeable via cookies or similar.<br />
   #concern--feature-flags
 
-[^concern-feature-flags]: Feature flags refer to configuration settings that turn features on or off.
+[^concern-feature-flags]: Feature flags covers turning features on or off by configuration.
 
 
 
 
 ### Concern - Analytics [^concern-analytics]
 
-- [ ] Add analytics code if needed.<br />
+- [ ] Add analytics.<br />
   #concern--analytics
-- [ ] Use a dedicated, full-featured third-party analytics platform, where applicable.<br />
+- [ ] Use a dedicated, full-featured third-party analytics platform.<br />
   [Platform: Google Analytics](https://marketingplatform.google.com/about/analytics/)<br />
   [Platform: Adobe Analytics](https://experienceleague.adobe.com/en/browse/analytics)<br />
   [Platform: Medallia AI](https://www.medallia.com/platform/analytics/)<br />
@@ -359,7 +397,7 @@
 - [ ] Check analytics calls, make sure they're not either excessive or being suppressed somehow.<br />
   #concern--analytics
 
-[^concern-analytics]: Analytics refers to reporting of web application traffic and events, helping stakeholders understand user behavior and improve it.
+[^concern-analytics]: Analytics covers reporting of traffic and events, aiding understand of user behavior.
 
 
 
@@ -379,10 +417,10 @@
   #concern--version-control #concern--documentation
 - [ ] Explain **why** not what, audience is seeing it through git blame.<br />
   #concern--version-control #concern--documentation
-- [ ] Brief, concise commit messages. Respect people's time.<br />
+- [ ] Write brief, concise commit messages. Respect people's time.<br />
   #concern--version-control #concern--documentation
 
-[^concern-version-control]: Version control system (VCS), such as Git or Mercurial.
+[^concern-version-control]: Version control covers version control systems (VCS), such as Git or Mercurial.
 
 
 
@@ -393,8 +431,13 @@
   #concern--observability #nfr--observability
 - [ ] Add observability or other diagnostics if intended to go into prod.<br />
   #concern--observability #nfr--observability
+- [ ] Monitor website uptime and visitor experience externally.<br />
+  Provide a status page for customers, if possible.<br />
+  [Article: Monitoring and uptime • Website Spec](https://specification.website//spec/resilience/monitoring-uptime/)<br />
+  [Article: Do you Health Check your infrastructure? | SSW.Rules](https://www.ssw.com.au/rules/infrastructure-health-checks)<br />
+  #concern--observability #nfr--observability
 
-[^concern-monitoring-logging-and-observability]: Logging (for debugging purposes) and monitoring and observability (for understanding system performance and behavior).
+[^concern-monitoring-logging-and-observability]: Logging, monitoring and observability covers logging (especially for debugging purposes) and monitoring and observability (for understanding system performance and behavior, identifying anomalies and diagnosing complex issues).
 
 
 
@@ -415,14 +458,14 @@
   Example: installation instructions, credentials, test accounts.<br />
   #concern--pull-request #nfr--testability
 - [ ] Create preview / staging site.<br />
-  And include instructions to access if needed.<br />
+  And include instructions to access.<br />
   #concern--pull-request
 - [ ] Apply changes in separate commits to allow history to be viewed and discussed.<br />
   #concern--pull-request
 - [ ] Remove temporary settings before setting PR to Open.<br />
   Example: temporary test-only configurations or feature flag settings.<br />
   #concern--pull-request
-- [ ] Review with stakeholders (design, analysts, etc) before merge, if needed.<br />
+- [ ] Review with stakeholders (design, analysts, etc) before merge.<br />
   #concern--pull-request #nfr--correctness
 - [ ] Split functional and non-functional changes into separate PRs.<br />
   #concern--pull-request
@@ -437,7 +480,7 @@
   In case the actioning of the feedback itself contained a bug.<br />
   #concern--pull-request
 
-[^concern-pull-request]: Pull request items relate to pull request process and structure.
+[^concern-pull-request]: Pull request covers process and structure for proposed code changes submitted by pull request.
 
 
 
@@ -464,24 +507,26 @@
 - [ ] In lists of steps, avoid too many small steps that are closely related.<br />
   Merge into a bigger step as needed.<br />
   #concern--documentation
-- [ ] Ensure steps are clearly indicated as "required", if necessary.<br />
+- [ ] Ensure steps are clearly indicated as "required".<br />
   #concern--documentation
 - [ ] Ensure code samples match up with instructions.<br />
   #concern--documentation
 - [ ] Check if design, code, documentation, etc. need to be updated so they are all consistent.<br />
   #concern--documentation #nfr--correctness
 
-[^concern-documentation]: Documentation refers to written documentation, code comments or self-documenting code.
+[^concern-documentation]: Documentation covers to written documentation, code comments and self-documenting code.
 
 
 
 
 ### Concern - Comments [^concern-comments]
 
-- [ ] Use comments where they add value.<br />
+- [ ] Use comments where they add value for the reader.<br />
   [Article: Comments - Do you follow the code commenting standards? | SSW.Rules](https://www.ssw.com.au/rules/code-commenting)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Put Yourself in the Reader’s Shoes, pp. 51-53](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Describe the why not the what, let the code describe the what.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, What NOT to comment, pp. 47](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Describe “why not” to communicate why one solution was chosen over another seemingly better solution.<br />
   Example: "We went with z. Why not y? Because z.<br />
@@ -489,21 +534,35 @@
 - [ ] Instead of `TODO`, track maintenance work more visibly in a task-tracking system.<br />
   [Article: Do you document "TODO" tasks? | SSW.Rules](https://www.ssw.com.au/rules/todo-tasks)<br />
   #concern--comments
-- [ ] Describe function parameters, object fields, types, interfaces, constants, etc. with JSDoc comments, if not apparent.<br />
+- [ ] Describe function parameters, object fields, types, interfaces, constants, etc.<br />
+  But only if not already written somewhere or otherwise obvious.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Comment on Your Constants, pp. 51](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, “Named Function Parameter” Comments, pp. 63-64](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Describe advanced features or obscure code the reader is unlikely to understand.<br />
   Example: use of `setTimeout` or browser hacks or device-specific APIs.<br />
   [Article: Do you leave explanatory notes for non-standard code? | SSW.Rules](https://www.ssw.com.au/rules/leave-explanatory-notes-for-non-standard-code)<br />
   [Article: Do you know what to do with a work around? | SSW.Rules](https://www.ssw.com.au/rules/what-to-do-with-a-work-around)<br />
   #concern--comments
-- [ ] Add warnings where needed.<br />
+- [ ] Add warnings or indicate flaws, where needed.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Comment the Flaws in Your Code, pp. 50](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
-- [ ] Use shorter, more precise sentences.<br />
+- [ ] Use short, concise and precise sentences in comments.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, Keep Comments Compact, pp. 60](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, Polish Sloppy Sentences, pp. 61](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Communicate intent.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, State the Intent of Your Code, pp. 62-63](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #concern--comments
+- [ ] Communicate the bigger picture.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, “Big Picture” Comments, pp. 54-55](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #concern--comments
+- [ ] Provide summary comments above blocks code.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Summary Comments, pp. 55-56](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Use information-dense words.<br />
   Example: refer to the name of a software pattern rather than explaining the whole thing.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, Use Information-Dense Words, pp. 64](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Don't include anything likely to create tedious maintenance overhead or go out-of-date.<br />
   Such as specific amounts or date-specific information.<br />
@@ -514,8 +573,22 @@
   It is important to provide attribution to authors. It can also be helpful for future developers to have the source, when reading or diagnosing issues.<br />
   [Article: Do you reference websites when you implement something you found on Google? | SSW.Rules](https://www.ssw.com.au/rules/reference-websites-when-you-implement-something-you-found-on-google)<br />
   #concern--comments
+- [ ] Don't use comments to explain bad code – fix the code instead.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Don’t Comment Bad Names—Fix the Names Instead, pp. 49](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #concern--comments
+- [ ] Comment on what comes to mind when writing new code.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Recording Your Thoughts, pp. 49-50](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #concern--comments
+- [ ] Avoid ambiguous pronouns (such as "this", "it", etc in ambiguous contexts).<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, Avoid Ambiguous Pronouns, pp. 60](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #concern--comments
+- [ ] Use carefully chosen input/output examples.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, Use Input/Output Examples That Illustrate Corner Cases, pp. 61-62](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #concern--comments
+- [ ] Don't add redundant comments where they are already covered by test cases.<br />
+  #concern--comments
 
-[^concern-comments]: Comments refer to code comments, which are annotations in the source code that explain the code.
+[^concern-comments]: Comments covers code comments – annotations in the source code that explain the code.
 
 
 
@@ -527,7 +600,7 @@
 - [ ] Dig into the code to find out why and report what you found.<br />
   #concern--bug-reports
 
-[^concern-bug-reports]: Bug reports refer to documented issues or defects in the software.
+[^concern-bug-reports]: Bug reports covers documented issues or defects in the software.
 
 
 
@@ -578,14 +651,14 @@
   [Blog: A secure web is here to stay • Google Blog](https://security.googleblog.com/2018/02/a-secure-web-is-here-to-stay.html)<br />
   #concern--seo
 
-[^concern-seo]: Search Engine Optimisation (SEO) refers to the visibility and ranking of a website in search engine results pages (SERPs).
+[^concern-seo]: Search Engine Optimisation (SEO) covers the visibility and ranking of a website in search engine results pages (SERPs).
 
 
 
 
 ## Testing [^testing]
 
-[^testing]: Testing has sections related to manual and automated testing, test specification and test implementation.
+[^testing]: Testing covers manual and automated testing, test specification and test implementation.
 
 
 
@@ -599,13 +672,26 @@
 - [ ] Prefer integration tests.<br />
   [Blog: Write tests. Not too many. Mostly integration.](https://kentcdodds.com/blog/write-tests)<br />
   #testing--general
-- [ ] Think about what value each test adds.<br />
+- [ ] Think about what value each test adds and prioritise higher value tests.<br />
+  [Article: Do you know what unit tests to write and how many? | SSW.Rules](https://www.ssw.com.au/rules/what-unit-tests-to-write-and-how-many)<br />
+  [Article: Do you know how to decide what to test? | SSW.Rules](https://www.ssw.com.au/rules/how-to-decide-what-to-test)<br />
   #testing--general
 - [ ] Break specific parts of the code under test and ensure tests fail in correct ways.<br />
+  [Article: Do you make sure that the test can be failed? | SSW.Rules](https://www.ssw.com.au/rules/make-sure-that-the-test-can-be-failed)<br />
+  #testing--general
+- [ ] Write tests to cover bug fixes and reference the bug ticket in test code.<br />
+  [Article: Do you write unit tests to confirm bugfixes? (aka Red-Green-Refactor) | SSW.Rules](https://www.ssw.com.au/rules/reply-done-plus-added-a-unit-test)<br />
+  [Article: Do you reference the issue ID when writing a test to confirm a bugfix? | SSW.Rules](https://www.ssw.com.au/rules/when-adding-a-unit-test-for-an-edge-case-the-naming-convention-should-be-the-issue-id)<br />
   #testing--general
 - [ ] Keep tests small and concise.<br />
   #testing--general
+- [ ] Maintain high code quality for tests.<br />
+  [Article: Do you treat your automated test code as a first-class citizen? | SSW.Rules](https://www.ssw.com.au/rules/automated-test-code-first-class-citizen)<br />
+  #testing--general
 - [ ] Encode knowledge of how the code works in the test.<br />
+  #testing--general
+- [ ] Structure tests as arrange / act / assert blocks.<br />
+  [Article: Do you know how to structure a unit test (aka the 3 a's)? | SSW.Rules](https://www.ssw.com.au/rules/how-to-structure-a-unit-test)<br />
   #testing--general
 - [ ] Don't overly nest describe blocks.<br />
   #testing--general
@@ -615,18 +701,18 @@
   #testing--general
 - [ ] Minimise test running time.<br />
   #testing--general
-- [ ] Eliminate errors and warnings in console when running test.<br />
+- [ ] Eliminate errors and warnings printed in console when running tests.<br />
   #testing--general
 - [ ] Name tests appropriately.<br />
   #testing--general
 - [ ] Use immutable `const` where possible. Alternately, split into utility functions or before/after blocks.<br />
   #testing--general
-- [ ] Place tests in appropriate folder with appropriate and meaningful filename.<br />
-  Use appropriate suffix, such as `.test.ts` or `.spec.ts`.<br />
+- [ ] Place tests in appropriate folder with meaningful filename.<br />
+  Use suffix, such as `.test.ts` or `.spec.ts`.<br />
   #testing--general
 - [ ] Use `beforeAll` rather than `beforeEach` where possible to minimise overhead.<br />
   #testing--general
-- [ ] Avoid `data-testid` if desired. Prefer to query by title, label, aria role, etc.<br />
+- [ ] Use accessible, semantic queries.<br /> Avoid `data-testid` if desired. Prefer to query by title, label, aria role, etc.<br />
   [Blog: Test IDs are an a11y smell](https://tkdodo.eu/blog/test-ids-are-an-a11y-smell)<br />
   #testing--general
 - [ ] Use appropriate formatting and values for `data-testid` - short, kebab-case, appropriate identifier.<br />
@@ -634,7 +720,7 @@
 - [ ] Use descriptive names rather than indexes for `const`s destructured from arrays.<br />
   Example: `usernameLabel` rather than `label0`.<br />
   #testing--general
-- [ ] Avoid `beforeEach`, prefer to keep setup in individual tests.<br />
+- [ ] Minimise `beforeEach`, prefer to keep setup in individual tests so each test can be reasoned about as a whole.<br />
   #testing--general
 - [ ] No need to cover behaviour built-in to the framework.<br />
   #testing--general
@@ -649,13 +735,19 @@
   #testing--general
 - [ ] Only cover behaviour, including errors, that we expect to happen.<br />
   #testing--general
+- [ ] Cover subtle logic and edge/corner cases.<br />
+  [Article: Do you have tests for difficult to spot errors (e.g. arithmetic, rounding, regular expressions)? | SSW.Rules](https://www.ssw.com.au/rules/have-tests-for-difficult-to-spot-errors)<br />
+  #testing--general
 - [ ] Use a suitable, high quality, performant testing framework.<br />
   [Framework: Vitest](https://vitest.dev)<br />
   [Framework: Jest](https://jestjs.io)<br />
   [Framework: Mocha](https://mochajs.org)<br />
   #testing--general
+- [ ] Regularly review automated tests and remove unnecessary tests.<br />
+  [Article: Do you regularly review your automated tests? | SSW.Rules](https://www.ssw.com.au/rules/review-automated-tests)<br />
+  #testing--general
 
-[^testing-general]: General section covers items generally applicable to testing.
+[^testing-general]: General covers testing principles and practices relevant to any kind of test.
 
 
 
@@ -664,7 +756,8 @@
 
 - [ ] Manually test the application, exercising every important code path impacted.<br />
   #testing--manual
-- [ ] Prioritise testing effort. Example: test high impact stuff first, then easy-to-test stuff, then the rest.<br />
+- [ ] Prioritise testing effort. Example: test high-impact or high-risk cases first, then easy-to-test stuff, then the rest.<br />
+  [Article: Do you take a risk-based approach to test planning? | SSW.Rules](https://www.ssw.com.au/rules/risk-based-testing)<br />
   #testing--manual
 - [ ] Test Required input fields - they should not accept blank spaces, strange characters, etc.<br />
   #testing--manual
@@ -690,33 +783,51 @@
 - [ ] Perform exploratory testing.<br />
   [Article: Do you know what “exploratory testing” is? | SSW.Rules](https://www.ssw.com.au/rules/what-is-exploratory-testing)<br />
   #testing--manual
+- [ ] Involve diverse participants, including real users, in testing.<br />
+  Diverse perspectives which help cultivate critical distance, increasing the chances of identifying unexpected problems.<br />
+  [Article: Do you recognize the importance of critical distance? | SSW.Rules](https://www.ssw.com.au/rules/importance-critical-distance)<br />
+  [Paper: Groups of diverse problem solvers can outperform groups of high-ability problem solvers | PNAS](https://www.pnas.org/doi/10.1073/pnas.0403723101)<br />
+  [Article: Do you test high-risk features with real users before launch? | SSW.Rules](https://www.ssw.com.au/rules/test-high-risk-features)<br />
+  #testing--manual
 
-[^testing-manual]: Manual section covers items related to manually testing the front end, by clicking around, typing, etc.
+[^testing-manual]: Manual covers manually testing the application by clicking around, typing, etc.
 
 
 
 
 ### Testing - Unit [^testing-unit]
 
+- [ ] Be selective about which tests to automate.<br />
+  [Article: Do you know whether a test is a good candidate for automation? | SSW.Rules](https://www.ssw.com.au/rules/good-candidate-for-test-automation)<br />
+  #testing--unit
 - [ ] Maximise code coverage.<br />
   #testing--unit
 - [ ] Put common behaviour (such as rendering) in functions rather than repeating in each test block.<br />
   #testing--unit
-- [ ] Don't perform axe tests redundantly in unit tests, prefer E2E such as Playwright, as it's more realistic.<br />
+- [ ] Don't perform axe tests redundantly in unit tests.<br />
+  Prefer E2E such as Playwright, as it's more realistic.<br />
   #testing--unit
 - [ ] When mocking APIs, assert they were called with correct parameters (inside the mock function declaration).<br />
   #testing--unit
 - [ ] No need to necessarily write unit tests if behaviour already covered by higher level (such as integration) and they are adding no value.<br />
   #testing--unit
+- [ ] Isolate complex logic into pure functions, decoupled from dependencies, and unit test them.<br />
+  [Article: Do you isolate your logic and remove dependencies on instances of objects? | SSW.Rules](https://www.ssw.com.au/rules/isolate-your-logic-and-remove-dependencies-on-instances-of-objects)<br />
+  #testing--unit
+- [ ] Use test helpers for well known, highly repetitive operations, to simplify test code.<br />
+  Example: `makeAxiosError` to generate axios error response, `mockRoles` to mock list of authorisation roles, etc.<br />
+  #testing--unit
 
-[^testing-unit]: Unit section covers items related to automated unit tests.
+
+[^testing-unit]: Unit covers automated unit tests, which isolate parts of source code for verification.
 
 
 
 
 ### Testing - Mocking [^testing-mocking]
 
-- [ ] Mock structure - should be aligned with Backend API specs.<br />
+- [ ] When mocking API calls, ensure they are aligned with the real Backend.<br />
+  Check API specs, or run automated API client generators, to ensure alignment.<br />
   #testing--mocking
 - [ ] Mock values should be realistic, close to real data.<br />
   #testing--mocking
@@ -724,7 +835,11 @@
   #testing--mocking
 - [ ] Clear mocks between assertions; this makes each assertion independent and prevents false positives.<br />
   #testing--mocking
+- [ ] Mock non-essential calls, such as logging calls, to simplify execution and optimise performance.<br />
+  [Article: Do you use Logging Fakes? | SSW.Rules](https://www.ssw.com.au/rules/use-logging-fakes)<br />
+  #testing--general
 - [ ] Avoid mocking whole modules.<br />
+  Mock specific functions and/or components instead, so readers can clearly see what is being mocked.<br />
   [Blog: Alternatives to module mocks in your unit tests](https://reacttdd.com/alternatives-to-module-mocks/)<br />
   #testing--mocking
 - [ ] Use mock data specific to your test, to avoid your test breaking when mock data changes.<br />
@@ -737,8 +852,8 @@
   #testing--mocking
 - [ ] Use typed `assert` statements to traverse mocks with a deep nested structure and lots of nested optional fields.<br />
   #testing--mocking
-- [ ] Avoid importing lots of mocks from many different sources.<br />
-  It's a sign that the tests or underlying code is highly coupled and needs to be broken down a bit or abstracted more.<br />
+- [ ] Avoid importing many mocks from many different sources.<br />
+  It's a sign that the tests or underlying code deals with too many concerns and possibly needs to be split.<br />
   #testing--mocking
 - [ ] Use object cloning and assignment to set deeply nested field values as an alternative to complicated, deeply nested spread operators.<br />
   #testing--mocking
@@ -747,7 +862,7 @@
 - [ ] No need to add full mocks or test coverage for features that are still under incremental development and behind feature flags, and where regression testing is adequate.<br />
   #testing--mocking
 
-[^testing-mocking]: Mocking section covers items related to mock (or fake, dummy, etc) objects, as used in automated tests, especially unit and integration tests.
+[^testing-mocking]: Mocking covers mock (or fake, dummy, etc) objects used in automated tests, to isolate code under test, improve performance or for other purposes.
 
 
 
@@ -756,11 +871,12 @@
 
 - [ ] Nice error messages on test failure if possible.<br />
   #testing--assertions
-- [ ] Use Regex pattern when asserting absences, so tests cover a wider range of failure cases.<br />
-  #testing--assertions
-- [ ] Use literals when asserting presences, so tests cover a narrower range of success cases, and so that failures are very clear.<br />
+- [ ] Use wider negative assertions and narrower positive assertions, to maximise test coverage.<br />
+  Example: Use literal for positive text match: `expect(statusElement).toHaveTextContent("Success")` to cover exactly "Success".<br />
+  Example: Use regular expression for negative text match: `expect(statusElement).not.toHaveTextContent(/success/i)` to cover "Success", "success", "SUCCESS", etc.<br />
   #testing--assertions
 - [ ] When asserting on collections, assert on expected length first, so test breaks earlier and faster, and failure is faster to debug.<br />
+  Example: first `expect(results).toHaveLength(3);` then `expect(results[0]).toHaveTextContent("First item");`.<br />
   #testing--assertions
 - [ ] Assert counterfactuals.<br />
   Example: expect element not to exist.<br />
@@ -781,44 +897,56 @@
 - [ ] Don't include unnecessary assertions.<br />
   Example: if clicking a button as part of an integration test, you don't necessarily need to assert on the button itself – its label, size, etc. – if the button is not the primary focus of the test.<br />
   #testing--assertions
+- [ ] Assert on specific field values with dot notation (`foo.bar`) rather than cumbersome deeply nested `objectContains` or similar.<br />
+  Use type guard functions, when type narrowing is needed, to simplify the code.<br />
+  #testing--jest
 
-[^testing-assertions]: Assertions section covers items related to assertions (or expects) as used in automated tests, especially unit and integration tests.
+
+[^testing-assertions]: Assertions covers statements (such as `expect(...)`) used in tests to make the test fail if a condition is not met.
 
 
 
 
 ### Testing - Jest [^testing-jest]
 
-- [ ] Use `waitForNextUpdate` when testing hooks rather than wrapping in `waitFor`.<br />
+- [ ] Await all expected async side-effects by the end of the test, to avoid dangling promises.<br />
   #testing--jest
-- [ ] Only use `waitFor` (avoid `act`) and explicitly wait for a side-effect (some text to appear, callback to be called, etc).<br />
-  [Blog: Understanding act](https://reacttdd.com/understanding-act/)<br />
-  #testing--jest
-- [ ] Use `waitFor` and `queryBy*` when asserting that an element was *not* rendered.<br />
-  #testing--jest
-- [ ] Don't use free-standing `wait`, wrap the code in `wait(() => { ... })` block.<br />
-  #testing--jest
-- [ ] Check far async causing unit test breakage to not get picked up by test.<br />
-  #testing--jest
-- [ ] Use helpers: `makeAxiosError`, `mockRoles`.<br />
-  #testing--jest
-- [ ] Avoid `waitFor` blocks. Just use `findBy*` where possible. Simpler.<br />
-  #testing--jest
-- [ ] Prefer `userEvent` rather than `fireEvent`, it's a higher abstraction level.<br />
-  #testing--jest
-- [ ] Call `userEvent.setup()` and use its return value, to isolate it per-test.<br />
+- [ ] Check for async assertions not running at all, causing unit test to break or to not properly cover the system under test.<br />
   #testing--jest
 - [ ] Don't use `jest.mock`. Prefer `jest.spyOn`.<br />
   [Post: Why use `spyOn` with mock implementation rather than `jest.fn`?](https://stackoverflow.com/a/64930781/23341)<br />
   #testing--jest
 - [ ] Assert `toBe(true)` rather than `toBeTruthy()` if the expected value is exactly `true`.<br />
   #testing--jest
+
+[^testing-jest]: Jest covers the Jest automated testing system.
+
+
+
+
+### Testing - React Testing Library [^testing-react-testing-library]
+
+- [ ] Use `waitForNextUpdate` when testing hooks rather than wrapping in `waitFor`.<br />
+  #testing--react-testing-library
+- [ ] Use `waitFor`, `findBy*` or equivalent to explicitly await all expected side-effects.<br />
+  For example: waiting for some text to appear, a callback to be called, etc.<br />
+  [Blog: Understanding act](https://reacttdd.com/understanding-act/)<br />
+  [Talk: Advanced Testing concepts | Callum Silcock](https://csi.lk/talks/advanced-testing-concepts)<br />
+  #testing--react-testing-library
+- [ ] Use `waitFor`, with `queryBy*` and `.not` inside the callback, to assert that an element is *not* currently rendered.<br />
+  #testing--react-testing-library
+- [ ] Don't use free-standing `wait`, wrap the code in `wait(() => { ... })` block.<br />
+  #testing--react-testing-library
+- [ ] Avoid `waitFor` blocks. Just use `findBy*` where possible. Simpler.<br />
+  #testing--react-testing-library
+- [ ] Prefer `userEvent` rather than `fireEvent`, it's a higher abstraction level.<br />
+  #testing--react-testing-library
+- [ ] Call `userEvent.setup()` and use its return value, to isolate it per-test.<br />
+  #testing--react-testing-library
 - [ ] Prefer explicit checks for existence (such as `.toBeInTheDocument()`) over more ambiguous checks (such as `.toBeTruthy()`).<br />
   #testing--jest
-- [ ] Assert on specific field values with dot notation (`foo.bar`) rather than cumbersome deeply nested `objectContains` or similar.<br />
-  #testing--jest
 
-[^testing-jest]: Jest section covers automated testing using the Jest test framework.
+[^testing-react-testing-library]: React Testing Library (RTL) covers unit testing using the React Testing Library.
 
 
 
@@ -847,14 +975,17 @@
 - [ ] Use `getBy` subsequently, once component has loaded. Using `findBy` on the first component, to wait for it to be loaded, followed by `getBy` to assert on the loaded elements.<br />
   #testing--reliability
 
-[^testing-reliability]: Reliability refers to the consistency of test results, and the absence of flakiness or other issues that might cause tests to fail intermittently or for reasons unrelated to actual bugs in the code.
+[^testing-reliability]: Reliability covers consistency of test results, absence of flakiness and other intermittent issues.
 
 
 
 
 ### Testing - E2E [^testing-e2e]
 
-- [ ] Add if needed.<br />
+- [ ] Add E2E tests.<br />
+  #testing--e2e
+- [ ] Use E2E tests sparingly, especially if they are slow and resource intensive.<br />
+  [Article: Do you remember to use automated UI testing sparingly? | SSW.Rules](https://www.ssw.com.au/rules/automated-ui-testing-sparingly)<br />
   #testing--e2e
 - [ ] Log a task for it, if it's involved work.<br />
   #testing--e2e
@@ -886,52 +1017,60 @@
 - [ ] Use a framework to encapsulate and abstract test logic, resulting in clean, high-level tests.<br />
   [Article: Do you use the Page Object Model pattern in Playwright tests? | SSW.Rules](https://www.ssw.com.au/rules/playwright-page-object-model)<br />
   #testing--e2e
+- [ ] Write tests for performance, where it matters.<br />
+  [Article: Do you have tests for Performance? | SSW.Rules](https://www.ssw.com.au/rules/have-tests-for-performance)<br />
+  #testing--e2e
+- [ ] Automate testing of outgoing links, ensure the targets load.<br />
+  [Article: Do you write integration tests to validate your web links? | SSW.Rules](https://www.ssw.com.au/rules/write-integration-tests-to-validate-your-web-links)<br />
+  #testing--e2e
 
-[^testing-e2e]: E2E (end-to-end) tests refer to tests that cover the entire application flow, from the user's perspective, to verify that all components and integrations work together as expected.
+[^testing-e2e]: E2E (end-to-end) covers automated testing that exercises the whole application, from the user's perspective, to verify that all components and integrations work together as expected.
 
 
 
 
 ## Non-Functional Requirements (NFRs) [^nfr]
 
-[^nfr]: NFR has sections related to Non Functional Requirements, such as Performance and Accessibility.
+[^nfr]: Non-Functional Requirements covers NFRs, such as Performance and Accessibility, as they apply to the front end.
 
 
 
 
 ### NFR - Achievability [^nfr-achievability]
 
-- [ ] Can the task be achieved within given parameters in a timely manner?<br />
-  If not, consider splitting up, re-prioritising, re-defining, etc.<br />
+- [ ] Ensure the task can be achieved within given parameters in a timely manner.<br />
+  If not, consider splitting up, re-prioritising, re-defining parameters, etc.<br />
   #nfr--achievability
 
-[^nfr-achievability]: Achievability refers to the likelihood of the software achieving the function and non-functional requirements in the agreed timeframe.
+[^nfr-achievability]: Achievability covers the likelihood of the application meeting its functional and non-functional requirements in the agreed timeframe.
 
 
 
 
 ### NFR - Simplicity [^nfr-simplicity]
 
-- [ ] Can the task or code change be avoided altogether?<br />
+- [ ] Check whether the task or code change be avoided altogether.<br />
   #nfr--simplicity
-- [ ] Can we use a simpler platform that abstracts away building, deploying, and hosting?<br />
+- [ ] Check whether a development platform can be leveraged.<br />
+  This can potentially simplify development by abstracting away building, deploying, and hosting details.<br />
   [Platform: Netlify](https://www.netlify.com)<br />
   [Platform: AWS Amplify](https://aws.amazon.com/amplify/)<br />
   [Platform: Surge](https://surge.sh/)<br />
   [Platform: Heroku](https://www.heroku.com)<br />
   #nfr--simplicity
 
-[^nfr-simplicity]: Simplicity refers to how simple solutions are to understand and implement.
+[^nfr-simplicity]: Simplicity covers how simple solutions are to understand and implement.
 
 
 
 
 ### NFR - Availability [^nfr-availability]
 
-- [ ] Can certain systems go down during peak periods? Can we cater for those scenarios to minimise disruption to users?<br />
+- [ ] Check if certain systems can fail or slow down during peak periods.<br />
+  Plan how to address those scenarios to minimise disruption to users.<br />
   #nfr--availability
 
-[^nfr-availability]: Availability (or uptime) refers to the percentage of time an application is operational, despite failures. High availability is often defined as 99.99% ("four+ nines").
+[^nfr-availability]: Availability (or uptime) covers the percentage of time the application is operational, despite failures.
 
 
 
@@ -941,7 +1080,7 @@
 - [ ] Ensure all and only the original requirements satisfied.<br />
   #nfr--correctness
 
-[^nfr-correctness]: Correctness refers to the ability of software to perform the exact tasks required.
+[^nfr-correctness]: Correctness covers the ability of the application to perform the exact tasks required.
 
 
 
@@ -960,18 +1099,34 @@
   #nfr--readability
 - [ ] Simplify and flatten deeply nested structures for readability.<br />
   Example: nested `if`, `switch` statements.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, Minimize Nesting, pp. 77-79](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
 - [ ] Replace multiple `if` statements with one `switch` statement or pattern matching if it improves readability.<br />
   #nfr--readability
 - [ ] Avoid double-negatives in conditionals.<br />
   [Article: Do you avoid Double-Negative Conditionals in if-statements? | SSW.Rules](https://www.ssw.com.au/rules/avoid-double-negative-conditionals-in-if-statements)<br />
   #nfr--readability
-- [ ] Use more condensed syntax where it improves readability.<br />
-  Example: inline conditionals (`x ? y : z`) for very simple logic.<br />
+- [ ] Use condensed syntax where it improves readability.<br />
+  Example: inline ternary operator (`x ? y : z`) for very simple logic.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, The ?: Conditional Expression (a.k.a. “Ternary Operator”), pp. 73](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
 - [ ] Use more expanded syntax or multiple lines where it improves readability.<br />
   Example: spread message box code into multiple lines, for title, description, etc.<br />
   [Article: Do you know how to format your MessageBox code? | SSW.Rules](https://www.ssw.com.au/rules/how-to-format-your-messagebox-code)<br />
+  #nfr--readability
+- [ ] Order operands in conditionals in a readable manner.<br />
+  Example: Usually `length >= 10` is more readable than `10 <= length`.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, The Order of Arguments in Conditionals, pp. 70](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
+- [ ] Separate assignment from evaluation.<br />
+  Example: Avoid assignment within an `if` statement, such as: `if (x = 1)`.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, “Yoda Notation”: Still Useful?, pp. 71](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
+- [ ] Order conditional blocks in a readable manner.<br />
+  Positive case first. Example: `if (debug)` first, instead of `if (!debug)`.<br />
+  Simpler case first. Example: `if (value !== undefined)` first, then `if (value > 3)`, etc.<br />
+  Interesting or conspicuous case first.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, The Order of if/else Blocks, pp. 71-73](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
 - [ ] Re-arrange line breaks to be concise and consistent.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 4, Rearrange Line Breaks to Be Consistent and Compact, pp. 35](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -1008,9 +1163,10 @@
 - [ ] Instead of making all object fields optional, just make whole object optional.<br />
   #nfr--readability
 - [ ] Extract filtering, mapping and other logic to nicely named pure functions.<br />
+  [Blog: Quick tip: reusable Array search predicates | JASON Format](https://jasonformat.com/reusable-array-search-predicates)<br />
   #nfr--readability
 - [ ] Use idiomatic coding style.<br />
-  As appropriate to the language and frameworks in the current code base.<br />
+  Appropriate for the language and frameworks in the current code base.<br />
   #nfr--readability
 - [ ] Use coding style consistent with the surrounding code-base.<br />
   To make it easier for the current team to work with.<br />
@@ -1021,8 +1177,17 @@
   Example: remove code that is no longer needed.<br />
   [Article: Do you follow the boy scout rule? | SSW.Rules](https://www.ssw.com.au/rules/follow-boy-scout-rule)<br />
   #nfr--readability
+- [ ] Avoid `do/while` loop syntax.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, Avoid do/while Loops, pp. 74-75](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
+- [ ] Use early returns to simplify and chunk function body.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, Returning Early from a Function, pp. 75-76](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
+- [ ] Make it as easy as possible to follow the "flow of execution".<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, Can You Follow the Flow of Execution?, pp. 79-80](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
 
-[^nfr-readability]: Readability refers to how easy it is for a human to understand the intent (what), rationale (why), and logic (how) behind a piece of code.
+[^nfr-readability]: Readability covers the ease with which developers can read and understand the code.
 
 
 
@@ -1034,7 +1199,7 @@
   Example: this makes it easier to insert logging or other statements if you know they will be needed.<br />
   #nfr--maintainability
 
-[^nfr-maintainability]: Maintainability refers to the ease with which the software can be modified, updated, or repaired over time.
+[^nfr-maintainability]: Maintainability covers the ease with which developers can modify, update, repair or delete code over time.
 
 
 
@@ -1047,7 +1212,7 @@
   [Book: The Art of Unit Testing, 11.2.2, pp. 222 • Roy OSHEROV](https://www.artofunittesting.com)<br />
   #nfr--testability
 
-[^nfr-testability]: Testability refers to the degree to which software can be effectively tested. 
+[^nfr-testability]: Testability covers to the degree to which the application can be effectively tested. 
 
 
 
@@ -1057,7 +1222,7 @@
 - [ ] Use well tested, documented and supported third-party frameworks, which can grow with the application.<br />
   #nfr--scalability
 
-[^nfr-scalability]: Scalability refers to the ability of software to handle increasing workloads while maintaining integrity.
+[^nfr-scalability]: Scalability covers the ability of the application to handle increasing workloads while maintaining integrity.
 
 
 
@@ -1071,7 +1236,7 @@
   Example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
   #nfr--observability
 
-[^nfr-observability]: Observability measures of how well internal states of a system can be inferred from its external outputs. 
+[^nfr-observability]: Observability covers how well internal states of the application can be inferred from its external outputs. 
 
 
 
@@ -1082,13 +1247,13 @@
   Example: NPM works on Windows, Linux and Mac, so it is more portable than, say, Nuget.<br />
   #nfr--portability
 - [ ] Avoid platform-specific calls or dependencies.<br />
-  Example: NPM scripts should not rely on Windows or Linux specific features. Use an abstraction library if needed, such as NodeMon for file watching.<br />
+  Example: NPM scripts should not rely on Windows or Linux specific features. Use an abstraction library, such as [NodeMon](https://nodemon.io/) for file watching.<br />
   #nfr--portability
 - [ ] Use code and source control configurations that are supported on multiple operating systems and platforms.<br />
   [Article: Do you handle Multi-OS dev teams in source control?](https://www.ssw.com.au/rules/handle-multi-os-dev-teams-in-source-control)<br />
   #nfr--portability
 
-[^nfr-portability]: Portability refers to the ease of transferring software to various hardware and software environments.
+[^nfr-portability]: Portability covers the ease with which the application can be modified to run on a different hardware or software environment.
 
 
 
@@ -1098,14 +1263,14 @@
 - [ ] Use progressive enhancement when basic features need to work in non-standard browser environments.<br />
   #nfr--adaptability
 
-[^nfr-adaptability]: Adaptability refers to the ability of software to adjust effectively to changing requirements and environments.
+[^nfr-adaptability]: Adaptability covers the ability of the application to adapt to running in a different environment, such as a different browser.
 
 
 
 
 ### NFR - Compatibility [^nfr-compatibility]
 
-- [ ] Test on all major browsers<br />
+- [ ] Test on all major browsers.<br />
   Chrome, Edge, Firefox, Safari, Opera, etc.<br />
   #nfr--compatibility
 - [ ] Ensure browser features used are commonly supported.<br />
@@ -1115,7 +1280,7 @@
   Consider the trade-off between supporting breadth of features for new consumers vs compromising integrity or overcomplicating the interface or implementation. Make well considered deprecations.<br />
   #nfr--compatibility
 
-[^nfr-compatibility]: Compatibility refers to the ability of the software to support various consumers of its software or user interfaces, including backward compatibility if relevant.
+[^nfr-compatibility]: Compatibility covers the ability of application components to support various versions of consumers.
 
 
 
@@ -1130,7 +1295,7 @@
 - [ ] Take advantage of container queries.<br />
   #nfr--compatibility
 
-[^nfr-compatibility-screen-sizes]: Screen sizes relates to the ability of the user interface to render correctly in various device screen sizes and orientations.
+[^nfr-compatibility-screen-sizes]: Screen sizes covers the ability of the application to render correctly in various device screen sizes and orientations.
 
 
 
@@ -1141,7 +1306,7 @@
   [Article: Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)<br />
   #nfr--compatibility
 
-[^nfr-compatibility-offline]: Offline refers to the ability of the software to operate as smoothly as possible without an Internet connection.
+[^nfr-compatibility-offline]: Offline covers the ability of the application to operate smoothly with an unstable or non-existent Internet connection.
 
 
 
@@ -1150,9 +1315,10 @@
 
 - [ ] Use web application manifest to enable the site to be saved and run as an app-like experience on a phone.<br />
   [Article: Web application manifest](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)<br />
+  [Article: Web app manifest • Website Spec](https://specification.website//spec/resilience/pwa-manifest/)<br />
   #nfr--compatibility
 
-[^nfr-compatibility-mobile-devices]: Mobile devices refers to the ability of the software to operate as smoothly as possible on mobile devices, such as tablets, smart phones and wearables.
+[^nfr-compatibility-mobile-devices]: Mobile devices covers the ability of the application to operate smoothly on mobile devices (tablets, smart phones and wearables).
 
 
 
@@ -1169,7 +1335,7 @@
 - [ ] For loading indicators, apply `role=status` and include "Loading" text in nested, screen-reader-only element.<br />
   [Docs: Bootstrap - Spinners](https://getbootstrap.com/docs/4.5/components/spinners/)<br />
   #nfr--accessibility
-- [ ] Use ARIA attributes where appropriate.<br />
+- [ ] Use ARIA attributes.<br />
   Example: `aria-label` or `aria-labelled-by` (with matching id) to label elements.<br />
   [Article: ARIA — first rule of ARIA • Website Spec](https://specification.website/spec/accessibility/aria-usage/)<br />
   #language--html #nfr--accessibility
@@ -1184,7 +1350,7 @@
   [Article: Accessibility overlays • Website Spec](https://specification.website/spec/accessibility/accessibility-overlays/)<br />
   #nfr--accessibility
 
-[^nfr-accessibility]: Accessibility covers accessibility features and techniques to ensure usability by everyone, including people with disabilities.
+[^nfr-accessibility]: Accessibility covers features and techniques to ensure inclusive usability by a broad audience, including people with disabilities.
 
 
 
@@ -1200,7 +1366,7 @@
 - [ ] Items navigated in the correct order by screen-reader.<br />
   #nfr--accessibility #accessibility--perceivable
 
-[^nfr-accessibility-perceivable]: Perceivable refers to perceivable information and user interface as defined by WAI.
+[^nfr-accessibility-perceivable]: Perceivable covers perceivable information and user interface as defined by WAI.
 
 
 
@@ -1212,7 +1378,7 @@
 - [ ] Avoid nested clickable regions. Just choose one element to be clickable.<br />
   #nfr--accessibility #accessibility--operable
 
-[^nfr-accessibility-operable]: Operable refers to operable user interface and navigation as defined by WAI.
+[^nfr-accessibility-operable]: Operable covers operable user interface and navigation as defined by WAI.
 
 
 
@@ -1224,7 +1390,7 @@
 - [ ] Use definition lists to define terms that are not commonly understood.<br />
   #nfr--accessibility #accessibility--understandable
 
-[^nfr-accessibility-understandable]: Understandable refers to understandable information and user interface as defined by WAI.
+[^nfr-accessibility-understandable]: Understandable covers understandable information and user interface as defined by WAI.
 
 
 
@@ -1239,7 +1405,7 @@
 - [ ] Text scales correctly with zoom.<br />
   #nfr--accessibility #accessibility--robust
 
-[^nfr-accessibility-robust]: Robust refers to robust content and reliable interpretation as defined by WAI.
+[^nfr-accessibility-robust]: Robust covers robust content and reliable interpretation as defined by WAI.
 
 
 
@@ -1256,7 +1422,7 @@
   [Article: WCAG - Visual Presentation](https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html)<br />
   #nfr--accessibility #accessibility--content
 
-[^nfr-accessibility-content]: Content refers to accessibility principles relating to content as defined by WAI. That includes any part of a website, including text, images, forms, and multimedia, as well as any markup code, scripts, applications, and such.
+[^nfr-accessibility-content]: Content covers accessibility principles relating to content as defined by WAI.
 
 
 
@@ -1291,7 +1457,7 @@
   [Article: WCAG - Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html)<br />
   #nfr--accessibility #accessibility--global-code
 
-[^nfr-accessibility-global-code]: Global code is code that affects your entire website or web app.
+[^nfr-accessibility-global-code]: Global code covers code that affects the entire application.
 
 
 
@@ -1313,7 +1479,7 @@
   [Article: WCAG - Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html)<br />
   #nfr--accessibility #accessibility--keyboard
 
-[^nfr-accessibility-keyboard]: It is important that your interface and content can be operated, and navigated by use of a keyboard. Some people cannot use a mouse, or may be using other assistive technologies that may not allow for hovering or precise clicking.
+[^nfr-accessibility-keyboard]: Keyboard covers operation and navigation by keyboard only.
 
 
 
@@ -1334,7 +1500,7 @@
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
   #nfr--accessibility #accessibility--images
 
-[^nfr-accessibility-images]: Images are a very common part of most websites. Help make sure they can be enjoyed by all.
+[^nfr-accessibility-images]: Images covers images, such as logos, illustrations and photos.
 
 
 
@@ -1354,7 +1520,7 @@
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--headings
 
-[^nfr-accessibility-headings]: Heading elements (h1, h2, h3, etc.) help break up the content of the page into related “chunks” of information. They are incredibly important for helping people who use assistive technology to understand the meaning of a page or view.
+[^nfr-accessibility-headings]: Headings covers heading elements (h1, h2, h3, etc.) the help organise and structure the content of the page.
 
 
 
@@ -1365,7 +1531,7 @@
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--lists
 
-[^nfr-accessibility-lists]: Lists elements let people know a collection of items are related and if they are sequential, and how many items are present in the list grouping.
+[^nfr-accessibility-lists]: Lists covers collections of related items presented sequentially.
 
 
 
@@ -1400,7 +1566,7 @@
   [Article: WCAG - Giving users advanced warning when opening a new window](https://www.w3.org/WAI/WCAG22/Techniques/general/G201)<br />
   #nfr--accessibility #accessibility--controls
 
-[^nfr-accessibility-controls]: Controls are interactive elements such as links and buttons that let a person navigate to a destination or perform an action.
+[^nfr-accessibility-controls]: Controls covers interactive elements such as links and buttons that let the user navigate or perform an action.
 
 
 
@@ -1418,7 +1584,7 @@
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
   #nfr--accessibility #accessibility--tables
 
-[^nfr-accessibility-tables]: Tables are a structured set of data that help people understand the relationships between different types of information.
+[^nfr-accessibility-tables]: Tables covers structured sets of tabular data.
 
 
 
@@ -1429,10 +1595,10 @@
   [Article: WCAG - On Input](https://www.w3.org/WAI/WCAG22/Understanding/on-input.html)<br />
   [Article: Form labels • Website Spec](https://specification.website/spec/accessibility/form-labels/)<br />
   #nfr--accessibility #accessibility--forms
-- [ ] Use `fieldset` and `legend` elements where appropriate.<br />
+- [ ] Use `fieldset` and `legend` elements.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--forms
-- [ ] Inputs use `autocomplete` where appropriate.<br />
+- [ ] Inputs use `autocomplete`.<br />
   [Article: WCAG - Identify Input Purpose](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html)<br />
   #nfr--accessibility #accessibility--forms
 - [ ] Make sure that form input errors are displayed in list above the form after submission.<br />
@@ -1449,7 +1615,7 @@
   [Article: CSS state and relational selectors • Website Spec](https://specification.website/spec/accessibility/css-state-selectors/)<br />
   #nfr--accessibility #accessibility--forms
 
-[^nfr-accessibility-forms]: Forms allow people to enter information into a site for processing and manipulation. This includes things like sending messages and placing orders.
+[^nfr-accessibility-forms]: Forms covers interfaces for entering information into the application.
 
 
 
@@ -1466,7 +1632,7 @@
   [Article: WCAG - Keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html)<br />
   #nfr--accessibility #accessibility--media
 
-[^nfr-accessibility-media]: Media includes content such as pre-recorded and live audio and video.
+[^nfr-accessibility-media]: Media covers multimedia content such as pre-recorded and live audio and video.
 
 
 
@@ -1481,7 +1647,7 @@
   [Article: WCAG - Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)<br />
   #nfr--accessibility #accessibility--video
 
-[^nfr-accessibility-video]: Video-specific checks.
+[^nfr-accessibility-video]: Video covers video content - pre-recorded and live.
 
 
 
@@ -1493,7 +1659,7 @@
   [Article: Captions and transcripts • Website Spec](https://specification.website/spec/accessibility/captions-and-transcripts/)<br />
   #nfr--accessibility #accessibility--audio
 
-[^nfr-accessibility-audio]: Audio-specific checks.
+[^nfr-accessibility-audio]: Audio covers audio content - pre-recorded and live.
 
 
 
@@ -1519,7 +1685,7 @@
   [Article: WCAG - Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html)<br />
   #nfr--accessibility #accessibility--appearance
 
-[^nfr-accessibility-appearance]: How your website app content looks in any given situation.
+[^nfr-accessibility-appearance]: Appearance covers the visual look of the application in any given situation.
 
 
 
@@ -1537,7 +1703,7 @@
   [Article: Reduced motion • Website Spec](https://specification.website/spec/accessibility/reduced-motion/)<br />
   #nfr--accessibility #accessibility--animation
 
-[^nfr-accessibility-animation]: Content that moves, either on its own, or when triggered by a person activating a control.
+[^nfr-accessibility-animation]: Animation covers content that moves, either on its own, or triggered by a user action.
 
 
 
@@ -1564,7 +1730,7 @@
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
   #nfr--accessibility #accessibility--color-contrast
 
-[^nfr-accessibility-color-contrast]: Color contrast is how legible colors are when placed next to, and on top of each other.
+[^nfr-accessibility-color-contrast]: Color contrast covers how legible colors are when placed next to, and on top of each other.
 
 
 
@@ -1588,14 +1754,14 @@
   [Article: Mobile-friendly form inputs • Website Spec](https://specification.website/spec/accessibility/mobile-form-inputs/)<br />
   #nfr--accessibility #accessibility--mobile-and-touch
 
-[^nfr-accessibility-mobile-and-touch]: Mobile and touch covers items related to mobile and tablet users who need to use touch-based screens.
+[^nfr-accessibility-mobile-and-touch]: Mobile and touch covers touch-based interactions on mobile and tablet devices.
 
 
 
 
 ### NFR - Performance [^performance]
 
-[^performance]: Performance refers to operating speed of the application, either real or perceived.
+[^performance]: Performance covers operating speed of the application, real and perceived.
 
 
 
@@ -1606,7 +1772,7 @@
   [Article: Premature optimization - Wikipedia](https://en.wikipedia.org/wiki/Premature_optimization)<br />
   #nfr--performance
 
-[^nfr-performance-general]: Refers to general performance practices.
+[^nfr-performance-general]: General covers general performance requirements.
 
 
 
@@ -1636,7 +1802,7 @@
   [Article: Perceived performance - MDN](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/Perceived_performance).<br />
   #nfr--performance
 
-[^nfr-performance-perceived]: Perceived performance refers to how quickly the application appears to perform a task from the user's point of view.
+[^nfr-performance-perceived]: Perceived covers how quickly the application appears to perform a task, as perceived by users.
 
 
 
@@ -1647,7 +1813,7 @@
   #nfr--performance
 - [ ] Optimise algorithms, or replace them with calls to libraries / third-party implementations that have been optimised.<br />
   Focus on long-running code and avoid compare before and after to ensure optimisation actually improved the performance.<br />
-  [Book: Algorithms Illuminated • Tim ROUGHGARDEN](https://algorithmsilluminated.org/)
+  [Book: Algorithms Illuminated • Tim ROUGHGARDEN](https://algorithmsilluminated.org/)<br />
   #nfr--performance
 - [ ] Minimise Big-O complexity.<br />
   [Course: Algorithms Illuminated • Tim ROUGHGARDEN, Part 1, Big-O Notation](https://www.algorithmsilluminated.org)<br />
@@ -1657,7 +1823,7 @@
 - [ ] Identity expensive algorithms and optimise them.<br />
   #nfr--performance
 
-[^nfr-performance-algorithms]: a
+[^nfr-performance-algorithms]: Algorithms covers performance concerns in the design of algorithms in the code.
 
 
 
@@ -1676,8 +1842,13 @@
   [Platform: Cloudflare](https://www.cloudflare.com)<br />
   [Platform: Vercel CDN](https://vercel.com/cdn)<br />
   #nfr--performance
+- [ ] Use multi-part uploads, concurrent uploads and transfer acceleration, to improve upload performance.<br />
+  [Docs: Uploading and copying objects using multipart upload in Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)<br />
+  [Docs: Object uploads | Cloud Storage | Google Cloud Documentation](https://docs.cloud.google.com/storage/docs/uploads)<br />
+  [Docs: Understanding block blobs, append blobs, and page blobs - Azure Storage](https://learn.microsoft.com/en-au/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)<br />
+  #nfr--performance
 
-[^nfr-performance-network]: a
+[^nfr-performance-network]: Network covers network interactions as they impact performance.
 
 
 
@@ -1687,7 +1858,11 @@
 - [ ] Check for memory leaks or CPU overuse.<br />
   Use Chrome Performance Tools, use a debugger, local system monitor (MacOS Activities, Windows Task Manager or Linux `atop`) or monitor metrics in monitoring tool.<br />
   [Article: Chrome Dev Tools - Get performance insights](https://developer.chrome.com/docs/devtools#performance)<br />
-  [Article: DynaTrace Live Debugger](https://docs.dynatrace.com/docs/observe/application-observability/live-debugger)<br />
+  [Tool: DynaTrace Live Debugger](https://docs.dynatrace.com/docs/observe/application-observability/live-debugger)<br />
+  [Tool: CloudWatch Application Signals](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Monitoring-Sections.html)<br />
+  [Tool: Azure AppInsights OpenTelemetry for JS](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?tabs=js)<br />
+  [Tool: NewRelic browser monitoring](https://newrelic.com/platform/browser-monitoring)<br />
+  [Tool: Sentry Profiling for Javascript](https://docs.sentry.io/platforms/javascript/profiling/)<br />
   #nfr--performance
 - [ ] Increase resources depending on workloads.<br />
   Example: compute-heavy workloads might require faster processors or data-heavy workloads might require more memory or storage.<br />
@@ -1698,10 +1873,10 @@
   #nfr--performance
 - [ ] Reduce function calls to minimise function-call overhead.<br />
   #nfr--performance
-- [ ] Combine into one function operations that integrate many pieces of date into one structure, to avoid excessive calling/returning of functions.<br />
+- [ ] Combine into one function operations that integrate many pieces of data into one structure, to avoid excessive calling/returning of functions.<br />
   #nfr--performance
 
-[^nfr-performance-resources]: a
+[^nfr-performance-resources]: Resources covers uses of local system resources (such as processor, memory and storage) as they impact performance.
 
 
 
@@ -1719,7 +1894,7 @@
   [Article: Scroll-driven animations • Website Spec](https://specification.website/spec/performance/scroll-driven-animations/)<br />
   #nfr--performance #language--css
 
-[^nfr-performance-platform]: a
+[^nfr-performance-platform]: Platform covers use of the execution platform (generally, the browser engine) as it impacts performance.
 
 
 
@@ -1738,7 +1913,7 @@
   [Article: Resource hints overview • Website Spec](https://specification.website/spec/performance/resource-hints/)<br />
   #nfr--performance
 
-[^nfr-performance-assets]: Assets refers to performance related to loading of static assets such as fonts, images, and stylesheets.
+[^nfr-performance-assets]: Assets covers performance related to loading of static assets such as fonts, images, and stylesheets.
 
 
 
@@ -1753,7 +1928,7 @@
 - [ ] Configure build system to use minification to compress scripts and stylesheets.<br />
   #nfr--performance
 
-[^nfr-performance-build]: a
+[^nfr-performance-build]: Build covers the build process of the application as it impacts performance.
 
 
 
@@ -1779,7 +1954,7 @@
   [Article: Back/forward cache (BFCache) • Website Spec](https://specification.website/spec/performance/bfcache/)<br />
   #nfr--performance
 
-[^nfr-performance-caching]: a
+[^nfr-performance-caching]: Caching covers the use of caching to improve performance.
 
 
 
@@ -1793,20 +1968,7 @@
   [Article: An overview of web workers](https://web.dev/learn/performance/web-worker-overview)<br />
   #nfr--performance
 
-[^nfr-performance-concurrency]: a
-
-
-
-
-#### NFR - Performance - React [^nfr-performance-react]
-
-- [ ] Careful with triggering re-renters of large component trees in React.<br />
-  [Book: Advanced React, Ch 2](https://www.advanced-react.com)<br />
-  #nfr--performance
-- [ ] Check for unnecessary render cycles (React) using Chrome Performance Tools or similar.<br />
-  #nfr--performance
-
-[^nfr-performance-react]: a
+[^nfr-performance-concurrency]: Concurrency covers the use of concurrency, asynchrony and parallelism to improve performance.
 
 
 
@@ -1833,7 +1995,7 @@
   [Article: Data minimisation • Website Spec](https://specification.website/spec/privacy/data-minimization/)<br />
   #nfr--privacy
 
-[^nfr-privacy]: Privacy refers to the handling and hiding of sensitive data, such as PII (Personally Identifiable Information).
+[^nfr-privacy]: Privacy covers the handling and hiding of sensitive data, such as PII (Personally Identifiable Information).
 
 
 
@@ -1845,14 +2007,15 @@
   #nfr--robustness
 - [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
   #nfr--robustness
-- [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
-  #nfr--robustness
 - [ ] Gracefully degrade when Javascript or CSS do not work.<br />
   [Article: Graceful degradation when JavaScript fails • Website Spec](https://specification.website/spec/resilience/graceful-degradation/)<br />
   [Wiki: Progressive enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement)<br />
   #nfr--robustness
+- [ ] Provide offline support or handle network connection issues gracefully.<br />
+  [Article: Offline support and service workers • Website Spec](https://specification.website//spec/resilience/offline-support/)<br />
+  #nfr--robustness
 
-[^robustness]: Robustness is the ability of software systems to react appropriately to abnormal or variable conditions.
+[^robustness]: Robustness covers the ability of the application to react appropriately to abnormal or variable conditions.
 
 
 
@@ -1884,7 +2047,7 @@
   #nfr--reliability
 - [ ] Format a value consistently wherever it appears.<br />
   Example: format a date the same way in a date picker input control as display.<br />
-  #nfr--reliability
+  #nfr--reliability #concerns--date-time
 - [ ] Careful with animations and timeouts.<br />
   Make sure to test, by quickly clicking/switching around, ensure it doesn't mess up.<br />
   #nfr--reliability
@@ -1905,18 +2068,23 @@
 - [ ] Consider minimising backward compatibility when it reduces overall code quality.<br />
   [Article: Do you use good code over backward compatibility? | SSW.Rules](https://www.ssw.com.au/rules/use-good-code-over-backward-compatibility)<br />
   #nfr--reliability #nfr--correctness
+- [ ] Exclude CDNs from caching requests that should not be cached, such as API calls.<br />
+  #nfr--reliability
+- [ ] Eliminate unnecessary requests that result in errors (such as `404` Not Found).<br />
+  This can avoids triggering security or other alarms unnecessarily.<br />
+  #nfr--reliability
 
-[^reliability]: Reliability refers to the probability the application will operate with minimal (or acceptable) level of failures.
+[^reliability]: Reliability covers the probability the application will operate with minimal (or acceptable) level of failures.
 
 
 
 
 ### NFR - Consistency [^consistency]
 
-- [ ] Are changes made to data by a user reflected across the application and to other users?<br />
+- [ ] Ensure changes made to data by a user are reflected across the application and to other users.<br />
   #nfr--consistency
 
-[^consistency]: Consistency means uniformity in how code, systems, and processes are designed and implemented so that developers can predict behavior and users experience predictable outcomes.
+[^consistency]: Consistency covers the application as a whole behaving in a expected and predictable ways.
 
 
 
@@ -1935,12 +2103,15 @@
   Use caching headers and offline caching.<br />
   #nfr--economy
 
-[^economy]: Economy refers to the cost effectiveness of operating the application.
+[^economy]: Economy covers the cost effectiveness of operating the application.
 
 
 
 
 ### NFR - Security [^security]
+
+
+## NFR - Security - Transport & Network Security
 
 - [ ] Prefer HTTPS wherever possible and be careful what you send over non-HTTPS.<br />
   [Article: HTTPS and TLS • Website Spec](https://specification.website/spec/security/https-tls/)<br />
@@ -1948,90 +2119,37 @@
 - [ ] Configure HSTS header.<br />
   [Article: HSTS (Strict-Transport-Security) • Website Spec](https://specification.website/spec/security/hsts/)<br />
   #nfr--security
+- [ ] Use timeouts to reduce attack surface.<br />
+  Example: generated secure redirect URLs could timeout after a few minutes.<br />
+  #nfr--security
+
+
+## NFR - Security - HTTP Headers & Browser Hardening
+
+- [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
+  Use X-Frame-Options: `DENY`, `SAMEORIGIN`, `ALLOW-FROM`.<br />
+  Use Content-Security-Policy `frame-ancestors`: `none`, `self`, `URI`.<br />
+  [Article: Clickjacking | OWASP Foundation](https://owasp.org/www-community/attacks/Clickjacking)<br />
+  #nfr--security
 - [ ] Disable after first click to protect against "click jacking" or rapidly repeated submissions / spamming.<br />
   Use delay, debounce or other rate limiting<br />
   #nfr--security
-- [ ] Apply least privilege principle.<br />
-  Don't allow or expose anything except what the user/consumer needs.<br />
+- [ ] Use Subresource Integrity (SRI) on third-party scripts and stylesheets.<br />
+  [Article: Subresource Integrity (SRI) • Website Spec](https://specification.website/spec/security/subresource-integrity/)<br />
   #nfr--security
-- [ ] Minimise client-exposed interfaces to reduce attack surface area.<br />
+- [ ] Verify that security restrictions are enabled on your development device and browser.<br />
   #nfr--security
-- [ ] Don't expose env vars to build or dev server that don't need to be exposed.<br />
-  #nfr--security
-- [ ] Check for cross-site scripting attack (XSS) vulnerability.<br />
-  #nfr--security
-- [ ] Check for unmasking customer personally identifiable information (PII) vulnerability.<br />
-  #nfr--security
-- [ ] Check for misleading the customer vulnerability.<br />
-  #nfr--security
-- [ ] Check OWASP Top 10.<br />
-  #nfr--security
-- [ ] Careful with calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
-  #nfr--security
-- [ ] Careful with integrating with existing API already in Prod with different clients.<br />
-  Example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
-  #nfr--security
-- [ ] Careful integrating via new flows that haven't been used before.<br />
-  Make sure they're security vetted before going to Prod.<br />
-  #nfr--security
-- [ ] Careful when adding new input fields / user input / URL Parameters.<br />
-  #nfr--security
-- [ ] Careful about significant changes to underlying platform or control.<br />
-  Such as updates to vendor systems (logging frameworks, etc) or migrations to new cloud/hosting providers.<br />
-  #nfr--security
-- [ ] Check for replay vulnerability.<br />
-  This is where the network request is captured and submitted again without modification.<br />
-  #nfr--security
-- [ ] Ensure pen-testing process is in place if needed.<br />
-  Be sure to request pen-testing as per processes in your organisation.<br />
-  #nfr--security
+
+## NFR - Security - Input Validation & Injection Prevention
+
 - [ ] Sanitise input fields.<br />
   Example: Entering HTML entity into an input should not create a vulnerability.<br />
   It might need to be sanitised when displayed back to the user, to avoid injection attack. Example: `<script>` should be sanitised so that the browser does not execute code within.<br />
   #nfr--security
-- [ ] Use timeouts to reduce attack surface.<br />
-  Example: generated secure redirect URLs could timeout after a few minutes.<br />
+- [ ] Check for cross-site scripting attack (XSS) vulnerability.<br />
   #nfr--security
-- [ ] If you render `<a href={user.website}>`, beware of the user whose website is `'javascript: stealYourPassword()'`.<br />
-  #nfr--security
-- [ ] Avoid spreading user input like `<div {...userData}>` or any object that might contain user input.<br />
-  [Blog: Why Do React Elements Have a typeOf Property?](https://overreacted.io/why-do-react-elements-have-typeof-property/)<br />
-  #nfr--security
-- [ ] DevSecOps: Shift left.<br />
-  Try to anticipate and address security issues as early as possible, such as in planning, design or build.<br />
-  #nfr--security
-- [ ] Never put potentially sensitive data somewhere insecure.<br />
-  Example: client storage (`localStorage`, `sessionStorage`)<br />
-  #nfr--security
-- [ ] Avoid putting putting sensitive data in GET query-string parameters, headers, etc.<br />
-  Even behind HTTP it might still show up in logs or other insecure places.<br />
-  #nfr--security
-- [ ] Non-reversible locators are Ok.<br />
-  #nfr--security
-- [ ] Careful with `id`s that are publicly visible.<br />
-  Make sure they are totally non-identifiable with regard to the data they reference.<br />
-  #nfr--security
-- [ ] Keep experience for security admins separate from that for users.<br />
-  Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
-  #nfr--security
-- [ ] Careful consuming third-party packages or components from untrusted sources.<br />
-  Minimise use of third-party packages. Check for vulnerabilities on trusted news sources. Use automated checkers and tools if possible.<br />
-  [Tool: Dependabot](https://github.com/dependabot)<br />
-  [Tool: Snyk](https://snyk.io)<br />
-  [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
-  #nfr--security
-- [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
-  Use X-Frame-Options: `DENY`, `SAMEORIGIN`, `ALLOW-FROM` as appropriate.<br />
-  Use Content-Security-Policy `frame-ancestors`: `none`, `self`, `URI` as appropriate.<br />
-  [Article: Clickjacking | OWASP Foundation](https://owasp.org/www-community/attacks/Clickjacking)<br />
-  #nfr--security
-- [ ] Verify that security restrictions are enabled on your development device and browser.<br />
-  #nfr--security
-- [ ] Careful with redirects.<br />
-  Avoid redirects and forwards, if possible.<br />
-  Don't involve user input to determine the destination.<br />
-  If parameters must be used, validate the supplied vale and ensure it is authorized for the user.<br />
-  Use mapping values rather than the actual URLs.<br />
+- [ ] Construct secure parameterised queries, to prevent SQL, NoSQL and OS shell injection attacks.<br />
+  In addition, use allowlist validation on all user input.<br />
   #nfr--security
 - [ ] Careful to prevent CSS injection attacks.<br />
   Utilize context-dependent sanitization.<br />
@@ -2041,27 +2159,31 @@
   Sanitize content of html `<style>` tags.<br />
   [Article: Content Security Policy (CSP) • Website Spec](https://specification.website/spec/security/content-security-policy/)<br />
   #nfr--security
-- [ ] Ensure rate-limiting of all assets being served, to prevent Denial of Service (DOS) attacks.<br />
-  [Article: API4:2019 Lack of Resources & Rate Limiting](https://owasp.org/API-Security/editions/2019/en/0xa4-lack-of-resources-and-rate-limiting/)<br />
+- [ ] If you render `<a href={user.website}>`, beware of the user whose website is `'javascript: stealYourPassword()'`.<br />
   #nfr--security
-- [ ] Construct secure parameterised queries, to prevent SQL, NoSQL and OS shell injection attacks.<br />
-  In addition, use allowlist validation on all user input.<br />
+- [ ] Avoid spreading user input like `<div {...userData}>` or any object that might contain user input.<br />
+  [Blog: Why Do React Elements Have a typeOf Property?](https://overreacted.io/why-do-react-elements-have-typeof-property/)<br />
   #nfr--security
-- [ ] Prevent sensitive data exposure.<br />
-  Strongly encrypt sensitive data in transit and at rest. Don't store sensitive data unnecessarily, especially client-side.<br />
+- [ ] Careful with redirects.<br />
+  Avoid redirects and forwards, if possible.<br />
+  Don't involve user input to determine the destination.<br />
+  If parameters must be used, validate the supplied vale and ensure it is authorized for the user.<br />
+  Use mapping values rather than the actual URLs.<br />
+  #nfr--security
+- [ ] Careful when adding new input fields / user input / URL Parameters.<br />
+  #nfr--security
+
+## NFR - Security - Sensitive Data & Secrets
+
+- [ ] Never put potentially sensitive data somewhere insecure.<br />
+  Example: client storage (`localStorage`, `sessionStorage`)<br />
+  #nfr--security
+- [ ] Avoid putting putting sensitive data in GET query-string parameters, headers, etc.<br />
+  Even behind HTTP it might still show up in logs or other insecure places.<br />
   #nfr--security
 - [ ] Careful to avoid private data being leaked via logs.<br />
   Example: PII [^pii] or secrets.<br />
   #nfr--observability #nfr--observability
-- [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
-  [Blog: Socket](https://socket.dev/blog)<br />
-  [Blog: The latest Next.js news](https://nextjs.org/blog)<br />
-  [Blog: React Blog](https://react.dev/blog)<br />
-  [Article: Do you monitor your application for vulnerabilities? | SSW.Rules](https://www.ssw.com.au/rules/monitor-packages-for-vulnerabilities)<br />
-  [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
-  #nfr--security
-- [ ] Scan configuration files (such as IaC) for vulnerabilities.<br />
-  #nfr--security
 - [ ] Keep all secrets or sensitive data in a secret vault or store.<br />
   Example: API keys, database credentials, etc.<br />
   [Platform: HashiCorp Vault](https://www.vaultproject.io)<br />
@@ -2071,22 +2193,115 @@
   [Article: Do you store your secrets securely? | SSW.Rules](https://www.ssw.com.au/rules/store-your-secrets-securely)<br />
   [Article: Do you share your developer secrets securely? | SSW.Rules](https://www.ssw.com.au/rules/share-your-developer-secrets-securely)<br />
   #nfr--security
+- [ ] Avoid clear-text email addresses in HTML.<br />
+  [Article: Do you avoid clear text email addresses in web pages? | SSW.Rules](https://www.ssw.com.au/rules/avoid-clear-text-email-addresses-in-web-pages)<br />
+  #nfr--security
 - [ ] Follow best practices when dealing with JWTs (JSON Web Tokens).<br />
   Use strong signing algorithms. Keep the secret key secure. Set appropriate token expiration times. Ensure tokens are validated on the server side. Never put sensitive data in the payload.<br />
   [Article: JWT Best Practices](https://auth0.com/docs/security/tokens/json-web-tokens-best-practices)<br />
   [Article: What Are JSON Web Tokens (JWT)?](https://www.freecodecamp.org/news/what-are-json-web-tokens-jwt)<br />
   #nfr--security
-- [ ] Avoid clear-text email addresses in HTML.<br />
-  [Article: Do you avoid clear text email addresses in web pages? | SSW.Rules](https://www.ssw.com.au/rules/avoid-clear-text-email-addresses-in-web-pages)<br />
+
+## NFR - Security - Privacy & Identifiers
+
+- [ ] Check for unmasking customer personally identifiable information (PII) vulnerability.<br />
+  #nfr--security
+- [ ] Non-reversible locators are Ok.<br />
+  #nfr--security
+- [ ] Careful with `id`s that are publicly visible.<br />
+  Make sure they are totally non-identifiable with regard to the data they reference.<br />
+  #nfr--security
+
+
+## NFR - Security - Access Control & Attack Surface
+
+
+
+## NFR - Security - Third-Party & Supply Chain
+
+
+
+## NFR - Security - Integration & Change Risk
+
+
+
+## NFR - Security - Process & Governance
+
+
+
+
+
+
+
+
+
+- [ ] Apply least privilege principle.<br />
+  Don't allow or expose anything except what the user/consumer needs.<br />
+  #nfr--security
+- [ ] Minimise client-exposed interfaces to reduce attack surface area.<br />
+  #nfr--security
+- [ ] Don't expose env vars to build or dev server that don't need to be exposed.<br />
+  #nfr--security
+- [ ] Check for misleading the customer vulnerability.<br />
+  #nfr--security
+- [ ] Regularly review code-base against OWASP Top 10.<br />
+  [Page: OWASP Top Ten Web Application Security Risks](https://owasp.org/www-project-top-ten/)<br />
+  #nfr--security
+- [ ] Careful with calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
+  #nfr--security
+- [ ] Careful with integrating with existing API already in Prod with different clients.<br />
+  Example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
+  #nfr--security
+- [ ] Careful integrating via new flows that haven't been used before.<br />
+  Make sure they're security vetted before going to Prod.<br />
+  #nfr--security
+- [ ] Careful about significant changes to underlying platform or control.<br />
+  Such as updates to vendor systems (logging frameworks, etc) or migrations to new cloud/hosting providers.<br />
+  #nfr--security
+- [ ] Check for replay vulnerability.<br />
+  This is where the network request is captured and submitted again without modification.<br />
+  #nfr--security
+- [ ] Ensure pen-testing process is in place.<br />
+  Be sure to request pen-testing as per processes in your organisation.<br />
+  #nfr--security
+- [ ] DevSecOps: Shift left.<br />
+  Try to anticipate and address security issues as early as possible, such as in planning, design or build.<br />
+  #nfr--security
+- [ ] Keep experience for security admins separate from that for users.<br />
+  Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
+  #nfr--security
+- [ ] Be careful consuming third-party packages or components from untrusted sources.<br />
+  Minimise use of third-party packages.<br />
+  Check for issues and vulnerabilities on open-source repo and trusted news sources.<br />
+  Use automated checkers and monitoring tools if possible.<br />
+  [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
+  #nfr--security
+- [ ] Use automated real time threat monitoring tools for code and dependencies.<br />
+  [Tool: Dependabot](https://github.com/dependabot)<br />
+  [Tool: Snyk](https://snyk.io)<br />
+  [Tool: Trivy](https://trivy.dev)<br />
+  [Tool: Falco](https://falco.org)<br />
+  #nfr--security
+
+
+- [ ] Ensure rate-limiting of all assets being served, to prevent Denial of Service (DOS) attacks.<br />
+  [Article: API4:2019 Lack of Resources & Rate Limiting](https://owasp.org/API-Security/editions/2019/en/0xa4-lack-of-resources-and-rate-limiting/)<br />
+  #nfr--security
+- [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
+  [Blog: Socket](https://socket.dev/blog)<br />
+  [Blog: The latest Next.js news](https://nextjs.org/blog)<br />
+  [Blog: React Blog](https://react.dev/blog)<br />
+  [Article: Do you monitor your application for vulnerabilities? | SSW.Rules](https://www.ssw.com.au/rules/monitor-packages-for-vulnerabilities)<br />
+  [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
+  #nfr--security
+- [ ] Scan configuration files (such as IaC) for vulnerabilities.<br />
   #nfr--security
 - [ ] Provide Security standard text file to tell security researchers how to report vulnerabilities.<br />
   [Article: `/.well-known/security.txt` • Website Spec](https://specification.website/spec/security/security-txt/)<br />
   #nfr--security
-- [ ] Use Subresource Integrity (SRI) on third-party scripts and stylesheets.<br />
-  [Article: Subresource Integrity (SRI) • Website Spec](https://specification.website/spec/security/subresource-integrity/)<br />
-  #nfr--security
 
-[^security]: Security refers to protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
+
+[^security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
 [^pii]: Personally Identifiable Information
 
 
@@ -2094,10 +2309,21 @@
 
 ### NFR - Usability [^usability]
 
-- [ ] Perform usability testing with real users, to identify and address usability issues.<br />
+[^usability]: Usability covers the ease with which users can operate the application and the overall pleasantness of the user experience.
+
+
+
+
+### NFR - Usability - General [^usability-general]
+
+- [ ] Run or participate in some usability testing with real users, to identify and address usability issues.<br />
+  [Article: Do you mix user research methods to capture the full picture? | SSW.Rules](https://www.ssw.com.au/rules/mix-user-research-methods)<br />
+  #nfr--usability
+- [ ] Get early user feedback using a staging environment or a local setup with port forwarding.<br />
+  [Article: Do you use port forwarding to test local builds? | SSW.Rules](https://www.ssw.com.au/rules/port-forwarding)<br />
   #nfr--usability
 
-[^usability]: Items in this checklist relate to the user interface usability and overall user experience.
+[^usability-general]: General covers to general usability.
 
 
 
@@ -2284,12 +2510,12 @@
 
 #### NFR - Usability - Date and time [^nfr-usability-date-and-time]
 
-- [ ] Ensure multiple time-zones are supported if necessary. Test with simulated time-zone.<br />
-  #nfr--usability #usability--date-and-time
+- [ ] Ensure multiple time-zones are supported. Test with simulated time-zone.<br />
+  #nfr--usability #usability--date-and-time #concern--date-time
 - [ ] Formatting date or time values should follow user's locale format and show value in correct time-zone.<br />
-  #nfr--usability #usability--date-and-time
+  #nfr--usability #usability--date-and-time #concern--date-time
 - [ ] Ensure time-zone differences between hosting location and user's browser location do not create issues.<br />
-  #nfr--usability #usability--date-and-time
+  #nfr--usability #usability--date-and-time #concern--date-time
 
 [^nfr-usability-date-and-time]: Date and time handled in the user interface from a usability perspective.
 
@@ -2299,7 +2525,7 @@
 #### NFR - Usability - Numbers [^nfr-usability-numbers]
 
 - [ ] Format numeric values correctly.<br />
-  Example: currencies should use correct comma and currency symbol or code if needed.<br />
+  Example: currencies should use correct comma and currency symbol or code.<br />
   #nfr--usability #usability--numbers
 - [ ] Parse numeric values received as a string to the correct number format.<br />
   #nfr--usability #usability--numbers
@@ -2396,7 +2622,7 @@
 - [ ] Add a language switcher to the UI.<br />
   [Article: Language switcher • Website Spec](https://specification.website/spec/i18n/language-switcher/)<br />
   #nfr--internationalisation-and-localisation 
-- [ ] Cater to languages that read right-to-left or vertical, using appropriate attributes or CSS.
+- [ ] Cater to languages that read right-to-left or vertical, using appropriate attributes or CSS.<br />
   For right-to-left, set `dir="rtl"` and use CSS logical properties.<br />
   For vertical, set CSS writing-mode.<br />
   [Article: RTL and bidirectional text • Website Spec](https://specification.website/spec/i18n/rtl-support/)<br />
@@ -2417,7 +2643,7 @@
 
 ## Code [^code]
 
-[^code]: Code has sections related to front end code.
+[^code]: Code covers issues specifically related to application code.
 
 
 
@@ -2429,20 +2655,25 @@
   Minimal - remove unnecessary code. Simple - use "boring" code.<br />
   [Article: Do you know the difference between a 'smart' and a 'clever' developer? | SSW.Rules](https://www.ssw.com.au/rules/do-you-know-the-difference-between-a-clever-and-a-smart-developer)<br />
   #code--general #nfr--simplicity #nfr--readability
-- [ ] Use library and language facilities correctly. Don't re-invent the wheel.<br />
-  #nfr--readability #nfr--performance #nfr--reliability
+- [ ] Use library and language facilities where possible. Don't re-invent the wheel.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 12, Knowing Your Libraries Helps, pp. 133](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Be Familiar with the Libraries Around You, pp. 143-144](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #code--general #nfr--readability #nfr--performance #nfr--reliability
+- [ ] Monitor the frameworks, libraries, tools and platforms used for critical updates.<br />
+  Example: Find the GitHub repository and subscribe to pull requests and issues. Follow social media and blogs. Join forums, online communities.<br />
+  #code--general #nfr--reliability
 - [ ] Check for typos (accidental keystrokes) or accidental mis-spellings.<br />
   #code--general
 - [ ] Ensure pass-by-value vs. pass-by-reference are being used correctly.<br />
-  #code--general 
+  #code--general
 - [ ] Extract hard-coded values into constants, enums or configuration files.<br />
   Example: Messages, global strings, magic numbers.<br />
   [Article: Do you use Enums instead of hard coded strings? | SSW.Rules](https://www.ssw.com.au/rules/use-enums-instead-of-hard-coded-strings)<br />
   [Article: Do you use resource file to store all the messages and global strings? | SSW.Rules](https://www.ssw.com.au/rules/use-resource-file-to-store-all-the-messages-and-global-strings)<br />
   [Article: Use Enum Constants instead of Magic numbers? | SSW.Rules](https://www.ssw.com.au/rules/use-enum-constants-instead-of-magic-numbers)<br />
-  #code--general 
+  #code--general
 
-[^code-general]: Code - general refers to any kind of code in any language.
+[^code-general]: General covers general issues related to application code.
 
 
 
@@ -2458,9 +2689,9 @@
 - [ ] Define overly complex structures out of existence.<br />
   Change the design so that they are unnecessary.<br />
   #code--structure #nfr--readability #nfr--maintainability
-- [ ] Use a more specific structure (function, variable, etc) if appropriate.<br />
+- [ ] Use a more specific structure (function, variable, etc).<br />
   #code--structure
-- [ ] Re-use an existing structure (function, variable, etc) if appropriate and to avoid duplication.<br />
+- [ ] Re-use an existing structure (function, variable, etc) and to avoid duplication.<br />
   Move it to a shared folder/package/module and export.<br />
   [Article: Do you look for duplicate code? | SSW.Rules](https://www.ssw.com.au/rules/avoid-code-duplication)<br />
   #code--structure
@@ -2473,9 +2704,9 @@
   #code--structure
 - [ ] Don't add specific things to generic components.<br />
   #code--structure
-- [ ] Move code to a common/shared module if appropriate.<br />
+- [ ] Move code to a common/shared module.<br />
   #code--structure
-- [ ] Move code to a more specific module or deeper sub-folder if appropriate.<br />
+- [ ] Move code to a more specific module or deeper sub-folder.<br />
   #code--structure
 - [ ] Move common data to a higher-level function and pass down (or otherwise share) to more lower-level functions.<br />
   #code--structure
@@ -2490,7 +2721,7 @@
   [Blog: Please Stop Using Barrel Files](https://tkdodo.eu/blog/please-stop-using-barrel-files)<br />
   #code--structure
 
-[^code-structure]: Structure refers to structure aspects of the code, such as file and folders, ordering of elements, and connections between parts.
+[^code-structure]: Structure covers structural aspects such as file and folders, ordering of elements, and connections between parts.
 
 
 
@@ -2580,23 +2811,23 @@
   [Article: Do you follow naming conventions for your Boolean Property? | SSW.Rules](https://www.ssw.com.au/rules/follow-naming-conventions-for-your-boolean-property)<br />
   #code--naming
 
-[^code-naming]: Naming refers to how elements in code are named.
+[^code-naming]: Naming covers how elements are named.
 
 
 
 
-#### Code - Removing or modifying [^code-removing-or-modifying]
+#### Code - Removing or modifying [^code-modifying]
 
 - [ ] When adding or removing an item in a hard-coded set, be careful of the impact.<br />
   Example: when changing an enumeration, check that there isn't any code that dynamically loops over it, which gets inadvertently impacted.<br />
-  #code--removing-or-modifying
+  #code--modifying
 - [ ] If code is removed, also find and remove now-unused / "orphaned" code.<br />
-  #code--removing-or-modifying #nfr--readability #nfr--maintainability.<br />
+  #code--modifying #nfr--readability #nfr--maintainability.<br />
 - [ ] Careful when modifying big complex statements or code blocks.<br />
   Ensure original meaning and function is preserved.<br />
-  #code--removing-or-modifying #nfr--readability #nfr--correctness
+  #code--modifying #nfr--readability #nfr--correctness
 
-[^code-removing-or-modifying]: Removing or modifying refers to code changes that involve removing or modifying parts of code.
+[^code-modifying]: Modifying covers code changes that involve removing or modifying parts of code.
 
 
 
@@ -2617,14 +2848,14 @@
   Example: slicing first then sorting.<br />
   #code--logic
 
-[^code-logic]: Logic refers to logical manipulation within code.
+[^code-logic]: Logic covers logical operations in code.
 
 
 
 
 ## Language [^language]
 
-[^language]: Language has sections programming languages used on the front end, such as Javascript and HTML.
+[^language]: Language covers specific programming languages used on the front end, such as Javascript or HTML.
 
 
 
@@ -2664,7 +2895,7 @@
   Example: Button click event that might bubble to a parent list-item element that also has a click handler, causing both handlers to run.<br />
   #language--javascript
 
-[^language-javascript]: Javascript items relate to Javascript and code that compiles to Javascript, such as Typescript.
+[^language-javascript]: Javascript covers Javascript code (and code that compiles to Javascript, such as Typescript).
 
 
 
@@ -2678,7 +2909,22 @@
   Ensure they're logged and handled as smoothly as possible from user's perspective.<br />
   #language--javascript #nfr--correctness
 
-[^language-javascript-api-calls]: a
+[^language-javascript-api-calls]: API calls items relate to Javascript code that calls server-side APIs.
+
+
+
+
+#### Language - Javascript - Date and time [^language-javascript-date-time]
+
+- [ ] Use a good quality date time library or modern browser date and time implementations.<br />
+  Avoid the built-in browser `Date` object, as it has issues and inconsistencies and is being deprecated.<br />
+  [Docs: Temporal | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal)<br />
+  [Library: date-fns](https://date-fns.org/)<br />
+  [Library: Moment.js](https://momentjs.com/)<br />
+  [Library: Luxon](https://moment.github.io/luxon)<br />
+  #language--javascript #nfr--robustness #concern--date-time
+
+[^language-javascript-date-time]: Date and time items relate to Javascript code that performs date or time operations.
 
 
 
@@ -2766,7 +3012,7 @@
   [Website: Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)<br />
   #language--typescript
 
-[^language-typescript]: Typescript items relate to Typescript code.
+[^language-typescript]: Typescript covers Typescript code.
 
 
 
@@ -2801,11 +3047,11 @@
 - [ ] Provide Favicons and app icons.<br />
   [Article: Favicons and app icons • Website Spec](https://specification.website/spec/foundations/favicons/)<br />
   #language--html
-- [ ] Provide Open Graph protocol elements if appropriate.<br />
+- [ ] Provide Open Graph protocol elements.<br />
   `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `og:site_name`.<br />
   [Article: Open Graph protocol • Website Spec](https://specification.website/spec/foundations/open-graph/)<br />
   #language--html
-- [ ] Provide feed discovery<br />
+- [ ] Provide feed discovery.<br />
   `rel="alternate"`<br />
   [Article: Feed discovery • Website Spec](https://specification.website/spec/foundations/feed-discovery/)<br />
   #language--html
@@ -2824,7 +3070,7 @@
   [Article: `<meta name="color-scheme">` • Website Spec](https://specification.website/spec/foundations/color-scheme/)<br />
   #language--html
 
-[^language-html]: HTML items relate to HTML and code that compiles to HTML, such as template syntax.
+[^language-html]: HTML covers HTML code (and code that compiles to HTML, such as template syntax).
 
 
 
@@ -2837,7 +3083,7 @@
   [Blog: How to make images react to light and dark mode](https://larsmagnus.co/blog/how-to-make-images-react-to-light-and-dark-mode)<br />
   #language--css
 
-[^language-css]: CSS refers to Cascading Style Sheets.
+[^language-css]: CSS refers to CSS (Cascading Style Sheets) code (and code that compiles to CSS, such as LESS or SASS).
 
 
 
@@ -2852,7 +3098,7 @@
   #language--css
 - [ ] Minimise the number of concurrent animations, for best performance and usability.<br />
   #language--css
-- [ ] Remove animations when not visible if necessary.<br />
+- [ ] Remove animations when not visible.<br />
   #language--css
 - [ ] Style view transitions in CSS to take advantage of platform optimisations.<br />
   [Article: View Transitions • Website Spec](https://specification.website/spec/performance/view-transitions/)<br />
@@ -2869,21 +3115,21 @@
   Prefer CSS variables or other techniques when values need to change at run-time, such as theme switching.<br />
   #language--scss-and-less
 
-[^language-scss-and-less]: SCSS and LESS items relate to code in SCSS and LESS - pre-processors that compile to CSS.
+[^language-scss-and-less]: SCSS and LESS covers SCSS and LESS code - pre-processors that compile to CSS.
 
 
 
 
 ## Framework [^framework]
 
-[^framework]: Framework has sections related to front-end frameworks, such as React, NextJS and Angular.
+[^framework]: Framework covers frameworks used on the front end, such as React, NextJS and Angular.
 
 
 
 
 ### Framework - React [^framework-react]
 
-[^framework-react]: React refers to code that runs on the React framework.
+[^framework-react]: React covers the React framework.
 
 #### Framework - React - General
 
@@ -3006,7 +3252,7 @@
 
 #### Framework - React - Hooks
 
-- [ ] Use intuitive field names in the hook result object if appropriate.<br />
+- [ ] Use intuitive field names in the hook result object.<br />
   Example: `return { orders }` instead of `return { data }`.<br />
   #framework--react
 - [ ] Careful about initialising return value of array to empty (`[]`) in hook without providing some kind of loading indicator.<br />
@@ -3070,6 +3316,11 @@
   #framework--react
 - [ ] Memoise whole component where helpful using `memo`.<br />
   #framework--react
+- [ ] Careful with triggering re-renters of large component trees in React.<br />
+  [Book: Advanced React, Ch 2](https://www.advanced-react.com)<br />
+  #nfr--performance
+- [ ] Check for unnecessary render cycles (React) using Chrome Performance Tools or similar.<br />
+  #framework--react
 
 
 
@@ -3083,6 +3334,7 @@
   [Library: Tailwind CSS](https://tailwindcss.com/)<br />
   [Library: Bootstrap](https://getbootstrap.com/)<br />
   [Library: shadcn/ui](https://ui.shadcn.com/)<br />
+  [Library: BlueprintJS](https://blueprintjs.com/)<br />
   [Article: Tools - Do you know the best UI framework for React? | SSW.Rules](https://www.ssw.com.au/rules/tools-do-you-know-the-best-ui-framework-for-react)<br />
   #framework--react
 
@@ -3118,7 +3370,7 @@
 
 ### Framework - NextJS [^framework-nextjs]
 
-[^framework-nextjs]: NextJS refers to code that runs on the NextJS framework.
+[^framework-nextjs]: NextJS covers the NextJS framework.
 
 #### Framework - NextJS - General
 
@@ -3140,7 +3392,7 @@
   #framework--nextjs
 - [ ] Server rendered components and server actions (data-fetching functions that execute server-side) should not do formatting that is client-dependent.<br />
   Example: browser local date/time or light/dark mode. They should do server-side-appropriate processing and return data sufficient for the client-side to take over client-dependent work.<br />
-  #framework--nextjs
+  #framework--nextjs #concerns--date-time
 - [ ] Avoid "use client"; better to default to server rendering, for performance, and let NextJS apply client-side as needed.<br />
   Where it must be used, move it as far down the component tree as possible.<br />
   #framework--nextjs
@@ -3162,7 +3414,7 @@
 - [ ] Use dynamic imports to reduce load time in projects with large modules.<br />
   [Article: Do you know when to use dynamic imports in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/dynamically-load-components)<br />
   #framework--nextjs
-- [ ] Use dynamic routing where appropriate.<br />
+- [ ] Use dynamic routing.<br />
   [Docs: Dynamic Routes - NextJS](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)<br />
   [Article: Do you know when to use dynamic imports in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/next-dynamic-routes)<br />
   #framework--nextjs
@@ -3203,12 +3455,12 @@
 
 ### Framework - Angular [^framework-angular]
 
-[^framework-angular]: Angular items apply to code that runs on the Angular framework.
+[^framework-angular]: Angular covers the Angular framework.
 
 
 
 
-#### Framework - Angular - General [^framework-angular-general]
+#### Framework - Angular - General
 
 - [ ] Follow the official style guide.<br />
   [Website: Angular coding style guide](https://angular.dev/style-guide)<br />
@@ -3233,8 +3485,6 @@
   [Library: keycloak-angular](https://www.npmjs.com/package/keycloak-angular)<br />
   [Library: ng-table-virtual-scroll](https://www.npmjs.com/package/ng-table-virtual-scroll)<br />
   #framework--angular
-
-[^framework-angular-general]: General Angular items.
 
 
 
@@ -3336,7 +3586,7 @@
 
 #### Framework - Angular - Patterns
 
-- [ ] Use observables where applicable.<br />
+- [ ] Use observables.<br />
   [Article: Do you know how to use Observables? | SSW.Rules](https://www.ssw.com.au/rules/use-observables)<br />
   #framework--angular
 
@@ -3350,7 +3600,63 @@
 - [ ] Avoid subscriptions that merely transform then store data. Instead, use observables.<br />
   #framework--rxjs
 
-[^framework-rxjs]: RxJS items apply to code that uses the RxJS library.
+[^framework-rxjs]: RxJS covers the RxJS library.
+
+
+
+
+### Framework - VueJS [^framework-vuejs]
+
+- [ ] Select VueJS for projects where it is most beneficial.<br />
+  Ease to learn, lightweight framework, high performance and great tooling.<br />
+  [Article: Do you know what makes Vue.js great? | SSW.Rules](https://www.ssw.com.au/rules/why-vue-is-great)<br />
+  #framework--vuejs
+- [ ] Write idiomatic Vue code, adhering to the official VueJS Style Guide.<br />
+  [VueJS Style Guide](https://vuejs.org/style-guide/rules-essential.html)<br />
+  #framework--vuejs
+- [ ] Prefer the recommended Composition API rather than the Options API.<br />
+  [Composition API](https://vuejs.org/guide/extras/composition-api-faq)<br />
+  #framework--vuejs
+- [ ] Use composables to re-use pieces of state logic.<br />
+  [Composables | Vue.js](https://vuejs.org/guide/reusability/composables.html)<br />
+  #framework--vuejs
+- [ ] Organise the internal structure of VueJS Views and Components.<br />
+  Example: 1. Imports, 2. Props definition, 3. Store, query and composable calls, 4. Destructuring, 5. Ref and computed declarations, 6. Function calls, 7. Lifecycle hooks, 8. Subscriptions<br />
+  #framework--vuejs
+- [ ] Organise the internal structure of VueJS Stores and Composables.<br />
+  Example: 1. Imports, 2. Interface declarations, 3. Store or composable declaration (A. Other store, query and composable calls, B. Destructuring, C. Ref and computed declarations, D. Private function declarations, E. Function calls, F. Lifecycle hooks, G. Subscriptions, H. Return statement)<br />
+  #framework--vuejs
+- [ ] Use quality, well supported state management libraries, such as Pinia and Colada.<br />
+  [Pinia](http://pinia.vuejs.org) - global store<br />
+  [Pinia Colada](https://pinia-colada.esm.dev) - data fetching layer<br />
+  #framework--vuejs
+- [ ] Use quality, well supported, Vue setup / creation tool.<br />
+  [Tool: create-vue](https://github.com/vuejs/create-vue)<br />
+  [Tool: create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite)<br />
+  [Article: Do you know how to set up a Vue.js project? | SSW.Rules](https://www.ssw.com.au/rules/set-up-vue-project)<br />
+  [Docs: Quick Start | Vue.js](https://vuejs.org/guide/quick-start.html)<br />
+  #framework--vuejs
+- [ ] Use quality, well supported, Vue (or Vue-compatible) development libraries and tools.<br />
+  [Tool: Vite](https://vite.dev)<br />
+  [Library: Vitest](https://vitest.dev/)<br />
+  [Library: Vue Test Utils](https://test-utils.vuejs.org/guide/)<br />
+  [Library: MockServiceWorker](http://mswjs.io) - HTTP mocking<br />
+  [Tool: Oxlint](https://oxc.rs/)<br />
+  [Tool: Prettier](https://prettier.io/)<br />
+  #framework--vuejs
+- [ ] Use a Vue-compatible IDE and Vue IDE extensions to maximise the developer experience and productivity.<br />
+  [Article: Do you know the best IDE for Vue.js? | SSW.Rules](https://www.ssw.com.au/rules/best-ide-for-vue)<br />
+  [Tool: Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)<br />
+  #framework--vuejs
+- [ ] Use Vue browser extensions to improve developer productivity.<br />
+  [Tool: Vue.js devtools for Chrome](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)<br />
+  [Article: Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)<br />
+  [Tool: Colada devtools](https://chromewebstore.google.com/detail/icdbaobbeemmhlmjolbkedcneadkfpdl?utm_source=item-share-cb)<br />
+  [Tool: Vue.js devtools for Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)<br />
+  [Article: Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)<br />
+  #framework--vuejs
+
+[^framework-vuejs]: VueJS covers the VueJS framework.
 
 
 
@@ -3358,7 +3664,24 @@
 
 ## Patterns [^patterns]
 
-[^patterns]: Patterns has sections related to software development patterns as they apply to front end development.
+[^patterns]: Patterns covers software patterns as they apply to the front end.
+
+
+
+### Patterns - Representational State Transfer (REST) [^patterns-rest]
+
+- [ ] Use Resource-Oriented Architecture (ROA) when designing URL routes.<br />
+  Example: `(PUT|POST|GET) /posts/{postId}`, `(GET) /users/{userId}`.<br />
+  Benefit: Coupling to resources, which are more essential to the application, and thus, a better organising principle.<br />
+  Benefit: Consistent and predictable pattern, uniform interface.<br />
+  Benefit: Reusability across different systems, such as frontend, back-end storage, caching layers, MCPs, etc.<br />
+  Benefit: Addressability by various external systems, such as search engines or AI agents.<br />
+  [Article: Resource-oriented architecture - Wikipedia](https://en.wikipedia.org/wiki/Resource-oriented_architecture)<br />
+  [Book: RESTful Web Services • Leonard RICHARDSON, Sam RUBY, Ch 4, The Resource-Oriented Architecture, pp. 79](https://archive.org/details/RESTfulWebServices)<br />
+  #patterns--rest
+
+[^patterns-rest]: REST covers Representational State Transfer, where it applies to HTTP-based routing and APIs.
+
 
 
 
@@ -3380,7 +3703,7 @@
   [Article: Do you declare member accessibility for all classes? | SSW.Rules](https://www.ssw.com.au/rules/declare-member-accessibility-for-all-classes)<br />
   #patterns--oop
 
-[^patterns-oop]: OOP refers to Object Oriented Programming principles, when and where they apply to the codes.
+[^patterns-oop]: OOP covers Object Oriented Programming principles, when and where they apply to front end code.
 
 
 
@@ -3397,7 +3720,7 @@
   [Website: Patterns.dev](https://www.patterns.dev/)<br />
   #patterns--fp
 
-[^patterns-fp]: FP refers to Functional Programming principles, when and where they apply to the code.
+[^patterns-fp]: FP covers Functional Programming principles, when and where they apply to front end code.
 
 
 
@@ -3413,14 +3736,14 @@
   [Website: Micro Frontends](https://microfrontends.com)<br />
   #patterns--micro-front-end
 
-[^patterns-micro-front-end]: Micro front end refers to an architectural style where independently deliverable frontend applications are composed into a greater whole.
+[^patterns-micro-front-end]: Micro front end covers an architectural style where independently deliverable frontend applications are composed into a greater whole.
 
 
 
 
 ## Pipeline [^pipeline]
 
-[^pipeline]: Pipeline has sections related to processes that move code changes through various stages (such as building, testing, and deployment).
+[^pipeline]: Pipeline covers processes that move code changes through various stages, such as building, testing, and deployment.
 
 
 
@@ -3441,7 +3764,7 @@
   [Article: Do you keep your code consistent using .editorconfig? | SSW.Rules](https://www.ssw.com.au/rules/consistent-code-style)<br />
   #pipeline--developer-environment
 
-[^pipeline-developer-environment]: Developer environment refers to the local development environment, such as IDE, code editor, etc.
+[^pipeline-developer-environment]: Developer environment covers the local development environment, such as IDE, code editor, etc.
 
 
 
@@ -3450,8 +3773,11 @@
 
 - [ ] Ensure entries are in alphabetic order, where that is the standard.<br />
   #pipeline--configuration #nfr--consistency
+- [ ] Use appropriate conventional network configuration.<br />
+  Example: Port `80` for public HTTP, `443` for public HTTPS, `8080` for local HTTP.<br />
+  #pipeline--configuration #nfr--consistency
 
-[^pipeline-configuration]: Configuration refers to configuration files and configuration-as-code, such as CI/CD, environment, feature flags, etc.
+[^pipeline-configuration]: Configuration covers configuration files and configuration-as-code, such as CI/CD, environment, feature flags, etc.
 
 
 
@@ -3508,8 +3834,17 @@
 - [ ] Cache or otherwise re-use dependencies that don’t change often, to speed up the build.<br />
   [Article: PNPM GitHub Actions Cache](https://theodorusclarence.com/shorts/github/pnpm-github-actions-cache)<br />
   #pipeline--build
+- [ ] Containerise your build steps, to benefit from portability, consistency, scalability and other benefits.<br />
+  [Tool: Docker](https://www.docker.com/)<br />
+  [Tool: Podman](https://podman.io/)<br />
+  [Article: Do you use Testcontainers for integration testing? | SSW.Rules](https://www.ssw.com.au/rules/use-testcontainers).<br />
+  #pipeline--build
+- [ ] Provide a Makefile.<br />
+  Benefits: consolidation of build steps and simplification of running build in developer environments and configuring CI to run them.<br />
+  [Article: Make (software) - Wikipedia](https://en.wikipedia.org/wiki/Make_(software))<br />
+  #pipeline--build
 
-[^pipeline-build]: Build covers issues related to building the application for deployment to an environment.
+[^pipeline-build]: Build covers building the application for deployment to an environment.
 
 
 
@@ -3529,18 +3864,21 @@
   Example: turning on new complex features, removing features users are accustomed to seeing, changes that are otherwise risky to system stability.<br />
   [Article: Do you canary deploy your new features using a spreadsheet? | SSW.Rules](https://www.ssw.com.au/rules/canary-deploy)<br />
   #general--deployment
+- [ ] Instead of rolling back in reaction to a problem, aim to fix the problem and "roll forward".<br />
+  [Article: Do you know you should only Roll Forward? | SSW.Rules](https://www.ssw.com.au/rules/do-you-only-roll-forward)<br />
+  #general--deployment
 
-[^pipeline-deployment]: Deployment covers issues related to deploying the built application to an environment.
+[^pipeline-deployment]: Deployment covers deploying the built application to an environment.
 
 
 
 
 ### Pipeline - DevOps [^pipeline-dev-ops]
 
-- [ ] Monitor statistics on build pipeline. Identify anomalies and action if necessary.<br />
+- [ ] Monitor statistics on build pipeline. Identify anomalies and action.<br />
   Example: length of time builds and deployments take. Number of failed builds.<br />
   #pipeline--devops
-- [ ] Monitor statistics on code and commits. Identify anomalies and action if necessary.<br />
+- [ ] Monitor statistics on code and commits. Identify anomalies and action.<br />
   Example: file count, line count, comment count, commit count, most changed files.<br />
   [Article: Do you know how to get code line metrics? | SSW.Rules](https://www.ssw.com.au/rules/get-code-line-metrics)<br />
   [Article: Do you use hotspot analysis to prioritize tech debt? | SSW.Rules](https://www.ssw.com.au/rules/prioritize-tech-debt)<br />
@@ -3556,4 +3894,4 @@
   #general--deployment #pipeline--devops
 
 
-[^pipeline-dev-ops]: DevOps covers issues related to the ongoing operation of the application in production, such as monitoring, logging, alerting, etc.
+[^pipeline-dev-ops]: DevOps covers the ongoing operation of the application in production, such as monitoring, logging, alerting, etc.

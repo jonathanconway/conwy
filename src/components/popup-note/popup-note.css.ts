@@ -1,5 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import * as textMixins from "../text/text.mixins";
 import { vars } from "../theme";
 
 export const popupNoteContainer = style({
@@ -9,7 +10,8 @@ export const popupNoteContainer = style({
 
 export const popupNoteContentsContainer = style({
   maxWidth: "5rem",
-  fontWeight: "normal",
+  ...textMixins.small,
+  color: vars.text.body.inverseColor,
 });
 
 export const popupNoteLink = style({

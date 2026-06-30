@@ -41,6 +41,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     p: MdxP,
     pre: MdxPre,
     ul: MdxUl,
+    section: MdxSection,
     table: MdxTable,
     tbody: MdxTBody,
     thead: MdxTHead,

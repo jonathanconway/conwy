@@ -2,8 +2,7 @@
 
 import { isArray } from "lodash";
 
-import { useChecklistContext } from "@/components/checklist";
-
+import { useChecklistContext } from "../../../checklist";
 import { MdxLiProps } from "../mdx-li-props";
 
 import { MdxLiChecklistItemClient } from "./mdx-li-checklist-item-client";

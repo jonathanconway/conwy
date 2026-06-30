@@ -124,6 +124,53 @@
 
 [^general-architecture]: Architecture covers structural organization of the application.
 
+#### General - Architecture - Cloud Native [^general-architecture-cloud-native]
+
+- [ ] Immutable infrastructure.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  #general--architecture
+- [ ] Cloud Infrastructure.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Microservices.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+- [ ] API.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  #general--architecture
+- [ ] Service mesh.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  #general--architecture
+- [ ] Modern Design.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Micro services.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Backing Services.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Automation.<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  #general--architecture
+- [ ] Containers and orchestration.<br />
+  [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
+  [Article: What is Cloud Native? | Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/definition)<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+- [ ] DevOps.<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+- [ ] Continuous integration and continuous delivery (CI/CD).<br />
+  [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
+  #general--architecture
+
+[^general-architecture-cloud-native]: Cloud Native covers the Cloud Native architectural approach that seeks to exploit the scale, elasticity, and resilience of cloud computing.
+
+
+
+
 #### General - Architecture - 12 Factor [^general-architecture-12-factor]
 
 - [ ] Codebase: One codebase tracked in revision control, many deploys.<br />
@@ -219,7 +266,7 @@
 - [ ] Use global error handling to ensure exceptions don't break the whole app and block the user.<br />
   #concern--errors
 - [ ] Don't handle exceptions without re-throwing unless it's necessary.<br />
-  Example: a bug in the API that can't be resolved just yet. If necessary, thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
+  Example: a bug in the API that can't be resolved just yet. Thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
   #concern--errors #nfr--correctness
 - [ ] Define exceptions / errors out of existence where possible.<br />
   [Book: A Philosophy of Software Design, Ch 10](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
@@ -294,7 +341,7 @@
 
 ### Concern - Feature flags [^concern-feature-flags]
 
-- [ ] Use a purpose-built, full-features platform, where applicable.<br />
+- [ ] Use a purpose-built, full-features platform.<br />
   [Docs: LaunchDarkly](https://launchdarkly.com/docs/home)<br />
   #concern--feature-flags
 - [ ] Put feature behind a feature flag as needed.<br />
@@ -328,7 +375,7 @@
   #concern--feature-flags
 - [ ] Ensure feature flag is added to relevant back-end systems, configuration files, databases, etc.<br />
   #concern--feature-flags
-- [ ] Ensure feature flag is configured to be writeable via cookies or similar, if appropriate and required.<br />
+- [ ] Ensure feature flag is configured to be writeable via cookies or similar.<br />
   #concern--feature-flags
 
 [^concern-feature-flags]: Feature flags covers turning features on or off by configuration.
@@ -338,9 +385,9 @@
 
 ### Concern - Analytics [^concern-analytics]
 
-- [ ] Add analytics code if needed.<br />
+- [ ] Add analytics.<br />
   #concern--analytics
-- [ ] Use a dedicated, full-featured third-party analytics platform, where applicable.<br />
+- [ ] Use a dedicated, full-featured third-party analytics platform.<br />
   [Platform: Google Analytics](https://marketingplatform.google.com/about/analytics/)<br />
   [Platform: Adobe Analytics](https://experienceleague.adobe.com/en/browse/analytics)<br />
   [Platform: Medallia AI](https://www.medallia.com/platform/analytics/)<br />
@@ -411,14 +458,14 @@
   Example: installation instructions, credentials, test accounts.<br />
   #concern--pull-request #nfr--testability
 - [ ] Create preview / staging site.<br />
-  And include instructions to access if needed.<br />
+  And include instructions to access.<br />
   #concern--pull-request
 - [ ] Apply changes in separate commits to allow history to be viewed and discussed.<br />
   #concern--pull-request
 - [ ] Remove temporary settings before setting PR to Open.<br />
   Example: temporary test-only configurations or feature flag settings.<br />
   #concern--pull-request
-- [ ] Review with stakeholders (design, analysts, etc) before merge, if needed.<br />
+- [ ] Review with stakeholders (design, analysts, etc) before merge.<br />
   #concern--pull-request #nfr--correctness
 - [ ] Split functional and non-functional changes into separate PRs.<br />
   #concern--pull-request
@@ -460,7 +507,7 @@
 - [ ] In lists of steps, avoid too many small steps that are closely related.<br />
   Merge into a bigger step as needed.<br />
   #concern--documentation
-- [ ] Ensure steps are clearly indicated as "required", if necessary.<br />
+- [ ] Ensure steps are clearly indicated as "required".<br />
   #concern--documentation
 - [ ] Ensure code samples match up with instructions.<br />
   #concern--documentation
@@ -507,7 +554,7 @@
 - [ ] Communicate intent.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, State the Intent of Your Code, pp. 62-63](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
-- [ ] Communicate the bigger picture where appropriate.<br />
+- [ ] Communicate the bigger picture.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, “Big Picture” Comments, pp. 54-55](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Provide summary comments above blocks code.<br />
@@ -660,8 +707,8 @@
   #testing--general
 - [ ] Use immutable `const` where possible. Alternately, split into utility functions or before/after blocks.<br />
   #testing--general
-- [ ] Place tests in appropriate folder with appropriate and meaningful filename.<br />
-  Use appropriate suffix, such as `.test.ts` or `.spec.ts`.<br />
+- [ ] Place tests in appropriate folder with meaningful filename.<br />
+  Use suffix, such as `.test.ts` or `.spec.ts`.<br />
   #testing--general
 - [ ] Use `beforeAll` rather than `beforeEach` where possible to minimise overhead.<br />
   #testing--general
@@ -736,7 +783,7 @@
 - [ ] Perform exploratory testing.<br />
   [Article: Do you know what “exploratory testing” is? | SSW.Rules](https://www.ssw.com.au/rules/what-is-exploratory-testing)<br />
   #testing--manual
-- [ ] Involve diverse participants, including real users (as appropriate), in testing.<br />
+- [ ] Involve diverse participants, including real users, in testing.<br />
   Diverse perspectives which help cultivate critical distance, increasing the chances of identifying unexpected problems.<br />
   [Article: Do you recognize the importance of critical distance? | SSW.Rules](https://www.ssw.com.au/rules/importance-critical-distance)<br />
   [Paper: Groups of diverse problem solvers can outperform groups of high-ability problem solvers | PNAS](https://www.pnas.org/doi/10.1073/pnas.0403723101)<br />
@@ -780,7 +827,7 @@
 ### Testing - Mocking [^testing-mocking]
 
 - [ ] When mocking API calls, ensure they are aligned with the real Backend.<br />
-  If necessary, check API specs, or run automated API client generators, to ensure alignment.<br />
+  Check API specs, or run automated API client generators, to ensure alignment.<br />
   #testing--mocking
 - [ ] Mock values should be realistic, close to real data.<br />
   #testing--mocking
@@ -935,7 +982,7 @@
 
 ### Testing - E2E [^testing-e2e]
 
-- [ ] Add E2E tests if needed.<br />
+- [ ] Add E2E tests.<br />
   #testing--e2e
 - [ ] Use E2E tests sparingly, especially if they are slow and resource intensive.<br />
   [Article: Do you remember to use automated UI testing sparingly? | SSW.Rules](https://www.ssw.com.au/rules/automated-ui-testing-sparingly)<br />
@@ -1119,7 +1166,7 @@
   [Blog: Quick tip: reusable Array search predicates | JASON Format](https://jasonformat.com/reusable-array-search-predicates)<br />
   #nfr--readability
 - [ ] Use idiomatic coding style.<br />
-  As appropriate to the language and frameworks in the current code base.<br />
+  Appropriate for the language and frameworks in the current code base.<br />
   #nfr--readability
 - [ ] Use coding style consistent with the surrounding code-base.<br />
   To make it easier for the current team to work with.<br />
@@ -1200,7 +1247,7 @@
   Example: NPM works on Windows, Linux and Mac, so it is more portable than, say, Nuget.<br />
   #nfr--portability
 - [ ] Avoid platform-specific calls or dependencies.<br />
-  Example: NPM scripts should not rely on Windows or Linux specific features. Use an abstraction library if needed, such as NodeMon for file watching.<br />
+  Example: NPM scripts should not rely on Windows or Linux specific features. Use an abstraction library, such as [NodeMon](https://nodemon.io/) for file watching.<br />
   #nfr--portability
 - [ ] Use code and source control configurations that are supported on multiple operating systems and platforms.<br />
   [Article: Do you handle Multi-OS dev teams in source control?](https://www.ssw.com.au/rules/handle-multi-os-dev-teams-in-source-control)<br />
@@ -1288,7 +1335,7 @@
 - [ ] For loading indicators, apply `role=status` and include "Loading" text in nested, screen-reader-only element.<br />
   [Docs: Bootstrap - Spinners](https://getbootstrap.com/docs/4.5/components/spinners/)<br />
   #nfr--accessibility
-- [ ] Use ARIA attributes where appropriate.<br />
+- [ ] Use ARIA attributes.<br />
   Example: `aria-label` or `aria-labelled-by` (with matching id) to label elements.<br />
   [Article: ARIA — first rule of ARIA • Website Spec](https://specification.website/spec/accessibility/aria-usage/)<br />
   #language--html #nfr--accessibility
@@ -1548,10 +1595,10 @@
   [Article: WCAG - On Input](https://www.w3.org/WAI/WCAG22/Understanding/on-input.html)<br />
   [Article: Form labels • Website Spec](https://specification.website/spec/accessibility/form-labels/)<br />
   #nfr--accessibility #accessibility--forms
-- [ ] Use `fieldset` and `legend` elements where appropriate.<br />
+- [ ] Use `fieldset` and `legend` elements.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
   #nfr--accessibility #accessibility--forms
-- [ ] Inputs use `autocomplete` where appropriate.<br />
+- [ ] Inputs use `autocomplete`.<br />
   [Article: WCAG - Identify Input Purpose](https://www.w3.org/WAI/WCAG22/Understanding/identify-input-purpose.html)<br />
   #nfr--accessibility #accessibility--forms
 - [ ] Make sure that form input errors are displayed in list above the form after submission.<br />
@@ -2034,7 +2081,7 @@
 
 ### NFR - Consistency [^consistency]
 
-- [ ] Ensure changes made to data by a user are reflected across the application and to other users where appropriate.<br />
+- [ ] Ensure changes made to data by a user are reflected across the application and to other users.<br />
   #nfr--consistency
 
 [^consistency]: Consistency covers the application as a whole behaving in a expected and predictable ways.
@@ -2063,96 +2110,51 @@
 
 ### NFR - Security [^security]
 
+[^security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
+[^pii]: Personally Identifiable Information
+
+
+
+
+### NFR - Security - Transport & Network Security
+
 - [ ] Prefer HTTPS wherever possible and be careful what you send over non-HTTPS.<br />
   [Article: HTTPS and TLS • Website Spec](https://specification.website/spec/security/https-tls/)<br />
   #nfr--security
 - [ ] Configure HSTS header.<br />
   [Article: HSTS (Strict-Transport-Security) • Website Spec](https://specification.website/spec/security/hsts/)<br />
   #nfr--security
+- [ ] Use timeouts to reduce attack surface.<br />
+  Example: generated secure redirect URLs could timeout after a few minutes.<br />
+  #nfr--security
+
+
+### NFR - Security - HTTP Headers & Browser Hardening
+
+- [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
+  Use X-Frame-Options: `DENY`, `SAMEORIGIN`, `ALLOW-FROM`.<br />
+  Use Content-Security-Policy `frame-ancestors`: `none`, `self`, `URI`.<br />
+  [Article: Clickjacking | OWASP Foundation](https://owasp.org/www-community/attacks/Clickjacking)<br />
+  #nfr--security
 - [ ] Disable after first click to protect against "click jacking" or rapidly repeated submissions / spamming.<br />
   Use delay, debounce or other rate limiting<br />
   #nfr--security
-- [ ] Apply least privilege principle.<br />
-  Don't allow or expose anything except what the user/consumer needs.<br />
+- [ ] Use Subresource Integrity (SRI) on third-party scripts and stylesheets.<br />
+  [Article: Subresource Integrity (SRI) • Website Spec](https://specification.website/spec/security/subresource-integrity/)<br />
   #nfr--security
-- [ ] Minimise client-exposed interfaces to reduce attack surface area.<br />
+- [ ] Verify that security restrictions are enabled on your development device and browser.<br />
   #nfr--security
-- [ ] Don't expose env vars to build or dev server that don't need to be exposed.<br />
-  #nfr--security
-- [ ] Check for cross-site scripting attack (XSS) vulnerability.<br />
-  #nfr--security
-- [ ] Check for unmasking customer personally identifiable information (PII) vulnerability.<br />
-  #nfr--security
-- [ ] Check for misleading the customer vulnerability.<br />
-  #nfr--security
-- [ ] Check OWASP Top 10.<br />
-  #nfr--security
-- [ ] Careful with calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
-  #nfr--security
-- [ ] Careful with integrating with existing API already in Prod with different clients.<br />
-  Example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
-  #nfr--security
-- [ ] Careful integrating via new flows that haven't been used before.<br />
-  Make sure they're security vetted before going to Prod.<br />
-  #nfr--security
-- [ ] Careful when adding new input fields / user input / URL Parameters.<br />
-  #nfr--security
-- [ ] Careful about significant changes to underlying platform or control.<br />
-  Such as updates to vendor systems (logging frameworks, etc) or migrations to new cloud/hosting providers.<br />
-  #nfr--security
-- [ ] Check for replay vulnerability.<br />
-  This is where the network request is captured and submitted again without modification.<br />
-  #nfr--security
-- [ ] Ensure pen-testing process is in place if needed.<br />
-  Be sure to request pen-testing as per processes in your organisation.<br />
-  #nfr--security
+
+### NFR - Security - Input Validation & Injection Prevention
+
 - [ ] Sanitise input fields.<br />
   Example: Entering HTML entity into an input should not create a vulnerability.<br />
   It might need to be sanitised when displayed back to the user, to avoid injection attack. Example: `<script>` should be sanitised so that the browser does not execute code within.<br />
   #nfr--security
-- [ ] Use timeouts to reduce attack surface.<br />
-  Example: generated secure redirect URLs could timeout after a few minutes.<br />
+- [ ] Check for cross-site scripting attack (XSS) vulnerability.<br />
   #nfr--security
-- [ ] If you render `<a href={user.website}>`, beware of the user whose website is `'javascript: stealYourPassword()'`.<br />
-  #nfr--security
-- [ ] Avoid spreading user input like `<div {...userData}>` or any object that might contain user input.<br />
-  [Blog: Why Do React Elements Have a typeOf Property?](https://overreacted.io/why-do-react-elements-have-typeof-property/)<br />
-  #nfr--security
-- [ ] DevSecOps: Shift left.<br />
-  Try to anticipate and address security issues as early as possible, such as in planning, design or build.<br />
-  #nfr--security
-- [ ] Never put potentially sensitive data somewhere insecure.<br />
-  Example: client storage (`localStorage`, `sessionStorage`)<br />
-  #nfr--security
-- [ ] Avoid putting putting sensitive data in GET query-string parameters, headers, etc.<br />
-  Even behind HTTP it might still show up in logs or other insecure places.<br />
-  #nfr--security
-- [ ] Non-reversible locators are Ok.<br />
-  #nfr--security
-- [ ] Careful with `id`s that are publicly visible.<br />
-  Make sure they are totally non-identifiable with regard to the data they reference.<br />
-  #nfr--security
-- [ ] Keep experience for security admins separate from that for users.<br />
-  Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
-  #nfr--security
-- [ ] Careful consuming third-party packages or components from untrusted sources.<br />
-  Minimise use of third-party packages. Check for vulnerabilities on trusted news sources. Use automated checkers and monitoring tools if possible.<br />
-  [Tool: Dependabot](https://github.com/dependabot)<br />
-  [Tool: Snyk](https://snyk.io)<br />
-  [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
-  #nfr--security
-- [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
-  Use X-Frame-Options: `DENY`, `SAMEORIGIN`, `ALLOW-FROM` as appropriate.<br />
-  Use Content-Security-Policy `frame-ancestors`: `none`, `self`, `URI` as appropriate.<br />
-  [Article: Clickjacking | OWASP Foundation](https://owasp.org/www-community/attacks/Clickjacking)<br />
-  #nfr--security
-- [ ] Verify that security restrictions are enabled on your development device and browser.<br />
-  #nfr--security
-- [ ] Careful with redirects.<br />
-  Avoid redirects and forwards, if possible.<br />
-  Don't involve user input to determine the destination.<br />
-  If parameters must be used, validate the supplied vale and ensure it is authorized for the user.<br />
-  Use mapping values rather than the actual URLs.<br />
+- [ ] Construct secure parameterised queries, to prevent SQL, NoSQL and OS shell injection attacks.<br />
+  In addition, use allowlist validation on all user input.<br />
   #nfr--security
 - [ ] Careful to prevent CSS injection attacks.<br />
   Utilize context-dependent sanitization.<br />
@@ -2162,27 +2164,31 @@
   Sanitize content of html `<style>` tags.<br />
   [Article: Content Security Policy (CSP) • Website Spec](https://specification.website/spec/security/content-security-policy/)<br />
   #nfr--security
-- [ ] Ensure rate-limiting of all assets being served, to prevent Denial of Service (DOS) attacks.<br />
-  [Article: API4:2019 Lack of Resources & Rate Limiting](https://owasp.org/API-Security/editions/2019/en/0xa4-lack-of-resources-and-rate-limiting/)<br />
+- [ ] If you render `<a href={user.website}>`, beware of the user whose website is `'javascript: stealYourPassword()'`.<br />
   #nfr--security
-- [ ] Construct secure parameterised queries, to prevent SQL, NoSQL and OS shell injection attacks.<br />
-  In addition, use allowlist validation on all user input.<br />
+- [ ] Avoid spreading user input like `<div {...userData}>` or any object that might contain user input.<br />
+  [Blog: Why Do React Elements Have a typeOf Property?](https://overreacted.io/why-do-react-elements-have-typeof-property/)<br />
   #nfr--security
-- [ ] Prevent sensitive data exposure.<br />
-  Strongly encrypt sensitive data in transit and at rest. Don't store sensitive data unnecessarily, especially client-side.<br />
+- [ ] Careful with redirects.<br />
+  Avoid redirects and forwards, if possible.<br />
+  Don't involve user input to determine the destination.<br />
+  If parameters must be used, validate the supplied vale and ensure it is authorized for the user.<br />
+  Use mapping values rather than the actual URLs.<br />
+  #nfr--security
+- [ ] Careful when adding new input fields / user input / URL Parameters.<br />
+  #nfr--security
+
+### NFR - Security - Sensitive Data & Secrets
+
+- [ ] Never put potentially sensitive data somewhere insecure.<br />
+  Example: client storage (`localStorage`, `sessionStorage`)<br />
+  #nfr--security
+- [ ] Avoid putting putting sensitive data in GET query-string parameters, headers, etc.<br />
+  Even behind HTTP it might still show up in logs or other insecure places.<br />
   #nfr--security
 - [ ] Careful to avoid private data being leaked via logs.<br />
   Example: PII [^pii] or secrets.<br />
   #nfr--observability #nfr--observability
-- [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
-  [Blog: Socket](https://socket.dev/blog)<br />
-  [Blog: The latest Next.js news](https://nextjs.org/blog)<br />
-  [Blog: React Blog](https://react.dev/blog)<br />
-  [Article: Do you monitor your application for vulnerabilities? | SSW.Rules](https://www.ssw.com.au/rules/monitor-packages-for-vulnerabilities)<br />
-  [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
-  #nfr--security
-- [ ] Scan configuration files (such as IaC) for vulnerabilities.<br />
-  #nfr--security
 - [ ] Keep all secrets or sensitive data in a secret vault or store.<br />
   Example: API keys, database credentials, etc.<br />
   [Platform: HashiCorp Vault](https://www.vaultproject.io)<br />
@@ -2192,23 +2198,99 @@
   [Article: Do you store your secrets securely? | SSW.Rules](https://www.ssw.com.au/rules/store-your-secrets-securely)<br />
   [Article: Do you share your developer secrets securely? | SSW.Rules](https://www.ssw.com.au/rules/share-your-developer-secrets-securely)<br />
   #nfr--security
+- [ ] Avoid clear-text email addresses in HTML.<br />
+  [Article: Do you avoid clear text email addresses in web pages? | SSW.Rules](https://www.ssw.com.au/rules/avoid-clear-text-email-addresses-in-web-pages)<br />
+  #nfr--security
+- [ ] Don't expose env vars to build or dev server that don't need to be exposed.<br />
+  #nfr--security
 - [ ] Follow best practices when dealing with JWTs (JSON Web Tokens).<br />
   Use strong signing algorithms. Keep the secret key secure. Set appropriate token expiration times. Ensure tokens are validated on the server side. Never put sensitive data in the payload.<br />
   [Article: JWT Best Practices](https://auth0.com/docs/security/tokens/json-web-tokens-best-practices)<br />
   [Article: What Are JSON Web Tokens (JWT)?](https://www.freecodecamp.org/news/what-are-json-web-tokens-jwt)<br />
   #nfr--security
-- [ ] Avoid clear-text email addresses in HTML.<br />
-  [Article: Do you avoid clear text email addresses in web pages? | SSW.Rules](https://www.ssw.com.au/rules/avoid-clear-text-email-addresses-in-web-pages)<br />
+
+### NFR - Security - Privacy & Identifiers
+
+- [ ] Check for unmasking customer personally identifiable information (PII) vulnerability.<br />
+  #nfr--security
+- [ ] Non-reversible locators are Ok.<br />
+  #nfr--security
+- [ ] Careful with `id`s that are publicly visible.<br />
+  Make sure they are totally non-identifiable with regard to the data they reference.<br />
+  #nfr--security
+
+### NFR - Security - Access Control & Attack Surface
+
+- [ ] Apply least privilege principle.<br />
+  Don't allow or expose anything except what the user/consumer needs.<br />
+  #nfr--security
+- [ ] Minimise client-exposed interfaces to reduce attack surface area.<br />
+  #nfr--security
+- [ ] Keep experience for security admins separate from that for users.<br />
+  Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
+  #nfr--security
+- [ ] Check for replay vulnerability.<br />
+  This is where the network request is captured and submitted again without modification.<br />
+  #nfr--security
+- [ ] Ensure rate-limiting of all assets being served, to prevent Denial of Service (DOS) attacks.<br />
+  [Article: API4:2019 Lack of Resources & Rate Limiting](https://owasp.org/API-Security/editions/2019/en/0xa4-lack-of-resources-and-rate-limiting/)<br />
+  #nfr--security
+
+
+### NFR - Security - Third-Party & Supply Chain
+
+- [ ] Careful consuming third-party packages or components from untrusted sources.<br />
+  Minimise use of third-party packages.<br />
+  Check for issues and vulnerabilities on open-source repo and trusted news sources.<br />
+  Use automated checkers and monitoring tools if possible.<br />
+  [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
+  #nfr--security
+- [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
+  [Blog: Socket](https://socket.dev/blog)<br />
+  [Blog: The latest Next.js news](https://nextjs.org/blog)<br />
+  [Blog: React Blog](https://react.dev/blog)<br />
+  [Article: Do you monitor your application for vulnerabilities? | SSW.Rules](https://www.ssw.com.au/rules/monitor-packages-for-vulnerabilities)<br />
+  [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
+  #nfr--security
+- [ ] Use automated real time threat monitoring tools for code and dependencies.<br />
+  [Tool: Dependabot](https://github.com/dependabot)<br />
+  [Tool: Snyk](https://snyk.io)<br />
+  [Tool: Trivy](https://trivy.dev)<br />
+  [Tool: Falco](https://falco.org)<br />
+  #nfr--security
+- [ ] Scan configuration files (such as IaC) for vulnerabilities.<br />
+  #nfr--security
+
+### NFR - Security - Integration & Change Risk
+
+- [ ] Careful calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
+  #nfr--security
+- [ ] Careful integrating with existing API already in Prod with different clients.<br />
+  Example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
+  #nfr--security
+- [ ] Careful integrating via new flows that haven't been used before.<br />
+  Make sure they're security vetted before going to Prod.<br />
+  #nfr--security
+- [ ] Careful making significant changes to underlying platform or control.<br />
+  Such as updates to vendor systems (logging frameworks, etc) or migrations to new cloud/hosting providers.<br />
+  #nfr--security
+
+### NFR - Security - Process & Governance
+
+- [ ] Regularly review code-base against OWASP Top 10.<br />
+  [Page: OWASP Top Ten Web Application Security Risks](https://owasp.org/www-project-top-ten/)<br />
+  #nfr--security
+- [ ] Ensure pen-testing process is in place.<br />
+  Be sure to request pen-testing as per processes in your organisation.<br />
+  #nfr--security
+- [ ] Shift left.<br />
+  Try to anticipate and address security issues as early as possible, such as in planning, design or build.<br />
   #nfr--security
 - [ ] Provide Security standard text file to tell security researchers how to report vulnerabilities.<br />
   [Article: `/.well-known/security.txt` • Website Spec](https://specification.website/spec/security/security-txt/)<br />
   #nfr--security
-- [ ] Use Subresource Integrity (SRI) on third-party scripts and stylesheets.<br />
-  [Article: Subresource Integrity (SRI) • Website Spec](https://specification.website/spec/security/subresource-integrity/)<br />
+- [ ] Check for misleading the customer vulnerability.<br />
   #nfr--security
-
-[^security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
-[^pii]: Personally Identifiable Information
 
 
 
@@ -2416,7 +2498,7 @@
 
 #### NFR - Usability - Date and time [^nfr-usability-date-and-time]
 
-- [ ] Ensure multiple time-zones are supported if necessary. Test with simulated time-zone.<br />
+- [ ] Ensure multiple time-zones are supported. Test with simulated time-zone.<br />
   #nfr--usability #usability--date-and-time #concern--date-time
 - [ ] Formatting date or time values should follow user's locale format and show value in correct time-zone.<br />
   #nfr--usability #usability--date-and-time #concern--date-time
@@ -2431,7 +2513,7 @@
 #### NFR - Usability - Numbers [^nfr-usability-numbers]
 
 - [ ] Format numeric values correctly.<br />
-  Example: currencies should use correct comma and currency symbol or code if needed.<br />
+  Example: currencies should use correct comma and currency symbol or code.<br />
   #nfr--usability #usability--numbers
 - [ ] Parse numeric values received as a string to the correct number format.<br />
   #nfr--usability #usability--numbers
@@ -2595,9 +2677,9 @@
 - [ ] Define overly complex structures out of existence.<br />
   Change the design so that they are unnecessary.<br />
   #code--structure #nfr--readability #nfr--maintainability
-- [ ] Use a more specific structure (function, variable, etc) if appropriate.<br />
+- [ ] Use a more specific structure (function, variable, etc).<br />
   #code--structure
-- [ ] Re-use an existing structure (function, variable, etc) if appropriate and to avoid duplication.<br />
+- [ ] Re-use an existing structure (function, variable, etc) and to avoid duplication.<br />
   Move it to a shared folder/package/module and export.<br />
   [Article: Do you look for duplicate code? | SSW.Rules](https://www.ssw.com.au/rules/avoid-code-duplication)<br />
   #code--structure
@@ -2610,9 +2692,9 @@
   #code--structure
 - [ ] Don't add specific things to generic components.<br />
   #code--structure
-- [ ] Move code to a common/shared module if appropriate.<br />
+- [ ] Move code to a common/shared module.<br />
   #code--structure
-- [ ] Move code to a more specific module or deeper sub-folder if appropriate.<br />
+- [ ] Move code to a more specific module or deeper sub-folder.<br />
   #code--structure
 - [ ] Move common data to a higher-level function and pass down (or otherwise share) to more lower-level functions.<br />
   #code--structure
@@ -2953,7 +3035,7 @@
 - [ ] Provide Favicons and app icons.<br />
   [Article: Favicons and app icons • Website Spec](https://specification.website/spec/foundations/favicons/)<br />
   #language--html
-- [ ] Provide Open Graph protocol elements if appropriate.<br />
+- [ ] Provide Open Graph protocol elements.<br />
   `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `og:site_name`.<br />
   [Article: Open Graph protocol • Website Spec](https://specification.website/spec/foundations/open-graph/)<br />
   #language--html
@@ -3004,7 +3086,7 @@
   #language--css
 - [ ] Minimise the number of concurrent animations, for best performance and usability.<br />
   #language--css
-- [ ] Remove animations when not visible if necessary.<br />
+- [ ] Remove animations when not visible.<br />
   #language--css
 - [ ] Style view transitions in CSS to take advantage of platform optimisations.<br />
   [Article: View Transitions • Website Spec](https://specification.website/spec/performance/view-transitions/)<br />
@@ -3158,7 +3240,7 @@
 
 #### Framework - React - Hooks
 
-- [ ] Use intuitive field names in the hook result object if appropriate.<br />
+- [ ] Use intuitive field names in the hook result object.<br />
   Example: `return { orders }` instead of `return { data }`.<br />
   #framework--react
 - [ ] Careful about initialising return value of array to empty (`[]`) in hook without providing some kind of loading indicator.<br />
@@ -3320,7 +3402,7 @@
 - [ ] Use dynamic imports to reduce load time in projects with large modules.<br />
   [Article: Do you know when to use dynamic imports in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/dynamically-load-components)<br />
   #framework--nextjs
-- [ ] Use dynamic routing where appropriate.<br />
+- [ ] Use dynamic routing.<br />
   [Docs: Dynamic Routes - NextJS](https://nextjs.org/docs/pages/building-your-application/routing/dynamic-routes)<br />
   [Article: Do you know when to use dynamic imports in Next.js? | SSW.Rules](https://www.ssw.com.au/rules/next-dynamic-routes)<br />
   #framework--nextjs
@@ -3492,7 +3574,7 @@
 
 #### Framework - Angular - Patterns
 
-- [ ] Use observables where applicable.<br />
+- [ ] Use observables.<br />
   [Article: Do you know how to use Observables? | SSW.Rules](https://www.ssw.com.au/rules/use-observables)<br />
   #framework--angular
 
@@ -3507,6 +3589,62 @@
   #framework--rxjs
 
 [^framework-rxjs]: RxJS covers the RxJS library.
+
+
+
+
+### Framework - VueJS [^framework-vuejs]
+
+- [ ] Select VueJS for projects where it is most beneficial.<br />
+  Ease to learn, lightweight framework, high performance and great tooling.<br />
+  [Article: Do you know what makes Vue.js great? | SSW.Rules](https://www.ssw.com.au/rules/why-vue-is-great)<br />
+  #framework--vuejs
+- [ ] Write idiomatic Vue code, adhering to the official VueJS Style Guide.<br />
+  [VueJS Style Guide](https://vuejs.org/style-guide/rules-essential.html)<br />
+  #framework--vuejs
+- [ ] Prefer the recommended Composition API rather than the Options API.<br />
+  [Composition API](https://vuejs.org/guide/extras/composition-api-faq)<br />
+  #framework--vuejs
+- [ ] Use composables to re-use pieces of state logic.<br />
+  [Composables | Vue.js](https://vuejs.org/guide/reusability/composables.html)<br />
+  #framework--vuejs
+- [ ] Organise the internal structure of VueJS Views and Components.<br />
+  Example: 1. Imports, 2. Props definition, 3. Store, query and composable calls, 4. Destructuring, 5. Ref and computed declarations, 6. Function calls, 7. Lifecycle hooks, 8. Subscriptions<br />
+  #framework--vuejs
+- [ ] Organise the internal structure of VueJS Stores and Composables.<br />
+  Example: 1. Imports, 2. Interface declarations, 3. Store or composable declaration (A. Other store, query and composable calls, B. Destructuring, C. Ref and computed declarations, D. Private function declarations, E. Function calls, F. Lifecycle hooks, G. Subscriptions, H. Return statement)<br />
+  #framework--vuejs
+- [ ] Use quality, well supported state management libraries, such as Pinia and Colada.<br />
+  [Pinia](http://pinia.vuejs.org) - global store<br />
+  [Pinia Colada](https://pinia-colada.esm.dev) - data fetching layer<br />
+  #framework--vuejs
+- [ ] Use quality, well supported, Vue setup / creation tool.<br />
+  [Tool: create-vue](https://github.com/vuejs/create-vue)<br />
+  [Tool: create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite)<br />
+  [Article: Do you know how to set up a Vue.js project? | SSW.Rules](https://www.ssw.com.au/rules/set-up-vue-project)<br />
+  [Docs: Quick Start | Vue.js](https://vuejs.org/guide/quick-start.html)<br />
+  #framework--vuejs
+- [ ] Use quality, well supported, Vue (or Vue-compatible) development libraries and tools.<br />
+  [Tool: Vite](https://vite.dev)<br />
+  [Library: Vitest](https://vitest.dev/)<br />
+  [Library: Vue Test Utils](https://test-utils.vuejs.org/guide/)<br />
+  [Library: MockServiceWorker](http://mswjs.io) - HTTP mocking<br />
+  [Tool: Oxlint](https://oxc.rs/)<br />
+  [Tool: Prettier](https://prettier.io/)<br />
+  #framework--vuejs
+- [ ] Use a Vue-compatible IDE and Vue IDE extensions to maximise the developer experience and productivity.<br />
+  [Article: Do you know the best IDE for Vue.js? | SSW.Rules](https://www.ssw.com.au/rules/best-ide-for-vue)<br />
+  [Tool: Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)<br />
+  #framework--vuejs
+- [ ] Use Vue browser extensions to improve developer productivity.<br />
+  [Tool: Vue.js devtools for Chrome](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)<br />
+  [Article: Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)<br />
+  [Tool: Colada devtools](https://chromewebstore.google.com/detail/icdbaobbeemmhlmjolbkedcneadkfpdl?utm_source=item-share-cb)<br />
+  [Tool: Vue.js devtools for Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)<br />
+  [Article: Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)<br />
+  #framework--vuejs
+
+[^framework-vuejs]: VueJS covers the VueJS framework.
 
 
 
@@ -3725,10 +3863,10 @@
 
 ### Pipeline - DevOps [^pipeline-dev-ops]
 
-- [ ] Monitor statistics on build pipeline. Identify anomalies and action if necessary.<br />
+- [ ] Monitor statistics on build pipeline. Identify anomalies and action.<br />
   Example: length of time builds and deployments take. Number of failed builds.<br />
   #pipeline--devops
-- [ ] Monitor statistics on code and commits. Identify anomalies and action if necessary.<br />
+- [ ] Monitor statistics on code and commits. Identify anomalies and action.<br />
   Example: file count, line count, comment count, commit count, most changed files.<br />
   [Article: Do you know how to get code line metrics? | SSW.Rules](https://www.ssw.com.au/rules/get-code-line-metrics)<br />
   [Article: Do you use hotspot analysis to prioritize tech debt? | SSW.Rules](https://www.ssw.com.au/rules/prioritize-tech-debt)<br />
@@ -3745,3 +3883,5 @@
 
 
 [^pipeline-dev-ops]: DevOps covers the ongoing operation of the application in production, such as monitoring, logging, alerting, etc.
+
+[^general]: General covers general front end engineering concerns.

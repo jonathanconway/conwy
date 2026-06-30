@@ -12,7 +12,6 @@ import "./mdx-a.css";
 
 export function MdxA(props: MdxAProps) {
   props = getASubformatProps(props);
-
   if (checkIsASubformatPopupNoteLinkProps(props)) {
     return <MdxAPopupNoteLink {...props} />;
   }

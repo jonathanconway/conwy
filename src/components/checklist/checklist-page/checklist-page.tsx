@@ -1,7 +1,6 @@
 import { ChecklistContext } from "..";
 
-import { ChecklistContainer } from "@/components/checklist/checklist-container";
-
+import { ChecklistContainer } from "../../checklist";
 import { MainAsideLayout } from "../../layouts";
 import { MdxContainer } from "../../mdx";
 import { Stack } from "../../stack";
@@ -19,13 +18,11 @@ export function ChecklistPage(props: ChecklistPageProps) {
             <Stack gap={2}>
               <ChecklistPageHeader checklist={props.checklist} />
 
-              <MdxContainer>
-                <MdxContainer>{props.checklist.startnotes}</MdxContainer>
+              <MdxContainer>{props.checklist.startnotes}</MdxContainer>
 
-                <ChecklistContainer checklistMeta={props.checklist.meta}>
-                  {props.checklist.content}
-                </ChecklistContainer>
-              </MdxContainer>
+              <ChecklistContainer checklistMeta={props.checklist.meta}>
+                <MdxContainer>{props.checklist.content}</MdxContainer>
+              </ChecklistContainer>
             </Stack>
           }
           aside={<ChecklistPageSidebar />}
