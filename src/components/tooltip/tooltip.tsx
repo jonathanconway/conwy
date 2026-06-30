@@ -27,10 +27,7 @@ export function Tooltip(props: TooltipProps) {
   const children = convertContentsToReactNode(props.children);
 
   const id = useId().replaceAll(":", "");
-
-  if (!contents) {
-    return children;
-  }
+  const descriptionId = `${id}-description`;
 
   const childObjects: readonly ReactNode[] = isArray(children)
     ? children
@@ -62,10 +59,15 @@ export function Tooltip(props: TooltipProps) {
           ...props.style,
         }}
         opacity={1}
+        aria-describedby={descriptionId}
         className={getResponsiveHidden(props.responsiveVisibility)}
       >
         {contents}
       </Tooltip_>
+
+      <span hidden id={descriptionId}>
+        {props.contents}
+      </span>
     </>
   );
 }

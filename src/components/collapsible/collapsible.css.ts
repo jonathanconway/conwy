@@ -40,13 +40,15 @@ export const collapsibleHeader = style({
   paddingRight: "0.5rem" /* 8px */,
   paddingTop: "0.25rem" /* 4px */,
   paddingBottom: "0.25rem" /* 4px */,
+  cursor: "pointer",
 });
 
 export const title = style({
+  ...text.size.sm,
   textTransform: "uppercase",
   color: vars.label.color,
-  ...text.size.sm,
   fontWeight: 500,
+  paddingTop: 0,
 });
 
 export const collapsibleContent = style({

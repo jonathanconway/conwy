@@ -11,6 +11,8 @@ export function InlineTemplateFiller(props: InlineTemplateFillerProps) {
     if (containerRef.current) {
       mountInlineTemplateFiller(containerRef.current.children[0]);
     }
+
+    // return () => unmountInlineTemplateFiller(containerRef.current.children[0]);
   }, []);
 
   return (

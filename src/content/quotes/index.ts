@@ -1,6 +1,9 @@
+export * from "./alchemists";
 export * from "./beautiful";
+export * from "./beings";
 export * from "./beliefs";
 export * from "./billions";
+export * from "./cook";
 export * from "./eat";
 export * from "./everything-spiritual";
 export * from "./feel";
@@ -9,6 +12,7 @@ export * from "./good-example";
 export * from "./habit";
 export * from "./investigate";
 export * from "./judgements";
+export * from "./legacy";
 export * from "./nature-questioning";
 export * from "./not-enough-time";
 export * from "./perfection";

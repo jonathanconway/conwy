@@ -1,6 +1,7 @@
 - Worked on **SubHub** backend auth flows for customers to activate third-party content subscriptions (Google One).
-  - Lambda, Lambda Authorizer functions and API Gateway configuration, handling all stages of the OAuth2 flow between SubHub and Google via Boingo third-party IdP.
-  - Lambda function version and stage management to maintain backwards compatibility.
+  - Lambda functions and API Gateway configuration, handling all stages of the OAuth2 flow between SubHub front end and back end (front channel) and between SubHub back end and Google via Boingo third-party IdP (back channel).
+  - REST and GraphQL interfaces, with AWS AppSync and API Gateway.
+  - Version and stage management to maintain backwards compatibility.
   - Logging and monitoring code and use of CloudWatch and DataDog to diagnose issues.
 - Built **Agent SubHub** frontend. Used by sales and support agents to manage customer accounts.
   - Authentication single-sign-on (SSO) link, connecting from legacy system to new Agent SubHub, using pre-signed URL, with AWS Cognito integration.

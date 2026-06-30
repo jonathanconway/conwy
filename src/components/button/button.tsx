@@ -1,3 +1,5 @@
+"use client";
+
 import { HTMLProps } from "react";
 
 import { cn } from "@/framework/client";

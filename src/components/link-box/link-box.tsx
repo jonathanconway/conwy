@@ -2,6 +2,8 @@
 
 import { MouseEvent } from "react";
 
+import { cn } from "@/framework/client";
+
 import { Link } from "../link";
 import { withTooltip } from "../tooltip";
 
@@ -9,7 +11,15 @@ import { LinkBoxProps } from "./link-box-props";
 import * as styles from "./link-box.css";
 
 export function LinkBox_(props: LinkBoxProps) {
-  const { className = styles.linkBox, href, ...restProps } = props;
+  const {
+    className = cn(
+      styles.linkBox,
+      props.hasMaxWidth ? styles.linkBoxMaxWidth : null,
+    ),
+    hasMaxWidth,
+    href,
+    ...restProps
+  } = props;
 
   const handleClick = (event: MouseEvent) => {
     const target = event.target as HTMLElement;

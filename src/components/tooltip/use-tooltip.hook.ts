@@ -11,7 +11,7 @@ interface UseTooltipParams {
   readonly contents: ReactNode;
 }
 
-export function useTooltip(params: UseTooltipParams) {
+export function useTooltip(params?: UseTooltipParams) {
   const targetId = useId().replaceAll(":", "");
 
   const targetRef = useRef<TooltipRefProps>(null);
@@ -23,7 +23,7 @@ export function useTooltip(params: UseTooltipParams) {
     targetElement,
   });
 
-  const contents = notificationContents ?? params.contents;
+  const contents = notificationContents ?? params?.contents;
 
   return {
     contents,

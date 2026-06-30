@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { Heading } from "../../heading";
+import { Heading, HeadingLevels } from "../../heading";
 
 export type MdxH1Props = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
@@ -8,5 +8,5 @@ export type MdxH1Props = DetailedHTMLProps<
 >;
 
 export function MdxH1(props: MdxH1Props) {
-  return <Heading level={2} {...props} />;
+  return <Heading level={HeadingLevels.Level2} {...props} />;
 }

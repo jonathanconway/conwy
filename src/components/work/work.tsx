@@ -1,6 +1,6 @@
 import { Work as Work_ } from "@/framework/client";
 
-import { Heading } from "../heading";
+import { Heading, HeadingLevels } from "../heading";
 import { WorkMainImage } from "../work";
 
 import { WorkBody } from "./work-body";
@@ -31,7 +31,7 @@ export function Work(props: WorkProps) {
           </div>
 
           <div className={styles.headerLeftTitle}>
-            <Heading level={2}>{meta.client}</Heading>
+            <Heading level={HeadingLevels.Level2}>{meta.client}</Heading>
 
             <div className={styles.jobTitle}>{meta.jobTitle}</div>
           </div>

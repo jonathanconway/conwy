@@ -10,4 +10,5 @@ export interface StackProps {
   readonly gap?: SizeRem;
   readonly children: ReactNode;
   readonly distribution?: StackDistribution;
+  readonly className?: string;
 }

@@ -3,9 +3,12 @@
 import { map, memoize } from "lodash";
 import { useCallback, useEffect, useState } from "react";
 
-import { isClient, isNotNil, querySelector } from "@/framework/client";
-
-import { ArticleHeading } from "../../article-headings";
+import {
+  ArticleHeading,
+  isClient,
+  isNotNil,
+  querySelector,
+} from "@/framework/client";
 
 function getIsElementInViewport(el?: Element | null) {
   if (!isClient) {

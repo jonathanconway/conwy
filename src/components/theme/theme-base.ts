@@ -5,6 +5,8 @@ import { blockQuoteSummaryThemeBase } from "../block-quote/block-quote-summary/b
 import { blockQuoteThemeBase } from "../block-quote/block-quote.css-theme";
 import { boxThemeBase } from "../box/box.css-theme";
 import { buttonThemeBase } from "../button/button.css-theme";
+import { checkboxThemeBase } from "../checkbox/checkbox.css-theme";
+import { checklistThemeBase } from "../checklist/checklist.css-theme";
 import { codeThemeBase } from "../code/code.css-theme";
 import { contentListItemThemeBase } from "../content-list/content-list-item/content-list-item.css-theme";
 import { footerThemeBase } from "../footer/footer.css-theme";
@@ -23,6 +25,7 @@ import { linkBoxThemeBase } from "../link-box/link-box.css-theme";
 import { linkThemeBase } from "../link/link.css-theme";
 import { microsListItemThemeBase } from "../micros/micros-list/micros-list-item/micros-list-item.css-theme";
 import { switchThemeBase } from "../switch/switch.css-theme";
+import { textBoxThemeBase } from "../text-box/text-box.css-theme";
 import { textThemeBase } from "../text/text.css-theme";
 import { tooltipThemeBase } from "../tooltip/tooltip.css-theme";
 
@@ -34,6 +37,8 @@ export const themeBase = {
   blockQuoteSummary: blockQuoteSummaryThemeBase,
   box: boxThemeBase,
   button: buttonThemeBase,
+  checkbox: checkboxThemeBase,
+  checklist: checklistThemeBase,
   code: codeThemeBase,
   contentListItem: contentListItemThemeBase,
   footer: footerThemeBase,
@@ -53,5 +58,6 @@ export const themeBase = {
   microsListItem: microsListItemThemeBase,
   switch: switchThemeBase,
   text: textThemeBase,
+  textBox: textBoxThemeBase,
   tooltip: tooltipThemeBase,
 };

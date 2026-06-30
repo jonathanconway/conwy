@@ -1,18 +1,20 @@
 "use client";
 
+import { ArticleMeta } from "@/framework/client";
+
 import { Link } from "../../../link";
 import { Section } from "../../../section";
-import { ArticleHeading } from "../../article-headings";
 
 import { useArticleSidebarHeadingsHighlighter } from "./article-sidebar-headings-highlighter.hook";
 import * as styles from "./article-sidebar-headings.css";
 
 export interface ArticleSidebarProps {
-  readonly articleHeadings: readonly ArticleHeading[];
+  readonly articleMeta: ArticleMeta;
 }
 
 export function ArticleSidebarHeadings(props: ArticleSidebarProps) {
-  const { articleHeadings } = props;
+  const articleHeadings = props.articleMeta.extensions?.articleHeadings ?? [];
+
   const { selectedHeadingId } =
     useArticleSidebarHeadingsHighlighter(articleHeadings);
 

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface MdxWrapperProps {
-  readonly children: ReactNode;
-}
+import { HasChildrenOptional } from "@/framework/client";
+
+export type MdxWrapperProps = HasChildrenOptional;

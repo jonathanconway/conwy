@@ -2,7 +2,7 @@
 
 import { ReactNode, useId, useRef } from "react";
 
-import { Heading } from "../heading";
+import { Heading, HeadingLevels } from "../heading";
 import { Icon, IconTypes } from "../icon";
 
 import * as styles from "./collapsible.css";
@@ -27,9 +27,7 @@ export function Collapsible(props: CollapsibleProps) {
       />
 
       <label className={styles.collapsibleHeader} htmlFor={inputId}>
-        <Heading level={3} className={styles.title}>
-          {props.title}
-        </Heading>
+        <span className={styles.title}>{props.title}</span>
 
         <Icon
           className={styles.expandButton}

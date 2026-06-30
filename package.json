@@ -15,8 +15,10 @@
   "private": true,
   "scripts": {
     "build-gh-pages": "npm run build:all && touch out/.nojekyll",
-    "build:all": "next build && npm run build:custom:all",
+    "build:all": "npm run build:custom:pre && next build && npm run build:custom:post",
     "build:custom:all": "npx tsx ./src/builders/exec.ts --all",
+    "build:custom:post": "npx tsx ./src/builders/exec.ts --all --order=post",
+    "build:custom:pre": "npx tsx ./src/builders/exec.ts --all --order=pre",
     "build:custom": "npx tsx ./src/builders/exec.ts",
     "build:prod": "npm run build:all",
     "build:watch": "nodemon \"npm run build\" ./src --ext ts,tsx,mdx,css --ignore *.test.*",
@@ -35,8 +37,8 @@
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
-    "tool:custom:all": "npx tsx ./src/tools/exec.ts --all",
-    "tool:custom": "npx tsx ./src/tools/exec.ts"
+    "tool:all": "npx tsx ./src/tools/exec.ts --all",
+    "tool": "npx tsx ./src/tools/exec.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

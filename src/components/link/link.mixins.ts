@@ -10,7 +10,7 @@ export const linkBase = {
 };
 
 export const linkLayoutInline = {
-  display: "inline",
+  display: "inline-flex",
 };
 
 export const linkLayoutCompact = {
@@ -27,7 +27,7 @@ export const linkLayoutCompact = {
 };
 
 export const linkContentsText = {
-  display: "inline",
+  display: "inline-flex",
 };
 
 export const linkContentsImage = {

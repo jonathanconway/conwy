@@ -7,6 +7,8 @@ import { blockQuoteSummaryThemeLight } from "../block-quote/block-quote-summary/
 import { blockQuoteThemeLight } from "../block-quote/block-quote.css-theme";
 import { boxThemeLight } from "../box/box.css-theme";
 import { buttonThemeLight } from "../button/button.css-theme";
+import { checkboxThemeLight } from "../checkbox/checkbox.css-theme";
+import { checklistThemeLight } from "../checklist/checklist.css-theme";
 import { codeThemeLight } from "../code/code.css-theme";
 import { contentListItemThemeLight } from "../content-list/content-list-item/content-list-item.css-theme";
 import { footerThemeLight } from "../footer/footer.css-theme";
@@ -25,6 +27,7 @@ import { linkBoxThemeLight } from "../link-box/link-box.css-theme";
 import { linkThemeLight } from "../link/link.css-theme";
 import { microsListItemThemeLight } from "../micros/micros-list/micros-list-item/micros-list-item.css-theme";
 import { switchThemeLight } from "../switch/switch.css-theme";
+import { textBoxThemeLight } from "../text-box/text-box.css-theme";
 import { textThemeLight } from "../text/text.css-theme";
 import { tooltipThemeLight } from "../tooltip/tooltip.css-theme";
 
@@ -38,6 +41,8 @@ export const themeLightClass = createTheme(vars, {
   blockQuoteSummary: blockQuoteSummaryThemeLight,
   box: boxThemeLight,
   button: buttonThemeLight,
+  checkbox: checkboxThemeLight,
+  checklist: checklistThemeLight,
   code: codeThemeLight,
   contentListItem: contentListItemThemeLight,
   footer: footerThemeLight,
@@ -57,5 +62,6 @@ export const themeLightClass = createTheme(vars, {
   microsListItem: microsListItemThemeLight,
   switch: switchThemeLight,
   text: textThemeLight,
+  textBox: textBoxThemeLight,
   tooltip: tooltipThemeLight,
 });

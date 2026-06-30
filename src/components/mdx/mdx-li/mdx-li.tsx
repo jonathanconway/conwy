@@ -1,12 +1,23 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+"use client";
 
-import "./mdx-li.css";
+import { useChecklistContext } from "../../checklist";
 
-export type MdxLIProps = DetailedHTMLProps<
-  HTMLAttributes<HTMLLIElement>,
-  HTMLLIElement
->;
+import {
+  MdxLiChecklistItem,
+  checkIsChecklistItem,
+} from "./mdx-li-checklist-item";
+import { MdxLiProps } from "./mdx-li-props";
+import * as styles from "./mdx-li.css";
 
-export function MdxLI({ className, children, ...restProps }: MdxLIProps) {
-  return <li {...restProps}>{children}</li>;
+export function MdxLi(props: MdxLiProps) {
+  const { className, ...restProps } = props;
+
+  const checklistContext = useChecklistContext();
+  if (checklistContext) {
+    if (checkIsChecklistItem(props)) {
+      return <MdxLiChecklistItem>{props.children}</MdxLiChecklistItem>;
+    }
+  }
+
+  return <li className={styles.li} {...restProps} />;
 }

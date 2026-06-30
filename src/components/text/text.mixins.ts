@@ -125,5 +125,5 @@ export const subtitle: ComplexStyleRule & GlobalStyleRule = {
 
 export const summary: ComplexStyleRule & GlobalStyleRule = {
   ...textSizeMixins.sm,
-  lineHeight: "1.25rem",
+  lineHeight: "1.125rem",
 };

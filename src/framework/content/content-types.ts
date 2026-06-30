@@ -6,6 +6,7 @@ export const ContentTypes = {
   Micro: "micro",
   Work: "work",
   Project: "project",
+  Checklist: "checklist",
 };
 
 export type ContentType = TypeOfConst<typeof ContentTypes>;

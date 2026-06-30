@@ -1,4 +1,5 @@
-import { IconTypes } from "./icon-types";
+import { IconComponent } from "./icon-component";
+import { IconType, IconTypes } from "./icon-types";
 import {
   ArrowChevronDown,
   ArrowChevronLeft,
@@ -25,6 +26,7 @@ import {
   Person,
   ProductHunt,
   Quote,
+  Search,
   Signal,
   Substack,
   Telegram,
@@ -34,7 +36,7 @@ import {
   YouTube,
 } from "./svg";
 
-export const ICON_TYPE_SVGS = {
+export const ICON_TYPE_SVGS: Partial<Record<IconType, IconComponent>> = {
   [IconTypes.ArrowChevronDown]: ArrowChevronDown,
   [IconTypes.ArrowChevronLeft]: ArrowChevronLeft,
   [IconTypes.ArrowChevronRight]: ArrowChevronRight,
@@ -60,6 +62,7 @@ export const ICON_TYPE_SVGS = {
   [IconTypes.Person]: Person,
   [IconTypes.ProductHunt]: ProductHunt,
   [IconTypes.Quote]: Quote,
+  [IconTypes.Search]: Search,
   [IconTypes.Signal]: Signal,
   [IconTypes.Substack]: Substack,
   [IconTypes.Telegram]: Telegram,

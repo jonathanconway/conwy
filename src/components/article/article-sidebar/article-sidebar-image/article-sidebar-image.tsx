@@ -5,20 +5,20 @@ import { Image } from "../../../image";
 import * as styles from "./article-sidebar-image.css";
 
 export interface ArticleSidebarImageProps {
-  readonly meta: ArticleMeta;
+  readonly articleMeta: ArticleMeta;
 }
 
 export function ArticleSidebarImage(props: ArticleSidebarImageProps) {
-  const { meta } = props;
+  const { articleMeta } = props;
 
-  if (!meta.mainImage) {
+  if (!articleMeta.mainImage) {
     return null;
   }
 
   return (
     <Image
       className={styles.image}
-      image={meta.mainImage}
+      image={articleMeta.mainImage}
       alt="Article main image"
       priority
       unoptimized={true}

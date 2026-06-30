@@ -1,7 +1,7 @@
 "use client";
 
 import { TagFilters, useTagFiltersResults } from "../../filters";
-import { List } from "../../list";
+import { UnorderedList } from "../../list";
 
 import { BooksListItem } from "./books-list-item";
 import * as styles from "./books-list.css";
@@ -20,11 +20,11 @@ export function BooksList() {
     <>
       <TagFilters contentType="book" items={books} tagField="meta.category" />
 
-      <List className={styles.booksList}>
+      <UnorderedList className={styles.booksList}>
         {filteredItems.map((book) => (
           <BooksListItem key={book.meta.slug} book={book} />
         ))}
-      </List>
+      </UnorderedList>
     </>
   );
 }

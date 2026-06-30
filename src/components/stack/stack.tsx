@@ -25,6 +25,7 @@ export function Stack(props: StackProps) {
   const { direction = "column", distribution, gap, children } = props;
 
   const className = cn(
+    props.className,
     styles.stackBase,
     direction === StackDirections.Column ? styles.stackColumn : styles.stackRow,
     distribution === StackDistributions.Flow

@@ -4,7 +4,7 @@ import { MouseEvent } from "react";
 
 import { cn } from "@/framework/client";
 
-import { TextSizes } from "../text";
+import { IconTypes } from "../icon";
 import * as textSizeStyles from "../text/text-size/text-size.css";
 
 import { LinkLayoutTypes } from "./link-layout-type";
@@ -18,17 +18,15 @@ export function getLinkValues(props: LinkProps) {
     bracketedItems,
     showOpenPopup,
     download,
-    icon: iconLeft,
+    icon = getLinkDefaultIcon(props),
     size,
     layoutType = LinkLayoutTypes.Inline,
+    className: propsClassName,
     onClick,
     ...restProps
   } = props;
 
-  const showOpenInNew =
-    restProps.target === "_blank" &&
-    props.showOpenInNew !== false &&
-    !props.download;
+  const className = getLinkClassName(props);
 
   const href = props.link?.url ?? props.href ?? "javascript:";
 
@@ -39,12 +37,42 @@ export function getLinkValues(props: LinkProps) {
     onClick?.(event);
   };
 
-  const sizeStyle = textSizeStyles[size ?? TextSizes.sm];
+  const showOpenInNew =
+    restProps.target === "_blank" &&
+    props.showOpenInNew !== false &&
+    !props.download;
+
+  const children = props.link?.title ?? props.children;
+
+  return {
+    nextLinkProps: {
+      className,
+      href,
+      onClick: handleClick,
+      download,
+      ...restProps,
+    },
+    icon,
+    children,
+    showOpenInNew,
+    showOpenPopup,
+    download,
+  };
+}
+
+function getLinkDefaultIcon(props: LinkProps) {
+  if (props.download) {
+    return IconTypes.Download;
+  }
+}
+
+function getLinkClassName(props: LinkProps) {
+  const sizeStyle = props.size ? textSizeStyles[props.size] : {};
 
   const layoutStyle = {
     [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
     [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
-  }[layoutType];
+  }[props.layoutType ?? LinkLayoutTypes.Inline];
 
   const className = cn(
     props.className ?? linkStyles.link,
@@ -52,20 +80,5 @@ export function getLinkValues(props: LinkProps) {
     layoutStyle,
   );
 
-  const children = props.link?.title ?? props.children;
-
-  return {
-    nextLink: {
-      className,
-      href,
-      onClick: handleClick,
-      download,
-      ...restProps,
-    },
-    iconLeft,
-    children,
-    showOpenInNew,
-    showOpenPopup,
-    download,
-  };
+  return className;
 }

@@ -1,0 +1,18 @@
+export const tagTitles: Record<string, string> = {
+  ai: "AI",
+  css: "CSS",
+  ["scss-and-less"]: "SCSS and LESS",
+  devops: "DevOps",
+  ["developer-environment"]: "Dev env",
+  e2e: "E2E",
+  fp: "FP",
+  html: "HTML",
+  observability: "Observability",
+  ["internationalisation-and-localisation"]: "I11n and L10n",
+  nextjs: "NextJS",
+  nfr: "NFR",
+  nodejs: "NodeJS",
+  oop: "OOP",
+  rxjs: "RxJS",
+  seo: "SEO",
+};

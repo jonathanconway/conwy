@@ -11,12 +11,13 @@ export const meta: ArticleMeta = {
   mainImage: {
     src: "/images/articles/self-similar-folder-pattern/main.png",
   },
-  socialLinks: [
+  discussionLinks: [
     {
       type: SocialLinkTypes.Dev,
-      url: "https://dev.to/conw_y/self-similar-a-versatile-folder-pattern-for-code-d18",
+      url: "https://dev.to/conw_y/self-similar-a-versatile-folder-pattern-for-code-d189",
+      likeCount: 4,
     },
   ],
-  discussionLinks: [],
+  socialLinks: [],
   isPinned: true,
 };

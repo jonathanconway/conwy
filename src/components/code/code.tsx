@@ -1,4 +1,3 @@
-
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 import { CodeRenderedMermaid } from "./code-rendered-mermaid";
@@ -8,8 +7,8 @@ type CodeProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
 export function Code(props: CodeProps) {
   if (props.className?.includes("language-mermaid--svg")) {
-    return <CodeRenderedMermaid {...props} />
+    return <CodeRenderedMermaid {...props} />;
   }
 
-  return <CodeSyntax {...props} />
+  return <CodeSyntax {...props} />;
 }

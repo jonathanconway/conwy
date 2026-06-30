@@ -1,6 +1,9 @@
+"use client";
+
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { Heading } from "../../heading";
+import { ChecklistHeading, useChecklistContext } from "../../checklist";
+import { Heading, HeadingLevels } from "../../heading";
 
 import "./mdx-h3.css";
 
@@ -10,5 +13,10 @@ export type MdxH3Props = DetailedHTMLProps<
 >;
 
 export function MdxH3(props: MdxH3Props) {
-  return <Heading level={4} {...props} />;
+  const checklistContext = useChecklistContext();
+  if (checklistContext) {
+    return <ChecklistHeading level={HeadingLevels.Level4} {...props} />;
+  }
+
+  return <Heading level={HeadingLevels.Level4} {...props} />;
 }

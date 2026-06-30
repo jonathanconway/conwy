@@ -8,5 +8,7 @@ export const stripLeadingArticles = memoize(stripLeadingArticles_);
 
 export function titleCase(title: string) {
   const startCaseLower = startCase(title).toLowerCase();
-  return `${startCaseLower[0].toUpperCase()}${startCaseLower.substring(1)}`;
+  const firstLetter = startCaseLower?.[0]?.toUpperCase() ?? "";
+  const restLetters = startCaseLower?.substring?.(1) ?? "";
+  return `${firstLetter}${restLetters}`;
 }
