@@ -15,17 +15,16 @@ export function Link_(props: LinkProps) {
 
   return (
     <NextLink {...nextLinkProps}>
-      {icon && <Icon className={linkStyles.linkIcon} icon={icon} />}
-
-      {children}
-
-      {showOpenInNew && (
-        <Icon className={linkStyles.linkIcon} icon={IconTypes.OpenInNew} />
-      )}
-
-      {showOpenPopup && (
-        <Icon className={linkStyles.linkIcon} icon={IconTypes.Info} />
-      )}
+      <span className={linkStyles.linkInnerContainer}>
+        {icon && <Icon className={linkStyles.linkIcon} icon={icon} />}
+        {children}
+        {showOpenInNew && (
+          <Icon className={linkStyles.linkIcon} icon={IconTypes.OpenInNew} />
+        )}
+        {showOpenPopup && (
+          <Icon className={linkStyles.linkIcon} icon={IconTypes.Info} />
+        )}
+      </span>
     </NextLink>
   );
 }

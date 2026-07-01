@@ -9,9 +9,7 @@ export const linkBase = {
   cursor: "pointer",
 };
 
-export const linkLayoutInline = {
-  display: "inline-flex",
-};
+export const linkLayoutInline = {};
 
 export const linkLayoutCompact = {
   display: "inline-flex",
@@ -51,6 +49,11 @@ export const linkContent = {
 };
 
 export const link = merge(linkBase, linkDecoration, linkContent, focusOutline);
+
+export const linkInnerContainer = {
+  display: "inline-flex",
+  flex: 1,
+};
 
 export const linkIcon = {
   color: "inherit",

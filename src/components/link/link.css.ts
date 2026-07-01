@@ -6,6 +6,8 @@ import * as mixins from "./link.mixins";
 
 export const link = style(mixins.link);
 
+export const linkInnerContainer = style(mixins.linkInnerContainer);
+
 export const linkLayoutInline = style(mixins.linkLayoutInline);
 export const linkLayoutCompact = style(mixins.linkLayoutCompact);
 

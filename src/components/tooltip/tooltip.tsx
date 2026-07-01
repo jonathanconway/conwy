@@ -53,7 +53,12 @@ export function Tooltip(props: TooltipProps) {
         openEvents={{
           focus: true,
           mouseenter: true,
+          click: true,
         }}
+        closeEvents={{
+          mouseleave: true,
+        }}
+        openOnClick
         style={{
           ...mixins.tooltip,
           ...props.style,

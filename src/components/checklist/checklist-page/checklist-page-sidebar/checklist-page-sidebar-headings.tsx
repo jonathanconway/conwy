@@ -11,7 +11,7 @@ export function ChecklistPageSidebarHeadings() {
     checklistContext?.checklistMeta.extensions?.itemsByHeadingText.subBranches
       .filter((subBranch) => getTreeSubBranchDescendantsCount(subBranch) > 0)
       .map((subBranch) => subBranch.branch) ?? [];
-  const checklistPageHeadings = ["Top", ...checklistSections, "Resources"];
+  const checklistPageHeadings = [...checklistSections, "Resources"];
 
   return <ContentPageSidebarHeadings headings={checklistPageHeadings} />;
 }
