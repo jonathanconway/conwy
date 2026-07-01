@@ -20,8 +20,6 @@ export const link = style({
 });
 
 const imgBase = {
-  borderWidth: "1px",
-  borderStyle: "solid",
   filter: vars.imageFigure.filter,
 };
 

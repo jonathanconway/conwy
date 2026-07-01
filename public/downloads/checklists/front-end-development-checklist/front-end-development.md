@@ -2110,8 +2110,13 @@
 
 ### NFR - Security [^security]
 
+[^security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
+[^pii]: Personally Identifiable Information
 
-## NFR - Security - Transport & Network Security
+
+
+
+### NFR - Security - Transport & Network Security
 
 - [ ] Prefer HTTPS wherever possible and be careful what you send over non-HTTPS.<br />
   [Article: HTTPS and TLS • Website Spec](https://specification.website/spec/security/https-tls/)<br />
@@ -2124,7 +2129,7 @@
   #nfr--security
 
 
-## NFR - Security - HTTP Headers & Browser Hardening
+### NFR - Security - HTTP Headers & Browser Hardening
 
 - [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
   Use X-Frame-Options: `DENY`, `SAMEORIGIN`, `ALLOW-FROM`.<br />
@@ -2140,7 +2145,7 @@
 - [ ] Verify that security restrictions are enabled on your development device and browser.<br />
   #nfr--security
 
-## NFR - Security - Input Validation & Injection Prevention
+### NFR - Security - Input Validation & Injection Prevention
 
 - [ ] Sanitise input fields.<br />
   Example: Entering HTML entity into an input should not create a vulnerability.<br />
@@ -2173,7 +2178,7 @@
 - [ ] Careful when adding new input fields / user input / URL Parameters.<br />
   #nfr--security
 
-## NFR - Security - Sensitive Data & Secrets
+### NFR - Security - Sensitive Data & Secrets
 
 - [ ] Never put potentially sensitive data somewhere insecure.<br />
   Example: client storage (`localStorage`, `sessionStorage`)<br />
@@ -2196,13 +2201,15 @@
 - [ ] Avoid clear-text email addresses in HTML.<br />
   [Article: Do you avoid clear text email addresses in web pages? | SSW.Rules](https://www.ssw.com.au/rules/avoid-clear-text-email-addresses-in-web-pages)<br />
   #nfr--security
+- [ ] Don't expose env vars to build or dev server that don't need to be exposed.<br />
+  #nfr--security
 - [ ] Follow best practices when dealing with JWTs (JSON Web Tokens).<br />
   Use strong signing algorithms. Keep the secret key secure. Set appropriate token expiration times. Ensure tokens are validated on the server side. Never put sensitive data in the payload.<br />
   [Article: JWT Best Practices](https://auth0.com/docs/security/tokens/json-web-tokens-best-practices)<br />
   [Article: What Are JSON Web Tokens (JWT)?](https://www.freecodecamp.org/news/what-are-json-web-tokens-jwt)<br />
   #nfr--security
 
-## NFR - Security - Privacy & Identifiers
+### NFR - Security - Privacy & Identifiers
 
 - [ ] Check for unmasking customer personally identifiable information (PII) vulnerability.<br />
   #nfr--security
@@ -2212,80 +2219,31 @@
   Make sure they are totally non-identifiable with regard to the data they reference.<br />
   #nfr--security
 
-
-## NFR - Security - Access Control & Attack Surface
-
-
-
-## NFR - Security - Third-Party & Supply Chain
-
-
-
-## NFR - Security - Integration & Change Risk
-
-
-
-## NFR - Security - Process & Governance
-
-
-
-
-
-
-
-
+### NFR - Security - Access Control & Attack Surface
 
 - [ ] Apply least privilege principle.<br />
   Don't allow or expose anything except what the user/consumer needs.<br />
   #nfr--security
 - [ ] Minimise client-exposed interfaces to reduce attack surface area.<br />
   #nfr--security
-- [ ] Don't expose env vars to build or dev server that don't need to be exposed.<br />
-  #nfr--security
-- [ ] Check for misleading the customer vulnerability.<br />
-  #nfr--security
-- [ ] Regularly review code-base against OWASP Top 10.<br />
-  [Page: OWASP Top Ten Web Application Security Risks](https://owasp.org/www-project-top-ten/)<br />
-  #nfr--security
-- [ ] Careful with calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
-  #nfr--security
-- [ ] Careful with integrating with existing API already in Prod with different clients.<br />
-  Example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
-  #nfr--security
-- [ ] Careful integrating via new flows that haven't been used before.<br />
-  Make sure they're security vetted before going to Prod.<br />
-  #nfr--security
-- [ ] Careful about significant changes to underlying platform or control.<br />
-  Such as updates to vendor systems (logging frameworks, etc) or migrations to new cloud/hosting providers.<br />
+- [ ] Keep experience for security admins separate from that for users.<br />
+  Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
   #nfr--security
 - [ ] Check for replay vulnerability.<br />
   This is where the network request is captured and submitted again without modification.<br />
   #nfr--security
-- [ ] Ensure pen-testing process is in place.<br />
-  Be sure to request pen-testing as per processes in your organisation.<br />
+- [ ] Ensure rate-limiting of all assets being served, to prevent Denial of Service (DOS) attacks.<br />
+  [Article: API4:2019 Lack of Resources & Rate Limiting](https://owasp.org/API-Security/editions/2019/en/0xa4-lack-of-resources-and-rate-limiting/)<br />
   #nfr--security
-- [ ] DevSecOps: Shift left.<br />
-  Try to anticipate and address security issues as early as possible, such as in planning, design or build.<br />
-  #nfr--security
-- [ ] Keep experience for security admins separate from that for users.<br />
-  Users should have maximum convenience and simplicity but minimal control that would render systems vulnerable.<br />
-  #nfr--security
-- [ ] Be careful consuming third-party packages or components from untrusted sources.<br />
+
+
+### NFR - Security - Third-Party & Supply Chain
+
+- [ ] Careful consuming third-party packages or components from untrusted sources.<br />
   Minimise use of third-party packages.<br />
   Check for issues and vulnerabilities on open-source repo and trusted news sources.<br />
   Use automated checkers and monitoring tools if possible.<br />
   [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
-  #nfr--security
-- [ ] Use automated real time threat monitoring tools for code and dependencies.<br />
-  [Tool: Dependabot](https://github.com/dependabot)<br />
-  [Tool: Snyk](https://snyk.io)<br />
-  [Tool: Trivy](https://trivy.dev)<br />
-  [Tool: Falco](https://falco.org)<br />
-  #nfr--security
-
-
-- [ ] Ensure rate-limiting of all assets being served, to prevent Denial of Service (DOS) attacks.<br />
-  [Article: API4:2019 Lack of Resources & Rate Limiting](https://owasp.org/API-Security/editions/2019/en/0xa4-lack-of-resources-and-rate-limiting/)<br />
   #nfr--security
 - [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
   [Blog: Socket](https://socket.dev/blog)<br />
@@ -2294,15 +2252,45 @@
   [Article: Do you monitor your application for vulnerabilities? | SSW.Rules](https://www.ssw.com.au/rules/monitor-packages-for-vulnerabilities)<br />
   [Website: CVE: Common Vulnerabilities and Exposures](https://www.cve.org)<br />
   #nfr--security
+- [ ] Use automated real time threat monitoring tools for code and dependencies.<br />
+  [Tool: Dependabot](https://github.com/dependabot)<br />
+  [Tool: Snyk](https://snyk.io)<br />
+  [Tool: Trivy](https://trivy.dev)<br />
+  [Tool: Falco](https://falco.org)<br />
+  #nfr--security
 - [ ] Scan configuration files (such as IaC) for vulnerabilities.<br />
+  #nfr--security
+
+### NFR - Security - Integration & Change Risk
+
+- [ ] Careful calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
+  #nfr--security
+- [ ] Careful integrating with existing API already in Prod with different clients.<br />
+  Example: native client when building a new web client. Input may be less constrained in web, opening a potential vulnerability. Make sure back-end is hardened for such a new use case.<br />
+  #nfr--security
+- [ ] Careful integrating via new flows that haven't been used before.<br />
+  Make sure they're security vetted before going to Prod.<br />
+  #nfr--security
+- [ ] Careful making significant changes to underlying platform or control.<br />
+  Such as updates to vendor systems (logging frameworks, etc) or migrations to new cloud/hosting providers.<br />
+  #nfr--security
+
+### NFR - Security - Process & Governance
+
+- [ ] Regularly review code-base against OWASP Top 10.<br />
+  [Page: OWASP Top Ten Web Application Security Risks](https://owasp.org/www-project-top-ten/)<br />
+  #nfr--security
+- [ ] Ensure pen-testing process is in place.<br />
+  Be sure to request pen-testing as per processes in your organisation.<br />
+  #nfr--security
+- [ ] Shift left.<br />
+  Try to anticipate and address security issues as early as possible, such as in planning, design or build.<br />
   #nfr--security
 - [ ] Provide Security standard text file to tell security researchers how to report vulnerabilities.<br />
   [Article: `/.well-known/security.txt` • Website Spec](https://specification.website/spec/security/security-txt/)<br />
   #nfr--security
-
-
-[^security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
-[^pii]: Personally Identifiable Information
+- [ ] Check for misleading the customer vulnerability.<br />
+  #nfr--security
 
 
 
@@ -3895,3 +3883,5 @@
 
 
 [^pipeline-dev-ops]: DevOps covers the ongoing operation of the application in production, such as monitoring, logging, alerting, etc.
+
+[^general]: General covers general front end engineering concerns.

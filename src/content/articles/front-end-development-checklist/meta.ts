@@ -4,7 +4,7 @@ export const meta: ArticleMeta = {
   title: "Front end development checklist",
   blurb: `A checklist of things to consider when developing front end applications.`,
   shortBlurb: `A checklist of things to consider when developing front end applications.`,
-  createdDate: "2026-03-24",
+  createdDate: "2026-07-01",
   slug: "front-end-development-checklist",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
