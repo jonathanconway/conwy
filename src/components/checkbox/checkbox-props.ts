@@ -8,7 +8,5 @@ export type CheckboxProps = DetailedHTMLProps<
 > & {
   readonly disabled?: boolean;
   readonly label?: ReactNode;
-  readonly onChange?: (checked: boolean) => void;
-
   readonly baseColor?: CheckboxBaseColor;
 };

@@ -1029,14 +1029,7 @@
 
 
 
-## Non-Functional Requirements (NFRs) [^nfr]
-
-[^nfr]: Non-Functional Requirements covers NFRs, such as Performance and Accessibility, as they apply to the front end.
-
-
-
-
-### NFR - Achievability [^nfr-achievability]
+## Achievability [^nfr-achievability]
 
 - [ ] Ensure the task can be achieved within given parameters in a timely manner.<br />
   If not, consider splitting up, re-prioritising, re-defining parameters, etc.<br />
@@ -1047,7 +1040,7 @@
 
 
 
-### NFR - Simplicity [^nfr-simplicity]
+## Simplicity [^nfr-simplicity]
 
 - [ ] Check whether the task or code change be avoided altogether.<br />
   #nfr--simplicity
@@ -1064,7 +1057,7 @@
 
 
 
-### NFR - Availability [^nfr-availability]
+## Availability [^nfr-availability]
 
 - [ ] Check if certain systems can fail or slow down during peak periods.<br />
   Plan how to address those scenarios to minimise disruption to users.<br />
@@ -1075,7 +1068,7 @@
 
 
 
-### NFR - Correctness [^nfr-correctness]
+## Correctness [^nfr-correctness]
 
 - [ ] Ensure all and only the original requirements satisfied.<br />
   #nfr--correctness
@@ -1085,7 +1078,7 @@
 
 
 
-### NFR - Readability [^nfr-readability]
+## Readability [^nfr-readability]
 
 - [ ] Break code into blocks or "paragraphs", to group similar ideas together.<br />
   Helps readers keep their place on the page and navigate through the code.<br />
@@ -1192,7 +1185,7 @@
 
 
 
-### NFR - Maintainability [^nfr-maintainability]
+## Maintainability [^nfr-maintainability]
 
 - [ ] Use expanded syntax for function declaration where it helps.<br />
   That is: `function foo() { ... }` in Typescript.<br />
@@ -1204,7 +1197,7 @@
 
 
 
-### NFR - Testability [^nfr-testability]
+## Testability [^nfr-testability]
 
 - [ ] Allow space for log statements to be easily inserted.<br />
   #nfr--testability
@@ -1217,7 +1210,7 @@
 
 
 
-### NFR - Scalability [^nfr-scalability]
+## Scalability [^nfr-scalability]
 
 - [ ] Use well tested, documented and supported third-party frameworks, which can grow with the application.<br />
   #nfr--scalability
@@ -1227,7 +1220,7 @@
 
 
 
-### NFR - Observability [^nfr-observability]
+## Observability [^nfr-observability]
 
 - [ ] Don't suppress errors when it would be more proper to let them surface.<br />
   Example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
@@ -1241,7 +1234,7 @@
 
 
 
-### NFR - Portability [^nfr-portability]
+## Portability [^nfr-portability]
 
 - [ ] Use portable tooling that is supported on multiple operating systems and platforms.<br />
   Example: NPM works on Windows, Linux and Mac, so it is more portable than, say, Nuget.<br />
@@ -1258,7 +1251,7 @@
 
 
 
-### NFR - Adaptability [^nfr-adaptability]
+## Adaptability [^nfr-adaptability]
 
 - [ ] Use progressive enhancement when basic features need to work in non-standard browser environments.<br />
   #nfr--adaptability
@@ -1268,7 +1261,7 @@
 
 
 
-### NFR - Compatibility [^nfr-compatibility]
+## Compatibility [^nfr-compatibility]
 
 - [ ] Test on all major browsers.<br />
   Chrome, Edge, Firefox, Safari, Opera, etc.<br />
@@ -1279,13 +1272,24 @@
 - [ ] Ensure interface changes (such as component props) maintain compatibility with older / legacy consumers, where it matters.<br />
   Consider the trade-off between supporting breadth of features for new consumers vs compromising integrity or overcomplicating the interface or implementation. Make well considered deprecations.<br />
   #nfr--compatibility
+- [ ] Test on specific devices, using local or hosted emulators.<br />
+  [Tool: Android Studio](https://developer.android.com/studio)<br />
+  [Tool: Apple Xcode](https://developer.apple.com/xcode/)<br />
+  [Tool: Microsoft Emulator](https://apps.microsoft.com/detail/9n0tn65p5bf6?hl=en-GB&gl=AU)<br />
+  [Tool: Microsoft Windows App](https://learn.microsoft.com/en-us/windows-app/landing)<br />
+  [Tool: Microsoft Remote Desktop client](https://learn.microsoft.com/en-us/previous-versions/remote-desktop-client/)<br />
+  [Tool: BrowserStack](https://www.browserstack.com)<br />
+  [Tool: Browserling](https://www.browserling.com)<br />
+  [Tool: VirtualBox](https://www.virtualbox.org)<br />
+  [Tool: VMware](https://www.vmware.com)<br />
+  #nfr--compatibility
 
 [^nfr-compatibility]: Compatibility covers the ability of application components to support various versions of consumers.
 
 
 
 
-#### NFR - Compatibility - Screen sizes [^nfr-compatibility-screen-sizes]
+### Compatibility - Screen sizes [^nfr-compatibility-screen-sizes]
 
 - [ ] Use shortcuts where component library makes them available.<br />
   Example: `tablet-and-larger` rather than `tablet, desktop, wide`.<br />
@@ -1300,7 +1304,7 @@
 
 
 
-#### NFR - Compatibility - Offline [^nfr-compatibility-offline]
+### Compatibility - Offline [^nfr-compatibility-offline]
 
 - [ ] Use service workers to enable offline access.<br />
   [Article: Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)<br />
@@ -1311,7 +1315,7 @@
 
 
 
-#### NFR - Compatibility - Mobile devices [^nfr-compatibility-mobile-devices]
+### Compatibility - Mobile devices [^nfr-compatibility-mobile-devices]
 
 - [ ] Use web application manifest to enable the site to be saved and run as an app-like experience on a phone.<br />
   [Article: Web application manifest](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest)<br />
@@ -1323,7 +1327,7 @@
 
 
 
-### NFR - Accessibility [^nfr-accessibility]
+## Accessibility [^nfr-accessibility]
 
 - [ ] Use semantic HTML elements.<br />
   [Article: Semantic HTML and landmarks • Website Spec](https://specification.website/spec/accessibility/semantic-html/)<br />
@@ -1355,7 +1359,7 @@
 
 
 
-#### NFR - Accessibility - Perceivable [^nfr-accessibility-perceivable]
+### Accessibility - Perceivable [^nfr-accessibility-perceivable]
 
 - [ ] Screen can be navigated with screen-reader.<br />
   #nfr--accessibility #accessibility--perceivable
@@ -1371,7 +1375,7 @@
 
 
 
-#### NFR - Accessibility - Operable [^nfr-accessibility-operable]
+### Accessibility - Operable [^nfr-accessibility-operable]
 
 - [ ] All important elements and controls can be accessed with keyboard only.<br />
   #nfr--accessibility #accessibility--operable
@@ -1383,7 +1387,7 @@
 
 
 
-#### NFR - Accessibility - Understandable [^nfr-accessibility-understandable]
+### Accessibility - Understandable [^nfr-accessibility-understandable]
 
 - [ ] Use simple, plain language.<br />
   #nfr--accessibility #accessibility--understandable
@@ -1395,7 +1399,7 @@
 
 
 
-#### NFR - Accessibility - Robust [^nfr-accessibility-robust]
+### Accessibility - Robust [^nfr-accessibility-robust]
 
 - [ ] Elements render correctly with all common screen-sizes.<br />
   Ideally: wide desktop, desktop, tablet, mobile. And: vertical and horizontal.<br />
@@ -1410,7 +1414,7 @@
 
 
 
-#### NFR - Accessibility - Content [^nfr-accessibility-content]
+### Accessibility - Content [^nfr-accessibility-content]
 
 - [ ] Use plain language and avoid figures of speech, idioms, and complicated metaphors.<br />
   [Article: WCAG - Reading Level](https://www.w3.org/WAI/WCAG22/Understanding/reading-level.html)<br />
@@ -1427,7 +1431,7 @@
 
 
 
-#### NFR - Accessibility - Global code [^nfr-accessibility-global-code]
+### Accessibility - Global code [^nfr-accessibility-global-code]
 
 - [ ] Validate your HTML.<br />
   [Article: WCAG - Parsing](https://www.w3.org/WAI/WCAG22/Understanding/parsing.html)<br />
@@ -1462,7 +1466,7 @@
 
 
 
-#### NFR - Accessibility - Keyboard [^nfr-accessibility-keyboard]
+### Accessibility - Keyboard [^nfr-accessibility-keyboard]
 
 - [ ] Ensure all interactive elements on the page are reachable and operable with a keyboard alone.<br />
   In a logical order, with no traps that hold focus.<br />
@@ -1484,7 +1488,7 @@
 
 
 
-#### NFR - Accessibility - Images [^nfr-accessibility-images]
+### Accessibility - Images [^nfr-accessibility-images]
 
 - [ ] Make sure that all `img` elements have an `alt` attribute.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
@@ -1505,7 +1509,7 @@
 
 
 
-#### NFR - Accessibility - Headings [^nfr-accessibility-headings]
+### Accessibility - Headings [^nfr-accessibility-headings]
 
 - [ ] Use heading elements to introduce content.<br />
   [Article: WCAG - Headings or Labels](https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html)<br />
@@ -1525,7 +1529,7 @@
 
 
 
-#### NFR - Accessibility - Lists [^nfr-accessibility-lists]
+### Accessibility - Lists [^nfr-accessibility-lists]
 
 - [ ] Use list elements (`ol`, `ul`, and `dl` elements) for list content.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
@@ -1536,7 +1540,7 @@
 
 
 
-#### NFR - Accessibility - Controls [^nfr-accessibility-controls]
+### Accessibility - Controls [^nfr-accessibility-controls]
 
 - [ ] Prefer native elements where possible.<br />
   Prefer native HTML interactive elements — `<button>`, `<a>`, `<details>`/`<summary>`, `<dialog>` — over divs with click handlers. You get keyboard support, focus management, and assistive-tech semantics for free.<br />
@@ -1571,7 +1575,7 @@
 
 
 
-#### NFR - Accessibility - Tables [^nfr-accessibility-tables]
+### Accessibility - Tables [^nfr-accessibility-tables]
 
 - [ ] Use the `table` element to describe tabular data.<br />
   [Article: WCAG - Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html)<br />
@@ -1589,7 +1593,7 @@
 
 
 
-#### NFR - Accessibility - Forms [^nfr-accessibility-forms]
+### Accessibility - Forms [^nfr-accessibility-forms]
 
 - [ ] All inputs in a form are associated with a corresponding `label` element.<br />
   [Article: WCAG - On Input](https://www.w3.org/WAI/WCAG22/Understanding/on-input.html)<br />
@@ -1620,7 +1624,7 @@
 
 
 
-#### NFR - Accessibility - Media [^nfr-accessibility-media]
+### Accessibility - Media [^nfr-accessibility-media]
 
 - [ ] Make sure that media does not autoplay.<br />
   [Article: WCAG - Audio Control](https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html)<br />
@@ -1637,7 +1641,7 @@
 
 
 
-#### NFR - Accessibility - Video [^nfr-accessibility-video]
+### Accessibility - Video [^nfr-accessibility-video]
 
 - [ ] Confirm the presence of captions.<br />
   [Article: WCAG - Captions](https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html)<br />
@@ -1652,7 +1656,7 @@
 
 
 
-#### NFR - Accessibility - Audio [^nfr-accessibility-audio]
+### Accessibility - Audio [^nfr-accessibility-audio]
 
 - [ ] Confirm that transcripts are available.<br />
   [Article: WCAG - Non-text Content](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html)<br />
@@ -1664,7 +1668,7 @@
 
 
 
-#### NFR - Accessibility - Appearance [^nfr-accessibility-appearance]
+### Accessibility - Appearance [^nfr-accessibility-appearance]
 
 - [ ] Check your content in specialized browsing modes.<br />
   [Article: WCAG - Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html)<br />
@@ -1690,7 +1694,7 @@
 
 
 
-#### NFR - Accessibility - Animation [^nfr-accessibility-animation]
+### Accessibility - Animation [^nfr-accessibility-animation]
 
 - [ ] Ensure animations are subtle and do not flash too much.<br />
   [Article: WCAG - Three Flashes or Below Threshold](https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold.html)<br />
@@ -1708,7 +1712,7 @@
 
 
 
-#### NFR - Accessibility - Color contrast [^nfr-accessibility-color-contrast]
+### Accessibility - Color contrast [^nfr-accessibility-color-contrast]
 
 - [ ] Check the contrast for all normal-sized text.<br />
   [Article: WCAG - Contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)<br />
@@ -1735,7 +1739,7 @@
 
 
 
-#### NFR - Accessibility - Mobile and touch [^nfr-accessibility-mobile-and-touch]
+### Accessibility - Mobile and touch [^nfr-accessibility-mobile-and-touch]
 
 - [ ] Check that the site can be rotated to any orientation.<br />
   [Article: WCAG - Orientation](https://www.w3.org/WAI/WCAG22/Understanding/orientation.html)<br />
@@ -1759,14 +1763,14 @@
 
 
 
-### NFR - Performance [^performance]
+## Performance [^performance]
 
 [^performance]: Performance covers operating speed of the application, real and perceived.
 
 
 
 
-#### NFR - Performance - General [^nfr-performance-general]
+### Performance - General [^nfr-performance-general]
 
 - [ ] Avoid premature performance optimisation.<br />
   [Article: Premature optimization - Wikipedia](https://en.wikipedia.org/wiki/Premature_optimization)<br />
@@ -1777,7 +1781,7 @@
 
 
 
-#### NFR - Performance - Perceived [^nfr-performance-perceived]
+### Performance - Perceived [^nfr-performance-perceived]
 
 - [ ] Minimise jank.<br />
   [Article: Jank - Glossary | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Jank)<br />
@@ -1807,7 +1811,7 @@
 
 
 
-#### NFR - Performance - Algorithms [^nfr-performance-algorithms]
+### Performance - Algorithms [^nfr-performance-algorithms]
 
 - [ ] Use early-return, ordered from cheapest to most expensive operations, when a sequence of checks need to be done, to minimise unnecessary processing.<br />
   #nfr--performance
@@ -1828,7 +1832,7 @@
 
 
 
-#### NFR - Performance - Network [^nfr-performance-network]
+### Performance - Network [^nfr-performance-network]
 
 - [ ] Avoid "waterfall" requests - chains of dependent requests that, as a whole, take a long time to finish.<br />
   [Book: Advanced React, Ch 14](https://www.advanced-react.com)<br />
@@ -1853,7 +1857,7 @@
 
 
 
-#### NFR - Performance - Resources [^nfr-performance-resources]
+### Performance - Resources [^nfr-performance-resources]
 
 - [ ] Check for memory leaks or CPU overuse.<br />
   Use Chrome Performance Tools, use a debugger, local system monitor (MacOS Activities, Windows Task Manager or Linux `atop`) or monitor metrics in monitoring tool.<br />
@@ -1881,7 +1885,7 @@
 
 
 
-#### NFR - Performance - Platform [^nfr-performance-platform]
+### Performance - Platform [^nfr-performance-platform]
 
 - [ ] Use platform primitives for visibility-aware rendering, rather than scroll and resize listeners .<br />
   [Article: Visibility-aware rendering • Website Spec](https://specification.website/spec/performance/visibility-aware-rendering/)<br />
@@ -1899,7 +1903,7 @@
 
 
 
-#### NFR - Performance - Assets [^nfr-performance-assets]
+### Performance - Assets [^nfr-performance-assets]
 
 - [ ] Optimise Web font loading.<br />
   Ensure text is readable while the font loads.<br />
@@ -1918,7 +1922,7 @@
 
 
 
-#### NFR - Performance - Build [^nfr-performance-build]
+### Performance - Build [^nfr-performance-build]
 
 - [ ] Make imports specific, to keep bundle size small.<br />
   [Blog: Please Stop Using Barrel Files](https://tkdodo.eu/blog/please-stop-using-barrel-files)<br />
@@ -1933,7 +1937,7 @@
 
 
 
-#### NFR - Performance - Caching [^nfr-performance-caching]
+### Performance - Caching [^nfr-performance-caching]
 
 - [ ] Use caching to prevent redundant, expensive computations.<br />
   #nfr--performance
@@ -1959,7 +1963,7 @@
 
 
 
-#### NFR - Performance - Concurrency [^nfr-performance-concurrency]
+### Performance - Concurrency [^nfr-performance-concurrency]
 
 - [ ] Use parallelisation to reduce total task completion time.<br />
   Example: use `Promise.all` to run multiple independent requests in parallel.<br />
@@ -1973,7 +1977,7 @@
 
 
 
-### NFR - Privacy [^nfr-privacy]
+## Privacy [^nfr-privacy]
 
 - [ ] Provide a privacy policy.<br />
   [Article: Privacy policy • Website Spec](https://specification.website/spec/privacy/privacy-policy/)<br />
@@ -2000,7 +2004,7 @@
 
 
 
-### NFR - Robustness [^robustness]
+## Robustness [^robustness]
 
 - [ ] Fall back to sensible defaults for unexpected values.<br />
   Example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
@@ -2020,7 +2024,7 @@
 
 
 
-### NFR - Reliability [^reliability]
+## Reliability [^reliability]
 
 - [ ] If the change alters the inputs being received and passed to the Backend, ensure those won't break.<br />
   #nfr--reliability
@@ -2047,7 +2051,7 @@
   #nfr--reliability
 - [ ] Format a value consistently wherever it appears.<br />
   Example: format a date the same way in a date picker input control as display.<br />
-  #nfr--reliability #concerns--date-time
+  #nfr--reliability #concern--date-time
 - [ ] Careful with animations and timeouts.<br />
   Make sure to test, by quickly clicking/switching around, ensure it doesn't mess up.<br />
   #nfr--reliability
@@ -2079,7 +2083,7 @@
 
 
 
-### NFR - Consistency [^consistency]
+## Consistency [^consistency]
 
 - [ ] Ensure changes made to data by a user are reflected across the application and to other users.<br />
   #nfr--consistency
@@ -2089,7 +2093,7 @@
 
 
 
-### NFR - Economy [^economy]
+## Economy [^economy]
 
 - [ ] Minimise operating cost by offloading processing, storage, etc. to the client side.<br />
   #nfr--economy
@@ -2108,7 +2112,7 @@
 
 
 
-### NFR - Security [^security]
+## Security [^security]
 
 [^security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
 [^pii]: Personally Identifiable Information
@@ -2116,7 +2120,7 @@
 
 
 
-### NFR - Security - Transport & Network Security
+### Security - Transport & Network Security
 
 - [ ] Prefer HTTPS wherever possible and be careful what you send over non-HTTPS.<br />
   [Article: HTTPS and TLS • Website Spec](https://specification.website/spec/security/https-tls/)<br />
@@ -2129,7 +2133,7 @@
   #nfr--security
 
 
-### NFR - Security - HTTP Headers & Browser Hardening
+### Security - HTTP Headers & Browser Hardening
 
 - [ ] Use HTTP response headers that restrict framing to prevent Clickjacking.<br />
   Use X-Frame-Options: `DENY`, `SAMEORIGIN`, `ALLOW-FROM`.<br />
@@ -2145,7 +2149,7 @@
 - [ ] Verify that security restrictions are enabled on your development device and browser.<br />
   #nfr--security
 
-### NFR - Security - Input Validation & Injection Prevention
+### Security - Input Validation & Injection Prevention
 
 - [ ] Sanitise input fields.<br />
   Example: Entering HTML entity into an input should not create a vulnerability.<br />
@@ -2178,7 +2182,7 @@
 - [ ] Careful when adding new input fields / user input / URL Parameters.<br />
   #nfr--security
 
-### NFR - Security - Sensitive Data & Secrets
+### Security - Sensitive Data & Secrets
 
 - [ ] Never put potentially sensitive data somewhere insecure.<br />
   Example: client storage (`localStorage`, `sessionStorage`)<br />
@@ -2209,7 +2213,7 @@
   [Article: What Are JSON Web Tokens (JWT)?](https://www.freecodecamp.org/news/what-are-json-web-tokens-jwt)<br />
   #nfr--security
 
-### NFR - Security - Privacy & Identifiers
+### Security - Privacy & Identifiers
 
 - [ ] Check for unmasking customer personally identifiable information (PII) vulnerability.<br />
   #nfr--security
@@ -2219,7 +2223,7 @@
   Make sure they are totally non-identifiable with regard to the data they reference.<br />
   #nfr--security
 
-### NFR - Security - Access Control & Attack Surface
+### Security - Access Control & Attack Surface
 
 - [ ] Apply least privilege principle.<br />
   Don't allow or expose anything except what the user/consumer needs.<br />
@@ -2237,7 +2241,7 @@
   #nfr--security
 
 
-### NFR - Security - Third-Party & Supply Chain
+### Security - Third-Party & Supply Chain
 
 - [ ] Careful consuming third-party packages or components from untrusted sources.<br />
   Minimise use of third-party packages.<br />
@@ -2261,7 +2265,7 @@
 - [ ] Scan configuration files (such as IaC) for vulnerabilities.<br />
   #nfr--security
 
-### NFR - Security - Integration & Change Risk
+### Security - Integration & Change Risk
 
 - [ ] Careful calling new APIs that have not been consumed before. Make sure they're security vetted.<br />
   #nfr--security
@@ -2275,7 +2279,7 @@
   Such as updates to vendor systems (logging frameworks, etc) or migrations to new cloud/hosting providers.<br />
   #nfr--security
 
-### NFR - Security - Process & Governance
+### Security - Process & Governance
 
 - [ ] Regularly review code-base against OWASP Top 10.<br />
   [Page: OWASP Top Ten Web Application Security Risks](https://owasp.org/www-project-top-ten/)<br />
@@ -2295,14 +2299,14 @@
 
 
 
-### NFR - Usability [^usability]
+## Usability [^usability]
 
 [^usability]: Usability covers the ease with which users can operate the application and the overall pleasantness of the user experience.
 
 
 
 
-### NFR - Usability - General [^usability-general]
+### Usability - General [^usability-general]
 
 - [ ] Run or participate in some usability testing with real users, to identify and address usability issues.<br />
   [Article: Do you mix user research methods to capture the full picture? | SSW.Rules](https://www.ssw.com.au/rules/mix-user-research-methods)<br />
@@ -2316,7 +2320,7 @@
 
 
 
-#### NFR - Usability - Interactions [^usability-interactions]
+### Usability - Interactions [^usability-interactions]
 
 - [ ] Handle error states with helpful messages and feedback.<br />
   #nfr--usability #usability--interaction
@@ -2336,7 +2340,7 @@
 
 
 
-#### NFR - Usability - Modals [^nfr-usability-modals]
+### Usability - Modals [^nfr-usability-modals]
 
 - [ ] Capture focus on open.<br />
   #nfr--usability #usability--modals
@@ -2357,7 +2361,7 @@
 
 
 
-#### NFR - Usability - Visual design [^nfr-usability-visual-design]
+### Usability - Visual design [^nfr-usability-visual-design]
 
 - [ ] Light/dark mode.<br />
   #nfr--usability #usability--visual-design
@@ -2387,7 +2391,7 @@
 
 
 
-#### NFR - Usability - Text [^nfr-usability-text]
+### Usability - Text [^nfr-usability-text]
 
 - [ ] Shorten very long text and ensure it does not break layout.<br />
   Use ellipsis, wrap or summarise and add "more" button.<br />
@@ -2418,7 +2422,7 @@
 
 
 
-#### NFR - Usability - Design system [^nfr-usability-design-system]
+### Usability - Design system [^nfr-usability-design-system]
 
 - [ ] Use correct layout components.<br />
   #nfr--usability #usability--design-system
@@ -2434,7 +2438,7 @@
 
 
 
-#### NFR - Usability - Component library [^nfr-usability-component-library]
+### Usability - Component library [^nfr-usability-component-library]
 
 - [ ] Before using custom classes, props, etc. check if it's part of component library already.<br />
   #nfr--usability #usability--component-library
@@ -2450,7 +2454,7 @@
 
 
 
-#### NFR - Usability - Transitions [^nfr-usability-transitions]
+### Usability - Transitions [^nfr-usability-transitions]
 
 - [ ] Minimise Cumulative Layout Shift (CLS).<br />
   #nfr--usability #usability--transitions
@@ -2476,7 +2480,7 @@
 
 
 
-#### NFR - Usability - Errors [^nfr-usability-errors]
+### Usability - Errors [^nfr-usability-errors]
 
 - [ ] Handle errors in a user friendly way.<br />
   #nfr--usability #usability--errors
@@ -2496,7 +2500,7 @@
 
 
 
-#### NFR - Usability - Date and time [^nfr-usability-date-and-time]
+### Usability - Date and time [^nfr-usability-date-and-time]
 
 - [ ] Ensure multiple time-zones are supported. Test with simulated time-zone.<br />
   #nfr--usability #usability--date-and-time #concern--date-time
@@ -2510,7 +2514,7 @@
 
 
 
-#### NFR - Usability - Numbers [^nfr-usability-numbers]
+### Usability - Numbers [^nfr-usability-numbers]
 
 - [ ] Format numeric values correctly.<br />
   Example: currencies should use correct comma and currency symbol or code.<br />
@@ -2523,7 +2527,7 @@
 
 
 
-#### NFR - Usability - Forms [^nfr-usability-forms]
+### Usability - Forms [^nfr-usability-forms]
 
 - [ ] Do not handle button click while in loading or saving state.<br />
   Use ally attrs appropriately.<br />
@@ -2555,7 +2559,7 @@
 
 
 
-#### NFR - Usability - Validation [^nfr-usability-validation]
+### Usability - Validation [^nfr-usability-validation]
 
 - [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
   #nfr--usability #usability--validation
@@ -2570,7 +2574,7 @@
 
 
 
-#### NFR - Usability - Validation [^nfr-usability-validation]
+### Usability - Validation [^nfr-usability-validation]
 
 - [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
   #nfr--usability #usability--validation
@@ -2585,7 +2589,7 @@
 
 
 
-#### NFR - Internationalisation and localisation [^nfr-internationalisation-and-localisation]
+### Internationalisation and localisation [^nfr-internationalisation-and-localisation]
 
 - [ ] Use standardised URL pattern to indicate country and/or language.<br />
   [Article: International URL structure • Website Spec](https://specification.website/spec/i18n/international-url-structure/)<br />
@@ -3380,7 +3384,7 @@
   #framework--nextjs
 - [ ] Server rendered components and server actions (data-fetching functions that execute server-side) should not do formatting that is client-dependent.<br />
   Example: browser local date/time or light/dark mode. They should do server-side-appropriate processing and return data sufficient for the client-side to take over client-dependent work.<br />
-  #framework--nextjs #concerns--date-time
+  #framework--nextjs #concern--date-time
 - [ ] Avoid "use client"; better to default to server rendering, for performance, and let NextJS apply client-side as needed.<br />
   Where it must be used, move it as far down the component tree as possible.<br />
   #framework--nextjs

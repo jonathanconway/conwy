@@ -3,13 +3,10 @@
 import { orderBy } from "lodash";
 import { useMemo } from "react";
 
-import { ChecklistTagGroup } from "@/framework";
-
 import { Button } from "../../../button";
 import { Collapsible } from "../../../collapsible";
-import { Filters } from "../../../filters";
+import { FilterGroup, Filters } from "../../../filters";
 import { Filter } from "../../../filters/filters-props";
-import { Group } from "../../../group";
 import { TwoColLayout } from "../../../layouts";
 
 import { ChecklistFiltersProps } from "./checklist-filters-props";
@@ -36,13 +33,6 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
     props.onChange([]);
   }
 
-  function getTagGroupCount(tagGroup: ChecklistTagGroup) {
-    const tagGroupCount = props.selectedTags.filter((tag) =>
-      tagGroup.tags.includes(tag),
-    ).length;
-    return tagGroupCount;
-  }
-
   return (
     <Collapsible title={`Filter by tag (${props.selectedTags.length})`}>
       <div className={styles.container}>
@@ -52,9 +42,12 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
         </TwoColLayout>
 
         {tagGroupsWithItemsOrdered.map((tagGroup) => (
-          <Group
+          <FilterGroup
             key={tagGroup.name}
-            title={`${tagGroup.title} (${getTagGroupCount(tagGroup)}) `}
+            title={tagGroup.title}
+            filters={tagGroup.tags}
+            selectedFilters={props.selectedTags}
+            onChange={handleChange}
           >
             <Filters
               key={tagGroup.title}
@@ -63,7 +56,7 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
               title={tagGroup.title}
               onChange={handleChange}
             />
-          </Group>
+          </FilterGroup>
         ))}
       </div>
     </Collapsible>

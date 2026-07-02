@@ -2435,8 +2435,8 @@ Flaky tests can be dealt with by:
 
 Many who worked with me will know I&#39;m a big fan of checklists. I think a good checklist can benefit you in several ways.
 
-- **It helps you get started.** When the task ahead seems overwhelming, such as reviewing a giant pull request, I just start with the first checklist item and keep going from there.
-- **It helps you organise my thinking.** Get clarity on what matters and doesn&#39;t matter; avoid getting overloaded.
+- **It helps you get started.** When the task ahead seems overwhelming, such as reviewing a giant pull request, you can just start with the first checklist item and keep going from there.
+- **It helps you organise your thinking.** Quickly get clarity on what matters and doesn&#39;t matter. Avoid overwhelm and mental fog by following a predictable process.
 - **It helps you identify blind-spots.** Common human biases (such as confirmation bias) and also your own individual biases (from past experiences).
 
 Professional software construction and code review are complex tasks involving many elements. Research shows that the human mind is limited and can only work with a finite number of concepts at a given time.
@@ -2445,9 +2445,9 @@ Professional software construction and code review are complex tasks involving m
 &gt;
 &gt; – [Felienne HERMANS • The Programmer&#39;s Brain](https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/) (brackets mine)
 
-Additionally, research shows the human mind can be affected by cognitive flaws and biased thinking. While we are _capable_ of thinking rationally, our minds, in an attempt to conserve energy, often default to a shortcuts and heuristics, leading to critical errors. In [_Thinking, Fast and Slow_](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow), cognitive psychologist Daniel Khaneman describes several of these errors, such as the anchoring effect (when people consider a particular value for an unknown quantity before estimating that quantity) and availability (when people focus on the information that is most readily available while overlooking other potentially important information).
+Additionally, research shows the human mind can be affected by cognitive flaws and biased thinking. While we are _capable_ of thinking rationally, our minds, in an attempt to conserve energy, often default to a shortcuts and heuristics, leading to critical errors. In [_Thinking, Fast and Slow_](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow), cognitive psychologist [Daniel Khaneman](https://en.wikipedia.org/wiki/Daniel_Kahneman) describes several of these errors, such as the [anchoring effect](https://en.wikipedia.org/wiki/Anchoring_effect) and the [availability heuristic](https://en.wikipedia.org/wiki/Availability_heuristic).
 
-Checklist can help us overcome these biases and errors. Surgeon and author Atul Gawande famously wrote a book about this, demonstrating the use of checklists in mission-critical contexts from passenger flights to hospital operating rooms. The same principles can be applied to front end development, when tasks are complex and quality matters.
+Checklist can help you overcome these biases and errors. Surgeon and author [Atul Gawande](https://en.wikipedia.org/wiki/Atul_Gawande) famously wrote a book about this, demonstrating the use of checklists in mission-critical contexts from passenger flights to hospital operating rooms.
 
 &gt; Pull-quote: “Checklists seem to provide protection against such failures. They remind us of the minimum necessary steps and make them explicit. They not only offer the possibility of verification but also instill a kind of discipline of higher performance.”
 &gt;
@@ -2459,8 +2459,8 @@ Similar points about checklists have been made by [Michael Mauboussin](https://w
 
 You can use a development checklist in the following ways:
 
-- **Self-review, prior to submitting changes.** Check your work against the list. This gives you an opportunity to anticipate and address any issues in advance, which reduces the code review burden on team mates and helps you to get faster approvals.
-- **Code-review, on others&#39; changes.** Check others&#39; work against your checklist. You can deliver useful feedback and mentor colleagues.
+- **Self review, prior to submitting changes.** Check your work against the list. This gives you an opportunity to anticipate and address any issues in advance, which reduces the code review burden on team mates and helps you to get faster approvals.
+- **Code review, on others&#39; changes.** Check others&#39; work against your checklist. You can deliver useful feedback and mentor colleagues.
 
 When scanning the list and picking items to check, you can factor in what makes sense for your current team and project. In this article I provide a general front end development checklist. But you can create your own variants of the checklist, such as one for each project.
 
@@ -2483,9 +2483,9 @@ For each relevant checklist item:
 - For each non-complied checklist item, provide an explanation and recommendation on how to address it.
 ```
 
-&gt; Aside: If performance is poor or costing you a lot of tokens, one solution is to break down the checklist into smaller sub-lists. Each sub-list can have a `&quot;description&quot;` section, specifying the conditions under which the AI assistant read and use it. Following the principle of progressive disclosure, this can minimise context use and streamline AI performance and cost efficiency.
+&gt; Aside: **Tip:** If performance is poor or costing you a lot of tokens, one solution is to break down the checklist into smaller sub-lists. Each sub-list can have a `&quot;description&quot;` section, specifying the conditions under which the AI assistant read and use it. Following [progressive disclosure](https://docs.claude-mem.ai/progressive-disclosure) in this way minimises context and streamlines AI performance and cost.
 
-There are many other ways a checklist can be used with AI.
+There are other ways a checklist can be used with AI to boost productivity, such as:
 
 * When vibe-coding, include instructions for the AI assistant to self-review its work against the checklist, either in the prompt or in context files.
 * When using the AI assistant to generate a solution design, prompt it to self-review the solution design against the checklist.
@@ -2505,17 +2505,11 @@ flowchart TD
     D[&quot;💬 Code review&quot;] --&gt;|improves| A
 ```
 
-Other high quality resources that can be used as sources for checklist items include:
-
-- Books
-- Courses
-- Podcasts
-- Open-source
-- Feedback from past projects
+Other high quality resources that can be used as sources for checklist items include books, online courses, podcasts, open-source code-bases and code review feedback from past projects
 
 &gt; Aside: You can find a list of [Resources](#resources) used in my [Front end development checklist](/checklists/front-end-development).
 
-## Precedent-based model for code reviews in less mature teams
+## Precedent-based model for code reviews
 
 For team projects, where I add/modify a checklist item in response to feedback, I like to include a link to specific feedback comment.
 
@@ -2523,25 +2517,25 @@ In subsequent code reviews, if a similar issue is being discussed, I can simply 
 
 I found success with this approach, in the following ways:
 
-- In most cases, the team agree to stay consistent with the approach suggested by the link to the prior discussion. This agreement helps to drive consensus and move the pull request toward approval.
-- In some cases, a different approach is proposed. Agreement is found. I can improve the checklist by updating it with a link to this more recent discussion. Additionally, the team benefits by gaining more clarity over the reasoning behind the decision and also a sense of the broader approach being followed.
-- In a few cases, there is lively debate about which approach to follow. Here, the &quot;precedent model&quot; helps us to organise our thinking and to keep the discussion on-track. In the worst case, I can at least demonstrate effort and maintain forward momentum.
+- In some cases, the team agree to stay consistent with the approach suggested by the link to the prior discussion. This agreement helps to drive consensus and move the pull request toward approval.
+- In other cases, a different approach is proposed. Agreement is found. I can improve the checklist by updating it with a link to this more recent discussion. Additionally, the team benefits by gaining more clarity over the reasoning behind the decision and also a sense of the broader approach being followed.
+- In a few cases, there is lively debate about which approach to follow. Here, the &quot;precedent model&quot; helps us to organise our thinking and to keep the discussion on-track. In the worst case, I can at least demonstrate effort, think clearly, [disagree and commit](https://en.wikipedia.org/wiki/Disagree_and_commit) and maintain forward momentum.
 
 ## Organising and filtering the checklist
 
-With a checklist of 575 items and counting, you might wonder how you&#39;ll ever have the time to go through that many items.
+With a checklist of 575 items and growing, you might wonder how I have the time to go through that many items. The truth is that I only use a subset of checklist items per situation. The checklist items are grouped into headings and tags which can be filtered. Using the filters, I can quickly narrow down the list to a much more manageable size.
 
-One solution is to only use a subset of checklist items in each situation. My Front end development checklist groups items into heading and also filterable tags. You can quickly narrow down the list to a much more manageable size by using the tag filters.
+For example, when reviewing a code change that only affects styling, I can filter by the `CSS`, `SCSS and LESS` and `Accessibility/Appearance` tags.
 
-For example, if you&#39;re reviewing a code change that only affects styling, you can filter by the CSS tag.
-
-
+![Screenshot of filters with relevant tags selected](/images/articles/front-end-development-checklist/styling-filters-screenshot.png)
 
 ## Front End Development Checklist
 
-Here is the link:
+Here is the link to the checklist:
 
 
+
+You&#39;re welcome to [download](/downloads/checklists/front-end-development-checklist/front-end-development-checklist.md) and re-use it for your own purposes and [suggest improvements](/articles/front-end-development-checklist#article-discussion).
 
 ## Further reading
 

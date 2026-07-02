@@ -2051,7 +2051,7 @@
   #nfr--reliability
 - [ ] Format a value consistently wherever it appears.<br />
   Example: format a date the same way in a date picker input control as display.<br />
-  #nfr--reliability #concerns--date-time
+  #nfr--reliability #concern--date-time
 - [ ] Careful with animations and timeouts.<br />
   Make sure to test, by quickly clicking/switching around, ensure it doesn't mess up.<br />
   #nfr--reliability
@@ -3384,7 +3384,7 @@
   #framework--nextjs
 - [ ] Server rendered components and server actions (data-fetching functions that execute server-side) should not do formatting that is client-dependent.<br />
   Example: browser local date/time or light/dark mode. They should do server-side-appropriate processing and return data sufficient for the client-side to take over client-dependent work.<br />
-  #framework--nextjs #concerns--date-time
+  #framework--nextjs #concern--date-time
 - [ ] Avoid "use client"; better to default to server rendering, for performance, and let NextJS apply client-side as needed.<br />
   Where it must be used, move it as far down the component tree as possible.<br />
   #framework--nextjs

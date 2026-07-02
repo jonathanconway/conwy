@@ -5,7 +5,7 @@ import { vars } from "../theme";
 export const checkboxLabel = style({
   display: "flex",
   alignItems: "center",
-  gap: "0.25em",
+  gap: "0.5em",
   cursor: "pointer",
   fontSize: "0.875rem" /* 14px */,
   lineHeight: "1.25rem" /* 20px */,
