@@ -9,6 +9,7 @@ export const tags = style({
   display: "flex",
   flexDirection: "row",
   gap: "0.5rem",
+  flexFlow: "wrap",
 });
 
 export const tag = style({

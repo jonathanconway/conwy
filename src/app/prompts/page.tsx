@@ -3,7 +3,6 @@ import {
   PageLayout,
   PromptsList,
   ResponsiveMdHalf,
-  Stack,
 } from "@/components";
 import { site } from "@/content";
 import { promptsFragment } from "@/content/fragments";
