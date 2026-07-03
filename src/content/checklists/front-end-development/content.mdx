@@ -29,12 +29,12 @@
   #general--solution-design
 - [ ] Ensure the solution design is up-to-date with requirements and any other sources.<br />
   #general--solution-design
-- [ ] Inherent vs accidental complexity.<br />
+- [ ] Consider inherent vs accidental complexity.<br />
   Try to find a simpler solution.<br />
   #general--solution-design #nfr--readability #nfr--maintainability
 - [ ] Don't rely on assumptions that haven't been tested and verified.<br />
   #general--solution-design #nfr--correctness
-- [ ] Longevity of the feature.<br />
+- [ ] Consider longevity of the feature.<br />
   Check if there a start/end date. Perhaps it is seasonal or otherwise periodic. Check if there is a plan for removal and/or maintenance.<br />
   #general--solution-design #nfr--maintainability
 
@@ -341,8 +341,11 @@
 
 ### Concern - Feature flags [^concern-feature-flags]
 
-- [ ] Use a purpose-built, full-features platform.<br />
-  [Docs: LaunchDarkly](https://launchdarkly.com/docs/home)<br />
+- [ ] Use a purpose-built feature flag management platform.<br />
+  [Platform: LaunchDarkly](https://launchdarkly.com)<br />
+  [Platform: Optimizely](https://www.optimizely.com)<br />
+  [Platform: AWS AppConfig](https://aws.amazon.com/systems-manager/features/appconfig/)<br />
+  [Platform: Azure App Configuration](https://azure.microsoft.com/en-us/products/app-configuration/)<br />
   #concern--feature-flags
 - [ ] Put feature behind a feature flag as needed.<br />
   #concern--feature-flags
