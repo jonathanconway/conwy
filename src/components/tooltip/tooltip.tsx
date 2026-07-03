@@ -4,7 +4,8 @@ import { isArray, isObject, isString } from "lodash";
 import { Children, ReactNode, cloneElement, useId } from "react";
 import { Tooltip as Tooltip_ } from "react-tooltip";
 
-import { getResponsiveHidden } from "../responsive";
+import { getResponsiveHidden, useGetBreakpoint } from "../responsive";
+import { Breakpoints } from "../styling";
 
 import { TooltipProps } from "./tooltip-props";
 import * as styles from "./tooltip.css";
@@ -25,6 +26,9 @@ function convertContentsToReactNode(contents?: ReactNode | string) {
 export function Tooltip(props: TooltipProps) {
   const contents = convertContentsToReactNode(props.contents);
   const children = convertContentsToReactNode(props.children);
+
+  const breakpoint = useGetBreakpoint();
+  const breakpointIsSm = breakpoint === Breakpoints.sm;
 
   const id = useId().replaceAll(":", "");
   const descriptionId = `${id}-description`;
@@ -53,12 +57,12 @@ export function Tooltip(props: TooltipProps) {
         openEvents={{
           focus: true,
           mouseenter: true,
-          click: true,
+          click: breakpointIsSm,
         }}
         closeEvents={{
           mouseleave: true,
         }}
-        openOnClick
+        openOnClick={breakpointIsSm}
         style={{
           ...mixins.tooltip,
           ...props.style,

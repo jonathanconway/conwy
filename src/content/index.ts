@@ -4,6 +4,7 @@ export * from "./checklists";
 export * from "./communities";
 export * from "./ideas";
 export * from "./micros";
+export * from "./prompts";
 export * from "./quotes";
 export * from "./redirects";
 export * from "./site";

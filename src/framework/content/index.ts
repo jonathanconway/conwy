@@ -19,6 +19,7 @@ export * from "./page";
 export * from "./podcast";
 export * from "./post";
 export * from "./project";
+export * from "./prompt";
 export * from "./quote";
 export * from "./slug";
 export * from "./social-link";

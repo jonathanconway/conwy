@@ -1,9 +1,10 @@
 "use client";
 
 import { ReactNode } from "react";
-import { useMediaQuery } from "react-responsive";
 
-import { BREAKPOINT_VALUES, Breakpoint } from "../styling";
+import { Breakpoint } from "../styling";
+
+import { useResponsive } from "./use-responsive-hook";
 
 interface ResponsiveProps {
   readonly minWidth?: Breakpoint;
@@ -12,14 +13,6 @@ interface ResponsiveProps {
 }
 
 export function Responsive(props: ResponsiveProps) {
-  const show = useMediaQuery({
-    ...(props.minWidth
-      ? { minWidth: BREAKPOINT_VALUES[props.minWidth] }
-      : undefined),
-    ...(props.maxWidth
-      ? { maxWidth: BREAKPOINT_VALUES[props.maxWidth] }
-      : undefined),
-  });
-
+  const show = useResponsive(props);
   return show ? props.children : null;
 }

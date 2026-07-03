@@ -5,6 +5,7 @@ export * from "./contact";
 export * from "./ideas";
 export * from "./notes";
 export * from "./projects";
+export * from "./prompts";
 export * from "./quotes";
 export * from "./reading";
 export * from "./redirect";

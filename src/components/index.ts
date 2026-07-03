@@ -45,6 +45,7 @@ export * from "./note";
 export * from "./notes";
 export * from "./podcast";
 export * from "./projects";
+export * from "./prompts";
 export * from "./quote";
 export * from "./redirect";
 export * from "./responsive";
