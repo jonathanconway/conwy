@@ -1,2 +1,1 @@
-export * from "./mermaid-svg";
 export * from "./link-checker";

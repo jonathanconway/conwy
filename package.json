@@ -105,6 +105,7 @@
     "eslint-plugin-storybook": "9.1.10",
     "jscodeshift": "^17.3.0",
     "jsdom": "^27.0.0",
+    "linkinator": "^7.6.1",
     "playwright": "^1.55.0",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
