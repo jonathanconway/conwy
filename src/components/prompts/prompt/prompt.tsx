@@ -12,9 +12,7 @@ export function Prompt(props: PromptProps) {
         {props.prompt.meta.title}
       </LinkHeading>
 
-      <MdxContainer key={props.prompt.meta.slug}>
-        {props.prompt.content}
-      </MdxContainer>
+      <MdxContainer>{props.prompt.content}</MdxContainer>
     </Stack>
   );
 }

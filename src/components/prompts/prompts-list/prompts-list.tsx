@@ -8,7 +8,7 @@ export function PromptsList() {
   return (
     <>
       {prompts.map((prompt) => (
-        <Prompt prompt={prompt} />
+        <Prompt key={prompt.meta.slug} prompt={prompt} />
       ))}
     </>
   );
