@@ -35,7 +35,7 @@ export default async function Page(props: PageProps) {
           />
 
           <ResponsiveMdHalf>
-            <Prompt prompt={prompt} />
+            <Prompt title={`Prompt: ${prompt.meta.title}`} prompt={prompt} />
           </ResponsiveMdHalf>
         </>
       }
