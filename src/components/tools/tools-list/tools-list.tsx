@@ -1,8 +1,7 @@
 import { groupBy, orderBy } from "lodash";
-import pluralize from "pluralize";
 
 import * as tools from "@/content/tools";
-import { ToolSections, sentenceCase } from "@/framework/client";
+import { ToolSectionTitles, ToolSections } from "@/framework/client";
 
 import { ContentList } from "../../content-list";
 import { SectionHeading } from "../../heading";
@@ -20,7 +19,7 @@ export function ToolsList() {
     <>
       {toolsSections.map((section) => (
         <div key={section} className={styles.section}>
-          <SectionHeading>{sentenceCase(pluralize(section))}</SectionHeading>
+          <SectionHeading>{ToolSectionTitles[section]}</SectionHeading>
 
           <ContentList>
             {toolsBySection[section].map((tool) => (
