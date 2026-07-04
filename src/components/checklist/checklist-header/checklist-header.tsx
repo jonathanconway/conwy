@@ -24,13 +24,14 @@ export function ChecklistHeader(props: ChecklistHeaderProps) {
         />
       </Stack>
 
-      {props.checklistMeta.extensions && (
-        <ChecklistFilters
-          tagGroups={props.checklistMeta.extensions.tagGroups}
-          selectedTags={checklistContext.selectedFilters}
-          onChange={checklistContext.onChangeSelectedFilters}
-        />
-      )}
+      {props.checklistMeta.extensions &&
+        props.checklistMeta.extensions.tagGroups.length > 0 && (
+          <ChecklistFilters
+            tagGroups={props.checklistMeta.extensions.tagGroups}
+            selectedTags={checklistContext.selectedFilters}
+            onChange={checklistContext.onChangeSelectedFilters}
+          />
+        )}
     </Stack>
   );
 }
