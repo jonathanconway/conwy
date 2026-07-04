@@ -875,8 +875,8 @@
 - [ ] Nice error messages on test failure if possible.<br />
   #testing--assertions
 - [ ] Use wider negative assertions and narrower positive assertions, to maximise test coverage.<br />
-  Example: Use literal for positive text match: `expect(statusElement).toHaveTextContent("Success")` to cover exactly "Success".<br />
-  Example: Use regular expression for negative text match: `expect(statusElement).not.toHaveTextContent(/success/i)` to cover "Success", "success", "SUCCESS", etc.<br />
+  Example: Use literal for positive text match: `expect(el).toHaveTextContent("Success")` to cover exactly "Success".<br />
+  Example: Use regular expression for negative text match: `expect(el).not.toHaveTextContent(/success/i)` to cover "Success", "success", "SUCCESS", etc.<br />
   #testing--assertions
 - [ ] When asserting on collections, assert on expected length first, so test breaks earlier and faster, and failure is faster to debug.<br />
   Example: first `expect(results).toHaveLength(3);` then `expect(results[0]).toHaveTextContent("First item");`.<br />
@@ -1230,6 +1230,7 @@
   #nfr--observability
 - [ ] Ensure observability logs have high cardinality, high-dimensionality, and explorability.<br />
   Example: so we can uncover and resolve logic errors, say through monitoring or observability.<br />
+  [Book: Observability Engineering • Charity MAJORS](https://www.honeycomb.io/observability-engineering-oreilly-book)<br />
   #nfr--observability
 
 [^nfr-observability]: Observability covers how well internal states of the application can be inferred from its external outputs. 
