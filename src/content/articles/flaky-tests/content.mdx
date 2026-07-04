@@ -21,7 +21,9 @@ But before diving into tactics, let's take a brief step back and look at first r
 
 Fundamental to addressing any kind of software bug is **reproducing** it.
 
-But how do you reproduce a flaky test? As discussed above, flaky tests are difficult to reproduce consistently because their failure is non-deterministic: sometimes they fail sometimes not.
+But how do you reproduce a flaky test? As discussed above, flaky tests are difficult to reproduce consistently because their behaviour is non-deterministic: sometimes they function incorrectly, sometimes not.
+
+> Aside: **Warning:** It's important at this point to note that *incorrect function* of a test can occur in various non-obvious ways ways, from giving false-positives (passing when it should fail) to ending prematurely (i.e. ending before the system functionality has been fully exercised).
 
 There are a couple of options here:
 
@@ -153,7 +155,6 @@ Once we are able to reproduce flakiness, we can move to diagnosis, to uncover th
 
 Similar to diagnosing regular bugs, we can diagnose flaky tests by making small changes and measuring the results. With flaky test rates, rather than a single pass/fail, we measure the overall pass/fail rate. A significantly lower percentage of failures can be correlated with a code change to help uncover the cause of the failure.
 
-> Aside: **Warning:** It's important here to emphasise *failure of the test to run properly* rather than just *failure of the test*. A flaky test might give false-positives, passing intermittently when it should be failing.
 
 Some of the usual diagnostic techniques can be applied:
 
@@ -462,6 +463,22 @@ Various methods of verification that might fit the scenario:
 - **Monitoring / observability:** simply provide observability into a feature without necessarily testing it. Failures can be surfaced in a dashboard or alert. Downside of this method: we risk catching a failure too late, after it has already affected a significant number of users before being discovered.
 - **Manual testing:** periodically manually test a feature in a prod-like environment.
 - **Visual diff testing:** automatically capture screenshots of the application or component, raising alerts when differences are detected. Causes of differences can be sought by, say, comparing versions of the code base (using [`git bisect`](https://git-scm.com/docs/git-bisect) or similar).
+
+## Preventing flakiness
+
+Prevention is better than the cure, in test health as in human health. We can prevent flaky tests by following good practices in test design and implementation.
+
+Some of these practices are covered in my [Front-end development checklist - Testing section](/checklists/front-end-development#testing) and include:
+
+- Avoiding async code where possible
+- Await all expected async side-effects by the end of the test, to avoid dangling promises.
+- Check for async assertions not running at all, causing unit test to break or to not properly cover the system under test.
+- Use `waitFor`, `findBy*` or equivalent to explicitly await all expected side-effects.
+- Use `void` rather than `async` prefix with `renderAsyncComponent`, then wait for one of its elements to render (using `findBy*` or `waitFor` block).
+- Always `await` calls to `userEvent` such as `userEvent.click()`, etc.
+- Run the test many times repeatedly to test for flakiness (time permitting).
+- Wait for asynchronous mocked API calls to complete before making assertions that depend on their completion.
+- When there's a chain of API calls, see if you can wait for each to evaluate first, before asserting, to reduce likelihood of flakiness.
 
 ## Conclusion
 

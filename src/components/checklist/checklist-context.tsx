@@ -1,15 +1,7 @@
 "use client";
 
 import { intersection } from "lodash";
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useDeferredValue,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext, useMemo } from "react";
 
 import {
   ChecklistMeta,
@@ -17,7 +9,6 @@ import {
   getTreeLeaves,
   getTreeLeavesFiltered,
   isNotNil,
-  titleCase,
 } from "@/framework/client";
 
 import { useSearchTextFilter, useTagFiltersSelected } from "../filters";

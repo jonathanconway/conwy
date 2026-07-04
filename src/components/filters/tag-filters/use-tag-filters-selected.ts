@@ -21,7 +21,11 @@ export function useTagFiltersSelected(
     } else {
       params.set(searchParamKey, newSelectedTags.join(","));
     }
-    window.history.pushState(null, "", `?${params.toString()}`);
+    window.history.pushState(
+      null,
+      "",
+      `?${params.toString()}${window.location.hash}`,
+    );
   }
 
   return {

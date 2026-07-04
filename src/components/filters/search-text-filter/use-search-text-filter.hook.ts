@@ -25,7 +25,11 @@ export function useSearchTextFilter() {
     } else {
       params.set(searchParamKey, newSearchText);
     }
-    window.history.pushState(null, "", `?${params.toString()}`);
+    window.history.pushState(
+      null,
+      "",
+      `?${params.toString()}${window.location.hash}`,
+    );
   }
 
   const updateSearchParamsSearchTextDebounced = debounce(
