@@ -48,7 +48,9 @@ done
 Some test frameworks provide this re-running capability out-of-the-box. Here's how to do it [with the Playwright CLI](https://playwright.dev/docs/test-cli):
 
 ```bash
-npx playwright test ≪test-path-filename≫ --repeat-each=20 --fail-on-flaky-tests
+npx playwright test '≪test-path-filename≫' \
+--repeat-each=20 \
+--fail-on-flaky-tests
 ```
 
 To increase the failure rate for reproduction purposes, we can simulate failure conditions.
@@ -490,19 +492,16 @@ Flaky tests can be dealt with by:
 - **Solutions:** Optimising async or time-sensitive code, optimising test or file size to smooth test runner execution, configuring the test runner itself (workers, timeouts) or optimising the application under test.
 - **Mitigations:** Disabling application features that tend to induce flakiness, increasing test runner resources (temporarily or permanently), separating flaky tests (say, by tagging) or opting for a different kind of test or verification.
 
-
 ## Further reading
 
-- https://www.mindfulchase.com/explore/troubleshooting-tips/troubleshooting-jest-fixing-slow-tests,-flaky-behavior,-and-memory-leaks.html
-- https://jestjs.io/docs/troubleshooting
-- https://htalbot.dev/posts/debugging-slow-jest-tests
-- https://andreyluiz.com/posts/optimizing-jest-performance/
-- https://jestjs.io/blog/2016/03/11/javascript-unit-testing-performance
-- https://engineering.rently.com/slow-running-jest-test-cases-how-to-optimise-it/
-- https://mindfulchase.com/explore/troubleshooting-tips/troubleshooting-jest-fixing-slow-tests,-flaky-behavior,-and-memory-leaks.html
-- https://stackoverflow.com/questions/45087018/jest-simple-tests-are-slow
-- https://dev.to/playwright/how-to-reproduce-ci-failures-locally-in-playwright-lfl
-- https://medium.com/adobetech/improve-jest-runner-performance-a8f56708ba94
-- https://jestjs.io/docs/troubleshooting#tests-are-extremely-slow-on-docker-andor-continuous-integration-ci-server
-- https://www.codewithjason.com/how-i-fix-flaky-tests/
-- https://www.codewithjason.com/what-causes-flaky-tests/
+- [Article: Troubleshooting Jest • Mindful Chase](https://www.mindfulchase.com/explore/troubleshooting-tips/troubleshooting-jest-fixing-slow-tests,-flaky-behavior,-and-memory-leaks.html)
+- [Article: Debugging slow Jest tests • Harry TALBOT](https://htalbot.dev/posts/debugging-slow-jest-tests)
+- [Article: Optimizing Jest Performance • Andrey LUIZ](https://andreyluiz.com/posts/optimizing-jest-performance/)
+- [Article: JavaScript Unit Testing Performance • Christoph NAKAZAWA](https://jestjs.io/blog/2016/03/11/javascript-unit-testing-performance)
+- [Article: Slow running Jest test cases – How to optimise it? • Sumanta BANERJEE](https://engineering.rently.com/slow-running-jest-test-cases-how-to-optimise-it/)
+- [Article: Jest simple tests are slow • StackOverflow](https://stackoverflow.com/questions/45087018/jest-simple-tests-are-slow)
+- [Article: How to Reproduce CI Failures Locally in Playwright • Debbie O'BRIEN](https://dev.to/playwright/how-to-reproduce-ci-failures-locally-in-playwright-lfl)
+- [Article: Improve Jest Runner Performance • Vikram GUPTA](https://medium.com/adobetech/improve-jest-runner-performance-a8f56708ba94)
+- [Article: Troubleshooting · Jest • Simen BEKKHUS](https://jestjs.io/docs/troubleshooting#tests-are-extremely-slow-on-docker-andor-continuous-integration-ci-server)
+- [Article: How I fix flaky tests • Jason SWETT](https://www.codewithjason.com/how-i-fix-flaky-tests/)
+- [Article: What causes flaky tests • Jason SWETT](https://www.codewithjason.com/what-causes-flaky-tests/)
