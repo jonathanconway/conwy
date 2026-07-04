@@ -53,6 +53,7 @@ export const link = merge(linkBase, linkDecoration, linkContent, focusOutline);
 export const linkInnerContainer = {
   display: "inline-flex",
   flex: 1,
+  gap: "0.25rem",
 };
 
 export const linkIcon = {
