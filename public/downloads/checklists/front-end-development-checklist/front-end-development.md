@@ -872,7 +872,7 @@
 
 ### Testing - Assertions [^testing-assertions]
 
-- [ ] Nice error messages on test failure if possible.<br />
+- [ ] Provide meaningful error messages on test failure if possible, to ease later diagnosis and debugging.<br />
   #testing--assertions
 - [ ] Use wider negative assertions and narrower positive assertions, to maximise test coverage.<br />
   Example: Use literal for positive text match: `expect(el).toHaveTextContent("Success")` to cover exactly "Success".<br />
@@ -938,7 +938,7 @@
   #testing--react-testing-library
 - [ ] Use `waitFor`, with `queryBy*` and `.not` inside the callback, to assert that an element is *not* currently rendered.<br />
   #testing--react-testing-library
-- [ ] Don't use free-standing `wait`, wrap the code in `wait(() => { ... })` block.<br />
+- [ ] Don't use free-standing `await wait();`. Instead, wrap the code in a `wait(() => { ... })` block.<br />
   #testing--react-testing-library
 - [ ] Avoid `waitFor` blocks. Just use `findBy*` where possible. Simpler.<br />
   #testing--react-testing-library
@@ -971,6 +971,8 @@
 - [ ] Add longer timeouts, where necessary, to prevent timeout failures.<br />
   Add to test locators, assertions or whole test files.<br />
   #testing--reliability
+- [ ] Wait for asynchronous mocked API calls to complete before making assertions that depend on their completion.<br />
+  #testing--unit
 - [ ] When there's a chain of API calls, see if you can wait for each to evaluate first, before asserting, to reduce likelihood of flakiness.<br />
   #testing--reliability
 - [ ] Don't assert on animation events like aria-busy if they cause flakiness.<br />
