@@ -39,18 +39,16 @@ Assuming Jest and a `test` script, we can use a command like this to repeatedly 
 ```bash
 for i in {1..20};
 do (
-  npm run test -- '{test_file}' --no-watch ||
+  npm run test -- '≪test-path-filename≫' --no-watch ||
   (echo "Failed after $i attempts" && break)
 );
 done
 ```
 
-(Replace `{test_file}` with your test path and filename).
-
 Some test frameworks provide this re-running capability out-of-the-box. Here's how to do it [with the Playwright CLI](https://playwright.dev/docs/test-cli):
 
 ```bash
-npx playwright test {test_file} --repeat-each=20 --fail-on-flaky-tests
+npx playwright test ≪test-path-filename≫ --repeat-each=20 --fail-on-flaky-tests
 ```
 
 To increase the failure rate for reproduction purposes, we can simulate failure conditions.
