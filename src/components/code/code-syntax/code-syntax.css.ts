@@ -1,7 +1,7 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as boxMixins from "../../box/box.mixins";
-import { rounded, text } from "../../styling";
+import { media, rounded, text } from "../../styling";
 
 export const container = style({
   position: "relative",
@@ -13,9 +13,19 @@ export const code = style({
   display: "inline",
   ...rounded.md,
   ...boxMixins.boxBorderDecorative,
-} as any);
+});
 
-globalStyle(`pre > ${code}`, text.size.sm);
+globalStyle(`pre > code[class*=language-]`, text.size.sm);
+
+globalStyle(`pre > code[class*=language-]`, {
+  "@media": {
+    [media.lessThanMd]: {
+      width: "100%",
+      display: "block",
+      whiteSpace: "pre-wrap",
+    },
+  },
+});
 
 export const toolbar = style({
   position: "absolute",
