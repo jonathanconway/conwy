@@ -56,6 +56,7 @@ export * from "./reflections-on-the-self";
 export * from "./right-story-wrong-story";
 export * from "./sand-talk";
 export * from "./seeing-like-a-state";
+export * from "./shoe-dog";
 export * from "./system-design-interview";
 export * from "./tao-te-ching";
 export * from "./technological-revolutions";
