@@ -29,6 +29,7 @@ import "../../../../public/css/prismjs/themes/prism.min.css";
 
 import * as styles from "./code-syntax.css";
 import { CodeSyntaxCopyButton } from "./code-syntax-copy-button";
+import { cn } from "@/framework/client";
 
 type CodeSyntaxProps = DetailedHTMLProps<
   HTMLAttributes<HTMLElement>,
@@ -36,7 +37,8 @@ type CodeSyntaxProps = DetailedHTMLProps<
 >;
 
 export function CodeSyntax(props: CodeSyntaxProps) {
-  const { className = styles.code, children, ...restProps } = props;
+  const { className, children, ...restProps } = props;
+  const codeClassName = cn(props.className, styles.code);
   const codeRef = useRef<HTMLElement>(null);
   const [isToolbarEnabled, setIsToolbarEnabled] = useState(false);
 
@@ -61,7 +63,7 @@ export function CodeSyntax(props: CodeSyntaxProps) {
       )}
 
       <code
-        className={className}
+        className={codeClassName}
         ref={codeRef}
         {...restProps}
         suppressHydrationWarning

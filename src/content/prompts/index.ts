@@ -7,3 +7,4 @@ export * from "./explain-code";
 export * from "./explain-pr";
 export * from "./find-code-performing-function";
 export * from "./implement-requirements";
+export * from "./refactor-code-readable-description";

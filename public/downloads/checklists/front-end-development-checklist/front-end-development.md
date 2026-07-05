@@ -1,12 +1,12 @@
 
-## General [^general]
+## Planning [^planning]
 
-[^general]: General covers general front end engineering concerns.
-
-
+[^planning]: Planning covers planning aspects of front end engineering, such as requirements and solution design.
 
 
-### General - Requirements [^general-requirements]
+
+
+### Planning - Requirements [^planning-requirements]
 
 - [ ] Ensure non-functional requirements are addressed and prioritised according to appropriate trade-offs.<br />
   Example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br />
@@ -16,12 +16,12 @@
   When in doubt, ask for clarification and/or update requirements.<br />
   #general--requirements
 
-[^general-requirements]: Requirements covers requirements being addressed on a project.
+[^planning-requirements]: Requirements covers requirements being addressed on a project.
 
 
 
 
-### General - Solution design [^general-solution-design]
+### Planning - Solution design [^planning-solution-design]
 
 - [ ] Keep it simple, don't over-engineer.<br />
   #general--solution-design
@@ -38,93 +38,16 @@
   Check if there a start/end date. Perhaps it is seasonal or otherwise periodic. Check if there is a plan for removal and/or maintenance.<br />
   #general--solution-design #nfr--maintainability
 
-[^general-solution-design]: Solution design covers detailed plans for solving requirements.
+[^planning-solution-design]: Solution design covers detailed plans for solving requirements.
 
 
 
 
-### General - Cleanness [^general-cleanness]
+### Planning - Architecture [^planning-architecture]
 
-- [ ] Check for subtle logic errors.<br />
-  False-positives. Checking for `true` when you should check for `false` or vice-versa.<br />
-  Confusing inclusive vs. exclusive ranges. *Between* 1 and 5 vs. *from* 1 to 5.<br />
-  Coercing truthy/falsy values to get an incorrect boolean result.<br />
-  Off-by-one errors. Example: starting a loop from 1 in a 0-based array.<br />
-  Filtering operations. Exclusive vs. inclusive lists. And vs. or operators.<br />
-  #general--cleanness
-- [ ] Test long sequences of actions and make sure the result at the end is exactly as expected.<br />
-  #general--cleanness
-- [ ] Check for typos, accidental keystrokes, inadvertent capitalisation.<br />
-  #general--cleanness
-- [ ] Input values in unexpectedly large quantities, in an unexpected format or null/empty values.<br />
-  #general--cleanness
-- [ ] Test with correctly formatted but illogical values.<br />
-  Example: a date that is the 32nd of the month.<br />
-  #general--cleanness
-- [ ] Add a larger than normal number of items to a list.<br />
-  #general--cleanness
-- [ ] Run multiple instances of the application at once and verify that it still works properly.<br />
-  #general--cleanness
-- [ ] Values vs. references.<br />
-  #general--cleanness
-- [ ] Check for memory leaks.<br />
-  Example: in Javascript, Maps that reference DOM nodes that no longer exist.<br />
-  Example: in RXJS, subscriptions to observables that you forgot to unsubscribe.<br />
-  Use tools for diagnosing memory leaks. Example: Chrome Developer Tools - Performance tab.<br />
-  #general--cleanness
-- [ ] Check for code executing too often.<br />
-  #general--cleanness
-- [ ] Check things that look and behave superficially similarly, but are qualitatively different.<br />
-  Example: Two lists that appear identical but have different underlying data, where one of them might have an error.<br />
-  #general--cleanness
-- [ ] Perform null-checks where values might be null.<br />
-  #general--cleanness
-- [ ] Check for race conditions that might cause async, concurrent or parallel data loading to create errors.<br />
-  #general--cleanness
-- [ ] Ensure no breakage on various devices, operating systems (and versions), screen sizes and zoom factors.<br />
-  #general--cleanness
-- [ ] Careful to ensure that inputs to formatting functions are always valid.<br />
-  Example: Numeric values, such as money amounts; date and time values; etc.<br />
-  Incorrectly formatted inputs can cause exceptions or unexpected behavior.<br />
-  [Article: Do you pre-format your time strings before using TimeSpan.Parse | SSW.Rules](https://www.ssw.com.au/rules/pre-format-your-time-strings-before-using-timespan-parse)<br />
-  #general--cleanness #concern--date-time
-- [ ] Perform load testing.<br />
-  #general--cleanness
-- [ ] Make sure you're running the expected version of the application when using it locally.<br />
-  #general--cleanness
-- [ ] Check in multiple environments.<br />
-  Example: make sure it works not only in Dev environment, but also in UAT and Prod environments.<br />
-  #general--cleanness
-- [ ] On finding a bug, search for similar bugs and fix them too.<br />
-  #general--cleanness
-- [ ] Errors of commission vs. omission.<br />
-  When adding new code, be careful that it doesn't cause an error.<br />
-  Similarly, when adding new code, be careful that you didn't *forget* to include something, which might cause an error.<br />
-  #general--cleanness
-- [ ] Don't consume a data source where in some contexts it might not be available.<br />
-  #general--cleanness
-- [ ] Re-testing after merge or rebase.<br />
-  #general--cleanness
-- [ ] Ensure all remote API calls are working correctly.<br />
-  Including: HTTP requests, web-sockets connections, etc.<br />
-  #general--cleanness
-- [ ] Check browser issue lists regularly to ensure changes do not break your application.<br />
-  [Website: Chromium issues](https://issues.chromium.org/issues?q=status:open)<br />
-  [Website: Firefox bugs](https://bugzilla.mozilla.org/describecomponents.cgi?product=Firefox)<br />
-  [Website: Safari &amp; Web | Apple Developer Forums](https://developer.apple.com/forums/topics/safari-and-web-topic)<br />
-  [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
-  #general--cleanness
+[^planning-architecture]: Architecture covers structural organization of the application.
 
-[^general-cleanness]: Cleanness covers absence of bugs or other mistakes in the application.
-
-
-
-
-### General - Architecture [^general-architecture]
-
-[^general-architecture]: Architecture covers structural organization of the application.
-
-#### General - Architecture - Cloud Native [^general-architecture-cloud-native]
+#### Planning - Architecture - Cloud Native [^planning-architecture-cloud-native]
 
 - [ ] Immutable infrastructure.<br />
   [Article: What is cloud-native application development? - AWS](https://aws.amazon.com/what-is/cloud-native/)<br />
@@ -166,12 +89,12 @@
   [Article: What is Cloud Native? | Google Cloud](https://cloud.google.com/learn/what-is-cloud-native)<br />
   #general--architecture
 
-[^general-architecture-cloud-native]: Cloud Native covers the Cloud Native architectural approach that seeks to exploit the scale, elasticity, and resilience of cloud computing.
+[^planning-architecture-cloud-native]: Cloud Native covers the Cloud Native architectural approach that seeks to exploit the scale, elasticity, and resilience of cloud computing.
 
 
 
 
-#### General - Architecture - 12 Factor [^general-architecture-12-factor]
+#### Planning - Architecture - 12 Factor [^planning-architecture-12-factor]
 
 - [ ] Codebase: One codebase tracked in revision control, many deploys.<br />
   [Article: The 12 Factor App - Codebase](https://12factor.net/codebase)<br />
@@ -210,21 +133,21 @@
   [Article: The 12 Factor App - Admin processes](https://12factor.net/admin-processes)<br />
   #general--architecture
 
-[^general-architecture-12-factor]: 12 Factor covers 12 factor architecture - a methodology and set of best practices focussing on portability and resilience.
+[^planning-architecture-12-factor]: 12 Factor covers 12 factor architecture - a methodology and set of best practices focussing on portability and resilience.
 
 
 
 
-### General - AI [^general-ai]
+## AI [^ai]
 
 - [ ] Use AI for pair programming and code review.<br />
   [Article: Do you use AI pair programming? | SSW.Rules](https://www.ssw.com.au/rules/ai-pair-programming)<br />
-  #general--ai
+  #ai
 - [ ] Make site legible to AI agents and crawlers.<br />
   [Article: Agent Readiness • Website Spec](https://specification.website/spec/agent-readiness/)<br />
-  #general--ai
+  #ai
 
-[^general-ai]: AI covers Artificial Intelligence such as coding assistance, code review and AI integrations.
+[^ai]: AI covers Artificial Intelligence such as coding assistance, code review and AI integrations.
 
 
 
@@ -749,6 +672,10 @@
 - [ ] Regularly review automated tests and remove unnecessary tests.<br />
   [Article: Do you regularly review your automated tests? | SSW.Rules](https://www.ssw.com.au/rules/review-automated-tests)<br />
   #testing--general
+- [ ] On finding a bug, search for similar bugs and fix them too.<br />
+  #testing--general
+  - [ ] Re-testing after merge or rebase.<br />
+  #testing--general
 
 [^testing-general]: General covers testing principles and practices relevant to any kind of test.
 
@@ -762,10 +689,19 @@
 - [ ] Prioritise testing effort. Example: test high-impact or high-risk cases first, then easy-to-test stuff, then the rest.<br />
   [Article: Do you take a risk-based approach to test planning? | SSW.Rules](https://www.ssw.com.au/rules/risk-based-testing)<br />
   #testing--manual
-- [ ] Test Required input fields - they should not accept blank spaces, strange characters, etc.<br />
+- [ ] Test required input fields - they should not accept blank spaces, strange characters, etc.<br />
   #testing--manual
 - [ ] Test fields with extreme values, Example: very low or high numbers or very long strings.<br />
   #testing--manual
+- [ ] Test long sequences of actions and make sure the result at the end is exactly as expected.<br />
+  #testing--manual
+- [ ] Test with correctly formatted but illogical values.<br />
+  Example: a date that is the 32nd of the month.<br />
+  #general--cleanness
+- [ ] Add a larger than normal number of items to a list.<br />
+  #general--cleanness
+- [ ] Run multiple instances of the application at once and verify that it still works properly.<br />
+  #general--cleanness
 - [ ] Perform actions fast and/or with simulated slow conditions and ensure no breakage.<br />
   #testing--manual
 - [ ] Test Lists, tables with very large data-sets, if expected, and ensure they scale.<br />
@@ -791,6 +727,18 @@
   [Article: Do you recognize the importance of critical distance? | SSW.Rules](https://www.ssw.com.au/rules/importance-critical-distance)<br />
   [Paper: Groups of diverse problem solvers can outperform groups of high-ability problem solvers | PNAS](https://www.pnas.org/doi/10.1073/pnas.0403723101)<br />
   [Article: Do you test high-risk features with real users before launch? | SSW.Rules](https://www.ssw.com.au/rules/test-high-risk-features)<br />
+  #testing--manual
+- [ ] Check for code executing unexpectedly or too often.<br />
+  Add logging statements, breakpoints or other diagnostics to check for unexpected or excessive execution.<br />
+  #testing--manual
+- [ ] Make sure you're running the expected version of the application when using it locally.<br />
+  #testing--manual
+- [ ] Check in multiple environments.<br />
+  Example: make sure the application works in Dev, UAT and Prod environments.<br />
+  #testing--manual
+- [ ] Ensure all remote API calls are working correctly.<br />
+  Including: HTTP requests, web-sockets connections, etc.<br />
+  Use [Chrome Developer Tools](https://developer.chrome.com/docs/devtools) or similar to inspect network activity.<br />
   #testing--manual
 
 [^testing-manual]: Manual covers manually testing the application by clicking around, typing, etc.
@@ -1077,6 +1025,26 @@
 
 - [ ] Ensure all and only the original requirements satisfied.<br />
   #nfr--correctness
+- [ ] Errors of commission and omission.<br />
+  When adding or removing code, be careful that you don't *include* something that should be excluded or *exclude* something that should be included.<br />
+  #nfr--correctness
+- [ ] Check for subtle logic errors.<br />
+  False-positives. Checking for `true` when you should check for `false` or vice-versa.<br />
+  Confusing inclusive vs. exclusive ranges. *Between* 1 and 5 vs. *from* 1 to 5.<br />
+  Coercing truthy/falsy values to get an incorrect boolean result.<br />
+  Off-by-one errors. Example: starting a loop from 1 in a 0-based array.<br />
+  Filtering operations. Exclusive vs. inclusive lists. And vs. or operators.<br />
+  #nfr--correctness
+- [ ] Check for typos, accidental keystrokes, inadvertent capitalisation.<br />
+  #nfr--correctness
+- [ ] Check that correctly formatted but illogical values are rejected.<br />
+  Example: a date that is the 32nd of the month.<br />
+  #nfr--correctness
+- [ ] Check that values vs. references are used correctly in each context.<br />
+  #nfr--correctness
+- [ ] Check things that look and behave superficially similarly, but are qualitatively different.<br />
+  Example: Two lists that appear identical but have different underlying data, where one of them might have an error.<br />
+  #nfr--correctness
 
 [^nfr-correctness]: Correctness covers the ability of the application to perform the exact tasks required.
 
@@ -1085,6 +1053,17 @@
 
 ## Readability [^nfr-readability]
 
+- [ ] Use clean code.<br />
+  Scan the code quickly and ensure it is understandable.<br />
+  Minimal - remove unnecessary code.<br />
+  Simple - use "boring" code. Avoid "clever" code.<br />
+  [Article: Do you know the difference between a 'smart' and a 'clever' developer? | SSW.Rules](https://www.ssw.com.au/rules/do-you-know-the-difference-between-a-clever-and-a-smart-developer)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 8, Abusing Short-Circuit Logic, pp. 86](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability #nfr--simplicity
+- [ ] Use intermediate variables to improve readability.<br />
+  Use constants with meaningful names for explaining and summarising.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 8, Explaining Variables, Summary Variables, pp. 84-85](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
 - [ ] Break code into blocks or "paragraphs", to group similar ideas together.<br />
   Helps readers keep their place on the page and navigate through the code.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 4, Break Code into “Paragraphs”, pp. 41](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -1098,6 +1077,9 @@
 - [ ] Simplify and flatten deeply nested structures for readability.<br />
   Example: nested `if`, `switch` statements.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, Minimize Nesting, pp. 77-79](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
+- [ ] Simplify conditional expressions.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 8, Using De Morgan’s Laws, pp. 85](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
 - [ ] Replace multiple `if` statements with one `switch` statement or pattern matching if it improves readability.<br />
   #nfr--readability
@@ -1148,7 +1130,8 @@
 - [ ] Group related statements with whitespace between.<br />
   #nfr--readability
 - [ ] Remove unnecessary or unused code where possible.<br />
-  Example: statements never executed, unused function parameters, branches never evaluated.<br />
+  Example: statements never executed, unused function parameters, branches never evaluated, unnecessary variables.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 9, Eliminating Variables, Eliminating Control Flow Variables, pp. 94-96](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
 - [ ] Check for accidental mis-formatting.<br />
   Example: unnecessary or improper import order changes accidentally committed.<br />
@@ -1184,6 +1167,9 @@
 - [ ] Make it as easy as possible to follow the "flow of execution".<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 7, Can You Follow the Flow of Execution?, pp. 79-80](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
+- [ ] Keep variable definitions close to their usage.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 9, Moving Definitions Down, pp. 101-102](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
 
 [^nfr-readability]: Readability covers the ease with which developers can read and understand the code.
 
@@ -1218,6 +1204,8 @@
 ## Scalability [^nfr-scalability]
 
 - [ ] Use well tested, documented and supported third-party frameworks, which can grow with the application.<br />
+  #nfr--scalability
+- [ ] Perform load testing.<br />
   #nfr--scalability
 
 [^nfr-scalability]: Scalability covers the ability of the application to handle increasing workloads while maintaining integrity.
@@ -1274,6 +1262,12 @@
   #nfr--compatibility
 - [ ] Ensure browser features used are commonly supported.<br />
   [Tool: CanIUse](http://caniuse.com)<br />
+  #nfr--compatibility
+- [ ] Monitor browser issue lists to ensure browser updates do not break your application.<br />
+  [Website: Chromium issues](https://issues.chromium.org/issues?q=status:open)<br />
+  [Website: Firefox bugs](https://bugzilla.mozilla.org/describecomponents.cgi?product=Firefox)<br />
+  [Website: Safari &amp; Web | Apple Developer Forums](https://developer.apple.com/forums/topics/safari-and-web-topic)<br />
+  [Website: Microsoft Edge questions](https://learn.microsoft.com/en-gb/answers/questions/)<br />
   #nfr--compatibility
 - [ ] Ensure interface changes (such as component props) maintain compatibility with older / legacy consumers, where it matters.<br />
   Consider the trade-off between supporting breadth of features for new consumers vs compromising integrity or overcomplicating the interface or implementation. Make well considered deprecations.<br />
@@ -1769,9 +1763,9 @@
 
 
 
-## Performance [^performance]
+## Performance [^nfr-performance]
 
-[^performance]: Performance covers operating speed of the application, real and perceived.
+[^nfr-performance]: Performance covers operating speed of the application, real and perceived.
 
 
 
@@ -2010,7 +2004,7 @@
 
 
 
-## Robustness [^robustness]
+## Robustness [^nfr-robustness]
 
 - [ ] Fall back to sensible defaults for unexpected values.<br />
   Example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
@@ -2025,12 +2019,12 @@
   [Article: Offline support and service workers • Website Spec](https://specification.website//spec/resilience/offline-support/)<br />
   #nfr--robustness
 
-[^robustness]: Robustness covers the ability of the application to react appropriately to abnormal or variable conditions.
+[^nfr-robustness]: Robustness covers the ability of the application to react appropriately to abnormal or variable conditions.
 
 
 
 
-## Reliability [^reliability]
+## Reliability [^nfr-reliability]
 
 - [ ] If the change alters the inputs being received and passed to the Backend, ensure those won't break.<br />
   #nfr--reliability
@@ -2083,23 +2077,39 @@
 - [ ] Eliminate unnecessary requests that result in errors (such as `404` Not Found).<br />
   This can avoids triggering security or other alarms unnecessarily.<br />
   #nfr--reliability
+- [ ] Check for memory leaks.<br />
+  Example: in Javascript, Maps that reference DOM nodes that no longer exist.<br />
+  Example: in RXJS, subscriptions to observables that you forgot to unsubscribe.<br />
+  Use tools for diagnosing memory leaks. Example: Chrome Developer Tools - Performance tab.<br />
+  #nfr--reliability
+- [ ] Perform null-checks where values might be null.<br />
+  #nfr--reliability
+- [ ] Check for race conditions that might cause async, concurrent or parallel data loading to create errors.<br />
+  #nfr--reliability
+- [ ] Careful to ensure that inputs to formatting functions are always valid.<br />
+  Example: Numeric values, such as money amounts; date and time values; etc.<br />
+  Incorrectly formatted inputs can cause exceptions or unexpected behavior.<br />
+  [Article: Do you pre-format your time strings before using TimeSpan.Parse | SSW.Rules](https://www.ssw.com.au/rules/pre-format-your-time-strings-before-using-timespan-parse)<br />
+  #nfr--reliability
+- [ ] Don't consume a data source where in some contexts it might not be available.<br />
+  #nfr--reliability
 
-[^reliability]: Reliability covers the probability the application will operate with minimal (or acceptable) level of failures.
+[^nfr-reliability]: Reliability covers the probability the application will operate with minimal (or acceptable) level of failures.
 
 
 
 
-## Consistency [^consistency]
+## Consistency [^nfr-consistency]
 
 - [ ] Ensure changes made to data by a user are reflected across the application and to other users.<br />
   #nfr--consistency
 
-[^consistency]: Consistency covers the application as a whole behaving in a expected and predictable ways.
+[^nfr-consistency]: Consistency covers the application as a whole behaving in a expected and predictable ways.
 
 
 
 
-## Economy [^economy]
+## Economy [^nfr-economy]
 
 - [ ] Minimise operating cost by offloading processing, storage, etc. to the client side.<br />
   #nfr--economy
@@ -2113,14 +2123,14 @@
   Use caching headers and offline caching.<br />
   #nfr--economy
 
-[^economy]: Economy covers the cost effectiveness of operating the application.
+[^nfr-economy]: Economy covers the cost effectiveness of operating the application.
 
 
 
 
-## Security [^security]
+## Security [^nfr-security]
 
-[^security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
+[^nfr-security]: Security covers protection of the application and data from unauthorized access, use, or destruction, ensuring confidentiality, integrity, and availability.
 [^pii]: Personally Identifiable Information
 
 
@@ -2305,9 +2315,9 @@
 
 
 
-## Usability [^usability]
+## Usability [^nfr-usability]
 
-[^usability]: Usability covers the ease with which users can operate the application and the overall pleasantness of the user experience.
+[^nfr-usability]: Usability covers the ease with which users can operate the application and the overall pleasantness of the user experience.
 
 
 
@@ -2648,11 +2658,6 @@
 
 #### Code - General [^code-general]
 
-- [ ] Use clean code.<br />
-  Scan the code quickly and ensure it is understandable.<br />
-  Minimal - remove unnecessary code. Simple - use "boring" code.<br />
-  [Article: Do you know the difference between a 'smart' and a 'clever' developer? | SSW.Rules](https://www.ssw.com.au/rules/do-you-know-the-difference-between-a-clever-and-a-smart-developer)<br />
-  #code--general #nfr--simplicity #nfr--readability
 - [ ] Use library and language facilities where possible. Don't re-invent the wheel.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 12, Knowing Your Libraries Helps, pp. 133](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Be Familiar with the Libraries Around You, pp. 143-144](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -2717,6 +2722,12 @@
   #code--structure
 - [ ] Don't do barrel exports.<br />
   [Blog: Please Stop Using Barrel Files](https://tkdodo.eu/blog/please-stop-using-barrel-files)<br />
+  #code--structure
+- [ ] Create a simpler interface wrapping a more complex one.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 10, Simplifying an Existing Interface, pp. 116](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #code--structure
+- [ ] Minimise scope of variables, using closures if necessary.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 9, Shrink the Scope of Your Variables, pp. 97-99](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #code--structure
 
 [^code-structure]: Structure covers structural aspects such as file and folders, ordering of elements, and connections between parts.

@@ -11,19 +11,24 @@ export const container = style({
 export const code = style({
   position: "relative",
   display: "inline",
+  paddingRight: "2rem", // allow space for Copy button
   ...rounded.md,
   ...boxMixins.boxBorderDecorative,
 });
 
 globalStyle(`pre > code[class*=language-]`, text.size.sm);
 
+const codeWrapping = {
+  width: "100%",
+  display: "block",
+  whiteSpace: "pre-wrap",
+};
+
+globalStyle(`pre > code.language-md`, codeWrapping);
+
 globalStyle(`pre > code[class*=language-]`, {
   "@media": {
-    [media.lessThanMd]: {
-      width: "100%",
-      display: "block",
-      whiteSpace: "pre-wrap",
-    },
+    [media.lessThanMd]: codeWrapping,
   },
 });
 
