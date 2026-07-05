@@ -1,0 +1,137 @@
+I prefer to avoid anonymous tuples in code.
+
+There are 2 main forms of these I see in Javascript/Typescript code:
+
+1. Anonymous function parameters: `fn(param1, param2, ...)`
+2. Anonymous function return values: `const [value1, value, ...] = fn()`
+
+The reason I avoid them is that that they allow for call-sites where the identities of the values are not clear, making the code at those call-sites less readable.
+
+Let's look at a couple of examples.
+
+## Anonymous parameters to functions
+
+Consider this example:
+
+```ts
+function getAccountTransactions(
+  username: string,
+  accountNumber: string,
+  skip: number,
+  limit: number,
+  includeFullDetails: boolean
+) {
+  // ...
+}
+```
+
+When called, it may be unclear what each argument is for, without checking the source.
+
+```ts
+getAccount(username, accountNumber, 0, 100, false);
+```
+
+An alternative would be for the function to take a single parameter object with named fields.
+
+```ts
+function getAccountTransactions({
+  username,
+  accountNumber,
+  skip,
+  limit,
+  includeFullDetails,
+}: {
+  readonly username: string;
+  readonly accountNumber: string;
+  readonly skip: number;
+  readonly limit: number;
+  readonly includeFullDetails: boolean;
+}) {
+  // ...
+}
+```
+
+Now the call-site must explicitly specify the identity of each argument.
+
+```ts
+getAccount({
+  username,
+  accountNumber,
+  skip: 0,
+  limit: 100,
+  includeFullDetails: false
+});
+```
+
+## Anonymous function return values
+
+Consider a different example involving multiple return values:
+
+```ts
+/**
+ * Returns an array of booleans with one for each flag passed in.
+ * Each element is `true` if the flag is enabled, else `false`.
+ */
+function getFeatureFlags(flags: readonly string[]): readonly boolean[] {
+  // ...
+}
+```
+
+Similar to the previous example, it is possible to call the function in a less readable manner.
+
+For example:
+
+```ts
+const featureFlags = getFeatureFlags([
+  "twoFactorAuth",
+  "jointAccount",
+  "globalAccount",
+  "multiCurrency",
+]);
+
+if (featureFlags[2]) {
+  // Err... which flag is [2] again?
+}
+```
+
+Suppose we destructured the return values into named constants. Then the values might still be accidentally mis-ordered, causing the logic to break. This mistake would be easy to make and difficult to spot.
+
+```ts
+const [
+  twoFactorAuth,
+  globalAccount, // Whoops! 😬 The order of the return values is subtly wrong.
+  jointAccount,
+  multiCurrency,
+] = getFeatureFlags([
+  "twoFactorAuth",
+  "jointAccount",
+  "globalAccount",
+  "multiCurrency",
+]);
+```
+
+Changing the return value to an object with named fields eliminates the accidental mis-ordering risk.
+
+```ts
+/**
+ * Returns a dictionary of booleans with one field for each flag passed in.
+ * Each field value is `true` if the flag is enabled, else `false`.
+ */
+function getFeatureFlags<T>(flags: readonly (keyof T)[]): Record<keyof T, boolean> {
+  // ...
+}
+```
+
+```ts
+const {
+  twoFactorAuth,
+  globalAccount, // Cool. 😎 Despite being mis-ordered, the code does not break.
+  jointAccount,
+  multiCurrency,
+ } = getFeatureFlags([
+  "twoFactorAuth",
+  "jointAccount",
+  "globalAccount",
+  "multiCurrency",
+]);
+```
