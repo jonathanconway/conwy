@@ -36,6 +36,7 @@ export const toolbar = style({
   position: "absolute",
   top: "1rem",
   right: "1rem",
+  zIndex: 1,
 });
 
 globalStyle(
