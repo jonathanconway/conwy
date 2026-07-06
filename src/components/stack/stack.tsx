@@ -23,6 +23,7 @@ function stringifySizeRem(gap?: SizeRem) {
 
 export function Stack(props: StackProps) {
   const {
+    className,
     direction = "column",
     distribution,
     gap,
@@ -30,27 +31,22 @@ export function Stack(props: StackProps) {
     ...restProps
   } = props;
 
-  const className = cn(
-    props.className,
+  const containerClassName = cn(
+    className,
     styles.stackBase,
     direction === StackDirections.Column ? styles.stackColumn : styles.stackRow,
     distribution === StackDistributions.Flow
       ? styles.stackDistributionFlow
       : styles.stackDistributionEven,
   );
+  const containerStyle = !isUndefined(gap)
+    ? {
+        gap: stringifySizeRem(gap),
+      }
+    : undefined;
 
   return (
-    <div
-      className={className}
-      style={{
-        ...(!isUndefined(gap)
-          ? {
-              gap: stringifySizeRem(gap),
-            }
-          : undefined),
-      }}
-      {...restProps}
-    >
+    <div className={containerClassName} style={containerStyle} {...restProps}>
       {children}
     </div>
   );
