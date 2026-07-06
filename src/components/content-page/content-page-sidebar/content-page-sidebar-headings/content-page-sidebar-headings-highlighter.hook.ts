@@ -3,7 +3,11 @@
 import { kebabCase, memoize } from "lodash";
 import { useEffect, useState } from "react";
 
-import { isClient, isNotNil, querySelector } from "@/framework/client";
+import { isClient, isNotNil, querySelector, waitFor } from "@/framework/client";
+
+import { CONTENT_SIDEBAR_CONTAINER_ID } from "../content-page-sidebar-container/content-sidebar-container.const";
+
+import { CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX } from "./content-page-sidebar-headings.const";
 
 function getIsElementInViewport(el?: Element | null) {
   if (!isClient) {
@@ -61,7 +65,7 @@ export function useContentPageSidebarHeadingsHighlighter(
 
   const [selectedHeadingId, setSelectedHeadingId] = useState("top");
 
-  const handleScroll = () => {
+  function handleScroll() {
     const elements = getHeadingElementsMemoized(checklistHeadingIds);
 
     const activeElementInViewport = getActiveElementInViewport(elements);
@@ -74,18 +78,21 @@ export function useContentPageSidebarHeadingsHighlighter(
     if (idInViewport) {
       setSelectedHeadingId(idInViewport);
     }
-  };
+  }
 
-  const handleMount = () => {
+  async function handleMount() {
     if (window.location.hash) {
       const headingElementMatchingHash = document.querySelector(
         window.location.hash,
       );
       if (headingElementMatchingHash) {
-        setSelectedHeadingId(window.location.hash.replace("#", ""));
+        const newSelectedHeadingId = window.location.hash.replace("#", "");
+
+        setSelectedHeadingId(newSelectedHeadingId);
+        scrollToNewSelectedHeading(newSelectedHeadingId);
       }
     }
-  };
+  }
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -100,4 +107,29 @@ export function useContentPageSidebarHeadingsHighlighter(
   return {
     selectedHeadingId,
   };
+}
+
+async function scrollToNewSelectedHeading(newSelectedHeadingId: string) {
+  await waitFor(1000);
+
+  const newSelectedHeadingEl = document.getElementById(
+    `${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${newSelectedHeadingId}`,
+  );
+  if (newSelectedHeadingEl) {
+    newSelectedHeadingEl.scrollIntoView({
+      behavior: "smooth",
+    });
+
+    await waitFor();
+    const contentSidebarContainerEl = document.getElementById(
+      CONTENT_SIDEBAR_CONTAINER_ID,
+    );
+    if (contentSidebarContainerEl) {
+      contentSidebarContainerEl.scrollTo({
+        left: 0,
+        top: contentSidebarContainerEl.scrollTop + 30,
+        behavior: "smooth",
+      });
+    }
+  }
 }

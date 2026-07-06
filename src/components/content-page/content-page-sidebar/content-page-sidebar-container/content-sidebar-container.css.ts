@@ -18,3 +18,9 @@ export const scrolledDown = style({
     },
   },
 });
+
+export const innerStack = style({
+  gap: "2.5rem",
+  overflow: "scroll",
+  maxHeight: "80vh",
+});

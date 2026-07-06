@@ -6,6 +6,7 @@ import { Link } from "../../../link";
 import { Section } from "../../../section";
 
 import { useContentPageSidebarHeadingsHighlighter } from "./content-page-sidebar-headings-highlighter.hook";
+import { CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX } from "./content-page-sidebar-headings.const";
 import * as styles from "./content-page-sidebar-headings.css";
 
 export interface ContentPageSidebarHeadingsProps {
@@ -29,7 +30,11 @@ export function ContentPageSidebarHeadings(
         {props.headings.map((title) => {
           const id = kebabCase(title);
           return (
-            <li key={title} className={styles.listItem}>
+            <li
+              key={title}
+              id={`${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${selectedHeadingId}`}
+              className={styles.listItem}
+            >
               {selectedHeadingId === id ? (
                 <span className={styles.listItemSelected}>{title}</span>
               ) : (

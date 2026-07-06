@@ -22,7 +22,13 @@ function stringifySizeRem(gap?: SizeRem) {
 }
 
 export function Stack(props: StackProps) {
-  const { direction = "column", distribution, gap, children } = props;
+  const {
+    direction = "column",
+    distribution,
+    gap,
+    children,
+    ...restProps
+  } = props;
 
   const className = cn(
     props.className,
@@ -43,6 +49,7 @@ export function Stack(props: StackProps) {
             }
           : undefined),
       }}
+      {...restProps}
     >
       {children}
     </div>
