@@ -103,9 +103,11 @@ In Jest, we can try one or more of:
 
 ### Observing prior test failures in logs
 
-Alternately/additionally, we can try to gather information about the failures we have had so far.
+Alternately/additionally, we can try to gather information about the test failures we have had in the past.
 
-For example, if a test is being flaky in CI, we can gather log output from the CI environment and examine it to search for clues.
+We can gather and analyse analytics on test results over longer periods (weeks up to months). This can be done using tools such as [BuildPulse](https://buildpulse.io) or [Datadog CI Visibility](https://www.datadoghq.com/blog/datadog-ci-visibility/), or we can build our own pipeline.
+
+Analytics from test runs in CI can be used to identify patterns of test failure, such as certain tests failing more often. We can then narrow in on the flaky tests, gather log output from the CI environment and examine it to search for clues as to why they are flaky.
 
 ![Screenshot of Github actions UI with test failure](/images/articles/flaky-tests/github-actions-workflow-failed-job.jpg)
 
@@ -148,6 +150,8 @@ Maybe we can learn something about the cause of the failures by observing phenom
 </table>
 
 > Aside: **Tip:** [Structured logging](https://newrelic.com/blog/log/structured-logging) with detailed information about resource usage, date/time and other data can help to expose more information about test failure in logs. Such info can be logged on test failures. For example, in Jest, we can handle the [`afterEach`](https://jestjs.io/docs/setup-teardown) hook in a [setupFile](https://jestjs.io/docs/configuration#setupfiles-array) and inspect [`testInfo.failed`]. Structured logs can be generated using a library such as [structured-log](https://github.com/structured-log/structured-log).
+
+
 
 ## Diagnosing flakiness
 
