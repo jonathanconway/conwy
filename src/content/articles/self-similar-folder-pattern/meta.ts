@@ -14,7 +14,7 @@ export const meta: ArticleMeta = {
   discussionLinks: [
     {
       type: SocialLinkTypes.Dev,
-      url: "https://dev.to/conw_y/self-similar-a-versatile-folder-pattern-for-code-d189",
+      url: "https://dev.to/conw_y/self-similar-a-versatile-folder-pattern-for-code-d18",
       likeCount: 4,
     },
   ],

@@ -47,7 +47,9 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
               distribution={StackDistributions.Flow}
             >
               {props.selectedTags.map((tag) => (
-                <Text type={TextTypes.Small}>☑️ {tag.title}</Text>
+                <Text key={tag.title} type={TextTypes.Small}>
+                  ☑️ {tag.title}
+                </Text>
               ))}
             </Stack>
           )}
