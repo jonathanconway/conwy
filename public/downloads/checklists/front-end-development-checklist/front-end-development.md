@@ -12,8 +12,14 @@
   Example: in some projects, correctness is more important than performance. Or scalability is not a concern.<br />
   Example: for requirements impacting many execution paths, performance may be more critical, as slowness will have a massive impact overall.<br />
   #general--requirements
+- [ ] Question requirements.<br />
+  Does the requirement really need to be implemented?<br />
+  Is there a simpler way?<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Question and Break Down Your Requirements, pp. 140](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #general--requirements
 - [ ] Don't build features not explicitly documented in requirements.<br />
   When in doubt, ask for clarification and/or update requirements.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Don’t Bother Implementing That Feature—You Won’t Need It, pp. 140](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #general--requirements
 
 [^planning-requirements]: Requirements covers requirements being addressed on a project.
@@ -146,6 +152,10 @@
 - [ ] Make site legible to AI agents and crawlers.<br />
   [Article: Agent Readiness • Website Spec](https://specification.website/spec/agent-readiness/)<br />
   #ai
+- [ ] Use AI to make code more readable.
+  Prompt AI, providing a plain-language description of expected code behaviour. Ask it to use that description to refactor the code to be more readable, with easy to follow logical flow and sensible names for variables, functions, etc.<br />
+  [Prompt: Refactor code for readability from plain-language description](/prompts/refactor-code-readable-description)
+  #ai
 
 [^ai]: AI covers Artificial Intelligence such as coding assistance, code review and AI integrations.
 
@@ -170,7 +180,7 @@
   #concern--state
 - [ ] Keep on server state that is sensitive or otherwise belongs there.<br />
   #concern--state
-- [ ] Avoid contradictions or inconsistencies in state if possible.<br />
+- [ ] Avoid contradictions or inconsistencies in state.<br />
   At least, within the same state structure. Clearly document any contradictions.<br />
   #concern--state
 - [ ] Avoid duplicated or redundant state.<br />
@@ -191,7 +201,7 @@
 - [ ] Don't handle exceptions without re-throwing unless it's necessary.<br />
   Example: a bug in the API that can't be resolved just yet. Thoroughly document and have a plan to fix up in future. If an exception does happen, we want to let it bubble up and be handled by the general exception handling mechanism, such as an error boundary at the app level.<br />
   #concern--errors #nfr--correctness
-- [ ] Define exceptions / errors out of existence where possible.<br />
+- [ ] Define exceptions / errors out of existence.<br />
   [Book: A Philosophy of Software Design, Ch 10](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #general--errors
 
@@ -205,7 +215,7 @@
 - [ ] Invalidate a cache when the same data needs to be fetched freshly in a different context.<br />
   Use invalidation tags if available.<br />
   #concern--caching #nfr--correctness
-- [ ] Avoid use of `localStorage`, `sessionStorage` and similar where possible.<br />
+- [ ] Avoid use of `localStorage`, `sessionStorage` and similar.<br />
   As they introduce complications and maintenance overhead.<br />
   #concern--caching #nfr--maintainability
 - [ ] Select `localStorage`  vs `sessionStorage` correctly depending on how long data needs to live.<br />
@@ -358,7 +368,7 @@
 - [ ] Add observability or other diagnostics if intended to go into prod.<br />
   #concern--observability #nfr--observability
 - [ ] Monitor website uptime and visitor experience externally.<br />
-  Provide a status page for customers, if possible.<br />
+  Provide a status page for customers,.<br />
   [Article: Monitoring and uptime • Website Spec](https://specification.website//spec/resilience/monitoring-uptime/)<br />
   [Article: Do you Health Check your infrastructure? | SSW.Rules](https://www.ssw.com.au/rules/infrastructure-health-checks)<br />
   #concern--observability #nfr--observability
@@ -483,7 +493,7 @@
 - [ ] Communicate the bigger picture.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, “Big Picture” Comments, pp. 54-55](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
-- [ ] Provide summary comments above blocks code.<br />
+- [ ] Provide summarising comments above blocks of code.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Summary Comments, pp. 55-56](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Use information-dense words.<br />
@@ -611,8 +621,11 @@
   #testing--general
 - [ ] Keep tests small and concise.<br />
   #testing--general
-- [ ] Maintain high code quality for tests.<br />
+- [ ] Maintain high quality and readability for test code.<br />
+  Hide less important details from the reader.<br />
+  Keeping test statements short and make them flow like a plain-language description.<br />
   [Article: Do you treat your automated test code as a first-class citizen? | SSW.Rules](https://www.ssw.com.au/rules/automated-test-code-first-class-citizen)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 14, Make Tests Easy to Read and Maintain, pp. 150-152](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #testing--general
 - [ ] Encode knowledge of how the code works in the test.<br />
   #testing--general
@@ -623,20 +636,26 @@
   #testing--general
 - [ ] Don't overly split describe blocks such as many describe blocks that only have one test block inside.<br />
   #testing--general
-- [ ] Use test utils/helpers where they can simplify test code.<br />
+- [ ] Use test utils or helper functions where they can simplify test code.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 14, Implementing Custom “Minilanguages”, pp. 152-153](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #testing--general
 - [ ] Minimise test running time.<br />
   #testing--general
 - [ ] Eliminate errors and warnings printed in console when running tests.<br />
   #testing--general
 - [ ] Name tests appropriately.<br />
+  Reference the class or module being tested (if any).<br />
+  Reference the function or method being tested.<br />
+  Reference the situation or bug being tested.<br />
+  Keep naming consistent with the practices in the overall code base and/or idiomatic naming of the test framework and programming language being used.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 14, Naming Test Functions, pp. 158](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #testing--general
-- [ ] Use immutable `const` where possible. Alternately, split into utility functions or before/after blocks.<br />
+- [ ] Use immutable `const`. Alternately, split into utility functions or before/after blocks.<br />
   #testing--general
 - [ ] Place tests in appropriate folder with meaningful filename.<br />
   Use suffix, such as `.test.ts` or `.spec.ts`.<br />
   #testing--general
-- [ ] Use `beforeAll` rather than `beforeEach` where possible to minimise overhead.<br />
+- [ ] Use `beforeAll` rather than `beforeEach` to minimise overhead.<br />
   #testing--general
 - [ ] Use accessible, semantic queries.<br /> Avoid `data-testid` if desired. Prefer to query by title, label, aria role, etc.<br />
   [Blog: Test IDs are an a11y smell](https://tkdodo.eu/blog/test-ids-are-an-a11y-smell)<br />
@@ -674,7 +693,8 @@
   #testing--general
 - [ ] On finding a bug, search for similar bugs and fix them too.<br />
   #testing--general
-  - [ ] Re-testing after merge or rebase.<br />
+- [ ] Re-run tests after merge or rebase.<br />
+  Ensure system behaves correctly and tests still work.<br />
   #testing--general
 
 [^testing-general]: General covers testing principles and practices relevant to any kind of test.
@@ -783,6 +803,10 @@
 - [ ] Mock values should be realistic, close to real data.<br />
   #testing--mocking
 - [ ] Keep mock objects as clean and simple as possible.<br />
+  Pick the simplest set of inputs that completely exercise the code.<br />
+  Prefer clean and simple test values that still get the job done.<br />
+  Prefer multiple smaller mocks, each covering one aspect or dimension of the functionality being tested.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Choosing Good Test Inputs, pp. 156-158](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #testing--mocking
 - [ ] Clear mocks between assertions; this makes each assertion independent and prevents false positives.<br />
   #testing--mocking
@@ -820,7 +844,8 @@
 
 ### Testing - Assertions [^testing-assertions]
 
-- [ ] Provide meaningful error messages on test failure if possible, to ease later diagnosis and debugging.<br />
+- [ ] Provide meaningful error messages on test failure to ease later diagnosis and debugging.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Making Error Messages Readable, pp. 154-156](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #testing--assertions
 - [ ] Use wider negative assertions and narrower positive assertions, to maximise test coverage.<br />
   Example: Use literal for positive text match: `expect(el).toHaveTextContent("Success")` to cover exactly "Success".<br />
@@ -888,7 +913,7 @@
   #testing--react-testing-library
 - [ ] Don't use free-standing `await wait();`. Instead, wrap the code in a `wait(() => { ... })` block.<br />
   #testing--react-testing-library
-- [ ] Avoid `waitFor` blocks. Just use `findBy*` where possible. Simpler.<br />
+- [ ] Avoid `waitFor` blocks. Just use `findBy*`. Simpler.<br />
   #testing--react-testing-library
 - [ ] Prefer `userEvent` rather than `fireEvent`, it's a higher abstraction level.<br />
   #testing--react-testing-library
@@ -952,7 +977,7 @@
   #testing--e2e
 - [ ] Use `toBeInViewport` vs `toBeVisible` appropriately, depending on how the elements are rendering.<br />
   #testing--e2e
-- [ ] Condense element lookup into one expect if possible rather than multiple DOM accesses and traversals, which take up time.<br />
+- [ ] Condense element lookup into one expect rather than multiple DOM accesses and traversals, which take up time.<br />
   #testing--e2e
 - [ ] Remove unnecessary `test.slow` or `test.setTimeout`.<br />
   #testing--e2e
@@ -1064,9 +1089,16 @@
   Use constants with meaningful names for explaining and summarising.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 8, Explaining Variables, Summary Variables, pp. 84-85](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
+- [ ] Prefer constants when variable contents does not need to be modified.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 9, Prefer Write-Once Variables, pp. 103-104](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--readability
 - [ ] Break code into blocks or "paragraphs", to group similar ideas together.<br />
   Helps readers keep their place on the page and navigate through the code.<br />
+  Defragment code so that it does "one task at a time", through sequences of blocks.<br />
+  Split code into blocks based on branches of key conditionals.<br />
+  Split code into blocks based on different types of task.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 4, Break Code into “Paragraphs”, pp. 41](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 11 - One Task at a Time, pp. 121-130](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
 - [ ] Order code blocks, elements, etc. sensibly.<br />
   Example: order CSS properties with layout first, then color, etc.<br />
@@ -1129,9 +1161,10 @@
   #nfr--readability
 - [ ] Group related statements with whitespace between.<br />
   #nfr--readability
-- [ ] Remove unnecessary or unused code where possible.<br />
+- [ ] Remove unnecessary or unused code.<br />
   Example: statements never executed, unused function parameters, branches never evaluated, unnecessary variables.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 9, Eliminating Variables, Eliminating Control Flow Variables, pp. 94-96](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Removing Unused Code, pp. 143](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #nfr--readability
 - [ ] Check for accidental mis-formatting.<br />
   Example: unnecessary or improper import order changes accidentally committed.<br />
@@ -1190,6 +1223,14 @@
 
 ## Testability [^nfr-testability]
 
+- [ ] Break up the code so it's parts can be isolated for automated testing.<br />
+  Decoupled classes, modules, functions, etc.<br />
+  Classes/modules should have little or no internal state.<br />
+  Classes/functions should only do one thing.<br />
+  Classes/functions should depend on few other classes/functions.<br />
+  Functions should have simple, well-defined interfaces.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 14, Test-Friendly Development, pp. 160-161](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #nfr--testability
 - [ ] Allow space for log statements to be easily inserted.<br />
   #nfr--testability
 - [ ] Use interface-based designs, to allow functions, classes, etc. to be isolated for unit testing.<br />
@@ -1332,7 +1373,7 @@
 - [ ] Use semantic HTML elements.<br />
   [Article: Semantic HTML and landmarks • Website Spec](https://specification.website/spec/accessibility/semantic-html/)<br />
   #nfr--accessibility
-- [ ] Use lightweight plain HTML elements where possible, Example: `<div>` instead of `<Box>`.<br />
+- [ ] Use lightweight plain HTML elements, Example: `<div>` instead of `<Box>`.<br />
   #nfr--accessibility
 - [ ] No new errors in unit tests such as Axe, including whole page scan.<br />
   #nfr--accessibility
@@ -1542,7 +1583,7 @@
 
 ### Accessibility - Controls [^nfr-accessibility-controls]
 
-- [ ] Prefer native elements where possible.<br />
+- [ ] Prefer native elements.<br />
   Prefer native HTML interactive elements — `<button>`, `<a>`, `<details>`/`<summary>`, `<dialog>` — over divs with click handlers. You get keyboard support, focus management, and assistive-tech semantics for free.<br />
   [Article: Native interactive elements • Website Spec](https://specification.website/spec/accessibility/native-interactive-elements/)<br />
   #nfr--accessibility #accessibility--controls
@@ -1995,7 +2036,7 @@
   [Article: Privacy-respecting analytics • Website Spec](https://specification.website/spec/privacy/analytics-privacy/)<br />
   #nfr--privacy #concern--analytics
 - [ ] Minimise data collection.<br />
-  Collect only data you need for a specific purpose, keep it only as long as needed (or regulations require), redact it if it leaks unnecessarily. Anonymise where possible.<br />
+  Collect only data you need for a specific purpose, keep it only as long as needed (or regulations require), redact it if it leaks unnecessarily. Anonymise.<br />
   [Article: Data minimisation • Website Spec](https://specification.website/spec/privacy/data-minimization/)<br />
   #nfr--privacy
 
@@ -2056,10 +2097,10 @@
   Make sure to test, by quickly clicking/switching around, ensure it doesn't mess up.<br />
   #nfr--reliability
 - [ ] Before manipulating a string, check it first.<br />
-  If possible to make sure it's in the expected input format.<br />
+  To make sure it's in the expected input format.<br />
   #nfr--reliability
 - [ ] Check parameters and early return / throw if unexpected.<br />
-  Use typed `assert` if possible, for conciseness.<br />
+  Use typed `assert`, for conciseness.<br />
   #nfr--reliability #nfr--correctness #language--typescript
 - [ ] Avoid code that dynamically accesses other code without the developer being aware, and might break if that code changes.<br />
   #nfr--reliability #nfr--maintainability
@@ -2190,7 +2231,7 @@
   [Blog: Why Do React Elements Have a typeOf Property?](https://overreacted.io/why-do-react-elements-have-typeof-property/)<br />
   #nfr--security
 - [ ] Careful with redirects.<br />
-  Avoid redirects and forwards, if possible.<br />
+  Avoid redirects and forwards,.<br />
   Don't involve user input to determine the destination.<br />
   If parameters must be used, validate the supplied vale and ensure it is authorized for the user.<br />
   Use mapping values rather than the actual URLs.<br />
@@ -2262,7 +2303,7 @@
 - [ ] Careful consuming third-party packages or components from untrusted sources.<br />
   Minimise use of third-party packages.<br />
   Check for issues and vulnerabilities on open-source repo and trusted news sources.<br />
-  Use automated checkers and monitoring tools if possible.<br />
+  Use automated checkers and monitoring tools.<br />
   [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
   #nfr--security
 - [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
@@ -2426,7 +2467,7 @@
   #nfr--usability #usability--text
 - [ ] Use consistent phrasing, formatting.<br />
   #nfr--usability #usability--text
-- [ ] Use slanted single-quotes where possible instead of instead of straight.<br />
+- [ ] Use slanted single-quotes instead of instead of straight.<br />
   #nfr--usability #usability--text
 - [ ] Use `hidden="until-found"` for collapsible content.<br />
   So that browser find-in-page, assistive tech, and search engines can still reach the text and auto-expand it.<br />
@@ -2460,7 +2501,7 @@
   #nfr--usability #usability--component-library
 - [ ] Keep component library version up-to-date.<br />
   #nfr--usability #usability--component-library
-- [ ] Prefer to use component props where possible rather than manual CSS styling.<br />
+- [ ] Prefer to use component props rather than manual CSS styling.<br />
   #nfr--usability #usability--component-library
 - [ ] Look for usage examples in component library and keep consistent with them.<br />
   #nfr--usability #usability--component-library
@@ -2577,9 +2618,9 @@
 
 ### Usability - Validation [^nfr-usability-validation]
 
-- [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
+- [ ] Display field-level validations, with clear description of why it's invalid.<br />
   #nfr--usability #usability--validation
-- [ ] Display validations summary at the top of the form if possible, with summarised listing of invalid fields.<br />
+- [ ] Display validations summary at the top of the form, with summarised listing of invalid fields.<br />
   #nfr--usability #usability--validation #nfr--security
 - [ ] Validate email addresses.<br />
   [Article: Do you use a regular expression to validate an email address? | SSW.Rules](https://www.ssw.com.au/rules/use-a-regular-expression-to-validate-an-email-address)<br />
@@ -2592,9 +2633,9 @@
 
 ### Usability - Validation [^nfr-usability-validation]
 
-- [ ] Display field-level validations if possible, with clear description of why it's invalid.<br />
+- [ ] Display field-level validations, with clear description of why it's invalid.<br />
   #nfr--usability #usability--validation
-- [ ] Display validations summary at the top of the form if possible, with summarised listing of invalid fields.<br />
+- [ ] Display validations summary at the top of the form, with summarised listing of invalid fields.<br />
   #nfr--usability #usability--validation #nfr--security
 - [ ] Validate email addresses.<br />
   [Article: Do you use a regular expression to validate an email address? | SSW.Rules](https://www.ssw.com.au/rules/use-a-regular-expression-to-validate-an-email-address)<br />
@@ -2658,7 +2699,9 @@
 
 #### Code - General [^code-general]
 
-- [ ] Use library and language facilities where possible. Don't re-invent the wheel.<br />
+- [ ] Write less code in the first place.<br />
+  Don't implement
+- [ ] Use library and language facilities. Don't re-invent the wheel.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 12, Knowing Your Libraries Helps, pp. 133](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Be Familiar with the Libraries Around You, pp. 143-144](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #code--general #nfr--readability #nfr--performance #nfr--reliability
@@ -2683,39 +2726,47 @@
 
 #### Code - Structure [^code-structure]
 
-- [ ] Don't clutter shared folders like atoms with components only used in one file.<br />
-  Just declare them inline in that file.<br />
+- [ ] Don't clutter shared folders with components only used in one file.<br />
+  Just declare them inline in that file or in a different file in the same folder.<br />
   #code--structure
-- [ ] Deep classes, shallow interfaces.<br />
+- [ ] Use deep classes, shallow interfaces.<br />
   [Book: A Philosophy of Software Design, Ch 4](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
 - [ ] Define overly complex structures out of existence.<br />
   Change the design so that they are unnecessary.<br />
+  [Book: A Philosophy of Software Design, Ch 10, Design special cases out of existence](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure #nfr--readability #nfr--maintainability
 - [ ] Use a more specific structure (function, variable, etc).<br />
   #code--structure
-- [ ] Re-use an existing structure (function, variable, etc) and to avoid duplication.<br />
+- [ ] Re-use an existing structure (function, variable, etc) to avoid duplication.<br />
   Move it to a shared folder/package/module and export.<br />
   [Article: Do you look for duplicate code? | SSW.Rules](https://www.ssw.com.au/rules/avoid-code-duplication)<br />
   #code--structure
 - [ ] Maintain separation of concerns.<br />
   [Article: Do you maintain separation of concerns? | SSW.Rules](https://www.ssw.com.au/rules/maintain-separation-of-concerns)<br />
   #code--structure
-- [ ] Re-use code in a higher-level folder/package/module where possible.<br />
+- [ ] Re-use code in a higher-level folder/package/module.<br />
   #code--structure
 - [ ] Keep list entries in alphabetical order when adding or moving, if that's the convention.<br />
   #code--structure
-- [ ] Don't add specific things to generic components.<br />
+- [ ] Don't add specific features to generic components.<br />
   #code--structure
-- [ ] Move code to a common/shared module.<br />
+- [ ] Move code to a common/shared module if it belongs there.<br />
   #code--structure
-- [ ] Move code to a more specific module or deeper sub-folder.<br />
+- [ ] Move code to a more specific module or deeper sub-folder if it belongs there.<br />
   #code--structure
-- [ ] Move common data to a higher-level function and pass down (or otherwise share) to more lower-level functions.<br />
+- [ ] Move common data to a higher-level function and pass it down to lower-level functions.<br />
   #code--structure
 - [ ] Pull a file up to a higher folder level if it is consumed by sub-folders of that level.<br />
   #code--structure
-- [ ] Look at other adjacent or nearby similar constructs and think about how they should be modified (or left the same).<br />
+- [ ] Look at other adjacent or similar files or structures and think about whether they should be modified.<br />
+  #code--structure
+- [ ] Extract unrelated sub-problems to separate functions.<br />
+  Pure utility code, such as such as manipulating strings, using hash tables, and reading/writing files.<br />
+  Code that can be made generic, such as API calls, formatting, etc.<br />
+  Project-specific functionality, such as dealing with specific business objects, business rules or business processes.<br />
+  Glue code, that sits between modules/interfaces, such as encrypting an object into a URL-friendly string.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 10 - Extracting Unrelated Subproblems, pp. 109-112](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #code--structure
 - [ ] Don't extract functions that are extremely trivial, where there is no complexity to hide.<br />
   Example: it doesn't make sense to extract: `foo > 0` to `isGreaterThanZero`. Having a whole separate function for something so trivial does not add value.<br />
@@ -2740,7 +2791,11 @@
 - [ ] Avoid spaces or unusual characters in names.<br />
   [Article: Do you avoid using spaces in folder and file names? | SSW.Rules](https://www.ssw.com.au/rules/remove-spaces-from-your-folders-and-filename)<br />
   #code--naming
-- [ ] Simple plain English as much as possible.<br />
+- [ ] Use simple language as much as possible.<br />
+  #code--naming
+- [ ] Describe logic cleanly.<br />
+  Try writing a description of the logic in plain language first, then changing to code to mirror that description.<br />
+  [Book: The Art of Readable Code • Dustin BOSWELL, Ch 12, Describing Logic Clearly, pp. 132-133](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #code--naming
 - [ ] Choose specific words carefully and deliberately.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 2, Prefer Concrete Names over Abstract Names, pp. 13](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -2882,11 +2937,11 @@
   #language--javascript
 - [ ] Remove unnecessary template strings.<br />
   #language--javascript
-- [ ] Keep objects as simple as possible, avoid deep complex nested structures where possible.<br />
+- [ ] Keep objects as simple as possible, avoid deep complex nested structures.<br />
   #language--javascript
 - [ ] Don't declare function as async unnecessarily.<br />
   #language--javascript
-- [ ] Use destructuring import statements rather than `import * from `, where possible.<br />
+- [ ] Use destructuring import statements rather than `import * from `,.<br />
   #language--javascript
 - [ ] Use code splitting, dynamic import and/or lazy loading to speed up load times in complex applications.<br />
   [Article: Implementing Dynamic Import and Code Splitting](https://www.icodeit.com.au/posts/dynamic-import)<br />
@@ -2950,12 +3005,12 @@
 - [ ] Don't use unusual or whimsical fallbacks/defaults.<br />
   Just pass through the falsy value or fall back to `undefined` when in doubt (explicitly or implicitly) and handle it explicitly where necessary.<br />
   #language--typescript
-- [ ] Eliminate optional chaining operators where possible (`?.`, `!.`) by making the type non-nullish from the start.<br />
+- [ ] Eliminate optional chaining operators (`?.`, `!.`) by making the type non-nullish from the start.<br />
   #language--typescript
 - [ ] Use optional types and chaining operators (`?.`) if the value really might not exist.<br />
   Example: when the API specification clearly states it might not exist, or if there have been cases in past when it did not exist.<br />
   #language--typescript
-- [ ] Observe where declared types are different from actual runtime values and fix where possible.<br />
+- [ ] Observe where declared types are different from actual runtime values and fix.<br />
   #language--typescript
 - [ ] Avoid using `as` explicit type-casting, but work with the types as they actually are.<br />
   Use `as`to express real and appropriate intent. Do not use as a hack, to just make something compile.<br />
@@ -2963,7 +3018,7 @@
 - [ ] Use empty array (`[]`) rather than `undefined` as the type of a list that is actually empty.<br />
   Use `undefined` rather than empty array (`[]`) where there is no list and this really needs to be treated distinctly from an empty list.<br />
   #language--typescript
-- [ ] Prefer all values to be typed. Avoid `any` or `unknown` where possible.<br />
+- [ ] Prefer all values to be typed. Avoid `any` or `unknown`.<br />
   [Article: Do you avoid using “any”? | SSW.Rules](https://www.ssw.com.au/rules/avoid-using-any)<br />
   #language--typescript
 - [ ] Prefer `unknown` over `any` if unable to type.<br />
@@ -2980,13 +3035,13 @@
 - [ ] Don't use `assert` if you reasonably expect the value might be typed differently than expected.<br />
   We don't want the system to crash in that case.<br />
   #language--typescript
-- [ ] Move `assert`s to the top of the function body where possible for clarity.<br />
+- [ ] Move `assert`s to the top of the function body for clarity.<br />
   #language--typescript
 - [ ] Avoid duck-typing. Where we must do duck-typing, prefer more explicit or informative checks.<br />
   Example: `type === "duck"` and/or extract to a clearly named function, Example: `isDuck(value): value is Duck`.<br />
   #language--typescript
 - [ ] Keep interfaces / types as simple as possible.<br />
-  Avoid deep complex nested structures where possible.<br />
+  Avoid deep complex nested structures.<br />
   #language--typescript
 - [ ] Explicitly type const objects/arrays when using spread operator, defensively.<br />
   #language--typescript
@@ -3171,7 +3226,7 @@
   `try/catch with Suspense` for async error handling.<br />
   [Book: Advanced React, Ch 16, pp. 324](https://www.advanced-react.com)<br />
   #framework--react
-- [ ] Avoid `useEffect` and `useCallback` if possible.<br />
+- [ ] Avoid `useEffect` and `useCallback`.<br />
   Prefer inline calculation, `useMemo` or other techniques. But it is valid to use it for initial data loading.<br />
   [Blog: When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback)<br />
   [Blog: useMemo and useCallback](https://www.joshwcomeau.com/react/usememo-and-usecallback/)<br />
@@ -3199,7 +3254,7 @@
 #### Framework - React - Props
 
 - [ ] Keep props as simple as possible.<br />
-  Avoid deep complex nested structures where possible.<br />
+  Avoid deep complex nested structures.<br />
   #framework--react
 - [ ] Re-use defined types in props, where that keeps the overall solution simpler and is ok for performance.<br />
   Example: simpler rendering, co-located rendering related to that object.<br />
@@ -3861,7 +3916,7 @@
 ### Pipeline - Deployment [^pipeline-deployment]
 
 - [ ] Time deployment to minimise disruption.<br />
-  Example: avoid deploying during peak or critical usage periods if possible.<br />
+  Example: avoid deploying during peak or critical usage periods.<br />
   #general--deployment
 - [ ] Use ephemeral environments for testing.<br />
   [Article: Do you use Ephemeral environments for clean and isolated testing? | SSW.Rules](https://www.ssw.com.au/rules/ephemeral-environments)<br />
