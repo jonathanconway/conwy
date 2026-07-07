@@ -2,7 +2,7 @@ import { Quote } from "@/framework/client";
 
 export const alchemistsQuote: Quote = {
   type: "quote",
-  text: "In their search for gold, the alchemist discovered other things–gun powder, medicine, the laws of nature. There is a sense in which we are all alchemists.",
+  text: "In their search for gold, the alchemists discovered other things–gun powder, medicine, the laws of nature. There is a sense in which we are all alchemists.",
   meta: {
     author: {
       title: "Arthur Schopenhauer",
