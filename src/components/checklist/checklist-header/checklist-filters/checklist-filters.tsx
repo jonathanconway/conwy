@@ -8,6 +8,8 @@ import { Collapsible } from "../../../collapsible";
 import { FilterGroup, Filters } from "../../../filters";
 import { Filter } from "../../../filters/filters-props";
 import { TwoColLayout } from "../../../layouts";
+import { Stack, StackDirections, StackDistributions } from "../../../stack";
+import { Text, TextTypes } from "../../../text";
 
 import { ChecklistFiltersProps } from "./checklist-filters-props";
 import * as styles from "./checklist-filters.css";
@@ -34,7 +36,24 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
   }
 
   return (
-    <Collapsible title={`Filter by tag (${props.selectedTags.length})`}>
+    <Collapsible
+      title={
+        <Stack gap={0.25}>
+          <Text type={TextTypes.CollapsibleTitle}>Filter by tag</Text>
+
+          {props.selectedTags.length > 0 && (
+            <Stack
+              direction={StackDirections.Row}
+              distribution={StackDistributions.Flow}
+            >
+              {props.selectedTags.map((tag) => (
+                <Text type={TextTypes.Small}>☑️ {tag.title}</Text>
+              ))}
+            </Stack>
+          )}
+        </Stack>
+      }
+    >
       <div className={styles.container}>
         <TwoColLayout justifyContent="space-between">
           <span></span>

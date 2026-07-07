@@ -1000,16 +1000,22 @@ None of the above is meant to suggest that we should ignore AI, hesitate in inve
   
 
   <entry>
-    <title>Avoid anonymous sequences</title>
+    <title>Avoid anonymous tuples</title>
     <link href="https://conwy.co/articles/avoid-tuples" />
     <updated>2026-02-18T00:00:00.000Z</updated>
     <id>avoid-tuples</id>
-    <content xml:lang="en" type="html">I prefer to avoid tuples sequences in my code.
+    <content xml:lang="en" type="html">I prefer to avoid anonymous tuples in code.
 
-There are 2 main forms of tuples I see in Javascript/Typescript code:
+There are 2 main forms of these I see in Javascript/Typescript code:
 
-1. Anonymous parameters to functions
-2. Anonymous return values from functions
+1. Anonymous function parameters: `fn(param1, param2, ...)`
+2. Anonymous function return values: `const [value1, value, ...] = fn()`
+
+The reason I avoid them is that that they allow for call-sites where the identities of the values are not clear, making the code at those call-sites less readable.
+
+Let&#39;s look at a couple of examples.
+
+## Anonymous parameters to functions
 
 Consider this example:
 
@@ -1029,75 +1035,77 @@ When called, it may be unclear what each argument is for, without checking the s
 getAccount(username, accountNumber, 0, 100, false);
 ```
 
-An alternative would be to use a single parameter object with named fields.
+An alternative would be for the function to take a single parameter object with named fields.
 
 ```ts
 function getAccountTransactions(: ) 
 ```
 
+Now the call-site must explicitly specify the identity of each argument.
+
 ```ts
 getAccount();
 ```
 
-Consider a different example:
+## Anonymous function return values
+
+Consider a different example involving multiple return values:
 
 ```ts
-const [
-  flag1Enabled,
-  flag2Enabled,
-  flag3Enabled,
-  flag4Enabled,
-] = getFeatureFlags([
-  FeatureFlags.Flag1,
-  FeatureFlags.Flag2,
-  FeatureFlags.Flag3,
-  FeatureFlags.Flag4,
-]);
+/**
+ * Returns an array of booleans with one for each flag passed in.
+ * Each element is `true` if the flag is enabled, else `false`.
+ */
+function getFeatureFlags(flags: readonly string[]): readonly boolean[] 
 ```
 
-This is better than the previous example. The return values are destructured into named variables. But again, it&#39;s possible that the function could be called in a less readable manner.
+Similar to the previous example, it is possible to call the function in a less readable manner.
 
 For example:
 
 ```ts
 const featureFlags = getFeatureFlags([
-  FeatureFlags.Flag1,
-  FeatureFlags.Flag2,
-  FeatureFlags.Flag3,
-  FeatureFlags.Flag4,
+  &quot;twoFactorAuth&quot;,
+  &quot;jointAccount&quot;,
+  &quot;globalAccount&quot;,
+  &quot;multiCurrency&quot;,
 ]);
 
-jf (featureFlags[2]) 
+if (featureFlags[2]) 
 ```
 
-Also, the destructured elements at the call-site might be accidentally mis-ordered, causing the logic to break. This mistake would be easy to make and difficult to spot.
+Suppose we destructured the return values into named constants. Then the values might still be accidentally mis-ordered, causing the logic to break. This mistake would be easy to make and difficult to spot.
 
 ```ts
 const [
-  flag1Enabled,
-  flag3Enabled, // Oops! The order of the return values is subtly wrong, and this code will now break.
-  flag2Enabled,
-  flag4Enabled,
+  twoFactorAuth,
+  globalAccount, // Whoops! 😬 The order of the return values is subtly wrong.
+  jointAccount,
+  multiCurrency,
 ] = getFeatureFlags([
-  &quot;flag1&quot;,
-  &quot;flag2&quot;,
-  &quot;flag3&quot;,
-  &quot;flag4&quot;,
+  &quot;twoFactorAuth&quot;,
+  &quot;jointAccount&quot;,
+  &quot;globalAccount&quot;,
+  &quot;multiCurrency&quot;,
 ]);
 ```
 
-Changing the return value into a result object eliminates the accidental mis-ordering risk.
+Changing the return value to an object with named fields eliminates the accidental mis-ordering risk.
 
 ```ts
+/**
+ * Returns a dictionary of booleans with one field for each flag passed in.
+ * Each field value is `true` if the flag is enabled, else `false`.
+ */
 function getFeatureFlags(flags: readonly (keyof T)[]): Record 
 ```
 
 ```ts
 const  = getFeatureFlags([
-  &quot;flag1&quot;,
-  &quot;flag2&quot;,
-  &quot;flag3&quot;,
-  &quot;flag4&quot;,
+  &quot;twoFactorAuth&quot;,
+  &quot;jointAccount&quot;,
+  &quot;globalAccount&quot;,
+  &quot;multiCurrency&quot;,
 ]);
 ```
 </content>
@@ -2163,9 +2171,11 @@ In Jest, we can try one or more of:
 
 ### Observing prior test failures in logs
 
-Alternately/additionally, we can try to gather information about the failures we have had so far.
+Alternately/additionally, we can try to gather information about the test failures we have had in the past.
 
-For example, if a test is being flaky in CI, we can gather log output from the CI environment and examine it to search for clues.
+We can gather and analyse analytics on test results over longer periods (weeks up to months). This can be done using tools such as [BuildPulse](https://buildpulse.io) or [Datadog CI Visibility](https://www.datadoghq.com/blog/datadog-ci-visibility/), or we can build our own pipeline.
+
+Analytics from test runs in CI can be used to identify patterns of test failure, such as certain tests failing more often. We can then narrow in on the flaky tests, gather log output from the CI environment and examine it to search for clues as to why they are flaky.
 
 ![Screenshot of Github actions UI with test failure](/images/articles/flaky-tests/github-actions-workflow-failed-job.jpg)
 
@@ -2208,6 +2218,8 @@ Maybe we can learn something about the cause of the failures by observing phenom
 
 
 &gt; Aside: **Tip:** [Structured logging](https://newrelic.com/blog/log/structured-logging) with detailed information about resource usage, date/time and other data can help to expose more information about test failure in logs. Such info can be logged on test failures. For example, in Jest, we can handle the [`afterEach`](https://jestjs.io/docs/setup-teardown) hook in a [setupFile](https://jestjs.io/docs/configuration#setupfiles-array) and inspect [`testInfo.failed`]. Structured logs can be generated using a library such as [structured-log](https://github.com/structured-log/structured-log).
+
+
 
 ## Diagnosing flakiness
 

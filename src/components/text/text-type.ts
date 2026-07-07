@@ -21,6 +21,7 @@ export const TextTypes = {
   Small: "small",
   SubTitle: "subtitle",
   Summary: "summary",
+  CollapsibleTitle: "collapsibleTitle",
 } as const;
 
 export type TextType = TypeOfConst<typeof TextTypes>;

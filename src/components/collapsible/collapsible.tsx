@@ -1,14 +1,15 @@
 "use client";
 
+import { isString } from "lodash";
 import { ReactNode, useId, useRef } from "react";
 
-import { Heading, HeadingLevels } from "../heading";
 import { Icon, IconTypes } from "../icon";
+import { Text, TextTypes } from "../text";
 
 import * as styles from "./collapsible.css";
 
 interface CollapsibleProps {
-  readonly title: string;
+  readonly title: ReactNode;
   readonly children?: ReactNode;
 }
 
@@ -27,7 +28,11 @@ export function Collapsible(props: CollapsibleProps) {
       />
 
       <label className={styles.collapsibleHeader} htmlFor={inputId}>
-        <span className={styles.title}>{props.title}</span>
+        {isString(props.title) ? (
+          <Text type={TextTypes.CollapsibleTitle}>{props.title}</Text>
+        ) : (
+          props.title
+        )}
 
         <Icon
           className={styles.expandButton}

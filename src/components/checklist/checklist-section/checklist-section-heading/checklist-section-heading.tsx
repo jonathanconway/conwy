@@ -1,4 +1,5 @@
 import { kebabCase } from "lodash";
+import pluralize from "pluralize";
 
 import { StackDistributions } from "@/components/stack/stack-distribution";
 
@@ -16,6 +17,8 @@ export function ChecklistSectionHeading(props: ChecklistSectionHeadingProps) {
     return;
   }
 
+  const itemsCountSuffix = pluralize("item", itemsCount);
+
   const headingInner = (
     <Stack
       gap={1}
@@ -31,7 +34,9 @@ export function ChecklistSectionHeading(props: ChecklistSectionHeadingProps) {
         {children}
       </Stack>
 
-      <Text type={TextTypes.Small}>({itemsCount})</Text>
+      <Text type={TextTypes.Small}>
+        ({itemsCount} {itemsCountSuffix})
+      </Text>
     </Stack>
   );
 

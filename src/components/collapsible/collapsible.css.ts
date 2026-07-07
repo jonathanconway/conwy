@@ -43,14 +43,6 @@ export const collapsibleHeader = style({
   cursor: "pointer",
 });
 
-export const title = style({
-  ...text.size.sm,
-  textTransform: "uppercase",
-  color: vars.label.color,
-  fontWeight: 500,
-  paddingTop: 0,
-});
-
 export const collapsibleContent = style({
   paddingLeft: "0.5rem",
   paddingRight: "0.5rem",

@@ -127,3 +127,11 @@ export const summary: ComplexStyleRule & GlobalStyleRule = {
   ...textSizeMixins.sm,
   lineHeight: "1.125rem",
 };
+
+export const collapsibleTitle: ComplexStyleRule & GlobalStyleRule = {
+  ...textSizeMixins.sm,
+  textTransform: "uppercase",
+  color: vars.label.color,
+  fontWeight: 500,
+  paddingTop: 0,
+};

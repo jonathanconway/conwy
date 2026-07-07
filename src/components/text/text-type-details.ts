@@ -68,4 +68,7 @@ export const TEXT_TYPES_DETAILS: Record<TextType, TextTypeDetails> = {
   [TextTypes.Image]: {
     element: "img",
   },
+  [TextTypes.CollapsibleTitle]: {
+    element: "span",
+  },
 };

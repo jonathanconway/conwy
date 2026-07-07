@@ -39,3 +39,5 @@ export const small = style(textMixins.small);
 export const subtitle = style(textMixins.subtitle);
 
 export const summary = style(textMixins.summary);
+
+export const collapsibleTitle = style(textMixins.collapsibleTitle);

@@ -58,7 +58,7 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
     subBranches: [],
   };
 
-  const itemsByHeadingTextFiltered = useMemo(() => {
+  const itemsFilteredByHeadingText = useMemo(() => {
     let itemsFiltering = itemsByHeadingText;
 
     if (selectedTags.length > 0) {
@@ -83,13 +83,13 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
   }, [itemsByHeadingText, selectedTags, searchText]);
 
   const [itemsFiltered, itemsFilteredByName] = useMemo(() => {
-    const filtered = getTreeLeaves(itemsByHeadingTextFiltered);
+    const filtered = getTreeLeaves(itemsFilteredByHeadingText);
 
     const filteredByName = Object.fromEntries(
       filtered.map((item) => [item.name, item]),
     );
     return [filtered, filteredByName];
-  }, [itemsByHeadingTextFiltered]);
+  }, [itemsFilteredByHeadingText]);
 
   const selectedFilters = useMemo(() => {
     if (!props.checklistMeta.extensions) {
@@ -123,7 +123,7 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
         ? {
             ...props.checklistMeta.extensions,
             items: itemsFiltered,
-            itemsByHeadingText: itemsByHeadingTextFiltered,
+            itemsByHeadingText: itemsFilteredByHeadingText,
             itemsByName: itemsFilteredByName,
           }
         : undefined,
