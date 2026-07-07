@@ -38,6 +38,11 @@
 - [ ] Consider inherent vs accidental complexity.<br />
   Try to find a simpler solution.<br />
   #general--solution-design #nfr--readability #nfr--maintainability
+- [ ] Don't rely on assumptions that haven't been tested and verified.<br />
+  #general--solution-design #nfr--correctness
+- [ ] Consider longevity of the feature.<br />
+  Check if there a start/end date. Perhaps it is seasonal or otherwise periodic. Check if there is a plan for removal and/or maintenance.<br />
+  #general--solution-design #nfr--maintainability
 
 [^planning-solution-design]: Solution design covers detailed plans for solving requirements.
 
@@ -223,6 +228,9 @@
 - [ ] Consider additional layer of caching for calls made many times.<br />
   Example: each item in a long list of items.<br />
   #concern--caching
+- [ ] Optimise your cache key.<br />
+  Determine what content should be cached and how it is identified, to improve cache hit rates and content delivery speed and minimize unnecessary requests to the origin.<br />
+  #concern--caching
 
 [^concern-caching]: Caching covers storage of values over various time-scales for faster retrieval.
 
@@ -350,6 +358,9 @@
   #concern--version-control #concern--documentation
 - [ ] Write brief, concise commit messages. Respect people's time.<br />
   #concern--version-control #concern--documentation
+- [ ] Double-check ticket / issue codes in commit messages, ensure they are correct.<br />
+  Accidental mis-linking can cause many issues and confusions.<br />
+  #concern--version-control
 
 [^concern-version-control]: Version control covers version control systems (VCS), such as Git or Mercurial.
 
@@ -409,6 +420,9 @@
   #concern--pull-request #general--ai
 - [ ] Regression-test everything after actioning PR feedback.<br />
   In case the actioning of the feedback itself contained a bug.<br />
+  #concern--pull-request
+- [ ] Double-check ticket / issue codes in pull request title / description, ensure they are correct.<br />
+  Accidental mis-linking can cause many issues and confusions.<br />
   #concern--pull-request
 
 [^concern-pull-request]: Pull request covers process and structure for proposed code changes submitted by pull request.
@@ -714,6 +728,8 @@
   #testing--manual
 - [ ] Test fields with extreme values, Example: very low or high numbers or very long strings.<br />
   #testing--manual
+- [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
+  #nfr--robustness
 - [ ] Test long sequences of actions and make sure the result at the end is exactly as expected.<br />
   #testing--manual
 - [ ] Test with correctly formatted but illogical values.<br />
@@ -754,8 +770,11 @@
   #testing--manual
 - [ ] Make sure you're running the expected version of the application when using it locally.<br />
   #testing--manual
-- [ ] Check in multiple environments.<br />
+- [ ] Test in multiple environments.<br />
   Example: make sure the application works in Dev, UAT and Prod environments.<br />
+  #testing--manual
+- [ ] Be extremely careful testing in non-Dev environments, such as UAT and Prod.<br />
+  Do not make mutations in UAT / Prod without being certain it won't impact real users/customers. Get written agreement if necessary.<br />
   #testing--manual
 - [ ] Ensure all remote API calls are working correctly.<br />
   Including: HTTP requests, web-sockets connections, etc.<br />
@@ -2064,8 +2083,6 @@
 
 - [ ] Fall back to sensible defaults for unexpected values.<br />
   Example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
-  #nfr--robustness
-- [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
   #nfr--robustness
 - [ ] Gracefully degrade when Javascript or CSS do not work.<br />
   [Article: Graceful degradation when JavaScript fails • Website Spec](https://specification.website/spec/resilience/graceful-degradation/)<br />
