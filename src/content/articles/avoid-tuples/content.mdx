@@ -28,7 +28,7 @@ function getAccountTransactions(
 When called, it may be unclear what each argument is for, without checking the source.
 
 ```ts
-getAccount(username, accountNumber, 0, 100, false);
+getAccountTransactions(username, accountNumber, 0, 100, false);
 ```
 
 An alternative would be for the function to take a single parameter object with named fields.
@@ -54,7 +54,7 @@ function getAccountTransactions({
 Now the call-site must explicitly specify the identity of each argument.
 
 ```ts
-getAccount({
+getAccountTransactions({
   username,
   accountNumber,
   skip: 0,
