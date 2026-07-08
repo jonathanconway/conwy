@@ -5,5 +5,6 @@ import { vars } from "../theme";
 
 export const itemsCountText = style({
   color: vars.label.color,
+  whiteSpace: "nowrap",
   ...textSizeMixins.xs,
 });
