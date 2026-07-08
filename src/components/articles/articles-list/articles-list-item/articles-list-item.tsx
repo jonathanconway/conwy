@@ -9,6 +9,7 @@ import {
 import { DateView } from "../../../date";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
+import { Text, TextTypes } from "../../../text";
 
 import * as styles from "./articles-list-item.css";
 
@@ -33,9 +34,9 @@ export function ArticlesListItem(props: ArticlesListItemProps) {
       <ContentListItem
         mainSlot={
           <>
-            <div className={styles.date}>
+            <Text type={TextTypes.PostDate}>
               <DateView>{date}</DateView>
-            </div>
+            </Text>
 
             <LinkBoxTitle>{title}</LinkBoxTitle>
 

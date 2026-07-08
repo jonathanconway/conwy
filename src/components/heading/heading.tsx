@@ -9,6 +9,7 @@ export type HeadingProps = DetailedHTMLProps<
   HTMLHeadingElement
 > & {
   readonly level?: HeadingLevel;
+  readonly styleInner?: boolean;
 };
 
 /**

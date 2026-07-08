@@ -1,7 +1,7 @@
 "use client";
 
-import { isArray, isObject, isString } from "lodash";
-import { Children, ReactNode, cloneElement, useId } from "react";
+import { isArray, isObject, isString, noop } from "lodash";
+import { Children, ReactNode, cloneElement, useId, useMemo } from "react";
 import { Tooltip as Tooltip_ } from "react-tooltip";
 
 import { getResponsiveHidden, useGetBreakpoint } from "../responsive";
@@ -10,6 +10,7 @@ import { Breakpoints } from "../styling";
 import { TooltipProps } from "./tooltip-props";
 import * as styles from "./tooltip.css";
 import * as mixins from "./tooltip.mixins";
+import { checkIsElementOverflowing } from "./tooltip.utils";
 
 function convertContentsToReactNode(contents?: ReactNode | string) {
   if (!contents) {
@@ -48,6 +49,14 @@ export function Tooltip(props: TooltipProps) {
       </div>
     );
 
+  const handleDisableTooltip = useMemo(
+    () =>
+      props.hideIfChildrenNotOverflowing
+        ? (anchor: HTMLElement | null) => !checkIsElementOverflowing(anchor)
+        : undefined,
+    [props.hideIfChildrenNotOverflowing],
+  );
+
   return (
     <>
       {clonedChildren}
@@ -69,6 +78,7 @@ export function Tooltip(props: TooltipProps) {
         }}
         opacity={1}
         aria-describedby={descriptionId}
+        disableTooltip={handleDisableTooltip}
         className={getResponsiveHidden(props.responsiveVisibility)}
       >
         {contents}

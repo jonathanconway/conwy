@@ -8,4 +8,5 @@ export interface TooltipProps {
   readonly contents?: ReactNode | string;
   readonly style?: CSSProperties;
   readonly responsiveVisibility?: ResponsiveVisibilityMap;
+  readonly hideIfChildrenNotOverflowing?: boolean;
 }

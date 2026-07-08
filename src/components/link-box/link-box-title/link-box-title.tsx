@@ -1,11 +1,20 @@
-import { HTMLProps } from "react";
+import { cn } from "@/framework/client";
 
+import { LinkBoxTitleProps } from "./link-box-title-props";
+import { LinkBoxTitleSizes } from "./link-box-title-sizes";
 import * as styles from "./link-box-title.css";
 
-interface LinkBoxTitleProps extends HTMLProps<HTMLSpanElement> {}
-
 export function LinkBoxTitle(props: LinkBoxTitleProps) {
-  const { className = styles.linkBoxTitle, ...restProps } = props;
+  const {
+    className = cn(
+      styles.linkBoxTitle,
+      {
+        [LinkBoxTitleSizes.Medium]: styles.linkBoxTitleMedium,
+        [LinkBoxTitleSizes.Small]: styles.linkBoxTitleSmall,
+      }[props.size ?? LinkBoxTitleSizes.Medium],
+    ),
+    ...restProps
+  } = props;
 
   return <span className={className} {...restProps} />;
 }

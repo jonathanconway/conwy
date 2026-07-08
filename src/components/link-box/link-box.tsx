@@ -8,16 +8,21 @@ import { Link } from "../link";
 import { withTooltip } from "../tooltip";
 
 import { LinkBoxProps } from "./link-box-props";
+import { LinkBoxSizes } from "./link-box-sizes";
 import * as styles from "./link-box.css";
 
 export function LinkBox_(props: LinkBoxProps) {
   const {
     className = cn(
-      styles.linkBox,
+      {
+        [LinkBoxSizes.Small]: styles.linkBoxSmall,
+        [LinkBoxSizes.Medium]: styles.linkBox,
+      }[props.size ?? LinkBoxSizes.Medium],
       props.hasMaxWidth ? styles.linkBoxMaxWidth : null,
     ),
     hasMaxWidth,
     href,
+    size,
     ...restProps
   } = props;
 

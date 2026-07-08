@@ -5,30 +5,60 @@ import { vars } from "../theme";
 
 import * as textSizeMixins from "./text-size/text-size.mixins";
 
-export const h1: ComplexStyleRule = {
+export const h1: ComplexStyleRule & GlobalStyleRule = {
   marginTop: "1.25rem",
   marginBottom: "1.25rem",
   fontWeight: 600,
   ...textSizeMixins._4xl,
 };
 
-export const h2: ComplexStyleRule = {
+export const h2Spacing: ComplexStyleRule & GlobalStyleRule = {
   marginTop: 0,
+};
+
+export const h2Inner: ComplexStyleRule & GlobalStyleRule = {
   fontWeight: 600,
   ...textSizeMixins._2xl,
 };
 
-export const h3: ComplexStyleRule & GlobalStyleRule = {
+export const h2: ComplexStyleRule & GlobalStyleRule = {
+  ...h2Spacing,
+  ...h2Inner,
+};
+
+export const h3Spacing: ComplexStyleRule & GlobalStyleRule = {
   paddingTop: "1.25rem",
 };
 
-export const h4: ComplexStyleRule & GlobalStyleRule = {
+export const h3Inner: ComplexStyleRule & GlobalStyleRule = {};
+
+export const h3: ComplexStyleRule & GlobalStyleRule = {
+  ...h3Spacing,
+  ...h3Inner,
+};
+
+export const h4Spacing: ComplexStyleRule & GlobalStyleRule = {
   paddingTop: "1.25rem",
+};
+
+export const h4Inner: ComplexStyleRule & GlobalStyleRule = {};
+
+export const h4: ComplexStyleRule & GlobalStyleRule = {
+  ...h4Spacing,
+  ...h4Inner,
+};
+
+export const h5Spacing: ComplexStyleRule & GlobalStyleRule = {
+  paddingTop: "1.25rem",
+};
+
+export const h5Inner: ComplexStyleRule & GlobalStyleRule = {
+  fontWeight: 600,
 };
 
 export const h5: ComplexStyleRule & GlobalStyleRule = {
-  paddingTop: "1.25rem",
-  fontWeight: 600,
+  ...h5Spacing,
+  ...h5Inner,
 };
 
 export const hr: ComplexStyleRule & GlobalStyleRule = {
@@ -134,4 +164,9 @@ export const collapsibleTitle: ComplexStyleRule & GlobalStyleRule = {
   color: vars.label.color,
   fontWeight: 500,
   paddingTop: 0,
+};
+
+export const postDate: ComplexStyleRule & GlobalStyleRule = {
+  fontSize: "0.75rem" /* 12px */,
+  lineHeight: "1rem" /* 16px */,
 };

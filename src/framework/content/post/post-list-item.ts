@@ -34,3 +34,14 @@ export function getPinnedPosts({
 
   return postsPinnedSlicedSorted;
 }
+
+export function getPosts({
+  itemSets,
+}: {
+  readonly itemSets: readonly Record<string, Post>[];
+}): readonly Post[] {
+  const postsAll = itemSets.map((itemSet) => Object.values(itemSet)).flat();
+  const postsSorted = sortPosts(postsAll);
+
+  return postsSorted;
+}

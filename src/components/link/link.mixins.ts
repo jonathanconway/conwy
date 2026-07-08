@@ -7,6 +7,7 @@ import { vars } from "../theme";
 export const linkBase = {
   fontWeight: 500,
   cursor: "pointer",
+  display: "inline-flex",
 };
 
 export const linkLayoutInline = {};
@@ -54,6 +55,7 @@ export const linkInnerContainer = {
   display: "inline-flex",
   flex: 1,
   gap: "0.25rem",
+  width: "100%",
 };
 
 export const linkIcon = {

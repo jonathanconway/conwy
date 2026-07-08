@@ -1,6 +1,6 @@
 import { isNumber, isUndefined } from "lodash";
 
-import { cn, isNotNil } from "@/framework/client";
+import { cn } from "@/framework/client";
 
 import { SizeRem } from "../styling";
 

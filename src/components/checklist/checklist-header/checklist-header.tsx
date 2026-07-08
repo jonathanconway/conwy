@@ -1,11 +1,7 @@
 "use client";
 
-import pluralize from "pluralize";
-
-import { TextTypes } from "@/components/text";
-
+import { ItemsCount } from "../../items-count";
 import { Stack, StackDirections } from "../../stack";
-import { Text } from "../../text";
 import { useChecklistContext } from "../checklist-context";
 
 import { ChecklistDownload } from "./checklist-download";
@@ -19,8 +15,8 @@ export function ChecklistHeader(props: ChecklistHeaderProps) {
     return null;
   }
 
-  const itemsCount = checklistContext.checklistMeta.extensions?.items.length;
-  const itemsSuffix = pluralize("item", itemsCount);
+  const itemsCount =
+    checklistContext.checklistMeta.extensions?.items.length ?? 0;
 
   return (
     <Stack gap={3}>
@@ -42,9 +38,10 @@ export function ChecklistHeader(props: ChecklistHeaderProps) {
             />
           )}
       </Stack>
-      <Text type={TextTypes.Small}>
-        ({itemsCount} {itemsSuffix} total)
-      </Text>
+
+      <div>
+        <ItemsCount count={itemsCount} />
+      </div>
     </Stack>
   );
 }

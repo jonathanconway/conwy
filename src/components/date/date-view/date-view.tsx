@@ -9,7 +9,7 @@ export interface DateViewProps {
 }
 
 const DATE_FORMAT_STRING_FULL = "d MMMM yyyy";
-const DATE_FORMAT_STRING_SHORT = "MMMM yyyy";
+const DATE_FORMAT_STRING_SHORT = "d MMM yyyy";
 
 const DATE_FORMAT_STRINGS = {
   [DateFormats.Full]: DATE_FORMAT_STRING_FULL,
@@ -30,12 +30,8 @@ function getFormatString(props: DateViewProps) {
 
 export function DateView(props: DateViewProps) {
   const formatString = getFormatString(props);
+  const dateTime = DateTime.fromFormat(String(props.children), "yyyy-MM-dd");
+  const dateTimeFormatted = dateTime.toFormat(formatString);
 
-  return (
-    <>
-      {DateTime.fromFormat(String(props.children), "yyyy-MM-dd").toFormat(
-        formatString,
-      )}
-    </>
-  );
+  return <>{dateTimeFormatted}</>;
 }

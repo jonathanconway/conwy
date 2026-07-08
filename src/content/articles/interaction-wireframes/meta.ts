@@ -7,6 +7,7 @@ export const meta: ArticleMeta = {
   slug: "interaction-wireframes",
   type: "article",
   tags: [PostTags.Design],
+  isPinned: true,
   mainImage: {
     src: "/images/articles/interaction-wireframes/main.jpg",
   },

@@ -14,3 +14,13 @@ export const boxBorderStructural = {
   borderStyle: "solid",
   borderColor: vars.box.structural.border.color,
 };
+
+export const boxSizeMedium = {
+  padding: "0.75rem" /* 12px */,
+};
+
+export const boxSizeSmall = {
+  display: "inline-flex",
+  lineHeight: "0.75rem",
+  padding: "0.125rem 0.25rem",
+};

@@ -31,6 +31,7 @@ export * from "./ideas";
 export * from "./image-cascade";
 export * from "./image-modal";
 export * from "./image";
+export * from "./items-count";
 export * from "./inline-template-filler";
 export * from "./kbd";
 export * from "./layouts";

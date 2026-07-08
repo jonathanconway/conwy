@@ -4,7 +4,7 @@ import { Post, PostTag, PostTags } from "@/framework/client";
 
 import { Link } from "../../link";
 import { Stack } from "../../stack";
-import { Text } from "../../text";
+import { Text, TextTypes } from "../../text";
 
 import { ArticlesRecentListSection } from "./articles-recent-list-section";
 
@@ -24,17 +24,15 @@ export function ArticlesRecentList(props: ArticlesRecentListProps) {
 
   return (
     <Stack gap={2}>
-      <Stack>
-        {RECENTS_SECTION_TAGS.map((postTag) => (
-          <ArticlesRecentListSection
-            key={postTag}
-            items={items}
-            postTag={postTag}
-          />
-        ))}
-      </Stack>
+      {RECENTS_SECTION_TAGS.map((postTag) => (
+        <ArticlesRecentListSection
+          key={postTag}
+          items={items}
+          postTag={postTag}
+        />
+      ))}
 
-      <Text>
+      <Text type={TextTypes.Body}>
         <Link href="/articles">All articles...</Link>
       </Text>
     </Stack>

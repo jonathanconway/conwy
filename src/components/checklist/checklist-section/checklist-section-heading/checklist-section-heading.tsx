@@ -1,11 +1,14 @@
 import { kebabCase } from "lodash";
-import pluralize from "pluralize";
 
 import { StackDistributions } from "@/components/stack/stack-distribution";
 
-import { Heading, SectionHeading } from "../../../heading";
+import {
+  Heading,
+  SectionHeading,
+  getHeadingSpacingStyles,
+} from "../../../heading";
+import { ItemsCount } from "../../../items-count";
 import { Stack, StackDirections } from "../../../stack";
-import { Text, TextTypes } from "../../../text";
 
 import { ChecklistSectionHeadingProps } from "./checklist-section-heading-props";
 import { CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME } from "./checklist-section-heading.const";
@@ -17,36 +20,40 @@ export function ChecklistSectionHeading(props: ChecklistSectionHeadingProps) {
     return;
   }
 
-  const itemsCountSuffix = pluralize("item", itemsCount);
-
   const headingInner = (
     <Stack
+      className={CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME}
+      gap={0.5}
+      direction={StackDirections.Row}
+      distribution={StackDistributions.Flow}
+    >
+      {children}
+    </Stack>
+  );
+
+  const headingOuter =
+    props.level === 3 ? (
+      <SectionHeading styleInner id={kebabCase(headingText)} {...restProps}>
+        {headingInner}
+      </SectionHeading>
+    ) : (
+      <Heading styleInner {...restProps}>
+        {headingInner}
+      </Heading>
+    );
+
+  const outerClassName = getHeadingSpacingStyles(props.level ?? 0);
+
+  return (
+    <Stack
+      className={outerClassName}
       gap={1}
       direction={StackDirections.Row}
       distribution={StackDistributions.Flow}
     >
-      <Stack
-        className={CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME}
-        gap={0.5}
-        direction={StackDirections.Row}
-        distribution={StackDistributions.Flow}
-      >
-        {children}
-      </Stack>
+      {headingOuter}
 
-      <Text type={TextTypes.Small}>
-        ({itemsCount} {itemsCountSuffix})
-      </Text>
+      <ItemsCount count={itemsCount} />
     </Stack>
   );
-
-  if (props.level === 3) {
-    return (
-      <SectionHeading {...restProps} id={kebabCase(headingText)}>
-        {headingInner}
-      </SectionHeading>
-    );
-  }
-
-  return <Heading {...restProps}>{headingInner}</Heading>;
 }

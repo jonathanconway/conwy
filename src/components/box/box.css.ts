@@ -1,13 +1,16 @@
 import { style } from "@vanilla-extract/css";
 
-import { boxBorderDecorative, boxBorderStructural } from "./box.mixins";
+import {
+  boxBorderDecorative,
+  boxBorderStructural,
+  boxSizeMedium,
+  boxSizeSmall,
+} from "./box.mixins";
 
-export const decorative = style({
-  ...boxBorderDecorative,
-  padding: "0.75rem" /* 12px */,
-});
+export const typeDecorative = style(boxBorderDecorative);
 
-export const structural = style({
-  ...boxBorderStructural,
-  padding: "0.75rem" /* 12px */,
-});
+export const typeStructural = style(boxBorderStructural);
+
+export const sizeMedium = style(boxSizeMedium);
+
+export const sizeSmall = style(boxSizeSmall);

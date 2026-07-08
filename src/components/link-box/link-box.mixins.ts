@@ -32,6 +32,10 @@ export const linkBox: ComplexStyleRule = {
   },
 };
 
+export const linkBoxSmall: ComplexStyleRule = {
+  color: vars.text.body.color,
+};
+
 export const linkBoxMaxWidth: ComplexStyleRule = {
   maxWidth: "30rem",
 };
