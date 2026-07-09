@@ -77,9 +77,21 @@ public void CalculateOrderCutOffTime(string orderId, string timeZoneId)
 }
 ```
 
-Suppose we want to focus on the logic involving `FulfilmentMode.Priority`.
+Suppose we want the reader to focus on the logic involving `FulfilmentMode.Priority`.
 
-We can "blur out" out the other less relevant code using ellipses: `...`.
+```cs
+	else if (FulfilmentMode == FulfilmentMode.Priority)
+	{
+        var orderedBeforeCutOff = orderedDateInLocalTime.TimeOfDay < TimeSpan.FromHours(12).Add(TimeSpan.FromMinutes(15));
+        dueDate = orderedBeforeCutOff && !orderedDateIsPublicHoliday
+            ? orderedDateInLocalTimeMidday.AddHours(13)
+            : orderedDateInLocalTimeMidday
+                .AddDays(daysToNextFulfilmentDay)
+                .AddHours(13);
+    }
+```
+
+We can "blur out" out the other less relevant code using ellipses in code comments: `/* ... */`.
 
 ```cs
 var orderedDateInLocalTime = /* ... */;
@@ -127,6 +139,8 @@ And voilà! We have a "code sketch"!
 It replicates exactly the key structural elements of the original code – namely, the nested `if` statements.
 
 But it abstracts away the non-structural details that would otherwise confuse or distract the reader – using ellipses `/* ... */`.
+
+This allows the reader to focus on one part of the code, while still seeing how that part fits into the whole.
 
 I've found code sketches like this useful over the years in many conversational contexts, such as:
 
