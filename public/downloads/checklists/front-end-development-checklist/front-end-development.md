@@ -228,6 +228,9 @@
 - [ ] Consider additional layer of caching for calls made many times.<br />
   Example: each item in a long list of items.<br />
   #concern--caching
+- [ ] Optimise your cache key.<br />
+  Determine what content should be cached and how it is identified, to improve cache hit rates and content delivery speed and minimize unnecessary requests to the origin.<br />
+  #concern--caching
 
 [^concern-caching]: Caching covers storage of values over various time-scales for faster retrieval.
 
@@ -355,6 +358,9 @@
   #concern--version-control #concern--documentation
 - [ ] Write brief, concise commit messages. Respect people's time.<br />
   #concern--version-control #concern--documentation
+- [ ] Double-check ticket / issue codes in commit messages, ensure they are correct.<br />
+  Accidental mis-linking can cause many issues and confusions.<br />
+  #concern--version-control
 
 [^concern-version-control]: Version control covers version control systems (VCS), such as Git or Mercurial.
 
@@ -414,6 +420,9 @@
   #concern--pull-request #general--ai
 - [ ] Regression-test everything after actioning PR feedback.<br />
   In case the actioning of the feedback itself contained a bug.<br />
+  #concern--pull-request
+- [ ] Double-check ticket / issue codes in pull request title / description, ensure they are correct.<br />
+  Accidental mis-linking can cause many issues and confusions.<br />
   #concern--pull-request
 
 [^concern-pull-request]: Pull request covers process and structure for proposed code changes submitted by pull request.
@@ -688,6 +697,12 @@
   [Framework: Jest](https://jestjs.io)<br />
   [Framework: Mocha](https://mochajs.org)<br />
   #testing--general
+- [ ] Use a suitable, high quality mocking tool or framework.<br />
+  [Tool: Mockoon](https://mockoon.com)<br />
+  [Tool: WireMock](https://www.wiremock.io)<br />
+  [Tool: Postman](https://www.postman.com)<br />
+  [Tool: Mockito](https://site.mockito.org)<br />
+  #testing--general
 - [ ] Regularly review automated tests and remove unnecessary tests.<br />
   [Article: Do you regularly review your automated tests? | SSW.Rules](https://www.ssw.com.au/rules/review-automated-tests)<br />
   #testing--general
@@ -713,6 +728,8 @@
   #testing--manual
 - [ ] Test fields with extreme values, Example: very low or high numbers or very long strings.<br />
   #testing--manual
+- [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
+  #nfr--robustness
 - [ ] Test long sequences of actions and make sure the result at the end is exactly as expected.<br />
   #testing--manual
 - [ ] Test with correctly formatted but illogical values.<br />
@@ -753,8 +770,11 @@
   #testing--manual
 - [ ] Make sure you're running the expected version of the application when using it locally.<br />
   #testing--manual
-- [ ] Check in multiple environments.<br />
+- [ ] Test in multiple environments.<br />
   Example: make sure the application works in Dev, UAT and Prod environments.<br />
+  #testing--manual
+- [ ] Be extremely careful testing in non-Dev environments, such as UAT and Prod.<br />
+  Do not make mutations in UAT / Prod without being certain it won't impact real users/customers. Get written agreement if necessary.<br />
   #testing--manual
 - [ ] Ensure all remote API calls are working correctly.<br />
   Including: HTTP requests, web-sockets connections, etc.<br />
@@ -762,6 +782,19 @@
   #testing--manual
 
 [^testing-manual]: Manual covers manually testing the application by clicking around, typing, etc.
+
+
+
+
+### Testing - Integration [^testing-integration]
+
+- [ ] Mock expensive or fragile endpoints, such as APIs and browser rendering engines.<br />
+  #testing--integration
+- [ ] Use contract tests to ensure correct, up-to-date contracts between front end and back end API.<br />
+  [Tool: Pact](https://pact.io)<br />
+  #testing--integration
+
+[^testing-integration]: Integration covers integration tests, which verify that multiple components work as expected when combined.
 
 
 
@@ -1876,6 +1909,7 @@
 ### Performance - Network [^nfr-performance-network]
 
 - [ ] Avoid "waterfall" requests - chains of dependent requests that, as a whole, take a long time to finish.<br />
+  Parallelise requests instead, using async facilities such as `Promise.all`.<br />
   [Book: Advanced React, Ch 14](https://www.advanced-react.com)<br />
   #nfr--performance
 - [ ] Optimise image formats.<br />
@@ -2049,8 +2083,6 @@
 
 - [ ] Fall back to sensible defaults for unexpected values.<br />
   Example: if comparing `quantityPacked` to `quantityOrdered` in an online order, if `quantityPacked > quantityOrdered` then fall back to the same logic as `quantityPacked === quantityOrdered`.<br />
-  #nfr--robustness
-- [ ] Click a lot of different parts of the UI in very quick succession and ensure nothing breaks.<br />
   #nfr--robustness
 - [ ] Gracefully degrade when Javascript or CSS do not work.<br />
   [Article: Graceful degradation when JavaScript fails • Website Spec](https://specification.website/spec/resilience/graceful-degradation/)<br />

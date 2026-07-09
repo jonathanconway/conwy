@@ -1032,7 +1032,7 @@ function getAccountTransactions(
 When called, it may be unclear what each argument is for, without checking the source.
 
 ```ts
-getAccount(username, accountNumber, 0, 100, false);
+getAccountTransactions(username, accountNumber, 0, 100, false);
 ```
 
 An alternative would be for the function to take a single parameter object with named fields.
@@ -1044,7 +1044,7 @@ function getAccountTransactions(: )
 Now the call-site must explicitly specify the identity of each argument.
 
 ```ts
-getAccount();
+getAccountTransactions();
 ```
 
 ## Anonymous function return values
@@ -1245,6 +1245,88 @@ These books inspired this article:
 
 - [_Software Engineering at Google_](https://www.kobo.com/au/en/ebook/software-engineering-at-google) by Titus WINTERS, Tom MANSHRECK, Hyrum WRIGHT
 </content>
+  </entry>
+  
+
+  <entry>
+    <title>Code sketches</title>
+    <link href="https://conwy.co/articles/code-sketches" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>code-sketches</id>
+    <content xml:lang="en" type="html">Have you ever wanted to point to some important or key details in a piece of code, while &quot;blurring out&quot; less important details?
+
+For example, maybe you wanted the reader to focus on usage of a particular variable, without distracting them with all the other variables, method calls and other stuff going on.
+
+Here I find &quot;code sketches&quot; can be useful. We take a piece of code, keep its structural elements, keep relevant details and obscure irrelevant details (using some &quot;filler&quot; such as ellipses).
+
+For example, take this code:
+
+```cs
+public void CalculateOrderCutOffTime(string orderId, string timeZoneId)
+
+    else if (OrderType == OrderType.HomeDelivery)
+    
+
+        if (FulfilmentMode == FulfilmentMode.Standard)
+        
+            else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday &amp;&amp; !orderedBeforeMidday)
+            
+            else
+            
+        }
+        else if (FulfilmentMode == FulfilmentMode.Priority)
+        
+        else if (FulfilmentMode == FulfilmentMode.Express)
+        
+        else
+        
+    }
+    else
+    
+
+    var correctDueDateOffset = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(dueDate, siteState.ToTimeZoneId());
+    if (correctDueDateOffset.Offset != dueDate.Offset)
+    
+
+    correctDueDateOffset -= (TimeSpan.FromSeconds((correctDueDateOffset.DayOfYear - OrderedDate.DayOfYear)));
+}
+```
+
+Suppose we want to focus on the logic involving `FulfilmentMode.Priority`.
+
+We can &quot;blur out&quot; out the other less relevant code using ellipses: `...`.
+
+```cs
+var orderedDateInLocalTime = ...;
+var orderedBeforeMidnight = ...;
+
+if (OrderType == OrderType.Pickup)
+
+else if (OrderType == OrderType.HomeDelivery)
+
+		else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday &amp;&amp; !orderedBeforeMidnight)
+		
+		else
+		
+	}
+	else if (FulfilmentMode == FulfilmentMode.Priority)
+	
+	else if (FulfilmentMode == FulfilmentMode.Express)
+	
+}
+```
+
+And bingo ... we have a &quot;code sketch&quot;!
+
+It follows exactly the key structural elements of the original code – namely, the nested `if` statements. But it abstracts away the non-structural details that would otherwise confuse or distract the reader.
+
+I&#39;ve found code sketches useful over the years in conversational contexts:
+
+- Chat threads (Slack, etc)
+- Ticket comments (Jira, etc)
+- Code review discussion threads (GitHub pull requests, etc)
+- Code comments
+- Documentation (Confluence, etc.)</content>
   </entry>
   
 
@@ -1512,6 +1594,28 @@ Contributions welcome!
 These books inspired this article:
 
 - [_Introduction to Mathematical Thinking_](https://www.amazon.com/Introduction-Mathematical-Thinking-Keith-Devlin) by Keith Devlin
+</content>
+  </entry>
+  
+
+  <entry>
+    <title>Dependency updates</title>
+    <link href="https://conwy.co/articles/dependency-updates" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>dependency-updates</id>
+    <content xml:lang="en" type="html">It&#39;s best practice to keep an eye on dependency updates, especially where security fixes are needed. This can help us to avoid [software supply chain vulnerabilities](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/), which often feature in the OWASP Top 10.
+
+Many organisations use an automated pipeline tool, such as [Dependabot](https://github.com/dependabot), to continuously scan for updates and generate pull requests into repos.
+
+We should probably have some care and process around reviewing and merging these generated pull requests. Especially in continuously deployed or mission-critical applications, we don&#39;t want to just merge anything and everything. If an upgrade explicitly addresses a known vulnerability, we should prioritise it. At the same time, we should perform appropriate tests to ensure the upgrade doesn&#39;t cause breakage generally.
+
+To address the above, I came up with a checklist around dependency updates.
+
+## Dependency updates checklist
+
+Here is the link to the checklist:
+
+
 </content>
   </entry>
   
@@ -2600,7 +2704,7 @@ When scanning the list and picking items to check, you can factor in what makes 
 
 Checklist reviews can be partially or fully automated using AI assistants.
 
-You can feed a checklist, along with the code, into an AI assistant, using a prompt such as the following:
+You can feed a checklist and code changes into an AI assistant, using a [prompt](/prompts/code-review-branch) like this:
 
 ```md
 Please review the code changes in the current branch.
@@ -2655,11 +2759,13 @@ I found success with this approach, in the following ways:
 
 ## Organising and filtering the checklist
 
-With a checklist of 575 items and growing, you might wonder how I have the time to go through that many items. The truth is that I only use a subset of checklist items per situation. The checklist items are grouped into headings and tags which can be filtered. Using the filters, I can quickly narrow down the list to a much more manageable size.
+With a checklist of 575 items and growing, you well might wonder how I have the time to go through that many items. 😂
 
-For example, when reviewing a code change that only affects styling, I can filter by the `CSS`, `SCSS and LESS` and `Accessibility/Appearance` tags.
+The truth is that I only use a subset of checklist items per situation. The checklist items are grouped into headings and tags which can be filtered. Using the filters, I can quickly narrow down the list to a much more manageable size.
 
-![Screenshot of filters with relevant tags selected](/images/articles/front-end-development-checklist/styling-filters-screenshot.png)
+For example, when reviewing a code change that only affects styling, I can filter by styling-related tags.
+
+![Screenshot of filtered items](/images/articles/front-end-development-checklist/styling-filtered-items-screenshot.png)
 
 ## Front End Development Checklist
 
@@ -5188,7 +5294,7 @@ The hard part often isn&#39;t the highest level concepts, but the foundations yo
 
 Using a high quality notebook and pen helped with enjoyment and motivation to study! Fleshing out problems on paper, down to the fine details, helped me to see how the pieces of a problem fit together, which was quite fascinating.
 
-![Scan of drawings I made while studying sinusoidal curves](/images/articles/studying-calculus/studying-calculus-1.jpg?width=300)
+![Scan of drawings I made while studying sinusoidal curves](/images/articles/studying-calculus/studying-calculus-1.jpg)
 
 ## Geometric analogies
 
