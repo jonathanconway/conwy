@@ -1249,88 +1249,6 @@ These books inspired this article:
   
 
   <entry>
-    <title>Code sketches</title>
-    <link href="https://conwy.co/articles/code-sketches" />
-    <updated>2026-02-18T00:00:00.000Z</updated>
-    <id>code-sketches</id>
-    <content xml:lang="en" type="html">Have you ever wanted to point to some important or key details in a piece of code, while &quot;blurring out&quot; less important details?
-
-For example, maybe you wanted the reader to focus on usage of a particular variable, without distracting them with all the other variables, method calls and other stuff going on.
-
-Here I find &quot;code sketches&quot; can be useful. We take a piece of code, keep its structural elements, keep relevant details and obscure irrelevant details (using some &quot;filler&quot; such as ellipses).
-
-For example, take this code:
-
-```cs
-public void CalculateOrderCutOffTime(string orderId, string timeZoneId)
-
-    else if (OrderType == OrderType.HomeDelivery)
-    
-
-        if (FulfilmentMode == FulfilmentMode.Standard)
-        
-            else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday &amp;&amp; !orderedBeforeMidday)
-            
-            else
-            
-        }
-        else if (FulfilmentMode == FulfilmentMode.Priority)
-        
-        else if (FulfilmentMode == FulfilmentMode.Express)
-        
-        else
-        
-    }
-    else
-    
-
-    var correctDueDateOffset = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(dueDate, siteState.ToTimeZoneId());
-    if (correctDueDateOffset.Offset != dueDate.Offset)
-    
-
-    correctDueDateOffset -= (TimeSpan.FromSeconds((correctDueDateOffset.DayOfYear - OrderedDate.DayOfYear)));
-}
-```
-
-Suppose we want to focus on the logic involving `FulfilmentMode.Priority`.
-
-We can &quot;blur out&quot; out the other less relevant code using ellipses: `...`.
-
-```cs
-var orderedDateInLocalTime = ...;
-var orderedBeforeMidnight = ...;
-
-if (OrderType == OrderType.Pickup)
-
-else if (OrderType == OrderType.HomeDelivery)
-
-		else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday &amp;&amp; !orderedBeforeMidnight)
-		
-		else
-		
-	}
-	else if (FulfilmentMode == FulfilmentMode.Priority)
-	
-	else if (FulfilmentMode == FulfilmentMode.Express)
-	
-}
-```
-
-And bingo ... we have a &quot;code sketch&quot;!
-
-It follows exactly the key structural elements of the original code – namely, the nested `if` statements. But it abstracts away the non-structural details that would otherwise confuse or distract the reader.
-
-I&#39;ve found code sketches useful over the years in conversational contexts:
-
-- Chat threads (Slack, etc)
-- Ticket comments (Jira, etc)
-- Code review discussion threads (GitHub pull requests, etc)
-- Code comments
-- Documentation (Confluence, etc.)</content>
-  </entry>
-  
-
-  <entry>
     <title>Combinatorial testing</title>
     <link href="https://conwy.co/articles/combinatorial-testing" />
     <updated>2026-02-18T00:00:00.000Z</updated>
@@ -1607,7 +1525,7 @@ These books inspired this article:
 
 Many organisations use an automated pipeline tool, such as [Dependabot](https://github.com/dependabot), to continuously scan for updates and generate pull requests into repos.
 
-We should probably have some care and process around reviewing and merging these generated pull requests. Especially in continuously deployed or mission-critical applications, we don&#39;t want to just merge anything and everything. If an upgrade explicitly addresses a known vulnerability, we should prioritise it. At the same time, we should perform appropriate tests to ensure the upgrade doesn&#39;t cause breakage generally.
+I recommend following a consistent process around reviewing and merging these generated pull requests. Especially in continuously deployed or mission-critical applications, we don&#39;t want to just merge anything and everything. If an upgrade explicitly addresses a known vulnerability, we should prioritise it. At the same time, we should perform appropriate tests to ensure the upgrade doesn&#39;t cause breakage generally.
 
 To address the above, I came up with a checklist around dependency updates.
 
@@ -2773,7 +2691,7 @@ Here is the link to the checklist:
 
 
 
-You&#39;re welcome to [download](/downloads/checklists/front-end-development-checklist/front-end-development-checklist.md) and re-use it for your own purposes and [suggest improvements](https://github.com/jonathanconway/conwy/issues/new?q=state%3Aopen+label%3Achecklist).
+You&#39;re welcome to [download](/downloads/checklists/front-end-development/front-end-development.md) and re-use it for your own purposes and [suggest improvements](https://github.com/jonathanconway/conwy/issues/new?title=Front%20end%20developer%20checklist%20-%20&amp;body=&amp;labels=checklist).
 
 ## Further reading
 

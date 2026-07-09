@@ -5,6 +5,7 @@ export * from "./ai-replacement";
 export * from "./avoid-tuples";
 export * from "./code-reviews";
 export * from "./combinatorial-testing";
+export * from "./dependency-updates";
 export * from "./designerly-cv";
 export * from "./diagramming-react";
 export * from "./diagramming-ts";

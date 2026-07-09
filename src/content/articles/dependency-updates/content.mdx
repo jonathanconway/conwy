@@ -1,0 +1,20 @@
+import { LinkCta } from "@/components";
+
+It's best practice to keep an eye on dependency updates, especially where security fixes are needed. This can help us to avoid [software supply chain vulnerabilities](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/), which often feature in the OWASP Top 10.
+
+Many organisations use an automated pipeline tool, such as [Dependabot](https://github.com/dependabot), to continuously scan for updates and generate pull requests into repos.
+
+I recommend following a consistent process around reviewing and merging these generated pull requests. Especially in continuously deployed or mission-critical applications, we don't want to just merge anything and everything. If an upgrade explicitly addresses a known vulnerability, we should prioritise it. At the same time, we should perform appropriate tests to ensure the upgrade doesn't cause breakage generally.
+
+To address the above, I came up with a checklist around dependency updates.
+
+## Dependency updates checklist
+
+Here is the link to the checklist:
+
+<LinkCta
+  title="Dependency updates Checklist"
+  description="Follow these checks when making updates to keep your application secure with minimal disruption."
+  href="/checklists/dependency-updates"
+  imageSrc="/images/articles/dependency-updates/main.png"
+/>
