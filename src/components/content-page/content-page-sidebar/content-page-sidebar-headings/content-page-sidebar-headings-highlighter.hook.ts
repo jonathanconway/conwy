@@ -63,29 +63,23 @@ export function useContentPageSidebarHeadingsHighlighter(
 
   const [selectedHeadingId, setSelectedHeadingId] = useState("top");
 
-  async function highlightScrolledToHeading() {
-    await waitFor();
-
+  function highlightScrolledToHeading() {
     const elements = getHeadingElementsMemoized(checklistHeadingIds);
     const activeElementInViewport = getActiveElementInViewport(elements);
     const headingId = activeElementInViewport?.id?.replace("-heading-link", "");
-
-    if (headingId) {
-      window.location.hash = headingId;
-    }
+    scrollToSidebarHeading(headingId);
+    setSelectedHeadingId(() => headingId);
   }
 
   useEffect(function mountEffect() {
     window.addEventListener("scroll", highlightScrolledToHeading);
-    const scrollToSidebarHeadingInterval = setInterval(() => {
-      const headingId = window.location.hash.replace("#", "");
-      scrollToSidebarHeading(headingId);
-      setSelectedHeadingId(() => headingId);
-    }, 1000);
+
+    const headingId = window.location.hash.replace("#", "");
+    scrollToSidebarHeading(headingId);
+    setSelectedHeadingId(() => headingId);
 
     return () => {
       window.removeEventListener("scroll", highlightScrolledToHeading);
-      clearInterval(scrollToSidebarHeadingInterval);
     };
   }, []);
 
@@ -94,15 +88,13 @@ export function useContentPageSidebarHeadingsHighlighter(
   };
 }
 
-async function scrollToSidebarHeading(headingId: string) {
+function scrollToSidebarHeading(headingId: string) {
   const newSelectedSidebarHeadingEl = document.getElementById(
     `${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${headingId}`,
   );
   if (newSelectedSidebarHeadingEl) {
-    await waitFor(1000);
     newSelectedSidebarHeadingEl.scrollIntoView({
       behavior: "smooth",
     });
   }
-  return Boolean(newSelectedSidebarHeadingEl);
 }
