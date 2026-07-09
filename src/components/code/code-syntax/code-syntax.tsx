@@ -4,6 +4,7 @@ import { isString } from "lodash";
 import "prismjs";
 import Prism from "prismjs";
 import "prismjs/components/prism-bash";
+import "prismjs/components/prism-csharp";
 import "prismjs/components/prism-docker";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-json";

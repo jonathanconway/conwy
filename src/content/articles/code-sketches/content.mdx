@@ -1,0 +1,137 @@
+Have you ever wanted to point to some important or key details in a piece of code, while "blurring out" less important details?
+
+For example, maybe you wanted the reader to focus on usage of a particular variable, without distracting them with all the other variables, method calls and other stuff going on.
+
+Here I find "code sketches" can be useful. We take a piece of code, keep its structural elements, keep relevant details and obscure irrelevant details (using some "filler" such as ellipses).
+
+For example, take this code:
+
+```cs
+public void CalculateOrderCutOffTime(string orderId, string timeZoneId)
+{
+    DateTimeOffset dueDate;
+    var orderedDateInLocalTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(OrderedDate, timeZoneId);
+    var orderedBeforeMidday = orderedDateInLocalTime.TimeOfDay < TimeSpan.FromHours(12);
+    var orderedDateInLocalTimeMidday = orderedDateInLocalTime - orderedDateInLocalTime.TimeOfDay;
+
+    if (OrderType == OrderType.Pickup)
+    {
+        dueDate = orderedBeforeMidday
+            ? orderedDateInLocalTimeMidday.AddHours(15)
+            : orderedDateInLocalTimeMidday.AddDays(1).AddHours(12);
+    }
+    else if (OrderType == OrderType.HomeDelivery)
+    {
+        var orderedDateIsPublicHoliday = isPublicHoliday(orderedDateInLocalTime.DateTime, siteState);
+        var daysToNextFulfilmentDay = 1;
+        var nextDay = orderedDateInLocalTime.AddDays(1);
+        var nextDayIsPublicHoliday = isPublicHoliday(nextDay.DateTime, siteState);
+
+        if (nextDayIsPublicHoliday)
+        {
+            nextDay = advanceToNextBusinessDay(nextDay);
+        }
+
+        if (FulfilmentMode == FulfilmentMode.Standard)
+        {
+            if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday && orderedBeforeMidday)
+            {
+                dueDate = orderedDateInLocalTimeMidday
+                    .AddDays(daysToNextFulfilmentDay)
+                    .AddHours(15);
+            }
+            else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday && !orderedBeforeMidday)
+            {
+                dueDate = orderedDateInLocalTimeMidday
+                    .AddDays(daysToNextFulfilmentDay)
+                    .AddHours(15)
+                    .AddMinutes(30);
+            }
+            else
+            {
+                dueDate = orderedDateInLocalTimeMidday
+                    .AddDays(daysToNextFulfilmentDay)
+                    .AddHours(18);
+            }
+        }
+        else if (FulfilmentMode == FulfilmentMode.Priority)
+        {
+            var orderedBeforeCutOff = orderedDateInLocalTime.TimeOfDay < TimeSpan.FromHours(12).Add(TimeSpan.FromMinutes(15));
+            dueDate = orderedBeforeCutOff && !orderedDateIsPublicHoliday
+                ? orderedDateInLocalTimeMidday.AddHours(13)
+                : orderedDateInLocalTimeMidday
+                    .AddDays(daysToNextFulfilmentDay)
+                    .AddHours(13);
+        }
+        else if (FulfilmentMode == FulfilmentMode.Express)
+        {
+            dueDate = orderedBeforeMidday && !orderedDateIsPublicHoliday
+                ? orderedDateInLocalTimeMidday.AddHours(15)
+                : orderedDateInLocalTimeMidday.AddDays(daysToNextFulfilmentDay).AddHours(15);
+        }
+        else
+        {
+            return;
+        }
+    }
+}
+```
+
+Suppose we want to focus on the logic involving `FulfilmentMode.Priority`.
+
+We can "blur out" out the other less relevant code using ellipses: `...`.
+
+```cs
+var orderedDateInLocalTime = /* ... */;
+var orderedBeforeMidnight = /* ... */;
+
+if (OrderType == OrderType.Pickup)
+{
+    /* ... */
+}
+else if (OrderType == OrderType.HomeDelivery)
+{
+	if (FulfilmentMode == FulfilmentMode.Standard)
+  {
+		if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday && orderedBeforeMidnight)
+		{
+		    /* ... */
+		}
+		else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday && !orderedBeforeMidnight)
+		{
+		    /* ... */
+		}
+		else
+		{
+		    /* ... */
+		}
+	}
+	else if (FulfilmentMode == FulfilmentMode.Priority)
+	{
+      var orderedBeforeCutOff = orderedDateInLocalTime.TimeOfDay < TimeSpan.FromHours(12).Add(TimeSpan.FromMinutes(15));
+      dueDate = orderedBeforeCutOff && !orderedDateIsPublicHoliday
+          ? orderedDateInLocalTimeMidday.AddHours(13)
+          : orderedDateInLocalTimeMidday
+              .AddDays(daysToNextFulfilmentDay)
+              .AddHours(13);
+	}
+	else if (FulfilmentMode == FulfilmentMode.Express)
+	{
+		/* ... */
+	}
+}
+```
+
+And voilà! We have a "code sketch"!
+
+It replicates exactly the key structural elements of the original code – namely, the nested `if` statements.
+
+But it abstracts away the non-structural details that would otherwise confuse or distract the reader – using ellipses `/* ... */`.
+
+I've found code sketches like this useful over the years in many conversational contexts, such as:
+
+- Chat threads (Slack, etc)
+- Ticket comments (Jira, etc)
+- Code review discussion threads (GitHub pull requests, etc)
+- Code comments
+- Documentation (Confluence, etc.)

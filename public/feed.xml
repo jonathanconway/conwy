@@ -1249,6 +1249,82 @@ These books inspired this article:
   
 
   <entry>
+    <title>Code sketches</title>
+    <link href="https://conwy.co/articles/code-sketches" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>code-sketches</id>
+    <content xml:lang="en" type="html">Have you ever wanted to point to some important or key details in a piece of code, while &quot;blurring out&quot; less important details?
+
+For example, maybe you wanted the reader to focus on usage of a particular variable, without distracting them with all the other variables, method calls and other stuff going on.
+
+Here I find &quot;code sketches&quot; can be useful. We take a piece of code, keep its structural elements, keep relevant details and obscure irrelevant details (using some &quot;filler&quot; such as ellipses).
+
+For example, take this code:
+
+```cs
+public void CalculateOrderCutOffTime(string orderId, string timeZoneId)
+
+    else if (OrderType == OrderType.HomeDelivery)
+    
+
+        if (FulfilmentMode == FulfilmentMode.Standard)
+        
+            else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday &amp;&amp; !orderedBeforeMidday)
+            
+            else
+            
+        }
+        else if (FulfilmentMode == FulfilmentMode.Priority)
+        
+        else if (FulfilmentMode == FulfilmentMode.Express)
+        
+        else
+        
+    }
+}
+```
+
+Suppose we want to focus on the logic involving `FulfilmentMode.Priority`.
+
+We can &quot;blur out&quot; out the other less relevant code using ellipses: `...`.
+
+```cs
+var orderedDateInLocalTime = /* ... */;
+var orderedBeforeMidnight = /* ... */;
+
+if (OrderType == OrderType.Pickup)
+
+else if (OrderType == OrderType.HomeDelivery)
+
+		else if (orderedDateInLocalTime.DayOfWeek == DayOfWeek.Saturday &amp;&amp; !orderedBeforeMidnight)
+		
+		else
+		
+	}
+	else if (FulfilmentMode == FulfilmentMode.Priority)
+	
+	else if (FulfilmentMode == FulfilmentMode.Express)
+	
+}
+```
+
+And voilà! We have a &quot;code sketch&quot;!
+
+It replicates exactly the key structural elements of the original code – namely, the nested `if` statements.
+
+But it abstracts away the non-structural details that would otherwise confuse or distract the reader – using ellipses `/* ... */`.
+
+I&#39;ve found code sketches like this useful over the years in many conversational contexts, such as:
+
+- Chat threads (Slack, etc)
+- Ticket comments (Jira, etc)
+- Code review discussion threads (GitHub pull requests, etc)
+- Code comments
+- Documentation (Confluence, etc.)</content>
+  </entry>
+  
+
+  <entry>
     <title>Combinatorial testing</title>
     <link href="https://conwy.co/articles/combinatorial-testing" />
     <updated>2026-02-18T00:00:00.000Z</updated>

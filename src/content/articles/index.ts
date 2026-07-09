@@ -4,6 +4,7 @@ export * from "./ai-patterns";
 export * from "./ai-replacement";
 export * from "./avoid-tuples";
 export * from "./code-reviews";
+export * from "./code-sketches";
 export * from "./combinatorial-testing";
 export * from "./dependency-updates";
 export * from "./designerly-cv";
