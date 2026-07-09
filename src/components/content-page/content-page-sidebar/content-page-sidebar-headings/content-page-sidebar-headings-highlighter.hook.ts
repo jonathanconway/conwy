@@ -63,42 +63,29 @@ export function useContentPageSidebarHeadingsHighlighter(
 
   const [selectedHeadingId, setSelectedHeadingId] = useState("top");
 
-  async function handleScroll() {
+  async function highlightScrolledToHeading() {
+    await waitFor();
+
     const elements = getHeadingElementsMemoized(checklistHeadingIds);
-
     const activeElementInViewport = getActiveElementInViewport(elements);
-    const idInViewport = activeElementInViewport?.id?.replace(
-      "-heading-link",
-      "",
-    );
+    const headingId = activeElementInViewport?.id?.replace("-heading-link", "");
 
-    if (idInViewport) {
-      setSelectedHeadingId(idInViewport);
-      window.location.hash = idInViewport;
+    if (headingId) {
+      window.location.hash = headingId;
     }
   }
 
-  async function handleMount() {
-    if (window.location.hash) {
-      const headingElementMatchingHash = document.querySelector(
-        window.location.hash,
-      );
-      if (headingElementMatchingHash) {
-        const newSelectedHeadingId = window.location.hash.replace("#", "");
-
-        setSelectedHeadingId(newSelectedHeadingId);
-        scrollToNewSelectedHeading(newSelectedHeadingId);
-      }
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    handleMount();
+  useEffect(function mountEffect() {
+    window.addEventListener("scroll", highlightScrolledToHeading);
+    const scrollToSidebarHeadingInterval = setInterval(() => {
+      const headingId = window.location.hash.replace("#", "");
+      scrollToSidebarHeading(headingId);
+      setSelectedHeadingId(() => headingId);
+    }, 1000);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", highlightScrolledToHeading);
+      clearInterval(scrollToSidebarHeadingInterval);
     };
   }, []);
 
@@ -107,25 +94,15 @@ export function useContentPageSidebarHeadingsHighlighter(
   };
 }
 
-async function scrollToNewSelectedHeading(newSelectedHeadingId: string) {
-  await waitFor(1000);
-
+async function scrollToSidebarHeading(headingId: string) {
   const newSelectedSidebarHeadingEl = document.getElementById(
-    `${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${newSelectedHeadingId}`,
+    `${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${headingId}`,
   );
-
-  await waitFor(500);
-
   if (newSelectedSidebarHeadingEl) {
+    await waitFor(1000);
     newSelectedSidebarHeadingEl.scrollIntoView({
       behavior: "smooth",
     });
   }
-
-  const newSelectedHeadingEl = document.getElementById(newSelectedHeadingId);
-  if (newSelectedHeadingEl) {
-    newSelectedHeadingEl.scrollIntoView({
-      behavior: "smooth",
-    });
-  }
+  return Boolean(newSelectedSidebarHeadingEl);
 }
