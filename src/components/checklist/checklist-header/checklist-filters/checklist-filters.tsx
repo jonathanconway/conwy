@@ -38,20 +38,17 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
   return (
     <Collapsible
       title={
-        <Stack gap={0.25}>
+        <Stack gap={0.5}>
           <Text type={TextTypes.CollapsibleTitle}>Filter by tag</Text>
 
           {props.selectedTags.length > 0 && (
-            <Stack
-              direction={StackDirections.Row}
-              distribution={StackDistributions.Flow}
-            >
+            <div className={styles.filteredTagsContainer}>
               {props.selectedTags.map((tag) => (
                 <Text key={tag.title} type={TextTypes.Small}>
                   ☑️ {tag.title}
                 </Text>
               ))}
-            </Stack>
+            </div>
           )}
         </Stack>
       }

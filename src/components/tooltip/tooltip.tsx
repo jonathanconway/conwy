@@ -29,7 +29,7 @@ export function Tooltip(props: TooltipProps) {
   const children = convertContentsToReactNode(props.children);
 
   const breakpoint = useGetBreakpoint();
-  const breakpointIsSm = breakpoint === Breakpoints.sm;
+  const breakpointIsSm = breakpoint === Breakpoints.Small;
 
   const id = useId().replaceAll(":", "");
   const descriptionId = `${id}-description`;

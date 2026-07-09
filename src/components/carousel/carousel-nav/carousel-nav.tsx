@@ -38,7 +38,7 @@ export function CarouselNav<T extends CarouselItem = CarouselItem>(
         onClick={props.carousel.handlePreviousClick}
       />
 
-      <Responsive minWidth={Breakpoints.lg}>
+      <Responsive minWidth={Breakpoints.Large}>
         {props.carousel.items.map((carouselItem, carouselItemIndex) => (
           <IconButton
             key={`carousel-item-${carouselItemIndex}`}

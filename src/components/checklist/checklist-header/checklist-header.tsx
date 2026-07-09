@@ -1,7 +1,10 @@
 "use client";
 
+import { Breakpoints } from "@/components/styling";
+
 import { ItemsCount } from "../../items-count";
-import { Stack, StackDirections } from "../../stack";
+import { ResponsiveStack } from "../../responsive";
+import { Stack, StackDirections, StackDistributions } from "../../stack";
 import { useChecklistContext } from "../checklist-context";
 
 import { ChecklistDownload } from "./checklist-download";
@@ -21,13 +24,24 @@ export function ChecklistHeader(props: ChecklistHeaderProps) {
   return (
     <Stack gap={3}>
       <Stack>
-        <Stack direction={StackDirections.Row}>
+        <ResponsiveStack
+          direction={{
+            [Breakpoints.Small]: StackDirections.Column,
+            [Breakpoints.Medium]: StackDirections.Row,
+            [Breakpoints.Large]: StackDirections.Row,
+          }}
+          distribution={{
+            [Breakpoints.Small]: StackDistributions.Flow,
+            [Breakpoints.Medium]: StackDistributions.Even,
+            [Breakpoints.Large]: StackDistributions.Even,
+          }}
+        >
           <ChecklistDownload checklistMeta={props.checklistMeta} />
           <ChecklistSearch
             value={checklistContext.searchText ?? ""}
             onChange={checklistContext.onChangeSearchText}
           />
-        </Stack>
+        </ResponsiveStack>
 
         {props.checklistMeta.extensions &&
           props.checklistMeta.extensions.tagGroups.length > 0 && (

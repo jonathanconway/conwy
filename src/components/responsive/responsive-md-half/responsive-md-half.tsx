@@ -13,7 +13,7 @@ export function ResponsiveMdHalf(props: ResponsiveMdHalfProps) {
     <ResponsiveStack direction="row">
       {props.children}
 
-      <Responsive minWidth={Breakpoints.md}>
+      <Responsive minWidth={Breakpoints.Medium}>
         <div></div>
       </Responsive>
     </ResponsiveStack>

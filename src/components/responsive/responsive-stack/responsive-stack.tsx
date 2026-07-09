@@ -17,8 +17,12 @@ type ResponsiveStackProps = {
   readonly children?: ReactNode;
 };
 
-function getIsBreakpoint<T>(input: T | Breakpoint): input is Breakpoint {
-  return String(input) in Breakpoints;
+const breakpointsValues = Object.values(Breakpoints);
+
+function getIsBreakpoint<T extends string>(
+  input: T | Breakpoint,
+): input is Breakpoint {
+  return breakpointsValues.includes(input as Breakpoint);
 }
 
 function getIsBreakpointsMap<T>(
@@ -32,17 +36,17 @@ function getFallbackPropValue(
   breakpoint: Breakpoint,
 ): unknown | undefined {
   switch (breakpoint) {
-    case Breakpoints.lg:
+    case Breakpoints.Large:
       return (
-        propValue[Breakpoints.md] ??
-        getFallbackPropValue(propValue, Breakpoints.md)
+        propValue[Breakpoints.Medium] ??
+        getFallbackPropValue(propValue, Breakpoints.Medium)
       );
-    case Breakpoints.md:
+    case Breakpoints.Medium:
       return (
-        propValue[Breakpoints.sm] ??
-        getFallbackPropValue(propValue, Breakpoints.sm)
+        propValue[Breakpoints.Small] ??
+        getFallbackPropValue(propValue, Breakpoints.Small)
       );
-    case Breakpoints.sm:
+    case Breakpoints.Small:
     default:
       return undefined;
   }

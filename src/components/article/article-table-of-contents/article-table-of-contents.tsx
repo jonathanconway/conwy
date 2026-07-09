@@ -20,7 +20,7 @@ export async function ArticleTableOfContents(
   }
 
   return (
-    <Responsive maxWidth={Breakpoints.md}>
+    <Responsive maxWidth={Breakpoints.Medium}>
       <Collapsible title="Table of contents">
         <UnorderedList>
           {articleHeadings.map(({ id, title, shortTitle }) => (
