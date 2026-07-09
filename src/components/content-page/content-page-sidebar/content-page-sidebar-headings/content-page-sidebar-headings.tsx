@@ -32,7 +32,7 @@ export function ContentPageSidebarHeadings(
           return (
             <li
               key={title}
-              id={`${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${selectedHeadingId}`}
+              id={`${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${id}`}
               className={styles.listItem}
             >
               {selectedHeadingId === id ? (

@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 
 import { isClient, isNotNil, querySelector, waitFor } from "@/framework/client";
 
-import { CONTENT_SIDEBAR_CONTAINER_ID } from "../content-page-sidebar-container/content-sidebar-container.const";
-
 import { CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX } from "./content-page-sidebar-headings.const";
 
 function getIsElementInViewport(el?: Element | null) {
@@ -65,11 +63,10 @@ export function useContentPageSidebarHeadingsHighlighter(
 
   const [selectedHeadingId, setSelectedHeadingId] = useState("top");
 
-  function handleScroll() {
+  async function handleScroll() {
     const elements = getHeadingElementsMemoized(checklistHeadingIds);
 
     const activeElementInViewport = getActiveElementInViewport(elements);
-
     const idInViewport = activeElementInViewport?.id?.replace(
       "-heading-link",
       "",
@@ -77,6 +74,7 @@ export function useContentPageSidebarHeadingsHighlighter(
 
     if (idInViewport) {
       setSelectedHeadingId(idInViewport);
+      window.location.hash = idInViewport;
     }
   }
 
@@ -112,24 +110,22 @@ export function useContentPageSidebarHeadingsHighlighter(
 async function scrollToNewSelectedHeading(newSelectedHeadingId: string) {
   await waitFor(1000);
 
-  const newSelectedHeadingEl = document.getElementById(
+  const newSelectedSidebarHeadingEl = document.getElementById(
     `${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${newSelectedHeadingId}`,
   );
+
+  await waitFor(500);
+
+  if (newSelectedSidebarHeadingEl) {
+    newSelectedSidebarHeadingEl.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+
+  const newSelectedHeadingEl = document.getElementById(newSelectedHeadingId);
   if (newSelectedHeadingEl) {
     newSelectedHeadingEl.scrollIntoView({
       behavior: "smooth",
     });
-
-    await waitFor();
-    const contentSidebarContainerEl = document.getElementById(
-      CONTENT_SIDEBAR_CONTAINER_ID,
-    );
-    if (contentSidebarContainerEl) {
-      contentSidebarContainerEl.scrollTo({
-        left: 0,
-        top: contentSidebarContainerEl.scrollTop + 30,
-        behavior: "smooth",
-      });
-    }
   }
 }
