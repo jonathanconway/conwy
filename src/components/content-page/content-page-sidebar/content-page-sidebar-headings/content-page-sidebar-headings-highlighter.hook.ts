@@ -3,58 +3,51 @@
 import { kebabCase, memoize } from "lodash";
 import { useEffect, useState } from "react";
 
-import { isClient, isNotNil, querySelector, waitFor } from "@/framework/client";
+import { isClient, isNotNil, querySelector } from "@/framework/client";
 
 import { CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX } from "./content-page-sidebar-headings.const";
 
-function getIsElementInViewport(el?: Element | null) {
-  if (!isClient) {
-    return false;
-  }
-
-  if (!el?.getBoundingClientRect) {
-    return false;
-  }
-
-  const rect = el.getBoundingClientRect();
-
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
-function getHeadingElements(headingIds: readonly string[]): readonly Element[] {
+function getHeadingElements(
+  headingIds: readonly string[],
+): readonly HTMLElement[] {
   if (!isClient) {
     return [];
   }
 
-  const headingElements = headingIds
+  const headingElementsByIds = headingIds
     .map((id) => document.getElementById(id))
     .filter(isNotNil);
 
-  const articleTitleElement = querySelector("h2")!;
+  const headingElementTitle = Array.from(
+    document.getElementsByTagName("H2"),
+  )[0] as HTMLElement;
 
-  return [articleTitleElement, ...headingElements];
+  const headingElements = [headingElementTitle, ...headingElementsByIds];
+
+  return headingElements;
+}
+
+function getHeadingElementInViewport(headingElements: readonly HTMLElement[]) {
+  const htmlElement = document.querySelector("html")!;
+  const viewportScrollTop = htmlElement.scrollTop;
+
+  const headingElementsAndOffsets = headingElements.map(
+    (headingElement, headingElementIndex) => ({
+      headingElement,
+      offsetTop: headingElement.offsetTop,
+      offsetBottom:
+        headingElements[headingElementIndex + 1]?.offsetTop ??
+        window.document.body.offsetHeight,
+    }),
+  );
+
+  return headingElementsAndOffsets.findLast(
+    ({ headingElement, offsetTop, offsetBottom }) =>
+      offsetTop <= viewportScrollTop + 200 && offsetBottom > viewportScrollTop,
+  )?.headingElement;
 }
 
 const getHeadingElementsMemoized = memoize(getHeadingElements);
-
-function getActiveElementInViewport(headingElements: readonly Element[]) {
-  const elementsInViewport = headingElements.filter(getIsElementInViewport);
-  const isLastElementInViewport = elementsInViewport?.includes(
-    headingElements.slice(-1)[0],
-  );
-
-  if (isLastElementInViewport) {
-    return headingElements.slice(-1)[0];
-  } else {
-    return elementsInViewport[0];
-  }
-}
 
 export function useContentPageSidebarHeadingsHighlighter(
   sidebarHeadings: readonly string[],
@@ -64,9 +57,14 @@ export function useContentPageSidebarHeadingsHighlighter(
   const [selectedHeadingId, setSelectedHeadingId] = useState("top");
 
   function highlightScrolledToHeading() {
-    const elements = getHeadingElementsMemoized(checklistHeadingIds);
-    const activeElementInViewport = getActiveElementInViewport(elements);
-    const headingId = activeElementInViewport?.id?.replace("-heading-link", "");
+    const headingElements = getHeadingElementsMemoized(checklistHeadingIds);
+    const headingElementInViewport =
+      getHeadingElementInViewport(headingElements) ?? headingElements[0];
+
+    const headingId = headingElementInViewport?.id?.replace(
+      "-heading-link",
+      "",
+    );
     scrollToSidebarHeading(headingId);
     setSelectedHeadingId(() => headingId);
   }
@@ -93,8 +91,8 @@ function scrollToSidebarHeading(headingId: string) {
     `${CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX}-${headingId}`,
   );
   if (newSelectedSidebarHeadingEl) {
-    newSelectedSidebarHeadingEl.scrollIntoView({
-      behavior: "smooth",
-    });
+    newSelectedSidebarHeadingEl.setAttribute("tabindex", "0");
+    newSelectedSidebarHeadingEl.focus();
+    newSelectedSidebarHeadingEl.removeAttribute("tabindex");
   }
 }
