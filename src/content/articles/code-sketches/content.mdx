@@ -80,15 +80,15 @@ public void CalculateOrderCutOffTime(string orderId, string timeZoneId)
 Suppose we want the reader to focus on the logic involving `FulfilmentMode.Priority`.
 
 ```cs
-	else if (FulfilmentMode == FulfilmentMode.Priority)
-	{
-        var orderedBeforeCutOff = orderedDateInLocalTime.TimeOfDay < TimeSpan.FromHours(12).Add(TimeSpan.FromMinutes(15));
-        dueDate = orderedBeforeCutOff && !orderedDateIsPublicHoliday
-            ? orderedDateInLocalTimeMidday.AddHours(13)
-            : orderedDateInLocalTimeMidday
-                .AddDays(daysToNextFulfilmentDay)
-                .AddHours(13);
-    }
+else if (FulfilmentMode == FulfilmentMode.Priority)
+{
+    var orderedBeforeCutOff = orderedDateInLocalTime.TimeOfDay < TimeSpan.FromHours(12).Add(TimeSpan.FromMinutes(15));
+    dueDate = orderedBeforeCutOff && !orderedDateIsPublicHoliday
+        ? orderedDateInLocalTimeMidday.AddHours(13)
+        : orderedDateInLocalTimeMidday
+            .AddDays(daysToNextFulfilmentDay)
+            .AddHours(13);
+}
 ```
 
 We can "blur out" out the other less relevant code using ellipses in code comments: `/* ... */`.
