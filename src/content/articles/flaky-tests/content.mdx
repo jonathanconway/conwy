@@ -23,7 +23,7 @@ Fundamental to addressing any kind of software bug is **reproducing** it.
 
 But how do you reproduce a flaky test? As discussed above, flaky tests are difficult to reproduce consistently because their behaviour is non-deterministic: sometimes they function incorrectly, sometimes not.
 
-> Aside: **Warning:** It's important at this point to note that *incorrect function* of a test can occur in various non-obvious ways ways, from giving false-positives (passing when it should fail) to ending prematurely (i.e. ending before the system functionality has been fully exercised).
+> Aside: **Warning:** It's important at this point to note that *incorrect function* of a test can occur in various non-obvious ways, from giving false-positives (passing when it should fail) to ending prematurely (i.e. ending before the system functionality has been fully exercised).
 
 There are a couple of options here:
 
@@ -60,7 +60,7 @@ For example:
 - Simulating lower available memory
 - Simulating slower network speeds
 
-These failure conditions will give us more failures, which may hopefully resolve in faster diagnosis of the cause.
+These failure conditions should generate more failures, giving us a faster diagnosis of the cause.
 
 Some technologies for enacting these simulations include:
 - **Virtual machines:** Running the tests in a Virtual Machine with slow configuration.
