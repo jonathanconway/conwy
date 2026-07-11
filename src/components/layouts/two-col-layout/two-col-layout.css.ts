@@ -14,4 +14,6 @@ export const container = style({
   },
 });
 
-export const column = style({});
+export const column = style({
+  flex: 1,
+});

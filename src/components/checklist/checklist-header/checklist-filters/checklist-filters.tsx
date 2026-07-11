@@ -7,8 +7,7 @@ import { Button } from "../../../button";
 import { Collapsible } from "../../../collapsible";
 import { FilterGroup, Filters } from "../../../filters";
 import { Filter } from "../../../filters/filters-props";
-import { TwoColLayout } from "../../../layouts";
-import { Stack, StackDirections, StackDistributions } from "../../../stack";
+import { Stack } from "../../../stack";
 import { Text, TextTypes } from "../../../text";
 
 import { ChecklistFiltersProps } from "./checklist-filters-props";
@@ -54,10 +53,9 @@ export function ChecklistFilters(props: ChecklistFiltersProps) {
       }
     >
       <div className={styles.container}>
-        <TwoColLayout justifyContent="space-between">
-          <span></span>
+        <div>
           <Button onClick={handleClearClick}>Clear</Button>
-        </TwoColLayout>
+        </div>
 
         {tagGroupsWithItemsOrdered.map((tagGroup) => (
           <FilterGroup
