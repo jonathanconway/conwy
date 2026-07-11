@@ -152,9 +152,9 @@
 - [ ] Make site legible to AI agents and crawlers.<br />
   [Article: Agent Readiness • Website Spec](https://specification.website/spec/agent-readiness/)<br />
   #ai
-- [ ] Use AI to make code more readable.
+- [ ] Use AI to make code more readable.<br />
   Prompt AI, providing a plain-language description of expected code behaviour. Ask it to use that description to refactor the code to be more readable, with easy to follow logical flow and sensible names for variables, functions, etc.<br />
-  [Prompt: Refactor code for readability from plain-language description](/prompts/refactor-code-readable-description)
+  [Prompt: Refactor code for readability from plain-language description](/prompts/refactor-code-readable-description)<br />
   #ai
 
 [^ai]: AI covers Artificial Intelligence such as coding assistance, code review and AI integrations.
@@ -215,7 +215,7 @@
 - [ ] Invalidate a cache when the same data needs to be fetched freshly in a different context.<br />
   Use invalidation tags if available.<br />
   #concern--caching #nfr--correctness
-- [ ] Avoid use of `localStorage`, `sessionStorage` and similar.<br />
+- [ ] Minimise use of `localStorage`, `sessionStorage` and similar.<br />
   As they introduce complications and maintenance overhead.<br />
   #concern--caching #nfr--maintainability
 - [ ] Select `localStorage`  vs `sessionStorage` correctly depending on how long data needs to live.<br />
@@ -2508,16 +2508,14 @@
 
 ### Usability - Modals [^nfr-usability-modals]
 
-- [ ] Capture focus on open.<br />
+- [ ] Capture focus on open and release it on close.<br />
   #nfr--usability #usability--modals
-- [ ] Easily closable.<br />
+- [ ] Ensure modal is easily closable.<br />
   #nfr--usability #usability--modals
 - [ ] Use modal props, not conditional rendering, to support animation on modal open/close.<br />
   #nfr--usability #usability--modals
 - [ ] Present the outcome of a multi-step process in a way that makes sense to the user.<br />
   Example: making a transfer in a banking app should results in a success screen with summary of the details; also the transfer should be shown in the transactions list.<br />
-  #nfr--usability #usability--modals
-- [ ] Careful when consuming context inside a modal – ensure it works in every case where the modal appears.<br />
   #nfr--usability #usability--modals
 - [ ] Ensure `Esc` keypress is handled, as a way to quickly close the modal.<br />
   #nfr--usability #usability--modals
@@ -2740,21 +2738,6 @@
 
 
 
-### Usability - Validation [^nfr-usability-validation]
-
-- [ ] Display field-level validations, with clear description of why it's invalid.<br />
-  #nfr--usability #usability--validation
-- [ ] Display validations summary at the top of the form, with summarised listing of invalid fields.<br />
-  #nfr--usability #usability--validation #nfr--security
-- [ ] Validate email addresses.<br />
-  [Article: Do you use a regular expression to validate an email address? | SSW.Rules](https://www.ssw.com.au/rules/use-a-regular-expression-to-validate-an-email-address)<br />
-  #nfr--usability #usability--validation
-
-[^nfr-usability-validation]: Validation refers to checking that user input is correct and providing feedback to the user if it is not.
-
-
-
-
 ### Internationalisation and localisation [^nfr-internationalisation-and-localisation]
 
 - [ ] Use standardised URL pattern to indicate country and/or language.<br />
@@ -2844,7 +2827,8 @@
   [Book: A Philosophy of Software Design, Ch 4](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   [Book: A Philosophy of Software Design, Ch 5](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
-- [ ] Use general purpose modules to get a better return on investment when specifics are subject to change unpredictably.<br />
+- [ ] Use general purpose modules when specifics are subject to change.<br />
+  Get a better return on investment by designing for the general and most likely case.<br />
   [Book: A Philosophy of Software Design, Ch 6](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
 - [ ] Use layers of abstraction to simplify interfaces.<br />
@@ -2853,7 +2837,7 @@
 - [ ] Absorb complexity rather than passing it on to your consumers.<br />
   [Book: A Philosophy of Software Design, Ch 8](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
-- [ ] Think carefully about whether to bring together or separate.<br />
+- [ ] Think carefully about whether to "bring together" or "keep separate".<br />
   Bring together if information is shared.<br />
   Bring together if it will simplify the interface<br />
   Bring together to eliminate duplication<br />
@@ -2871,7 +2855,8 @@
   Consider writing an ADR capturing the alternatives to communicate them to team members and gather feedback.<br />
   [Book: A Philosophy of Software Design, Ch 11](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
-- [ ] Minimise dependencies between modules keep dependencies as simple and clear as possible.<br />
+- [ ] Minimise dependencies between modules.<br />
+  Keep dependencies as simple and clear as possible.<br />
   [Book: A Philosophy of Software Design, Ch 2, Causes of Complexity](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #pipeline--package
 - [ ] Define overly complex structures out of existence.<br />
@@ -3468,8 +3453,9 @@
 - [ ] Don't use a hook where a simpler structure, such as a `function` or `const`, would be sufficient.<br />
   #framework--react
 - [ ] Careful about using a hook in a context where its data is unavailable.<br />
+  Example: consuming context in a model, when the modal might be opened from a different component without the context.<br />
   It might crash the app unexpectedly.<br />
-  #framework--react 
+  #framework--react
 
 
 
@@ -3951,9 +3937,13 @@
 
 ### Pipeline - Developer environment [^pipeline-developer-environment]
 
-- [ ] Use a good quality IDE.<br />
+- [ ] Use a good quality IDE and/or code editor.<br />
   [Tool: Visual Studio Code](https://code.visualstudio.com/)<br />
+  [Tool: Visual Studio]](https://visualstudio.microsoft.com/)<br />
   [Tool: WebStorm](https://www.jetbrains.com/webstorm)<br />
+  [Tool: IDEA](https://www.jetbrains.com/idea)<br />
+  [Tool: Rider](https://www.jetbrains.com/rider)<br />
+  [Tool: Sublime Text](https://www.sublimetext.com/)<br />
   [Article: Tools - Do you know the best IDE for Angular and React? | SSW.Rules](https://www.ssw.com.au/rules/how-to-get-your-machine-setup)<br />
   #pipeline--developer-environment
 - [ ] Document and/or fix aspects of development environment setup that are difficult, tedious or error-prone.<br />
