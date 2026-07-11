@@ -16,10 +16,10 @@
   The tendency to underestimate the influence of visceral drives on one's attitudes, preferences, and behaviors.
 - [ ] Tachypsychia<br />
   When time perceived by the individual either lengthens, making events appear to slow down, or contracts.
-- [ ] Time-saving bias<br />
-  A tendency to underestimate the time that could be saved (or lost) when increasing (or decreasing) from a relatively low speed, and to overestimate the time that could be saved (or lost) when increasing (or decreasing) from a relatively high speed.
 - [ ] Travis syndrome<br />
   Overestimating the significance of the present. It is related to chronological snobbery with possibly an appeal to novelty logical fallacy being part of the bias.
+- [ ] Time-saving bias<br />
+  A tendency to underestimate the time that could be saved (or lost) when increasing (or decreasing) from a relatively low speed, and to overestimate the time that could be saved (or lost) when increasing (or decreasing) from a relatively high speed.
 
 [^association]: A connection between different pieces of information.
 
@@ -51,7 +51,7 @@
 - [ ] Unit bias<br />
   The standard suggested amount of consumption (e.g., food serving size) is perceived to be appropriate, and a person would consume it all even if it is too much for this particular person.
 - [ ] Weber–Fechner law<br />
-Difficulty in perceiving and comparing small differences in large quantities.
+  Difficulty in perceiving and comparing small differences in large quantities.
 
 [^baseline]: Comparing something to a perceived standard or starting point.
 
