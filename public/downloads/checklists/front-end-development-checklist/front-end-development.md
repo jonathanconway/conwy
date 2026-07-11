@@ -378,6 +378,8 @@
   [Article: Monitoring and uptime • Website Spec](https://specification.website//spec/resilience/monitoring-uptime/)<br />
   [Article: Do you Health Check your infrastructure? | SSW.Rules](https://www.ssw.com.au/rules/infrastructure-health-checks)<br />
   #concern--observability #nfr--observability
+- [ ] Be careful not to add excessive logs, which might drive up operating costs.<br />
+  #concern--observability #nfr--observability #nfr--economy
 
 [^concern-monitoring-logging-and-observability]: Logging, monitoring and observability covers logging (especially for debugging purposes) and monitoring and observability (for understanding system performance and behavior, identifying anomalies and diagnosing complex issues).
 
@@ -470,7 +472,8 @@
   [Article: Comments - Do you follow the code commenting standards? | SSW.Rules](https://www.ssw.com.au/rules/code-commenting)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Put Yourself in the Reader’s Shoes, pp. 51-53](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
-- [ ] Describe the why not the what, let the code describe the what.<br />
+- [ ] Describe the why and what, not the how. Let the code describe the how.<br />
+  [Book: A Philosophy of Software Design, Ch 13, Implementation comments: what and why, not how](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, What NOT to comment, pp. 47](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
 - [ ] Describe “why not” to communicate why one solution was chosen over another seemingly better solution.<br />
@@ -484,10 +487,17 @@
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Comment on Your Constants, pp. 51](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, “Named Function Parameter” Comments, pp. 63-64](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
+- [ ] Describe interfaces, abstractions and contracts.<br />
+  If you want code that presents good abstractions, you must document those abstractions with comments.<br />
+  Ask yourself what information a developer needs to know to use the interface and include that in comments.<br />
+  Don't include implementation details in interface comments.<br />
+  If interface comments must also describe the implementation, then the class or method is shallow.<br />
+  [Book: A Philosophy of Software Design, Ch 13, Interface documentation](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
 - [ ] Describe advanced features or obscure code the reader is unlikely to understand.<br />
   Example: use of `setTimeout` or browser hacks or device-specific APIs.<br />
   [Article: Do you leave explanatory notes for non-standard code? | SSW.Rules](https://www.ssw.com.au/rules/leave-explanatory-notes-for-non-standard-code)<br />
   [Article: Do you know what to do with a work around? | SSW.Rules](https://www.ssw.com.au/rules/what-to-do-with-a-work-around)<br />
+  [Book: A Philosophy of Software Design, Ch 13, Lower-level comments add precision](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #concern--comments
 - [ ] Add warnings or indicate flaws, where needed.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Comment the Flaws in Your Code, pp. 50](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -501,6 +511,7 @@
   #concern--comments
 - [ ] Communicate the bigger picture.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, “Big Picture” Comments, pp. 54-55](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: A Philosophy of Software Design, Ch 13, Higher-level comments enhance intuition](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #concern--comments
 - [ ] Provide summarising comments above blocks of code.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Summary Comments, pp. 55-56](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -530,7 +541,15 @@
 - [ ] Use carefully chosen input/output examples.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 6, Use Input/Output Examples That Illustrate Corner Cases, pp. 61-62](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
-- [ ] Don't add redundant comments where they are already covered by test cases.<br />
+- [ ] Don't add redundant comments where they are already covered by code or tests.<br />
+  [Book: A Philosophy of Software Design, Ch 13](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #concern--comments
+- [ ] Use a suitable commenting convention.<br />
+  [Book: A Philosophy of Software Design, Ch 13, Pick conventions](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  [Website: JSDoc](https://jsdoc.app)<br />
+  [Website: TSDoc](https://tsdoc.org)<br />
+  [Website: HTMLDoc](https://usehtmldoc.surge.sh)<br />
+  [Website: CSSDoc](https://cssdoc.dev)<br />
   #concern--comments
 
 [^concern-comments]: Comments covers code comments – annotations in the source code that explain the code.
@@ -2761,9 +2780,41 @@
 - [ ] Don't clutter shared folders with components only used in one file.<br />
   Just declare them inline in that file or in a different file in the same folder.<br />
   #code--structure
-- [ ] Use deep classes, shallow interfaces.<br />
+- [ ] Use deep modules / classes and shallow interfaces.<br />
+  Use information hiding, encapsulation and temporal decomposition.<br />
+  [Book: A Philosophy of Software Design, Ch 4](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  [Book: A Philosophy of Software Design, Ch 5](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #code--structure
+- [ ] Use general purpose modules to get a better return on investment when specifics are subject to change unpredictably.<br />
+  [Book: A Philosophy of Software Design, Ch 6](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #code--structure
+- [ ] Use layers of abstraction to simplify interfaces.<br />
+  [Book: A Philosophy of Software Design, Ch 6](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #code--structure
+- [ ] Absorb complexity rather than passing it on to your consumers.<br />
+  [Book: A Philosophy of Software Design, Ch 8](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #code--structure
+- [ ] Think carefully about whether to bring together or separate.<br />
+  Bring together if information is shared.<br />
+  Bring together if it will simplify the interface<br />
+  Bring together to eliminate duplication<br />
+  Separate general-purpose and special-purpose code<br />
+  Each method should do one thing and do it completely.<br />
+  [Book: A Philosophy of Software Design, Ch 9](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #code--structure
+- [ ] Design the whole interface – formal and informal. Not just properties and methods.<br />
+  Formal: signature (names and types of parameters), return type, async, exceptions thrown.<br />
+  Informal: high-level behavior, constraints on usage (such as order or context in which it can be called), any other information necessary in order to use it.<br />
   [Book: A Philosophy of Software Design, Ch 4](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
+- [ ] Try two or more alternative designs.<br />
+  Consider multiple options for each major design decision.<br />
+  Consider writing an ADR capturing the alternatives to communicate them to team members and gather feedback.<br />
+  [Book: A Philosophy of Software Design, Ch 11](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #code--structure
+- [ ] Minimise dependencies between modules keep dependencies as simple and clear as possible.<br />
+  [Book: A Philosophy of Software Design, Ch 2, Causes of Complexity](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #pipeline--package
 - [ ] Define overly complex structures out of existence.<br />
   Change the design so that they are unnecessary.<br />
   [Book: A Philosophy of Software Design, Ch 10, Design special cases out of existence](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
@@ -3882,6 +3933,9 @@
 
 - [ ] Put dependencies in the right category - developer vs. production.<br />
   [Blog: Categorize Your Dependencies](https://antfu.me/posts)<br />
+  #pipeline--package
+- [ ] Minimise package dependencies and keep dependencies as simple as possible.<br />
+  [Book: A Philosophy of Software Design, Ch 2, Causes of Complexity](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #pipeline--package
 - [ ] Remove package that is made unnecessary due to the current code change.<br />
   #pipeline--package
