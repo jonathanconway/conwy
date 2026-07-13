@@ -1,7 +1,7 @@
 import { ToolMeta, ToolSections } from "@/framework/client";
 
 export const meta: ToolMeta = {
-  section: ToolSections.Website,
+  section: ToolSections.App,
   slug: "requestly",
   title: "Requestly",
   category: "Developer Tool",

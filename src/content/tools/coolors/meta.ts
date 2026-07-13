@@ -4,7 +4,7 @@ export const meta: ToolMeta = {
   section: ToolSections.Website,
   slug: "coolors",
   title: "Coolors",
-  category: "Color",
+  category: "Design",
   date: "2024-12-07",
   operatingSystems: ["Web"],
   url: "https://coolors.co/",
