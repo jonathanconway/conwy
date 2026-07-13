@@ -35,6 +35,10 @@ export const SOCIAL_LINKS_DETAILS_BY_TYPE: Record<
     iconType: IconTypes.ProductHunt,
     title: "ProductHunt post",
   },
+  [SocialLinkTypes.Reddit]: {
+    iconType: IconTypes.Reddit,
+    title: "Reddit account",
+  },
   [SocialLinkTypes.Substack]: {
     iconType: IconTypes.Substack,
     title: "Substack article",

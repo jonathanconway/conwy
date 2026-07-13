@@ -35,6 +35,13 @@ export const CONTACT_DETAILS_LINKEDIN = {
   href: "https://linkedin.com/in/jonathanconway",
 };
 
+export const CONTACT_DETAILS_REDDIT = {
+  iconType: IconTypes.Reddit,
+  label: "Reddit",
+  id: "jconwy",
+  href: "https://www.reddit.com/user/jconwy",
+};
+
 export const CONTACT_DETAILS_TELEGRAM = {
   iconType: IconTypes.Telegram,
   label: "Telegram",
@@ -62,6 +69,7 @@ export const CONTACTS = [
   CONTACT_DETAILS_BLUESKY,
   CONTACT_DETAILS_MASTODON,
   CONTACT_DETAILS_LINKEDIN,
+  CONTACT_DETAILS_REDDIT,
   CONTACT_DETAILS_TELEGRAM,
   CONTACT_DETAILS_SIGNAL,
   CONTACT_DETAILS_GOODREADS,

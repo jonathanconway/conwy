@@ -7,6 +7,7 @@ import { vars } from "../theme";
 export const container = style({
   display: "inline-flex",
   padding: "0.25rem",
+  flexDirection: "row",
   ...rounded.full,
   backgroundColor: vars.switch.background.color,
 });

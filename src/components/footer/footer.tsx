@@ -1,7 +1,9 @@
 import { site } from "@/content";
 
 import { Link } from "../link";
+import { Stack, StackDirections } from "../stack";
 
+import { FooterIconLinks } from "./footer-icon-links";
 import * as styles from "./footer.css";
 import { ThemeSwitch } from "./theme-switch";
 
@@ -29,9 +31,10 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div>
+      <Stack direction={StackDirections.Row} gap={1}>
+        <FooterIconLinks />
         <ThemeSwitch />
-      </div>
+      </Stack>
     </div>
   );
 }
