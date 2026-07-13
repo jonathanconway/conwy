@@ -152,9 +152,9 @@
 - [ ] Make site legible to AI agents and crawlers.<br />
   [Article: Agent Readiness • Website Spec](https://specification.website/spec/agent-readiness/)<br />
   #ai
-- [ ] Use AI to make code more readable.
+- [ ] Use AI to make code more readable.<br />
   Prompt AI, providing a plain-language description of expected code behaviour. Ask it to use that description to refactor the code to be more readable, with easy to follow logical flow and sensible names for variables, functions, etc.<br />
-  [Prompt: Refactor code for readability from plain-language description](/prompts/refactor-code-readable-description)
+  [Prompt: Refactor code for readability from plain-language description](/prompts/refactor-code-readable-description)<br />
   #ai
 
 [^ai]: AI covers Artificial Intelligence such as coding assistance, code review and AI integrations.
@@ -215,7 +215,7 @@
 - [ ] Invalidate a cache when the same data needs to be fetched freshly in a different context.<br />
   Use invalidation tags if available.<br />
   #concern--caching #nfr--correctness
-- [ ] Avoid use of `localStorage`, `sessionStorage` and similar.<br />
+- [ ] Minimise use of `localStorage`, `sessionStorage` and similar.<br />
   As they introduce complications and maintenance overhead.<br />
   #concern--caching #nfr--maintainability
 - [ ] Select `localStorage`  vs `sessionStorage` correctly depending on how long data needs to live.<br />
@@ -351,6 +351,9 @@
   [Tool: Commitizen](https://commitizen-tools.github.io/commitizen/)<br />
   [Tool: Commitlint](https://commitlint.js.org/)<br />
   #concern--version-control #concern--documentation
+- [ ] Consider moving comments from commit message into the code itself, if they belong there.<br />
+  [Book: A Philosophy of Software Design, Ch 16, Comments belong in the code, not the commit log](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #concern--version-control #concern--comments
 - [ ] Use correct commit prefix for the change you are making.<br />
   Example: If only tests are changing, and not behaviour, consider using `chore:` rather than `feature:`.<br />
   #concern--version-control #concern--documentation
@@ -472,6 +475,9 @@
   [Article: Comments - Do you follow the code commenting standards? | SSW.Rules](https://www.ssw.com.au/rules/code-commenting)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Put Yourself in the Reader’s Shoes, pp. 51-53](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #concern--comments
+- [ ] Use comments to sketch the outline during initial writing of code.<br />
+  [Book: A Philosophy of Software Design, Ch 15, Write The Comments First](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #concern--comments
 - [ ] Describe the why and what, not the how. Let the code describe the how.<br />
   [Book: A Philosophy of Software Design, Ch 13, Implementation comments: what and why, not how](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, What NOT to comment, pp. 47](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -493,11 +499,15 @@
   Don't include implementation details in interface comments.<br />
   If interface comments must also describe the implementation, then the class or method is shallow.<br />
   [Book: A Philosophy of Software Design, Ch 13, Interface documentation](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #concern--comments
 - [ ] Describe advanced features or obscure code the reader is unlikely to understand.<br />
   Example: use of `setTimeout` or browser hacks or device-specific APIs.<br />
   [Article: Do you leave explanatory notes for non-standard code? | SSW.Rules](https://www.ssw.com.au/rules/leave-explanatory-notes-for-non-standard-code)<br />
   [Article: Do you know what to do with a work around? | SSW.Rules](https://www.ssw.com.au/rules/what-to-do-with-a-work-around)<br />
   [Book: A Philosophy of Software Design, Ch 13, Lower-level comments add precision](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #concern--comments
+- [ ] Add comments to indicate when a handler is invoked, in an event-driven application.<br />
+  [Book: A Philosophy of Software Design, Ch 18, Things that make code less obvious](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #concern--comments
 - [ ] Add warnings or indicate flaws, where needed.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Comment the Flaws in Your Code, pp. 50](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -513,8 +523,19 @@
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, “Big Picture” Comments, pp. 54-55](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   [Book: A Philosophy of Software Design, Ch 13, Higher-level comments enhance intuition](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #concern--comments
+- [ ] Put cross-module comments in a central location and reference that location wherever relevant.<br />
+  Popular convention is `/docs` top-level folder with `.md` files.<br />
+  [Source: internal-documentation-example | Github](https://github.com/github/internal-documentation-example)<br />
+  [Book: A Philosophy of Software Design, Ch 13, Cross-module design decisions](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #concern--comments
 - [ ] Provide summarising comments above blocks of code.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 5, Summary Comments, pp. 55-56](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  #concern--comments
+- [ ] Keep comments as close as possible to the code they concern.<br />
+  [Book: A Philosophy of Software Design, Ch 16, Maintaining comments: keep the comments near the code](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #concern--comments
+- [ ] Avoid duplicating comments.<br />
+  [Book: A Philosophy of Software Design, Ch 16, Maintaining comments: avoid duplication](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #concern--comments
 - [ ] Use information-dense words.<br />
   Example: refer to the name of a software pattern rather than explaining the whole thing.<br />
@@ -523,6 +544,7 @@
 - [ ] Don't include anything likely to create tedious maintenance overhead or go out-of-date.<br />
   Such as specific amounts or date-specific information.<br />
   [Article: Do you know the best way to track comments when your code is updated? | SSW.Rules](https://www.ssw.com.au/rules/comment-when-your-code-is-updated)<br />
+  [Book: A Philosophy of Software Design, Ch 16, Higher-level comments are easier to maintain](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #concern--comments
 - [ ] Reference code derived from an external source.<br />
   Example: Copied and pasted from Google, StackOverflow or AI.<br />
@@ -616,6 +638,22 @@
   #concern--seo
 
 [^concern-seo]: Search Engine Optimisation (SEO) covers the visibility and ranking of a website in search engine results pages (SERPs).
+
+
+
+
+## Refactoring [^refactoring]
+
+- [ ] Try to improve the overall system where possible.<br />
+  Ideally, when you have finished with each change, the system will have the structure it would have had if you had designed it from the start with that change in mind.<br />
+  [Book: A Philosophy of Software Design, Ch 16, Stay strategic](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #refactoring
+- [ ] Use refactoring moves to break down a large refactoring into smaller steps.<br />
+  Change Function Declaration, Change Reference to Value, Change Value to Reference, Collapse Hierarchy, Combine Functions into Class, Combine Functions into Transform, Consolidate Conditional Expression, Decompose Conditional, Encapsulate Collection, Encapsulate Record, Encapsulate Variable, Extract Class, Extract Function, Extract Superclass, Extract Variable, Hide Delegate, Inline Class, Inline Function, Inline Variable, Introduce Assertion, Introduce Parameter Object, Introduce Special Case, Move Field, Move Function, Move Statements into Function, Move Statements to Callers, Parameterize Function, Preserve Whole Object, Pull Up Constructor Body, Pull Up Field, Pull Up Method, Push Down Field, Push Down Method, Remove Dead Code, Remove Flag Argument, Remove Middle Man, Remove Setting Method, Remove Subclass, Rename Field, Rename Variable, Replace Command with Function, Replace Conditional with Polymorphism, Replace Constructor with Factory Function, Replace Derived Variable with Query, Replace Function with Command, Replace Inline Code with Function Call, Replace Loop with Pipeline, Replace Nested Conditional with Guard Clauses, Replace Parameter with Query, Replace Primitive with Object, Replace Query with Parameter, Replace Subclass with Delegate, Replace Superclass with Delegate, Replace Temp with Query, Replace Type Code with Subclasses, Separate Query from Modifier, Slide Statements, Split Loop, Split Phase, Split Variable, Substitute Algorithm<br />
+  [Book: Refactoring - Improving the Design of Existing Code • Martin FOWLER](https://martinfowler.com/books/refactoring.html)<br />
+  #refactoring
+
+[^refactoring]: Refactoring covers modifications to improve the design of existing code without necessarily altering its behaviour.
 
 
 
@@ -1211,7 +1249,10 @@
 - [ ] Measure and minimise cyclomatic complexity.<br />
   [Article: Do you know when functions are too complicated? | SSW.Rules](https://www.ssw.com.au/rules/know-when-functions-are-too-complicated)<br />
   #nfr--readability
-- [ ] Group related statements with whitespace between.<br />
+- [ ] Use whitespace to improve readability.<br />
+  Group related statements with whitespace between.<br />
+  Use indentation to facilitate vertical scanning.<br />
+  [Book: A Philosophy of Software Design, Ch 18, Things that make code more obvious](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #nfr--readability
 - [ ] Remove unnecessary or unused code.<br />
   Example: statements never executed, unused function parameters, branches never evaluated, unnecessary variables.<br />
@@ -1234,10 +1275,27 @@
 - [ ] Use idiomatic coding style.<br />
   Appropriate for the language and frameworks in the current code base.<br />
   #nfr--readability
+- [ ] Use linters and/or formatters to automatically enforce best practices and idiomatic coding style.<br />
+  [Tool: Prettier](https://prettier.io)
+  [Tool: ESLint](https://eslint.org)
+  [Tool: Javascript Oxidation Compiler](https://oxc.rs)
+  [Tool: Biome](https://biomejs.dev)
+  #nfr--readability
+- [ ] Customise your linters and/or formatters to automatically enforce any idiosyncratic coding conventions or style used in the current code-base.<br />
+  #nfr--readability
+- [ ] Follow a suitable style guide.<br />
+  [Website: Guidelines for writing JavaScript code examples | MDN](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript)<br />
+  [Website: Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)<br />
+  [Website: Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)<br />
+  [Website: Airbnb React/JSX Style Guide - Naming](https://github.com/airbnb/javascript/tree/master/react#naming)<br />
+  [Website: Angular coding style guide](https://angular.dev/style-guide)<br />
+  [Website: VueJS Style Guide](https://vuejs.org/style-guide/rules-essential.html)<br />
+  #nfr--readability
 - [ ] Use coding style consistent with the surrounding code-base.<br />
   To make it easier for the current team to work with.<br />
   Alternately, clearly communicate and agree on targetted changes to coding style.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 4, Personal Style versus Consistency, pp. 42](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: A Philosophy of Software Design, Ch 17, Ensuring consistency](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #nfr--readability
 - [ ] Leave it cleaner than you found it.<br />
   Example: remove code that is no longer needed.<br />
@@ -2450,16 +2508,14 @@
 
 ### Usability - Modals [^nfr-usability-modals]
 
-- [ ] Capture focus on open.<br />
+- [ ] Capture focus on open and release it on close.<br />
   #nfr--usability #usability--modals
-- [ ] Easily closable.<br />
+- [ ] Ensure modal is easily closable.<br />
   #nfr--usability #usability--modals
 - [ ] Use modal props, not conditional rendering, to support animation on modal open/close.<br />
   #nfr--usability #usability--modals
 - [ ] Present the outcome of a multi-step process in a way that makes sense to the user.<br />
   Example: making a transfer in a banking app should results in a success screen with summary of the details; also the transfer should be shown in the transactions list.<br />
-  #nfr--usability #usability--modals
-- [ ] Careful when consuming context inside a modal – ensure it works in every case where the modal appears.<br />
   #nfr--usability #usability--modals
 - [ ] Ensure `Esc` keypress is handled, as a way to quickly close the modal.<br />
   #nfr--usability #usability--modals
@@ -2682,21 +2738,6 @@
 
 
 
-### Usability - Validation [^nfr-usability-validation]
-
-- [ ] Display field-level validations, with clear description of why it's invalid.<br />
-  #nfr--usability #usability--validation
-- [ ] Display validations summary at the top of the form, with summarised listing of invalid fields.<br />
-  #nfr--usability #usability--validation #nfr--security
-- [ ] Validate email addresses.<br />
-  [Article: Do you use a regular expression to validate an email address? | SSW.Rules](https://www.ssw.com.au/rules/use-a-regular-expression-to-validate-an-email-address)<br />
-  #nfr--usability #usability--validation
-
-[^nfr-usability-validation]: Validation refers to checking that user input is correct and providing feedback to the user if it is not.
-
-
-
-
 ### Internationalisation and localisation [^nfr-internationalisation-and-localisation]
 
 - [ ] Use standardised URL pattern to indicate country and/or language.<br />
@@ -2751,7 +2792,8 @@
 #### Code - General [^code-general]
 
 - [ ] Write less code in the first place.<br />
-  Don't implement
+  Don't implement requirements not in the spec or add unnecessary functionality.<br />
+  #code--general
 - [ ] Use library and language facilities. Don't re-invent the wheel.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 12, Knowing Your Libraries Helps, pp. 133](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 13, Be Familiar with the Libraries Around You, pp. 143-144](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
@@ -2785,7 +2827,8 @@
   [Book: A Philosophy of Software Design, Ch 4](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   [Book: A Philosophy of Software Design, Ch 5](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
-- [ ] Use general purpose modules to get a better return on investment when specifics are subject to change unpredictably.<br />
+- [ ] Use general purpose modules when specifics are subject to change.<br />
+  Get a better return on investment by designing for the general and most likely case.<br />
   [Book: A Philosophy of Software Design, Ch 6](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
 - [ ] Use layers of abstraction to simplify interfaces.<br />
@@ -2794,7 +2837,7 @@
 - [ ] Absorb complexity rather than passing it on to your consumers.<br />
   [Book: A Philosophy of Software Design, Ch 8](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
-- [ ] Think carefully about whether to bring together or separate.<br />
+- [ ] Think carefully about whether to "bring together" or "keep separate".<br />
   Bring together if information is shared.<br />
   Bring together if it will simplify the interface<br />
   Bring together to eliminate duplication<br />
@@ -2812,7 +2855,8 @@
   Consider writing an ADR capturing the alternatives to communicate them to team members and gather feedback.<br />
   [Book: A Philosophy of Software Design, Ch 11](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--structure
-- [ ] Minimise dependencies between modules keep dependencies as simple and clear as possible.<br />
+- [ ] Minimise dependencies between modules.<br />
+  Keep dependencies as simple and clear as possible.<br />
   [Book: A Philosophy of Software Design, Ch 2, Causes of Complexity](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #pipeline--package
 - [ ] Define overly complex structures out of existence.<br />
@@ -2882,21 +2926,18 @@
   #code--naming
 - [ ] Choose specific words carefully and deliberately.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 2, Prefer Concrete Names over Abstract Names, pp. 13](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: A Philosophy of Software Design, Ch 14, Names should be precise](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--naming
 - [ ] Use names that won't go out of date in future.<br />
   [Article: Do you avoid using magic string when referencing property/variable names? | SSW.Rules](https://www.ssw.com.au/rules/avoid-using-magic-string-when-referencing-property-variable-names)<br />
   #code--naming
-- [ ] Use consistent prefixes. pronouns, similar.<br />
+- [ ] Use consistent prefixes, pronouns and similar.<br />
   Example: `has{Foo}` if that's the convention in the code-base. Prefix booleans with `is`, `can`, `has`, `should`, etc.<br />
   #code--naming
-- [ ] Use consistent pluralisation.<br />
-  Example: `Features` vs `Feature`.<br />
-  #code--naming
-- [ ] Use more specific rather than generic names, where that's clearer.<br />
-  #code--naming
-- [ ] Use shorter names within a scope.<br />
+- [ ] Keep names short when possible.<br />
   Example: `acc` for the parameter of a `reduce` function. Don't need to pack more info into the name, since it will only be used within that scope.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 2, Shorter Names Are Okay for Shorter Scope, pp. 18](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
+  [Book: A Philosophy of Software Design, Ch 14, Avoid extra words](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--naming
 - [ ] Use appropriate casing, prefixing/sufficing and other formatting to convey meaning.<br />
   Example: `camelCase` is often used for function names, `PascalCase` for class names, UPPER_SNAKE_CASE for constants, etc.<br />
@@ -2921,15 +2962,16 @@
   For general audiences, use simple language. For more specific audiences, such as within a business, use that business's terminology. Use the business's official glossary if available.<br />
   [Book: The Art of Readable Code • Dustin BOSWELL, Ch 2, Acronyms and Abbreviations, pp. 19](https://www.oreilly.com/library/view/the-art-of/9781449318482/)<br />
   #code--naming
-- [ ] Match expectations of consumers.<br />
+- [ ] Use intuitive names that match the expectations of the reader.<br />
   Example: don't name expensive calculation like a simple "getter".<br />
+  #code--naming
+- [ ] Create an image in the reader's mind.<br />
+  [Book: A Philosophy of Software Design, Ch 14, Create an image](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #code--naming
 - [ ] Enum values should match up with keys and use correct formatting.<br />
   Example: `snake-case`.<br />
   #code--naming
 - [ ] Avoid single-letter or otherwise cryptic names.<br />
-  #code--naming
-- [ ] Naming should be intuitive.<br />
   #code--naming
 - [ ] Name files consistent with their main purpose, main export, etc.<br />
   #code--naming
@@ -2938,16 +2980,13 @@
 - [ ] Avoid duplicating names within the same structure.<br />
   Example: don't name a variable inside a function the same as the containing function.<br />
   #code--naming
+- [ ] Use names consistently - same name for the same purpose.<br />
+  [Book: A Philosophy of Software Design, Ch 14, Use names consistently](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
+  #code--naming
 - [ ] Structural naming, when important.<br />
   Have a hierarchy, such as FooBar, FooBarBaz, FooBiz, etc.<br />
   #code--naming
 - [ ] Use idiomatic naming conventions suitable to the language and/or framework being used.<br />
-  [Website: Guidelines for writing JavaScript code examples | MDN](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Code_style_guide/JavaScript)<br />
-  [Website: Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)<br />
-  [Website: Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html)<br />
-  [Website: Airbnb React/JSX Style Guide - Naming](https://github.com/airbnb/javascript/tree/master/react#naming)<br />
-  [Website: Angular coding style guide](https://angular.dev/style-guide)<br />
-  [Website: VueJS Style Guide](https://vuejs.org/style-guide/rules-essential.html)<br />
   #code--naming
 - [ ] Use a naming convention for event handlers vs. events.<br />
   Example: `onClick` (event), `handleClick` (handler).<br />
@@ -3414,8 +3453,9 @@
 - [ ] Don't use a hook where a simpler structure, such as a `function` or `const`, would be sufficient.<br />
   #framework--react
 - [ ] Careful about using a hook in a context where its data is unavailable.<br />
+  Example: consuming context in a model, when the modal might be opened from a different component without the context.<br />
   It might crash the app unexpectedly.<br />
-  #framework--react 
+  #framework--react
 
 
 
@@ -3752,6 +3792,24 @@
 
 
 
+### Framework - TailwindCSS [^framework-tailwindcss]
+
+- [ ] Decompose HTML into components for readability and maintainability.<br />
+  #framework--tailwindcss
+- [ ] Order classes in chunks for readability.<br />
+  Example: 1. Positioning, 2. Layout, 3. Background, 4. Border, 5. Foreground, 6. Animation, 7. Cursor<br />
+  Set defaults before overrides (hover, focus, etc).<br />
+  #framework--tailwindcss
+- [ ] Customize theme variables according to your design system or branding guidelines.<br />
+  Colours, fonts, etc.<br />
+  [Docs: Adding custom styles | Tailwind CSS](https://tailwindcss.com/docs/adding-custom-styles)<br />
+  #framework--tailwindcss
+
+[^framework-tailwindcss]: TailwindCSS covers the Tailwind CSS library.
+
+
+
+
 ### Framework - VueJS [^framework-vuejs]
 
 - [ ] Select VueJS for projects where it is most beneficial.<br />
@@ -3759,13 +3817,13 @@
   [Article: Do you know what makes Vue.js great? | SSW.Rules](https://www.ssw.com.au/rules/why-vue-is-great)<br />
   #framework--vuejs
 - [ ] Write idiomatic Vue code, adhering to the official VueJS Style Guide.<br />
-  [VueJS Style Guide](https://vuejs.org/style-guide/rules-essential.html)<br />
+  [Docs: VueJS Style Guide | VueJS.org](https://vuejs.org/style-guide/rules-essential.html)<br />
   #framework--vuejs
 - [ ] Prefer the recommended Composition API rather than the Options API.<br />
-  [Composition API](https://vuejs.org/guide/extras/composition-api-faq)<br />
+  [Docs: Composition API | VueJS.org](https://vuejs.org/guide/extras/composition-api-faq)<br />
   #framework--vuejs
 - [ ] Use composables to re-use pieces of state logic.<br />
-  [Composables | Vue.js](https://vuejs.org/guide/reusability/composables.html)<br />
+  [Docs: Composables | VueJS.org](https://vuejs.org/guide/reusability/composables.html)<br />
   #framework--vuejs
 - [ ] Organise the internal structure of VueJS Views and Components.<br />
   Example: 1. Imports, 2. Props definition, 3. Store, query and composable calls, 4. Destructuring, 5. Ref and computed declarations, 6. Function calls, 7. Lifecycle hooks, 8. Subscriptions<br />
@@ -3774,14 +3832,14 @@
   Example: 1. Imports, 2. Interface declarations, 3. Store or composable declaration (A. Other store, query and composable calls, B. Destructuring, C. Ref and computed declarations, D. Private function declarations, E. Function calls, F. Lifecycle hooks, G. Subscriptions, H. Return statement)<br />
   #framework--vuejs
 - [ ] Use quality, well supported state management libraries, such as Pinia and Colada.<br />
-  [Pinia](http://pinia.vuejs.org) - global store<br />
-  [Pinia Colada](https://pinia-colada.esm.dev) - data fetching layer<br />
+  [Library: Pinia](http://pinia.vuejs.org) - global store<br />
+  [Library: Pinia Colada](https://pinia-colada.esm.dev) - data fetching layer<br />
   #framework--vuejs
 - [ ] Use quality, well supported, Vue setup / creation tool.<br />
   [Tool: create-vue](https://github.com/vuejs/create-vue)<br />
   [Tool: create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite)<br />
   [Article: Do you know how to set up a Vue.js project? | SSW.Rules](https://www.ssw.com.au/rules/set-up-vue-project)<br />
-  [Docs: Quick Start | Vue.js](https://vuejs.org/guide/quick-start.html)<br />
+  [Docs: Quick Start | VueJS.org](https://vuejs.org/guide/quick-start.html)<br />
   #framework--vuejs
 - [ ] Use quality, well supported, Vue (or Vue-compatible) development libraries and tools.<br />
   [Tool: Vite](https://vite.dev)<br />
@@ -3897,9 +3955,13 @@
 
 ### Pipeline - Developer environment [^pipeline-developer-environment]
 
-- [ ] Use a good quality IDE.<br />
+- [ ] Use a good quality IDE and/or code editor.<br />
   [Tool: Visual Studio Code](https://code.visualstudio.com/)<br />
+  [Tool: Visual Studio]](https://visualstudio.microsoft.com/)<br />
   [Tool: WebStorm](https://www.jetbrains.com/webstorm)<br />
+  [Tool: IDEA](https://www.jetbrains.com/idea)<br />
+  [Tool: Rider](https://www.jetbrains.com/rider)<br />
+  [Tool: Sublime Text](https://www.sublimetext.com/)<br />
   [Article: Tools - Do you know the best IDE for Angular and React? | SSW.Rules](https://www.ssw.com.au/rules/how-to-get-your-machine-setup)<br />
   #pipeline--developer-environment
 - [ ] Document and/or fix aspects of development environment setup that are difficult, tedious or error-prone.<br />
@@ -3909,6 +3971,13 @@
 - [ ] Use automated formatting tools and standard configuration.<br />
   [Tool: Prettier](https://prettier.io/)<br />
   [Article: Do you keep your code consistent using .editorconfig? | SSW.Rules](https://www.ssw.com.au/rules/consistent-code-style)<br />
+  #pipeline--developer-environment
+- [ ] Use a good quality online environment to share code snippets and collaborate.<br />
+  [Tool: Codepen](http://codepen.io)<br />
+  [Tool: JSFiddle](https://jsfiddle.net)<br />
+  [Tool: StackBlitz](http://stackblitz.com)<br />
+  [Tool: Replit](https://replit.com)<br />
+  [Tool: CodeSandbox](https://codesandbox.io)<br />
   #pipeline--developer-environment
 
 [^pipeline-developer-environment]: Developer environment covers the local development environment, such as IDE, code editor, etc.
@@ -4016,6 +4085,10 @@
   #general--deployment
 - [ ] Instead of rolling back in reaction to a problem, aim to fix the problem and "roll forward".<br />
   [Article: Do you know you should only Roll Forward? | SSW.Rules](https://www.ssw.com.au/rules/do-you-only-roll-forward)<br />
+  #general--deployment
+- [ ] Avoid making behaviour conditional on environment.<br />
+  This can lead to ambiguities and complications down the track.<br />
+  [Article: You Must Fix Your Asserts | Loris Cro](https://kristoff.it/blog/fix-your-asserts/)<br />
   #general--deployment
 
 [^pipeline-deployment]: Deployment covers deploying the built application to an environment.
