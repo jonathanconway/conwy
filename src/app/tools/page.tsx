@@ -14,7 +14,7 @@ export default function Page() {
     <PageLayout
       selectedNavPath="/tools"
       main={
-        <Stack gap={1}>
+        <Stack gap={2}>
           <ResponsiveStack
             direction={{
               md: "row",

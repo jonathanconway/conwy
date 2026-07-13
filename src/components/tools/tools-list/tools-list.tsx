@@ -5,6 +5,8 @@ import { ToolSectionTitles, ToolSections } from "@/framework/client";
 
 import { ContentList } from "../../content-list";
 import { SectionHeading } from "../../heading";
+import { ItemsCount } from "../../items-count";
+import { Stack, StackDirections, StackDistributions } from "../../stack";
 
 import { ToolsListItem } from "./tools-list-item";
 import * as styles from "./tools-list.css";
@@ -16,18 +18,28 @@ export function ToolsList() {
   const toolsBySection = groupBy(toolsOrdered, (tool) => tool.meta.section);
 
   return (
-    <>
+    <Stack gap={2}>
       {toolsSections.map((section) => (
         <div key={section} className={styles.section}>
-          <SectionHeading>{ToolSectionTitles[section]}</SectionHeading>
+          <Stack>
+            <Stack
+              direction={StackDirections.Row}
+              distribution={StackDistributions.Flow}
+            >
+              <SectionHeading styleInner>
+                {ToolSectionTitles[section]}
+              </SectionHeading>
+              <ItemsCount count={toolsBySection[section].length} />
+            </Stack>
 
-          <ContentList>
-            {toolsBySection[section].map((tool) => (
-              <ToolsListItem key={tool.meta.slug} tool={tool} />
-            ))}
-          </ContentList>
+            <ContentList>
+              {toolsBySection[section].map((tool) => (
+                <ToolsListItem key={tool.meta.slug} tool={tool} />
+              ))}
+            </ContentList>
+          </Stack>
         </div>
       ))}
-    </>
+    </Stack>
   );
 }
