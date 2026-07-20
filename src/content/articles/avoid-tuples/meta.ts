@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  avoidTuplesIllustrationComposite,
+  cubeDynamicClayIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Avoid anonymous tuples",
   blurb:
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "avoid-tuples",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/avoid-tuples/main.png",
-  },
+  mainImage: avoidTuplesIllustrationComposite,
+  smallImage: cubeDynamicClayIllustrationStatic,
   isPinned: false,
   socialLinks: [],
   discussionLinks: [],

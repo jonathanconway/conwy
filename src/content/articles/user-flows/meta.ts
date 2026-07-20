@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  routeIllustrationStatic,
+  userFlowsIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "User flows",
   blurb: "Current techniques for collaboratively designing user flows.",
@@ -9,8 +14,7 @@ export const meta: ArticleMeta = {
   tags: [PostTags.Design],
   socialLinks: [],
   discussionLinks: [],
-  mainImage: {
-    src: "/images/articles/user-flows/main.jpg",
-  },
+  mainImage: userFlowsIllustrationComposite,
+  smallImage: routeIllustrationStatic,
   isPinned: true,
 };

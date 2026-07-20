@@ -1,5 +1,7 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import { flakyTestsIllustration } from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Dealing with flaky tests",
   blurb:
@@ -8,9 +10,7 @@ export const meta: ArticleMeta = {
   slug: "flaky-tests",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/flaky-tests/main.png",
-  },
+  mainImage: flakyTestsIllustration,
   isPinned: true,
   socialLinks: [],
   discussionLinks: [],

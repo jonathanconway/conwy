@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  aiConceptsIllustrationComposite,
+  bulbDynamicColorIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "AI concepts for developers",
   blurb:
@@ -10,9 +15,8 @@ export const meta: ArticleMeta = {
   slug: "ai-concepts",
   type: "article",
   tags: [PostTags.Learning],
-  mainImage: {
-    src: "/images/articles/ai-concepts/main.png",
-  },
+  mainImage: aiConceptsIllustrationComposite,
+  smallImage: bulbDynamicColorIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
   isPinned: true,

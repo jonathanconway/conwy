@@ -9,6 +9,7 @@ export * from "./content-types-pluralized";
 export * from "./content-types";
 export * from "./fragment";
 export * from "./idea";
+export * from "./illustration";
 export * from "./image";
 export * from "./item";
 export * from "./link";

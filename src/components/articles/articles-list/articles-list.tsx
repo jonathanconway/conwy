@@ -17,10 +17,11 @@ import { ArticlesListItemSmall } from "./articles-list-item-small";
 
 interface ArticlesListProps {
   readonly items: readonly Post[];
+  readonly limitSmallListItems?: boolean;
 }
 
 export function ArticlesList(props: ArticlesListProps) {
-  const { items } = props;
+  const { items, limitSmallListItems } = props;
 
   const { filteredItems } = useTagFiltersResults({
     items,
@@ -39,7 +40,10 @@ export function ArticlesList(props: ArticlesListProps) {
     .slice(0, ARTICLES_RECENT_LIST_TILE_COUNT);
   const itemsRest = difference(itemsSorted, itemsTiled)
     .filter((item) => item.meta.type === "article")
-    .slice(0, ARTICLES_RECENT_LIST_REST_COUNT) as Article[];
+    .slice(
+      0,
+      limitSmallListItems ? ARTICLES_RECENT_LIST_REST_COUNT : undefined,
+    ) as Article[];
 
   return (
     <>

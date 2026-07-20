@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  combinatorialTestingIllustrationComposite,
+  tableIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Combinatorial testing",
   blurb: "",
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "combinatorial-testing",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/combinatorial-testing/main.jpg",
-  },
+  mainImage: combinatorialTestingIllustrationComposite,
+  smallImage: tableIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

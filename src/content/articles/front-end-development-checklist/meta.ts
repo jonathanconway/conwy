@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  frontEndDevelopmentChecklistIllustration,
+  tickDynamicColorIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Front end development checklist",
   blurb: `A checklist of things to consider when developing front end applications.`,
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "front-end-development-checklist",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/front-end-development-checklist/main.png",
-  },
+  mainImage: frontEndDevelopmentChecklistIllustration,
+  smallImage: tickDynamicColorIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
   isPinned: true,

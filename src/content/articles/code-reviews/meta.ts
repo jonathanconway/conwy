@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  chatBubbleDynamicGradientIllustrationStatic,
+  codeReviewsIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Streamlining code reviews",
   blurb:
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "code-reviews",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/code-reviews/main.jpg",
-  },
+  mainImage: codeReviewsIllustrationComposite,
+  smallImage: chatBubbleDynamicGradientIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

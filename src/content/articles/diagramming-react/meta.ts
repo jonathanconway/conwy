@@ -1,5 +1,7 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import { diagrammingReactIllustrationComposite } from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Diagramming React code",
   blurb: "Using UML to model React structures",
@@ -7,9 +9,7 @@ export const meta: ArticleMeta = {
   slug: "diagramming-react",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/diagramming-react/main.jpg",
-  },
+  mainImage: diagrammingReactIllustrationComposite,
   socialLinks: [],
   discussionLinks: [],
   isPinned: true,

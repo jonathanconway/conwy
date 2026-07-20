@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  lambdaIllustrationStatic,
+  reactGenericHocPatternIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Generic HOC creator pattern for React",
   blurb: "Generic composable higher-order components for React",
@@ -7,9 +12,8 @@ export const meta: ArticleMeta = {
   slug: "react-generic-hoc-pattern",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/react-generic-hoc-pattern/main.jpg",
-  },
+  mainImage: reactGenericHocPatternIllustrationComposite,
+  smallImage: lambdaIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
 };

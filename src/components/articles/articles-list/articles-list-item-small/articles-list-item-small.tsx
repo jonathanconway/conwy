@@ -2,6 +2,7 @@ import { ArticleMeta } from "@/framework/client";
 
 import { ContentListItemSmall } from "../../../content-list";
 import { DateFormats, DateView } from "../../../date";
+import { Image } from "../../../image";
 import { Link } from "../../../link";
 import { LinkBoxTitle, LinkBoxTitleSizes } from "../../../link-box";
 import { Text, TextTypes } from "../../../text";
@@ -22,6 +23,15 @@ export function ArticlesListItemSmall(props: ArticlesListItemSmallProps) {
             contents: props.articleMeta.title,
             hideIfChildrenNotOverflowing: true,
           }}
+          iconSlot={
+            props.articleMeta.smallImage && (
+              <Image
+                image={props.articleMeta.smallImage}
+                width={20}
+                height={20}
+              />
+            )
+          }
         >
           <LinkBoxTitle size={LinkBoxTitleSizes.Small}>
             {props.articleMeta.title}

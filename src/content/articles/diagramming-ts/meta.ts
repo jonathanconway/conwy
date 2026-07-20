@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  diagrammingTypescriptIllustrationComposite,
+  typescriptIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Diagramming Typescript",
   blurb: "Using UML to model Typescript structures",
@@ -7,9 +12,8 @@ export const meta: ArticleMeta = {
   slug: "diagramming-ts",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/diagramming-ts/main.jpg",
-  },
+  mainImage: diagrammingTypescriptIllustrationComposite,
+  smallImage: typescriptIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  curveIllustrationStatic,
+  studyingCalculusIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "What I learned studying Calculus",
   blurb: "Reflections on studying a subject outside my usual comfort zone.",
@@ -9,9 +14,8 @@ export const meta: ArticleMeta = {
   slug: "studying-calculus",
   type: "article",
   tags: [PostTags.Learning],
-  mainImage: {
-    src: "/images/articles/studying-calculus/main.jpg",
-  },
+  mainImage: studyingCalculusIllustrationComposite,
+  smallImage: curveIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

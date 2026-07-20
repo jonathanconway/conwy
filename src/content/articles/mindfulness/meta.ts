@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  crossLeggedIllustrationStatic,
+  mindfulnessIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Mindfulness",
   blurb: "",
@@ -9,9 +14,8 @@ export const meta: ArticleMeta = {
   slug: "mindfulness",
   type: "article",
   tags: [PostTags.Life],
-  mainImage: {
-    src: "/images/articles/mindfulness/main.jpg",
-  },
+  mainImage: mindfulnessIllustrationComposite,
+  smallImage: crossLeggedIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
   isPinned: true,

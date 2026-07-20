@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  folderDynamicColorIllustrationStatic,
+  selfSimilarFolderPatternIllustration,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Self-similar: a versatile folder pattern for code",
   blurb:
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "self-similar-folder-pattern",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/self-similar-folder-pattern/main.png",
-  },
+  mainImage: selfSimilarFolderPatternIllustration,
+  smallImage: folderDynamicColorIllustrationStatic,
   discussionLinks: [
     {
       type: SocialLinkTypes.Dev,

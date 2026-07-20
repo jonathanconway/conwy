@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  designerlyCvIllustrationComposite,
+  documentIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "How I built my designerly CV",
   blurb:
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "designerly-cv",
   type: "article",
   tags: [PostTags.Design],
-  mainImage: {
-    src: "/images/articles/designerly-cv/main.jpg",
-  },
+  mainImage: designerlyCvIllustrationComposite,
+  smallImage: documentIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.LinkedIn,

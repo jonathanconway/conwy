@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  earIllustrationStatic,
+  threeTestsAccessibilityIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Three tests for accessibility",
   blurb:
@@ -10,9 +15,8 @@ export const meta: ArticleMeta = {
   slug: "three-tests-accessibility",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/three-tests-accessibility/main.jpg",
-  },
+  mainImage: threeTestsAccessibilityIllustrationComposite,
+  smallImage: earIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  pathIllustrationStatic,
+  visualisingExecutionFlowsIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Visualising execution flows",
   blurb:
@@ -9,9 +14,8 @@ export const meta: ArticleMeta = {
   slug: "visualising-execution-flows",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/visualising-execution-flows/main.jpg",
-  },
+  mainImage: visualisingExecutionFlowsIllustrationComposite,
+  smallImage: pathIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,
@@ -22,7 +26,7 @@ export const meta: ArticleMeta = {
     {
       type: SocialLinkTypes.Dev,
       url: "https://dev.to/conw_y/visualising-execution-flows-59e7#comments",
-      likeCount: 18,
+      likeCount: 34,
     },
   ],
 };

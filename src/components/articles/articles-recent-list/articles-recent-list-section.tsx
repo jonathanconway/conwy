@@ -33,7 +33,7 @@ export function ArticlesRecentListSection(
         <ItemsCount count={sectionItems.length} />
       </Stack>
 
-      <ArticlesList items={sectionItems} />
+      <ArticlesList items={sectionItems} limitSmallListItems />
 
       {sectionItems.length > ARTICLES_RECENT_LIST_TOTAL_COUNT && (
         <Text type={TextTypes.Body}>

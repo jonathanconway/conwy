@@ -1,17 +1,21 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  typescriptEnumPatternsIllustrationComposite,
+  typescriptIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Enum patterns for Typescript",
   blurb: "My favourite patterns for enumerations in Typescript",
-  createdDate: "2025-01-09",
+  createdDate: "2026-03-15",
   updatedDate: "2026-03-15",
   slug: "typescript-enum-patterns",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
   isPinned: true,
-  mainImage: {
-    src: "/images/articles/typescript-enum-patterns/main.jpg",
-  },
+  mainImage: typescriptEnumPatternsIllustrationComposite,
+  smallImage: typescriptIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Github,

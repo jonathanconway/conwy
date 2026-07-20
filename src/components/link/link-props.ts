@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
+import { AnchorHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 
 import { Link as Link_ } from "@/framework/client";
 
@@ -14,6 +14,7 @@ export type LinkProps = DetailedHTMLProps<
 > & {
   readonly bracketedItems?: readonly string[];
   readonly icon?: IconType;
+  readonly iconSlot?: ReactNode;
   readonly showOpenInNew?: boolean;
   readonly showOpenPopup?: boolean;
   readonly size?: TextSize;

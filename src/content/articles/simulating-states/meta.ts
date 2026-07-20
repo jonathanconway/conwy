@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  memoryChipIllustrationStatic,
+  simulatingStatesIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Simulating application states",
   blurb: "",
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   createdDate: "2025-02-12",
   slug: "simulating-states",
   type: "article",
-  mainImage: {
-    src: "/images/articles/simulating-states/main.jpg",
-  },
+  mainImage: simulatingStatesIllustrationComposite,
+  smallImage: memoryChipIllustrationStatic,
   tags: [PostTags.SoftwareDevelopment],
   socialLinks: [],
   discussionLinks: [],

@@ -17,9 +17,9 @@ export function ArticleSidebar(props: ArticleSidebarProps) {
     <ContentSidebarContainer>
       <ArticleSidebarHeadings articleMeta={article.meta} />
 
-      <ArticleSidebarLinks articleMeta={article.meta} />
-
       <ArticleSidebarImage articleMeta={article.meta} />
+
+      <ArticleSidebarLinks articleMeta={article.meta} />
     </ContentSidebarContainer>
   );
 }

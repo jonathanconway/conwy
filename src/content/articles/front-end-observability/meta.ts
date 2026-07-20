@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  frontEndObservabilityIllustrationComposite,
+  webBrowserIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Front end observability",
   blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
@@ -9,9 +14,8 @@ export const meta: ArticleMeta = {
   slug: "front-end-observability",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/front-end-observability/main.jpg",
-  },
+  mainImage: frontEndObservabilityIllustrationComposite,
+  smallImage: webBrowserIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Github,

@@ -15,6 +15,7 @@ export interface ArticleMeta extends MetaBase<ArticleMetaExtensions> {
   readonly shortBlurb?: string;
 
   readonly mainImage?: Image;
+  readonly smallImage?: Image;
 
   readonly discussionLinks: readonly ArticleMetaDiscussionLink[];
   readonly socialLinks: readonly SocialLink[];

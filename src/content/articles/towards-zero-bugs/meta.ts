@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  bugIllustrationStatic,
+  towardsZeroBugsIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Towards zero bugs",
   blurb: "I am on a personal and professional mission to write bug-free code.",
@@ -7,9 +12,8 @@ export const meta: ArticleMeta = {
   slug: "towards-zero-bugs",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/towards-zero-bugs/main.jpg",
-  },
+  mainImage: towardsZeroBugsIllustrationComposite,
+  smallImage: bugIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

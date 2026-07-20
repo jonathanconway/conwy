@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  codeBracesIllustrationStatic,
+  codeSketchesIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Code sketches",
   blurb:
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "code-sketches",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/code-sketches/main.png",
-  },
+  mainImage: codeSketchesIllustrationComposite,
+  smallImage: codeBracesIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
   isPinned: false,

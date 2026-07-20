@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  mdIllustrationStatic,
+  subformatsIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Subformats",
   blurb: "Adding information while maintaining backwards-compatibility",
@@ -9,9 +14,8 @@ export const meta: ArticleMeta = {
   slug: "subformats",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/subformats/main.jpg",
-  },
+  mainImage: subformatsIllustrationComposite,
+  smallImage: mdIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
 };

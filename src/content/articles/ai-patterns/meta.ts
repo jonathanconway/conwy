@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  aiUiPatternsIllustrationComposite,
+  robotColorIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "AI user interface patterns",
   blurb:
@@ -9,9 +14,8 @@ export const meta: ArticleMeta = {
   slug: "ai-patterns",
   type: "article",
   tags: [PostTags.Design],
-  mainImage: {
-    src: "/images/articles/ai-patterns/main.jpg",
-  },
+  mainImage: aiUiPatternsIllustrationComposite,
+  smallImage: robotColorIllustrationStatic,
   socialLinks: [],
   discussionLinks: [
     {

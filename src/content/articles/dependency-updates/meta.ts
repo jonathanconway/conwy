@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  dependencyUpdatesIllustrationComposite,
+  packageIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Dependency updates",
   blurb:
@@ -10,9 +15,8 @@ export const meta: ArticleMeta = {
   slug: "dependency-updates",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/dependency-updates/main.png",
-  },
+  mainImage: dependencyUpdatesIllustrationComposite,
+  smallImage: packageIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
   isPinned: false,

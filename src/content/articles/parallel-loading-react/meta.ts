@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  parallelLoadingReactIllustrationComposite,
+  road2LaneIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Parallel loading in React",
   blurb: "How to load parallel requests in one component.",
@@ -7,9 +12,8 @@ export const meta: ArticleMeta = {
   slug: "parallel-loading-react",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/parallel-loading-react/main.jpg",
-  },
+  mainImage: parallelLoadingReactIllustrationComposite,
+  smallImage: road2LaneIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

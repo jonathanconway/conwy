@@ -19,6 +19,7 @@ export function getLinkValues(props: LinkProps) {
     showOpenPopup,
     download,
     icon = getLinkDefaultIcon(props),
+    iconSlot,
     size,
     layoutType = LinkLayoutTypes.Inline,
     className: propsClassName,
@@ -53,6 +54,7 @@ export function getLinkValues(props: LinkProps) {
       ...restProps,
     },
     icon,
+    iconSlot,
     children,
     showOpenInNew,
     showOpenPopup,
@@ -67,12 +69,13 @@ function getLinkDefaultIcon(props: LinkProps) {
 }
 
 function getLinkClassName(props: LinkProps) {
-  const sizeStyle = props.size ? textSizeStyles[props.size] : {};
+  const sizeStyle = props.size ? textSizeStyles[props.size] : "";
 
-  const layoutStyle = {
-    [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
-    [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
-  }[props.layoutType ?? LinkLayoutTypes.Inline];
+  const layoutStyle =
+    {
+      [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
+      [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
+    }[props.layoutType ?? LinkLayoutTypes.Inline] ?? "";
 
   const className = cn(
     props.className ?? linkStyles.link,

@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  aiReplacementIllustrationComposite,
+  robotColorIllustrationStatic,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "AI replacement theory – a critique",
   blurb:
@@ -10,9 +15,8 @@ export const meta: ArticleMeta = {
   slug: "ai-replacement",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/ai-replacement/main.png",
-  },
+  mainImage: aiReplacementIllustrationComposite,
+  smallImage: robotColorIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.LinkedIn,

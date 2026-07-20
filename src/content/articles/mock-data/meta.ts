@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  circlesStackedDynamicGradientIllustrationStatic,
+  mockDataIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Uses of mock data",
   blurb: "Mock data can boost developer productivity and enjoyment",
@@ -7,9 +12,8 @@ export const meta: ArticleMeta = {
   slug: "mock-data",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/mock-data/main.jpg",
-  },
+  mainImage: mockDataIllustrationComposite,
+  smallImage: circlesStackedDynamicGradientIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

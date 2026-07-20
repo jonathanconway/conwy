@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  gymDynamicPremiumIllustrationStatic,
+  loseWeightIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "How to lose weight (without getting lucky)",
   blurb: "My routine for getting in shape while having fun!",
@@ -8,9 +13,8 @@ export const meta: ArticleMeta = {
   slug: "lose-weight",
   type: "article",
   tags: [PostTags.Life],
-  mainImage: {
-    src: "/images/articles/lose-weight/main.jpg",
-  },
+  mainImage: loseWeightIllustrationComposite,
+  smallImage: gymDynamicPremiumIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Website,

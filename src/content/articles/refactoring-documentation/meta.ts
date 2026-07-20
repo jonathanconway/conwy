@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
+import {
+  cycleIllustrationStatic,
+  refactoringDocumentationIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Refactoring vs documentation",
   blurb: "How documentation can substitute for big refactorings.",
@@ -7,9 +12,8 @@ export const meta: ArticleMeta = {
   slug: "refactoring-documentation",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/refactoring-documentation/main.jpg",
-  },
+  mainImage: refactoringDocumentationIllustrationComposite,
+  smallImage: cycleIllustrationStatic,
   socialLinks: [],
   discussionLinks: [],
   isPinned: true,

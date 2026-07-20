@@ -1,5 +1,10 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
+import {
+  routeIllustrationStatic,
+  testingStepsIllustrationComposite,
+} from "../../illustrations";
+
 export const meta: ArticleMeta = {
   title: "Testing Steps",
   blurb: "A simpler way to write acceptance tests",
@@ -7,9 +12,8 @@ export const meta: ArticleMeta = {
   slug: "testing-steps",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
-  mainImage: {
-    src: "/images/articles/testing-steps/main.jpg",
-  },
+  mainImage: testingStepsIllustrationComposite,
+  smallImage: routeIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Github,
