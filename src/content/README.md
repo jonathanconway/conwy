@@ -1,4 +1,4 @@
-# content
+# `content` folder
 
 Content modules contain site content such as articles, posts, etc.
 
