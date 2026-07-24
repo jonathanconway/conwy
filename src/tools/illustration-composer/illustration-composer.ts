@@ -1,4 +1,4 @@
-import { createWriteStream, mkdirSync } from "fs";
+import { createWriteStream, existsSync, mkdirSync } from "fs";
 import { join } from "path";
 
 import * as illustrationsComposite from "@/content/illustrations/composite";
@@ -53,11 +53,6 @@ async function buildIllustrationTypeCompositeInLayout(
   illustration: IllustrationComposite,
   illustrationLayout: IllustrationLayout,
 ) {
-  const canvas = await drawToCanvasNodeIllustration(
-    illustration,
-    illustrationLayout,
-  );
-
   const illustrationCompositeFilenameSuffix =
     illustrationSuffixesByFrame[illustrationLayout.name];
   const illustrationCompositeFilenameBody = [
@@ -72,16 +67,32 @@ async function buildIllustrationTypeCompositeInLayout(
   const illustrationOutputPathAbsolute = getFullPath(
     illustrationOutputPathRelative,
   );
-  const illustrationCompositeFilePathFilename = createWriteStream(
-    join(illustrationOutputPathAbsolute, illustrationCompositeFilename),
+  const illustrationCompositeFilePathFilename = join(
+    illustrationOutputPathAbsolute,
+    illustrationCompositeFilename,
   );
   mkdirSync(illustrationOutputPathRelative, {
     recursive: true,
   });
   const illustrationsOutputRelativePathFilename = `${illustrationOutputPathRelative}/${illustrationCompositeFilename}`;
-  canvas.createPNGStream().pipe(illustrationCompositeFilePathFilename);
 
-  illustrationCompositeFilePathFilename.on("finish", () =>
+  if (existsSync(illustrationCompositeFilePathFilename)) {
+    console.log(
+      `⏭️ Skipped already existing composite illustration: ${illustrationsOutputRelativePathFilename}.`,
+    );
+    return;
+  }
+
+  const canvas = await drawToCanvasNodeIllustration(
+    illustration,
+    illustrationLayout,
+  );
+  const illustrationCompositeWriteStream = createWriteStream(
+    illustrationCompositeFilePathFilename,
+  );
+  canvas.createPNGStream().pipe(illustrationCompositeWriteStream);
+
+  illustrationCompositeWriteStream.on("finish", () =>
     console.log(
       `✅ Generated composite illustration: ${illustrationsOutputRelativePathFilename}.`,
     ),

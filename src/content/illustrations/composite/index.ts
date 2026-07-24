@@ -31,6 +31,7 @@ export * from "./testing-steps";
 export * from "./three-tests-accessibility";
 export * from "./towards-zero-bugs";
 export * from "./typescript-enum-patterns";
+export * from "./unit-tests-cloud";
 export * from "./user-flows";
 export * from "./visualising-execution-flows";
 export * from "./wireframing-techniques";
