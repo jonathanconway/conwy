@@ -1938,7 +1938,7 @@
   [Article: Jank - Glossary | MDN](https://developer.mozilla.org/en-US/docs/Glossary/Jank)<br />
   #nfr--performance
 - [ ] Optimise Core Web Vitals (CWV).<br />
-  Largest contentful paint (LCP), Interaction to Next Paint (INP), Cumulative Layout Shift (CLS).<br />
+  Largest contentful paint (LCP), Interaction to Next Paint (INP), Cumulative Layout Shift (CLS), Time To First Byte (TTFB).<br />
   [Article: Core Web Vitals (LCP, INP, CLS) • Website Spec](https://specification.website/spec/performance/core-web-vitals/)<br />
   [Article: Largest Contentful Paint - web.dev](https://web.dev/articles/lcp)<br />
   #nfr--performance
@@ -1997,6 +1997,10 @@
   [Platform: Azure CDN](https://azure.microsoft.com/en-us/products/cdn)<br />
   [Platform: Cloudflare](https://www.cloudflare.com)<br />
   [Platform: Vercel CDN](https://vercel.com/cdn)<br />
+  #nfr--performance
+- [ ] Optimise edge hosting / CDNs.<br />
+  Reduce "hops" between layers of caching. Reduce from multiple cache providers to just one.<br />
+  [Blog: Faster micro-frontends: optimising CDN behaviour for performance | Alex O'Callaghan](https://alexocallaghan.com/faster-microfrontends-cdn-optimisation)<br />
   #nfr--performance
 - [ ] Use multi-part uploads, concurrent uploads and transfer acceleration, to improve upload performance.<br />
   [Docs: Uploading and copying objects using multipart upload in Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)<br />
@@ -2102,6 +2106,9 @@
   #nfr--performance
 - [ ] Use appropriate cache-control headers.<br />
   [Article: Cache-Control headers • Website Spec](https://specification.website/spec/performance/cache-control/)<br />
+  #nfr--performance
+- [ ] Use content hash in filenames to allow long cache lifetimes without serving stale content.<br />
+  [Blog: Faster micro-frontends: optimising CDN behaviour for performance | Alex O'Callaghan](https://alexocallaghan.com/faster-microfrontends-cdn-optimisation)<br />
   #nfr--performance
 - [ ] Use No-Vary-Search header to signal reuse caches across query parameters.<br />
   [Article: No-Vary-Search response header • Website Spec](https://specification.website/spec/performance/no-vary-search/)<br />
@@ -2413,6 +2420,7 @@
   Minimise use of third-party packages.<br />
   Check for issues and vulnerabilities on open-source repo and trusted news sources.<br />
   Use automated checkers and monitoring tools.<br />
+  [Website: OpenCVE](https://app.opencve.io/cve/)<br />
   [Article: A03 Software Supply Chain Failures - OWASP Top 10:2025](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/)<br />
   #nfr--security
 - [ ] Continuously monitor security and library/tool vendor news for supply chain vulnerabilities.<br />
