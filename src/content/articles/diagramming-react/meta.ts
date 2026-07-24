@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
 import { diagrammingReactIllustrationComposite } from "../../illustrations";
 
@@ -10,7 +10,19 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: diagrammingReactIllustrationComposite,
-  socialLinks: [],
-  discussionLinks: [],
+  socialLinks: [
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/diagramming-react-code-48m7",
+    },
+  ],
+  discussionLinks: [
+    {
+      type: SocialLinkTypes.Dev,
+      url: "https://dev.to/conw_y/diagramming-react-code-48m7",
+      likeCount: 5,
+      commentCount: 6,
+    },
+  ],
   isPinned: true,
 };
