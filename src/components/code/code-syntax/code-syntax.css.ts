@@ -32,6 +32,10 @@ globalStyle(`pre > code[class*=language-]`, {
   },
 });
 
+globalStyle(`code .line-highlight.line-highlight`, {
+  marginTop: 0,
+});
+
 export const toolbar = style({
   position: "absolute",
   top: "1rem",

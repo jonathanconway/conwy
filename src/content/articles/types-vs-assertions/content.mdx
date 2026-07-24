@@ -1,3 +1,5 @@
+import { MdxCode, MdxPre } from "@/components/mdx";
+
 What do we need assertions for? Doesn't the type system in Typescript already enforce our data types?
 
 The answer is: yes, the type system protects us at compile type, **but not at runtime**.
@@ -29,25 +31,27 @@ We need not write poorly typed code to generate this kind of error. It might be 
 
 Suppose we add an assertion to our function, which reports a more developer-friendly error message.
 
-```javascript
-function getDepartmentCode(zoneCode) {
-  if (isNaN(zoneCode)) {
-    throw new Error("Department code should be numeric.");
-  }
+<MdxPre data-line="2-4" className="line-numbers">
+  <MdxCode className="language-typescript">{`
+  function getDepartmentCode(zoneCode) {
+    if (isNaN(zoneCode)) {
+      throw new Error("Department code should be numeric.");
+    }
 
-  return Math.floor(zoneCode / 1000);
+    return Math.floor(zoneCode / 1000);
 }
 
-// Returns: `10`
+// Returns: \`10\`
 getDepartmentCode("10023");
 
 // Throws: Error: Department code should be numeric.
-getDepartmentCode("10023b");
-```
+getDepartmentCode("10023b");`}
+  </MdxCode>
+</MdxPre>
 
 Now we can spot the error more clearly, because it throws an unambiguous exception.
 
-Also, we can much more quickly & easily pinpoint where in the code this error happened. (For example, find-in-files for the error message will more quickly lead us to its origin.) We can then work out why it happened. For example, which server response or user input caused it and how it could be fixed.
+Also, we can quickly and easily pinpoint where in the code this error happened. (For example, find-in-files for the error message will more quickly lead us to its origin.) We can then work out why it happened. For example, which server response or user input caused it.
 
 In conclusion, while type safety is great at compile-time, run-time checks such as assertions are still valuable.
 
@@ -64,6 +68,9 @@ export function assert(
     throw new AssertionViolationError(message);
   }
 }
+
+// assert(true, "Condition should be true") --> Does nothing.
+// assert(false, "Condition should be true") --> Throws: AssertionViolationError: Condition should be true
 
 export class AssertionViolationError extends Error {
   override name = "AssertionViolation";
