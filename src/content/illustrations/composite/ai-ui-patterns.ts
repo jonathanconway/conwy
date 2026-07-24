@@ -9,7 +9,7 @@ import {
 export const aiUiPatternsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "ai-ui-patterns",
-    slots: [
+    illustrations: [
       robotColorIllustrationStatic,
       webBrowserIllustrationStatic,
       cubeDynamicClayIllustrationStatic,

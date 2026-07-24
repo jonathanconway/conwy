@@ -9,7 +9,7 @@ import {
 export const studyingCalculusIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "studying-calculus",
-    slots: [
+    illustrations: [
       curveIllustrationStatic,
       bulbDynamicColorIllustrationStatic,
       pencilFrontColorIllustrationStatic,

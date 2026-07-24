@@ -9,7 +9,7 @@ import {
 export const userFlowsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "user-flows",
-    slots: [
+    illustrations: [
       girlIsoColorIllustrationStatic,
       routeIllustrationStatic,
       pencilFrontColorIllustrationStatic,

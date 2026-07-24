@@ -1,7 +1,8 @@
 import { lstatSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { escape } from "lodash";
 
-import { ArticleMeta, convertMdxToMd, sortArticleMetas } from "@/framework";
+import { ArticleMeta, sortArticleMetas } from "@/framework";
+import { convertMdxToMd } from "@/framework/server";
 import { packageInfo } from "@/package-info";
 
 function getArticleFolders() {

@@ -9,7 +9,7 @@ import {
 export const keyboardShortcutsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "keyboard-shortcuts",
-    slots: [
+    illustrations: [
       keyboardIllustrationStatic,
       flashDynamicColorIllustrationStatic,
       codeBracesIllustrationStatic,

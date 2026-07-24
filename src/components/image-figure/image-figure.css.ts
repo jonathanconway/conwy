@@ -1,41 +1,13 @@
 import { style } from "@vanilla-extract/css";
 
-import * as boxMixins from "../box/box.mixins";
-import * as linkMixins from "../link/link.mixins";
-import { text } from "../styling";
-import { vars } from "../theme";
+import * as mixins from "./image-figure.mixins";
 
-export const container = style({
-  padding: "0.5rem",
-  display: "inline-flex",
-  flexDirection: "column",
-  gap: "0.5rem",
-  width: "100%",
-  ...boxMixins.boxBorderDecorative,
-});
+export const container = style(mixins.container);
 
-export const link = style({
-  ...linkMixins.link,
-  display: "inline-flex",
-});
+export const link = style(mixins.link);
 
-const imgBase = {
-  filter: vars.imageFigure.filter,
-};
+export const img = style(mixins.img);
 
-export const img = style({
-  ...imgBase,
-});
+export const imgSized = style(mixins.imgSized);
 
-export const imgSized = style({
-  ...imgBase,
-  maxWidth: "100%",
-  maxHeight: "20rem",
-  width: "auto",
-  height: "auto",
-});
-
-export const figCaption = style({
-  ...text.size.xs,
-  lineHeight: "1rem",
-});
+export const figCaption = style(mixins.figCaption);

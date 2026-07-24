@@ -9,7 +9,7 @@ import {
 export const simulatingStatesIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "simulating-states",
-    slots: [
+    illustrations: [
       appColorIllustrationStatic,
       memoryChipIllustrationStatic,
       cubeDynamicClayIllustrationStatic,

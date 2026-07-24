@@ -1,8 +1,9 @@
 import { usePathname } from "next/navigation";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { ImageFigure } from "@/components/image-figure";
 import { generateHash, isNotNil } from "@/framework/client";
+
+import { ImageFigure } from "../../image-figure";
 
 import * as styles from "./code-rendered-mermaid.css";
 

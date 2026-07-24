@@ -2,7 +2,8 @@ import { readFileSync, writeFileSync } from "fs";
 import { orderBy } from "lodash";
 import { join } from "path";
 
-import { isNotNil, mkDirSyncIfNotExists } from "@/framework";
+import { isNotNil } from "@/framework";
+import { mkDirSyncIfNotExists } from "@/framework/server";
 
 function getFullPath(filePath: string) {
   return join(__dirname, "..", filePath);

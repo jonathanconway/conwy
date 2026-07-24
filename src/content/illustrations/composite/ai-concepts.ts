@@ -9,7 +9,7 @@ import {
 export const aiConceptsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "ai-concepts",
-    slots: [
+    illustrations: [
       robotColorIllustrationStatic,
       bulbDynamicColorIllustrationStatic,
       fileTextDynamicColorIllustrationStatic,

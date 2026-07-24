@@ -1,3 +1,5 @@
+import { Image } from "@/components/image";
+import { chatBubbleDynamicGradientIllustrationStatic } from "@/content";
 import { MicroMeta } from "@/framework/client";
 
 import {
@@ -71,10 +73,9 @@ export function MicrosListItem({
         asideSlot={
           <>
             <div className={styles.decorationContainer}>
-              <Icon
-                className={styles.decoration}
-                icon={IconTypes.Quote}
-                size="100%"
+              <Image
+                className={styles.decorativeImage}
+                image={chatBubbleDynamicGradientIllustrationStatic}
               />
             </div>
 

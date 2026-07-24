@@ -11,7 +11,7 @@ import { marked } from "marked";
 import { join } from "path";
 
 import { generateHash } from "@/framework";
-import { getFolderFileTree } from "@/framework/server-utils";
+import { getFolderFileTree } from "@/framework/server";
 
 const contentPath = join(__dirname, "../../content");
 const imagesPath = join(__dirname, "../../../public/images");

@@ -9,7 +9,7 @@ import {
 export const mockDataIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "mock-data",
-    slots: [
+    illustrations: [
       circlesStackedDynamicGradientIllustrationStatic,
       labDynamicColorIllustrationStatic,
       sphereDynamicColorIllustrationStatic,

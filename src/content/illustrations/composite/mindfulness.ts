@@ -9,7 +9,7 @@ import {
 export const mindfulnessIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "mindfulness",
-    slots: [
+    illustrations: [
       treesIllustrationStatic,
       sunDynamicColorIllustrationStatic,
       crossLeggedIllustrationStatic,

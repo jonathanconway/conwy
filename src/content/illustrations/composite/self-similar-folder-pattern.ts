@@ -9,7 +9,7 @@ import {
 export const selfSimilarFolderPatternIllustration =
   createIllustrationCompositePost3Circle({
     slug: "self-similar-folder-pattern",
-    slots: [
+    illustrations: [
       folderDynamicColorIllustrationStatic,
       fileTextDynamicColorIllustrationStatic,
       cubeDynamicColorIllustrationStatic,

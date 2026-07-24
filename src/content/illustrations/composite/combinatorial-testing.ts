@@ -9,7 +9,7 @@ import {
 export const combinatorialTestingIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "combinatorial-testing",
-    slots: [
+    illustrations: [
       tableIllustrationStatic,
       labDynamicColorIllustrationStatic,
       cubeDynamicClayIllustrationStatic,

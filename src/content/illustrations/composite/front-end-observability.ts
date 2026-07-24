@@ -9,7 +9,7 @@ import {
 export const frontEndObservabilityIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "front-end-observability",
-    slots: [
+    illustrations: [
       webBrowserIllustrationStatic,
       codeHtmlColorIllustrationStatic,
       zoomDynamicColorIllustrationStatic,

@@ -1,13 +1,7 @@
 import { ReactNode } from "react";
 
 import { ArticleLayout, ArticleSidebar } from "@/components";
-import { getArticle, readContentMdx } from "@/framework";
-import {
-  Article as Article_,
-  ContentTypes,
-  generateArticleMetaExtensions,
-  importContentBySlug,
-} from "@/framework/client";
+import { getArticle } from "@/framework/server";
 
 interface LayoutProps {
   readonly children: ReactNode;

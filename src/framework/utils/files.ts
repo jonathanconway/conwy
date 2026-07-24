@@ -1,3 +1,5 @@
+import { TypeOfConst } from ".";
+
 import {
   existsSync,
   lstatSync,
@@ -11,7 +13,6 @@ import { join } from "path";
 import pluralize from "pluralize";
 
 import { Meta, MetaType } from "../content";
-import { TypeOfConst } from "../utils";
 
 export const PublicStaticAssetTypes = {
   Images: "images",

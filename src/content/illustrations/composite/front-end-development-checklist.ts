@@ -9,7 +9,7 @@ import {
 export const frontEndDevelopmentChecklistIllustration =
   createIllustrationCompositePost3Circle({
     slug: "front-end-development-checklist",
-    slots: [
+    illustrations: [
       tickDynamicColorIllustrationStatic,
       chatBubbleDynamicGradientIllustrationStatic,
       codeHtmlColorIllustrationStatic,

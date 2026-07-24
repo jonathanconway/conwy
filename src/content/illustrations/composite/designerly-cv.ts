@@ -9,7 +9,7 @@ import {
 export const designerlyCvIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "designerly-cv",
-    slots: [
+    illustrations: [
       documentIllustrationStatic,
       paintBrushIsoColor,
       mouseColorIllustrationStatic,

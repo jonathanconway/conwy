@@ -9,7 +9,7 @@ import {
 export const towardsZeroBugsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "towards-zero-bugs",
-    slots: [
+    illustrations: [
       bugIllustrationStatic,
       tickDynamicColorIllustrationStatic,
       roadIllustrationStatic,

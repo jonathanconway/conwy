@@ -9,7 +9,7 @@ import {
 export const subformatsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "subformats",
-    slots: [
+    illustrations: [
       mdIllustrationStatic,
       codeHtmlColorIllustrationStatic,
       cubeDynamicClayIllustrationStatic,

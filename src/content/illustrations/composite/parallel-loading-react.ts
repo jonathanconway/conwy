@@ -9,7 +9,7 @@ import {
 export const parallelLoadingReactIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "parallel-loading-react",
-    slots: [
+    illustrations: [
       road2LaneIllustrationStatic,
       reactColorIllustrationStatic,
       cubeDynamicClayIllustrationStatic,

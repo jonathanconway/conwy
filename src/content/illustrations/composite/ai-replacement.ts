@@ -9,7 +9,7 @@ import {
 export const aiReplacementIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "ai-replacement",
-    slots: [
+    illustrations: [
       robotColorIllustrationStatic,
       girlIsoColorIllustrationStatic,
       chartDynamicColorIllustrationStatic,

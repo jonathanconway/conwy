@@ -9,7 +9,7 @@ import {
 export const wireframingTechniquesIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "wireframing-techniques",
-    slots: [
+    illustrations: [
       pencilFrontColorIllustrationStatic,
       cubeDynamicColorIllustrationStatic,
       sphereDynamicColorIllustrationStatic,

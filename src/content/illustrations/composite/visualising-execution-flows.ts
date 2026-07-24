@@ -9,7 +9,7 @@ import {
 export const visualisingExecutionFlowsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "visualising-execution-flows",
-    slots: [
+    illustrations: [
       codeBracesIllustrationStatic,
       pathIllustrationStatic,
       zoomDynamicColorIllustrationStatic,

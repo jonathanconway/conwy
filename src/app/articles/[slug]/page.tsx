@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import { Article } from "@/components";
 import { site } from "@/content";
 import * as articles from "@/content/articles";
-import { getArticle } from "@/framework";
 import { Article as Article_, importContentBySlug } from "@/framework/client";
+import { getArticle } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 

@@ -8,7 +8,7 @@ import {
 
 export const flakyTestsIllustration = createIllustrationCompositePost3Circle({
   slug: "flaky-tests",
-  slots: [
+  illustrations: [
     zoomDynamicColorIllustrationStatic,
     snowflakeDynamicColorIllustrationStatic,
     labDynamicColorIllustrationStatic,

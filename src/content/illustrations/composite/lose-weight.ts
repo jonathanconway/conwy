@@ -9,7 +9,7 @@ import {
 export const loseWeightIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "lose-weight",
-    slots: [
+    illustrations: [
       appleFruitIllustrationStatic,
       gymDynamicPremiumIllustrationStatic,
       roadIllustrationStatic,

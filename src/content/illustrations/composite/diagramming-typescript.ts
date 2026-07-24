@@ -9,7 +9,7 @@ import {
 export const diagrammingTypescriptIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "diagramming-typescript",
-    slots: [
+    illustrations: [
       typescriptIllustrationStatic,
       pencilFrontColorIllustrationStatic,
       computerDynamicColorIllustrationStatic,

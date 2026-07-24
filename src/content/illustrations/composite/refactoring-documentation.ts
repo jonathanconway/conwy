@@ -9,7 +9,7 @@ import {
 export const refactoringDocumentationIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "refactoring-documentation",
-    slots: [
+    illustrations: [
       fileTextIsoColorIllustrationStatic,
       codeBracesIllustrationStatic,
       cycleIllustrationStatic,

@@ -9,7 +9,7 @@ import {
 export const manualTestingIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "manual-testing",
-    slots: [
+    illustrations: [
       mouseColorIllustrationStatic,
       computerDynamicColorIllustrationStatic,
       labDynamicColorIllustrationStatic,

@@ -1,12 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { cn } from "@/framework/client";
+import * as imageFigureMixins from "../../image-figure/image-figure.mixins";
 
-import * as imageFigureStyles from "../../image-figure/image-figure.css";
-
-export const imageFigure = cn(
-  imageFigureStyles.container,
-  style({
-    width: "100%",
-  }),
-);
+export const imageFigure = style({
+  ...imageFigureMixins.container,
+  width: "100%",
+});

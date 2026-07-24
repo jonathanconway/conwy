@@ -1,6 +1,7 @@
 import { lstatSync, readFileSync, readdirSync, writeFileSync } from "fs";
 
-import { ChecklistMeta, mkDirSyncIfNotExists } from "@/framework";
+import { ChecklistMeta } from "@/framework";
+import { mkDirSyncIfNotExists } from "@/framework/server";
 
 export async function buildChecklistDownloadMds() {
   const checklistMetas = await getChecklistMetas(getChecklistFolders());

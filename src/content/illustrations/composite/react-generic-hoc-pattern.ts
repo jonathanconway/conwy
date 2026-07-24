@@ -9,7 +9,7 @@ import {
 export const reactGenericHocPatternIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "react-generic-hoc-pattern",
-    slots: [
+    illustrations: [
       lambdaIllustrationStatic,
       reactColorIllustrationStatic,
       codeHtmlColorIllustrationStatic,

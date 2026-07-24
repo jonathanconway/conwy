@@ -9,7 +9,7 @@ import {
 export const codeSketchesIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "code-sketches",
-    slots: [
+    illustrations: [
       codeHtmlColorIllustrationStatic,
       pencilFrontColorIllustrationStatic,
       computerDynamicColorIllustrationStatic,

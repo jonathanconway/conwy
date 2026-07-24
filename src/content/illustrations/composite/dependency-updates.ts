@@ -9,7 +9,7 @@ import {
 export const dependencyUpdatesIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "dependency-updates",
-    slots: [
+    illustrations: [
       packageIllustrationStatic,
       cubeDynamicColorIllustrationStatic,
       sheildDynamicColorIllustrationStatic,

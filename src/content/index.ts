@@ -3,6 +3,7 @@ export * from "./books";
 export * from "./checklists";
 export * from "./communities";
 export * from "./ideas";
+export * from "./illustrations";
 export * from "./micros";
 export * from "./prompts";
 export * from "./quotes";

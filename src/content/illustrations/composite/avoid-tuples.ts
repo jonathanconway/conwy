@@ -8,7 +8,7 @@ import {
 export const avoidTuplesIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "avoid-tuples",
-    slots: [
+    illustrations: [
       cubeDynamicClayIllustrationStatic,
       cubeDynamicClayIllustrationStatic,
       codeBracesIllustrationStatic,

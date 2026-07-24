@@ -9,7 +9,7 @@ import {
 export const threeTestsAccessibilityIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "three-tests-accessibility",
-    slots: [
+    illustrations: [
       handIllustrationStatic,
       earIllustrationStatic,
       labDynamicColorIllustrationStatic,

@@ -26,3 +26,10 @@ export const decoration = style({
   width: "100%",
   height: "100%",
 });
+
+export const decorativeImage = style({
+  width: "70%",
+  height: "auto",
+  float: "right",
+  opacity: 0.25,
+});

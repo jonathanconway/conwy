@@ -9,7 +9,7 @@ import {
 export const diagrammingReactIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "diagramming-react",
-    slots: [
+    illustrations: [
       reactColorIllustrationStatic,
       pencilFrontColorIllustrationStatic,
       computerDynamicColorIllustrationStatic,

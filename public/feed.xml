@@ -956,13 +956,13 @@ It&#39;s hard to get more specific statistics or other hard evidence to understa
 
 But here are a few hunches, based on my own observations:
 
-- 🧠 **Inertia.** Humans resist change. Most businesses are run by groups of humans. So hiring decisions are not immediately influenced by AI considerations because so many people simply have not mentally caught up yet.
+- 🧠 **Inertia.** Humans [resist change](https://en.wikipedia.org/wiki/Status_quo_bias). Most businesses are run by groups of humans. So, unsurprisingly, hiring strategies lag AI considerations simply because so many people have not mentally caught up yet.
 - 💥 **Disruption.** It&#39;s true that some businesses are undergoing massive short-term change and laying off hundreds of workers. For example, some traditional banks are being disrupted by Fintech and even some tech firms are themselves being disrupted by other tech firms. There is nothing new or distinctly &quot;AI-ish&quot; about all this disruption. It is known as [creative destruction](https://en.wikipedia.org/wiki/Creative_destruction) and is baked in to the [capitalist mode of production](https://en.wikipedia.org/wiki/Capitalist_mode_of_production_(Marxist_theory)).
-- 📈 **Growth dynamics.** Modern growth-based markets are not a straight-forward supply demand story. Supply can create more demand, as new industries and patterns of work are established and gain momentum. For example, the rise of Amazon has coincided with a rise in e-commerce overall.
+- 📈 **Growth dynamics.** Modern growth-based markets are not a straight-forward supply demand story. Supply can [create more demand](https://en.wikipedia.org/wiki/Jevons_paradox), as new industries and patterns of work are established and gain momentum.
 - 🪖 **Switching costs / risks.** Businesses cannot, or are unwilling to, take the risk of immediately decommissioning legacy systems and switching to AI. As long as legacy systems stay in place, legacy engineers are needed to maintain them. For example, banks are still known to run their settlement systems on old versions of Java and Oracle.
 - 🗑️ **Technical debt and concept drift.** While AI can initially add a lot of high quality value fast to a software project with pre-existing strong foundations, as with human developers, small mistakes can be made. These can accumulate over time, leading to an overall decline in quality or &quot;tech debt&quot;. If there is a large amount of complex code containing subtle errors, it is not obvious that AI can tools can clean it instead of humans. AI models also have a somewhat similar issue of [concept drift](https://en.wikipedia.org/wiki/Concept_drift), where the model lags changes in the real world which invalidate its outputs.
 - 🔧 **Complexity of AI.** Consumer-focussed AI tools like ChatGPT are simple enough for a child to use. But businesses-oriented AI tools, such as coding assistants (e.g. Claude Code), are more complex and require careful, structured, specific prompts and/or other context to be provided. The complexity level of using these AI tools is on a similar order to traditional software development, and in fact, could be considered a form of software engineering. There is now an emerging discipline known as &quot;prompt engineering&quot; with long books and multi-day courses. The Reductio ad absurdum is that if AI can do anything instantly, if prompted correctly, then every human on earth should just instantly become a prompt engineer and earn billions of dollars.
-- 🤚 **Limitations of AI.** Coding might be automated, but coding is rarely the only task developers are hired for anyway. There are certain general tasks AI still cannot really do. To give a very mundane example: swiping a card at security gates, selecting an elevator floor, entering a meeting room and conversing with the attendees in a human way is not yet widely performed by talking humanoid robots at a reasonable price. Some businesses still require such manual, physical processes, and thus, still need to hire a real human to be perform them. Yes, this is still the case in 2026. If you question why this is the case, please refer back to **• 🧠 Inertia**.
+- 🤚 **Limitations of AI.** Coding might be automated, but coding is rarely the only task developers are hired for anyway. There are certain general tasks AI still cannot really do. To give a very mundane example: swiping a card at security gates, selecting an elevator floor, entering a meeting room and conversing with the attendees in a human way is not yet widely performed by talking humanoid robots at a reasonable price. Some businesses still require such manual, physical processes, and thus, still need to hire a real human to be perform them. Yes, this is still the case in 2026. If you question why this is the case, please refer back to my point on Inertia.
 
 &gt; Pull-quote: The Reductio ad absurdum is that, if AI can do anything instantly (when prompted correctly) then every human on earth should just drop everything and immediately become a prompt engineer, earn billions of dollars and retire early.
 
@@ -991,7 +991,7 @@ AI adoption might initially be on an exponential growth curve, but on further in
 - **Complexity of AI:** AI itself can require human maintainers.
 - **Limitations of AI:** AI cannot currently fill all available jobs, even if we all wanted it to.
 
-None of the above is meant to suggest that we should ignore AI, hesitate in investigating and adopting AI where it fits or reactively try to stop AI. My main points is that it seems premature to assume that AI will replace traditional software developers or development, and much less that it will eliminate altogether the demand for highly-skilled and appropriately compensated human labour.
+None of the above is meant to suggest that we should ignore AI, hesitate in investigating and adopting AI where it fits or reactively try to stop AI. It seems premature to assume that AI will replace traditional software developers or development, and much less that it will eliminate altogether the demand for highly-skilled and appropriately compensated human labour.
 
 ## Further watching
 
@@ -1284,9 +1284,14 @@ public void CalculateOrderCutOffTime(string orderId, string timeZoneId)
 }
 ```
 
-Suppose we want to focus on the logic involving `FulfilmentMode.Priority`.
+Suppose we want the reader to focus on the logic involving `FulfilmentMode.Priority`.
 
-We can &quot;blur out&quot; out the other less relevant code using ellipses: `...`.
+```cs
+else if (FulfilmentMode == FulfilmentMode.Priority)
+
+```
+
+We can &quot;blur out&quot; out the other less relevant code using ellipses in code comments: `/* ... */`.
 
 ```cs
 var orderedDateInLocalTime = /* ... */;
@@ -1313,6 +1318,8 @@ And voilà! We have a &quot;code sketch&quot;!
 It replicates exactly the key structural elements of the original code – namely, the nested `if` statements.
 
 But it abstracts away the non-structural details that would otherwise confuse or distract the reader – using ellipses `/* ... */`.
+
+This allows the reader to focus on one part of the code, while still seeing how that part fits into the whole.
 
 I&#39;ve found code sketches like this useful over the years in many conversational contexts, such as:
 
@@ -2189,7 +2196,7 @@ Fundamental to addressing any kind of software bug is **reproducing** it.
 
 But how do you reproduce a flaky test? As discussed above, flaky tests are difficult to reproduce consistently because their behaviour is non-deterministic: sometimes they function incorrectly, sometimes not.
 
-&gt; Aside: **Warning:** It&#39;s important at this point to note that *incorrect function* of a test can occur in various non-obvious ways ways, from giving false-positives (passing when it should fail) to ending prematurely (i.e. ending before the system functionality has been fully exercised).
+&gt; Aside: **Warning:** It&#39;s important at this point to note that *incorrect function* of a test can occur in various non-obvious ways, from giving false-positives (passing when it should fail) to ending prematurely (i.e. ending before the system functionality has been fully exercised).
 
 There are a couple of options here:
 
@@ -2226,7 +2233,7 @@ For example:
 - Simulating lower available memory
 - Simulating slower network speeds
 
-These failure conditions will give us more failures, which may hopefully resolve in faster diagnosis of the cause.
+These failure conditions should generate more failures, giving us a faster diagnosis of the cause.
 
 Some technologies for enacting these simulations include:
 - **Virtual machines:** Running the tests in a Virtual Machine with slow configuration.
@@ -2737,8 +2744,6 @@ flowchart TD
 
 Other high quality resources that can be used as sources for checklist items include books, online courses, podcasts, open-source code-bases and code review feedback from past projects
 
-&gt; Aside: You can find a list of [Resources](#resources) used in my [Front end development checklist](/checklists/front-end-development).
-
 ## Precedent-based model for code reviews
 
 For team projects, where I add/modify a checklist item in response to feedback, I like to include a link to specific feedback comment.
@@ -2753,7 +2758,7 @@ I found success with this approach, in the following ways:
 
 ## Organising and filtering the checklist
 
-With a checklist of 575 items and growing, you well might wonder how I have the time to go through that many items. 😂
+With 916 items and growing, you well might wonder how I have the time to go through that many items. 😂
 
 The truth is that I only use a subset of checklist items per situation. The checklist items are grouped into headings and tags which can be filtered. Using the filters, I can quickly narrow down the list to a much more manageable size.
 
@@ -4087,13 +4092,17 @@ I had some interesting experiences and thoughts, which I thought I&#39;d share.
 
 **Beauty.** I catch myself more often being struck by beauty. Not only sunsets but also the beauty of peoples&#39; dress, of language, of various animals (magpies, various insects) and plants, and also landscape features like hills. I don&#39;t experience the beauty of these separately (though it probably seems that way because of how I write about them), but more often together as part of the same scene. It&#39;s a great joy!
 
-**Observing non-critically, withholding judgement.** I&#39;ve been practicing a more mindful approach generally. For example, when reading code or someone&#39;s writing, I try to practice a small hesitation. I hold back from assuming that my initial understanding is correct and re-read the material to check if I really understood it. I&#39;m hopeful that this will help me to avoid mistakes in future and also make the reading experience more engaging (both for code and writing).
+**Observing non-critically, withholding judgement.** I&#39;ve been practising a more mindful approach generally. For example, when reading code or someone&#39;s writing, I try to practice a small hesitation. I hold back from assuming that my initial understanding is correct and re-read the material to check if I really understood it. I&#39;m hopeful that this will help me to avoid mistakes in future and also make the reading experience more engaging (both for code and writing).
 
-**Seeing obstacles as opportunities.** Initially I had to somewhat coax myself into mindfulness. I have been mindful many times throughout my life, but carving out a specific time in my day just for this practice took a bit of persistence. There is a saying that no meditation is &quot;bad&quot; – what matters most is that you simply do it. In this spirit, I tried to look at my effort (and the resistance to it) as an obstacle leading to an opportunity – the opportunity to increase awareness and inner peace.
+**Seeing obstacles as opportunities.** Initially I had to somewhat coax myself into mindfulness. I have been mindful many times throughout my life, but carving out a specific time in my day just for this practice took a bit of persistence. There is a saying that no meditation is &quot;bad&quot; – what matters most is that you simply do it. In this spirit, I tried to look at my effort (and the resistance to it) as an obstacle leading to an opportunity – the opportunity to increase awareness and inner peace. I found that the repeated practice of bringing attention back to the breath has helped me generally to identify and interrupt negative thought patterns.
 
-**Moving quickly without rushing.** In the _Catastrophe_ book, Zinn refers to: &quot;being aware even when moving quickly&quot; and suggests: &quot;shift your awareness ... to a sense of your body as a whole moving through space&quot;. I practiced this awareness during busy moments, such as shopping and commuting. It really took the stress out of these and at times made them quite enjoyable.
+**Self awareness.** Meditation helps me to reflect and see things I didn&#39;t earlier see in myself, both in thoughts and actions. This has helped me on my journey to undo bad habits and start good ones.
 
-I hope you found these insights interesting and that perhaps I&#39;ve whetted your appetite for practicing mindfulness – in whichever way works best for you.
+**Moving quickly without rushing.** In the _Catastrophe_ book, Zinn refers to: &quot;being aware even when moving quickly&quot; and suggests: &quot;shift your awareness ... to a sense of your body as a whole moving through space&quot;. I practised this awareness during busy moments, such as shopping and commuting. It really took the stress out of these and at times made them quite enjoyable.
+
+I found it possible to carve out time for my practice by &quot;chaining&quot; it onto other daily habits, as described in the book Atomic Habits.
+
+I hope you found these insights interesting and that perhaps I&#39;ve whetted your appetite for practising mindfulness – in whichever way works best for you.
 
 Namaste!</content>
   </entry>
@@ -5280,7 +5289,7 @@ The course has been fascinating and engaging. It&#39;s not only introduced me to
 
 Some reflections in no particular order:
 
-## Understanding fundamentals
+## Importance of fundamentals
 
 The hard part often isn&#39;t the highest level concepts, but the foundations you need in order to (properly) understand and use them. I had to understand concepts such as *completing the square*, *long division of polynomials* and *derivatives*, not only theoretically, but well enough to apply them correctly to solve an unexpected problem. I&#39;ve [commented](https://news.ycombinator.com/item?id=40083488) about this on HackerNews.
 
@@ -5298,7 +5307,7 @@ I found it incredibly helpful when David presented an idea *geometrically*. Simp
 
 I found that solving a non-trivial math problem typically requires also understanding all the parts of the problem. (This is in contrast to my usual profession, software development, where many problems can be solved using &quot;black-box&quot; solutions such as libraries, without understanding their internals.) This experience of the parts/whole adds a dimension to my understanding of problem solving generally.
 
-## Focussing on mistakes
+## Focusing on mistakes
 
 Trying out the examples and practice tests and observing what I got wrong helped me narrow down specifically where my knowledge gaps lay and then actively correct them, which also helped improve my long-term memory of the concepts. (This way of thinking is also helping me in other areas of life beyond math.)
 
@@ -5582,6 +5591,47 @@ If the underlying format will support your use case in the near future, or there
   - ``
     - [Popup Note](https://github.com/jonathanconway/conwy/blob/main/src/components/mdx/mdx-p/mdx-p-subformat/mdx-p-subformat-popup-note/mdx-p-subformat-popup-note.ts)
 </content>
+  </entry>
+  
+
+  <entry>
+    <title>Thoughts on Tailwind</title>
+    <link href="https://conwy.co/articles/tailwind-thoughts" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>tailwind-thoughts</id>
+    <content xml:lang="en" type="html">I have mixed feelings about Tailwind, having used it on a [client project](/work/optus), built a [Typescript adapter](/projects/tailwindjs) for it and my own website for a while (before switching to [Vanilla Extract](https://vanilla-extract.style/)).
+
+On one hand, it seems to have been overhyped and targeted to developers who want to throw stuff together fast, with the predictable result of messy, unmaintainable code. (But I guess the same could&#39;ve been rightly said about HTML/CSS back in its early days, not to mention Java, VB, etc.)
+
+On the other hand, I think Tailwind does sit on structurally sound foundations. It implements most or all of the core features of the CSS spec, while providing shortcuts in a careful and consistent manner. In this way, it forms a nice abstraction layer above plain CSS.
+
+For example, this:
+
+```html
+
+```
+
+Is shorter and arguably more readable than this:
+
+```css
+.foo:hover 
+```
+
+So in the right hands, Tailwind can be used to produce clean, maintainable code.
+
+I think a few best practices can go a long way:
+
+- **Decompose complex HTML structures.** Into either smaller nested elements or your framework&#39;s flavour of components (React, VueJS, Web Components, etc). Reduce the number of classes you need to deal with at once.
+- **Group and order classes in a consistent and sensible way.** For example: 1. Layout, 2. Background, 3. Border, 4. Foreground, 5. Animation, 6. Cursor. And order defaults before overrides: :hover, :focus, etc then defaults.
+- **Use custom theme variables for your custom brand-specific values.** Colours, fonts, etc. Rather than repeating the values throughout the code-base. This is similar to how variables are used in CSS.
+
+Overall I think developers should use the framework/language they and their team are strongest in and be cautious about rapidly adopting any new framework/language.
+
+We should especially avoid buying into hype but consider realistic trade-offs and pivot when necessary.
+
+## Further reading
+
+- [Blog: Moving away from Tailwind, and learning to structure my CSS • Julia EVANS](https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/)</content>
   </entry>
   
 

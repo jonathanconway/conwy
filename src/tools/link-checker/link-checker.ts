@@ -6,7 +6,7 @@ import { marked } from "marked";
 import { join } from "path";
 
 import { isNotNil } from "@/framework";
-import { getFolderFileTree } from "@/framework/server-utils";
+import { getFolderFileTree } from "@/framework/server";
 
 import linkCheckerSkipList from "./link-checker-skip-list.json";
 

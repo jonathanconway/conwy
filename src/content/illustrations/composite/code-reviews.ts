@@ -9,7 +9,7 @@ import {
 export const codeReviewsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "code-reviews",
-    slots: [
+    illustrations: [
       codeBracesIllustrationStatic,
       zoomDynamicColorIllustrationStatic,
       chatBubbleDynamicGradientIllustrationStatic,

@@ -9,7 +9,7 @@ import {
 export const testingStepsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "testing-steps",
-    slots: [
+    illustrations: [
       routeIllustrationStatic,
       labDynamicColorIllustrationStatic,
       fileTextIsoColorIllustrationStatic,

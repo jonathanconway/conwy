@@ -9,7 +9,7 @@ import {
 export const typescriptEnumPatternsIllustrationComposite =
   createIllustrationCompositePost3Circle({
     slug: "typescript-enum-patterns",
-    slots: [
+    illustrations: [
       typescriptIllustrationStatic,
       cubeDynamicClayIllustrationStatic,
       codeBracesIllustrationStatic,
