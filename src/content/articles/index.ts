@@ -30,6 +30,7 @@ export * from "./tailwind-thoughts";
 export * from "./testing-steps";
 export * from "./three-tests-accessibility";
 export * from "./towards-zero-bugs";
+export * from "./types-vs-assertions";
 export * from "./typescript-enum-patterns";
 export * from "./user-flows";
 export * from "./visualising-execution-flows";

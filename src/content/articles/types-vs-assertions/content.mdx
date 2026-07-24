@@ -1,0 +1,77 @@
+What do we need assertions for? Doesn't the type system in Typescript already enforce our data types?
+
+The answer is: yes, the type system protects us at compile type, **but not at runtime**.
+
+Assertions can help us catch and handle *unexpected* bad data types.
+
+Error messages from failed assertions can be better than the default type errors (from our framework, language run-time, etc) in two distinct ways:
+
+1. More informative
+2. More traceable
+
+Suppose some runtime error, such as a bad server response or user input, generates a value which our code was not expecting. Our application might then fail and generate a cryptic exception message, say about some value not being a valid number, along with mile-long stack trace. Or, worse, it might fail silently and cause downstream data corruption or other issues. It's difficult and annoying to debug these errors and trace them to their origin.
+
+For example:
+
+```typescript
+function getDepartmentCode(zoneCode: number) {
+  return Math.floor(zoneCode / 1000);
+}
+
+// Returns: `10`
+getDepartmentCode(10023);
+
+// Returns: `NaN`
+getDepartmentCode("10023b" as Number);
+```
+
+We need not write poorly typed code to generate this kind of error. It might be a result of bad user input or a bad server response.
+
+Suppose we add an assertion to our function, which reports a more developer-friendly error message.
+
+```javascript
+function getDepartmentCode(zoneCode) {
+  if (isNaN(zoneCode)) {
+    throw new Error("Department code should be numeric.");
+  }
+
+  return Math.floor(zoneCode / 1000);
+}
+
+// Returns: `10`
+getDepartmentCode("10023");
+
+// Throws: Error: Department code should be numeric.
+getDepartmentCode("10023b");
+```
+
+Now we can spot the error more clearly, because it throws an unambiguous exception.
+
+Also, we can much more quickly & easily pinpoint where in the code this error happened. (For example, find-in-files for the error message will more quickly lead us to its origin.) We can then work out why it happened. For example, which server response or user input caused it and how it could be fixed.
+
+In conclusion, while type safety is great at compile-time, run-time checks such as assertions are still valuable.
+
+-----
+
+Here's a utility function I wrote, to quickly generate informative assertions. Hope you find it useful!
+
+```typescript
+export function assert(
+  condition: unknown,
+  message?: string
+): asserts condition {
+  if (!condition) {
+    throw new AssertionViolationError(message);
+  }
+}
+
+export class AssertionViolationError extends Error {
+  override name = "AssertionViolation";
+
+  constructor(message?: string) {
+    super(message);
+  }
+}
+```
+
+[Gist: `assert.ts`](https://gist.github.com/jonathanconway/d2578f0b37d72a5c14b6f03de51d671a)

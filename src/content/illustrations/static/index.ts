@@ -49,6 +49,8 @@ export * from "./sphere-dynamic-color";
 export * from "./sun-dynamic-color";
 export * from "./table";
 export * from "./tailwind-front-color";
+export * from "./tape-meter";
+export * from "./target-dynamic-color";
 export * from "./terminal";
 export * from "./tick-dynamic-color";
 export * from "./trees";
