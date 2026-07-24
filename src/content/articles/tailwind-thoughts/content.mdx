@@ -1,0 +1,35 @@
+I have mixed feelings about Tailwind, having used it on a [client project](/work/optus), built a [Typescript adapter](/projects/tailwindjs) for it and my own website for a while (before switching to [Vanilla Extract](https://vanilla-extract.style/)).
+
+On one hand, it seems to have been overhyped and targeted to developers who want to throw stuff together fast, with the predictable result of messy, unmaintainable code. (But I guess the same could've been rightly said about HTML/CSS back in its early days, not to mention Java, VB, etc.)
+
+On the other hand, I think Tailwind does sit on structurally sound foundations. It implements most or all of the core features of the CSS spec, while providing shortcuts in a careful and consistent manner. In this way, it forms a nice abstraction layer above plain CSS.
+
+For example, this:
+
+```html
+<span class="foo hover:bg-violet-600"></span>
+```
+
+Is shorter and arguably more readable than this:
+
+```css
+.foo:hover {
+	background-color: var(--violet-600);
+}
+```
+
+So in the right hands, Tailwind can be used to produce clean, maintainable code.
+
+I think a few best practices can go a long way:
+
+- **Decompose complex HTML structures.** Into either smaller nested elements or your framework's flavour of components (React, VueJS, Web Components, etc). Reduce the number of classes you need to deal with at once.
+- **Group and order classes in a consistent and sensible way.** For example: 1. Layout, 2. Background, 3. Border, 4. Foreground, 5. Animation, 6. Cursor. And order defaults before overrides: :hover, :focus, etc then defaults.
+- **Use custom theme variables for your custom brand-specific values.** Colours, fonts, etc. Rather than repeating the values throughout the code-base. This is similar to how variables are used in CSS.
+
+Overall I think developers should use the framework/language they and their team are strongest in and be cautious about rapidly adopting any new framework/language.
+
+We should especially avoid buying into hype but consider realistic trade-offs and pivot when necessary.
+
+## Further reading
+
+- [Blog: Moving away from Tailwind, and learning to structure my CSS • Julia EVANS](https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/)
