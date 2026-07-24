@@ -38,8 +38,8 @@ export const CONTACT_DETAILS_LINKEDIN = {
 export const CONTACT_DETAILS_REDDIT = {
   iconType: IconTypes.Reddit,
   label: "Reddit",
-  id: "jconwy",
-  href: "https://www.reddit.com/user/jconwy",
+  id: "conwyj",
+  href: "https://www.reddit.com/user/conwyj",
 };
 
 export const CONTACT_DETAILS_TELEGRAM = {
