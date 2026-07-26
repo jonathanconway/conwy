@@ -26,6 +26,7 @@ export * from "./genius-scan";
 export * from "./github-cli";
 export * from "./gitlens";
 export * from "./go-full-page";
+export * from "./grifiti-band-wallet";
 export * from "./grunten-hanwag";
 export * from "./hand-brake";
 export * from "./html-color-picker";
