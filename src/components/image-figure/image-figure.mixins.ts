@@ -10,7 +10,7 @@ export const container: ComplexStyleRule = {
   display: "inline-flex",
   flexDirection: "column",
   gap: "0.5rem",
-  width: "100%",
+  margin: "1rem 0",
   ...boxMixins.boxBorderDecorative,
 };
 
@@ -38,4 +38,5 @@ export const imgSized = {
 export const figCaption = {
   ...text.size.xs,
   lineHeight: "1rem",
+  marginTop: "1.5rem",
 };

@@ -3,6 +3,7 @@ import { createTheme } from "@vanilla-extract/css";
 import { aboutMeThemeLight } from "../about-me/about-me.css-theme";
 import { articlesTagFiltersThemeLight } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeLight } from "../aside/aside.css-theme";
+import { blockQuoteDisclaimerThemeLight } from "../block-quote/block-quote-disclaimer/block-quote-disclaimer.css-theme";
 import { blockQuoteSummaryThemeLight } from "../block-quote/block-quote-summary/block-quote-summary.css-theme";
 import { blockQuoteThemeLight } from "../block-quote/block-quote.css-theme";
 import { boxThemeLight } from "../box/box.css-theme";
@@ -39,6 +40,7 @@ export const themeLightClass = createTheme(vars, {
   aside: asideThemeLight,
   blockQuote: blockQuoteThemeLight,
   blockQuoteSummary: blockQuoteSummaryThemeLight,
+  blockQuoteDisclaimer: blockQuoteDisclaimerThemeLight,
   box: boxThemeLight,
   button: buttonThemeLight,
   checkbox: checkboxThemeLight,

@@ -27,6 +27,7 @@ export const IconTypes = {
   Person: "person",
   ProductHunt: "product-hunt",
   Quote: "quote",
+  RationalReminder: "rational-reminder",
   Reddit: "reddit",
   Search: "search",
   Signal: "signal",

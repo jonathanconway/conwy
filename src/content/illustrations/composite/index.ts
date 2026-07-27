@@ -11,6 +11,7 @@ export * from "./dependency-updates";
 export * from "./designerly-cv";
 export * from "./diagramming-react";
 export * from "./diagramming-typescript";
+export * from "./etibs";
 export * from "./flaky-tests";
 export * from "./front-end-development-checklist";
 export * from "./front-end-observability";

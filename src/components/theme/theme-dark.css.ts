@@ -3,6 +3,7 @@ import { createTheme } from "@vanilla-extract/css";
 import { aboutMeThemeDark } from "../about-me/about-me.css-theme";
 import { articlesTagFiltersThemeDark } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeDark } from "../aside/aside.css-theme";
+import { blockQuoteDisclaimerThemeDark } from "../block-quote/block-quote-disclaimer/block-quote-disclaimer.css-theme";
 import { blockQuoteSummaryThemeDark } from "../block-quote/block-quote-summary/block-quote-summary.css-theme";
 import { blockQuoteThemeDark } from "../block-quote/block-quote.css-theme";
 import { boxThemeDark } from "../box/box.css-theme";
@@ -39,6 +40,7 @@ export const themeDarkClass = createTheme(vars, {
   aside: asideThemeDark,
   blockQuote: blockQuoteThemeDark,
   blockQuoteSummary: blockQuoteSummaryThemeDark,
+  blockQuoteDisclaimer: blockQuoteDisclaimerThemeDark,
   box: boxThemeDark,
   button: buttonThemeDark,
   checkbox: checkboxThemeDark,

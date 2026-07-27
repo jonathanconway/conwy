@@ -8,7 +8,7 @@ import { ArticleMeta, PostTags } from "@/framework/client";
 export const meta: ArticleMeta = {
   title: "${title}",
   blurb: "",
-  date: "${date}",
+  createdDate: "${date}",
   slug: "${name}",
   type: "article",
   tags: [],

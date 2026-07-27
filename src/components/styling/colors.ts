@@ -34,6 +34,7 @@ export const colors = {
   violet_700: "rgb(109, 40, 217)",
   yellow_700: "oklch(55.4% 0.135 66.442)",
   yellow_400: "oklch(85.2% 0.199 91.936)",
+  yellow_50: "oklch(98.7% 0.026 102.212)",
   yellow_300: "rgb(255, 255, 105)",
   white: "rgb(255, 255, 255)",
 };

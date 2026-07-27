@@ -1,6 +1,7 @@
 import { aboutMeThemeBase } from "../about-me/about-me.css-theme";
 import { articlesTagFiltersThemeBase } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeBase } from "../aside/aside.css-theme";
+import { blockQuoteDisclaimerThemeBase } from "../block-quote/block-quote-disclaimer/block-quote-disclaimer.css-theme";
 import { blockQuoteSummaryThemeBase } from "../block-quote/block-quote-summary/block-quote-summary.css-theme";
 import { blockQuoteThemeBase } from "../block-quote/block-quote.css-theme";
 import { boxThemeBase } from "../box/box.css-theme";
@@ -35,6 +36,7 @@ export const themeBase = {
   aside: asideThemeBase,
   blockQuote: blockQuoteThemeBase,
   blockQuoteSummary: blockQuoteSummaryThemeBase,
+  blockQuoteDisclaimer: blockQuoteDisclaimerThemeBase,
   box: boxThemeBase,
   button: buttonThemeBase,
   checkbox: checkboxThemeBase,

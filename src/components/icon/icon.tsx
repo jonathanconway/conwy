@@ -1,5 +1,3 @@
-import { FunctionComponent } from "react";
-
 import { withTooltip } from "../tooltip";
 
 import { IconProps } from "./icon-props";
