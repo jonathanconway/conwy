@@ -3,13 +3,13 @@ import { MdxImg } from "@/components/mdx";
 
 > Summary: Completing an Introduction to Calculus taught me a range of interesting lessons including lessons about learning, such as the importance of understanding fundamentals, visualisation, geometric analogies, parts vs. whole, focussing on correcting mistakes and thinking deeply about small things.
 
-> “I never regretted the time I spent on history and on math. Math sharpens
+> Pull-quote: “I never regretted the time I spent on history and on math. Math sharpens
 > your mind, history gives you some idea of your limitations and what’s going
 > on in the world.”
 >
 > – Bjarne STROUSTRUP ([Video](https://www.youtube.com/watch?v=-QxI-RP6-HM))
 
-> “Curiosity is recognizing a gap in our knowledge about something that
+> Pull-quote: “Curiosity is recognizing a gap in our knowledge about something that
 > interests us, and becoming emotionally and cognitively invested in closing
 > that gap through exploration and learning.”
 >
@@ -106,16 +106,17 @@ In this way I was able to use my skill with object oriented (OO) modelling as a 
 
 By gradually building up and enriching in my mind these characteristics of the derivative (often meditating on them during long walks) I gradually started to develop an understanding of its basic nature. This helped me a later to understand the role the derivative plays in the bigger scheme of things, such as when differentiating and integrating. A lot of this meditation involved connecting the concept to other concepts I was more familiar with, such as functions, real numbers and basic arithmetic.
 
-Another case where this technique helped was in understanding [Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than trying to think of it as a particular number (which stumped me for a while) I found it better to think of it as the *criteria* for some particular number.
+Another case where this technique helped was in understanding [Euler's number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than trying to understand the particular number all at once (which stumped me for a while) I learned to think of _e_ more conceptually – as a set of *criteria* for a particular number. So I didn't need to understand the number as a whole, e.g. why it starts off as 2.71828... etc. I only needed to understand that it is a particular number which has certain carefully chosen properties.
 
-In relation database terms, I imagined a `SELECT` statement used to find Euler's number from a list of famous mathematical constants. It might include multiple `WHERE` or `AND` clauses, but yield a single result: _e_ itself.
-
-The criteria would be:
+The list of properties might start off like this:
 - Is a real number
 - Is larger than 1
 - Is the limit, as _n_ goes to infinity, of 1 plus 1 over _n_ all raised to the _n_ power
+- Is a number which, when used as an input to a function, gives the same result as the slope (or first derivative) of that function
 
-I won't try to write the full SQL query. 😅 But at a high level, it might start off like this:
+(That last point was brilliantly made by Becky Weiss in an [AWS Conference talk](https://www.youtube.com/watch?v=YMj33ToS8cI).)
+
+In relational database terms, I imagined a `SELECT` statement used to find Euler's number in an imaginary table of all mathematical constants. It might include multiple `WHERE` or `AND` clauses, but yield a single result: _e_ itself. I won't try to imagine the full query for such a number. 😅 But it might start off like this:
 
 ```sql
 SELECT *
@@ -123,6 +124,8 @@ FROM MathConstants
 WHERE NumberType = 'REAL_NUMBER'
 AND Value > 1
 ```
+
+By thinking of _e_ in terms of its constituent properties, rather than waiting for some "flash of insight", I was able to gradually develop an intuition for what _kind_ of number it is and how it is used.
 
 ## Growth can be deceptive
 
