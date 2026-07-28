@@ -2173,13 +2173,13 @@ These books may serve as a handy guide and reference on UML:
     <id>etibs</id>
     <content xml:lang="en" type="html">&gt; Disclaimer: The information and the links provided here are for general information only and should not be taken as constituting professional advice. You should always do your own research when making any financial decisions. 
 
-There is much general discussion about inflation. Recent years have seen higher-than-average inflation rates on basic goods and services such as food and housing, both in Australia and abroad.
+There is much general discussion about inflation. Recent years have seen higher-than-average inflation rates on basic goods and services such as food and housing, both in Australia and abroad. In my own search for inflation protection, I stumbled upon an interesting solution available to retail investors like me.
 
-In my own search for inflation protection, I stumbled upon Australian eTIBs or [Exchange-traded Treasury Indexed Bonds](https://www.australiangovernmentbonds.gov.au/government-bonds-explained/exchange-traded-treasury-indexed-bonds-etibs-explained). eTIBs are government bonds issued by the the Australian Government (specifically, the [Treasury](https://treasury.gov.au)). These bonds function similarly to [US TIPS](https://www.investopedia.com/terms/t/tips.asp) or [UK Indexed Gilts](https://www.dmo.gov.uk/data/gilt-market/index-linked-gilts/), with inflation-adjusted coupon payments and principle upon maturity, but are denominated in Australian Dollars (AUD) and indexed according to [Australian CPI](https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia).
+**Australian eTIBs** or [Exchange-traded Treasury Indexed Bonds](https://www.australiangovernmentbonds.gov.au/government-bonds-explained/exchange-traded-treasury-indexed-bonds-etibs-explained) are government bonds issued by the Australian Government (specifically, the [Treasury](https://treasury.gov.au)). These bonds function similarly to [US TIPS](https://www.investopedia.com/terms/t/tips.asp) or [UK Indexed Gilts](https://www.dmo.gov.uk/data/gilt-market/index-linked-gilts/), with inflation-adjusted coupon payments and principal upon maturity. They are denominated in Australian Dollars (AUD) and indexed according to [Australian CPI](https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia).
 
-These are very safe government bonds and are available for purchase to all Australians in amounts that are affordable for individual investors. If you want to protect a fixed sum (or sums) of money from inflation, over a fixed period of time, eTIBs may be a good solution for you.
+These are very safe government bonds and are available for purchase to all Australians (anyone with access to the ASX, in fact) in amounts that are affordable for individual investors. If you want to protect a fixed sum (or sums) of money from inflation, over a fixed period of time, eTIBs may be a good solution for you.
 
-The mechanics of these bonds are explained in various online resources, including an [Australian Government bonds course](https://www.asx.com.au/investors/investment-tools-and-resources/online-courses/australian-government-bonds-course) on the ASX website. But I thought I&#39;d describe them here in my own words – for my own understanding and hopefully yours too!
+The mechanics of these bonds are explained in various online resources, including an [Australian Government bonds course](https://www.asx.com.au/investors/investment-tools-and-resources/online-courses/australian-government-bonds-course) on the ASX website. I thought I&#39;d describe them here, in my own words, both for my own understanding and hopefully yours too!
 
 ## eTIBs and units
 
@@ -2200,7 +2200,7 @@ eTIBs are bought and sold on the [ASX (Australian Stock Exchange)](https://asx.c
 
 ![Screenshot of Buy form on SelfWealth with eTIB selected](/images/articles/etibs/selfwealth-buy-form-gsi.png)
 
-## Coupons and principle on maturity
+## Coupons and principal on maturity
 
 An eTIB unit, bought and held for its full duration, provides the following income:
 
@@ -2228,7 +2228,7 @@ Each eTIB has two face values:
 - An **original** face value of $100
 - An **adjusted** face value of $100 + an inflation adjustment
 
-The original face value is fixed and never changes for the life of the bond. It represents the minimum value of the bond. No matter which direction the inflation rate goes – either up or down – you are guaranteed to receive coupons and principle repayment on maturity of at least $100 original face value per unit.
+The original face value is fixed and never changes for the life of the bond. It represents the minimum value of the bond. No matter which direction the inflation rate goes – either up or down – you are guaranteed to receive coupons and principal repayment on maturity of at least $100 original face value per unit.
 
 The adjusted face value, in contrast, changes each quarter, according to the increase or decrease in inflation (CPI) over the prior quarter.
 
@@ -2240,11 +2240,15 @@ For example, suppose we bought one unit of an eTIB with an adjusted face value o
 
 The current adjusted face values for all eTIBs can be found on the [Bonds - prices](https://www.asx.com.au/markets/trade-our-cash-market/equity-market-prices/bonds) page under the Exchange-Traded Treasury Indexed Bonds tab on the ASX website.
 
+![Screenshot of eTIB current adjusted face value tab on the ASX website](/images/articles/etibs/etib-adjusted-face-tab-asx.png)
+
+![Screenshot of eTIB current adjusted face value looked up on the ASX website](/images/articles/etibs/etib-adjusted-face-lookup-asx.png)
+
 ## Face value vs price
 
-eTIBs are bought and sold at market prices. Depending on the supply and demand, each eTIB will be available for a different price per unit at a different time. Unit prices vary over time, but there are certain patterns: typically shorter maturing eTIBs are priced above $100, while longer maturing eTIBs are priced below $100.
+eTIBs are bought and sold at market prices. Depending on supply and demand, each eTIB will be available for a different price per unit at a different time.
 
-(There is some theory as to why bonds are priced in this way, linking it to factors such as [economic forecasting](https://www.aofm.gov.au/publications/research/estimation-term-premium-within-australian-treasury-bonds) and [investor habit-formation](https://ideas.repec.org/h/eee/finchp/2-13.html).)
+Unit prices vary over time, but tend to hover around the $100 mark. There are certain patterns: typically shorter maturing eTIBs are priced above $100, while longer maturing eTIBs are priced below $100. (There is some theory as to why bonds are priced in this way, linking it to factors such as [economic forecasting](https://www.aofm.gov.au/publications/research/estimation-term-premium-within-australian-treasury-bonds) and [investor habit-formation](https://ideas.repec.org/h/eee/finchp/2-13.html).)
 
 ![Diagram depicting eTIB price variance compared to face value](/images/articles/etibs/etibs-price-vs-face-value.svg)
 
@@ -2258,12 +2262,14 @@ There are various risks and downside to eTIBs that you should be aware of.
 
 Here are a few I&#39;ve identified:
 
-1. Price volatility
-2. Inflation decreases
-3. Sovereign credit risk
-4. Currency devaluation
-5. Individual inflation
-6. Tax
+- Price volatility
+- Inflation decreases
+- Sovereign credit risk
+- Policy change
+- Currency devaluation
+- Individual inflation
+- Tax
+- Maturity gaps
 
 ### Price volatility
 
@@ -2279,17 +2285,21 @@ For example, if you bought a bond at a price of $110 with an adjusted face value
 
 For this reason, it&#39;s best to diversify your safe assets. Rather than relying solely on eTIBs, you might hold some mixture of eTIBs, regular bonds, cash and various other safe assets.
 
-Alternatively, you can simply accept that you might lose some money in an inflation and make your calculations around a &quot;worst-case&quot; scenario. For example, you could calculate your eTIB income around &quot;worst case&quot; (deflationary), &quot;best case&quot; (inflationary) and &quot;average&quot; (average of worst and best) scenarios. In the planning spreadsheet I shared below, you can find these as columns.
+Alternatively, you can simply accept that you might lose some money in a deflation and make your calculations include the possibility of a &quot;worst-case&quot; scenario. If you invest enough into eTIBs that you still have a substantial amount without the inflation adjustment, then at least you have met your goals, even if you ended up losing money. In the planning spreadsheet I share at the end of this article, you can find columns for &quot;worst case&quot; (deflationary), &quot;best case&quot; (inflationary) and &quot;average&quot; (average of worst and best) scenarios. 
 
-Most of the time, however, inflation does not down. During periods of price stability, inflation is low. The rate of increase of inflation reduces, but prices do still increase. This is known as [disinflation](https://en.wikipedia.org/wiki/Disinflation) and is a kind of &quot;steady state&quot; that the Reserve Bank explicitly targets. In disinflation, your eTIBs continue to provide inflation protection.
+Most of the time, however, inflation does not go down. During periods of price stability, which is most periods, inflation is low but above zero. The rate of increase of inflation reduces, but prices do still increase very gradually. This is a &quot;steady state&quot; that the Reserve Bank deliberately targets, to meet its [mandate of maintaining price stability](https://www.rba.gov.au/about-rba/). Even in a disinflation (a reduction in the rate of increase of inflation), your eTIBs will continue to provide inflation protection.
 
 ### Sovereign credit risk
 
-These are very safe government bonds, issued by a government with a world-leading credit rating.
+Australian government bonds are very safe assets, issued by a government with a world-leading credit rating. Relative to other governments, Australia is ranked highly by prominent ratings agencies such as [Moodys](https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/moodys-affirms-australias-aaa-credit-rating) and [Fitch](https://www.fitchratings.com/entity/australia-80442187).
 
-The Australian Government is known for various mishaps, but bond defaults is not one of them. Relative to other governments, Australia is ranked highly by prominent ratings agencies such as [Moodys](https://ministers.treasury.gov.au/ministers/jim-chalmers-2022/media-releases/moodys-affirms-australias-aaa-credit-rating) and [Fitch](https://www.fitchratings.com/entity/australia-80442187).
+Bond defaults, while extremely unlikely, are possible, of course. So are extreme weather events, serious health issues, etc. One must balance the risks of inflation protection against other risks including the risk of inflation itself – inflation is highly likely to continue, at least moderately, as it is part of the Reserve Bank&#39;s target.
 
-Bond defaults are possible, of course, but so are extreme weather events, serious health issues, etc. One must balance the risks of inflation protection against other risks including the risk of inflation itself.
+### Policy change
+
+Government policies can and do change over time. Changes in bond issuance and payments, taxation of bond income and calculation of CPI could all impact your eTIBs.
+
+Of course, policy changes need not always be adverse. Some might even be beneficial. For example, the changes mentioned in the Tax section in this article might actually benefit the inflation protection of eTIBs.
 
 ### Currency devaluation
 
@@ -2319,17 +2329,31 @@ There can be mitigating factors to such an imbalance, however.
 
 eTIB income is fully taxable, the same as employment and dividend income.
 
-Under current tax rules (mid-2026), capital growth on eTIBs is also subject to Capital Gains Tax (CGT), which would be payable if you sell a bond at a gain or a bond matures and you receive the principle adjustment realised as a capital gain.
+Under current tax rules (mid-2026), capital growth on eTIBs is also subject to Capital Gains Tax (CGT), which would be payable if you sell a bond at a gain or a bond matures and you receive the principal adjustment realised as a capital gain.
 
 However under upcoming tax legislation, the capital growth component of eTIB income may cease to be taxable. This is because, assuming capital growth is exactly equal to inflation over the period of holding, it would be excluded from the 30% minimum tax on capital gains. This is outlined in the [Budget Explainer 2026-27](https://budget.gov.au/content/factsheets/download/tax-explainers-negative-gearing-capital-gains-tax.pdf) under the Cost base indexation section (pp. 2).
 
-## Where eTIBs might fit in
+### Maturity gaps
 
-Some cash set aside for a rainy day can provide a &quot;good enough&quot; short-term inflation hedge, if invested at the highest possible interest rate, such as in a High Interest Savings Account (HISA) or term deposit. The interest on cash can make up for much of the inflation.
+There are, unfortunately, long gaps between the maturity dates. For example, there is a 5-year gap between the maturity of GSIO35 and the maturity of GSIO40. During those gaps, the return from the prior period needs to be held in some form that won&#39;t be eroded too much by inflation.
 
-The problem is that, over the longer term, that money may eventually be eroded by inflation. This is because the [Reserve Bank of Australia](https://www.rba.gov.au) (RBA) deliberately targets long-term mild inflation in order to maintain full employment (at the time of writing). Even a modest inflation rate compounds over time. So while 3% inflation might not seem like much, compounded over 10 or more years, it will reduce your $100 savings to only around $73 (100 * ((1 - 0.03) ^ 10) ≈ $73.74).
+One idea is to hold them in an interest-bearing cash account, such as a High Interest Savings Account (HISA) and/or Term Deposits. Additionally, some funds could be re-invested into later eTIBs. This is described in more detail in the [Ladder strategy](#ladder-strategy) section of this article.
 
-[Ben Felix, speaking on the topic of inflation protection](https://www.youtube.com/watch?v=1a3XnvRCcVo), says that diversified equities in a low-cost index fund provide the best long-term protection against inflation. This is backed up by strong theories and empirical evidence. However (and this is also backed up by theories and evidence) equities are _not at all times_ a reliable inflation hedge. Stocks are volatile and can undergo periods of downturn. So you might still want some &quot;safe asset&quot; to cover your expenses during periods when equities are down.
+## Where eTIBs fit in a portfolio
+
+&gt; Pull-quote: “The long term is made up of many short terms.”
+&gt;
+&gt; – Ronnie COLEMAN
+
+Some cash set aside for a rainy day can provide a &quot;good enough&quot; short-term inflation hedge, if invested at the highest possible interest rate, such as in a High Interest Savings Account (HISA) or Term Deposit. The interest on cash tends to make up for much of the inflation. (This is backed up by empirical evidence and by the Reserve Bank&#39;s deliberate measures of increasing the cash rate to mitigate inflation.)
+
+There is a longer-term problem, however: money you save today will likely be heavily eroded by inflation 10 years from now. This is because the [Reserve Bank of Australia](https://www.rba.gov.au) (RBA) deliberately targets long-term mild inflation in order to maintain full employment (at the time of writing). Even a modest inflation rate compounds over time. So while 3% inflation might not seem like much, compounded over 10 or more years, it will reduce your $100 savings to only around $73 (100 * ((1 - 0.03) ^ 10) ≈ $73.74).
+
+[Ben Felix, speaking on the topic of inflation protection](https://www.youtube.com/watch?v=1a3XnvRCcVo), says that diversified equities in a low-cost index fund provide the best long-term protection against inflation. This is backed up by strong theoretical and empirical evidence. 
+
+However (and this is also backed up by strong theoretical and empirical evidence) equities are _not at all times_ a reliable inflation hedge. Stocks are volatile and can undergo periods of downturn. Worse – periods of high unexpected inflation tend to negatively impact stock prices.
+
+So you might still want some &quot;safe asset&quot; to cover your expenses during periods when inflation is high and equities are down. Something that keeps up with inflation but is less volatile than stocks.
 
 ![Diagram representing where eTIBs might fit into an overall portfolio](/images/articles/etibs/etibs-portfolio-fit.svg)
 
@@ -2337,17 +2361,17 @@ eTIBs, along with other fixed income assets, can help bridge the gap between low
 
 ![Graph representing eTIB income over a hypothetical 1-year period](/images/articles/etibs/real-return-equities-etibs-cash.svg)
 
-If you&#39;re still working, this income can supplement your earned income. If you&#39;re retired, it can help reduce or eliminate your equity withdrawals, increasing the long-term safety and stability of your equity portfolio.
+If you&#39;re still working, this income can supplement your earned income. If you&#39;re retired, it can help reduce or eliminate your equity withdrawals, increasing the long-term safety and stability of your equity portfolio. This is the niche that eTIBs can help you to fill.
 
-## Ladder strategy for consumption smoothing
+## Ladder strategy
 
-Unless you have a lot of money to invest, the coupon payments from eTIBs won&#39;t on their own be large enough to offer meaningful protection. The trick is to buy eTIBs on multiple maturity dates and earn inflation-protected income from both coupon payments and maturity payments. These eTIBs form a &quot;ladder&quot; from shortest to longest, providing income over multiple periods.
+Unless you have a lot of money to invest, the coupon payments from eTIBs won&#39;t on their own be large enough to offer meaningful protection. One trick is to buy eTIBs on multiple maturity dates and earn inflation-protected income from both coupon payments and maturity payments. These eTIBs form a &quot;ladder&quot; from shortest to longest, providing income over multiple periods.
 
 ![Diagram depicting eTIB ladder strategy for consumption smoothing](/images/articles/etibs/etibs-ladder-strategy.svg)
 
-There are, of course, long gaps between the maturity dates. During those periods, the return from the prior period can be held as cash for short-term needs (HISAs or Term Deposits) and/or re-invested into the next &quot;ladder&quot; of eTIBs. These investments might not totally match inflation, but over periods of ~3-5 years, they should hold most of their value.
+On each maturity, some of the funds are invested into the next &quot;ladder rung&quot; of eTIBs. These re-invested funds might not totally match inflation, but over periods of ~3-10 years, they should hold most of their value.
 
-There is some re-investment risk at the very long-end, as over time, the longer-dated bonds will likely rise in price. But at a 10-15 year period, you can probably count on real equity returns to make up for the downside.
+There is some re-investment risk, as this strategy involves future buying of eTIBs, and, over time, some of these bonds might increase in price. But if the eTIB income is combined with returns from equity investments, then over a 10-15 year period, the total amount for re-investment should match or exceed inflation, allowing you to fairly reliably maintain 5-15 years of safe inflation protection.
 
 ## Summary
 
@@ -2359,7 +2383,7 @@ However, they do at least provide broad inflation protection according to a clea
 
 Overall, I think they&#39;re worth looking into – either on your own or with the help of your financial adviser.
 
-## Tool for calculating income
+## Calculating income from eTIBs
 
 I built a spreadsheet to calculate income on eTIBs over time. Feel free to download it and tailor it to your own purposes.
 
@@ -5588,16 +5612,17 @@ In this way I was able to use my skill with object oriented (OO) modelling as a 
 
 By gradually building up and enriching in my mind these characteristics of the derivative (often meditating on them during long walks) I gradually started to develop an understanding of its basic nature. This helped me a later to understand the role the derivative plays in the bigger scheme of things, such as when differentiating and integrating. A lot of this meditation involved connecting the concept to other concepts I was more familiar with, such as functions, real numbers and basic arithmetic.
 
-Another case where this technique helped was in understanding [Euler&#39;s number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than trying to think of it as a particular number (which stumped me for a while) I found it better to think of it as the *criteria* for some particular number.
+Another case where this technique helped was in understanding [Euler&#39;s number](https://en.wikipedia.org/wiki/E_(mathematical_constant)). Rather than trying to understand the particular number all at once (which stumped me for a while) I learned to think of _e_ more conceptually – as a set of *criteria* for a particular number. So I didn&#39;t need to understand the number as a whole, e.g. why it starts off as 2.71828... etc. I only needed to understand that it is a particular number which has certain carefully chosen properties.
 
-In relation database terms, I imagined a `SELECT` statement used to find Euler&#39;s number from a list of famous mathematical constants. It might include multiple `WHERE` or `AND` clauses, but yield a single result: _e_ itself.
-
-The criteria would be:
+The list of properties might start off like this:
 - Is a real number
 - Is larger than 1
 - Is the limit, as _n_ goes to infinity, of 1 plus 1 over _n_ all raised to the _n_ power
+- Is a number which, when used as an input to a function, gives the same result as the slope (or first derivative) of that function
 
-I won&#39;t try to write the full SQL query. 😅 But at a high level, it might start off like this:
+(That last point was brilliantly made by Becky Weiss in an [AWS Conference talk](https://www.youtube.com/watch?v=YMj33ToS8cI).)
+
+In relational database terms, I imagined a `SELECT` statement used to find Euler&#39;s number from an imaginary table of all mathematical constants. It might include multiple `WHERE` or `AND` clauses, but yield a single result: _e_ itself. I won&#39;t try to write the full SQL query. 😅 But at a high level, it might start off like this:
 
 ```sql
 SELECT *
@@ -5605,6 +5630,8 @@ FROM MathConstants
 WHERE NumberType = &#39;REAL_NUMBER&#39;
 AND Value &gt; 1
 ```
+
+By thinking of _e_ in terms of its constituent properties, rather than waiting for some &quot;flash of insight&quot;, I was able to gradually develop an intuition for what the number is and how it is used.
 
 ## Growth can be deceptive
 
