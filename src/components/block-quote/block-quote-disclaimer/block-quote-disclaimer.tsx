@@ -11,7 +11,7 @@ export function BlockQuoteDisclaimer({
 }: BlockQuoteDisclaimerProps) {
   return (
     <blockquote className={className} {...restProps}>
-      Disclaimer: {children}
+      ⚠️ Disclaimer: {children}
     </blockquote>
   );
 }
