@@ -35,6 +35,12 @@ export function ImageModal(props: ImageModalProps) {
               image={carousel.selectedItem}
               src={src}
               alt={alt ?? src}
+              style={{
+                maxHeight: "80vh",
+                maxWidth: "80vw",
+                height: "100%",
+                width: "auto",
+              }}
             />
 
             {alt && title && <Text type="small">▲ {alt}</Text>}

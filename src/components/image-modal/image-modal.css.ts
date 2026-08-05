@@ -15,7 +15,7 @@ export const imageModalButtonsContainer = style({
 
 export const imageModal = style({
   ...modalMixins.modal,
-  width: "80vw",
+  width: "90vw",
   height: "90vh",
   "@media": {
     [media.lessThanMd]: {
