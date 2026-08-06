@@ -22,7 +22,7 @@ function QuoteAttributionLine1({ quote }: QuoteAttributionProps) {
     return <QuoteAttributionAuthor quote={quote} />;
   } else {
     return (
-      <Text type={TextTypes.Body}>
+      <Text type={TextTypes.Small}>
         – <QuoteAttributionSource quote={quote} />
       </Text>
     );
@@ -44,7 +44,7 @@ function QuoteAttributionAuthor({ quote }: QuoteAttributionProps) {
 
   if (quote.meta.author?.url) {
     return (
-      <Text type={TextTypes.Body}>
+      <Text type={TextTypes.Small}>
         –{" "}
         <Link href={quote.meta.author.url} target="_blank" size={TextSizes.sm}>
           {formattedQuoteAuthorName}
