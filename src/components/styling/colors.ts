@@ -37,4 +37,5 @@ export const colors = {
   yellow_50: "oklch(98.7% 0.026 102.212)",
   yellow_300: "rgb(255, 255, 105)",
   white: "rgb(255, 255, 255)",
+  white_opacity_50: "rgba(255, 255, 255, 0.5)",
 };

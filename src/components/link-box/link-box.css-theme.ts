@@ -1,6 +1,9 @@
 import { colors } from "../styling";
 
 export const linkBoxThemeBase = {
+  background: {
+    color: "",
+  },
   hover: {
     background: {
       color: "",
@@ -9,6 +12,9 @@ export const linkBoxThemeBase = {
 };
 
 export const linkBoxThemeLight = {
+  background: {
+    color: colors.white_opacity_50,
+  },
   hover: {
     background: {
       color: colors.stone_200,
@@ -17,6 +23,9 @@ export const linkBoxThemeLight = {
 };
 
 export const linkBoxThemeDark = {
+  background: {
+    color: colors.white_opacity_50,
+  },
   hover: {
     background: {
       color: colors.stone_800,

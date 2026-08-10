@@ -11,8 +11,6 @@ import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
 import { Text, TextTypes } from "../../../text";
 
-import * as styles from "./articles-list-item.css";
-
 export type ArticlesListItemProps = ArticleMeta;
 
 export function ArticlesListItem(props: ArticlesListItemProps) {

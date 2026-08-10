@@ -17,6 +17,7 @@ export const linkBox: ComplexStyleRule = {
   textDecoration: "none",
   color: vars.text.body.color,
   ...focusOutline,
+  backgroundColor: vars.linkBox.background.color,
 
   ":hover": {
     backgroundColor: vars.linkBox.hover.background.color,
