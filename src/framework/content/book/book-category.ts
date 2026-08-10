@@ -17,6 +17,7 @@ export const BookCategories = {
   Science: "science",
   SelfHelp: "self-help",
   SoftwareDevelopment: "software-development",
+  SoftwareEngineering: "software-engineering",
   Spirituality: "spirituality",
   Writing: "writing",
 } as const;
