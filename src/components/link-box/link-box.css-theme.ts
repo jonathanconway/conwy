@@ -24,7 +24,7 @@ export const linkBoxThemeLight = {
 
 export const linkBoxThemeDark = {
   background: {
-    color: colors.white_opacity_50,
+    color: colors.stone_800,
   },
   hover: {
     background: {
