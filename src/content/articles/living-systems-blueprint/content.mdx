@@ -1,0 +1,178 @@
+Imagine you're a new joiner in a corporate environment.
+
+You are faced with a complex network of systems: databases, servers, platforms, logs, etc. They're all scattered around various wiki pages, chat messages, etc.
+
+You have the challenge of trying to get your head across everything fast enough to be useful to the team.
+
+**You need a map of where to find everything.**
+
+<img src="/images/illustrations/static/map.png" alt="Map illustration" />
+
+When you get hit with a new code review, bug report, prod support ticket or just regular task, you need to quickly see a map of the whole ecosystem, locate the specific systems that matter for the problem at hand, and jump into them instantly.
+
+This is not about conceptual or theoretical knowledge. It's about being able to actually navigate and **access real, running systems**.
+
+- Read actual logs
+- Query actual databases
+- Push actual code changes
+
+Here is where a "living systems blueprint" might come in handy.
+
+
+## What it is
+
+Borrowed from the [service blueprint](https://www.nngroup.com/articles/service-blueprints-definition/), famous in the world of UX design, this is a diagram of services.
+
+> Pull-quote: A service blueprint is a diagram that visualizes the relationships between different service components — people, props (physical or digital evidence), and processes — that are directly tied to touchpoints in a specific customer journey.
+
+However, for our purposes as software engineers, it focusses on technical systems and services.
+
+And it has an important additional feature: ***links***. Crucially, you want this to be more than a diagram. It should **link** you to the real systems so you can actually ... you know ... *do stuff*!
+
+You can create a diagram like this yourself, for your own use. Its sole purpose is to help you navigate your digital work environment. To diagrammatically represent all the important systems you might work with and how they connect to each-other.
+
+## Diagram format
+
+Here's an example of such a diagram:
+
+![Example of a living systems blueprint diagram](/images/articles/living-systems-blueprint/systems-blueprint-example.svg?size=large)
+
+Notice the links. **One click** (or copy and paste into a tool) can take you directly to the system.
+
+Say, to a CloudWatch log in Prod. Or a Postgres database in UAT. Or an API request in Postman.
+
+![Example of a living systems blueprint component with links](/images/articles/living-systems-blueprint/systems-blueprint-component-links-example.png)
+
+Here is a breakdown of the elements of the diagram:
+
+<table>
+	<tbody>
+		<tr>
+			<th>
+        Components
+      </th>
+			<td>
+        Depicted by a rectangle<br />
+        <img src="/images/articles/living-systems-blueprint/component-stencil.svg" alt="Components" width="100" />
+      </td>
+			<td>Components of the system, such as services, databases, log storage, blob storage, mobile apps, web front-ends and more.</td>
+		</tr>
+		<tr>
+			<th>
+        Dependencies
+      </th>
+			<td>
+        Depicted by a line and arrow<br />
+        <img src="/images/articles/living-systems-blueprint/connector-dependency-stencil.svg" alt="Components" width="100" />
+      </td>
+			<td>Dependencies between components, so that one "depends upon" another, such as a service depending on a database.</td>
+		</tr>
+		<tr>
+			<th>
+        Compositions
+      </th>
+			<td>
+        Depicted by a line and circle<br />
+        <img src="/images/articles/living-systems-blueprint/connector-composition-stencil.svg" alt="Components" width="100" />
+      </td>
+			<td>Compositions of components, such as parent/child or container/contained.</td>
+		</tr>
+	</tbody>
+</table>
+
+Within each component rectangle, we have:
+
+<table>
+  <tbody>
+    <tr>
+      <th>Icon</th>
+      <td>Quickly identify the type of the service.</td>
+      <td>Simple shape, such as a [Material Design icon](https://fonts.google.com/icons), or one of the standard vendor or cloud provider icons, say for [AWS](https://aws.amazon.com/architecture/icons/), [Azure](https://learn.microsoft.com/en-us/azure/architecture/icons/), [Google Cloud](https://cloud.google.com/icons), etc.</td>
+    </tr>
+    <tr>
+      <th>Title</th>
+      <td>Title of the service, as referenced in code, docs, etc.</td>
+      <td>Text in a larger font.</td>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <td>Type of service. E.g. Web Service, Log, Database, Mobile App, etc.</td>
+      <td>Text in brackets, in a smaller font.</td>
+    </tr>
+    <tr>
+      <th>Links</th>
+      <td>Links to access the entity or related to the entity. For a web application, it might include links to environments. For a database, it might include links to a console or a URI that can be plugged into a database client.</td>
+      <td>Text with underlined links, in a smaller font.</td>
+    </tr>
+  </tbody>
+</table>
+
+Within the "Links" row, you might put links to the system itself, including multiple environments (also known as "stages") such as Development, Staging and Production.
+
+<table>
+  <tbody>
+    <tr>
+      <td><u>Development</u> | <u>Staging</u> | <u>Production</u></td>
+    </tr>
+  </tbody>
+</table>
+
+Now imagine someone comes to you with the following request:
+
+> Help! Panic! I need to find out why Transfer from customer #098238 are failing in UAT!
+
+You can check your living blueprint, locate the Transfer service, see that it's connected to the Transactions database and follow the link to the Console in UAT to query recent transactions.
+
+![Screenshot of example of navigating systems blueprint](/images/articles/living-systems-blueprint/systems-blueprint-component-search-example.png)
+
+
+## How it helps
+
+Of course, you probably won't need a diagram if you're working with only a small number of systems or services on a regular basis. Likely your brain has already memorized the systems and you have browser bookmarks and the like to navigate to them quickly.
+
+But suppose you're working with many services (too many to memorize all their names), with non-trivial integration patterns, which you might need to access unexpectedly at a moment's notice. Then a living systems blueprint might help you out.
+
+A living systems blueprint can serve as a form of ***Long Term Memory (LTM)***. Its spatial and connected form enables you to jump through a complex of network of interconnected systems and quickly locate just the resources you need via links, whether they are logs, consoles, dashboards, code files or anything else.
+
+
+## Systems blueprint sketches
+
+Portions of systems blueprints can be split into "sketches".
+
+You might want to do this if your main systems blueprint gets too crowded with components or if you want to depict a group of interrelated components on their own.
+
+You could share a sketch with a colleague via a link, as part of a discussion in, say, a chat thread, pull request discussion thread or ticket comment thread.
+
+![Screenshot of example of sharing a systems blueprint sketch over Slack](/images/articles/living-systems-blueprint/systems-blueprint-sketch-example.png)
+
+
+## Sources
+
+Where might you acquire the knowledge to build a living systems blueprint?
+
+Anywhere and everywhere...
+
+- Ask your colleagues and managers
+- Search chat and wiki
+- Ask AI agents
+- Analyse code and configuration files
+- Analyse logs and output
+- Analyse the applications(s) themselves
+
+
+
+## Resources
+
+Here are some templates you can use to create your own living systems blueprint diagram:
+
+- [Download: Systems Blueprint Diagram - Template - Draw.io](/downloads/articles/living-systems-blueprint/systems-blueprint-template.drawio)
+- [Download: Systems Blueprint Diagram - Template - Figma](/downloads/articles/living-systems-blueprint/systems-blueprint-template.fig)
+- [Download: Systems Blueprint Diagram - Template - Miro](/downloads/articles/living-systems-blueprint/systems-blueprint-template.rtb)
+
+And some system icon sets, depending on which (if any) vendors/providers you are using:
+
+- [Material icons](https://fonts.google.com/icons)
+- [AWS icons](https://aws.amazon.com/architecture/icons/)
+- [Azure icons](https://learn.microsoft.com/en-us/azure/architecture/icons/)
+- [Google Cloud icons](https://cloud.google.com/icons)
+

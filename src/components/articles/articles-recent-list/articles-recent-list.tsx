@@ -14,6 +14,7 @@ interface ArticlesRecentListProps {
 
 const RECENTS_SECTION_TAGS: readonly PostTag[] = [
   PostTags.SoftwareDevelopment,
+  PostTags.SoftwareEngineering,
   PostTags.Design,
   PostTags.Learning,
   PostTags.Life,

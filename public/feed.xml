@@ -3664,6 +3664,153 @@ Here are some shortcuts others have shared:
   
 
   <entry>
+    <title>Living systems blueprint</title>
+    <link href="https://conwy.co/articles/living-systems-blueprint" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>living-systems-blueprint</id>
+    <content xml:lang="en" type="html">## Living systems blueprint
+
+![Component stencil](/images/articles/living-systems-blueprint/component-stencil.svg)
+
+
+## Motivation
+
+Imagine you&#39;re a new joiner in a corporate environment. There&#39;s a complex network of systems: databases, servers, platforms, logs, etc. They&#39;re all scattered around various wiki pages, chat messages, etc. You&#39;re facing the challenge of trying to get your head across everything fast enough to be useful.
+
+🤯
+
+**What you need is a map of where to find everything.**
+
+😊 🗺️
+
+When you get hit with a new code review, bug report, prod support ticket or just regular task, you need to quickly see a map of the whole ecosystem, locate the specific systems that matter for the problem at hand, and jump into them instantly.
+
+This is not about conceptual or theoretical knowledge. It&#39;s about being able to actually navigate and **access real, running systems**.
+
+- Read actual logs
+- Query actual databases
+* Push actual code changes
+
+Here is where a &quot;living systems blueprint&quot; might come in handy.
+
+
+## What it is
+
+Borrowed from the [service blueprint](https://www.nngroup.com/articles/service-blueprints-definition/) (famous in the world of UX design) this is a diagram of services. But it has one additional – critical – feature: ***links***.
+
+You can create a diagram like this yourself, for your own use. Its sole purpose is to ground you in the layout of your digital work environment. To diagrammatically represents all the important systems you work with and how they connect to each-other. But you also want it to be more than a diagram. It should link you to the real systems so you can actually ... you know ... *do stuff*.
+
+
+## Diagram format
+
+Here&#39;s an example of such a diagram:
+
+The elements are as follows:
+
+
+	
+		
+			Components
+			Components of the system, such as services, databases, log storage, blob storage, mobile apps, web front-ends and more.
+			Depicted by rectangle
+		
+		
+			Dependencies
+			Dependencies between components, so that one &quot;depends upon&quot; another, such as a service depending on a database.
+			Depicted by line and arrow
+		
+		
+			Compositions
+			Compositions of components, such as parent/child or container/contained.
+			Depicted by line and circle
+		
+	
+
+
+Within each component, you might put:
+
+
+  
+    
+      Icon
+      Quickly identify the type of the service.
+      Simple shape, a Material Design icon, or one of the standard Cloud icons (for AWS, Azure, GCS, etc).
+    
+    
+      Title
+      Title of the service, as referenced in code, docs, etc.
+      Text in a larger font.
+    
+    
+      Type
+      Type of service. E.g. Web Service, Log, Database, Mobile App, etc.
+      Text in brackets, in a smaller font.
+    
+    
+      Links
+      Links to access the entity or related to the entity. For a web application, it might include links to environments. For a database, it might include links to a console or a URI that can be plugged into a database client.
+      Text with underlined links, in a smaller font.
+    
+  
+
+
+Within the &quot;Links&quot; row, you might put links to the system itself, including multiple environments (also known as &quot;stages&quot;) such as Development, Staging and Production.
+
+
+  
+    
+      Development | Staging | Production
+    
+  
+
+
+Now imagine someone comes to you with the following request:
+
+&gt; Help! Panic! I need to find out why Payments from customer #098238 are failing in UAT!
+
+You can check your living blueprint, locate the Payment service, locate the Logs entry it&#39;s connected to, follow the UAT link and quickly view recent logs from the last 5 days.
+
+
+## How it helps
+
+Of course, you don&#39;t need a diagram for this if you&#39;re working with a service such as &quot;Payments&quot; regularly on a daily basis, examining its logs in UAT.
+
+But this is helpful if you&#39;re working infrequently with a service. Or if you&#39;re working with many services and splitting your time across them all, so that at least some of them might not be in your Short Term Memory (STM).
+
+A diagram like this serves as a form of Long Term Memory (LTM). Its spacial and connected form enables you to jump through a complex of network of interconnected systems and quickly locate just the resources you need via links, whether they are logs, consoles, dashboards, code files or anything else.
+
+
+## Sketching systems blueprints
+
+Portions of systems blueprints can be split into &quot;sketches&quot;.
+
+You might want to do this if your main systems blueprint gets too crowded with components or if you want to depict a group of interrelated components separately.
+
+You could share a sketch with a colleague via a link, as part of a discussion in, say, a chat thread, pull request discussion thread or ticket comment thread.
+
+
+
+## Sources
+
+How do you acquire the knowledge to build such a diagram in the first place?
+
+Anywhere and everywhere...
+
+- Ask your colleagues and managers
+- Search chat and wiki
+- Ask AI agents
+- Analyse code and configuration files
+- Analyse logs and output
+- Analyse the applications(s) themselves
+
+
+
+## Resources
+</content>
+  </entry>
+  
+
+  <entry>
     <title>How to lose weight (without getting lucky)</title>
     <link href="https://conwy.co/articles/lose-weight" />
     <updated>2026-02-18T00:00:00.000Z</updated>

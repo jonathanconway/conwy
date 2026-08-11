@@ -1,0 +1,48 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="mL3pMcYkNG5oqi3yqGh_">
+    <mxGraphModel dx="584" dy="391" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=1;" value="" vertex="1">
+          <mxGeometry height="120" width="160" x="80" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=14;" value="Name" vertex="1">
+          <mxGeometry height="30" width="160" x="80" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=10;" value="&lt;font&gt;(Type)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="80" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=10;" value="&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Links A: &lt;span style=&quot;text-decoration: underline; color: rgb(0, 127, 255);&quot;&gt;&lt;a href=&quot;https://www.conwy.co&quot;&gt;Link1&lt;/a&gt;&lt;/span&gt; | &lt;span style=&quot;text-decoration: underline; color: rgb(0, 127, 255);&quot;&gt;&lt;a href=&quot;https://www.conwy.co&quot;&gt;Link2&lt;/a&gt;&lt;/span&gt; | &lt;span style=&quot;text-decoration: underline; color: rgb(0, 127, 255);&quot;&gt;&lt;a href=&quot;https://www.conwy.co&quot;&gt;Link3&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="80" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=10;" value="&lt;span&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Links B: &lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap; text-decoration: underline; color: rgb(0, 127, 255);&quot;&gt;&lt;a href=&quot;https://www.conwy.co&quot;&gt;Link1&lt;/a&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt; | &lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap; text-decoration: underline; color: rgb(0, 127, 255);&quot;&gt;&lt;a href=&quot;https://www.conwy.co&quot;&gt;Link2&lt;/a&gt;&lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt; | &lt;/span&gt;&lt;span style=&quot;white-space: pre-wrap; text-decoration: underline; color: rgb(0, 127, 255);&quot;&gt;&lt;a href=&quot;https://www.conwy.co&quot;&gt;Link3&lt;/a&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="80" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="150" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;curved=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120.04" y="320.04" />
+              <mxPoint x="200.04" y="320.04" />
+            </Array>
+            <mxPoint x="119.96" y="280" as="sourcePoint" />
+            <mxPoint x="200" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7LJ2sPt9Qlk_7DxAjCoL-11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=oval;endFill=0;curved=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="120.04" y="480.04" />
+              <mxPoint x="200.04" y="480.04" />
+            </Array>
+            <mxPoint x="120" y="440" as="sourcePoint" />
+            <mxPoint x="200.04" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

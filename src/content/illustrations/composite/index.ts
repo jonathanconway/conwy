@@ -28,6 +28,7 @@ export * from "./self-similar-folder-pattern";
 export * from "./simulating-states";
 export * from "./studying-calculus";
 export * from "./subformats";
+export * from "./systems-blueprint";
 export * from "./tailwind-thoughts";
 export * from "./testing-steps";
 export * from "./three-tests-accessibility";

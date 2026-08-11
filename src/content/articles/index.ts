@@ -16,6 +16,7 @@ export * from "./front-end-development-checklist";
 export * from "./front-end-observability";
 export * from "./interaction-wireframes";
 export * from "./keyboard-shortcuts";
+export * from "./living-systems-blueprint";
 export * from "./lose-weight";
 export * from "./manual-testing";
 export * from "./mindfulness";
