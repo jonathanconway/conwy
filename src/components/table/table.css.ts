@@ -40,7 +40,10 @@ globalStyle(
   tableMixins.tableCellLeft as GlobalStyleRule,
 );
 
-globalStyle(`${table} tbody tr:first-child td`, tableMixins.tableCellBodyTop);
+globalStyle(
+  `${table} tbody:first-child tr:first-child td`,
+  tableMixins.tableCellBodyTop,
+);
 
 globalStyle(`${table} tbody tr:last-child td`, tableMixins.tableCellBodyBottom);
 

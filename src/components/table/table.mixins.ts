@@ -52,6 +52,10 @@ export const tableCellHeader = {
   },
 };
 
+export const tableCellBodyWithoutHeadFirstRow = {
+  borderTop: "none",
+};
+
 export const tableCellBody = {
   ...tableCell,
   borderBottom: "none",

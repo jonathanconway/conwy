@@ -21,6 +21,14 @@ globalStyle(
 );
 
 globalStyle(
+  [
+    `${mdx} table > tbody:first-child > tr:first-child > th`,
+    `${mdx} table > tbody:first-child > tr:first-child > td`,
+  ].join(", "),
+  tableMixins.tableCellBodyWithoutHeadFirstRow as GlobalStyleRule,
+);
+
+globalStyle(
   `${mdx} table thead th:first-child`,
   tableMixins.tableCellHeaderTopLeft,
 );
