@@ -4,11 +4,10 @@ import { tagGroupTitles } from "./tag-group-titles";
 import { tagTitles } from "./tag-titles";
 
 export const meta: ChecklistMeta = {
-  title: "Front end development",
-  slug: "front-end-development",
-  blurb:
-    "Includes front end frameworks and languages, and non-functional requirements.",
-  updatedDate: "2026-07-01",
+  title: "Diagrams",
+  slug: "diagrams",
+  blurb: "Tips for neat, presentable and readable diagrams.",
+  updatedDate: "2026-08-12",
   tagTitles,
   tagGroupTitles,
 };
