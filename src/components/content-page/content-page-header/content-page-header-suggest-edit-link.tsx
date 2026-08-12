@@ -9,7 +9,7 @@ export const ContentPageHeaderSuggestEditLink: ContentPageHeaderPart = (
   props,
 ) => {
   const repoUrl = packageInfo.repository.url;
-  const newIssueUrl = `${repoUrl}/issues/new?q=state%3Aopen+label%3Achecklist`;
+  const newIssueUrl = `${repoUrl}/issues/new?q=state%3Aopen+label%3A${encodeURIComponent(props.content.type)}`;
 
   return (
     <Link href={newIssueUrl} size={TextSizes.xs}>
