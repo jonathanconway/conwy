@@ -7,7 +7,8 @@ import { Article } from "@/framework";
 import content from "./content.mdx";
 import { meta } from "./meta";
 
-export const <%- h.namePascal() %> = {
+export const <%- h.namePascal() %>: Article = {
+  type: "article",
   meta,
   content,
-} as Article;
+};
