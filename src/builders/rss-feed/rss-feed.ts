@@ -5,38 +5,11 @@ import { ArticleMeta, sortArticleMetas } from "@/framework";
 import { convertMdxToMd } from "@/framework/server";
 import { packageInfo } from "@/package-info";
 
-function getArticleFolders() {
-  const articlesPath = `${__dirname}/../../content/articles`;
-  const articleDir = readdirSync(articlesPath);
-  const articleFolders = articleDir.filter((articleDirItem) =>
-    lstatSync(`${articlesPath}/${articleDirItem}`).isDirectory(),
-  );
-  return articleFolders;
-}
-
-async function getArticleMetas(
-  articleFolders: readonly string[],
-): Promise<readonly ArticleMeta[]> {
-  return await Promise.all(
-    articleFolders.map(
-      async (articleFolder) =>
-        (
-          await import(
-            `${__dirname}/../../content/articles/${articleFolder}/meta`
-          )
-        ).meta,
-    ),
-  );
-}
-
-async function getArticleEscapedHTML(slug: string) {
-  const mdxPathFilename = `${__dirname}/../../content/articles/${slug}/content.mdx`;
-  const mdx = readFileSync(mdxPathFilename).toString();
-  const md = convertMdxToMd(mdx);
-  const mdEscaped = escape(md);
-  return mdEscaped;
-}
-
+/**
+ * Builds a feed for RSS readers.
+ * Input: All articles - meta, content.
+ * Output: feed.xml public static file.
+ */
 export async function buildRssFeed() {
   const articleMetas = sortArticleMetas(
     await getArticleMetas(getArticleFolders()),
@@ -82,4 +55,36 @@ export async function buildRssFeed() {
   </feed>`;
 
   writeFileSync(`${__dirname}/../../../public/${filename}`, rss);
+}
+
+function getArticleFolders() {
+  const articlesPath = `${__dirname}/../../content/articles`;
+  const articleDir = readdirSync(articlesPath);
+  const articleFolders = articleDir.filter((articleDirItem) =>
+    lstatSync(`${articlesPath}/${articleDirItem}`).isDirectory(),
+  );
+  return articleFolders;
+}
+
+async function getArticleMetas(
+  articleFolders: readonly string[],
+): Promise<readonly ArticleMeta[]> {
+  return await Promise.all(
+    articleFolders.map(
+      async (articleFolder) =>
+        (
+          await import(
+            `${__dirname}/../../content/articles/${articleFolder}/meta`
+          )
+        ).meta,
+    ),
+  );
+}
+
+async function getArticleEscapedHTML(slug: string) {
+  const mdxPathFilename = `${__dirname}/../../content/articles/${slug}/content.mdx`;
+  const mdx = readFileSync(mdxPathFilename).toString();
+  const md = convertMdxToMd(mdx);
+  const mdEscaped = escape(md);
+  return mdEscaped;
 }

@@ -10,6 +10,7 @@ import { checkboxThemeBase } from "../checkbox/checkbox.css-theme";
 import { checklistThemeBase } from "../checklist/checklist.css-theme";
 import { codeThemeBase } from "../code/code.css-theme";
 import { contentListItemThemeBase } from "../content-list/content-list-item/content-list-item.css-theme";
+import { dividerThemeBase } from "../divider/divider.css-theme";
 import { footerThemeBase } from "../footer/footer.css-theme";
 import { headerHamburgerThemeBase } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeBase } from "../header/header-logo/header-logo.css-theme";
@@ -43,6 +44,7 @@ export const themeBase = {
   checklist: checklistThemeBase,
   code: codeThemeBase,
   contentListItem: contentListItemThemeBase,
+  divider: dividerThemeBase,
   footer: footerThemeBase,
   headerHamburger: headerHamburgerThemeBase,
   headerLogo: headerLogoThemeBase,

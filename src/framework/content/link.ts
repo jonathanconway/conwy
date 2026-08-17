@@ -1,4 +1,4 @@
-import { Url } from "../client";
+import { Url } from "../content/url";
 
 export interface Link {
   readonly url: Url;

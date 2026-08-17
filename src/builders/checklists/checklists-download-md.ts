@@ -3,6 +3,11 @@ import { lstatSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { ChecklistMeta } from "@/framework";
 import { mkDirSyncIfNotExists } from "@/framework/server";
 
+/**
+ * Builds Markdown-formatted downloadable checklists.
+ * Input: All checklists - MDX content files.
+ * Output: downloads checklists md public static files.
+ */
 export async function buildChecklistDownloadMds() {
   const checklistMetas = await getChecklistMetas(getChecklistFolders());
   for (const checklistMeta of checklistMetas) {
