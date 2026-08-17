@@ -21,14 +21,13 @@ export function AppLayout(props: AppLayoutProps) {
   return (
     <html lang="en" className={cn(styles.html, inter.className)}>
       <head>
-        <Verifications />
-
         <ScriptsHead />
       </head>
       <body className={styles.body}>
         <ScriptsBodyFirst />
         {children}
         <ScriptsBodyLast />
+        <Verifications />
       </body>
       <AppLayoutClient />
     </html>
