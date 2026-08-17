@@ -10,7 +10,6 @@ export * from "./content-import-by-slug";
 export * from "./content-types-pluralized";
 export * from "./content-types";
 export * from "./content-url-path";
-export * from "./discussion";
 export * from "./fragment";
 export * from "./idea";
 export * from "./illustration";
