@@ -12,6 +12,6 @@ export const freedomQuote: Quote = {
       title: "Pierre Boulez | Universal Edition",
       url: "https://www.universaledition.com/en/Contacts/Pierre-Boulez/",
     },
-    slug: "billions",
+    slug: "freedom",
   },
 };
