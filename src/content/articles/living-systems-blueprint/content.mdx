@@ -1,14 +1,15 @@
 Imagine you're a new joiner in a corporate environment.
 
-You are faced with a complex network of systems: databases, servers, platforms, logs, etc. They're all scattered around various wiki pages, chat messages, etc.
+You are faced with a complex network of systems: databases, servers, platforms, logs, etc. Links to them are scattered around various internal wiki pages, buried in chat threads, etc.
 
 You have the challenge of trying to get your head across everything fast enough to be useful to the team.
 
-**You need a map of where to find everything.**
+**You need a map of where to find everything that concerns you.**
 
 <img src="/images/illustrations/static/map.png" alt="Map illustration" />
 
-When you get hit with a new code review, bug report, prod support ticket or just regular task, you need to quickly see a map of the whole ecosystem, locate the specific systems that matter for the problem at hand, and jump into them instantly.
+This is because whenever you get hit with a new code review, bug report, prod support ticket or just regular task, you will need to quickly locate specific systems 
+and jump into them instantly.
 
 This is not about conceptual or theoretical knowledge. It's about being able to actually navigate and **access real, running systems**.
 
@@ -117,22 +118,51 @@ Within the "Links" row, you might put links to the system itself, including mult
   </tbody>
 </table>
 
-Now imagine someone comes to you with the following request:
-
-> Help! Panic! I need to find out why Transfer from customer #098238 are failing in UAT!
-
-You can check your living blueprint, locate the Transfer service, see that it's connected to the Transactions database and follow the link to the Console in UAT to query recent transactions.
-
-![Screenshot of example of navigating systems blueprint](/images/articles/living-systems-blueprint/systems-blueprint-component-search-example.png)
-
 
 ## How it helps
 
-Of course, you probably won't need a diagram if you're working with only a small number of systems or services on a regular basis. Likely your brain has already memorized the systems and you have browser bookmarks and the like to navigate to them quickly.
+Building a living systems blueprint has helped me in two ways:
 
-But suppose you're working with many services (too many to memorize all their names), with non-trivial integration patterns, which you might need to access unexpectedly at a moment's notice. Then a living systems blueprint might help you out.
+1. Learning a new system
+2. Working with a complex system
 
-A living systems blueprint can serve as a form of ***Long Term Memory (LTM)***. Its spatial and connected form enables you to jump through a complex of network of interconnected systems and quickly locate just the resources you need via links, whether they are logs, consoles, dashboards, code files or anything else.
+### Learning a new system
+
+It has been demonstrated that ["active learning" techniques](https://cei.umn.edu/teaching-resources/leveraging-learning-sciences/active-engagement-material-improves-learning), such as writing and reacting to real-world problems, can be more effective than passive learning, such as just reading.
+
+Applying this approach to learning systems, it can be helpful to develop in your mind a strong mental model of what your systems are made of and how they work. This can prepare you to "think on your feet", contributing usefully to meetings and discussions and solving unexpected problems at short notice.
+
+This kind of "theory building" is already a well-known in at the code level.
+
+> Pull-quote: “The programmer having the theory of the program can explain why each part of the program is what it is”
+>
+> •••
+>
+> “The programmer having the theory of the program is able to respond constructively to any demand for a modification of the program”
+>
+> – [Peter NAUR • Programming as Theory Building](https://cekrem.github.io/posts/programming-as-theory-building-naur/)
+
+With a living systems blueprint, we can apply similar techniques to learn at the systems level.
+
+Of course, you might not need a living systems blueprint if you're working with a very simple system, with a few parts. Or if you're already very familiar with your system, having worked with it regularly for a long time. In these cases, likely your brain has already memorized the systems in its Long Term Memory (LTM). And you can use simpler tools such as browser bookmarks and address-bar auto-suggest to navigate to them quickly as needed.
+
+### Working with a complex system
+
+Suppose you're working with a complex system comprising many services; too many to memorize all their names. There might be complex or non-intuitive integration patterns. You might want to access any part of this system unexpectedly at a moment's notice.
+
+Here a living systems blueprint can help you to access your Long Term Memory. Its spatial and connected form can provide visual cues to help you refresh your memory quickly. The connections can be visually traversed to quickly locate just the resources you need via links, whether they are logs, consoles, dashboards, code files or anything else.
+
+> Pull-quote: “the LTM needs clues to retrieve the right memories. The more specific the clue, the more likely we are to find the right memory”
+>
+> – [Felienne HERMANS • The Programmer's Brain](https://www.oreilly.com/library/view/the-programmers-brain/9781617298677/)
+
+For example, imagine someone comes to you with the following request:
+
+> Help! Panic! I need to find out why Transfer from customer #098238 are failing in UAT!
+
+You can check your living blueprint, locate the Transfer service, see that it's connected to the Transactions database and follow the link to the Console in UAT to query recent transactions. The diagram jogs your memory *and* quickly takes you to the right place to investigate the problem.
+
+![Screenshot of example of navigating systems blueprint](/images/articles/living-systems-blueprint/systems-blueprint-component-search-example.png)
 
 
 ## Systems blueprint sketches
