@@ -21,6 +21,7 @@ export * from "./legacy";
 export * from "./nature-questioning";
 export * from "./not-enough-time";
 export * from "./perfection";
+export * from "./possible";
 export * from "./research";
 export * from "./right-view";
 export * from "./something-you-like";
