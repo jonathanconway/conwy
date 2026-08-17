@@ -9,3 +9,5 @@ export interface Content<
   readonly type: TType;
   readonly meta: TMeta;
 }
+
+export type ContentAny = Content<ContentType, MetaBase<object>, object>;

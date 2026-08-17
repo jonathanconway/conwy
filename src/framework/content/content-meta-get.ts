@@ -1,19 +1,13 @@
-import { Content } from "../content/content";
+import { ContentAny } from "../content/content";
 import { ContentType } from "../content/content-types";
 import { Slug } from "../content/slug";
 
-import { MetaBase } from "./meta/meta-base";
-
 export function getContentMeta(
-  contents: Record<string, object>,
+  contents: Record<string, ContentAny>,
   contentType: ContentType,
   slug: Slug,
 ) {
-  const contentsValues = Object.values(contents) as readonly Content<
-    ContentType,
-    MetaBase<object>,
-    object
-  >[];
+  const contentsValues = Object.values(contents) as readonly ContentAny[];
   const contentsMetas = contentsValues
     .filter((content) => content.type === contentType)
     .map((content) => content.meta);
