@@ -18,8 +18,16 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "amaysim-01.jpg",
-      title: "MyDevices portal",
+      src: "amaysim-01.png",
+      title: "Overview screen",
+    },
+    {
+      src: "amaysim-02.png",
+      title: "Overview screen (main area)",
+    },
+    {
+      src: "amaysim-03.png",
+      title: "Usage screen",
     },
   ],
   slug: "amaysim",
