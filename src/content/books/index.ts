@@ -35,6 +35,7 @@ export * from "./how-to-eat";
 export * from "./how-to-read-a-book";
 export * from "./infinite-game";
 export * from "./influence";
+export * from "./introduction-to-mathematical-thinking";
 export * from "./investments";
 export * from "./learning-systems-thinking-for-software-professionals";
 export * from "./macintosh-way";
