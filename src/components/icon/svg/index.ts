@@ -9,6 +9,7 @@ export * from "./check-box";
 export * from "./close";
 export * from "./copy";
 export * from "./dev";
+export * from "./dev-talk";
 export * from "./download";
 export * from "./email";
 export * from "./github";

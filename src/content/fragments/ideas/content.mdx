@@ -1,5 +1,17 @@
+import { SocialLinksListItem, SOCIAL_LINKS_DETAILS_BY_TYPE } from "@/components"
+import { SocialLinkTypes } from "@/framework/client"
+
 # Ideas
 
 Various product and other ideas that have stuck in my mind over time.
 
 Many are personal "itches" I wanted to scratch at one time or another, some are observations about what might help others.
+
+<br />
+<SocialLinksListItem
+  socialLink={{
+    type: SocialLinkTypes.DevTalk,
+    url: "https://forum.devtalk.com/t/how-do-you-find-good-ideas-for-projects-open-source-or-apps/229339/2",
+    title: `Discussion on ${SOCIAL_LINKS_DETAILS_BY_TYPE[SocialLinkTypes.DevTalk].title}`
+  }}
+/>

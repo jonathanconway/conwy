@@ -15,6 +15,10 @@ export const SOCIAL_LINKS_DETAILS_BY_TYPE: Record<
     iconType: IconTypes.Dev,
     title: "DEV.to article",
   },
+  [SocialLinkTypes.DevTalk]: {
+    iconType: IconTypes.DevTalk,
+    title: "DEV.to article",
+  },
   [SocialLinkTypes.Github]: {
     iconType: IconTypes.Github,
     title: "Github repo",

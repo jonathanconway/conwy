@@ -12,6 +12,7 @@ export const IconTypes = {
   Close: "close",
   Copy: "copy",
   Dev: "dev",
+  DevTalk: "dev-talk",
   Download: "download",
   Email: "email",
   PointRightFinger: "point-right-finger",

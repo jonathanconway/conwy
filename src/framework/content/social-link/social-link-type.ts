@@ -2,6 +2,7 @@ import { TypeOfConst } from "../../utils";
 
 export const SocialLinkTypes = {
   Dev: "dev",
+  DevTalk: "dev-talk",
   Github: "github",
   LinkedIn: "linkedin",
   Mastodon: "mastodon",
@@ -18,6 +19,7 @@ export const SocialLinkTypes = {
 
 export const SocialLinkLabels = {
   [SocialLinkTypes.Dev]: "DEV.to",
+  [SocialLinkTypes.DevTalk]: "DevTalk",
   [SocialLinkTypes.Github]: "GitHub",
   [SocialLinkTypes.LinkedIn]: "LinkedIn",
   [SocialLinkTypes.Mastodon]: "Mastodon",
