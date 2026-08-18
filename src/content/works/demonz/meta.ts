@@ -52,7 +52,7 @@ export const meta: WorkMeta = {
       items: [],
     },
     {
-      categoryName: "Azure RP",
+      categoryName: "axure-rp",
       items: [],
     },
   ],

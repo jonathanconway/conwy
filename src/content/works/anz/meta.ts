@@ -3,12 +3,12 @@ import {
   andyVuColleague,
   changezShaikhColleague,
   felicityEvanColleague,
+  jackDinhColleague,
   larsMagnusColleague,
   markSchwanethalColleague,
   mattVioliColleague,
   mehranFarshadmehrColleague,
 } from "@/content/colleagues";
-import { jackDinhColleague } from "@/content/colleagues/jack-dinh";
 import {
   ColleagueRelationshipTypes,
   SocialLinkTypes,
@@ -18,7 +18,7 @@ import {
 export const meta: WorkMeta = {
   client: "ANZ Bank",
   blurbShort:
-    "Building the new ANZ Plus web banking UI, focused on critical Retail Payments features.",
+    "Built critical payments features and flows for the new ANZ Plus web banking UI.",
   startDate: "2024-10-01",
   endDate: "2025-02-28",
   jobTitle: "Senior Frontend Engineer",
