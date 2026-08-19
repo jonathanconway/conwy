@@ -1,0 +1,25 @@
+I've noticed a recent trend toward traditionally more specialised developers (including my own area, front end) working more full stack.
+
+Working full stack doesn't necessarily have to mean writing back end or platform code, but it might mean:
+- Being aware of, and understanding, systems further up the stack
+- Knowing enough about the whole stack to understand other engineers and "speak their language"
+- Being able to debug back end or platform issues or isolate issues to any part of the whole stack
+
+One tricky thing about software development is that work doesn't necessarily come in neat little packages that can be handed off to front end or back end. For example, a task that seems to be targetting user experience might end up involving a config change on the back end. Or a task that seems to be aimed at reducing server utilisation might end up involving a change to a front end API calling pattern.
+
+It's very helpful for an engineer to be able to "jump in" to another part of the stack to make a code change or "jump on" a call with a engineers of a different specialisation.
+
+This is quite a change from the very clearly demarcated front end vs. back end divide that I observed in the 2010s.
+
+What explains it? A few factors from what I can gather:
+
+- **Tightened budgets.** Thanks to the [end of ZIRP](https://newsletter.pragmaticengineer.com/p/zirp-engineering-practices) and other factors, organisations want to do more work with fewer people and thus may demand more flexibility from their engineers.
+- **Increasing complexity and coupling of systems.** Application features often require tight front end and back end coupling. For example, quickly filtering and visualising very large data sets stored on the server.
+- **Blurring of the lines.** [React Server Components](https://react.dev/reference/rsc/server-components) (RSC) and associated frameworks such as [NextJS](https://nextjs.org/) involve code executing on both server and client, while [HTMX](https://htmx.org/) focuses on markup and emphasises use of full-stack/backend templating engines to generate code targetting the browser. Working with these new tools blurs the distinction between the front end and back end skill set.
+- **Security issues that cross boundaries.** Hackers don't care about our engineering specialisations! Exploits have increased in recent years and some of them (for example, [CVE-2025-55182](https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components)) touch on the whole stack. 
+- **Maturation of the industry.** As the current crop of front end engineers (including myself) mature and develop in their abilities, they are both able and expected to handle a broader set of problems.
+- **Increasing efficiency of tools.** Spending less time fighting tools frees up engineers to focus on broader problem solving, across the stack.
+
+With quite a few independent factors seeming to be involved, this seems like a pretty robust trend, which is likely to continue.
+
+That said, I don't think the specialisations will disappear. I think there will continue to be distinct roles: front end, back end, platform, data, etc. But I think individuals in these roles will be expected to have knowledge beyond their area and be flexible about contributing in other areas.
