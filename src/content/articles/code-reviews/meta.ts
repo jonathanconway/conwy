@@ -36,6 +36,11 @@ export const meta: ArticleMeta = {
       url: "https://dev.to/conw_y/streamlining-code-reviews-4016#comments",
       likeCount: 3,
     },
+    {
+      type: SocialLinkTypes.Reddit,
+      url: "https://www.reddit.com/r/AskProgramming/comments/1vro0sr/comment/p4imgtx",
+      likeCount: 1,
+    },
   ],
   isPinned: true,
 };
