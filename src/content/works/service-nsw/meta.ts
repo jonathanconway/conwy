@@ -3,7 +3,7 @@ import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 export const meta: WorkMeta = {
   client: "Service NSW",
   blurbShort:
-    "Led development of MyServiceNSW front-end, working with design, infrastructure and service providers.",
+    "Led development of MyServiceNSW front end, working with design, infrastructure and service providers.",
   startDate: "2015-03-01",
   endDate: "2016-07-01",
   jobTitle: "Front End Practice Lead",

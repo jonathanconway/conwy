@@ -8,9 +8,9 @@ import {
 export const meta: ArticleMeta = {
   title: "We're all full stack now",
   blurb:
-    "There seems to be a recent trend toward software engineers being full-stack.",
+    "There seems to be a recent trend toward software engineers working full stack.",
   shortBlurb:
-    "There seems to be a recent trend toward software engineers being full-stack.",
+    "There seems to be a recent trend toward software engineers working full stack.",
   createdDate: "2026-08-19",
   slug: "full-stack",
   type: "article",

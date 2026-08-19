@@ -29,7 +29,7 @@ export const meta: WorkMeta = {
     },
     {
       content:
-        "“Jonathan was a great front-end developer/lead. He not only helped establish the front-end development team, but also set the direction and standards. Full of initiative and great ideas, Jonathan made a great and valuable contribution to the team.”",
+        "“Jonathan was a great front end developer/lead. He not only helped establish the front end development team, but also set the direction and standards. Full of initiative and great ideas, Jonathan made a great and valuable contribution to the team.”",
       authorTitle: "Delivery Manager",
       date: "2011-05-23",
       linkedInUrl:
