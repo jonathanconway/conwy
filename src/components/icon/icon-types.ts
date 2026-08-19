@@ -36,6 +36,7 @@ export const IconTypes = {
   Telegram: "telegram",
   Twitter: "twitter",
   Website: "website",
+  Whirlpool: "whirlpool",
   X: "x",
   YouTube: "youtube",
 } as const;

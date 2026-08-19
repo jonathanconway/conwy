@@ -13,6 +13,7 @@ export const SocialLinkTypes = {
   Substack: "substack",
   Twitter: "twitter",
   Website: "website",
+  Whirlpool: "whirlpool",
   X: "x",
   YouTube: "youtube",
 } as const;
@@ -30,6 +31,7 @@ export const SocialLinkLabels = {
   [SocialLinkTypes.Substack]: "Substack",
   [SocialLinkTypes.Twitter]: "Twitter",
   [SocialLinkTypes.Website]: "Website",
+  [SocialLinkTypes.Whirlpool]: "Whirlpool",
   [SocialLinkTypes.X]: "X",
   [SocialLinkTypes.YouTube]: "YouTube",
 };

@@ -32,5 +32,6 @@ export * from "./substack";
 export * from "./telegram";
 export * from "./twitter";
 export * from "./website";
+export * from "./whirlpool";
 export * from "./x";
 export * from "./youtube";

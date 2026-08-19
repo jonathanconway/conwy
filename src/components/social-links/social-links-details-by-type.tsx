@@ -59,6 +59,10 @@ export const SOCIAL_LINKS_DETAILS_BY_TYPE: Record<
     iconType: IconTypes.Website,
     title: "Website",
   },
+  [SocialLinkTypes.Whirlpool]: {
+    iconType: IconTypes.Whirlpool,
+    title: "Whirlpool",
+  },
   [SocialLinkTypes.X]: {
     iconType: IconTypes.X,
     title: "X post",

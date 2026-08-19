@@ -35,6 +35,7 @@ import {
   Telegram,
   Twitter,
   Website,
+  Whirlpool,
   X,
   YouTube,
 } from "./svg";
@@ -74,6 +75,7 @@ export const ICON_TYPE_SVGS: Partial<Record<IconType, IconComponent>> = {
   [IconTypes.Telegram]: Telegram,
   [IconTypes.Twitter]: Twitter,
   [IconTypes.Website]: Website,
+  [IconTypes.Whirlpool]: Whirlpool,
   [IconTypes.X]: X,
   [IconTypes.YouTube]: YouTube,
 };
