@@ -128,5 +128,10 @@ export const meta: WorkMeta = {
       url: "http://coles.com.au",
       title: "Coles website",
     },
+    {
+      type: SocialLinkTypes.LinkedIn,
+      url: "https://www.linkedin.com/posts/stephafford_winningtogether-coles-ecommerce-activity-6968076496200491008-exMX",
+      title: "Coles and Coles Plus delivered in time for FY22",
+    },
   ],
 };
