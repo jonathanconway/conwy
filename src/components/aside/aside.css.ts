@@ -14,7 +14,7 @@ export const aside = style({
   backgroundColor: vars.aside.background.color,
 });
 
-globalStyle(`${aside} > *:first-child`, {
+globalStyle(`${aside} > *:first-child:first-child:first-child:first-child`, {
   paddingTop: 0,
 });
 
