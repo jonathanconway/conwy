@@ -22,10 +22,16 @@ export const meta: ArticleMeta = {
     {
       type: SocialLinkTypes.Reddit,
       url: "https://www.reddit.com/r/dotnet/comments/1vpx99j/comment/p4iyp4f/?context=3",
+      likeCount: 1,
     },
     {
       type: SocialLinkTypes.Whirlpool,
       url: "https://forums.whirlpool.net.au/thread/3z4yj6p2",
+    },
+    {
+      type: SocialLinkTypes.LinkedIn,
+      url: "https://lnkd.in/p/gkWV2SJs",
+      likeCount: 1,
     },
   ],
   isPinned: true,
