@@ -110,6 +110,23 @@ Additionally, I've built up a pool of coding standards and best practices over m
 
 This checklist isn't only useful for reviewing others' work – I use it on my own changes as well. By anticipating feedback and addressing it earlier, my code will already be of higher quality by the time it reaches the screens of others. This reduces the review workload on other engineers and improves my reputation within the team.
 
+## Additional ideas
+
+Sometimes I automate parts of this process with AI, depending on the situation. I try to avoid overly relying on AI, as I think it's important to maintain direct knowledge of the code base.
+
+Obviously there isn't always enough time to follow these processes religiously. If it's a high-impact change, e.g. significant production changes, I'll try to ask for more time to review it and provide regular progress updates in a chat thread, just like a larger development task. If additional time is not granted, I'll still make a "best effort", demonstrated by comments, feedback where necessary, testing, etc. At least I can show that I tried.
+
+Sometimes a big, scary change-set isn't actually such a heavy burden as it initially appears. If much of the change-set can be mentally reduced to a common pattern, then I can describe the pattern in a brief written sentence (or read and understand the developer's description in the PR notes), check and ensure it is appropriate to the situation, ensure it's being applied consistently and correctly and ensure it's not being applied where it shouldn't. This might not require reading every individual line of code.
+
+The book _Software Engineering at Google_ has some useful guidance under the section "Types of Code Reviews". They categorise code reviews into four types, each with a preferred treatment:
+
+- Greenfield reviews and new feature development
+- Behavioural changes, improvements, and optimizations
+- Bug fixes and rollbacks
+- Refactorings and large-scale changes
+
+Categorising a code review, similar to above, one can focus effort and skip unnecessary processes.
+
 ## Conclusion
 
 Code reviews are an integral part of modern software engineering.
