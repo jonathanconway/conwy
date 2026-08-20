@@ -7,7 +7,7 @@ export const IMAGE_CASCADE_PROPS_MOCK: ImageCascadeProps = {
       alt: "Agent SubHub",
       notes: [
         {
-          text: "In addition to building the whole front-end, implemented back-end calculation logic for the savings and total.",
+          text: "In addition to building the whole front end, implemented back-end calculation logic for the savings and total.",
           hotspot: {
             x: "2%",
             y: "27%",
