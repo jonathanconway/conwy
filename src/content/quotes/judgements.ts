@@ -2,7 +2,7 @@ import { Quote } from "@/framework/client";
 
 export const judgementsQuote: Quote = {
   type: "quote",
-  text: "What upsets people is not things themselves but their judgments about the things. ... So when we are thwarted or upset or distressed, let us never blame someone else but rather ourselves, that is, our own judgments.",
+  text: "What upsets people is not things themselves but their judgements about the things. ... So when we are thwarted or upset or distressed, let us never blame someone else but rather ourselves, that is, our own judgements.",
   meta: {
     author: {
       title: "Epictetus",
