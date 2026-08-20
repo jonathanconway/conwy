@@ -1,5 +1,6 @@
 export * from "./anz";
 export * from "./amaysim";
+export * from "./bigw";
 export * from "./bupa";
 export * from "./cibc";
 export * from "./coin";
