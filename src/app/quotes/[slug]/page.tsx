@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
-import "@/components";
-import { PageLayout, Quote, ResponsiveMdHalf } from "@/components";
+import { Breadcrumb, PageLayout, Quote, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as quotes from "@/content/quotes";
 import {
@@ -21,9 +20,23 @@ export default async function Page(props: PageProps) {
     <PageLayout
       selectedNavPath="/quotes"
       main={
-        <ResponsiveMdHalf>
-          <Quote quote={quote} />
-        </ResponsiveMdHalf>
+        <>
+          <Breadcrumb
+            segments={[
+              {
+                title: "Quotes",
+                url: "/quotes",
+              },
+              {
+                title: sentenceCase(quote.meta.slug),
+              },
+            ]}
+          />
+
+          <ResponsiveMdHalf>
+            <Quote quote={quote} />
+          </ResponsiveMdHalf>
+        </>
       }
     />
   );
@@ -40,7 +53,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const quote = importContentBySlug<Quote_>(quotes, "quote", params.slug);
 
   const quoteTitle = sentenceCase(quote.meta.slug).toLowerCase();
-  const title = `${site.title} - quote - ${quoteTitle}`;
+  const title = `${site.title} - quotes - ${quoteTitle}`;
 
   return {
     title,

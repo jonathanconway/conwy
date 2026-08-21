@@ -6,7 +6,7 @@ import {
 
 export const meta: BookMeta = {
   type: "book",
-  slug: "zen-the-art-motorcycle-maintenance",
+  slug: "zen-and-the-art-of-motorcycle-maintenance",
   authors: ["Robert Pirsig"],
   status: BookStatuses.Listed,
   title: "Zen and The Art Motorcycle Maintenance",
