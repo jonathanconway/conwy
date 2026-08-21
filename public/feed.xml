@@ -1113,6 +1113,160 @@ const  = getFeatureFlags([
   
 
   <entry>
+    <title>Better pull requests</title>
+    <link href="https://conwy.co/articles/better-pull-requests" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>better-pull-requests</id>
+    <content xml:lang="en" type="html">Pull requests are fundamental to how much software is currently delivered. Effective and timely delivery is what customer satisfaction, business success and career progression are made of. So I figured it would be good to spend some time thinking about what makes a good pull request. In this article I cover my learnings to-date.
+
+## Cohesion over size
+
+Though there are debates about pull request size, I think size is less important than ***shape***. What matters most is that a pull request is a coherent and cohesive change set.
+
+For example, a very large pull request might be relatively easy to review if the only change is to remove a single column from a very large CSV configuration file. Assuming the change is correct and desirable, and clearly explained and justified in the description, the diff itself can be conceptualised as one unit of change and cleanly reasoned about.
+
+![A large quantity of changes can still be easy to review if they are all of a similar kind] 
+
+
+
+The concept of &quot;unit of change&quot; I find useful here. If a change can be mentally &quot;chunked&quot;, i.e. treated as a single, cohesive unit, then it&#39;s easy enough to reason about and review.
+
+Conversely, a change that is a small number of lines could be difficult to review if those lines are unrelated or have many unrelated, unknown impacts. It might be better to split the change over separate pull requests, with each pull request covering a separate impact space.
+
+I prefer to avoid splitting related changes across multiple pull requests if possible. It&#39;s better to keep closely related changes together, so they can be reasoned about in isolation and easily rolled back if there is a problem.
+
+
+
+However, sometimes it makes sense to split changes across multiple pull requests. Some changes lend themselves to being decomposed into a sequence of smaller changes. For example, removing a feature from an application might impact multiple areas of the application. In that case, it might make sense to remove the feature from each area one at a time, until it has been completely removed. At each stage of the removal, the whole application should build and function properly.
+
+## Sub pull requests
+
+In certain cases, we have a large but atomic change. The change has a broad impact, but it needs to be applied atomically or &quot;all at once&quot; and cannot be decomposed into a sequence of smaller changes.
+
+For example, we might need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request.
+
+In cases like these, I found the approach of &quot;sub pull requests&quot; useful. Here we create one large pull request in the main branch.
+
+For example:
+- `chore/upgrade-node` → `main`
+
+Then we create multiple smaller pull requests into the larger pull request branch.
+
+For example:
+- `chore/upgrade-node-react` → `chore/upgrade-node`
+- `chore/upgrade-node-mui` → `chore/upgrade-node`
+- `chore/upgrade-node-storybook` → `chore/upgrade-node`
+
+Then we merge each of the sub pull requests into the larger pull request, followed by merging the larger pull request into the main branch.
+1. `chore/upgrade-node-react` → `chore/upgrade-node`
+2. `chore/upgrade-node-mui` → `chore/upgrade-node`
+3. `chore/upgrade-node-storybook` → `chore/upgrade-node`
+4. `chore/upgrade-node` → `main`
+
+This approach gives us the best of both worlds. The team can reason about and review each piece of the code separately. And then, after all the changes are have been merged into the main pull request, that pull request can be merged once, atomically. And it can be rolled back with a single revert, if something goes wrong.
+
+```mermaid--svg
+%% @description Example of sub pull request pattern for package upgrades
+
+gitGraph
+    commit
+    branch chore/upgrade-node
+    checkout chore/upgrade-node
+    commit
+
+    branch chore/upgrade-node-react
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-react
+
+    checkout chore/upgrade-node
+    branch chore/upgrade-node-mui
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-mui
+
+    checkout chore/upgrade-node
+    branch chore/upgrade-node-storybook
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-storybook
+
+    checkout main
+    merge chore/upgrade-node
+```
+
+
+
+
+
+## Description
+
+Pull request descriptions are often under-utilised or over-utilised.
+
+We don&#39;t want to go into unnecessary detail about a change, overwhelming the reader. We can safely omit topics that can be readily grasped by some experience with the code base or are already documented (for example, in the task ticket, Wiki pages, etc). A simple reference to the relevant task ticket could be included in the description for easy single click access.
+
+On the other hand, we don&#39;t want to go to the other extreme and write a &quot;lazy&quot; description, omitting important content. The pull request description should complement other sources of information, filling in the gaps in other documentation, where they relate to the specific pull request.
+
+
+
+- Link to a task ticket or similar
+- One or two small screenshots
+- Links to other pull requests in a sequence of pull requests
+- Technical details relevant only to the pull request, which are not already in comments or self-evident in the code
+- Guidance on testing the change, such as testing steps and test data, if not already in automated test code or in a separate system
+- Guidance on monitoring the change when it goes into production
+
+Collapsible regions, supported in GitHub pull request markdown, can be a great way to present a high-level outline to the viewer, hiding lower-level details until/unless the reader is interested to dig deeper by clicking to expand the region.
+
+```md
+
+Screenshots
+
+
+
+
+```
+
+## Communication
+
+It&#39;s important to choose the right channel to communicate your pull request.
+
+Depending on the set up at your organisation, your team members might automatically be notified of your pull request as soon as it is opened. If not, you might need to manually add them as reviewers and/or ping them in the team chat (such as Slack).
+
+It might be helpful to tag specific individuals if broadcasting a PR to a larger team through, say, the team chat channel. This way, you can involve the right people in code review while keeping the rest of the team in the loop.
+
+
+## Drafts
+
+Submitting pull requests in draft mode first can be a good way to &quot;sketch&quot; a change and get early feedback on the overall direction before going too deep. I&#39;ve found draft pull requests a great way to do solution design as a team, as it grounds the design **in the code** rather than getting too abstract with diagrams or wordy descriptions.
+
+Multiple drafts can be used to compare and contrast alternative designs. Producing alternative designs, comparing them, and selecting one is a tactic recommended by software design expert John Ousterhout.
+
+
+
+&gt; Pull-quote: “Even if you are certain that there is only one reasonable approach, consider a second design anyway, no matter how bad you think it will be. It will be instructive to think about the weaknesses of that design and contrast them with the features of other designs.”
+&gt;
+&gt; – John OUSTERHOUT • [_A Philosophy of Software Design_](/reading/a-philosophy-of-software-design)
+
+Alternative drafts can be referenced in team documentation, such as ADRs.
+
+
+## Discussions
+
+Discussions in code review can get pretty deep, especially during the early stages of a project or when discussing a complex issue. Too many nested comments in a pull request can be difficult for reviewers to keep track of and obscure the communication from the wider team.
+
+For this reason I often adopt a policy of taking deeper discussions into a more appropriate forum, such as team chat (Slack or equivalent) or a call (Teams, Google Meet or equivalent). Team chat threads or call recordings can then be linked into the pull request, either in the comments thread or the description area. These can serve as valuable references for future maintainers.
+
+
+
+
+## Further reading
+
+</content>
+  </entry>
+  
+
+  <entry>
     <title>Streamlining code reviews</title>
     <link href="https://conwy.co/articles/code-reviews" />
     <updated>2026-02-18T00:00:00.000Z</updated>
