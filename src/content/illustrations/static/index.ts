@@ -44,6 +44,7 @@ export * from "./paint-brush-iso-color";
 export * from "./path";
 export * from "./pencil-front-color";
 export * from "./percentage";
+export * from "./pull-request";
 export * from "./react-color";
 export * from "./road";
 export * from "./road-2-lane";

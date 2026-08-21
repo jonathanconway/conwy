@@ -1,6 +1,7 @@
 import { execSync } from "child_process";
 import {
   existsSync,
+  mkdirSync,
   readFileSync,
   readdirSync,
   rmSync,
@@ -11,7 +12,7 @@ import { marked } from "marked";
 import { join } from "path";
 
 import { generateHash } from "@/framework";
-import { getFolderFileTree } from "@/framework/server";
+import { getFolderFileTree, mkDirSyncIfNotExists } from "@/framework/server";
 
 const contentPath = join(__dirname, "../../content");
 const imagesPath = join(__dirname, "../../../public/images");
@@ -70,6 +71,8 @@ function toolMermaidSvgForContentMdxMermaidBlock(
   imagePath: string,
   mermaidBlock: string,
 ) {
+  mkDirSyncIfNotExists(imagePath);
+
   const hash = generateHash(mermaidBlock.trim());
 
   const mdFilename = `mermaid-${hash}.md`;
