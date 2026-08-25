@@ -4,14 +4,17 @@ import * as styles from "./block-quote-disclaimer.css";
 
 type BlockQuoteDisclaimerProps = HTMLProps<HTMLQuoteElement>;
 
-export function BlockQuoteDisclaimer({
-  className = styles.disclaimerContainer,
-  children,
-  ...restProps
-}: BlockQuoteDisclaimerProps) {
+export function BlockQuoteDisclaimer(props: BlockQuoteDisclaimerProps) {
+  const {
+    className = styles.disclaimerContainer,
+    prefix = "Disclaimer:",
+    children,
+    ...restProps
+  } = props;
+
   return (
     <blockquote className={className} {...restProps}>
-      ⚠️ Disclaimer: {children}
+      ⚠️ {prefix} {children}
     </blockquote>
   );
 }
