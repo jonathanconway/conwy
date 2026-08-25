@@ -3,7 +3,7 @@ import { ToolMeta, ToolSections } from "@/framework/client";
 export const meta: ToolMeta = {
   section: ToolSections.CommandLineTool,
   slug: "github-cli",
-  title: "Github CLI",
+  title: "GitHub CLI",
   category: "Git Tool",
   date: "2024-12-06",
   operatingSystems: ["MacOS"],

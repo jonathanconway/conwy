@@ -12,8 +12,15 @@ export function importContentBySlug<
   contentType: TContent["type"],
   slug: string,
 ) {
-  const slugCamel = camelCase(slug);
+  const slugCamel = prefixWithUnderlineIfNumber(camelCase(slug));
   const contentTypePascal = pascalCase(contentType);
   const slugCamelLookup = `${slugCamel}${contentTypePascal}`;
   return contents[slugCamelLookup];
+}
+
+function prefixWithUnderlineIfNumber(input: string) {
+  if (isNaN(Number(input[0]))) {
+    return input;
+  }
+  return `_${input}`;
 }
