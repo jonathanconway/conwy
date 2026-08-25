@@ -94,12 +94,23 @@ export const meta: WorkMeta = {
       items: [],
     },
     {
-      categoryName: "dynatrace",
-      items: [],
+      categoryName: "monitoring",
+      items: [
+        {
+          itemName: "dynatrace",
+        },
+        {
+          itemName: "sentry",
+        },
+      ],
     },
     {
-      categoryName: "sentry",
-      items: [],
+      categoryName: "ai",
+      items: [
+        {
+          itemName: "chat-gpt",
+        },
+      ],
     },
   ],
   projects: [
