@@ -1,5 +1,5 @@
 import {
-  Breadcrumb,
+  ContentPageHeader,
   MdxContainer,
   PageLayout,
   ResponsiveMdHalf,
@@ -14,18 +14,14 @@ export async function PagePage(props: PageProps) {
 
   const page = importContentBySlug<Page_>(pages, "page", params.slug);
 
-  const title = page.meta.title;
-
   return (
     <PageLayout
       main={
         <>
-          <Breadcrumb
-            segments={[
-              {
-                title,
-              },
-            ]}
+          <ContentPageHeader
+            content={page}
+            title={page.meta.title}
+            updatedDate={page.meta.updatedDate}
           />
 
           <ResponsiveMdHalf>

@@ -1,7 +1,7 @@
 import { PageMeta } from "@/framework/client";
 
 export const meta: PageMeta = {
-  title: "Following",
+  title: "Who I follow",
   slug: "follows",
   type: "page",
 };
