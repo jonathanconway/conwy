@@ -6,7 +6,7 @@ export const meta: WorkMeta = {
     "Owned Business Backoffice, onboarding >10k businesses monthly during fast growth.",
   startDate: "2020-02-20",
   endDate: "2024-02-20",
-  jobTitle: "Senior Frontend Engineer",
+  jobTitle: "Senior Front End Engineer",
   mainImage: {
     src: "/images/works/revolut/main.png",
   },
@@ -162,7 +162,7 @@ export const meta: WorkMeta = {
           itemName: "micro-services",
         },
         {
-          itemName: "micro-frontend",
+          itemName: "micro-front-end",
         },
         {
           itemName: "monolith",
@@ -187,7 +187,7 @@ export const meta: WorkMeta = {
       title: "Shared devices listing",
     },
     {
-      title: "Decoupling checks from Backend",
+      title: "Decoupling checks from back end",
     },
     {
       title: "Ticket routing for junior escalation",

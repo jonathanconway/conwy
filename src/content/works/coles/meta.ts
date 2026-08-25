@@ -3,10 +3,10 @@ import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 export const meta: WorkMeta = {
   client: "Coles",
   blurbShort:
-    "Led Frontend build of 1site for Coles Plus Account and related sign-up incentivisation features.",
+    "Led front end build of 1site for Coles Plus Account and related sign-up incentivisation features.",
   startDate: "2023-09-20",
   endDate: "2023-11-08",
-  jobTitle: "Senior Frontend Engineer",
+  jobTitle: "Senior Front End Engineer",
   mainImage: {
     src: "/images/works/coles/main.png",
   },

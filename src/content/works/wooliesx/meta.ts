@@ -13,7 +13,7 @@ export const meta: WorkMeta = {
   feedbacks: [
     {
       content:
-        "“Jon has done phenomenal work on Rubix platform, i.e. developing first micro frontend platform at WooliesX. In a span of one year the Rubix platform is hosting 4 micro frontend apps and is currently used by 3 squads (Gamma, Omega and Bodega).”",
+        "“Jon has done phenomenal work on Rubix platform, i.e. developing first micro front end platform at WooliesX. In a span of one year the Rubix platform is hosting 4 micro front end apps and is currently used by 3 squads (Gamma, Omega and Bodega).”",
       authorTitle: "Technical Lead",
       date: "2021-11-01",
     },
@@ -114,7 +114,7 @@ export const meta: WorkMeta = {
           itemName: "mono-repo",
         },
         {
-          itemName: "micro-frontend",
+          itemName: "micro-front-end",
         },
         {
           itemName: "micro-service",

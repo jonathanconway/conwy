@@ -21,7 +21,7 @@ export const meta: WorkMeta = {
     "Built critical payments features and flows for the new ANZ Plus web banking UI.",
   startDate: "2024-10-01",
   endDate: "2025-02-28",
-  jobTitle: "Senior Frontend Engineer",
+  jobTitle: "Senior Front End Engineer",
   mainImage: {
     src: "/images/works/anz/main.svg",
   },

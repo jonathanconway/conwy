@@ -195,7 +195,7 @@ export const meta: WorkMeta = {
       title: "Make a Transfer",
     },
     {
-      title: "Payments back-end",
+      title: "Payments back end",
     },
     {
       title: "Accounts",

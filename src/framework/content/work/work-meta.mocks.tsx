@@ -3,7 +3,7 @@ import { WorkMeta } from "./work-meta";
 export const WORK_META_MOCK: WorkMeta = {
   client: "Optus",
   blurbShort:
-    "Built SubHub Agent frontend and parts of SubHub and Credit Offer backend.",
+    "Built SubHub Agent front end and parts of SubHub and Credit Offer back end.",
   startDate: "2023-09-20",
   endDate: "2024-03-22",
   jobTitle: "Senior Backend Engineer",

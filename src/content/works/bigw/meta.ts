@@ -6,7 +6,7 @@ export const meta: WorkMeta = {
     "Implemented cost and time saving features on Pronto app, used by in-store and delivery teams.",
   startDate: "2026-02-01",
   endDate: "2026-08-18",
-  jobTitle: "Fullstack Engineer",
+  jobTitle: "Full Stack Engineer",
   mainImage: {
     src: "/images/works/bigw/main.png",
   },
@@ -103,7 +103,7 @@ export const meta: WorkMeta = {
       categoryName: "architecture",
       items: [
         {
-          itemName: "micro-frontends",
+          itemName: "micro-front-ends",
         },
         {
           itemName: "micro-services",

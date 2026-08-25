@@ -3,10 +3,10 @@ import { SocialLinkTypes, WorkMeta } from "@/framework/client";
 export const meta: WorkMeta = {
   client: "Optus",
   blurbShort:
-    "Built SubHub Agent frontend and parts of SubHub and Credit Offer backend.",
+    "Built SubHub Agent front end and parts of SubHub and Credit Offer back end.",
   startDate: "2023-09-20",
   endDate: "2024-03-22",
-  jobTitle: "Senior Backend Engineer",
+  jobTitle: "Senior Back End Engineer",
   mainImage: {
     src: "/images/works/optus/main.png",
   },
@@ -31,14 +31,14 @@ export const meta: WorkMeta = {
       title: "Agent SubHub - Main screen",
       notes: [
         {
-          text: "In addition to building the whole front end, implemented back-end calculation logic for the savings and total.",
+          text: "In addition to building the whole front end, implemented back end calculation logic for the savings and total.",
           hotspot: {
             x: "2%",
             y: "27%",
           },
         },
         {
-          text: "Implemented subscription add/remove logic on the back-end",
+          text: "Implemented subscription add/remove logic on the back end",
           hotspot: {
             x: "30%",
             y: "31%",
