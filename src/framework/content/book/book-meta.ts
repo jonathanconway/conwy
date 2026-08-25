@@ -1,3 +1,4 @@
+import { MetaBase } from "../meta";
 import { NoteSlug } from "../note/note-slug";
 import { Slug } from "../slug";
 import { Url } from "../url";
@@ -5,7 +6,7 @@ import { Url } from "../url";
 import { BookCategory } from "./book-category";
 import { BookStatus } from "./book-status";
 
-export interface BookMeta {
+export interface BookMeta extends MetaBase {
   readonly type: "book";
   readonly slug: Slug;
   readonly title: string;

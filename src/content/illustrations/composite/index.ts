@@ -4,6 +4,7 @@ export * from "./ai-for-developers";
 export * from "./ai-replacement";
 export * from "./ai-ui-patterns";
 export * from "./avoid-tuples";
+export * from "./better-pull-requests";
 export * from "./code-reviews";
 export * from "./code-sketches";
 export * from "./combinatorial-testing";

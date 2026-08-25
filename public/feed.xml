@@ -1113,6 +1113,160 @@ const  = getFeatureFlags([
   
 
   <entry>
+    <title>Better pull requests</title>
+    <link href="https://conwy.co/articles/better-pull-requests" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>better-pull-requests</id>
+    <content xml:lang="en" type="html">Pull requests are fundamental to how much software is currently delivered. Effective and timely delivery is what customer satisfaction, business success and career progression are made of. So I figured it would be good to spend some time thinking about what makes a good pull request. In this article I cover my learnings to-date.
+
+## Cohesion over size
+
+Though there are debates about pull request size, I think size is less important than ***shape***. What matters most is that a pull request is a coherent and cohesive change set.
+
+For example, a very large pull request might be relatively easy to review if the only change is to remove a single column from a very large CSV configuration file. Assuming the change is correct and desirable, and clearly explained and justified in the description, the diff itself can be conceptualised as one unit of change and cleanly reasoned about.
+
+![A large quantity of changes can still be easy to review if they are all of a similar kind] 
+
+
+
+The concept of &quot;unit of change&quot; I find useful here. If a change can be mentally &quot;chunked&quot;, i.e. treated as a single, cohesive unit, then it&#39;s easy enough to reason about and review.
+
+Conversely, a change that is a small number of lines could be difficult to review if those lines are unrelated or have many unrelated, unknown impacts. It might be better to split the change over separate pull requests, with each pull request covering a separate impact space.
+
+I prefer to avoid splitting related changes across multiple pull requests if possible. It&#39;s better to keep closely related changes together, so they can be reasoned about in isolation and easily rolled back if there is a problem.
+
+
+
+However, sometimes it makes sense to split changes across multiple pull requests. Some changes lend themselves to being decomposed into a sequence of smaller changes. For example, removing a feature from an application might impact multiple areas of the application. In that case, it might make sense to remove the feature from each area one at a time, until it has been completely removed. At each stage of the removal, the whole application should build and function properly.
+
+## Sub pull requests
+
+In certain cases, we have a large but atomic change. The change has a broad impact, but it needs to be applied atomically or &quot;all at once&quot; and cannot be decomposed into a sequence of smaller changes.
+
+For example, we might need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request.
+
+In cases like these, I found the approach of &quot;sub pull requests&quot; useful. Here we create one large pull request in the main branch.
+
+For example:
+- `chore/upgrade-node` → `main`
+
+Then we create multiple smaller pull requests into the larger pull request branch.
+
+For example:
+- `chore/upgrade-node-react` → `chore/upgrade-node`
+- `chore/upgrade-node-mui` → `chore/upgrade-node`
+- `chore/upgrade-node-storybook` → `chore/upgrade-node`
+
+Then we merge each of the sub pull requests into the larger pull request, followed by merging the larger pull request into the main branch.
+1. `chore/upgrade-node-react` → `chore/upgrade-node`
+2. `chore/upgrade-node-mui` → `chore/upgrade-node`
+3. `chore/upgrade-node-storybook` → `chore/upgrade-node`
+4. `chore/upgrade-node` → `main`
+
+This approach gives us the best of both worlds. The team can reason about and review each piece of the code separately. And then, after all the changes are have been merged into the main pull request, that pull request can be merged once, atomically. And it can be rolled back with a single revert, if something goes wrong.
+
+```mermaid--svg
+%% @description Example of sub pull request pattern for package upgrades
+
+gitGraph
+    commit
+    branch chore/upgrade-node
+    checkout chore/upgrade-node
+    commit
+
+    branch chore/upgrade-node-react
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-react
+
+    checkout chore/upgrade-node
+    branch chore/upgrade-node-mui
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-mui
+
+    checkout chore/upgrade-node
+    branch chore/upgrade-node-storybook
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-storybook
+
+    checkout main
+    merge chore/upgrade-node
+```
+
+
+
+
+
+## Description
+
+Pull request descriptions are often under-utilised or over-utilised.
+
+We don&#39;t want to go into unnecessary detail about a change, overwhelming the reader. We can safely omit topics that can be readily grasped by some experience with the code base or are already documented (for example, in the task ticket, Wiki pages, etc). A simple reference to the relevant task ticket could be included in the description for easy single click access.
+
+On the other hand, we don&#39;t want to go to the other extreme and write a &quot;lazy&quot; description, omitting important content. The pull request description should complement other sources of information, filling in the gaps in other documentation, where they relate to the specific pull request.
+
+
+
+- Link to a task ticket or similar
+- One or two small screenshots
+- Links to other pull requests in a sequence of pull requests
+- Technical details relevant only to the pull request, which are not already in comments or self-evident in the code
+- Guidance on testing the change, such as testing steps and test data, if not already in automated test code or in a separate system
+- Guidance on monitoring the change when it goes into production
+
+Collapsible regions, supported in GitHub pull request markdown, can be a great way to present a high-level outline to the viewer, hiding lower-level details until/unless the reader is interested to dig deeper by clicking to expand the region.
+
+```md
+
+Screenshots
+
+
+
+
+```
+
+## Communication
+
+It&#39;s important to choose the right channel to communicate your pull request.
+
+Depending on the set up at your organisation, your team members might automatically be notified of your pull request as soon as it is opened. If not, you might need to manually add them as reviewers and/or ping them in the team chat (such as Slack).
+
+It might be helpful to tag specific individuals if broadcasting a PR to a larger team through, say, the team chat channel. This way, you can involve the right people in code review while keeping the rest of the team in the loop.
+
+
+## Drafts
+
+Submitting pull requests in draft mode first can be a good way to &quot;sketch&quot; a change and get early feedback on the overall direction before going too deep. I&#39;ve found draft pull requests a great way to do solution design as a team, as it grounds the design **in the code** rather than getting too abstract with diagrams or wordy descriptions.
+
+Multiple drafts can be used to compare and contrast alternative designs. Producing alternative designs, comparing them, and selecting one is a tactic recommended by software design expert John Ousterhout.
+
+
+
+&gt; Pull-quote: “Even if you are certain that there is only one reasonable approach, consider a second design anyway, no matter how bad you think it will be. It will be instructive to think about the weaknesses of that design and contrast them with the features of other designs.”
+&gt;
+&gt; – John OUSTERHOUT • [_A Philosophy of Software Design_](/reading/a-philosophy-of-software-design)
+
+Alternative drafts can be referenced in team documentation, such as ADRs.
+
+
+## Discussions
+
+Discussions in code review can get pretty deep, especially during the early stages of a project or when discussing a complex issue. Too many nested comments in a pull request can be difficult for reviewers to keep track of and obscure the communication from the wider team.
+
+For this reason I often adopt a policy of taking deeper discussions into a more appropriate forum, such as team chat (Slack or equivalent) or a call (Teams, Google Meet or equivalent). Team chat threads or call recordings can then be linked into the pull request, either in the comments thread or the description area. These can serve as valuable references for future maintainers.
+
+
+
+
+## Further reading
+
+</content>
+  </entry>
+  
+
+  <entry>
     <title>Streamlining code reviews</title>
     <link href="https://conwy.co/articles/code-reviews" />
     <updated>2026-02-18T00:00:00.000Z</updated>
@@ -1229,6 +1383,23 @@ Additionally, I&#39;ve built up a pool of coding standards and best practices ov
 
 This checklist isn&#39;t only useful for reviewing others&#39; work – I use it on my own changes as well. By anticipating feedback and addressing it earlier, my code will already be of higher quality by the time it reaches the screens of others. This reduces the review workload on other engineers and improves my reputation within the team.
 
+## Additional ideas
+
+Sometimes I automate parts of this process with AI, depending on the situation. I try to avoid overly relying on AI, as I think it&#39;s important to maintain direct knowledge of the code base.
+
+Obviously there isn&#39;t always enough time to follow these processes religiously. If it&#39;s a high-impact change, e.g. significant production changes, I&#39;ll try to ask for more time to review it and provide regular progress updates in a chat thread, just like a larger development task. If additional time is not granted, I&#39;ll still make a &quot;best effort&quot;, demonstrated by comments, feedback where necessary, testing, etc. At least I can show that I tried.
+
+Sometimes a big, scary change-set isn&#39;t actually such a heavy burden as it initially appears. If much of the change-set can be mentally reduced to a common pattern, then I can describe the pattern in a brief written sentence (or read and understand the developer&#39;s description in the PR notes), check and ensure it is appropriate to the situation, ensure it&#39;s being applied consistently and correctly and ensure it&#39;s not being applied where it shouldn&#39;t. This might not require reading every individual line of code.
+
+The book _Software Engineering at Google_ has some useful guidance under the section &quot;Types of Code Reviews&quot;. They categorise code reviews into four types, each with a preferred treatment:
+
+- Greenfield reviews and new feature development
+- Behavioural changes, improvements, and optimizations
+- Bug fixes and rollbacks
+- Refactorings and large-scale changes
+
+Categorising a code review, similar to above, one can focus effort and skip unnecessary processes.
+
 ## Conclusion
 
 Code reviews are an integral part of modern software engineering.
@@ -1244,7 +1415,10 @@ Having a normalised process for performing code reviews helps make them easier a
 These books inspired this article:
 
 - [_Software Engineering at Google_](https://www.kobo.com/au/en/ebook/software-engineering-at-google) by Titus WINTERS, Tom MANSHRECK, Hyrum WRIGHT
-</content>
+
+Related resources you might find helpful:
+
+- [The Code Review Pyramid • Gunnar MORLING](https://www.linkedin.com/feed/update/urn:li:activity:7083099045279232000)</content>
   </entry>
   
 
@@ -1839,7 +2013,7 @@ To make it easier to use this format, I&#39;ve implemented them in the following
     <id>diagramming-ts</id>
     <content xml:lang="en" type="html">&gt; Summary: Typescript structures can be diagramming in a UML-like format, depicting Interfaces and Types (including inheritance and composition), Enums and Functions (including parameters and return types) as rectangles, with suitable connecting lines.
 
-As the practice of front-end development grows and evolves, front-end developers find themselves working with increasingly complex problem domains, requirements and code-bases. This necessitates increasing usage of solution design and planning tools, such as [wireframes](https://en.wikipedia.org/wiki/Website_wireframe), [component diagrams](https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy), [user stories](https://www.martinfowler.com/bliki/UserStory.html), etc.
+As the practice of front end development grows and evolves, front end developers find themselves working with increasingly complex problem domains, requirements and code-bases. This necessitates increasing usage of solution design and planning tools, such as [wireframes](https://en.wikipedia.org/wiki/Website_wireframe), [component diagrams](https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy), [user stories](https://www.martinfowler.com/bliki/UserStory.html), etc.
 
 In recent work on large, complex Typescript code-bases I&#39;ve found myself doing a significant amount of upfront solution design, planning modifications or additions to the code by way of high-level diagrams.
 
@@ -1899,9 +2073,9 @@ For example, we might have one page in the wiki dedicated to the topic of &#39;S
 
 UML is a widely used diagramming language for depicting object-oriented code structures. Normally used with strongly-typed, class-based programming languages, such as Java and C#, it focuses on representing the public interfaces of classes, interfaces and other structures, inheritance relationships between classes (generalisation, realisation, etc.) and relationships between objects generated by classes (association, aggregation, composition).
 
-The UML standard covers a range of diagrams, most of which can be readily applied to Typescript and/or front-end projects with practically no tweaking.
+The UML standard covers a range of diagrams, most of which can be readily applied to Typescript and/or front end projects with practically no tweaking.
 
-Notice, however, that UML &quot;class diagrams&quot; (as the name suggests) are focussed on depicting classes and objects. Most Typescript code-bases (especially front-end) are much more focussed on functions and types. This is in good part due to the functional style of programming that predominates in front-end languages (Javascript), frameworks (React), libraries (Redux) and tooling.
+Notice, however, that UML &quot;class diagrams&quot; (as the name suggests) are focussed on depicting classes and objects. Most Typescript code-bases (especially front end) are much more focussed on functions and types. This is in good part due to the functional style of programming that predominates in front end languages (Javascript), frameworks (React), libraries (Redux) and tooling.
 
 This presents a challenge: there is a dissonance between the class focussed world of UML and the function and type focussed world of Typescript. It seems like we need to tweak UML in order to use it effectively in a Typescript context.
 
@@ -1995,7 +2169,7 @@ interface Flight
 
 As the name suggests, UML &quot;class diagrams&quot; are normally oriented toward depicting classes, which are treated as the main building blocks of class-based programs.
 
-Typescript programs however, especially on the front-end, tend to more heavily emphasise functions. Functions are treated as &quot;first class citizens&quot;, meaning that they make up important structural elements of the program, and are not merely an implementation detail.
+Typescript programs however, especially on the front end, tend to more heavily emphasise functions. Functions are treated as &quot;first class citizens&quot;, meaning that they make up important structural elements of the program, and are not merely an implementation detail.
 
 Nevertheless, we can take UML&#39;s &quot;box with two compartments and a title bar&quot; and re-purpose it for diagramming Typescript functions.
 
@@ -2970,7 +3144,7 @@ Various methods of verification that might fit the scenario:
 
 Prevention is better than the cure, in test health as in human health. We can prevent flaky tests by following good practices in test design and implementation.
 
-Some of these practices are covered in my [Front-end development checklist - Testing section](/checklists/front-end-development#testing) and include:
+Some of these practices are covered in my [Front end development checklist - Testing section](/checklists/front-end-development#testing) and include:
 
 - Avoiding async code where possible
 - Await all expected async side-effects by the end of the test, to avoid dangling promises.
@@ -3145,7 +3319,7 @@ She describes the concept of a **_structured event_** - an event &quot;which cap
 
 On the front end, a structured event might capture everything that happened during, say, a user interaction or receipt of an HTTP response. This might be done by placing logging calls at key points in the code, similar to how we might place `console.log` statements for local debugging.
 
-In this article I&#39;ll give an overview of front-end observability with some examples using [Sentry](https://sentry.io/).
+In this article I&#39;ll give an overview of front end observability with some examples using [Sentry](https://sentry.io/).
 
 ## Observability on the front end
 
@@ -3446,6 +3620,39 @@ These resources inspired this article:
   
 
   <entry>
+    <title>We're all full stack now</title>
+    <link href="https://conwy.co/articles/full-stack" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>full-stack</id>
+    <content xml:lang="en" type="html">I&#39;ve noticed a recent trend toward traditionally more specialised developers (including my own area, front end) working more full stack.
+
+Working full stack doesn&#39;t necessarily have to mean writing back end or platform code, but it might mean:
+- Being aware of, and understanding, systems further up the stack
+- Knowing enough about the whole stack to understand other engineers and &quot;speak their language&quot;
+- Being able to debug back end or platform issues or isolate issues to any part of the whole stack
+
+One tricky thing about software development is that work doesn&#39;t necessarily come in neat little packages that can be handed off to front end or back end. For example, a task that seems to be targetting user experience might end up involving a config change on the back end. Or a task that seems to be aimed at reducing server utilisation might end up involving a change to a front end API calling pattern.
+
+It&#39;s very helpful for an engineer to be able to &quot;jump in&quot; to another part of the stack to make a code change or &quot;jump on&quot; a call with a engineers of a different specialisation.
+
+This is quite a change from the very clearly demarcated front end vs. back end divide that I observed in the 2010s.
+
+What explains it? A few factors from what I can gather:
+
+- **Tightened budgets.** Thanks to the [end of ZIRP](https://newsletter.pragmaticengineer.com/p/zirp-engineering-practices) and other factors, organisations want to do more work with fewer people and thus may demand more flexibility from their engineers.
+- **Increasing complexity and coupling of systems.** Application features often require tight front end and back end coupling. For example, quickly filtering and visualising very large data sets stored on the server.
+- **Blurring of the lines.** [React Server Components](https://react.dev/reference/rsc/server-components) (RSC) and associated frameworks such as [NextJS](https://nextjs.org/) involve code executing on both server and client, while [HTMX](https://htmx.org/) focuses on markup and emphasises use of full-stack/backend templating engines to generate code targetting the browser. Working with these new tools blurs the distinction between the front end and back end skill set.
+- **Security issues that cross boundaries.** Hackers don&#39;t care about our engineering specialisations! Exploits have increased in recent years and some of them (for example, [CVE-2025-55182](https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components)) touch on the whole stack. 
+- **Maturation of the industry.** As the current crop of front end engineers (including myself) mature and develop in their abilities, they are both able and expected to handle a broader set of problems.
+- **Increasing efficiency of tools.** Spending less time fighting tools frees up engineers to focus on broader problem solving, across the stack.
+
+With quite a few independent factors seeming to be involved, this seems like a pretty robust trend, which is likely to continue.
+
+That said, I don&#39;t think the specialisations will disappear. I think there will continue to be distinct roles: front end, back end, platform, data, etc. But I think individuals in these roles will be expected to have knowledge beyond their area and be flexible about contributing in other areas.</content>
+  </entry>
+  
+
+  <entry>
     <title>Wireframing techniques</title>
     <link href="https://conwy.co/articles/interaction-wireframes" />
     <updated>2026-02-18T00:00:00.000Z</updated>
@@ -3740,7 +3947,7 @@ Here is a breakdown of the elements of the diagram:
         Depicted by a rectangle
         
       
-			Components of the system, such as services, databases, log storage, blob storage, mobile apps, web front-ends and more.
+			Components of the system, such as services, databases, log storage, blob storage, mobile apps, web front ends and more.
 		
 		
 			
@@ -4056,7 +4263,7 @@ You can add novelty to walks by taking different routes, varying your pace and s
 
 I aim for 30 minutes to 1 hour of walking every day.
 
-Usually in the morning, fasted, and at a moderate pace, as [high quality studies](https://veganmiche.blog/2023/01/07/how-much-fat-can-you-lose-from-walking-how-to-lose-more/) show that this can maximise fat burning.
+There is [some research](https://veganmiche.blog/2023/01/07/how-much-fat-can-you-lose-from-walking-how-to-lose-more) showing that exercise at a moderate pace (60% max heart rate) is optimal for fat burning.
 
 ### Strength training
 
@@ -4108,11 +4315,11 @@ I found HIIT to be the toughest exercise to begin, yet the easiest to complete o
 
 YouTube videos like this one are a helpful aid: [Intense 15 Minute BURPEE ONLY HIIT Workout for Serious Results!](https://www.youtube.com/watch?v=X34SBfiT7xo).
 
-I use HIIT as a replacement for walking, aiming for 1 HIIT session every second day during periods where I can&#39;t walk.
+I use HIIT as a replacement for walking, aiming for 1 HIIT session every few days. I also try to incorporate high intensity work into some of my strength training sets and swimming laps.
 
 ### Swimming
 
-I like to do laps at the local pool. Maybe pool-swimming is not 100% good on the environmental scale, so I might someday switch to ocean or lake swimming. Swimming is a great all-round cardio workout and very safe and low-impact. And being in the water is fun!
+I like to do laps at the local pool. Maybe pool-swimming is not 100% good on the environmental scale, so I might someday switch to ocean or lake swimming. Swimming is a great all-round cardio workout and very safe and low-impact, as well as being good for flexibility and posture. And being in the water is fun!
 
 I aim for one session per week.
 
@@ -4126,11 +4333,21 @@ I aim for at least 4 hours of standing per day.
 
 ### Managing pain
 
-&gt; Pull-quote: “God ... does not pet the good man: He tries him.”
-&gt;
-&gt; – Seneca
+It&#39;s important to get any localised or persistent pain treated. After experiencing some upper back pain, I personally found it helpful to visit a physiotherapist for a few sessions, over which they provided training on specific exercises and postures I could practice, to treat the issue.
 
-To be sure, there&#39;s some physical pain involved in regular exercise. Feeling fatigued, occasional muscle aches, the odd heel spur. Assuming full care is taken to avoid injury, workouts can just feel tough sometimes.
+To be sure, there can be some unavoidable physical pain involved in regular exercise. Feeling fatigued, occasional muscle aches, the odd heel spur. Assuming full care is taken to avoid injury, workouts can just feel tough sometimes.
+
+
+
+&gt; Pull-quote: “What upsets people is not things themselves but their judgements about the things. ... So when we are thwarted or upset or distressed, let us never blame someone else but rather ourselves, that is, our own judgements.”
+&gt;
+&gt; – EPICTETUS • [_Handbook (Encheiridion), 5_](http://classics.mit.edu/Epictetus/epicench.html)
+
+
+
+&gt; Pull-quote: “Start by doing what&#39;s necessary; then do what&#39;s possible; and suddenly you are doing the impossible.”
+&gt;
+&gt; – St Francis of ASSISI
 
 I don&#39;t have any one sure answer to &quot;solve&quot; inherent pain in exercise, but more like a set of small &quot;mind hacks&quot; that help me to manage pain and stay the course.
 
@@ -4139,6 +4356,7 @@ I don&#39;t have any one sure answer to &quot;solve&quot; inherent pain in exerc
 - **Effort-reward cycle.** Making the effort with the knowledge that I&#39;ll feel better at the end. (And yes, 99% of the time I do feel better!)
 - **Awareness of body.** Especially the effect of heat/cold, caffeine, sleep. When drowsy or lethargic, I remind myself of external factors to avoid excusing myself from putting in work.
 - **Mental imagery.** I like to use my imagination to create pleasant and comforting imagery so that I feel relaxed and happy throughout the painful episode. For example, when working out in the cold, I might put on some jazz music and imagine being in an Italian restaurant. Or when it&#39;s intensely hot, I might imagine being on an island in the Mediterranean, enjoying an ocean view from a luxury hotel. Persisting through tough times with imagination can unlock &quot;coping&quot; parts of your mind that you never knew existed!
+- **Stoicism.** The stoic philosophy tells us that our minds often make things worse than they really are. I found this helpful when applied to exercise. My mind makes up a story about how difficult 10 push-ups will be. In reality, after the first 3 or so, I&#39;m already on a roll. Effort is often not as difficult as it seems at first.
 
 ### Enjoying the weather
 
@@ -4163,6 +4381,8 @@ With the right clothing, equipment and preparation, working out in any weather �
 
 Music can be a great motivator during HIIT and intense strength training. I like to listen to music with a strong rhythm and high dynamic range. Some favourites include music from the [Ozora](https://www.youtube.com/results?search_query=ozora) Psytrance festival, smooth jazzy tracks of [Dimitri from Paris](https://en.wikipedia.org/wiki/Dimitri_from_Paris) and [classic 70s Brazilian samba mixes](https://www.youtube.com/results?search_query=+brazilian+samba+grooves).
 
+I like to keep a playlist of exercise tracks on my YouTube app, always ready to go as soon as I commence a work out.
+
 ## Diet
 
 After much research and experimentation, I&#39;ve settled on a [whole food](https://en.wikipedia.org/wiki/Whole_food), [plant-based](https://en.wikipedia.org/wiki/Plant-based_diet) and [low fat](https://en.wikipedia.org/wiki/Low-fat_diet) diet. This diet consists of mostly fresh fruit, vegetables and whole grains, with some added spices and low fat seasoning (vinegar). For beverages, I consume water, black coffee and various teas.
@@ -4178,8 +4398,8 @@ I also take a few supplements occasionally as recommended by my doctor, such as 
 Meals I prepare regularly:
 
 - **Fruit.** Fresh apples, pears, citrus, watermelon. Also frozen berries with a ¼ cup of oatmeal and some cocoa powder – this combo I find especially refreshing in hot weather and/or just after an intense workout. High in Vitamin C, healthy carbs and antioxidants.
-- **Rice, roots and beans.** Cooked brown rice. Various tubers such as potatoes, sweet potatoes, carrots, turnips, beetroot and more. Also almost every bean and legume dish known to humans, from lentil curry to cuban black beans. These all make for very delicious and filling lunches and dinners and tick all the protein boxes.
 - **Veggies.** Steamed in a pot. Broccoli, cauliflower, kale, brussels sprouts, etc. With some added capsicum, red onions, button mushrooms or whatever else I feel like. Sprinkled with balsamic vinegar, herbs &amp; spices and a ½ cup of yeast flakes. Veggies are high in vitamins and minerals, fibre and antioxidants.
+- **Rice, roots and beans.** Cooked brown rice. Various tubers such as potatoes, sweet potatoes, carrots, turnips, beetroot and more. Also almost every bean and legume dish known to humans, from lentil curry to cuban black beans. These all make for very delicious and filling lunches and dinners and tick all the protein boxes.
 
 These meals can be prepared in ~15-30 minutes at a time and I&#39;m rarely spending more than an hour per day in the kitchen. (Though I enjoy cooking anyway!)
 
@@ -4187,9 +4407,10 @@ Most of these ingredients are cheap, available, healthy, reasonably environmenta
 
 - **Cost:** Mostly cheap and can be purchased in bulk or found in aisles. The fresh fruit and veggies can be purchased frozen to save cost and studies show that in frozen form they are just as nutritious as refrigerated, and possibly even more nutritious!
 - **Availability:** Thanks to the wonders of modern globalised trade, I&#39;ve found most of these are available in most major cities and metro areas in much of the developed world. I do donate to food banks and other initiatives, with the hope that we will eliminate hunger and malnourishment for all people.
-- **Health:** Nutritious, whole food, no added sugar, high-fibre, high in anti-oxidants, low in toxins.
-- **Environment:** There are no animal products whatsoever. This results in a low environmental impact.
-- **Storage:** Most of the stuff can just be kept in a cupboard. I&#39;ll usually pick up the veggies the same day I eat them, but they keep pretty well in the fridge if I decide to do a weekly shop. Frozen veggies can, of course, be kept in the freezer indefinitely. An additional advantage of plant foods is that they tend to spoil less and don&#39;t produce harmful bacteria when not cooled (say, when the power goes out, the fridge fails or you just forget to put them in the fridge).
+- **Health:** Nutritious, whole food, no added sugar, high-fibre, high in anti-oxidants, low in toxins. Fruit and vegetables also have a high water content, keeping you hydrated.
+- **Environment:** I minimise use of animal products. This results in a low environmental impact.
+- **Organic:** Using the money saved from minimising meat consumption, I can afford to buy some organic fruit and vegetables. These can be both healthier and less impactful on the environment, due to lower use of pesticides.
+- **Storage:** Most of the stuff can just be kept in a cupboard. I&#39;ll usually pick up the veggies the same day I eat them, but they keep pretty well in the fridge if I decide to do a weekly shop. Frozen veggies can, of course, be kept in the freezer indefinitely (and apparently [may be more nutritious than fresh](https://edition.cnn.com/2019/05/30/health/frozen-fruit-vegetables-drayer-food/index.html)!). An additional advantage of plant foods is that they tend to spoil less and don&#39;t produce harmful bacteria when not cooled (say, when the power goes out, the fridge fails or you just forget to put them in the fridge).
 
 &gt; #### Aside: Yeast
 &gt; I like to top my vegetable dishes with [Yeast flakes](https://en.wikipedia.org/wiki/Nutritional_yeast). This tasty food item is high in protein and B-vitamins and has immunity benefits.
@@ -4278,7 +4499,7 @@ The body can easily store dietary fat as bodily fat (&quot;adipose tissue&quot;)
 
 The process of converting sugars into fats is a process called &quot;de novo lipogenesis&quot;. According to various studies (such as this one: [De novo lipogenesis in humans: metabolic and regulatory aspects](https://pubmed.ncbi.nlm.nih.gov/10365981)), only a relatively small portion of the energy absorbed from carbohydrates is stored as fat on the body. Most circulates in the bloodstream (&quot;glycogen&quot;) and is expended for bodily processes (including digestion), expended in normal daily activity, released as body heat (&quot;thermic effect of food&quot;) or stored in the liver.
 
-In my personal experience, I found that I could consume a far higher caloric content while still losing weight, if I strictly limited my daily fat intake. It&#39;s not necessary or possible to completely eliminate fat from the diet – even fruits and vegetables contain small amounts. But by following a whole-food plant-based diet and avoiding or limiting fattier foods such as avocados, nuts and seeds, fat content can easily be reduced to a very small amount, which can easily be burned off during moderate intensity fasted exercise such as a morning walk.
+In my personal experience, I found that I could consume a far higher caloric content while still losing weight, if I strictly limited my daily fat intake. It&#39;s not necessary or possible to completely eliminate fat from the diet – even fruits and vegetables contain small amounts. But by following a whole-food plant-based diet and avoiding or limiting fattier foods such as avocados, nuts and seeds, fat content can more easily be reduced. The small amount that is taken in can be more readily burned off during moderate intensity fasted exercise such as a morning walk.
 
 ### Avoiding added sugar
 
@@ -5463,7 +5684,7 @@ These books inspired this article:
 
 I&#39;ve seen various trends come and go in code folder and file structure.
 
-The two big ones in the front-end space seem to have been:
+The two big ones in web development seem to have been:
 
 - Function-focussed.
   - `📁 controllers`

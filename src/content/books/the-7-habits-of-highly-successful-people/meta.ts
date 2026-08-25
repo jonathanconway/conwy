@@ -6,7 +6,7 @@ import {
 
 export const meta: BookMeta = {
   type: "book",
-  slug: "the-80000-hours-career-guide",
+  slug: "the-7-habits-of-highly-successful-people",
   authors: ["Stephen Covey"],
   status: BookStatuses.Finished,
   title: "The 7 Habits of Highly Successful People",
