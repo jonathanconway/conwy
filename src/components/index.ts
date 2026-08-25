@@ -12,6 +12,7 @@ export * from "./checklists";
 export * from "./collapsible";
 export * from "./communities";
 export * from "./contact";
+export * from "./content-anchors";
 export * from "./content-embed";
 export * from "./content-list";
 export * from "./content-page";

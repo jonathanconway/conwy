@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import "@/components";
-import { Breadcrumb, PageLayout, Prompt, ResponsiveMdHalf } from "@/components";
+import { Breadcrumb, PageLayout, Prompt } from "@/components";
 import { site } from "@/content";
 import * as prompts from "@/content/prompts";
 import {

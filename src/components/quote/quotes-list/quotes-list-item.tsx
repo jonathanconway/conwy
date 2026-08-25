@@ -3,11 +3,11 @@
 import { Quote } from "@/framework/client";
 
 import { BlockQuotePullQuote } from "../../aside";
+import { ContentAnchors } from "../../content-anchors";
 import { LinkBox } from "../../link-box";
 import { Stack, StackDirections } from "../../stack";
 import { Text, TextTypes } from "../../text";
 
-import { QuoteAnchors } from "./quote-anchors";
 import { QuoteAttribution } from "./quote-attribution";
 import * as styles from "./quotes-list-item.css";
 
@@ -30,7 +30,7 @@ export function QuotesListItem(props: QuotesListItemProps) {
 
             <QuoteAttribution quote={quote} />
 
-            <QuoteAnchors quote={quote} />
+            <ContentAnchors content={quote} />
           </Stack>
         </BlockQuotePullQuote>
       </LinkBox>
