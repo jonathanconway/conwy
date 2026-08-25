@@ -18,7 +18,7 @@ export const meta: ArticleMeta = {
   smallImage: webBrowserIllustrationStatic,
   socialLinks: [
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://github.com/jonathanconway/observability-example-react",
     },
   ],

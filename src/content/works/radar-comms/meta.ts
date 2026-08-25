@@ -36,7 +36,7 @@ export const meta: WorkMeta = {
   projects: [],
   socialLinks: [
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://github.com/jonathanconway/radarcomms2011",
     },
   ],

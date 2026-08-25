@@ -22,7 +22,7 @@ export const meta: ProjectMeta = {
       url: "https://www.producthunt.com/products/eatpaylove#eatpaylove",
     },
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://github.com/jonathanconway/eatpaylove",
     },
   ],

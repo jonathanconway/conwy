@@ -17,7 +17,7 @@ export function createMicroMock(): Micro {
           url: "https://linkedin.com/in/jonathanconway",
         },
         {
-          type: SocialLinkTypes.Github,
+          type: SocialLinkTypes.GitHub,
           url: "https://linkedin.com/in/jonathanconway",
         },
       ],

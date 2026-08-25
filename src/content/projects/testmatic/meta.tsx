@@ -28,7 +28,7 @@ export const meta: ProjectMeta = {
       url: "http://twitter.com/testmaticapp",
     },
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "http://github.com/jonathanconway/testmatic",
     },
   ],

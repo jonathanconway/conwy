@@ -173,12 +173,12 @@ export const meta: WorkMeta = {
   ],
   socialLinks: [
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://conwy-dta-prototype.netlify.app",
       title: "Prototypes",
     },
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://github.com/jonathanconway/dta-reproduction",
       title: "Prototypes (Source)",
     },

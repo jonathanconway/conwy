@@ -10,7 +10,7 @@ export function createSocialLinksPropsMock(): SocialLinksIconsProps {
         url: "https://linkedin.com/in/jonathanconway",
       },
       {
-        type: SocialLinkTypes.Github,
+        type: SocialLinkTypes.GitHub,
         url: "https://linkedin.com/in/jonathanconway",
       },
     ],

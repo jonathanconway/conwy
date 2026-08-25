@@ -10,7 +10,7 @@ export const meta: ProjectMeta = {
   subType: "library",
   socialLinks: [
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "http://github.com/jonathanconway/tailwindjs",
     },
   ],

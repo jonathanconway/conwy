@@ -18,7 +18,7 @@ export const meta: ArticleMeta = {
   smallImage: typescriptIllustrationStatic,
   socialLinks: [
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://gist.github.com/jonathanconway/a192942e3a4cb640a5cd4d2d321df917",
     },
   ],

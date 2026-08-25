@@ -525,7 +525,7 @@
   #concern--comments
 - [ ] Put cross-module comments in a central location and reference that location wherever relevant.<br />
   Popular convention is `/docs` top-level folder with `.md` files.<br />
-  [Source: internal-documentation-example | Github](https://github.com/github/internal-documentation-example)<br />
+  [Source: internal-documentation-example | GitHub](https://github.com/github/internal-documentation-example)<br />
   [Book: A Philosophy of Software Design, Ch 13, Cross-module design decisions](https://web.stanford.edu/~ouster/cgi-bin/aposd.php)<br />
   #concern--comments
 - [ ] Provide summarising comments above blocks of code.<br />

@@ -16,9 +16,9 @@ export const meta: ArticleMeta = {
   smallImage: routeIllustrationStatic,
   socialLinks: [
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://github.com/jonathanconway/testing-steps",
-      title: "Github: testing-steps",
+      title: "GitHub: testing-steps",
     },
     {
       type: SocialLinkTypes.Website,

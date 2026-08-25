@@ -19,7 +19,7 @@ export const meta: ProjectMeta = {
       url: "https://usehtmldoc.surge.sh",
     },
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "http://github.com/jonathanconway/htmldoc",
     },
   ],

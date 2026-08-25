@@ -622,7 +622,9 @@ In this article I&#39;ll summarise the scenarios where I found AI useful.
 - [Writing bash scripts](#writing-bash-scripts)
 - [Generating unit test code](#generating-unit-test-code)
 - [Summarising conversations](#summarising-conversations)
+- [Explaining code or others&#39; pull requests](#explaining-code-or-others-pull-requests)
 - [Code reviews](#code-reviews)
+- [Generating alternative solutions](#generating-alternative-solutions)
 - [General thoughts](#general-thoughts)
 
 ## Writing code faster with autocomplete
@@ -659,7 +661,7 @@ Here&#39;s the prompt I used:
 
 &gt; Copyable: Please write a bash script which finds and lists all the unique authors who have edited the given file in the current Git repository. The given file will be specified as the first parameter to the bash script.
 
-I&#39;ve published the resulting script as a Github Gist: [list_authors.sh](https://gist.github.com/jonathanconway/71d5413cce30f43d3182fdfdc46c4723).
+I&#39;ve published the resulting script as a GitHub Gist: [list_authors.sh](https://gist.github.com/jonathanconway/71d5413cce30f43d3182fdfdc46c4723).
 
 The script takes as an argument the path to a file in that repo. It then uses `git log` on the current repository to find all the authors who have edited the file, `sort`s and `uniq`s them and outputs them to stdout.
 
@@ -704,13 +706,49 @@ function calculateDaysBetweenDates (begin, end) \
 
 ## Summarising conversations
 
-Some colleagues and I had a long back-and-forth about code reviews in a Github discussion.
+Some colleagues and I had a long back-and-forth about code reviews in a GitHub discussion.
 
 When it came time to summarise all these in a meeting, I found that AI-powered chat was a great way to summarise the discussion and get everyone&#39;s thoughts on what we had discussed.
 
 It looks like ChatGPT now has a quick Summarise button for this purpose.
 
 ![Example: ChatGPT summarise button](/images/articles/ai-for-developers/chat-gpt-summarise-button.png)
+
+
+## Explaining code or others&#39; pull requests
+
+If there is any code in a solution I&#39;m unfamiliar with, AI can help speed up my comprehension by explaining it in plain language.
+
+However, I don&#39;t trust the AI to explain everything accurately. So I include in the prompt a request to provide sources, such as references to code files and line numbers, to back up its claims.
+
+
+
+```md
+Walk me through the `≪function | component | class | method | etc≫` named `≪name≫` in the file: `≪path/file≫`.
+
+Explain how it works in simple but technical language.
+
+Provide sources for all points in your explanation, such as specific line number(s).
+```
+
+
+
+```md
+`≪https://github.com/org/repo≫`
+
+What does this PR do?  
+What is its purpose?
+
+How does it achieve it?
+Break down the code changes and how they function.
+
+How might I verify that this PR achieves the intended outcome?
+
+Please explain the above to me, in simple but technical language.
+
+Provide sources for all points in your explanation, such as specific filenames and line number(s).
+```
+
 
 ## Code reviews
 
@@ -751,6 +789,49 @@ Here&#39;s a sample of the kinds of results I tended to get (anonymised):
 Not as good as a human reviewer, but not useless either.
 
 And not bad given the tiny effort on my part!
+
+
+## Generating alternative solutions
+
+Producing alternative designs, comparing them, and selecting one is a tactic recommended by software design expert John Ousterhout.
+
+
+
+&gt; Pull-quote: “Even if you are certain that there is only one reasonable approach, consider a second design anyway, no matter how bad you think it will be. It will be instructive to think about the weaknesses of that design and contrast them with the features of other designs.”
+&gt;
+&gt; – John OUSTERHOUT • [_A Philosophy of Software Design_](/reading/a-philosophy-of-software-design)
+
+Engineer time, of course, tends to be highly constrained.
+
+Why not prompt AI to generate alternative implementations instead, so we can then compare their effectiveness?
+
+
+
+```md
+Please make code changes to implement the requirements given in the following ticket(s):
+
+- `≪[TICKET-CODE](https://ticket-system/browse/TICKET-CODE)≫`
+
+Downloaded PDF and DOC of the ticket can be found in this directory:
+
+- `≪/path/to/ticket.pdf≫`
+
+Implement the code changes in the current branch then commit.
+
+Create an alternative and different solution than the one in the branch: `≪previously-tried-solution-branch≫`
+
+The code changes should be:
+- High quality
+- Consistent with the coding style used in the rest of the code base
+- Conformant with the relevant items in the checklist `≪/path/to/checklist.md≫`
+- Production-ready
+- Follow a different, alternative approach than the one in the branch: `≪previously-tried-solution-branch≫`
+```
+
+Upon selecting an approach, we can then fix any defects or oversights in the AI generated code. Or generate the solution ourselves from scratch, incorporating parts of the AI generated code as suitable.
+
+I sometimes like to kick off multiple agents generating solutions at once. I keep them running in separate ephemeral terminal windows and separate repository folders using [Git worktree](https://git-scm.com/docs/git-worktree).
+
 
 ## General thoughts
 
@@ -936,9 +1017,9 @@ In the US, the [BLS projects 15% growth](https://www.bls.gov/ooh/Computer-and-In
 
 The story is similar in [Australia and India](https://en.wikipedia.org/wiki/Software_engineering_demographics#Relation_to_IT_demographics).
 
-&gt; “The unemployment rate has been a little lower than expected and measures of labour underutilisation remain at low rates. Growth in the Wage Price Index has eased from its peak, but broader measures of wages growth continue to be strong and growth in unit labour costs remains high.”
+&gt; Pull-quote: “The unemployment rate has been a little lower than expected and measures of labour underutilisation remain at low rates. Growth in the Wage Price Index has eased from its peak, but broader measures of wages growth continue to be strong and growth in unit labour costs remains high.”
 &gt;
-&gt;  – [Media Release • 3 February 2026 • Monetary Policy Board • Reserve Bank of Australia](https://www.rba.gov.au/media-releases/2026/mr-26-03.html)
+&gt; – [Media Release • 3 February 2026 • Monetary Policy Board • Reserve Bank of Australia](https://www.rba.gov.au/media-releases/2026/mr-26-03.html)
 
 If statistics don&#39;t lie, software developers are at most being augmented rather than replaced.
 
@@ -995,7 +1076,8 @@ None of the above is meant to suggest that we should ignore AI, hesitate in inve
 
 ## Further watching
 
-- [The software dev job market is picking up! • Maximilian SCHWARZMÜLLER](https://www.youtube.com/watch?v=7ov2M4ljccA)</content>
+- [The software dev job market is picking up! • Maximilian SCHWARZMÜLLER](https://www.youtube.com/watch?v=7ov2M4ljccA)
+- [Don&#39;t Let AI Dull Your Software Engineering Edge • Andy WONG](https://www.awongcm.io/blog/2026/04/25/don-t-let-ai-dull-your-software-engineering-edge/)</content>
   </entry>
   
 
@@ -1117,57 +1199,73 @@ const  = getFeatureFlags([
     <link href="https://conwy.co/articles/better-pull-requests" />
     <updated>2026-02-18T00:00:00.000Z</updated>
     <id>better-pull-requests</id>
-    <content xml:lang="en" type="html">Pull requests are fundamental to how much software is currently delivered. Effective and timely delivery is what customer satisfaction, business success and career progression are made of. So I figured it would be good to spend some time thinking about what makes a good pull request. In this article I cover my learnings to-date.
+    <content xml:lang="en" type="html">Pull requests are _the_ fundamental unit of change on many software projects. They allow code to be reviewed before going to Production and later serve as a handy reference when tracing the history of the code base.
+
+Previously I wrote some of my best tips on [code reviews](/articles/code-reviews) of others&#39; pull requests. In this article I&#39;ll cover my learnings to date about what makes a good pull request.
+
 
 ## Cohesion over size
 
-Though there are debates about pull request size, I think size is less important than ***shape***. What matters most is that a pull request is a coherent and cohesive change set.
+Though there are debates about pull request size, I think size is less important than _shape_.
+
+***What matters most is that a pull request is a coherent and cohesive change set.***
 
 For example, a very large pull request might be relatively easy to review if the only change is to remove a single column from a very large CSV configuration file. Assuming the change is correct and desirable, and clearly explained and justified in the description, the diff itself can be conceptualised as one unit of change and cleanly reasoned about.
 
-![A large quantity of changes can still be easy to review if they are all of a similar kind] 
+![A large quantity of changes can be relatively easy to review if they are all of a similar kind](/images/articles/better-pull-requests/diagram-small-complex-vs-large-simple.svg)
+
+Conversely, a change that seems small in terms of number of lines could be difficult to review if those lines are unrelated or have many unrelated, unknown impacts. It might be better to split such a change into even smaller pull requests, with each pull request covering a separate impact space. This will make each pull request easier to reason about individually.
+
+![A pull request that is complex could benefit from being split, even if it is small in size](/images/articles/better-pull-requests/diagram-split-complex-to-smaller.svg)
+
+I find the concept of &quot;unit of change&quot; useful here. If a change can be mentally treated as a single cohesive unit, then it&#39;s easier to reason about and review. This is based on the concepts of [chunking in Psychology](https://en.wikipedia.org/wiki/Chunking_(psychology)) and [Single-responsibility principle (SRP)](https://en.wikipedia.org/wiki/Single-responsibility_principle) in programming.
+
+Applying this concept to pull requests:
+
+***Keep related changes together in one pull request, so they can be reasoned about as a single unit.***
+
+&gt; Pull-quote: “Just as the Single Responsibility Principle states that a class should have only one responsibility, so should a Pull Request address only a single concern.”
+&gt;
+&gt; – Mark SEEMANN • [_10 tips for better Pull Requests_](https://blog.ploeh.dk/2015/01/15/10-tips-for-better-pull-requests/)
+
+An additional advantage to cohesive pull requests is that they can be easily rolled back if there is a problem.
+
+![It&#39;s generally better to group similar changes together in the same pull request if possible](/images/articles/better-pull-requests/diagram-keep-similar-together.svg)
+
+However, sometimes / occasionally it makes sense to split related changes across multiple pull requests. Some changes lend themselves to being decomposed into a sequence of smaller changes. For example, removing a feature from an application might impact multiple unrelated areas of the application. In that case, it might make sense to remove the feature from each area one at a time, until it has been completely removed. At each stage of the removal, the whole application should build and function properly.
+
+![Sometimes it&#39;s better to split similar changes into separate pull requests, if they have different impacts](/images/articles/better-pull-requests/diagram-split-by-impact.svg)
 
 
+## Separating formatting from content
 
-The concept of &quot;unit of change&quot; I find useful here. If a change can be mentally &quot;chunked&quot;, i.e. treated as a single, cohesive unit, then it&#39;s easy enough to reason about and review.
+Have you ever been faced with a massive pull request – thousands of lines – only to discover on investigation that it&#39;s just a formatting change? For example, it might be a change from tabs to white spaces or from TSV to CSV.
 
-Conversely, a change that is a small number of lines could be difficult to review if those lines are unrelated or have many unrelated, unknown impacts. It might be better to split the change over separate pull requests, with each pull request covering a separate impact space.
+If possible, it&#39;s better to perform such a formatting change in a separate pull request, clearly labelled as such. This will save reviewers a lot of time spent investigating why the change is so large.
 
-I prefer to avoid splitting related changes across multiple pull requests if possible. It&#39;s better to keep closely related changes together, so they can be reasoned about in isolation and easily rolled back if there is a problem.
+&gt; Pull-quote: “If you really need to address white space issues, move code around within files, change formatting, or do other stylistic changes to the code, please do so in an isolated pull request that does only that, and state so in your Pull Request comment.”
+&gt;
+&gt; – Mark SEEMANN • [_10 tips for better Pull Requests_](https://blog.ploeh.dk/2015/01/15/10-tips-for-better-pull-requests/)
 
+Sometimes this separation isn&#39;t easy or even possible, however. For example, automated formatting tools might force formatting changes to be included in content changes.
 
+For these cases, I try to add a brief [inline note](#inline-notes) to each block of changes, informing the reviewer that they are just formatting changes.
 
-However, sometimes it makes sense to split changes across multiple pull requests. Some changes lend themselves to being decomposed into a sequence of smaller changes. For example, removing a feature from an application might impact multiple areas of the application. In that case, it might make sense to remove the feature from each area one at a time, until it has been completely removed. At each stage of the removal, the whole application should build and function properly.
+![Screenshot of inline note for formatting change](/images/articles/better-pull-requests/screenshot-notes-inline-formatting-example.png)
+
 
 ## Sub pull requests
 
 In certain cases, we have a large but atomic change. The change has a broad impact, but it needs to be applied atomically or &quot;all at once&quot; and cannot be decomposed into a sequence of smaller changes.
 
-For example, we might need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request.
-
-In cases like these, I found the approach of &quot;sub pull requests&quot; useful. Here we create one large pull request in the main branch.
-
-For example:
-- `chore/upgrade-node` → `main`
-
-Then we create multiple smaller pull requests into the larger pull request branch.
-
-For example:
-- `chore/upgrade-node-react` → `chore/upgrade-node`
-- `chore/upgrade-node-mui` → `chore/upgrade-node`
-- `chore/upgrade-node-storybook` → `chore/upgrade-node`
-
-Then we merge each of the sub pull requests into the larger pull request, followed by merging the larger pull request into the main branch.
-1. `chore/upgrade-node-react` → `chore/upgrade-node`
-2. `chore/upgrade-node-mui` → `chore/upgrade-node`
-3. `chore/upgrade-node-storybook` → `chore/upgrade-node`
-4. `chore/upgrade-node` → `main`
-
-This approach gives us the best of both worlds. The team can reason about and review each piece of the code separately. And then, after all the changes are have been merged into the main pull request, that pull request can be merged once, atomically. And it can be rolled back with a single revert, if something goes wrong.
+For example, suppose we need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request. In cases like these, I found the approach of &quot;sub pull requests&quot; useful. Here we create one large pull request in the main branch.
 
 ```mermaid--svg
+---
+config:
+  theme: &#39;base&#39;
+---
 %% @description Example of sub pull request pattern for package upgrades
-
 gitGraph
     commit
     branch chore/upgrade-node
@@ -1195,28 +1293,87 @@ gitGraph
     merge chore/upgrade-node
 ```
 
+For example:
+- `chore/upgrade-node` → `main`
+
+Then we create multiple smaller pull requests into the larger pull request branch.
+
+For example:
+- `chore/upgrade-node-react` → `chore/upgrade-node`
+- `chore/upgrade-node-mui` → `chore/upgrade-node`
+- `chore/upgrade-node-storybook` → `chore/upgrade-node`
+
+Then we merge each of the sub pull requests into the larger pull request, followed by merging the larger pull request into the main branch.
+1. `chore/upgrade-node-react` → `chore/upgrade-node`
+2. `chore/upgrade-node-mui` → `chore/upgrade-node`
+3. `chore/upgrade-node-storybook` → `chore/upgrade-node`
+4. `chore/upgrade-node` → `main`
+
+This approach gives us the best of both worlds. The team can reason about and review each piece of the code separately. And then, after all the changes are have been merged into the main pull request, that pull request can be merged once, atomically. And it can be rolled back with a single revert, if something goes wrong.
 
 
 
 
-## Description
+
+
+
+## Conventional naming
+
+Depending on your project setup and team expectations, certain conventions might need to be followed.
+
+These conventions might apply to:
+- Title of the pull request
+- Branch name
+- Commit messages
+- Tags on commits
+- Tags on the pull request
+
+Some teams use [conventional commits](https://www.conventionalcommits.org/), requiring commit messages to be prefixed with category such as `feat` (feature), `fix`, etc. Other teams use tools to generate `CHANGELOG` and manage [semantic versioning](https://semver.org/), such as [release-please](https://github.com/googleapis/release-please).
+
+Automated build, release and deployment processes might expect the pull request title, commit messages and/or branch name to have a certain format. They might also detect certain tags being added to a pull request, to turn on or off CI features such as staging website generation or automated security check.
+
+If you are a new joiner, it&#39;s best to ask the team as early as possible about these, ideally during onboarding.
+
+
+## Structured description
 
 Pull request descriptions are often under-utilised or over-utilised.
 
 We don&#39;t want to go into unnecessary detail about a change, overwhelming the reader. We can safely omit topics that can be readily grasped by some experience with the code base or are already documented (for example, in the task ticket, Wiki pages, etc). A simple reference to the relevant task ticket could be included in the description for easy single click access.
 
-On the other hand, we don&#39;t want to go to the other extreme and write a &quot;lazy&quot; description, omitting important content. The pull request description should complement other sources of information, filling in the gaps in other documentation, where they relate to the specific pull request.
+On the other hand, we don&#39;t want to go to the other extreme and write a &quot;lazy&quot; description, omitting important context. This will just complicate the lives of our reviewers, who have to put in additional work to dig up the information they need to properly review the changes.
+
+I think the right balance is:
+
+***Include important details specific to the pull request and not documented elsewhere.***
+
+The pull request description should _complement_ other available sources of information, filling in any critical gaps.
 
 
 
-- Link to a task ticket or similar
-- One or two small screenshots
-- Links to other pull requests in a sequence of pull requests
-- Technical details relevant only to the pull request, which are not already in comments or self-evident in the code
-- Guidance on testing the change, such as testing steps and test data, if not already in automated test code or in a separate system
-- Guidance on monitoring the change when it goes into production
+![Screenshot of description with summary, link to ticket and screenshots and notes sections](/images/articles/better-pull-requests/screenshot-description-example.png)
+
+Some content I might include in a description, if not already covered elsewhere:
+
+- **Links.** To task ticket and other pull requests (such as parts of a sequence).
+- **Summary.** Of changes.
+- **Technical details.** Of changes.
+- **Local setup instructions.** For example: shell commands, port numbers, environment variables, feature flags, etc.
+- **Testing details.** Such as test steps and test data.
+- **Impacts.** On behaviour, systems, processes or code.
+- **Monitoring.** Guidance on monitoring the change when it goes into production. Such as where to find logs.
+- **Screenshots.** Before and after screenshots or recordings, including various screen sizes as needed.
+- **Diagrams.** Such as systems involved or impacted. In Mermaid format.
+- **Notes.** Listing of all inline notes (self-comments) with links to each note.
+
+For screen recordings, I prefer to avoid animated GIFs and instead use formats such as MP4, as these formats allow the viewer to manually scroll through the video. I use a compression tool (typically [Handbrake](/tools/handbrake)) to reduce the file size before uploading.
+
+
+## Collapsible regions
 
 Collapsible regions, supported in GitHub pull request markdown, can be a great way to present a high-level outline to the viewer, hiding lower-level details until/unless the reader is interested to dig deeper by clicking to expand the region.
+
+![Screenshot of detail section with screenshot in GitHub pull request](/images/articles/better-pull-requests/screenshot-details-section-example.png)
 
 ```md
 
@@ -1227,6 +1384,72 @@ Screenshots
 
 ```
 
+This follows the UX principle of [progressive disclosure](https://www.nngroup.com/articles/progressive-disclosure/). We show the most important details to the viewer upfront and allow them to drill into finer details only if they want to.
+
+
+## Description template
+
+Many projects provide a [pull request template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository) in a standard `docs/pull_request_template.md` file. This can be a good place to begin, when forming your pull request description, as it typically provides guidance, such as a list of elements your description should contain and in what order.
+
+Description templates often contain helpful information, such as checklists of verification steps, todo lists for authors and snippets of commonly used text.
+
+&gt; Pull-quote: “Our team implemented a similar approach by including a checklist of manual verification steps to perform as part of a change request. The checklist, in the form of a to-do list, is included in the GitHub pull request template for our repositories.”
+&gt;
+&gt; – Cloves CARNEIRO Jr.,  Tim SCHMELMER • [_Microservices from Day One_](/reading/a-philosophy-of-software-design) • Chapter 8, pp. 112
+
+
+## Re-usable snippets
+
+I find it helpful to keep a handful of &quot;snippets&quot; – or pieces of Markdown that I can copy and paste to quickly scaffold a pull request description.
+
+These can be kept as, say, Markdown files in a local folder.
+
+For example, if my pull requests frequently include &quot;feature flag&quot; instructions, I&#39;ll set up a reusable &quot;feature flag&quot; snippet. Whenever I need to, I can copy and paste the &quot;feature flag&quot; snippet into the pull request and then easily adjust the feature flag keys.
+
+
+    
+    
+
+
+
+## Inline notes
+
+Some pull requests can benefit from additional notes about the code which would be inappropriate to include as comments in the code itself.
+
+These might include open questions to code reviewers (which are to be replied to in a discussion thread), explanations of why a change was made or guidance on how to test a change.
+
+These inline notes can be added as comments on specific lines of code or whole code files.
+
+I like to prefix the notes to make them easier for code reviewers to scan.
+
+![Screenshot of inline notes in GitHub pull request](/images/articles/better-pull-requests/screenshot-notes-inline-example.png)
+
+- `Note:` - additional context to help the reviewer understand the change.
+- `Explanation:` - explanation of why the change is being made.
+- `Warning:` - warning to the code reviewer of some risk or gotcha they might encounter.
+- `Question:` - open question, to be answered or discussed in a reply or over team chat.
+- `Testing:` - instructions on how to test a piece of code.
+- `Screenshot:` - inline screenshot for a single page, component, etc.
+
+I include testing instructions with small snippets of code, if I think it will save the reviewer&#39;s time, and assuming they cannot be expressed in an automated test.
+
+![Screenshot of inline testing notes in GitHub pull request](/images/articles/better-pull-requests/screenshot-notes-inline-test-example.png)
+
+If there are multiple inline notes, I list them, along with links, in the description, in a collapsible region. This allows the reviewer to glance and scan them at a high level.
+
+![Screenshot of list of notes in description of GitHub pull request](/images/articles/better-pull-requests/screenshot-notes-list-example.png)
+
+```md
+
+Notes
+
+- [Note 1](https://github.com/jonathanconway/conwy/pull/4/changes#r3840098965): Question: Should we optimise this function?
+- [Note 2](https://github.com/jonathanconway/conwy/pull/4/changes#r3840102986): Explanation: Re-generated by content-anchors tool, following content update.
+
+
+```
+
+
 ## Communication
 
 It&#39;s important to choose the right channel to communicate your pull request.
@@ -1236,11 +1459,22 @@ Depending on the set up at your organisation, your team members might automatica
 It might be helpful to tag specific individuals if broadcasting a PR to a larger team through, say, the team chat channel. This way, you can involve the right people in code review while keeping the rest of the team in the loop.
 
 
+## Discussions
+
+Discussions in code review can get pretty deep, especially during the early stages of a project or when discussing a complex issue. Too many nested comments in a pull request can be difficult for reviewers to keep track of and obscure the communication from the wider team.
+
+For this reason I often adopt a policy of taking deeper discussions into a more appropriate forum, such as team chat (Slack or equivalent) or a call (Teams, Google Meet or equivalent). 
+
+I make sure to add links to such discussions to the pull request, either in the description or comments thread. These can serve as valuable references for future maintainers who view the pull request, perhaps via Git blame.
+
+
+
+
 ## Drafts
 
-Submitting pull requests in draft mode first can be a good way to &quot;sketch&quot; a change and get early feedback on the overall direction before going too deep. I&#39;ve found draft pull requests a great way to do solution design as a team, as it grounds the design **in the code** rather than getting too abstract with diagrams or wordy descriptions.
+Submitting pull requests in draft mode can be a good way to &quot;sketch&quot; a change and get early feedback on the overall direction before going too deep. I&#39;ve found draft pull requests a great way to do solution design as a team, as it grounds the design **in the code** rather than getting too abstract with diagrams or wordy descriptions.
 
-Multiple drafts can be used to compare and contrast alternative designs. Producing alternative designs, comparing them, and selecting one is a tactic recommended by software design expert John Ousterhout.
+Multiple drafts can be created to compare and contrast alternative designs. Producing alternative designs, comparing them, and selecting one is a tactic recommended by software design expert John Ousterhout.
 
 
 
@@ -1251,18 +1485,11 @@ Multiple drafts can be used to compare and contrast alternative designs. Produci
 Alternative drafts can be referenced in team documentation, such as ADRs.
 
 
-## Discussions
-
-Discussions in code review can get pretty deep, especially during the early stages of a project or when discussing a complex issue. Too many nested comments in a pull request can be difficult for reviewers to keep track of and obscure the communication from the wider team.
-
-For this reason I often adopt a policy of taking deeper discussions into a more appropriate forum, such as team chat (Slack or equivalent) or a call (Teams, Google Meet or equivalent). Team chat threads or call recordings can then be linked into the pull request, either in the comments thread or the description area. These can serve as valuable references for future maintainers.
-
-
-
-
 ## Further reading
 
-</content>
+- [Video: What is a Pull Request, and How Do I Write Great Pull Requests? • Matt STAUFFER](https://www.youtube.com/watch?v=_HedItVFr5M)
+- [Blog: 10 tips for better Pull Requests • Mark SEEMANN](https://blog.ploeh.dk/2015/01/15/10-tips-for-better-pull-requests/)
+- [Blog: On commenting and approving pull requests • Jake WORTH](https://www.jakeworth.com/posts/on-commenting-and-approving-pull-requests/)</content>
   </entry>
   
 
@@ -1351,6 +1578,8 @@ And if it&#39;s a major issue, I&#39;ll write:
 [Major]: Should include an authorization check here.
 ```
 
+There are some other systems for prefixing review comments. David Garcia has a [two-part tagging system](https://blog.techdocs.studio/p/a-tagging-system-for-documentation-review-comments) comprising severity (&quot;blocker&quot;, &quot;improvement&quot;, &quot;optional&quot;) and category (&quot;clarity&quot;, &quot;bug&quot;, &quot;organization&quot;, &quot;style&quot;, &quot;consistency&quot;).
+
 ## Checklist
 
 &gt; Pull-quote: “Substantial parts of what software designers, financial managers, firefighters, police officers, lawyers, and most certainly clinicians do are now too complex for them to carry out reliably from memory alone.”
@@ -1383,7 +1612,22 @@ Additionally, I&#39;ve built up a pool of coding standards and best practices ov
 
 This checklist isn&#39;t only useful for reviewing others&#39; work – I use it on my own changes as well. By anticipating feedback and addressing it earlier, my code will already be of higher quality by the time it reaches the screens of others. This reduces the review workload on other engineers and improves my reputation within the team.
 
-## Additional ideas
+
+## Maximising developer experience
+
+Part of being a good team mate is to maximise others&#39; developer experience and this is certainly applicable to code reviews.
+
+I think it&#39;s best to balance commendation with criticism. This helps build a positive relationship with contributors and have more influence.
+
+&gt; Pull-quote: “When someone asks you to review a document or pull request or conference talk, do call out the sections that you think are great, but pay them the respect of being (kindly!) honest about their work. Giving constructive and critical feedback isn’t easy. It takes effort to tease out exactly what isn’t working and find the words to explain why it’s not as good as it can be. It’s a more difficult conversation. But you won’t help your colleague if you hide the truth.”
+&gt;
+&gt; – Tanya REILLY • [_The Staff Engineer&#39;s Path_](/reading/a-philosophy-of-software-design) • Chapter 8. Good Influence at Scale, pp. 367
+
+Also I try to minimise iterations. Ideally all relevant feedback should be collected together and delivered in one go, rather than sprinkling small pieces of feedback over many hours and forcing the contributor to repetitively go back and make changes. When reviewing a significant sized pull request, I try to keep a list of my comments in a local Markdown file and then post them all at once when I&#39;m done. GitHub&#39;s [Pull request reviews](https://docs.github.com/en/pull-requests/reference/pull-request-reviews) feature helps with this.
+
+
+
+## Additional ideas and thoughts
 
 Sometimes I automate parts of this process with AI, depending on the situation. I try to avoid overly relying on AI, as I think it&#39;s important to maintain direct knowledge of the code base.
 
@@ -1399,6 +1643,7 @@ The book _Software Engineering at Google_ has some useful guidance under the sec
 - Refactorings and large-scale changes
 
 Categorising a code review, similar to above, one can focus effort and skip unnecessary processes.
+
 
 ## Conclusion
 
@@ -1418,7 +1663,8 @@ These books inspired this article:
 
 Related resources you might find helpful:
 
-- [The Code Review Pyramid • Gunnar MORLING](https://www.linkedin.com/feed/update/urn:li:activity:7083099045279232000)</content>
+- [The Code Review Pyramid • Gunnar MORLING](https://www.linkedin.com/feed/update/urn:li:activity:7083099045279232000)
+- [How to Do Code Reviews Like a Human • Michael LYNCH](https://www.youtube.com/watch?v=0t4_MfHgb_A)</content>
   </entry>
   
 
@@ -2377,6 +2623,8 @@ eTIBs are bought and sold in **units**, with each unit constituting an original 
 
 &gt; Aside: Example: if you buy 5 eTIB units, then you have bought a total **original** face value of $500.
 
+![Diagram representing eTIB with purchase price](/images/articles/etibs/etibs-purchase.svg)
+
 eTIBs are bought and sold on the [ASX (Australian Stock Exchange)](https://asx.com.au). Anyone with access to the ASX can buy and sell them. As with regular stocks and bonds, this can be done through a low-fee online broker, such as [SelfWealth](http://selfwealth.com.au) or [Interactive Brokers](https://www.interactivebrokers.com.au). You can find short training videos to help with this, such as [How to Buy and Sell Shares from Selfwealth Tutorials](https://www.youtube.com/watch?v=fljsc6MyElM).
 
 ![Screenshot of Buy form on SelfWealth with eTIB selected](/images/articles/etibs/selfwealth-buy-form-gsi.png)
@@ -2806,7 +3054,7 @@ We can gather and analyse analytics on test results over longer periods (weeks u
 
 Analytics from test runs in CI can be used to identify patterns of test failure, such as certain tests failing more often. We can then narrow in on the flaky tests, gather log output from the CI environment and examine it to search for clues as to why they are flaky.
 
-![Screenshot of Github actions UI with test failure](/images/articles/flaky-tests/github-actions-workflow-failed-job.jpg)
+![Screenshot of GitHub actions UI with test failure](/images/articles/flaky-tests/github-actions-workflow-failed-job.jpg)
 
 Maybe we can learn something about the cause of the failures by observing phenomena related to the failures.
 
@@ -5502,7 +5750,7 @@ export function createWithHOC(
 }
 ```
 
-I also published it as a Github Gist: [create-with-hoc.ts](https://gist.github.com/jonathanconway/8a4144df3304505f720429e464641a4a).
+I also published it as a GitHub Gist: [create-with-hoc.ts](https://gist.github.com/jonathanconway/8a4144df3304505f720429e464641a4a).
 
 Please feel free to re-use, tweak and/or share as desired. I hope someone out there finds it useful!</content>
   </entry>
@@ -6040,7 +6288,7 @@ Details can be provided inline, such as:
 External resources can also or alternately be linked to, such as:
 - Account credentials in a secret store
 - Feature flag pages in feature flag management system (such as [LaunchDarkly](https://launchdarkly.com))
-- Feature flag settings in code files in a source code repository (such as [Github](http://github.com))
+- Feature flag settings in code files in a source code repository (such as [GitHub](http://github.com))
 - Test entities in separate documentation pages or in a source code repository
 - Procedures in separate documentation page
 - Deep-links to in-app controls for setting up state simulations
@@ -6241,7 +6489,7 @@ Example of React-rendered components enabled by using MDX format:
 - **Code samples** - rendered by my `MdxCode` component, using PrismJS
 - **Diagrams** - rendered by my `MdxMermaid` component, using MermaidJS
 
-However I also wanted the ability to copy and paste the source Markdown code directly into other Markdown-based content platforms such as [Github](https://github.com/) and [DEV.to](https://dev.to/).
+However I also wanted the ability to copy and paste the source Markdown code directly into other Markdown-based content platforms such as [GitHub](https://github.com/) and [DEV.to](https://dev.to/).
 
 To do this, I would have to convert the content from MDX format back into plain Markdown format, then copy and paste it into the platform.
 
@@ -6274,7 +6522,7 @@ Using this additional information, my own parser can add enhancements such as Re
 ## Markdown subformat I&#39;m using
 
 I&#39;m using a Markdown subformat to provide additional functionality to my Markdown-based articles in a way that maintains
-compatibility with regular Markdown parsers like Github and DEV.to.
+compatibility with regular Markdown parsers like GitHub and DEV.to.
 
 Here are the variations that make up the subformat:
 
@@ -6349,9 +6597,9 @@ This is another paragraph.
 
 ```
 
-If I copy/paste it into, say, Github, it will render it like this:
+If I copy/paste it into, say, GitHub, it will render it like this:
 
-![Screenshot of aside block-quote in Github](/images/articles/subformats/github-screenshot.png)
+![Screenshot of aside block-quote in GitHub](/images/articles/subformats/github-screenshot.png)
 
 But on my own website, it will render like this:
 

@@ -20,7 +20,7 @@ export const meta: ArticleMeta = {
       url: "https://dev.to/conw_y/types-vs-assertions-45d4",
     },
     {
-      type: SocialLinkTypes.Github,
+      type: SocialLinkTypes.GitHub,
       url: "https://gist.github.com/jonathanconway/d2578f0b37d72a5c14b6f03de51d671a",
       title: "Gist: assert.ts",
     },

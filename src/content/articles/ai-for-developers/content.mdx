@@ -12,7 +12,9 @@ In this article I'll summarise the scenarios where I found AI useful.
 - [Writing bash scripts](#writing-bash-scripts)
 - [Generating unit test code](#generating-unit-test-code)
 - [Summarising conversations](#summarising-conversations)
+- [Explaining code or others' pull requests](#explaining-code-or-others-pull-requests)
 - [Code reviews](#code-reviews)
+- [Generating alternative solutions](#generating-alternative-solutions)
 - [General thoughts](#general-thoughts)
 
 ## Writing code faster with autocomplete
@@ -49,7 +51,7 @@ Here's the prompt I used:
 
 > Copyable: Please write a bash script which finds and lists all the unique authors who have edited the given file in the current Git repository. The given file will be specified as the first parameter to the bash script.
 
-I've published the resulting script as a Github Gist: [list_authors.sh](https://gist.github.com/jonathanconway/71d5413cce30f43d3182fdfdc46c4723).
+I've published the resulting script as a GitHub Gist: [list_authors.sh](https://gist.github.com/jonathanconway/71d5413cce30f43d3182fdfdc46c4723).
 
 The script takes as an argument the path to a file in that repo. It then uses `git log` on the current repository to find all the authors who have edited the file, `sort`s and `uniq`s them and outputs them to stdout.
 
@@ -99,13 +101,49 @@ function calculateDaysBetweenDates (begin, end) \{
 
 ## Summarising conversations
 
-Some colleagues and I had a long back-and-forth about code reviews in a Github discussion.
+Some colleagues and I had a long back-and-forth about code reviews in a GitHub discussion.
 
 When it came time to summarise all these in a meeting, I found that AI-powered chat was a great way to summarise the discussion and get everyone's thoughts on what we had discussed.
 
 It looks like ChatGPT now has a quick Summarise button for this purpose.
 
 ![Example: ChatGPT summarise button](/images/articles/ai-for-developers/chat-gpt-summarise-button.png)
+
+
+## Explaining code or others' pull requests
+
+If there is any code in a solution I'm unfamiliar with, AI can help speed up my comprehension by explaining it in plain language.
+
+However, I don't trust the AI to explain everything accurately. So I include in the prompt a request to provide sources, such as references to code files and line numbers, to back up its claims.
+
+<a name="content--prompt--explain-code" />
+
+```md
+Walk me through the `≪function | component | class | method | etc≫` named `≪name≫` in the file: `≪path/file≫`.
+
+Explain how it works in simple but technical language.
+
+Provide sources for all points in your explanation, such as specific line number(s).
+```
+
+<a name="content--prompt--explain-pr" />
+
+```md
+`≪https://github.com/org/repo≫`
+
+What does this PR do?  
+What is its purpose?
+
+How does it achieve it?
+Break down the code changes and how they function.
+
+How might I verify that this PR achieves the intended outcome?
+
+Please explain the above to me, in simple but technical language.
+
+Provide sources for all points in your explanation, such as specific filenames and line number(s).
+```
+
 
 ## Code reviews
 
@@ -146,6 +184,49 @@ Here's a sample of the kinds of results I tended to get (anonymised):
 Not as good as a human reviewer, but not useless either.
 
 And not bad given the tiny effort on my part!
+
+
+## Generating alternative solutions
+
+Producing alternative designs, comparing them, and selecting one is a tactic recommended by software design expert John Ousterhout.
+
+<a name="content--book--a-philosophy-of-software-design" />
+
+> Pull-quote: “Even if you are certain that there is only one reasonable approach, consider a second design anyway, no matter how bad you think it will be. It will be instructive to think about the weaknesses of that design and contrast them with the features of other designs.”
+>
+> – John OUSTERHOUT • [_A Philosophy of Software Design_](/reading/a-philosophy-of-software-design)
+
+Engineer time, of course, tends to be highly constrained.
+
+Why not prompt AI to generate alternative implementations instead, so we can then compare their effectiveness?
+
+<a name="content--prompt--implement-requirements-alternative" />
+
+```md
+Please make code changes to implement the requirements given in the following ticket(s):
+
+- `≪[TICKET-CODE](https://ticket-system/browse/TICKET-CODE)≫`
+
+Downloaded PDF and DOC of the ticket can be found in this directory:
+
+- `≪/path/to/ticket.pdf≫`
+
+Implement the code changes in the current branch then commit.
+
+Create an alternative and different solution than the one in the branch: `≪previously-tried-solution-branch≫`
+
+The code changes should be:
+- High quality
+- Consistent with the coding style used in the rest of the code base
+- Conformant with the relevant items in the checklist `≪/path/to/checklist.md≫`
+- Production-ready
+- Follow a different, alternative approach than the one in the branch: `≪previously-tried-solution-branch≫`
+```
+
+Upon selecting an approach, we can then fix any defects or oversights in the AI generated code. Or generate the solution ourselves from scratch, incorporating parts of the AI generated code as suitable.
+
+I sometimes like to kick off multiple agents generating solutions at once. I keep them running in separate ephemeral terminal windows and separate repository folders using [Git worktree](https://git-scm.com/docs/git-worktree).
+
 
 ## General thoughts
 
