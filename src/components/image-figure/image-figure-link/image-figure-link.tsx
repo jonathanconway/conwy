@@ -16,6 +16,11 @@ export function ImageFigureLink({
   size,
   onImageLinkClick,
 }: ImageFigureLinkProps) {
+  const style = {
+    width,
+    height,
+  };
+
   const image = (
     <Image
       className={size ? styles.img : styles.imgSized}
@@ -23,6 +28,7 @@ export function ImageFigureLink({
       src={src ?? ""}
       width={Number(width) || 600}
       height={Number(height) || 400}
+      style={style}
       placeholder="empty"
     />
   );

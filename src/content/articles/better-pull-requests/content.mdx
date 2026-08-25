@@ -21,9 +21,11 @@ Conversely, a change that seems small in terms of number of lines could be diffi
 
 ![A pull request that is complex could benefit from being split, even if it is small in size](/images/articles/better-pull-requests/diagram-split-complex-to-smaller.svg)
 
-The concept of "unit of change" might be useful here. If a change can be mentally treated as a single cohesive unit, then it's easier to reason about and review. This is based on the concepts of [chunking in Psychology](https://en.wikipedia.org/wiki/Chunking_(psychology)) and [Single-responsibility principle (SRP)](https://en.wikipedia.org/wiki/Single-responsibility_principle) in programming.
+The concept of "unit of change" might be useful here. The reviewer should be able to mentally grasp and treat the change as a single cohesive unit. That way, it's easier to reason about and review.
 
-Applying this concept to pull requests:
+(This idea draws on notions of [chunking](https://en.wikipedia.org/wiki/Chunking_(psychology)) in Psychology and [Single-responsibility principle (SRP)](https://en.wikipedia.org/wiki/Single-responsibility_principle) in programming.)
+
+Applying the "unit of change" concept to pull requests:
 
 ***Keep related changes together in one pull request, so they can be reasoned about as a single unit.***
 
@@ -44,9 +46,11 @@ For example, removing a feature from an application might impact multiple unrela
 
 ## Separating formatting from content
 
-Have you ever been faced with a massive pull request – thousands of lines – only to discover on investigation that it's just a formatting change? For example, it might be a change from tabs to white spaces or from TSV to CSV.
+Have you ever been faced with a massive pull request – thousands of lines – only to discover on investigation that it was ***just a formatting change***?
 
-If possible, it's better to perform such a formatting change in a separate pull request, clearly labelled as such. This will save reviewers a lot of time spent investigating why the change is so large.
+For example, a change from tabs to white spaces or from TSV to CSV.
+
+It's better to perform such a formatting change in a separate pull request if possible, clearly labelled as such. This will save reviewers a lot of time spent investigating the change.
 
 > Pull-quote: “If you really need to address white space issues, move code around within files, change formatting, or do other stylistic changes to the code, please do so in an isolated pull request that does only that, and state so in your Pull Request comment.”
 >
@@ -54,14 +58,16 @@ If possible, it's better to perform such a formatting change in a separate pull 
 
 Sometimes this separation isn't easy or even possible, however. For example, automated formatting tools might force formatting changes to be included in content changes. For these cases, you could add a brief [inline note](#inline-notes) to each block of changes, informing the reviewer that they are just formatting changes.
 
-![Screenshot of inline note for formatting change](/images/articles/better-pull-requests/screenshot-notes-inline-formatting-example.png)
+![Screenshot of inline note for formatting change](/images/articles/better-pull-requests/screenshot-notes-inline-formatting-example.png?size=fill-width)
 
 
 ## Sub pull requests
 
 In certain cases, we have a large but atomic change. The change has a broad impact, but it needs to be applied atomically or "all at once" and cannot be decomposed into a sequence of smaller changes.
 
-For example, suppose we need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request. In cases like these, the approach of "sub pull requests" can be useful. Here we create one large pull request in the main branch.
+For example, suppose we need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request.
+
+In cases like these, the approach of "sub pull requests" can be useful. Here we create one large pull request in the main branch.
 
 ```mermaid--svg
 ---
@@ -152,9 +158,9 @@ The pull request description should _complement_ other available sources of info
 Some content to include in a description, if not already covered elsewhere:
 
 - **Links.** To task ticket and other pull requests (such as parts of a sequence).
-- **Summary.** Of changes.
-- **Technical details.** Of changes.
-- **Local setup instructions.** For example: shell commands, port numbers, environment variables, feature flags, etc.
+- **Summary.** Brief one-sentence summary of changes.
+- **Technical details.** Technical details the reviewer should know about, which are not already documented somewhere.
+- **Local setup instructions.** Whatever is needed to test the change. For example: shell commands, port numbers, environment variables, feature flags, etc.
 - **Testing details.** Such as test steps and test data.
 - **Impacts.** On behaviour, systems, processes or code.
 - **Monitoring.** Guidance on monitoring the change when it goes into production. Such as where to find logs.
@@ -162,7 +168,7 @@ Some content to include in a description, if not already covered elsewhere:
 - **Diagrams.** Such as systems involved or impacted. In Mermaid format.
 - **Notes.** Listing of all inline notes (self-comments) with links to each note.
 
-For screen recordings, I prefer to avoid animated GIFs and instead use formats such as MP4, as these formats allow the viewer to manually scroll through the video. I use a compression tool (typically [Handbrake](/tools/hand-brake)) to reduce the file size before uploading.
+For screen recordings, I prefer to avoid animated GIFs and instead use formats such as MP4, as these formats allow the viewer to manually scroll through the video. I use a compression tool, such as [HandBrake](/tools/hand-brake), to reduce the file size before uploading.
 
 
 ## Collapsible regions
