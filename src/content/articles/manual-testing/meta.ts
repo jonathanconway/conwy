@@ -1,6 +1,9 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
-import { manualTestingIllustrationComposite } from "../../illustrations";
+import {
+  labDynamicColorIllustrationStatic,
+  manualTestingIllustrationComposite,
+} from "../../illustrations";
 
 export const meta: ArticleMeta = {
   title: "Manual testing",
@@ -12,6 +15,7 @@ export const meta: ArticleMeta = {
   slug: "manual-testing",
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
+  smallImage: labDynamicColorIllustrationStatic,
   mainImage: manualTestingIllustrationComposite,
   socialLinks: [
     {
