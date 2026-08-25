@@ -5,6 +5,7 @@ export * from "./communities";
 export * from "./ideas";
 export * from "./illustrations";
 export * from "./micros";
+export * from "./pages";
 export * from "./prompts";
 export * from "./quotes";
 export * from "./redirects";
