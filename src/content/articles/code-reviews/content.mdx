@@ -78,6 +78,8 @@ And if it's a major issue, I'll write:
 [Major]: Should include an authorization check here.
 ```
 
+There are some other systems for prefixing review comments. David Garcia has a [two-part tagging system](https://blog.techdocs.studio/p/a-tagging-system-for-documentation-review-comments) comprising severity ("blocker", "improvement", "optional") and category ("clarity", "bug", "organization", "style", "consistency").
+
 ## Checklist
 
 > Pull-quote: “Substantial parts of what software designers, financial managers, firefighters, police officers, lawyers, and most certainly clinicians do are now too complex for them to carry out reliably from memory alone.”
@@ -110,7 +112,22 @@ Additionally, I've built up a pool of coding standards and best practices over m
 
 This checklist isn't only useful for reviewing others' work – I use it on my own changes as well. By anticipating feedback and addressing it earlier, my code will already be of higher quality by the time it reaches the screens of others. This reduces the review workload on other engineers and improves my reputation within the team.
 
-## Additional ideas
+
+## Maximising developer experience
+
+Part of being a good team mate is to maximise others' developer experience and this is certainly applicable to code reviews.
+
+I think it's best to balance commendation with criticism. This helps build a positive relationship with contributors and have more influence.
+
+> Pull-quote: “When someone asks you to review a document or pull request or conference talk, do call out the sections that you think are great, but pay them the respect of being (kindly!) honest about their work. Giving constructive and critical feedback isn’t easy. It takes effort to tease out exactly what isn’t working and find the words to explain why it’s not as good as it can be. It’s a more difficult conversation. But you won’t help your colleague if you hide the truth.”
+>
+> – Tanya REILLY • [_The Staff Engineer's Path_](/reading/the-staff-engineers-path) • Chapter 8. Good Influence at Scale, pp. 367
+
+Also I try to minimise iterations. Ideally all relevant feedback should be collected together and delivered in one go, rather than sprinkling small pieces of feedback over many hours and forcing the contributor to repetitively go back and make changes. When reviewing a significant sized pull request, I try to keep a list of my comments in a local Markdown file and then post them all at once when I'm done. GitHub's [Pull request reviews](https://docs.github.com/en/pull-requests/reference/pull-request-reviews) feature helps with this.
+
+
+
+## Additional ideas and thoughts
 
 Sometimes I automate parts of this process with AI, depending on the situation. I try to avoid overly relying on AI, as I think it's important to maintain direct knowledge of the code base.
 
@@ -118,7 +135,7 @@ Obviously there isn't always enough time to follow these processes religiously. 
 
 Sometimes a big, scary change-set isn't actually such a heavy burden as it initially appears. If much of the change-set can be mentally reduced to a common pattern, then I can describe the pattern in a brief written sentence (or read and understand the developer's description in the PR notes), check and ensure it is appropriate to the situation, ensure it's being applied consistently and correctly and ensure it's not being applied where it shouldn't. This might not require reading every individual line of code.
 
-The book _Software Engineering at Google_ has some useful guidance under the section "Types of Code Reviews". They categorise code reviews into four types, each with a preferred treatment:
+The book [_Software Engineering at Google_](/reading/software-engineering-at-google) has some useful guidance under the section "Types of Code Reviews". They categorise code reviews into four types, each with a preferred treatment:
 
 - Greenfield reviews and new feature development
 - Behavioural changes, improvements, and optimizations
@@ -126,6 +143,7 @@ The book _Software Engineering at Google_ has some useful guidance under the sec
 - Refactorings and large-scale changes
 
 Categorising a code review, similar to above, one can focus effort and skip unnecessary processes.
+
 
 ## Conclusion
 
@@ -141,8 +159,11 @@ Having a normalised process for performing code reviews helps make them easier a
 
 These books inspired this article:
 
-- [_Software Engineering at Google_](https://www.kobo.com/au/en/ebook/software-engineering-at-google) by Titus WINTERS, Tom MANSHRECK, Hyrum WRIGHT
+- [Book: Software Engineering at Google • Titus WINTERS, Tom MANSHRECK, Hyrum WRIGHT](https://www.kobo.com/au/en/ebook/software-engineering-at-google)
+- [Book: The Staff Engineer's Path • Tanya REILLY](/reading/the-staff-engineers-path)
 
 Related resources you might find helpful:
 
-- [The Code Review Pyramid • Gunnar MORLING](https://www.linkedin.com/feed/update/urn:li:activity:7083099045279232000)
+- [Blog: A tagging system for documentation review comments • David GARCIA](https://blog.techdocs.studio/p/a-tagging-system-for-documentation-review-comments)
+- [Post: The Code Review Pyramid • Gunnar MORLING](https://www.linkedin.com/feed/update/urn:li:activity:7083099045279232000)
+- [Video: How to Do Code Reviews Like a Human • Michael LYNCH](https://www.youtube.com/watch?v=0t4_MfHgb_A)
