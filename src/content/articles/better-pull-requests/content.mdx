@@ -66,30 +66,30 @@ config:
 ---
 %% @description Example of sub pull request pattern for package upgrades
 gitGraph
-commit
-branch chore/upgrade-node
-checkout chore/upgrade-node
-commit
+    commit
+    branch chore/upgrade-node
+    checkout chore/upgrade-node
+    commit
 
-branch chore/upgrade-node-react
-commit
-checkout chore/upgrade-node
-merge chore/upgrade-node-react
+    branch chore/upgrade-node-react
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-react
 
-checkout chore/upgrade-node
-branch chore/upgrade-node-mui
-commit
-checkout chore/upgrade-node
-merge chore/upgrade-node-mui
+    checkout chore/upgrade-node
+    branch chore/upgrade-node-mui
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-mui
 
-checkout chore/upgrade-node
-branch chore/upgrade-node-storybook
-commit
-checkout chore/upgrade-node
-merge chore/upgrade-node-storybook
+    checkout chore/upgrade-node
+    branch chore/upgrade-node-storybook
+    commit
+    checkout chore/upgrade-node
+    merge chore/upgrade-node-storybook
 
-checkout main
-merge chore/upgrade-node
+    checkout main
+    merge chore/upgrade-node
 ```
 
 For example:
