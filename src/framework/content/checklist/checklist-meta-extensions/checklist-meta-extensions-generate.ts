@@ -17,9 +17,9 @@ import { ChecklistMeta } from "../checklist-meta";
 
 import {
   ChecklistItem,
+  ChecklistItemTag,
+  ChecklistItemTagGroup,
   ChecklistMetaExtensions,
-  ChecklistTag,
-  ChecklistTagGroup,
 } from "./checklist-meta-extensions";
 
 export async function generateChecklistMetaExtensions(
@@ -155,7 +155,7 @@ function produceChecklistTagGroups(
   tagTitles: Record<string, string>,
   tagGroupTitles: Record<string, string>,
 ) {
-  const tagGroupsByName: Record<string, ChecklistTagGroup> = {};
+  const tagGroupsByName: Record<string, ChecklistItemTagGroup> = {};
 
   for (const itemTag of items.flatMap((item) => item.tags)) {
     tagGroupsByName[itemTag.tagGroupName] = tagGroupsByName[
@@ -196,7 +196,7 @@ function parseChecklistItemTags(checklistItemText: string) {
     .filter((part) => part.startsWith("#"))
     .map((part) => part.replace("#", ""));
 
-  const checklistItemTags: ChecklistTag[] = checklistItemTagNames.map(
+  const checklistItemTags: ChecklistItemTag[] = checklistItemTagNames.map(
     parseChecklistItemTag,
   );
   return checklistItemTags;

@@ -4,8 +4,8 @@ import { intersection } from "lodash";
 import { ReactNode, createContext, useContext, useMemo } from "react";
 
 import {
+  ChecklistItemTag,
   ChecklistMeta,
-  ChecklistTag,
   getTreeLeaves,
   getTreeLeavesFiltered,
   isNotNil,
@@ -22,9 +22,9 @@ export interface ChecklistContextProps {
 export interface ChecklistContextValue {
   readonly checklistMeta: ChecklistMeta;
 
-  readonly selectedFilters: readonly ChecklistTag[];
+  readonly selectedFilters: readonly ChecklistItemTag[];
   readonly onChangeSelectedFilters: (
-    selectedFilters: readonly ChecklistTag[],
+    selectedFilters: readonly ChecklistItemTag[],
   ) => void;
 
   readonly searchText?: string;
@@ -43,7 +43,7 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
   const { searchText, handleChangeSearchText } = useSearchTextFilter();
 
   function handleChangeSelectedFilters(
-    selectedFilters: readonly ChecklistTag[],
+    selectedFilters: readonly ChecklistItemTag[],
   ) {
     const newSelectedTags = selectedFilters.map((filter) =>
       [filter.tagGroupName, filter.name].join("--"),

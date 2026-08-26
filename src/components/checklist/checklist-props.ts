@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
 
-import { ChecklistTag, ChecklistTagGroup } from "@/framework/client";
+import { ChecklistItemTag, ChecklistItemTagGroup } from "@/framework/client";
 
 import { HeadingLevel } from "../heading";
 
 export interface ChecklistProps {
   readonly children?: ReactNode;
 
-  readonly filterGroups?: readonly ChecklistTagGroup[];
+  readonly filterGroups?: readonly ChecklistItemTagGroup[];
   readonly sections: readonly ChecklistPropsSection[];
 }
 
@@ -27,6 +27,6 @@ export interface ChecklistPropsSectionItem {
 }
 
 export interface ChecklistPropsSectionItemTag {
-  readonly tag: ChecklistTag;
-  readonly tagGroup: ChecklistTagGroup;
+  readonly tag: ChecklistItemTag;
+  readonly tagGroup: ChecklistItemTagGroup;
 }

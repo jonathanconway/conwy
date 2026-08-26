@@ -1,11 +1,18 @@
 import { Suspense } from "react";
 
-import { ChecklistsList, MdxContainer, PageLayout } from "@/components";
+import {
+  ChecklistsList,
+  ChecklistsTagFilters,
+  MdxContainer,
+  PageLayout,
+} from "@/components";
 import { site } from "@/content";
 import * as checklists from "@/content/checklists";
 import { checklistsFragment } from "@/content/fragments";
 
 export default function Page() {
+  const items = Object.values(checklists);
+
   return (
     <Suspense>
       <PageLayout
@@ -14,7 +21,9 @@ export default function Page() {
           <>
             <MdxContainer>{checklistsFragment.content}</MdxContainer>
 
-            <ChecklistsList items={Object.values(checklists)} />
+            <ChecklistsTagFilters items={items} />
+
+            <ChecklistsList items={items} />
           </>
         }
       />

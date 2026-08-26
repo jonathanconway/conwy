@@ -2,9 +2,9 @@ import { isArray, isObject, isString, kebabCase, trim } from "lodash";
 import { ReactNode } from "react";
 
 import {
+  ChecklistItemTag,
+  ChecklistItemTagGroup,
   ChecklistMeta,
-  ChecklistTag,
-  ChecklistTagGroup,
   Maybe,
   generateChecklistItemKey,
   hasProps,
@@ -125,12 +125,12 @@ export function convertTagStringToTag(checklistMeta: ChecklistMeta) {
     tagString = tagString.replace("#", "");
     if (tagString.includes("--")) {
       const [tagGroupName, tagName] = tagString.split("--");
-      const tag: ChecklistTag = {
+      const tag: ChecklistItemTag = {
         name: tagName,
         title: checklistMeta.tagTitles[tagName] ?? sentenceCase(tagName),
         tagGroupName: tagGroupName,
       };
-      const tagGroup: ChecklistTagGroup = {
+      const tagGroup: ChecklistItemTagGroup = {
         name: tagGroupName,
         title:
           checklistMeta.tagGroupTitles[tagGroupName] ??

@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 
 import { Checklist } from "./checklist";
+import { ChecklistTags } from "./checklist-tags";
 
 export function createChecklistMock(): Checklist {
   return {
@@ -15,6 +16,11 @@ export function createChecklistMock(): Checklist {
       updatedDate: DateTime.now().toFormat("yyyy-MM-dd"),
       tagGroupTitles: {},
       tagTitles: {},
+      checklistTags: [ChecklistTags.SoftwareDevelopment],
     },
   };
+}
+
+export function createChecklistMocks(): readonly Checklist[] {
+  return [createChecklistMock()];
 }

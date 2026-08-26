@@ -1,8 +1,8 @@
-import { ChecklistTag, ChecklistTagGroup } from "@/framework/client";
+import { ChecklistItemTag, ChecklistItemTagGroup } from "@/framework/client";
 
 export interface ChecklistFiltersProps {
-  readonly tagGroups: readonly ChecklistTagGroup[];
+  readonly tagGroups: readonly ChecklistItemTagGroup[];
 
-  readonly selectedTags: readonly ChecklistTag[];
-  readonly onChange: (selectedFilters: readonly ChecklistTag[]) => void;
+  readonly selectedTags: readonly ChecklistItemTag[];
+  readonly onChange: (selectedFilters: readonly ChecklistItemTag[]) => void;
 }

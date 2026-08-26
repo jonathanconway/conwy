@@ -1,4 +1,4 @@
-import { ChecklistMeta } from "@/framework/client";
+import { ChecklistMeta, ChecklistTags } from "@/framework/client";
 
 import { tagGroupTitles } from "./tag-group-titles";
 import { tagTitles } from "./tag-titles";
@@ -9,6 +9,7 @@ export const meta: ChecklistMeta = {
   blurb:
     "Includes front end frameworks and languages, and non-functional requirements.",
   updatedDate: "2026-07-01",
+  checklistTags: [ChecklistTags.SoftwareDevelopment],
   tagTitles,
   tagGroupTitles,
 };

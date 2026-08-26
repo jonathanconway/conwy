@@ -3,6 +3,7 @@
 import { Checklist } from "@/framework/client";
 
 import { ContentList } from "../../content-list";
+import { useTagFiltersResults } from "../../filters";
 
 import { ChecklistsListItem } from "./checklists-list-item";
 
@@ -13,9 +14,15 @@ interface ChecklistsListProps {
 export function ChecklistsList(props: ChecklistsListProps) {
   const { items } = props;
 
+  const { filteredItems } = useTagFiltersResults({
+    items,
+    contentType: "checklist",
+    tagField: "meta.checklistTags",
+  });
+
   return (
     <ContentList>
-      {items
+      {filteredItems
         .map((item) => (
           <ChecklistsListItem key={item.meta.slug} {...item.meta} />
         ))

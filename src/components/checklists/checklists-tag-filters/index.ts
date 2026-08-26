@@ -1,2 +1,1 @@
-export * from "./checklists-list";
 export * from "./checklists-tag-filters";
