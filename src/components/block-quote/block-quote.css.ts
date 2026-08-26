@@ -12,6 +12,6 @@ export const blockquote = style({
   borderColor: colors.stone_400,
 });
 
-globalStyle(`${blockquote} > *:first-child`, {
+globalStyle(`${blockquote} > *:first-child:first-child:first-child`, {
   paddingTop: 0,
 });
