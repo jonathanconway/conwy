@@ -86,8 +86,14 @@ function getLinkClassName(props: LinkProps) {
   return className;
 }
 
+const LOCAL_PREFIXES = ["#", "/", "https://conwy.co", "http://conwy.co"];
+
 function checkShouldShowOpenInNew(props: LinkProps) {
   if (props.download) {
+    return false;
+  }
+
+  if (props.icon && !props.children) {
     return false;
   }
 
@@ -97,8 +103,7 @@ function checkShouldShowOpenInNew(props: LinkProps) {
 
   if (
     props.href &&
-    !props.href.startsWith("/") &&
-    !props.href.startsWith("https://conwy.co")
+    !LOCAL_PREFIXES.find((prefix) => props.href?.startsWith(prefix))
   ) {
     return true;
   }
