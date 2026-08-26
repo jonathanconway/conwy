@@ -41,6 +41,19 @@ export const meta: ArticleMeta = {
       url: "https://www.reddit.com/r/AskProgramming/comments/1vro0sr/comment/p4imgtx",
       likeCount: 1,
     },
+
+    {
+      type: SocialLinkTypes.Reddit,
+      url: "https://www.reddit.com/r/cscareerquestions/comments/za2ill/how_do_you_review_a_pull_request/",
+    },
+    {
+      type: SocialLinkTypes.Reddit,
+      url: "https://www.reddit.com/r/ExperiencedDevs/comments/175e65h/pull_request_review_how_picky_to_be/",
+    },
+    {
+      type: SocialLinkTypes.Reddit,
+      url: "https://www.reddit.com/r/AskProgramming/comments/1nzjiex/senior_engineers_how_do_you_review_pull_requests/",
+    },
   ],
   isPinned: true,
 };
