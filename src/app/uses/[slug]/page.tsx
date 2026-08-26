@@ -19,14 +19,14 @@ export default async function Page(props: PageProps) {
 
   return (
     <PageLayout
-      selectedNavPath="/tools"
+      selectedNavPath="/uses"
       main={
         <>
           <Breadcrumb
             segments={[
               {
-                title: "Tools",
-                url: "/tools",
+                title: "Uses",
+                url: "/uses",
               },
               {
                 title: tool.meta.title,
@@ -52,7 +52,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const tool = importContentBySlug<Tool_>(tools, "tool", params.slug);
 
   const toolTitle = sentenceCase(tool.meta.slug).toLowerCase();
-  const title = `${site.title} - tools - ${toolTitle}`;
+  const title = `${site.title} - uses - ${toolTitle}`;
 
   return {
     title,

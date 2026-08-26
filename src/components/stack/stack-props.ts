@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode } from "react";
+import { CSSProperties, HTMLProps, ReactNode } from "react";
 
 import { SizeRem } from "../styling";
 
@@ -11,4 +11,6 @@ export interface StackProps extends HTMLProps<HTMLDivElement> {
   readonly children: ReactNode;
   readonly distribution?: StackDistribution;
   readonly className?: string;
+  readonly justifyContent?: CSSProperties["justifyContent"];
+  readonly alignItems?: CSSProperties["alignItems"];
 }

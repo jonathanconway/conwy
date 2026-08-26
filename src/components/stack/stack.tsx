@@ -1,6 +1,6 @@
-import { isNumber, isUndefined } from "lodash";
+import { isNumber } from "lodash";
 
-import { cn } from "@/framework/client";
+import { cn, pickByNotUndefined } from "@/framework/client";
 
 import { SizeRem } from "../styling";
 
@@ -25,6 +25,8 @@ export function Stack(props: StackProps) {
   const {
     className,
     direction = "column",
+    justifyContent,
+    alignItems,
     distribution,
     gap,
     children,
@@ -39,11 +41,11 @@ export function Stack(props: StackProps) {
       ? styles.stackDistributionFlow
       : styles.stackDistributionEven,
   );
-  const containerStyle = !isUndefined(gap)
-    ? {
-        gap: stringifySizeRem(gap),
-      }
-    : undefined;
+  const containerStyle = pickByNotUndefined({
+    gap: stringifySizeRem(gap),
+    alignItems,
+    justifyContent,
+  });
 
   return (
     <div className={containerClassName} style={containerStyle} {...restProps}>

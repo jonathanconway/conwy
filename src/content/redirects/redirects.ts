@@ -1,7 +1,7 @@
 type Redirects = Record<string, string>;
 
 export const REDIRECTS: Redirects = {
-  uses: "/tools",
+  tools: "/uses",
   videos: "https://www.youtube.com/user/jonathanaconway",
   podcasts: "https://anchor.fm/jonathan-conway",
   code: "http://github.com/jonathanconway",

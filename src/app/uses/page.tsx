@@ -12,13 +12,14 @@ import { toolsFragment, toolsSidebarFragment } from "@/content/fragments";
 export default function Page() {
   return (
     <PageLayout
-      selectedNavPath="/tools"
+      selectedNavPath="/uses"
       main={
         <Stack gap={2}>
           <ResponsiveStack
             direction={{
               md: "row",
             }}
+            alignItems="start"
           >
             <Stack>
               <MdxContainer>{toolsFragment.content}</MdxContainer>
@@ -37,5 +38,5 @@ export default function Page() {
 }
 
 export const metadata = {
-  title: `${site.title} - tools`,
+  title: `${site.title} - uses`,
 };

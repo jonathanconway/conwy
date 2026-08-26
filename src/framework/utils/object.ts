@@ -1,3 +1,5 @@
+import { isUndefined } from "lodash";
+
 type MapOfArrays<
   TKey extends string | number | symbol,
   TArrayItem,
@@ -27,4 +29,14 @@ export function deepMergeMapsOfArrays<
   }
 
   return merged as ReadonlyMapOfArrays<TKey, TArrayItem>;
+}
+
+export function pickByNotUndefined<T extends object>(object: T) {
+  const objectWithNotUndefined: Partial<T> = {};
+  for (const key in object) {
+    if (!isUndefined(object[key])) {
+      objectWithNotUndefined[key] = object[key];
+    }
+  }
+  return objectWithNotUndefined;
 }
