@@ -50,6 +50,7 @@ export function LinkBox_(props: LinkBoxProps) {
     <Link
       className={className}
       href={String(props.href)}
+      showOpenInNew={false}
       onClick={handleClick}
       {...restProps}
     />

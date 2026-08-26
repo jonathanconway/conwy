@@ -1,5 +1,6 @@
 "use client";
 
+import { isUndefined } from "lodash";
 import { MouseEvent } from "react";
 
 import { cn } from "@/framework/client";
@@ -89,6 +90,10 @@ function getLinkClassName(props: LinkProps) {
 const LOCAL_PREFIXES = ["#", "/", "https://conwy.co", "http://conwy.co"];
 
 function checkShouldShowOpenInNew(props: LinkProps) {
+  if (!isUndefined(props.showOpenInNew)) {
+    return props.showOpenInNew;
+  }
+
   if (props.download) {
     return false;
   }
@@ -101,11 +106,16 @@ function checkShouldShowOpenInNew(props: LinkProps) {
     return true;
   }
 
-  if (
-    props.href &&
-    !LOCAL_PREFIXES.find((prefix) => props.href?.startsWith(prefix))
-  ) {
+  if (!props.href) {
+    return false;
+  }
+
+  if (!LOCAL_PREFIXES.find((prefix) => props.href?.startsWith(prefix))) {
     return true;
+  }
+
+  if (!props.href?.startsWith("http")) {
+    return false;
   }
 
   return false;
