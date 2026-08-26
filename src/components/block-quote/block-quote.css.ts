@@ -10,6 +10,12 @@ export const blockquote = style({
   backgroundColor: vars.blockQuote.background.color,
   borderLeftWidth: "8px",
   borderColor: colors.stone_400,
+
+  selectors: {
+    "&:first-child": {
+      marginTop: 0,
+    },
+  },
 });
 
 globalStyle(`${blockquote} > *:first-child:first-child:first-child`, {

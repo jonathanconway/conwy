@@ -38,10 +38,9 @@ export function getLinkValues(props: LinkProps) {
     onClick?.(event);
   };
 
-  const showOpenInNew =
-    restProps.target === "_blank" &&
-    props.showOpenInNew !== false &&
-    !props.download;
+  const showOpenInNew = checkShouldShowOpenInNew(props);
+
+  const target = showOpenInNew ? "_blank" : "";
 
   const children = props.link?.title ?? props.children;
 
@@ -51,6 +50,7 @@ export function getLinkValues(props: LinkProps) {
       href,
       onClick: handleClick,
       download,
+      target,
       ...restProps,
     },
     icon,
@@ -84,4 +84,24 @@ function getLinkClassName(props: LinkProps) {
   );
 
   return className;
+}
+
+function checkShouldShowOpenInNew(props: LinkProps) {
+  if (props.download) {
+    return false;
+  }
+
+  if (props.target === "_blank" && props.showOpenInNew !== false) {
+    return true;
+  }
+
+  if (
+    props.href &&
+    !props.href.startsWith("/") &&
+    !props.href.startsWith("https://conwy.co")
+  ) {
+    return true;
+  }
+
+  return false;
 }

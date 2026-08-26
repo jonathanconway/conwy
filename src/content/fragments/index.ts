@@ -4,6 +4,8 @@ export * from "./checklists";
 export * from "./contact";
 export * from "./ideas";
 export * from "./notes";
+export * from "./now";
+export * from "./now-sidebar";
 export * from "./projects";
 export * from "./prompts";
 export * from "./quotes";
