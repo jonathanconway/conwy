@@ -4,6 +4,7 @@ export const meta: ToolMeta = {
   slug: "grifiti-band-wallet",
   title: "Grifiti Band Wallet",
   section: ToolSections.Belonging,
+  category: "Wallet",
   date: "2026-07-26",
   mainImage: "/images/tools/grifiti-band-wallet.jpg",
   description:
