@@ -30,13 +30,13 @@ export function BooksListItem({ book }: BooksListItemProps) {
             {sentenceCase(book.meta.status)}
           </Text>
 
-          {book.meta.notesSlug && (
+          {book.meta.commentarySlug && (
             <Link
-              className={styles.bookNotesLink}
+              className={styles.bookCommentaryLink}
               size={TextSizes.xs}
-              href={`/notes/${book.meta.notesSlug}`}
+              href={`/commentaries/${book.meta.commentarySlug}`}
             >
-              📝 Notes
+              💬 Commentary
             </Link>
           )}
         </div>

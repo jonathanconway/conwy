@@ -12,5 +12,5 @@ export const meta: BookMeta = {
   title: "How Brands Grow",
   url: "http://www.amazon.com/How-Brands-Grow-What-Marketers/dp/0195573560",
   category: BookCategories.Business,
-  notesSlug: "how-brands-grow",
+  commentarySlug: "how-brands-grow",
 };

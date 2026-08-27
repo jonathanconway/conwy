@@ -3,7 +3,7 @@ export * from "./articles";
 export * from "./checklists";
 export * from "./contact";
 export * from "./ideas";
-export * from "./notes";
+export * from "./commentaries";
 export * from "./now";
 export * from "./now-sidebar";
 export * from "./projects";

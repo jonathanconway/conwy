@@ -18,7 +18,7 @@ export * from "./item";
 export * from "./link";
 export * from "./meta";
 export * from "./micro";
-export * from "./note";
+export * from "./commentary";
 export * from "./page";
 export * from "./podcast";
 export * from "./post";

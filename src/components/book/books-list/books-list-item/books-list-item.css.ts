@@ -15,7 +15,7 @@ export const bookLinkBoxInner = style({
   flex: 1,
 });
 
-export const bookNotesLink = style({
+export const bookCommentaryLink = style({
   ...link,
   borderLeft: `solid 1px ${boxBorderStructural.borderColor}`,
   marginLeft: "0.25rem",

@@ -12,5 +12,5 @@ export const meta: BookMeta = {
   title: "Influence",
   url: "https://ia800203.us.archive.org/33/items/ThePsychologyOfPersuasion/The%20Psychology%20of%20Persuasion.pdf",
   category: BookCategories.Business,
-  notesSlug: "influence-notes",
+  commentarySlug: "influence-notes",
 };
