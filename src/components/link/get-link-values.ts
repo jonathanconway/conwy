@@ -87,8 +87,6 @@ function getLinkClassName(props: LinkProps) {
   return className;
 }
 
-const LOCAL_PREFIXES = ["#", "/", "https://conwy.co", "http://conwy.co"];
-
 function checkShouldShowOpenInNew(props: LinkProps) {
   if (!isUndefined(props.showOpenInNew)) {
     return props.showOpenInNew;
@@ -110,12 +108,15 @@ function checkShouldShowOpenInNew(props: LinkProps) {
     return false;
   }
 
-  if (!LOCAL_PREFIXES.find((prefix) => props.href?.startsWith(prefix))) {
-    return true;
+  if (
+    props.href.startsWith("https://conwy.co") ||
+    props.href.startsWith("http://conwy.co")
+  ) {
+    return false;
   }
 
-  if (!props.href?.startsWith("http")) {
-    return false;
+  if (props.href.startsWith("http")) {
+    return true;
   }
 
   return false;
