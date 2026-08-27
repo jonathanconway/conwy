@@ -20,7 +20,7 @@ export const ContentPageHeaderSuggestEditLink: ContentPageHeaderPart = (
   const newIssueUrl = `${repoUrl}/issues/new?${params}`;
 
   return (
-    <Link href={newIssueUrl} size={TextSizes.xs} target="_blank">
+    <Link href={newIssueUrl} size={TextSizes.xs} showOpenInNew={false}>
       Suggest an edit
     </Link>
   );

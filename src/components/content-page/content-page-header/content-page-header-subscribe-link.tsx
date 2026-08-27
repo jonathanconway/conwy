@@ -21,6 +21,7 @@ export const ContentPageHeaderSubscribeLink: ContentPageHeaderPart = (
       href={href}
       size={TextSizes.xs}
       tooltip={{ contents: "Subscribe to updates on this article" }}
+      showOpenInNew={false}
     >
       Subscribe
     </Link>
