@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { aboutMeFragment } from "@/content/fragments";
+import { aboutMeFragment } from "@/content";
 
 import { MdxContainer } from "../mdx";
 import { ResponsiveMdHalf } from "../responsive";

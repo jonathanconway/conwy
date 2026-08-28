@@ -7,8 +7,7 @@ import {
   Stack,
   StudiesList,
 } from "@/components";
-import { site } from "@/content";
-import { studiesFragment } from "@/content/fragments";
+import { site, studiesFragment } from "@/content";
 
 export default function Page() {
   return (

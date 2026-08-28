@@ -1,6 +1,5 @@
 import { MdxContainer, PageLayout, ProjectsList } from "@/components";
-import { site } from "@/content";
-import { projectsFragment } from "@/content/fragments";
+import { projectsFragment, site } from "@/content";
 import * as projects from "@/content/projects";
 import { getProjectMetas } from "@/framework/client";
 

@@ -4,8 +4,7 @@ import {
   PageLayout,
   Testimonials,
 } from "@/components";
-import { site } from "@/content";
-import { testimonialsFragment } from "@/content/fragments";
+import { site, testimonialsFragment } from "@/content";
 import * as works from "@/content/works";
 import { getTestimonials } from "@/framework/client";
 

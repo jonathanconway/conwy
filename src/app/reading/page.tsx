@@ -7,8 +7,7 @@ import {
   ResponsiveMdHalf,
   Stack,
 } from "@/components";
-import { site } from "@/content";
-import { readingFragment } from "@/content/fragments";
+import { readingFragment, site } from "@/content";
 
 export default function Page() {
   return (

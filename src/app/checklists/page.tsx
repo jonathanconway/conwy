@@ -6,9 +6,8 @@ import {
   MdxContainer,
   PageLayout,
 } from "@/components";
-import { site } from "@/content";
+import { checklistsFragment, site } from "@/content";
 import * as checklists from "@/content/checklists";
-import { checklistsFragment } from "@/content/fragments";
 
 export default function Page() {
   const items = Object.values(checklists);

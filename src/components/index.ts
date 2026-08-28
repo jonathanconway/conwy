@@ -57,6 +57,7 @@ export * from "./section";
 export * from "./social-links";
 export * from "./stack";
 export * from "./studies";
+export * from "./styling";
 export * from "./switch";
 export * from "./table";
 export * from "./testimonials";

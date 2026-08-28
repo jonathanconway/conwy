@@ -5,8 +5,7 @@ import {
   ResponsiveMdHalf,
   Stack,
 } from "@/components";
-import { site } from "@/content";
-import { ideasFragment } from "@/content/fragments";
+import { ideasFragment, site } from "@/content";
 
 export default async function IdeasPage() {
   return (

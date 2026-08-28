@@ -1,6 +1,5 @@
 import { CommunitiesList, MdxContainer, PageLayout } from "@/components";
-import { site } from "@/content";
-import { communitiesFragment } from "@/content/fragments/communities";
+import { communitiesFragment, site } from "@/content";
 
 export default function Page() {
   return (

@@ -7,8 +7,7 @@ import {
   Stack,
   StackDirections,
 } from "@/components";
-import { nowPage, site } from "@/content";
-import { nowFragment, nowSidebarFragment } from "@/content/fragments";
+import { nowFragment, nowPage, nowSidebarFragment, site } from "@/content";
 
 export default function Page() {
   return (

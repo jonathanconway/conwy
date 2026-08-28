@@ -4,8 +4,7 @@ import {
   PromptsList,
   ResponsiveMdHalf,
 } from "@/components";
-import { site } from "@/content";
-import { promptsFragment } from "@/content/fragments";
+import { promptsFragment, site } from "@/content";
 
 export default function PromptsPage() {
   return (

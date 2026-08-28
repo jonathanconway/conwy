@@ -3,8 +3,7 @@ import {
   PageLayout,
   Redirect as RedirectComponent,
 } from "@/components";
-import { REDIRECTS } from "@/content";
-import { redirectFragment } from "@/content/fragments";
+import { REDIRECTS, redirectFragment } from "@/content";
 
 import { PageProps } from "./types";
 

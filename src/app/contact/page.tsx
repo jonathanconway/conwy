@@ -5,9 +5,7 @@ import {
   PageLayout,
   TwoColLayout,
 } from "@/components";
-import "@/components/contact";
-import { site } from "@/content";
-import { contactFragment } from "@/content/fragments/contact";
+import { contactFragment, site } from "@/content";
 
 export default function Contact() {
   return (

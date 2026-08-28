@@ -8,8 +8,7 @@ import {
   TextTypes,
   Works,
 } from "@/components";
-import { site } from "@/content";
-import { workFragment } from "@/content/fragments";
+import { site, workFragment } from "@/content";
 import * as works from "@/content/works";
 import { getTestimonials, getWorkMetas } from "@/framework/client";
 

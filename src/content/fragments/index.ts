@@ -2,6 +2,7 @@ export * from "./about-me";
 export * from "./articles";
 export * from "./checklists";
 export * from "./contact";
+export * from "./communities";
 export * from "./ideas";
 export * from "./commentaries";
 export * from "./now";

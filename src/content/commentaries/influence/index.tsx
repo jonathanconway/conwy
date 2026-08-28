@@ -1,4 +1,4 @@
-import { influenceBook } from "@/content/books/influence";
+import { influenceBook } from "@/content";
 import { Commentary } from "@/framework/client";
 
 import Content from "./content.mdx";

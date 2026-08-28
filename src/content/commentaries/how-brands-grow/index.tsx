@@ -1,4 +1,4 @@
-import { howBrandsGrowBook } from "@/content/books/how-brands-grow";
+import { howBrandsGrowBook } from "@/content";
 import { Commentary } from "@/framework/client";
 
 import Content from "./content.mdx";

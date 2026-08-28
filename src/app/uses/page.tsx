@@ -8,8 +8,7 @@ import {
   ToolsList,
   ToolsSections,
 } from "@/components";
-import { site } from "@/content";
-import { toolsFragment, toolsSidebarFragment } from "@/content/fragments";
+import { site, toolsFragment, toolsSidebarFragment } from "@/content";
 
 export default function Page() {
   return (

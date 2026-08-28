@@ -5,8 +5,7 @@ import {
   ResponsiveMdHalf,
   Stack,
 } from "@/components";
-import { site } from "@/content";
-import { quotesFragment } from "@/content/fragments";
+import { quotesFragment, site } from "@/content";
 
 export default function QuotesPage() {
   return (

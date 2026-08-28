@@ -4,9 +4,8 @@ import {
   PageLayout,
   ResponsiveMdHalf,
 } from "@/components";
-import { site } from "@/content";
+import { commentariesFragment, site } from "@/content";
 import * as notes from "@/content/commentaries";
-import { commentariesFragment } from "@/content/fragments";
 import { getCommentaryMetas } from "@/framework/client";
 
 export default function Page() {
