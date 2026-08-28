@@ -8,6 +8,10 @@ export const stackColumn = style(mixins.stackColumn);
 
 export const stackRow = style(mixins.stackRow);
 
+export const stackColumnReverse = style(mixins.stackColumnReverse);
+
+export const stackRowReverse = style(mixins.stackRowReverse);
+
 export const stackDistributionEven = style({});
 
 globalStyle(

@@ -1,9 +1,11 @@
 import {
+  Breakpoints,
   ContentPageHeader,
   MdxContainer,
   PageLayout,
   ResponsiveStack,
   Stack,
+  StackDirections,
 } from "@/components";
 import { nowPage, site } from "@/content";
 import { nowFragment, nowSidebarFragment } from "@/content/fragments";
@@ -15,7 +17,9 @@ export default function Page() {
       main={
         <ResponsiveStack
           direction={{
-            md: "row",
+            [Breakpoints.Small]: StackDirections.ColumnReverse,
+            [Breakpoints.Medium]: StackDirections.ColumnReverse,
+            [Breakpoints.Large]: StackDirections.Row,
           }}
           alignItems="start"
         >

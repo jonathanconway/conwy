@@ -1,4 +1,5 @@
 import { isNumber } from "lodash";
+import { CSSProperties } from "react";
 
 import { cn, pickByNotUndefined } from "@/framework/client";
 
@@ -9,38 +10,34 @@ import { StackDistributions } from "./stack-distribution";
 import { StackProps } from "./stack-props";
 import * as styles from "./stack.css";
 
-function stringifySizeRem(gap?: SizeRem) {
-  if (!gap) {
-    return;
-  }
-
-  if (isNumber(gap)) {
-    return `${gap}rem`;
-  }
-
-  return gap;
-}
-
 export function Stack(props: StackProps) {
   const {
     className,
-    direction = "column",
+    direction: flexDirection = StackDirections.Column,
     justifyContent,
-    alignItems,
+    alignItems = getAlignItemsDefault(props),
     distribution,
     gap,
     children,
     ...restProps
   } = props;
 
+  const containerDirectionClassName = {
+    [StackDirections.Row]: styles.stackRow,
+    [StackDirections.Column]: styles.stackColumn,
+    [StackDirections.RowReverse]: styles.stackRowReverse,
+    [StackDirections.ColumnReverse]: styles.stackColumnReverse,
+  }[flexDirection];
+
   const containerClassName = cn(
     className,
     styles.stackBase,
-    direction === StackDirections.Column ? styles.stackColumn : styles.stackRow,
+    containerDirectionClassName,
     distribution === StackDistributions.Flow
       ? styles.stackDistributionFlow
       : styles.stackDistributionEven,
   );
+
   const containerStyle = pickByNotUndefined({
     gap: stringifySizeRem(gap),
     alignItems,
@@ -52,4 +49,22 @@ export function Stack(props: StackProps) {
       {children}
     </div>
   );
+}
+
+function getAlignItemsDefault(props: StackProps): CSSProperties["alignItems"] {
+  if (props.direction === "row" || props.direction === "row-reverse") {
+    return "center";
+  }
+}
+
+function stringifySizeRem(gap?: SizeRem) {
+  if (!gap) {
+    return;
+  }
+
+  if (isNumber(gap)) {
+    return `${gap}rem`;
+  }
+
+  return gap;
 }

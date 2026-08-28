@@ -1,8 +1,10 @@
 import {
+  Breakpoints,
   MdxContainer,
   PageLayout,
   ResponsiveStack,
   Stack,
+  StackDirections,
   ToolsList,
   ToolsSections,
 } from "@/components";
@@ -17,7 +19,9 @@ export default function Page() {
         <Stack gap={2}>
           <ResponsiveStack
             direction={{
-              md: "row",
+              [Breakpoints.Small]: StackDirections.ColumnReverse,
+              [Breakpoints.Medium]: StackDirections.ColumnReverse,
+              [Breakpoints.Large]: StackDirections.Row,
             }}
             alignItems="start"
           >
