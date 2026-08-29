@@ -1926,6 +1926,12 @@
 - [ ] Avoid premature performance optimisation.<br />
   [Article: Premature optimization - Wikipedia](https://en.wikipedia.org/wiki/Premature_optimization)<br />
   #nfr--performance
+- [ ] Prefer built-in browser elements and features, rather than "re-inventing the wheel".<br />
+  Browser implementations are more likely to be optimised, and thus perform better.<br/ >
+  Example: prefer `detail`/`summary` for expandable regions rather than `div`s with click event handlers and show/hide logic.<br/ >
+  Example: prefer built-in CSS animation with `transition`, etc. rather than your own implementation in Javascript.<br />
+  Example: prefer built-in `Temporal` rather than a library such as Luxon.<br />
+  #nfr--performance
 
 [^nfr-performance-general]: General covers general performance requirements.
 
