@@ -20,20 +20,15 @@ export function QuotesListItem(props: QuotesListItemProps) {
 
   return (
     <li key={quote.meta.slug} className={styles.quotesListItem}>
-      <LinkBox
-        className={styles.quoteLinkBox}
-        href={`/quotes/${quote.meta.slug}`}
-      >
-        <BlockQuotePullQuote className={styles.quotePullQuote}>
-          <Stack direction={StackDirections.Column} gap={0.5}>
-            <Text type={TextTypes.Body}>{quote.text}</Text>
+      <BlockQuotePullQuote className={styles.quotePullQuote}>
+        <Stack direction={StackDirections.Column} gap={0.5}>
+          <Text type={TextTypes.Body}>{quote.text}</Text>
 
-            <QuoteAttribution quote={quote} />
+          <QuoteAttribution quote={quote} />
 
-            <ContentAnchors content={quote} />
-          </Stack>
-        </BlockQuotePullQuote>
-      </LinkBox>
+          <ContentAnchors content={quote} />
+        </Stack>
+      </BlockQuotePullQuote>
     </li>
   );
 }

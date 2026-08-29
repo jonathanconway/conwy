@@ -9,12 +9,6 @@ export const quotesListItem = style({
   listStyle: "none",
 });
 
-export const quoteLinkBox = style({
-  cursor: "pointer",
-  textDecoration: "none",
-  color: vars.text.body.color,
-});
-
 export const quotePullQuote = style({
   ...pullQuoteMixins.pullQuote,
   marginBottom: 0,
