@@ -67,7 +67,14 @@ In certain cases, we have a large but atomic change. The change has a broad impa
 
 For example, suppose we need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request.
 
-In cases like these, the approach of "sub pull requests" can be useful. Here we create one large pull request in the main branch.
+In cases like these, the approach of "sub pull requests" can be useful.
+
+***Merge small pull requests into a larger pull request, then merge that to main.***
+
+This way we can get the best of both worlds: 
+
+- We can break our change into smaller pieces 
+- _And_ we can keep them together, for merging to the main branch atomically
 
 ```mermaid--svg
 ---
