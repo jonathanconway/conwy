@@ -45,6 +45,8 @@ export * from "./libation";
 export * from "./libre-office";
 export * from "./liquid-espresso";
 export * from "./mermaid";
+export * from "./magic-keyboard";
+export * from "./magic-mouse";
 export * from "./minaal-backpack";
 export * from "./mokku";
 export * from "./net-news-wire";
