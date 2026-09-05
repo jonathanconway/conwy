@@ -3,7 +3,7 @@
 import { HTMLProps } from "react";
 
 import { Aside } from "../../aside";
-import { useChecklistContext } from "../../checklist";
+import { useChecklistContext } from "../../checklist/checklist-context";
 
 type MdxAsideProps = HTMLProps<HTMLElement>;
 

@@ -8,7 +8,6 @@ export const linkBox: ComplexStyleRule = {
   position: "relative",
   display: "flex",
   flexDirection: "row",
-  ...rounded.md,
   borderWidth: "1px",
   borderStyle: "solid",
   borderColor: vars.box.decorative.border.color,
@@ -16,8 +15,11 @@ export const linkBox: ComplexStyleRule = {
   cursor: "pointer",
   textDecoration: "none",
   color: vars.text.body.color,
-  ...focusOutline,
   backgroundColor: vars.linkBox.background.color,
+  alignItems: "start",
+
+  ...rounded.md,
+  ...focusOutline,
 
   ":hover": {
     backgroundColor: vars.linkBox.hover.background.color,

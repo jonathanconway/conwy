@@ -15,12 +15,14 @@ import { useSearchTextFilter, useTagFiltersSelected } from "../filters";
 
 export interface ChecklistContextProps {
   readonly checklistMeta: ChecklistMeta;
+  readonly isSingleItemView?: boolean;
 
   readonly children: ReactNode;
 }
 
 export interface ChecklistContextValue {
   readonly checklistMeta: ChecklistMeta;
+  readonly isSingleItemView?: boolean;
 
   readonly selectedFilters: readonly ChecklistItemTag[];
   readonly onChangeSelectedFilters: (
@@ -128,6 +130,8 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
           }
         : undefined,
     },
+
+    isSingleItemView: props.isSingleItemView,
 
     selectedFilters,
     onChangeSelectedFilters: handleChangeSelectedFilters,

@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { ComplexStyleRule, style } from "@vanilla-extract/css";
 
 import * as iconMixins from "../../icon/icon.mixins";
 import * as linkMixins from "../../link/link.mixins";
@@ -30,4 +30,4 @@ export const link = style({
 export const linkIcon = style({
   ...iconMixins.iconContainer,
   ...linkMixins.linkIcon,
-});
+} as ComplexStyleRule);

@@ -19,18 +19,27 @@ export function Link_(props: LinkProps) {
     showOpenPopup,
   } = getLinkValues(props);
 
+  const linkInnerContainerClassName = props.layoutInnerContents
+    ? linkStyles.linkInnerContainerContents
+    : linkStyles.linkInnerContainer;
+
   return (
     <NextLink {...nextLinkProps}>
-      <span className={linkStyles.linkInnerContainer}>
+      <span className={linkStyles.linkContainer}>
         {icon && <Icon className={linkStyles.linkIcon} icon={icon} />}
         {iconSlot}
-        {children}
-        {showOpenInNew && (
-          <Icon className={linkStyles.linkIcon} icon={IconTypes.OpenInNew} />
-        )}
-        {showOpenPopup && (
-          <Icon className={linkStyles.linkIcon} icon={IconTypes.Info} />
-        )}
+        <span className={linkInnerContainerClassName}>
+          {children}
+          {showOpenInNew && (
+            <Icon
+              className={linkStyles.linkIconInline}
+              icon={IconTypes.OpenInNew}
+            />
+          )}
+          {showOpenPopup && (
+            <Icon className={linkStyles.linkIconInline} icon={IconTypes.Info} />
+          )}
+        </span>
       </span>
     </NextLink>
   );

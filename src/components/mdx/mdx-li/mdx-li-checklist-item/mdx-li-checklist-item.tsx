@@ -2,7 +2,7 @@
 
 import { isArray } from "lodash";
 
-import { useChecklistContext } from "../../../checklist";
+import { useChecklistContext } from "../../../checklist/checklist-context";
 import { MdxLiProps } from "../mdx-li-props";
 
 import { MdxLiChecklistItemClient } from "./mdx-li-checklist-item-client";
@@ -15,7 +15,6 @@ export function MdxLiChecklistItem(props: MdxLiProps) {
   }
 
   if (!props.children || !isArray(props.children)) {
-    console.log("<MdxLiChecklistItem> 1", props);
     return;
   }
 
@@ -24,7 +23,6 @@ export function MdxLiChecklistItem(props: MdxLiProps) {
     props.children,
   );
   if (!sectionItem) {
-    console.log("<MdxLiChecklistItem> 2", sectionItem);
     return;
   }
 

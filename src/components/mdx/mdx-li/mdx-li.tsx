@@ -1,6 +1,6 @@
 "use client";
 
-import { useChecklistContext } from "../../checklist";
+import { useChecklistContext } from "../../checklist/checklist-context";
 
 import {
   MdxLiChecklistItem,

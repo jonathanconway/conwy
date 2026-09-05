@@ -1,4 +1,4 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
 import * as textMixins from "../../text/text.mixins";
 
@@ -26,11 +26,7 @@ export const checklistLiLabel = style({
   display: "flex",
   flexDirection: "row",
   alignItems: "start",
-  padding: "0.25rem 0.5rem",
+  padding: "0.5rem",
   gap: "0.5rem",
   cursor: "pointer",
-});
-
-globalStyle(`${checklistLi} input[type="checkbox"]`, {
-  marginTop: "0.25rem",
 });

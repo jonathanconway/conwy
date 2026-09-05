@@ -6,6 +6,7 @@ export interface ChecklistMetaExtensions {
   readonly itemsByName: Record<string, ChecklistItem>;
   readonly tagGroups: readonly ChecklistItemTagGroup[];
   readonly itemsByHeadingText: Tree<string, ChecklistItem>;
+  readonly sectionsByHeadingText: Record<string, ChecklistSection>;
 }
 
 export interface ChecklistItemTagGroup {
@@ -20,11 +21,18 @@ export interface ChecklistItemTag {
   readonly title: string;
 }
 
+export interface ChecklistSection {
+  readonly contentMd: string;
+  readonly noteMd: string;
+}
+
 export interface ChecklistItem {
   readonly name: string;
   readonly title: string;
+  readonly contentMd: string;
   readonly tags: readonly ChecklistItemTag[];
   readonly links: readonly ChecklistItemLink[];
+  readonly sectionName: string;
 }
 
 export type ChecklistItemLink = Link;

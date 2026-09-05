@@ -51,6 +51,7 @@ export function LinkBox_(props: LinkBoxProps) {
       className={className}
       href={String(props.href)}
       showOpenInNew={false}
+      layoutInnerContents
       onClick={handleClick}
       {...restProps}
     />

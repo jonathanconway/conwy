@@ -1,6 +1,6 @@
 "use client";
 
-import { useChecklistContext } from "../../checklist";
+import { useChecklistContext } from "../../checklist/checklist-context";
 
 import { MdxUlChecklist, checkIsChecklist } from "./mdx-ul-checklist";
 import { MdxUlProps } from "./mdx-ul-props";

@@ -11,7 +11,7 @@ import {
   MdxImg,
   MdxInput,
   MdxLi,
-  MdxOL,
+  MdxOl,
   MdxP,
   MdxPre,
   MdxSection,
@@ -25,7 +25,7 @@ import {
   MdxWrapper,
 } from "./components";
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
+export function useMDXComponents(components?: MDXComponents): MDXComponents {
   return {
     a: MdxA,
     blockquote: MdxBlockquote,
@@ -37,7 +37,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     img: MdxImg,
     input: MdxInput,
     li: MdxLi,
-    ol: MdxOL,
+    ol: MdxOl,
     p: MdxP,
     pre: MdxPre,
     ul: MdxUl,

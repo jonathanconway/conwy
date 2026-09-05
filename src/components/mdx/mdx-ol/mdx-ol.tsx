@@ -7,6 +7,6 @@ export type MdxOLProps = DetailedHTMLProps<
   HTMLOListElement
 >;
 
-export function MdxOL({ className, children, ...restProps }: MdxOLProps) {
+export function MdxOl({ className, children, ...restProps }: MdxOLProps) {
   return <ol {...restProps}>{children}</ol>;
 }

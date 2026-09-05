@@ -1,6 +1,8 @@
+import { ComplexStyleRule } from "@vanilla-extract/css";
 import { merge } from "lodash";
 
 import { focusOutline } from "../focus-outline";
+import * as iconMixins from "../icon/icon.mixins";
 import { media } from "../styling";
 import { vars } from "../theme";
 
@@ -51,14 +53,29 @@ export const linkContent = {
 
 export const link = merge(linkBase, linkDecoration, linkContent, focusOutline);
 
-export const linkInnerContainer = {
+export const linkContainer = {
   display: "inline-flex",
+  alignItems: "center",
   flex: 1,
   gap: "0.25rem",
   width: "100%",
 };
 
-export const linkIcon = {
+export const linkInnerContainer = {
+  display: "inline-block",
+};
+
+export const linkInnerContainerContents = {
+  display: "contents",
+};
+
+export const linkIcon: ComplexStyleRule = {
+  ...iconMixins.iconContainer,
   color: "inherit",
-  paddingLeft: "0.125rem" /* 2px */,
+};
+
+export const linkIconInline = {
+  ...iconMixins.iconContainer,
+  color: "inherit",
+  paddingLeft: "0.25rem",
 };

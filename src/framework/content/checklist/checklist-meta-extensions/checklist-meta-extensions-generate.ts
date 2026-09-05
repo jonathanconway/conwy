@@ -1,6 +1,6 @@
 import { load as cheerioLoad } from "cheerio";
 import { trim, uniq } from "lodash";
-import { marked } from "marked";
+import { MarkedToken, Token, Tokens, lexer, marked, parser } from "marked";
 import { ReactNode } from "react";
 
 import {
@@ -22,11 +22,48 @@ import {
   ChecklistMetaExtensions,
 } from "./checklist-meta-extensions";
 
+function checkIsMarkedTokenType<T extends MarkedToken>(
+  type: MarkedToken["type"],
+) {
+  return (token: Token): token is T => {
+    return token.type === type;
+  };
+}
+
 export async function generateChecklistMetaExtensions(
   checklistMeta: ChecklistMeta,
   checklistMd: string,
 ): Promise<ChecklistMetaExtensions | undefined> {
   const checklistMdHtml = await marked(checklistMd);
+  const checklistMdTokens = lexer(checklistMd);
+
+  const checklistHeadingsMdByName = Object.fromEntries(
+    checklistMdTokens
+      .filter(checkIsMarkedTokenType<Tokens.Heading>("heading"))
+      .map((checklistMdTokenHeading) => [
+        generateChecklistItemKey(
+          checklistMdTokenHeading.text
+            .split("[^")[0]
+            .trim()
+            .replace(" - ", " ")
+            .trim(),
+        ),
+        checklistMdTokenHeading.raw,
+      ]),
+  );
+
+  const checklistItemsMdByName = Object.fromEntries(
+    checklistMdTokens
+      .filter(checkIsMarkedTokenType<Tokens.List>("list"))
+      .flatMap((checklistMdTokenList) => checklistMdTokenList.items)
+      .map((checklistMdTokenListItem) => [
+        generateChecklistItemKey(
+          checklistMdTokenListItem.text.split("<br />")[0],
+        ),
+        checklistMdTokenListItem.raw,
+      ]),
+  );
+
   const checklistMd$ = cheerioLoad(checklistMdHtml);
 
   const childrenEls = checklistMd$("body").children();
@@ -39,20 +76,27 @@ export async function generateChecklistMetaExtensions(
     subBranches: [],
   };
   const lastHeadingTexts: string[] = [];
+  let lastHeadingName = "";
+
+  const notesByHeadingText: Record<string, string> = {};
 
   for (const childEl of childrenEls) {
     const $childEl = checklistMd$(childEl);
+    const childElMd = $childEl.text().trim();
+
     switch (childEl.tagName) {
       case "h2":
       case "h3":
       case "h4":
       case "h5": {
-        const lastHeadingText = $childEl.text().split("[^")[0].trim();
-
+        const lastHeadingText = childElMd.split("[^")[0].trim();
         const lastHeadingLevel = parseInt(childEl.tagName.split("h")[1]);
 
-        lastHeadingTexts.length = lastHeadingLevel - 2;
+        lastHeadingName = generateChecklistItemKey(
+          childElMd.split("[^")[0].trim().replaceAll(" - ", " ").trim(),
+        );
 
+        lastHeadingTexts.length = lastHeadingLevel - 2;
         lastHeadingTexts.push(lastHeadingText);
 
         itemsByHeadingText = addTreeSubBranchPath(
@@ -63,13 +107,24 @@ export async function generateChecklistMetaExtensions(
         break;
       }
 
+      case "p": {
+        if (childElMd.startsWith("[^")) {
+          notesByHeadingText[lastHeadingName] = childElMd;
+        }
+        break;
+      }
+
       case "ul": {
         const $checkListItemEls = $childEl.children("li");
         const checkListItemsHtml = $checkListItemEls
           .map((_, el) => checklistMd$(el).html())
           .toArray();
         const checklistItems = checkListItemsHtml.map((checkListItemHtml) =>
-          parseChecklistItem(checkListItemHtml),
+          parseChecklistItem(
+            checklistItemsMdByName,
+            lastHeadingName,
+            checkListItemHtml,
+          ),
         );
 
         items.push(...checklistItems);
@@ -92,11 +147,24 @@ export async function generateChecklistMetaExtensions(
     items.map((item) => [item.name, item]),
   );
 
+  const sectionsByHeadingText = Object.fromEntries(
+    Object.entries(checklistHeadingsMdByName).map(
+      ([checklistSectionName, checklistSectionContentMd]) => [
+        checklistSectionName,
+        {
+          contentMd: checklistSectionContentMd,
+          noteMd: notesByHeadingText[checklistSectionName],
+        },
+      ],
+    ),
+  );
+
   const checklistMetaExtension: ChecklistMetaExtensions = {
     items,
     itemsByName,
     tagGroups,
     itemsByHeadingText,
+    sectionsByHeadingText,
   };
 
   return checklistMetaExtension;
@@ -118,10 +186,14 @@ export function generateChecklistItemKey(title: string | ReactNode) {
     .toLowerCase();
 }
 
-function parseChecklistItem(checklistItemHtml: string) {
+function parseChecklistItem(
+  checklistItemsMdByName: Record<string, string>,
+  sectionName: string,
+  checklistItemHtml: string,
+) {
   const $ = cheerioLoad(checklistItemHtml);
 
-  let titleText = "";
+  let title = "";
   let foundBr = false;
 
   $("body")
@@ -132,20 +204,23 @@ function parseChecklistItem(checklistItemHtml: string) {
         return;
       }
       if (!foundBr) {
-        titleText += $(node).text();
+        title += $(node).text();
       }
     });
 
-  titleText = titleText.trim();
-  const name = generateChecklistItemKey(titleText);
+  title = title.trim();
+  const name = generateChecklistItemKey(title);
+  const contentMd = checklistItemsMdByName[name];
   const checklistItemText = $.text().trim();
   const tags = parseChecklistItemTags(checklistItemText);
 
   const item: ChecklistItem = {
     name,
-    title: titleText,
+    title,
+    contentMd,
     tags,
     links: [],
+    sectionName,
   };
   return item;
 }

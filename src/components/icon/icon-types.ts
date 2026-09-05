@@ -21,6 +21,7 @@ export const IconTypes = {
   HamburgerMenu: "hamburger-menu",
   Info: "info",
   Like: "like",
+  Link: "link",
   LinkedIn: "linkedin",
   Mastodon: "mastodon",
   Medium: "medium",

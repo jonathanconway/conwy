@@ -21,4 +21,5 @@ export type LinkProps = DetailedHTMLProps<
   readonly contentsType?: LinkContentsType;
   readonly layoutType?: LinkLayoutType;
   readonly link?: Link_;
+  readonly layoutInnerContents?: boolean;
 };
