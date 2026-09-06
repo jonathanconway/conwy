@@ -2,6 +2,7 @@ export * from "./about-me";
 export * from "./articles";
 export * from "./checklists";
 export * from "./contact";
+export * from "./contact-pgp";
 export * from "./friends";
 export * from "./friends-sidebar";
 export * from "./communities";

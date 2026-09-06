@@ -5,7 +5,7 @@ import {
   PageLayout,
   TwoColLayout,
 } from "@/components";
-import { contactFragment, site } from "@/content";
+import { contactFragment, contactPgpFragment, site } from "@/content";
 
 export default function Contact() {
   return (
@@ -17,6 +17,8 @@ export default function Contact() {
             <MdxContainer>{contactFragment.content}</MdxContainer>
 
             <ContactDetails />
+
+            <MdxContainer>{contactPgpFragment.content}</MdxContainer>
           </div>
           <ContactForm />
         </TwoColLayout>
