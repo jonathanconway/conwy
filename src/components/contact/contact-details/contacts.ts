@@ -7,6 +7,20 @@ export const CONTACT_DETAILS_EMAIL = {
   href: "mailto:jon@conwy.co",
 };
 
+export const CONTACT_DETAILS_PROTONMAIL = {
+  iconType: IconTypes.Email,
+  label: "ProtonMail",
+  id: "jonathan.conway@protonmail.com",
+  href: "mailto:jonathan.conway@protonmail.com",
+};
+
+export const CONTACT_DETAILS_GMAIL = {
+  iconType: IconTypes.Email,
+  label: "Gmail",
+  id: "jonathan.conway@gmail.com",
+  href: "mailto:jonathan.conway@gmail.com",
+};
+
 export const CONTACT_DETAILS_TWITTER = {
   iconType: IconTypes.Twitter,
   label: "Twitter",
@@ -65,6 +79,8 @@ export const CONTACT_DETAILS_GOODREADS = {
 
 export const CONTACTS = [
   CONTACT_DETAILS_EMAIL,
+  CONTACT_DETAILS_PROTONMAIL,
+  CONTACT_DETAILS_GMAIL,
   CONTACT_DETAILS_TWITTER,
   CONTACT_DETAILS_BLUESKY,
   CONTACT_DETAILS_MASTODON,
