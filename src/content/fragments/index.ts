@@ -2,6 +2,8 @@ export * from "./about-me";
 export * from "./articles";
 export * from "./checklists";
 export * from "./contact";
+export * from "./friends";
+export * from "./friends-sidebar";
 export * from "./communities";
 export * from "./ideas";
 export * from "./commentaries";
