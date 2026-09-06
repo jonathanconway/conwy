@@ -7,12 +7,8 @@ import {
   Stack,
   StackDirections,
 } from "@/components";
-import {
-  friendsFragment,
-  friendsPage,
-  friendsSidebarFragment,
-  site,
-} from "@/content";
+import { friendsFragment, friendsSidebarFragment, site } from "@/content";
+import { friendsPage } from "@/content/pages/friends";
 
 export default function Page() {
   return (
