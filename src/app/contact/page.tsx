@@ -3,6 +3,7 @@ import {
   ContactForm,
   MdxContainer,
   PageLayout,
+  Stack,
   TwoColLayout,
 } from "@/components";
 import { contactFragment, contactPgpFragment, site } from "@/content";
@@ -13,13 +14,13 @@ export default function Contact() {
       selectedNavPath="/contact"
       main={
         <TwoColLayout>
-          <div>
+          <Stack gap={0.5}>
             <MdxContainer>{contactFragment.content}</MdxContainer>
 
             <ContactDetails />
 
             <MdxContainer>{contactPgpFragment.content}</MdxContainer>
-          </div>
+          </Stack>
           <ContactForm />
         </TwoColLayout>
       }

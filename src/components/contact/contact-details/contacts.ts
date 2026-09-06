@@ -1,5 +1,7 @@
 import { IconTypes } from "../../icon";
 
+import { Contact } from "./contacts-types";
+
 export const CONTACT_DETAILS_EMAIL = {
   iconType: IconTypes.Email,
   label: "Email",
@@ -77,7 +79,7 @@ export const CONTACT_DETAILS_GOODREADS = {
   href: "http://goodreads.com/conwy",
 };
 
-export const CONTACTS = [
+export const CONTACTS: readonly Contact[] = [
   CONTACT_DETAILS_EMAIL,
   CONTACT_DETAILS_PROTONMAIL,
   CONTACT_DETAILS_GMAIL,
