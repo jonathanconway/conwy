@@ -14,41 +14,56 @@ export function ContentPageHeader<
   U extends MetaBase<TMetaExtensions>,
   TMetaExtensions extends object = object,
 >(props: ContentPageHeaderProps<T, U>) {
+  const {
+    preHeader,
+    title,
+    createdDate,
+    updatedDate,
+    content,
+    showHistoryLink = true,
+    showSubscribeLink = true,
+    showSuggestEditLink = true,
+    subHeader,
+  } = props;
+
   return (
     <ContentPageHeaderLayout
-      preHeader={props.preHeader}
-      heading={props.title}
+      preHeader={preHeader}
+      heading={title}
       links={[
-        props.createdDate && (
+        createdDate && (
           <ContentPageHeaderDate key="created-date">
             <label htmlFor="article-created-date">Created: </label>
             <span id="article-created-date">
-              <DateView>{props.createdDate}</DateView>
+              <DateView>{createdDate}</DateView>
             </span>
           </ContentPageHeaderDate>
         ),
-        props.updatedDate && (
+        updatedDate && (
           <ContentPageHeaderDate key="updated-date">
             <label htmlFor="article-updated-date">Updated: </label>
             <span id="article-updated-date">
-              <DateView>{props.updatedDate}</DateView>
+              <DateView>{updatedDate}</DateView>
             </span>
           </ContentPageHeaderDate>
         ),
-        <ContentPageHeaderHistoryLink
-          key="history-link"
-          content={props.content}
-        />,
-        <ContentPageHeaderSubscribeLink
-          key="subscribe-link"
-          content={props.content}
-        />,
-        <ContentPageHeaderSuggestEditLink
-          key="suggest-edit-link"
-          content={props.content}
-        />,
+        showHistoryLink ? (
+          <ContentPageHeaderHistoryLink key="history-link" content={content} />
+        ) : null,
+        showSubscribeLink ? (
+          <ContentPageHeaderSubscribeLink
+            key="subscribe-link"
+            content={content}
+          />
+        ) : null,
+        showSuggestEditLink ? (
+          <ContentPageHeaderSuggestEditLink
+            key="suggest-edit-link"
+            content={content}
+          />
+        ) : null,
       ].filter(isNotNil)}
-      subHeader={props.subHeader}
+      subHeader={subHeader}
     />
   );
 }

@@ -14,4 +14,7 @@ export interface ContentPageHeaderProps<
   readonly createdDate?: DateTimeString;
   readonly updatedDate?: DateTimeString;
   readonly subHeader?: ReactNode;
+  readonly showHistoryLink?: boolean;
+  readonly showSubscribeLink?: boolean;
+  readonly showSuggestEditLink?: boolean;
 }

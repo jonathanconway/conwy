@@ -28,6 +28,9 @@ export default function Page() {
               content={friendsPage}
               title={friendsPage.meta.title}
               updatedDate={friendsPage.meta.updatedDate}
+              showHistoryLink={false}
+              showSubscribeLink={false}
+              showSuggestEditLink={false}
             />
             <MdxContainer>{friendsFragment.content}</MdxContainer>
           </Stack>
