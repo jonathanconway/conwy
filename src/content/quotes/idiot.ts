@@ -9,7 +9,8 @@ export const idiotQuote: Quote = {
       url: "https://pwlcapital.com/our-team/benjamin-felix/",
     },
     source: {
-      url: "https://www.youtube.com/watch?v=2uJq7OQhpGg",
+      url: "https://youtu.be/2uJq7OQhpGg?si=pUbVYAWGbsuNWh_F&t=2835",
+      title: "Ben Felix: Stock Picking Is Dead | Investi (Ep. 59)",
     },
     slug: "idiot",
   },
