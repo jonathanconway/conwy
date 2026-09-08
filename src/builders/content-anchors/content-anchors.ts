@@ -12,7 +12,7 @@ import { mkDirSyncIfNotExists } from "@/framework/server";
  * Input: All articles - MDX content files.
  * Output: content-anchors.json static file.
  */
-export async function buildContentAnchors() {
+export async function contentAnchorsBuilder() {
   buildContentAnchorsFromArticles();
 }
 

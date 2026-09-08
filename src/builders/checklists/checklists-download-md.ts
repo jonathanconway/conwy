@@ -8,7 +8,7 @@ import { mkDirSyncIfNotExists } from "@/framework/server";
  * Input: All checklists - MDX content files.
  * Output: downloads checklists md public static files.
  */
-export async function buildChecklistDownloadMds() {
+export async function checklistDownloadMdsBuilder() {
   const checklistMetas = await getChecklistMetas(getChecklistFolders());
   for (const checklistMeta of checklistMetas) {
     buildChecklistDownloadMd(checklistMeta);

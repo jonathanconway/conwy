@@ -1,10 +1,10 @@
-import { buildChecklistDownloadMds } from "./checklists";
-import { buildContentAnchors } from "./content-anchors";
-import { buildFollows } from "./follows";
+import { checklistDownloadMdsBuilder } from "./checklists";
+import { contentAnchorsBuilder } from "./content-anchors";
+import { followsBuilder } from "./follows";
 import { Orders } from "./orders";
-import { buildRssFeed } from "./rss-feed";
+import { rssFeedBuilder } from "./rss-feed";
 
 export const builderOrders = {
-  [Orders.Pre]: [buildContentAnchors],
-  [Orders.Post]: [buildFollows, buildRssFeed, buildChecklistDownloadMds],
+  [Orders.Pre]: [contentAnchorsBuilder],
+  [Orders.Post]: [followsBuilder, rssFeedBuilder, checklistDownloadMdsBuilder],
 };

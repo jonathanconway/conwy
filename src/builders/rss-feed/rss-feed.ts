@@ -10,7 +10,7 @@ import { packageInfo } from "@/package-info";
  * Input: All articles - meta, content.
  * Output: feed.xml public static file.
  */
-export async function buildRssFeed() {
+export async function rssFeedBuilder() {
   const articleMetas = sortArticleMetas(
     await getArticleMetas(getArticleFolders()),
   );

@@ -5,7 +5,7 @@ import * as builders from "./index";
 import { Orders } from "./orders";
 
 function generateBuilderCLIName(builderFnName: string) {
-  return chain(builderFnName).kebabCase().replace("build-", "").value();
+  return chain(builderFnName).kebabCase().replace("-builder", "").value();
 }
 
 const buildersByCLIName = chain(Object.entries(builders))

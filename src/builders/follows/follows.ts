@@ -11,7 +11,7 @@ import { getSafariFollowsBySection } from "./follows-safari";
  * Input: Browser exported bookmarks from Safari (HTML) and Chrome (OPML).
  * Output: follows.json content static file.
  */
-export async function buildFollows() {
+export async function followsBuilder() {
   const followsBySectionResults = await Promise.all([
     getOpmlFollowsBySection(),
     getSafariFollowsBySection(),
