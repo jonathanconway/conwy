@@ -1,21 +1,23 @@
 import { TypeOfConst } from "@/framework/utils";
 
 export const PostTags = {
-  SoftwareDevelopment: "software-development",
-  SoftwareEngineering: "software-engineering",
+  Career: "career",
   Design: "design",
   Finance: "finance",
-  Life: "life",
   Learning: "learning",
+  Life: "life",
+  SoftwareDevelopment: "software-development",
+  SoftwareEngineering: "software-engineering",
 } as const;
 
 export type PostTag = TypeOfConst<typeof PostTags>;
 
 export const POST_TAG_TITLES: Record<PostTag, string> = {
-  [PostTags.SoftwareDevelopment]: "Software development",
-  [PostTags.SoftwareEngineering]: "Software engineering",
+  [PostTags.Career]: "Career",
   [PostTags.Design]: "Design",
   [PostTags.Finance]: "Finance",
-  [PostTags.Life]: "Life",
   [PostTags.Learning]: "Learning",
+  [PostTags.Life]: "Life",
+  [PostTags.SoftwareDevelopment]: "Software development",
+  [PostTags.SoftwareEngineering]: "Software engineering",
 };

@@ -1,23 +1,21 @@
 "use client";
 
-import { MicroMeta } from "@/framework/client";
+import { Micro } from "@/framework/client";
 
 import { MicrosListItem } from "./micros-list-item";
 import * as styles from "./micros-list.css";
 
 export interface MicrosListProps {
-  readonly microMetas: readonly MicroMeta[];
+  readonly micros: readonly Micro[];
 }
 
 export function MicrosList(props: MicrosListProps) {
-  const { microMetas } = props;
+  const { micros } = props;
 
   return (
     <div className={styles.container}>
-      {microMetas
-        .map((microMeta) => (
-          <MicrosListItem key={microMeta.slug} microMeta={microMeta} />
-        ))
+      {micros
+        .map((micro) => <MicrosListItem key={micro.meta.slug} micro={micro} />)
         .filter(Boolean)}
     </div>
   );

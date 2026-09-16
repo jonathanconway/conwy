@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { merge } from "lodash";
 
 import * as iconMixins from "../../../icon/icon.mixins";
@@ -33,3 +33,7 @@ export const decorativeImage = style({
   float: "right",
   opacity: 0.25,
 });
+
+export const contentContainer = style({});
+
+globalStyle(`${contentContainer} p`, textMixins.summary);

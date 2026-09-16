@@ -1,7 +1,6 @@
 import { MicroMeta, PostTags } from "@/framework/client";
 
 export const meta: MicroMeta = {
-  blurb: `Good systems tend to have a lot of redundancy (“fall-backs”), and thus, have some inefficiency. Designers often seem to understand this better than engineers.`,
   createdDate: "2023-12-02",
   slug: "good-systems-redundancy",
   tags: [PostTags.SoftwareDevelopment],

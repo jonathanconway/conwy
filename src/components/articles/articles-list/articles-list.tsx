@@ -49,18 +49,9 @@ export function ArticlesList(props: ArticlesListProps) {
     <>
       <ContentList>
         {itemsTiled
-          .map((item) => {
-            switch (item.meta.type) {
-              case "article":
-                return <ArticlesListItem key={item.meta.slug} {...item.meta} />;
-              case "micro":
-                return (
-                  <MicrosListItem key={item.meta.slug} microMeta={item.meta} />
-                );
-              default:
-                null;
-            }
-          })
+          .map((item) => (
+            <ArticlesListItemSwitch key={item.meta.slug} post={item} />
+          ))
           .filter(Boolean)}
       </ContentList>
 
@@ -71,4 +62,20 @@ export function ArticlesList(props: ArticlesListProps) {
       </ContentListSmall>
     </>
   );
+}
+
+interface ArticlesListItemSwitchProps {
+  readonly post: Post;
+}
+
+function ArticlesListItemSwitch(props: ArticlesListItemSwitchProps) {
+  const { post } = props;
+  switch (post.type) {
+    case "article":
+      return <ArticlesListItem article={post} />;
+    case "micro":
+      return <MicrosListItem micro={post} />;
+    default:
+      null;
+  }
 }

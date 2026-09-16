@@ -13,7 +13,7 @@ export default async function Page(props: PageProps) {
 
   const micro = findImportedContent(micros, ContentTypes.Micro, params.slug);
 
-  return <PageLayout main={<Micro microMeta={micro.meta} />} />;
+  return <PageLayout main={<Micro micro={micro} />} />;
 }
 
 export async function generateStaticParams() {

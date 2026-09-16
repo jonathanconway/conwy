@@ -1,4 +1,4 @@
-import { ArticleMeta } from "@/framework/client";
+import { Article } from "@/framework/client";
 
 import {
   ContentListItem,
@@ -11,20 +11,24 @@ import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
 import { Text, TextTypes } from "../../../text";
 
-export type ArticlesListItemProps = ArticleMeta;
+export interface ArticlesListItemProps {
+  readonly article: Article;
+}
 
 export function ArticlesListItem(props: ArticlesListItemProps) {
   const {
-    createdDate,
-    updatedDate,
-    slug,
-    title,
-    blurb,
-    shortBlurb,
-    socialLinks,
     type,
-    mainImage,
-  } = props;
+    meta: {
+      createdDate,
+      updatedDate,
+      slug,
+      title,
+      blurb,
+      shortBlurb,
+      socialLinks,
+      mainImage,
+    },
+  } = props.article;
   const date = updatedDate ?? createdDate;
 
   return (

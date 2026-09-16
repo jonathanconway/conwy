@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
 
-import { Text, TextSizes, TextTypes } from "../../../text";
-
-import * as styles from "./content-list-item-blurb.css";
+import { Text, TextTypes } from "../../../text";
 
 interface ContentListItemBlurbProps {
   readonly children?: ReactNode;

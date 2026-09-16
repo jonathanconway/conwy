@@ -77,10 +77,10 @@ async function addCustomRecordMicro(
   contentMeta: MicroMeta,
 ) {
   const title = titleCase(contentMeta.slug);
-  const { slug: contentSlug, type: contentType, blurb } = contentMeta;
+  const { slug: contentSlug, type: contentType } = contentMeta;
   const url = "/" + getContentUrlPath(contentMeta);
   const contentUrl = url;
-  const content = blurb;
+  const content = readContentMdx(ContentTypes.Micro, contentMeta.slug);
 
   const meta = {
     contentSlug,

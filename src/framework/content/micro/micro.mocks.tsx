@@ -5,8 +5,13 @@ import { Micro } from "./micro";
 export function createMicroMock(): Micro {
   return {
     type: "micro",
+    content: (
+      <>
+        Observing the state of front end applications running in production can
+        boost troubleshooting / debugging.
+      </>
+    ),
     meta: {
-      blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
       createdDate: "2023-09-02",
       slug: "front-end-observability",
       tags: ["software-development"],
