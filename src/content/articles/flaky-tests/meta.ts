@@ -1,6 +1,9 @@
 import { ArticleMeta, PostTags } from "@/framework/client";
 
-import { flakyTestsIllustration } from "../../illustrations";
+import {
+  flakyTestsIllustration,
+  snowflakeDynamicColorIllustrationStatic,
+} from "../../illustrations";
 
 export const meta: ArticleMeta = {
   title: "Dealing with flaky tests",
@@ -11,6 +14,7 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: flakyTestsIllustration,
+  smallImage: snowflakeDynamicColorIllustrationStatic,
   isPinned: true,
   socialLinks: [],
   discussionLinks: [],

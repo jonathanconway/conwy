@@ -1,6 +1,9 @@
 import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 
-import { diagrammingReactIllustrationComposite } from "../../illustrations";
+import {
+  diagrammingReactIllustrationComposite,
+  reactColorIllustrationStatic,
+} from "../../illustrations";
 
 export const meta: ArticleMeta = {
   title: "Diagramming React code",
@@ -10,6 +13,7 @@ export const meta: ArticleMeta = {
   type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: diagrammingReactIllustrationComposite,
+  smallImage: reactColorIllustrationStatic,
   socialLinks: [
     {
       type: SocialLinkTypes.Dev,

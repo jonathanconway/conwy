@@ -6,10 +6,10 @@ import { ChecklistItemPage, Redirect } from "@/components";
 import { site } from "@/content";
 import * as checklists from "@/content/checklists";
 import {
-  Checklist as Checklist_,
+  ContentTypes,
   generateChecklistMetaExtensions,
-  importContentBySlug,
 } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../../[slug]/types";
 
@@ -26,12 +26,13 @@ function getChecklistMd(slug: string) {
 }
 
 export default async function Page(props: ChecklistItemPageProps) {
-  const { slug, itemslug } = await props.params;
+  const params = await props.params;
+  const { slug, itemslug } = params;
 
-  const checklistBase = importContentBySlug<Checklist_>(
+  const checklistBase = findImportedContent(
     checklists,
-    "checklist",
-    slug,
+    ContentTypes.Checklist,
+    params.slug,
   );
 
   const checklistMd = getChecklistMd(checklistBase.meta.slug);
@@ -93,11 +94,12 @@ export async function generateStaticParams() {
 export async function generateMetadata(
   props: ChecklistItemPageProps,
 ): Promise<Metadata> {
-  const { slug, itemslug } = await props.params;
-  const checklist = importContentBySlug<Checklist_>(
+  const params = await props.params;
+  const { itemslug } = params;
+  const checklist = findImportedContent(
     checklists,
-    "checklist",
-    slug,
+    ContentTypes.Checklist,
+    params.slug,
   );
 
   const checklistMd = getChecklistMd(checklist.meta.slug);

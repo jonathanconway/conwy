@@ -1,6 +1,7 @@
 import { REDIRECTS, site } from "@/content";
 import * as pages from "@/content/pages";
-import { Page as Page_, importContentBySlug } from "@/framework/client";
+import { ContentTypes } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PagePage } from "./page-page";
 import { PageRedirect } from "./page-redirect";
@@ -38,7 +39,7 @@ export async function generateMetadata(props: PageProps) {
   }
 
   // Pages
-  const page = importContentBySlug<Page_>(pages, "page", params.slug);
+  const page = findImportedContent(pages, ContentTypes.Page, params.slug);
   const pageTitle = page.meta.title.toLowerCase();
   const title = `${site.title} - pages - ${pageTitle}`;
   return {

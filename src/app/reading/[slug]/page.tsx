@@ -8,14 +8,15 @@ import {
 } from "@/components";
 import { site } from "@/content";
 import * as books from "@/content/books";
-import { Book as Book_, importContentBySlug } from "@/framework/client";
+import { ContentTypes } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const book = importContentBySlug<Book_>(books, "book", params.slug);
+  const book = findImportedContent(books, ContentTypes.Book, params.slug);
 
   return (
     <PageLayout
@@ -44,13 +45,13 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allBookMetas = Object.values(books).map((item) => item.meta);
-  return allBookMetas;
+  const allMetas = Object.values(books).map((item) => item.meta);
+  return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const book = importContentBySlug<Book_>(books, "book", params.slug);
+  const book = findImportedContent(books, ContentTypes.Book, params.slug);
 
   const bookTitle = book.meta.title.toLowerCase();
   const title = `${site.title} - reading - ${bookTitle}`;

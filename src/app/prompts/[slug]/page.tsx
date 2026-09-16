@@ -1,21 +1,17 @@
 import { Metadata } from "next";
 
-import "@/components";
 import { Breadcrumb, PageLayout, Prompt } from "@/components";
 import { site } from "@/content";
 import * as prompts from "@/content/prompts";
-import {
-  Prompt as Prompt_,
-  importContentBySlug,
-  sentenceCase,
-} from "@/framework/client";
+import { ContentTypes, sentenceCase } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const prompt = importContentBySlug<Prompt_>(prompts, "prompt", params.slug);
+  const prompt = findImportedContent(prompts, ContentTypes.Prompt, params.slug);
 
   return (
     <PageLayout
@@ -42,14 +38,14 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allPromptMetas = Object.values(prompts).map((item) => item.meta);
-  return allPromptMetas;
+  const allMetas = Object.values(prompts).map((item) => item.meta);
+  return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
 
-  const prompt = importContentBySlug<Prompt_>(prompts, "prompt", params.slug);
+  const prompt = findImportedContent(prompts, ContentTypes.Prompt, params.slug);
 
   const promptTitle = sentenceCase(prompt.meta.slug).toLowerCase();
   const title = `${site.title} - prompt - ${promptTitle}`;

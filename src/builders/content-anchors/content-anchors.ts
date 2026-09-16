@@ -1,10 +1,16 @@
 import { lstatSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { JSDOM } from "jsdom";
-import { uniq } from "lodash";
+import { kebabCase, uniq } from "lodash";
 import { marked } from "marked";
 import { join } from "path";
 
-import { ContentAnchorsMap } from "@/framework";
+import {
+  ContentAnchorsMap,
+  ContentLink,
+  ContentType,
+  ContentTypes,
+  Slug,
+} from "@/framework";
 import { mkDirSyncIfNotExists } from "@/framework/server";
 
 /**
@@ -68,18 +74,43 @@ function buildContentAnchorsFromArticle(
   ) as string[];
 
   for (const anchorContentName of anchorContentNames) {
-    const [anchorType, contentType, contentSlug] =
-      anchorContentName?.split("--");
-
-    contentAnchorsMap[contentType] = contentAnchorsMap[contentType] ?? {};
-    contentAnchorsMap[contentType][contentSlug] =
-      contentAnchorsMap[contentType][contentSlug] ?? [];
-    contentAnchorsMap[contentType][contentSlug] = [
-      ...(contentAnchorsMap[contentType][contentSlug] ?? []),
-      {
-        containingContentType: "article",
-        containingContentSlug: articleFolderName,
-      },
-    ];
+    buildContentAnchorFromArticle(
+      contentAnchorsMap,
+      anchorContentName,
+      articleFolderName,
+    );
   }
+}
+
+function buildContentAnchorFromArticle(
+  contentAnchorsMap: ContentAnchorsMap,
+  anchorContentName: string,
+  articleFolderName: string,
+) {
+  const [_anchorType, anchorContentType, anchorContentSlug] =
+    anchorContentName.split("--") as ["content", ContentType, Slug];
+  const anchorContentLink: ContentLink = {
+    type: anchorContentType as ContentType,
+    slug: anchorContentSlug,
+  };
+
+  const articleSlug = kebabCase(articleFolderName);
+  const containingContentLink: ContentLink = {
+    type: ContentTypes.Article,
+    slug: articleSlug,
+  };
+
+  const anchor = {
+    anchorContentLink,
+    containingContentLink,
+  };
+
+  contentAnchorsMap[anchorContentType] =
+    contentAnchorsMap[anchorContentType] ?? {};
+  contentAnchorsMap[anchorContentType][anchorContentSlug] =
+    contentAnchorsMap[anchorContentType][anchorContentSlug] ?? [];
+  contentAnchorsMap[anchorContentType][anchorContentSlug] = [
+    ...(contentAnchorsMap[anchorContentType][anchorContentSlug] ?? []),
+    anchor,
+  ];
 }

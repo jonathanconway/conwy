@@ -2,12 +2,15 @@ import { isString } from "lodash";
 
 import * as contents from "@/content";
 import {
+  CONTENT_TYPE_LABELS,
+  Content,
   ContentAnchor as ContentAnchor_,
   ContentAny,
-  getAnchorLink,
-  getContentMeta,
-  sentenceCase,
+  ContentType,
+  MetaBase,
+  getContentAnchorLink,
 } from "@/framework/client";
+import { findImportedContent } from "@/framework/content/content-import/content-find-imported";
 
 import { Link } from "../link";
 import { TextSizes } from "../text";
@@ -18,12 +21,16 @@ interface ContentAnchorProps {
 }
 
 export function ContentAnchor(props: ContentAnchorProps) {
-  const { anchor, content } = props;
+  const { anchor } = props;
 
-  const anchorContent = getContentMeta(
-    contents as unknown as Record<string, ContentAny>,
-    anchor.containingContentType,
-    anchor.containingContentSlug,
+  const {
+    containingContentLink: { type, slug },
+  } = anchor;
+
+  const anchorContent = findImportedContent(
+    contents as unknown as Record<ContentType, Content<ContentType, MetaBase>>,
+    type,
+    slug,
   );
 
   if (
@@ -34,18 +41,14 @@ export function ContentAnchor(props: ContentAnchorProps) {
     return;
   }
 
-  const anchorLinkHref = getAnchorLink(
-    anchor.containingContentType,
-    anchor.containingContentSlug,
-    content.type,
-    content.meta.slug,
-  );
+  const anchorLinkHref = getContentAnchorLink(anchor);
 
-  const anchorContentType = sentenceCase(anchor.containingContentType);
+  const anchorContentTypeLabel =
+    CONTENT_TYPE_LABELS[anchor.anchorContentLink.type];
 
   return (
     <Link href={anchorLinkHref} size={TextSizes._2xs}>
-      {anchorContentType}: {anchorContent.title}
+      {anchorContentTypeLabel}: {anchorContent.title}
     </Link>
   );
 }

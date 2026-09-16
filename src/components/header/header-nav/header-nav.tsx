@@ -1,3 +1,5 @@
+import { SearchButtonAndModal } from "../../search";
+import { Stack, StackDirections } from "../../stack";
 import { HeaderHamburger } from "../header-hamburger";
 
 import { HeaderNavItem } from "./header-nav-item";
@@ -12,12 +14,15 @@ export function HeaderNav({ selectedNavPath }: HeaderNavProps) {
   const navItems = getNavItemsWithSelected(selectedNavPath);
 
   return (
-    <HeaderHamburger>
-      <div className={styles.container}>
-        {navItems.map((navItem) => (
-          <HeaderNavItem key={navItem.href} {...navItem} />
-        ))}
-      </div>
-    </HeaderHamburger>
+    <Stack direction={StackDirections.Row} gap={1.25}>
+      <SearchButtonAndModal />
+      <HeaderHamburger>
+        <div className={styles.container}>
+          {navItems.map((navItem) => (
+            <HeaderNavItem key={navItem.href} {...navItem} />
+          ))}
+        </div>
+      </HeaderHamburger>
+    </Stack>
   );
 }

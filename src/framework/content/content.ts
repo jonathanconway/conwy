@@ -1,4 +1,4 @@
-import { ContentType } from "./content-types";
+import { ContentType } from "./content-type/content-types";
 import { MetaBase } from "./meta/meta-base";
 
 export interface Content<

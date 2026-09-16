@@ -6,11 +6,22 @@ export interface ContentTypeIconProps {
 
 export function ContentTypeIcon({ contentType }: ContentTypeIconProps) {
   const contentTypeEmoji = {
-    [ContentTypes.Book]: "📕",
     [ContentTypes.Article]: "📄",
+    [ContentTypes.Book]: "📕",
+    [ContentTypes.Checklist]: "📋",
+    [ContentTypes.Colleague]: "🙋",
+    [ContentTypes.Commentary]: "📝",
+    [ContentTypes.Community]: "👬",
+    [ContentTypes.Idea]: "🧠",
     [ContentTypes.Micro]: "🐦",
-    [ContentTypes.Work]: "🏢",
+    [ContentTypes.Page]: "📄",
     [ContentTypes.Project]: "📁",
+    [ContentTypes.Prompt]: "🤖",
+    [ContentTypes.Quote]: "💬",
+    [ContentTypes.Study]: "🎓",
+    [ContentTypes.Testimonial]: "🙌",
+    [ContentTypes.Tool]: "🛠️",
+    [ContentTypes.Work]: "🏢",
   }[contentType];
 
   return <>{contentTypeEmoji}</>;

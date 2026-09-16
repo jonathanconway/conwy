@@ -1,17 +1,17 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, PageLayout } from "@/components";
-import { Work } from "@/components/work";
+import { Breadcrumb, PageLayout, Work } from "@/components";
 import { site } from "@/content";
 import * as works from "@/content/works";
-import { Work as Work_, importContentBySlug } from "@/framework/client";
+import { ContentTypes } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const work = importContentBySlug<Work_>(works, "work", params.slug);
+  const work = findImportedContent(works, ContentTypes.Work, params.slug);
 
   return (
     <PageLayout
@@ -38,14 +38,14 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allWorkMetas = Object.values(works).map((item) => item.meta);
-  return allWorkMetas;
+  const allMetas = Object.values(works).map((item) => item.meta);
+  return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
 
-  const work = importContentBySlug<Work_>(works, "work", params.slug);
+  const work = findImportedContent(works, ContentTypes.Work, params.slug);
 
   const client = work.meta.client;
   const clientTitle = client.toLowerCase();

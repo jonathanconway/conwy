@@ -33,7 +33,7 @@
     "rebuild-gh-pages": "npm run clean && npm run build-gh-pages",
     "rebuild": "npm run clean && npm run build:all",
     "start:watch": "dotenv -c -- concurrently \"npm run start\" \"npm run build:watch\"",
-    "start": "dotenv -c -- next start",
+    "start": "npm run rebuild-and-dev",
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
@@ -108,6 +108,7 @@
     "jsdom": "^27.0.0",
     "linkinator": "^7.6.1",
     "node-vibrant": "^4.0.4",
+    "pagefind": "^1.5.2",
     "playwright": "^1.55.0",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
@@ -120,5 +121,8 @@
   },
   "engines": {
     "node": "22.12.0"
+  },
+  "allowScripts": {
+    "pagefind@1.5.2": true
   }
 }

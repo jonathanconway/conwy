@@ -139,6 +139,7 @@ export const label: ComplexStyleRule & GlobalStyleRule = {
   textTransform: "uppercase",
   fontWeight: 500,
   color: vars.label.color,
+  cursor: "inherit",
   ...textSizeMixins.xs,
 };
 

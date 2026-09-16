@@ -19,6 +19,7 @@ export function Stack(props: StackProps) {
     distribution,
     gap,
     children,
+    fill,
     ...restProps
   } = props;
 
@@ -29,19 +30,31 @@ export function Stack(props: StackProps) {
     [StackDirections.ColumnReverse]: styles.stackColumnReverse,
   }[flexDirection];
 
+  const containerDistributionClassName = {
+    [StackDistributions.Flow]: styles.stackDistributionFlow,
+    [StackDistributions.Even]: styles.stackDistributionEven,
+  }[distribution ?? StackDistributions.Even];
+
+  const containerFillClassName = {
+    true: styles.stackFill,
+    false: "",
+  }[Boolean(fill).toString()];
+
   const containerClassName = cn(
     className,
     styles.stackBase,
     containerDirectionClassName,
-    distribution === StackDistributions.Flow
-      ? styles.stackDistributionFlow
-      : styles.stackDistributionEven,
+    containerDistributionClassName,
+    containerFillClassName,
   );
+
+  const flex = fill ? "1" : undefined;
 
   const containerStyle = pickByNotUndefined({
     gap: stringifySizeRem(gap),
     alignItems,
     justifyContent,
+    flex,
   });
 
   return (

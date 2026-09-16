@@ -13,4 +13,5 @@ export interface StackProps extends HTMLProps<HTMLDivElement> {
   readonly className?: string;
   readonly justifyContent?: CSSProperties["justifyContent"];
   readonly alignItems?: CSSProperties["alignItems"];
+  readonly fill?: boolean;
 }

@@ -1,6 +1,6 @@
-import { importContentBySlug } from "../content-import-by-slug";
-import { readContentMdx } from "../content-mdx-read.server";
-import { ContentTypes } from "../content-types";
+import { findImportedContent } from "../content-import/content-find-imported";
+import { readContentMdx } from "../content-read/content-mdx-read.server";
+import { ContentTypes } from "../content-type";
 import { Slug } from "../slug";
 
 import { Article } from "./article";
@@ -9,9 +9,9 @@ import { generateArticleMetaExtensions } from "./article-meta-extensions";
 export async function getArticle(slug: Slug): Promise<Article> {
   const articles = await import("@/content/articles");
 
-  const articleImported = importContentBySlug<Article>(
+  const articleImported = findImportedContent<Article>(
     articles,
-    "article",
+    ContentTypes.Article,
     slug,
   );
 

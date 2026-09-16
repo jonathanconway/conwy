@@ -1,4 +1,9 @@
-import { ContentAny, getAnchors } from "@/framework/client";
+import {
+  ContentAnchorsMap,
+  ContentAny,
+  createContentAnchorKey,
+  getContentAnchors,
+} from "@/framework/client";
 
 import contentAnchors from "../../../builder-out/content-anchors.json";
 import { Divider } from "../divider";
@@ -13,7 +18,10 @@ interface ContentAnchorsProps {
 
 export function ContentAnchors(props: ContentAnchorsProps) {
   const { content } = props;
-  const anchors = getAnchors(contentAnchors, content);
+  const anchors = getContentAnchors(
+    contentAnchors as ContentAnchorsMap,
+    content,
+  );
 
   if (anchors.length === 0) {
     return;
@@ -27,7 +35,7 @@ export function ContentAnchors(props: ContentAnchorsProps) {
         <Text type={TextTypes.Small}>Referenced in:</Text>
 
         {anchors.map((anchor) => (
-          <div key={anchor.containingContentSlug}>
+          <div key={createContentAnchorKey(anchor)}>
             <ContentAnchor content={content} anchor={anchor} />
           </div>
         ))}

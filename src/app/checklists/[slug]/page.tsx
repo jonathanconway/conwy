@@ -7,9 +7,10 @@ import { site } from "@/content";
 import * as checklists from "@/content/checklists";
 import {
   Checklist as Checklist_,
+  ContentTypes,
   generateChecklistMetaExtensions,
-  importContentBySlug,
 } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
@@ -23,9 +24,9 @@ function getChecklistMd(slug: string) {
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const checklist = importContentBySlug<Checklist_>(
+  const checklist = findImportedContent(
     checklists,
-    "checklist",
+    ContentTypes.Checklist,
     params.slug,
   );
 
@@ -52,15 +53,15 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allChecklistMetas = Object.values(checklists).map((item) => item.meta);
-  return allChecklistMetas;
+  const allMetas = Object.values(checklists).map((item) => item.meta);
+  return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
-  const checklist = importContentBySlug<Checklist_>(
+  const checklist = findImportedContent(
     checklists,
-    "checklist",
+    ContentTypes.Checklist,
     params.slug,
   );
 

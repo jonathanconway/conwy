@@ -1,9 +1,8 @@
-import { ContentType } from "../content-types";
+import { ContentType } from "../content-type/content-types";
 import { Slug } from "../slug";
 
 import { ContentAnchor } from "./content-anchor";
 
-export type ContentAnchorsMap = Record<
-  ContentType,
-  Record<Slug, readonly ContentAnchor[]>
+export type ContentAnchorsMap = Partial<
+  Record<ContentType, Partial<Record<Slug, readonly ContentAnchor[]>>>
 >;

@@ -5,8 +5,6 @@ import { vars } from "../../theme";
 
 export const container = style({
   display: "flex",
-  flexDirection: "row",
-  alignItems: "start",
 
   "@media": {
     [media.mdAndUp]: {

@@ -5,14 +5,15 @@ import {
   ResponsiveMdHalf,
 } from "@/components";
 import * as pages from "@/content/pages";
-import { Page as Page_, importContentBySlug } from "@/framework/client";
+import { ContentTypes } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "./types";
 
 export async function PagePage(props: PageProps) {
   const params = await props.params;
 
-  const page = importContentBySlug<Page_>(pages, "page", params.slug);
+  const page = findImportedContent(pages, ContentTypes.Page, params.slug);
 
   return (
     <PageLayout

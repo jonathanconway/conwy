@@ -9,7 +9,7 @@ export function useTextBox(props: TextBoxProps) {
   useEffect(
     debounce(() => {
       setTimeout(() => {
-        props.onChange(value);
+        props.onChange(value ?? "");
       });
     }, 500),
     [value],

@@ -3,18 +3,15 @@ import { Metadata } from "next";
 import { Breadcrumb, PageLayout, Quote, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as quotes from "@/content/quotes";
-import {
-  Quote as Quote_,
-  importContentBySlug,
-  sentenceCase,
-} from "@/framework/client";
+import { ContentTypes, sentenceCase } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const quote = importContentBySlug<Quote_>(quotes, "quote", params.slug);
+  const quote = findImportedContent(quotes, ContentTypes.Quote, params.slug);
 
   return (
     <PageLayout
@@ -43,14 +40,14 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allQuoteMetas = Object.values(quotes).map((item) => item.meta);
-  return allQuoteMetas;
+  const allMetas = Object.values(quotes).map((item) => item.meta);
+  return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
 
-  const quote = importContentBySlug<Quote_>(quotes, "quote", params.slug);
+  const quote = findImportedContent(quotes, ContentTypes.Quote, params.slug);
 
   const quoteTitle = sentenceCase(quote.meta.slug).toLowerCase();
   const title = `${site.title} - quotes - ${quoteTitle}`;

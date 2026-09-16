@@ -8,10 +8,12 @@ export interface HeaderProps {
 
 export function Header({ selectedNavPath }: HeaderProps) {
   return (
-    <div className={styles.container}>
-      <HeaderLogo />
+    <>
+      <div className={styles.container}>
+        <HeaderLogo />
 
-      <HeaderNav selectedNavPath={selectedNavPath} />
-    </div>
+        <HeaderNav selectedNavPath={selectedNavPath} />
+      </div>
+    </>
   );
 }

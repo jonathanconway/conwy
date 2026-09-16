@@ -4,3 +4,4 @@ export * from "../utils";
 export * from "../client-utils";
 export * from "../note";
 export * from "../tracking";
+export * from "../search";

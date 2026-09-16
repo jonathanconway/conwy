@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import { AppLayout } from "@/components";
 
+/* @ts-ignore */
 import "./globals.css";
 
 export const metadata = {

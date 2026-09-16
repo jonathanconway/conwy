@@ -1,8 +1,8 @@
 import { DateTimeString } from "../date-time";
 import { Image } from "../image";
-import { MetaBase } from "../meta";
-import { PostTag } from "../post";
-import { SocialLink } from "../social-link";
+import { MetaBase } from "../meta/meta-base";
+import { PostTag } from "../post/post-tags";
+import { SocialLink } from "../social-link/social-link";
 
 import { ProjectSubType } from "./project-sub-type";
 

@@ -1,21 +1,17 @@
 import { Metadata } from "next";
 
-import "@/components";
 import { Breadcrumb, PageLayout, ToolsListItem } from "@/components";
 import { site } from "@/content";
 import * as tools from "@/content/tools";
-import {
-  Tool as Tool_,
-  importContentBySlug,
-  sentenceCase,
-} from "@/framework/client";
+import { ContentTypes, sentenceCase } from "@/framework/client";
+import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const tool = importContentBySlug<Tool_>(tools, "tool", params.slug);
+  const tool = findImportedContent(tools, ContentTypes.Tool, params.slug);
 
   return (
     <PageLayout
@@ -49,7 +45,7 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
 
-  const tool = importContentBySlug<Tool_>(tools, "tool", params.slug);
+  const tool = findImportedContent(tools, ContentTypes.Tool, params.slug);
 
   const toolTitle = sentenceCase(tool.meta.slug).toLowerCase();
   const title = `${site.title} - uses - ${toolTitle}`;

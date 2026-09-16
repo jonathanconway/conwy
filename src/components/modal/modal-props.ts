@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
 
 export interface ModalProps {
   readonly title?: ReactNode;

@@ -12,10 +12,28 @@ export const iconButtonBase = style({
   alignContent: "center",
   justifyContent: "center",
   ...rounded.regular,
-  borderWidth: "1px",
   width: "1.5rem",
   height: "1.5rem",
   padding: "0.25rem",
+});
+
+export const iconButtonAppearanceRegular = style({
+  borderWidth: "1px",
+});
+
+const filterBrightness2_5 = {
+  filter: "brightness(2.5)",
+};
+
+export const iconButtonAppearanceNone = style({
+  borderWidth: "0",
+  background: "none",
+  padding: 0,
+  selectors: {
+    "&:hover": filterBrightness2_5,
+    "&:focus": filterBrightness2_5,
+    "&:active": filterBrightness2_5,
+  },
 });
 
 export const iconButtonSelected = buttonStyles.buttonSelected;

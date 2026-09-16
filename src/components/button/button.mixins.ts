@@ -17,6 +17,11 @@ export const buttonBase = {
   ...focusOutline,
 };
 
+export const buttonBaseNone = {
+  ...buttonBase,
+  border: "none",
+};
+
 export const buttonUnselected = {
   borderColor: vars.button.border.color,
   backgroundImage: `linear-gradient(to bottom, ${vars.button.background.gradientFrom.color}, ${vars.button.background.gradientTo.color})`,

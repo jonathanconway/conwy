@@ -26,16 +26,14 @@ export function Modal(props: ModalProps) {
             </Heading>
           )}
 
-          {props.toolbar && (
+          {props.toolbar ? (
             <div className={styles.modalToolbar}>
               {props.toolbar}
 
-              <IconButton
-                icon={IconTypes.Close}
-                tooltip={{ contents: "Close" }}
-                onClick={props.onClose}
-              />
+              <ModalCloseIconButton onClose={props.onClose} />
             </div>
+          ) : (
+            <ModalCloseIconButton onClose={props.onClose} />
           )}
         </header>
 
@@ -44,5 +42,15 @@ export function Modal(props: ModalProps) {
         <ModalFocusTrapSink onFocus={handleTrapInputFocus} />
       </dialog>
     </Backdrop>
+  );
+}
+
+function ModalCloseIconButton(props: ModalProps) {
+  return (
+    <IconButton
+      icon={IconTypes.Close}
+      tooltip={{ contents: "Close" }}
+      onClick={props.onClose}
+    />
   );
 }
