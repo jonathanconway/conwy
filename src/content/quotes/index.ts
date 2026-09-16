@@ -1,3 +1,4 @@
+export * from "./adaptable";
 export * from "./alchemists";
 export * from "./beautiful";
 export * from "./beings";
