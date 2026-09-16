@@ -1276,7 +1276,14 @@ In certain cases, we have a large but atomic change. The change has a broad impa
 
 For example, suppose we need to upgrade a core dependency, say NodeJS, which has multiple second-order dependencies. All of the dependencies need to be upgraded together. But it is impossible or unadvisable to upgrade each second-order dependency in a completely separate pull request.
 
-In cases like these, the approach of &quot;sub pull requests&quot; can be useful. Here we create one large pull request in the main branch.
+In cases like these, the approach of &quot;sub pull requests&quot; can be useful.
+
+***Merge small pull requests into a larger pull request, then merge that to main.***
+
+This way we can get the best of both worlds: 
+
+- We can break our change into smaller pieces 
+- _And_ we can keep them together, for merging to the main branch atomically
 
 ```mermaid--svg
 ---
@@ -4435,7 +4442,7 @@ For more information, you can check out books on systems thinking such as:
 * [Thinking in Systems • Donella MEADOWS](https://en.wikipedia.org/wiki/Thinking_In_Systems%3A_A_Primer)
 * [Early Retirement Extreme • Jacob LUND-FISKER](https://archive.org/details/earlyretiremente0000fisk)
 
-## Mind-state
+## Mind state
 
 &gt; Pull-quote: “Meditation practice is also a kind of food because it nourishes us. Consider the practice offered by the Buddha to be a kind of food. Any practice must be a kind of food. Walking is like a delicious food. Eating is a delicious food, sitting is a delicious food, and working meditation is also delicious food.”
 &gt;
@@ -4548,7 +4555,8 @@ I like to do body weight exercises, also known as callisthenics. These include:
 Some other points:
 
 - **Core strength.** Try to incorporate core / ab training into as many exercises as possible. Abs are involved in many full-body exercises, so by focusing a little on your abs, you get a kind of bonus &quot;2 in 1&quot; effect. While doing pull-ups, push-ups, band rows, etc. you can &quot;feel into&quot; your abs and make sure they&#39;re coming along for the ride.
-- **Quality over quantity.** In each workout, I try to prioritise overall quality. First priority is safety – none of the movements should cause severe pain or injury. Next, I want to strain the muscles enough to feel satisfied that it was a thorough workout. This involves a kind of &quot;good pain&quot; or burning feeling, where you know that your muscle was tested. This doesn&#39;t necessarily have to involve training to complete failure.
+- **Quality over quantity.** In each workout, I try to prioritise overall quality. First priority is safety – none of the movements should cause severe pain or injury. Next, I want to strain the muscles enough to feel satisfied that it was a thorough workout. This involves a kind of &quot;good pain&quot; or burning feeling, where you know that your muscle was tested. This doesn&#39;t necessarily have to involve training to complete failure, though I try to do that from time to time.
+- **Maximising reps, minimising sets.** I try to maximise the number and/or intensity of reps and minimise the number of sets. Research shows that the number of sets is not as important as the intensity of the first set. What is important is to thoroughly exercise the muscle at least once in a session. It is less important how many _times_ within a single session a muscle is stressed. (See: [Extending an Active Life: Insights from Molecular Exercise Physiologist with Professor Keith Baar](https://www.youtube.com/watch?v=anB-UMXIDQA))
 - **Variation.** I try to make each workout a little different and unique so that each muscle group is being adequately challenged. This could mean varying the grip, intensity, number of reps, order of reps or many other possible variables.
 
 In case you didn&#39;t notice, many of these can be done either with or without the gym! I can just use body weight, furniture or outdoor facilities. This makes the exercise routine easy to maintain while travelling and resilient to unexpected changes in the my day plan.
@@ -4568,6 +4576,8 @@ HIIT seems to generally accelerate my progress. Plus, I&#39;ve seen plenty of st
 
 The real beauty of HIIT is its simplicity, minimalism and time efficiency. No equipment is needed, just a little floor-space and discipline! And one can almost always spare 5-10 minutes out of a 16-hour waking day. These factors make it simple to maintain HIIT during travel or changes to my day plan.
 
+HIIT also gives various benefits, such as slowing ageing, improving heart health and (See: [https://www.youtube.com/watch?v=anB-UMXIDQA](https://www.youtube.com/watch?v=anB-UMXIDQA)).
+
 My HIIT routine varies, but typically consists of:
 - Burpees
 - Squat-jumps
@@ -4580,7 +4590,9 @@ I found HIIT to be the toughest exercise to begin, yet the easiest to complete o
 
 YouTube videos like this one are a helpful aid: [Intense 15 Minute BURPEE ONLY HIIT Workout for Serious Results!](https://www.youtube.com/watch?v=X34SBfiT7xo).
 
-I use HIIT as a replacement for walking, aiming for 1 HIIT session every few days. I also try to incorporate high intensity work into some of my strength training sets and swimming laps.
+Moderate to high intensity exercise can be used with high impact movements (such as running, squat jumping or jumping onto and off of a raised surface) to improve bone strength, preventing osteoporosis. (See: [The Best Exercise Type and Frequency for Bone Density](https://www.youtube.com/watch?v=bHS1zzlbNV4), [Best Exercises to Strengthen Your Bones (Backed by Science)](https://www.youtube.com/watch?v=HzPNUIA732Y)).
+
+I do a brief session of HIIT 2 times per week. I also try to incorporate some high intensity periods into of my strength training sets and swimming laps.
 
 ### Swimming
 
@@ -4622,6 +4634,20 @@ I don&#39;t have any one sure answer to &quot;solve&quot; inherent pain in exerc
 - **Awareness of body.** Especially the effect of heat/cold, caffeine, sleep. When drowsy or lethargic, I remind myself of external factors to avoid excusing myself from putting in work.
 - **Mental imagery.** I like to use my imagination to create pleasant and comforting imagery so that I feel relaxed and happy throughout the painful episode. For example, when working out in the cold, I might put on some jazz music and imagine being in an Italian restaurant. Or when it&#39;s intensely hot, I might imagine being on an island in the Mediterranean, enjoying an ocean view from a luxury hotel. Persisting through tough times with imagination can unlock &quot;coping&quot; parts of your mind that you never knew existed!
 - **Stoicism.** The stoic philosophy tells us that our minds often make things worse than they really are. I found this helpful when applied to exercise. My mind makes up a story about how difficult 10 push-ups will be. In reality, after the first 3 or so, I&#39;m already on a roll. Effort is often not as difficult as it seems at first.
+
+### Muscle recovery
+
+There doesn&#39;t seem to be any evidence that breaks significantly improve muscle recovery. For this reason, I prefer to work out daily, though I slightly vary the routine just for fun.
+
+There is evidence that certain foods are better for muscle recovery – fruits and vegetables, specifically. (See: [Foods to Improve Athletic Performance and Recovery](https://www.youtube.com/watch?v=bfERQJLvo6A)).
+
+### Managing injury
+
+Injury is, unfortunately, occasionally part of life. From time to time I might trip and get bruised or pull a ligament.
+
+Interestingly, for injured ligaments, as long as the injury is not severe, research seems to indicate that the best way to recover is to continue exercising, albeit as a reduced intensity. Professor Keith Baar suggests bearing some weight using the affected muscle group to put tension on the affected ligaments. This helps keep the cells in these ligaments active, speeding up the recovery. (See: [Extending an Active Life: Insights from Molecular Exercise Physiologist with Professor Keith Baar - Common Injuries and Health Risks](https://youtu.be/anB-UMXIDQA?si=BRBHzRn6383OQclU&amp;t=1800).)
+
+In my own personal experience, I always recovered within days, continuing to exercise with reduced weight, intensity and reps and gradually increasing them back to normal.
 
 ### Enjoying the weather
 
@@ -4848,6 +4874,8 @@ Optimizing my exercise and diet has been a fun and fascinating (though sometimes
 - [Miche, PhD](https://www.youtube.com/@MichePhD)
 - [Simon Hill](https://www.youtube.com/@TheProofWithSimonHill)
 - [Physicians Committee](https://www.youtube.com/@PhysiciansCommittee)
+- [NutritionFacts.org](https://www.youtube.com/@NutritionFactsOrg)
+- [Talking with Docs](https://www.youtube.com/@TalkingWithDocs)
 
 ## Further reading
 
