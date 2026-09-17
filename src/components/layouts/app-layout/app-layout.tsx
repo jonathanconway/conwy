@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 
 import { cn } from "@/framework/client";
 
+import { Metas } from "../../metas";
 import { ScriptsBodyFirst, ScriptsBodyLast, ScriptsHead } from "../../scripts";
 import { Verifications } from "../../verifications";
 
@@ -21,6 +22,7 @@ export function AppLayout(props: AppLayoutProps) {
   return (
     <html lang="en" className={cn(styles.html, inter.className)}>
       <head>
+        <Metas />
         <ScriptsHead />
       </head>
       <body className={styles.body}>

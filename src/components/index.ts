@@ -43,6 +43,7 @@ export * from "./link-box";
 export * from "./link";
 export * from "./list";
 export * from "./mdx";
+export * from "./metas";
 export * from "./micro";
 export * from "./micros";
 export * from "./mobile";
