@@ -1,6 +1,7 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 import { merge } from "lodash";
 
+import * as buttonMixins from "../button/button.mixins";
 import { focusOutline } from "../focus-outline";
 import * as iconMixins from "../icon/icon.mixins";
 import { media } from "../styling";
@@ -67,6 +68,12 @@ export const linkInnerContainer = {
 
 export const linkInnerContainerContents = {
   display: "contents",
+};
+
+export const linkAppearanceText = {};
+
+export const linkAppearanceButton = {
+  ...buttonMixins.buttonBase,
 };
 
 export const linkIcon: ComplexStyleRule = {

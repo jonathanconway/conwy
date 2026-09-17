@@ -11,6 +11,9 @@ export const linkInnerContainerContents = style(
   mixins.linkInnerContainerContents,
 );
 
+export const linkAppearanceText = style(mixins.linkAppearanceText);
+export const linkAppearanceButton = style(mixins.linkAppearanceButton);
+
 export const linkLayoutInline = style(mixins.linkLayoutInline);
 export const linkLayoutCompact = style(mixins.linkLayoutCompact);
 

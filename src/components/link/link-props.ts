@@ -5,6 +5,7 @@ import { Link as Link_ } from "@/framework/client";
 import { IconType } from "../icon";
 import { TextSize } from "../text/text-size";
 
+import { LinkAppearance } from "./link-appearance";
 import { LinkContentsType } from "./link-contents-type";
 import { LinkLayoutType } from "./link-layout-type";
 
@@ -22,4 +23,5 @@ export type LinkProps = DetailedHTMLProps<
   readonly layoutType?: LinkLayoutType;
   readonly link?: Link_;
   readonly layoutInnerContents?: boolean;
+  readonly appearance?: LinkAppearance;
 };
