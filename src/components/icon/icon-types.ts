@@ -7,6 +7,7 @@ export const IconTypes = {
   ArrowChevronUp: "arrow-chevron-up",
   ArrowTriangleLeft: "arrow-triangle-left",
   ArrowTriangleRight: "arrow-triangle-right",
+  ArrowUp: "arrow-up",
   Bluesky: "blue-sky",
   CheckBox: "check-box",
   Close: "close",

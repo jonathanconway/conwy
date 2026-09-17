@@ -54,6 +54,7 @@ export * from "./prompts";
 export * from "./quote";
 export * from "./redirect";
 export * from "./responsive";
+export * from "./scroll-to-top";
 export * from "./scripts";
 export * from "./section";
 export * from "./social-links";

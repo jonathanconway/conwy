@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import { Footer } from "../../footer";
 import { Header } from "../../header";
+import { ScrollToTopLink } from "../../scroll-to-top";
 
 import * as styles from "./page-layout.css";
 
@@ -15,7 +16,11 @@ export function PageLayout({ main, selectedNavPath }: PageLayoutProps) {
     <div className={styles.container}>
       <Header selectedNavPath={selectedNavPath} />
 
-      <div className={styles.mainWrapper}>{main}</div>
+      <div className={styles.mainWrapper}>
+        {main}
+
+        <ScrollToTopLink />
+      </div>
 
       <Footer />
     </div>
