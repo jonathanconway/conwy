@@ -14,6 +14,7 @@ export const navsContainer = style({
 
 globalStyle(`${navsContainer} > *`, {
   flex: 1,
+  width: "100%",
 });
 
 export const containerEmpty = style({
