@@ -1,4 +1,4 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
 import { colors, media, rounded, text } from "../styling";
 import { vars } from "../theme";
@@ -42,6 +42,18 @@ export const modal: ComplexStyleRule = {
       width: "70vw",
     },
   },
+};
+
+/*
+  Fix to prevent unwanted zoom on inputs inside modals.
+  Most mobile browsers require font-size in inputs to be 16px.
+
+  Source - https://stackoverflow.com/a/45769607
+  Posted by Azamat Rasulov, modified by community. See post 'Timeline' for change history
+  Retrieved 2026-09-18, License - CC BY-SA 4.0
+*/
+export const modalInputZoomFix: GlobalStyleRule = {
+  fontSize: "16px",
 };
 
 export const modalHeader: ComplexStyleRule = {
