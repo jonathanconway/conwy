@@ -1,45 +1,22 @@
-import { ContentList, ContentListSmall } from "../../../content-list";
-import { Stack, StackDirections } from "../../../stack";
-import { Text, TextTypes } from "../../../text";
+import { Stack } from "../../../stack";
+import { SearchStates } from "../use-search-form-and-results.hook";
 
 import { SearchResultsEmpty } from "./search-results-empty";
-import { SearchResultsItem } from "./search-results-item";
+import { SearchResultsLoaded } from "./search-results-loaded";
 import { SearchResultsLoading } from "./search-results-loading";
+import { SearchResultsNoResults } from "./search-results-none";
 import { SearchResultsProps } from "./search-results-props";
-import * as styles from "./search-results.css";
 
 export function SearchResults(props: SearchResultsProps) {
   return (
     <Stack gap={0.5} fill>
-      {!props.isLoading &&
-        props.isEmpty &&
-        props.searchResults.length === 0 && (
-          <div className={styles.resultsInnerContainer}>
-            <SearchResultsEmpty />
-          </div>
-        )}
-
-      {props.isLoading && (
-        <div className={styles.resultsInnerContainer}>
-          <SearchResultsLoading />
-        </div>
+      {props.searchState === SearchStates.Empty && <SearchResultsEmpty />}
+      {props.searchState === SearchStates.Loading && <SearchResultsLoading />}
+      {props.searchState === SearchStates.LoadedNoResults && (
+        <SearchResultsNoResults />
       )}
-
-      {!props.isLoading && !props.isEmpty && props.searchResults.length > 0 && (
-        <Stack direction={StackDirections.Column} gap={0.5}>
-          <Text type={TextTypes.Label}>
-            Results ({props.searchResults.length})
-          </Text>
-
-          <div className={styles.resultsItems}>
-            {props.searchResults.map((searchResult) => (
-              <SearchResultsItem
-                key={`${searchResult.searchRecord.contentType}-${searchResult.searchRecord.contentSlug}`}
-                searchResult={searchResult}
-              />
-            ))}
-          </div>
-        </Stack>
+      {props.searchState === SearchStates.LoadedResults && (
+        <SearchResultsLoaded searchResults={props.searchResults} />
       )}
     </Stack>
   );

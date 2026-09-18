@@ -1,7 +1,8 @@
 import { SearchResult } from "@/framework/client";
 
+import { SearchState } from "../use-search-form-and-results.hook";
+
 export interface SearchResultsProps {
-  readonly isEmpty: boolean;
-  readonly isLoading: boolean;
+  readonly searchState: SearchState;
   readonly searchResults: readonly SearchResult[];
 }

@@ -2,13 +2,22 @@ import { max, trim, unescape } from "lodash";
 import { marked } from "marked";
 import { useEffect, useState } from "react";
 
-import { SearchResult } from "@/framework/client";
+import { SearchResult, TypeOfConst } from "@/framework/client";
 
 interface SearchFormAndResultsState {
   readonly searchText: string;
   readonly searchResults: readonly SearchResult[];
-  readonly isSearchResultsLoading: boolean;
+  readonly searchState: SearchState;
 }
+
+export const SearchStates = {
+  Empty: "empty",
+  Loading: "loading",
+  LoadedNoResults: "loaded-no-results",
+  LoadedResults: "loaded-results",
+} as const;
+
+export type SearchState = TypeOfConst<typeof SearchStates>;
 
 function usePageFind() {
   const [pageFind, setPageFind] = useState<any>(null);
@@ -30,13 +39,10 @@ export function useSearchFormAndResults() {
   const [state, setState] = useState<SearchFormAndResultsState>({
     searchText: "",
     searchResults: [],
-    isSearchResultsLoading: false,
+    searchState: SearchStates.Empty,
   });
-  const { searchText } = state;
-  const searchTextTrimmed = searchText.trim();
-  const isSearchTextEmpty = searchTextTrimmed === "";
 
-  const { searchResults, isSearchResultsLoading } = state;
+  const { searchResults, searchState } = state;
   const pageFind = usePageFind();
 
   async function setSearchText(newSearchText: string) {
@@ -44,10 +50,20 @@ export function useSearchFormAndResults() {
       return;
     }
 
+    const isNewSearchTextEmpty = newSearchText.trim() === "";
+    if (isNewSearchTextEmpty) {
+      setState((previousState) => ({
+        ...previousState,
+        searchText: newSearchText,
+        searchState: SearchStates.Empty,
+      }));
+      return;
+    }
+
     setState((previousState) => ({
       ...previousState,
       searchText: newSearchText,
-      isSearchResultsLoading: true,
+      searchState: SearchStates.Loading,
     }));
 
     const search = await pageFind.search(newSearchText);
@@ -79,15 +95,17 @@ export function useSearchFormAndResults() {
     setState((previousState) => ({
       ...previousState,
       searchResults,
-      isSearchResultsLoading: false,
+      searchState:
+        searchResults.length > 0
+          ? SearchStates.LoadedResults
+          : SearchStates.LoadedNoResults,
     }));
   }
 
   return {
     setSearchText,
     searchResults,
-    isSearchTextEmpty,
-    isSearchResultsLoading,
+    searchState,
   };
 }
 

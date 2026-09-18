@@ -2,13 +2,22 @@ import { ComplexStyleRule } from "@vanilla-extract/css";
 
 import { media } from "../../../styling";
 
-export const resultsItems: ComplexStyleRule = {
+const resultsContainerHeight = "80vh";
+
+export const resultsContainer = {
+  display: "flex",
   overflow: "scroll",
+  height: resultsContainerHeight,
+  minHeight: resultsContainerHeight,
+  maxHeight: resultsContainerHeight,
+};
+
+const resultsContainerGap = "0.5rem";
+
+export const resultsInnerContainer: ComplexStyleRule = {
+  display: "flex",
   flex: 1,
-  minHeight: "70vh",
-  maxHeight: "70vh",
-  height: "70vh",
-  gap: "0.5rem",
+  gap: resultsContainerGap,
 
   "@media": {
     [media.lessThanMd]: {
@@ -26,9 +35,18 @@ export const resultsItems: ComplexStyleRule = {
   },
 };
 
-export const resultsInnerContainer = {
-  display: "flex",
-  height: "70vh",
-  minHeight: "70vh",
-  maxHeight: "70vh",
+const resultsContainerLabelHeight = "1rem";
+
+const resultsContainerWithLabelHeight = `calc(${resultsContainerHeight} - ${resultsContainerLabelHeight} - ${resultsContainerGap})`;
+
+export const resultsContainerWithLabel: ComplexStyleRule = {
+  ...resultsContainer,
+  minHeight: resultsContainerWithLabelHeight,
+  maxHeight: resultsContainerWithLabelHeight,
+};
+
+export const resultsContainerLabel: ComplexStyleRule = {
+  display: "inline-flex",
+  flex: "unset",
+  height: resultsContainerLabelHeight,
 };
