@@ -10,6 +10,6 @@ export const meta: BookMeta = {
   authors: ["Brené Brown"],
   status: BookStatuses.Finished,
   title: "Atlas of the Heart",
-  url: "Atlas of the Heart [Brené Brown].pdf",
+  url: "https://brenebrown.com/book/atlas-of-the-heart",
   category: BookCategories.Psychology,
 };
