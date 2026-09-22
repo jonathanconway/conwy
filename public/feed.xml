@@ -2618,340 +2618,145 @@ These books may serve as a handy guide and reference on UML:
   
 
   <entry>
-    <title>The engineer to executive pipeline</title>
-    <link href="https://conwy.co/articles/engineer-exec" />
+    <title>Ephemeral windows</title>
+    <link href="https://conwy.co/articles/ephemeral-windows" />
     <updated>2026-02-18T00:00:00.000Z</updated>
-    <id>engineer-exec</id>
-    <content xml:lang="en" type="html">&gt; Summary: Typescript structures can be diagramming in a UML-like format, depicting Interfaces and Types (including inheritance and composition), Enums and Functions (including parameters and return types) as rectangles, with suitable connecting lines.
+    <id>ephemeral-windows</id>
+    <content xml:lang="en" type="html">How do you optimise your window layout when working?
 
-As the practice of front end development grows and evolves, front end developers find themselves working with increasingly complex problem domains, requirements and code-bases. This necessitates increasing usage of solution design and planning tools, such as [wireframes](https://en.wikipedia.org/wiki/Website_wireframe), [component diagrams](https://reactjs.org/docs/thinking-in-react.html#step-1-break-the-ui-into-a-component-hierarchy), [user stories](https://www.martinfowler.com/bliki/UserStory.html), etc.
+It&#39;s a simple question, but opens up many options. I find it especially relevant in this new era of AI agents, where we have to manage many concurrent processes over varying lengths of time.
 
-In recent work on large, complex Typescript code-bases I&#39;ve found myself doing a significant amount of upfront solution design, planning modifications or additions to the code by way of high-level diagrams.
+After experimenting with various window configurations, I&#39;ve settled on this pattern:
 
-In this article I want to share a &#39;tweaked&#39; form of UML that I&#39;ve been using in solution designs on Typescript code-bases.
+***Ephemeral windows***
 
-But let&#39;s first review the utility of diagrams and UML.
+Basically, I keep multiple small windows open, each focussed a single task or theme, and only for as long as needed (hence, &quot;ephemeral&quot;).
 
-## Why diagrams?
+Whenever two or more windows are related to eachother, I group them spatially.
 
-To motivate this article, I want to review uses and benefits of diagrams.
+Aside: This configuration is somewhat inspired by the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy): &quot;do one thing and do it well&quot;.
 
-Diagrams have the following features, distinct from either code or documentation:
+![Screenshot depicting ephemeral windows grouped spatially](/images/articles/ephemeral-windows/ephemeral.png)
 
-- ***Partial.*** Diagrams can &quot;sketch&quot; some parts of code while omitting others
-- ***High-level.*** Diagrams can depict high-level components while omitting low-level implementation details
-- ***Spatial.*** Diagrams are in 2D space, enabling us to better visualise the parts and how they connect to eachother
 
-By virtue of these features, diagrams offer certain unique uses and benefits at different stages of the software lifecycle.
+## Examples and details
 
-- Solution design
-- Planning complex changes
-- Documentation
+Here are some common examples:
 
-### Solution design
+❓ ***Need a long-running Agent workflow?***
 
-Solution design helps us to conceive our solutions before implementing them. We can begin to assemble the pieces of the solution and envisage how they will interact with eachother in advance of writing any code. This helps us to clarify our work, avoid costly mistakes and rework and come up with better time estimates. The benefits are multiplied when solution design is shared between multiple team members and improved based on their feedback.
+    👉 Open a new iTerm2 window and run Claude.
 
-Diagramming is an excellent way to both develop and communicate a solution design. Diagrams, which don&#39;t need to be compiled, can be built partially, creating a kind of &quot;code sketch&quot; that communicates software design at a high level while omitting details. Diagrams are laid out spatially, allowing us to organise our thinking outside the constraints of the file system or compiler.
+❓ ***Need to edit some code in a particular module?***
 
-&gt; ### Aside: Multi-stakeholder solution design
-&gt;
-&gt; In some organisations multiple stakeholders may need to approve a solution – from product owners to designers to security specialists. In these cases it&#39;s even more beneficial to develop solution designs and share them with the stakeholders. The stakeholders can then have an opportunity to identify issues and risks before implementation commences. They can co-design the solution with developers, shaping it in beneficial ways before implementation begins.
+    👉 Open a new VS Code, IDEA, etc. window
 
-&gt; ### Aside: Agile solution design
-&gt; 
-&gt; There is a culture in some development teams of avoiding solution design, thinking it is unnecessary and even to be avoided, since it is part of undesirable &quot;big upfront planning&quot; or &quot;waterfall&quot; methodology. The idea is that &quot;agile&quot; is a new and better way of working and, as such, developers should begin coding as soon as possible with minimal planning and preparation (&quot;MVP&quot;).
-&gt;   
-&gt; My thinking goes against this, but addressing it in-depth is beyond the scope of this article. But to summarise: if you carefully review the agile literature, it is very rare for it to discourage planning, big picture thinking, solution design or architecture.
-&gt;   
-&gt; In fact, some of the most popular agile practitioners, such as Bob Martin and Martin Fowler, have written lengthy books on both architecture and UML. Thus it is apparent that agile is broadly compatible with solution design and planning.
+❓ ***Need to do some design work?***
 
-### Planning complex changes
+    👉 Open a new Figma window.
 
-As our software grows in multiple directions (code size and complexity, users, features, etc.) the complexity of making changes increases. Any change, from renaming a field to adding cross-cutting functionality such as monitoring, can involve changes to many components across the code-base. We may need to envisage the impacts of these changes and carefully plan them out, paying regard to constraints such as time, system resources, performance, etc.
+I only keep each window open as long as needed to complete a given piece of work, then I quickly close it out to reduce clutter.
 
-This is where diagramming can come in handy. As we analyse the code directly, we can also begin to sketch out a partial model of the code, focussing on just the components that will need to be changed. We can then add our changes to this model and use annotations, dashed rectangles or whitespace to mark our which parts are changing.
+I size each window to be fairly small and keep them in quadrants of the display.
 
-### Documentation
+* 4 inner corners of the screen
+* 4 outer corners of the screen
 
-Diagrams can form a useful part of documentation. They can be added to wiki pages, task trackers and pull requests, to help developers and other team members understand the structure of the code.
+![Diagram depicting ephemeral windows grouped into outer and inner screen quadrants](/images/articles/ephemeral-windows/quadrants.png)
 
-We can create a diagram only depicts once slice of the code-base, and omit implementation detail. This helps when documenting a cross-cutting aspect of the code-base.
+Whenever I need to focus on one specific window for a while, I double click its title bar to expand the window. After I&#39;m done, I double click the title bar again to contract it back to its previous size.
 
-For example, we might have one page in the wiki dedicated to the topic of &#39;SMS verification&#39;. That page could detail the systems and processes involved in sending an SMS verification message. It could include a diagram depicting only the parts of our code involved in SMS verification and how they connect to eachother, omitting parts that aren&#39;t directly involved in SMS verification.
+![Screen recording demonstrating double click to zoom on ephemeral windows](/screencasts/articles/ephemeral-windows/double-click-zoom.gif)
 
-## Background on UML
+I can drag windows around to be closer to related windows, visually group related windows together and making it quick to switch to exactly the window I want.
 
-UML is a widely used diagramming language for depicting object-oriented code structures. Normally used with strongly-typed, class-based programming languages, such as Java and C#, it focuses on representing the public interfaces of classes, interfaces and other structures, inheritance relationships between classes (generalisation, realisation, etc.) and relationships between objects generated by classes (association, aggregation, composition).
+This works nicely with my workflows, which I find tend to be somewhat unpredictable and widely varying in time scale.
 
-The UML standard covers a range of diagrams, most of which can be readily applied to Typescript and/or front end projects with practically no tweaking.
+For example:
+- **Long-running:** An AI agent doing a significant piece of research might be sitting there on its own for up to 15 minutes.
+- **Medium-running:** A code code review with an AI app, perhaps paired with a VS Code instance with the same code base open and a Git client for me to quickly review the AI&#39;s changed might only be open for 5-10 minutes.
+- **Short-running:** A quick Chrome instance just to check the day&#39;s calendar in the morning might only be open for 2 minutes max.
 
-Notice, however, that UML &quot;class diagrams&quot; (as the name suggests) are focussed on depicting classes and objects. Most Typescript code-bases (especially front end) are much more focussed on functions and types. This is in good part due to the functional style of programming that predominates in front end languages (Javascript), frameworks (React), libraries (Redux) and tooling.
+Some apps have a &quot;Rename Title&quot; feature. For example, [iTerm2 has &quot;Edit Window Title&quot;](https://iterm2.com/python-api/menu_ids.html). Occasionally I use this feature when I have many Terminal windows open, to help me to quickly locate whichever one I need.
 
-This presents a challenge: there is a dissonance between the class focussed world of UML and the function and type focussed world of Typescript. It seems like we need to tweak UML in order to use it effectively in a Typescript context.
 
-Happily, as we will see, this is all quite doable. In fact, &quot;Typescript UML&quot; can be realised as a subset of UML without significantly altering the language.
+## AI efficiency
 
-## Applying UML to Typescript
+I find the ephemeral window technique fits well with efficient AI use.
 
-The first thing to note is that with Typescript we need to model functions and types – structures which aren&#39;t traditionally supported by UML.
+**Assistant and model optimisation:** I can use different assistants and models for different tasks. For example, Codex with a simpler model for code review but Claude with a more sophisticated model for an in-depth research or planning task.
 
-UML already allows for extensibility, via the &quot;stereotype&quot; pattern, annotations and on connector lines. We can carefully apply use these features to depict important Typescript structures such as types and functions, while preserving the overall idioms of UML, to keep the diagrams clean, consistent and (if needed) broadly accessible to non-Typescript developers.
+**Phase optimisation:** I can keep different phases (e.g. research, plan, implement) in separate windows.
 
-## Interfaces, types and enums
+For example:
+- One AI assistant ***researching*** a task in one window
+- A second AI assistant ***planning*** a second task in a second window
+- A third AI assistant ***implementing*** a third task in a third window
 
-Interfaces and enums, which are also present in class-based languages, translate immediately over to UML.
+This is great for token efficiency. Having AI agent focussed on a specific phase minimises the context window of each agent, reducing token usage.
 
+![Diagram depicting splitting Agent windows by phase](/images/articles/ephemeral-windows/splitting-ai-phase.png)
 
+**Grouping assistants with related apps:** I can also group each AI assistant window with related windows.
 
-  class BaseUser 
-  BaseUser ..&gt; UserType
-*/}
+For example:
+- Grouping an AI ***researching*** window with the related files in a Finder window
+- Grouping an AI ***planning*** window with the associated Jira task in a browser window
+- Grouping an AI ***implementing*** window with a view of the changes it&#39;s making in a Fork (Git client) window
 
-![UML diagram depicting an interface, a type and an enum](/images/articles/diagramming-ts/interfaces-types-enums.svg)
+![Diagram depicting grouping Agent windows with associated application windows](/images/articles/ephemeral-windows/grouping-ai-with-apps.png)
 
-```typescript
-enum UserType 
 
-interface BaseUser 
-```
+## Micro services and micro front ends 
 
-Types can get a little more tricky. A type might simply be declared equivalent to another structure – such as an interface or another type. Or it might also be a composition of other structures, such as a conditional type or mapped type.
+I find this setup also works well in a micro front end or micro services context, where I often have each work item touching multiple separate repositories or folder structures.
 
-How can we accurately represent our types diagrammatically without overburdening our diagrams with code-like detail?
+For example, it&#39;s not uncommon that one piece of work might straddle:
+- Two micro services. For example: PaymentsService, AccountsService
+- Two micro front ends: For example: PaymentsUI, AccountsUI
 
-My approach here is to simply lay out all the types involved and depict their relationships to eachother without necessarily including logical constraints or finer-grained details such as mapped properties. Where such details are crucial, they can be placed in a nearby &#39;note&#39; element (already a feature of standard UML) and/or, as in the case of mapped properties, simply included in the type&#39;s first compartment.
+Depending on the nature of the work, I can group the windows however makes sense.
+- Put the micro services windows in one group and the micro front end windows in another group
+- Put the Payments related windows in one group and the Accounts related windows in another group
 
+![Diagram depicting grouping micro service and micro front end windows](/images/articles/ephemeral-windows/grouping-micro-services-front-ends.png)
 
 
-  class BaseUser 
-  BaseUser ..&gt; UserType
 
-  class Pilot 
-  Pilot --|&gt; BaseUser
+## Alternatives considered
 
-  class Crew 
-  Crew --|&gt; BaseUser
+Before settling on ephemeral windows, I did experiment with various alternatives:
 
-  class User 
-  User --|&gt; Pilot
-  User --|&gt; Crew
+- [Terminals with split panes](https://iterm2.com/documentation/2.1/documentation-one-page.html)
+- [MacOS workspaces ](https://support.apple.com/en-au/guide/mac-help/mh14112/mac)
+- [IDE-integrated terminals](https://code.visualstudio.com/docs/terminal/basics)
 
-  class UserAccountInfo 
-  UserAccountInfo --|&gt; BaseUser: (pick)
-*/}
+Each of the above seemed to have cons that outweighed the pros, at least for my own workflows.
 
-![UML diagram depicting a group of related types](/images/articles/diagramming-ts/interfaces-types-enums.svg)
+***Terminals with split panes*** are great for viewing at-a-glance closely related concurrent processes.
 
-```typescript
-type PilotLicenceNumber = string;
+⛔️ But they don&#39;t cater for non-Terminal work, such as IDE or in-browser tools. And they waste screen real estate if one pane completes while others are still running.
 
-type Pilot = BaseUser &amp; ;
+***MacOS workspaces*** allow for any type of window, grouped together into a single screen full. Screen real estate efficiency isn&#39;t an issue as we have the whole screen to work with.
 
-type Crew = BaseUser &amp; ;
+⛔️ But switching between them gets clunky. Also, weird issues happen when trying to create a new window for an already running application, such as a new terminal or browser window – the new window shows up in the wrong workspace and it&#39;s tricky to move it to a different workspace.
 
-type User = Pilot | Crew;
+***IDE-integrated terminals*** are great if all my work can be done in either an IDE and terminal. I can quickly switch between terminal instances and IDE with keyboard shortcuts. And terminal instances can be very flexibly arranged, with tabbing, vertical or horizontal stacking, etc. 
 
-type UserAccountInfo = Pick;
-```
+⛔️ Unfortunately this doesn&#39;t work so well with browser, design tools or other windows. Sure, there are IDE plugins, but they tend to have narrower feature sets and lousy support.
 
-I&#39;m not sure if this is ideal, but it seems a reasonably pragmatic approach. Note that UML allows us to depict the code partially, not necessarily exhaustively.
 
-We can also depict ***associations*** between different interfaces/types in the same way as regular UML class diagrams. In this example, we depict a `Flight` interface which aggregates `Crew` and `Pilot` members, along with the cardinality of the relationship.
+## Conclusion
 
+I find this setup of lots of small, ephemeral windows easier to manage than trying to force everything into just one window or app, such as a Terminal with split panes or an IDE.
 
+You might recall a phase in the early 2010s, when it was fashionable to do everything in the IDE. And another phase later in the 2010s, when it was fashionable to do everything in the Terminal.  In a funny way, working with agents and heterogeneous tools, it feels like I&#39;ve come full circle, back to the old school 90s world of GUIs and windowing.
 
-  class Crew 
-
-  class Flight 
-  Flight &quot;0&quot; o--&gt; &quot;n&quot; Crew : crews
-  Flight &quot;0&quot; o--&gt; &quot;n&quot; Pilot : pilots
-*/}
-
-![UML diagram depicting types with their associations](/images/articles/diagramming-ts/interfaces-types-associations.svg)
-
-```typescript
-interface Flight 
-```
-
-
-
-## Functions
-
-As the name suggests, UML &quot;class diagrams&quot; are normally oriented toward depicting classes, which are treated as the main building blocks of class-based programs.
-
-Typescript programs however, especially on the front end, tend to more heavily emphasise functions. Functions are treated as &quot;first class citizens&quot;, meaning that they make up important structural elements of the program, and are not merely an implementation detail.
-
-Nevertheless, we can take UML&#39;s &quot;box with two compartments and a title bar&quot; and re-purpose it for diagramming Typescript functions.
-
-The public interface of a Typescript function primarily consists of its parameters and return type. We can repurpose the first compartment of our box to depict the parameters passed in to the function. Since a function has no publicly accessible &quot;instance&quot; members, there&#39;s no need to represent them at all. The lower compartment can contain private variables held in scope of the function, which, as with private members of a class, aren&#39;t accessible from outside.
-
-
-  isValidUser ..&gt; User : user
-  isValidUser ..&gt; isValidPilotLicenceNumber : (calls)
-
-  class isValidPilotLicenceNumber 
-  isValidPilotLicenceNumber ..&gt; PilotLicenceNumber : licenceNumber
-*/}
-
-![UML diagram depicting functions](/images/articles/diagramming-ts/functions.svg)
-
-```typescript
-function isValidUser(user: User): boolean 
-
-function isValidPilotLicenceNumber(licenceNumber: PilotLicenceNumber): boolean 
-```
-
-This leaves one important problem – how do we represent the return type of a function?
-
-## Return types of functions
-
-Since a Typescript function only has one return type, we might want to represent it as one structure. That type could have one or more members (if it is an inline type, interface or class). It could also have relationships to other types (e.g. an interface that realises another interface). It could even be another function.
-
-We could designate an additional, third, compartment in which to place information about the return type. There are two downsides to this, however. Firstly, introducing a third compartment increases the learning curve for someone who is more accustomed to seeing only two compartments in a UML box diagram. They must figure out what the third compartment signifies and then remember that it signifies the return type and that they should look there for the return type. Secondly, there is the awkward problem of representing a return type which isn&#39;t simply a collection of members. How do we represent a return type that itself has a relationship with another type? Or a return type that is itself a function? If we simply list a single name in the third compartment as though it is a member, this creates confusion as to whether we are naming the return type itself or a member of the return type. For the above reasons it seems inconvenient to house our return type in the third compartment – or any compartment – of a Function box.
-
-A better way is to put the return type in a separate box altogether. We can actually do this, in much the same way as we would represent a type of a function parameter. The relationship can easily be clarified with a connector, which points from the function box to the return type box with a &#39;returns&#39; label.
-
-
-  fetchFlightDetails ..&gt; Flight : (returns)
-
-
-  class Flight 
-*/}
-
-![UML diagram depicting a function and its return type](/images/articles/diagramming-ts/function-return-type.svg)
-
-```typescript
-async function fetchFlightDetails(id: string): Flight 
-```
-
-
-
-## Framework-specific functions
-
-We can do a similar re-purposing to support framework-specific building blocks which are functions – for example, React **components** and custom **hooks**.
-
-UML includes a &quot;stereotype&quot; pattern – a double-angle-bracketed name that sits above the title. This can be used to label our functions – e.g. `&lt;&gt;`, `&lt;&gt;` for React-specific functions. These, along with the aforementioned ways of depicting functions and types, can be used to diagram the components of a React application.
-
-
-  useFlightDetails ..&gt; Flight : (returns)
-  useFlightDetails ..&gt; fetchFlightDetails : (calls)
-
-  class FlightDetails 
-  FlightDetails ..&gt; useFlightDetails : (calls)
-  FlightDetails &quot;1&quot; *--&gt; &quot;1..m&quot; PilotDetails : (renders)
-  FlightDetails &quot;1&quot; *--&gt; &quot;1..m&quot; CrewDetails : (renders)
-
-  class PilotDetails 
-  PilotDetails ..&gt; Pilot
-
-  class CrewDetails 
-  CrewDetails ..&gt; Crew
-*/}
-
-![UML diagram depicting React components and hooks](/images/articles/diagramming-ts/react-components-hooks.svg)
-
-```typescript
-function useFlightDetails(: ):  
-
-function FlightDetails(: ): React.Node 
-
-function PilotDetails(: ): React.Node 
-
-function CrewDetails(: ): React.Node 
-```
-
-Note: As React components typically take a single &#39;props&#39; object as a parameter, I opted to just inline that object&#39;s members in the first compartment of the `&lt;&gt;` box. This very small inconsistency probably won&#39;t be too confusing to anyone who has a basic understanding of React.
-
-
-
-## Putting it all together
-
-For your reference, here is one big UML diagram comprising all the pieces discussed in this article:
-
-
-
-  class BaseUser 
-  BaseUser ..&gt; UserType
-
-
-  class string 
-
-  class PilotLicenceNumber 
-  PilotLicenceNumber --|&gt; string
-
-  class Pilot 
-  Pilot --|&gt; BaseUser
-  Pilot ..&gt; PilotLicenceNumber : licenceNumber
-  Pilot ..&gt; UserType : type
-
-  class Crew 
-  Crew --|&gt; BaseUser
-  Crew ..&gt; UserType : type
-
-  class User 
-  User --|&gt; Pilot
-  User --|&gt; Crew
-
-  class Flight 
-  Flight &quot;0&quot; o--&gt; &quot;n&quot; Crew : crews
-  Flight &quot;0&quot; o--&gt; &quot;n&quot; Pilot : pilots
-
-
-  class isValidUser 
-  isValidUser ..&gt; User
-  isValidUser ..&gt; isValidPilotLicenceNumber : (calls)
-
-  class isValidPilotLicenceNumber 
-  isValidPilotLicenceNumber ..&gt; PilotLicenceNumber : licenceNumber
-
-
-
-  class fetchFlightDetails 
-  fetchFlightDetails ..&gt; Flight : (returns)
-
-
-
-
-  class useFlightDetails 
-  useFlightDetails ..&gt; Flight : (returns)
-  useFlightDetails ..&gt; fetchFlightDetails : (calls)
-
-  class FlightDetails 
-  FlightDetails ..&gt; useFlightDetails : (calls)
-  FlightDetails &quot;1&quot; *--&gt; &quot;1..m&quot; PilotDetails : (renders)
-  FlightDetails &quot;1&quot; *--&gt; &quot;1..m&quot; CrewDetails : (renders)
-
-  class PilotDetails 
-  PilotDetails ..&gt; Pilot
-
-  class CrewDetails 
-  CrewDetails ..&gt; Crew
-*/}
-
-![UML diagram depicting all the ideas discussed in this article](/images/articles/diagramming-ts/all-together.svg)
-
-With all these parts in one diagram, including connective lines, we can perhaps see more clearly one of the main benefits of diagramming: being able to zoom out and see how all the parts connect together to form the whole.
-
-We can, for example, easily see which components depend on the core types `Pilot` and `Crew`. During initial solution design, this diagram might help us to estimate and prioritise the work. Or during a complex change, it might help to visualise the impact, were we to modify one or both of these types.
-
-This kind of &quot;birds-eye view&quot; wouldn&#39;t be possible with just code alone, which appears in a hierarchy of folders and files. Even if we expanded every folder, we still wouldn&#39;t see all the connections between the structures contained in the files. Diagrams give us a more powerful visualisation of our code.
-
-## Future directions
-
-Many UML-code and code-UML converters already exist, supporting class-based programming languages such as Java and C#. It would be great to see such tools implemented for Typescript. [tplant](https://github.com/bafolts/tplant) looks like a promising start, though it appears to only support the code-UML direction.
-
-It would be interesting to see if subsets of UML emerge, focussed on representing functional and/or Javascript/Typescript structures.
-
-State-charts have already been recommended for diagramming Redux state machines. Perhaps it would be better for developers to standardise on UML state diagram notation.
 
 ## Further reading
 
-These books may serve as a handy guide and reference on UML:
+- [Blog: Commanding Your Claude Code Army • Peter STEINBERGER](https://steipete.me/posts/2025/commanding-your-claude-code-army)
 
-- [_UML Distilled_](https://www.martinfowler.com/books/uml.html) • Martin FOWLER
-- [_The Unified Modelling Language User Guide_](https://www.amazon.com/Unified-Modeling-Language-User-Guide/dp/0321267974) • Grady BOOCH
-- [_Modelling with UML - Language, Concepts, Methods_](https://www.abbeys.com.au/book/modeling-with-uml-language-concepts-methods-book-9783319816357.do) • Bernhard RUMPE
 </content>
   </entry>
   

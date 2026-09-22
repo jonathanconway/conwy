@@ -1,4 +1,3 @@
-
 export * from "./ai-concepts";
 export * from "./ai-for-developers";
 export * from "./ai-replacement";
@@ -12,6 +11,7 @@ export * from "./dependency-updates";
 export * from "./designerly-cv";
 export * from "./diagramming-react";
 export * from "./diagramming-typescript";
+export * from "./ephemeral-windows";
 export * from "./etibs";
 export * from "./flaky-tests";
 export * from "./front-end-development-checklist";
