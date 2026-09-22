@@ -7,6 +7,7 @@ export * from "./algorithms-illuminated";
 export * from "./algorithms-louridas";
 export * from "./antifragile";
 export * from "./apple-human-interface-guidelines";
+export * from "./atomic-habits";
 export * from "./atlas-of-the-heart";
 export * from "./bruckner-mahler-schoenberg";
 export * from "./change-your-thoughts-change-your-life";
