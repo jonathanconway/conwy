@@ -1,1 +1,1 @@
-export * from "./article.gen";
+export * from "./article-gen";

@@ -1,6 +1,8 @@
-import { ArticleGenTemplateParams } from "./article.params";
+import { ArticleGenTemplateParams } from "./article-gen-template-params";
 
-export const articleIndexGen = ({ nameRootObject }: ArticleGenTemplateParams) =>
+export const articleGenIndexTemplate = ({
+  nameRootObject,
+}: ArticleGenTemplateParams) =>
   `
 
 import { Article } from "@/framework/client";

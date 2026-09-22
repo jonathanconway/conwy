@@ -1,6 +1,6 @@
 import * as gens from "./gens";
 
-const args = process.argv.splice(
+const args = process.argv.slice(
   process.argv.findIndex((arg) => arg.endsWith("gen.ts")) + 1,
 );
 
