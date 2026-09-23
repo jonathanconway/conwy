@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-rational-optimist",
   authors: ["Matt Ridley"],
   status: BookStatuses.Finished,

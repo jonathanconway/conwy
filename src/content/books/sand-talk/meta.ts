@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "sand-talk",
   authors: ["Tyson Yunkaporta"],
   status: BookStatuses.Finished,

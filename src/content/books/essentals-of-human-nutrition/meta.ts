@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "essentals-of-human-nutrition",
   authors: ["Jim Mann", "Arthur Truswell"],
   status: BookStatuses.Reading,

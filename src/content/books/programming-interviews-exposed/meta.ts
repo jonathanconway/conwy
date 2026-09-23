@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "programming-interviews-exposed",
   authors: ["John Mongan", "Noah Suojanen", "Eric Giguère"],
   status: BookStatuses.Reading,

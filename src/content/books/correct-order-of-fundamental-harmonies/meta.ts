@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "correct-order-of-fundamental-harmonies",
   authors: ["Simon Sechter"],
   status: BookStatuses.Listed,

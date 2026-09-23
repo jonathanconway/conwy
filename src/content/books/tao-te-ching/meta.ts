@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "tao-te-ching",
   authors: ["Lao Tzu"],
   status: BookStatuses.Finished,

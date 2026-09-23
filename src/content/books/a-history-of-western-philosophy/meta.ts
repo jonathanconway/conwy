@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "a-history-of-western-philosophy",
   authors: ["Bertrand Russell"],
   status: BookStatuses.Reading,

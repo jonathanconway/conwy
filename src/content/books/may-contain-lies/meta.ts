@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "may-contain-lies",
   authors: ["Alex Edmans"],
   status: BookStatuses.Listed,

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-tibetan-yoga-of-breath",
   authors: ["Thích Nhất Hạnh"],
   status: BookStatuses.Reading,

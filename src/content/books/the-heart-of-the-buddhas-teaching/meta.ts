@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-heart-of-the-buddhas-teaching",
   authors: ["Thich Nhat Hanh"],
   status: BookStatuses.Finished,

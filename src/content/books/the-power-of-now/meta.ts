@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-power-of-now",
   authors: ["Ekhart Tolle"],
   status: BookStatuses.Reading,

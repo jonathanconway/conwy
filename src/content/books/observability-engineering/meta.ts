@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "observability-engineering",
   authors: ["Charity Majors"],
   status: BookStatuses.Reading,

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "geometry-of-wealth",
   authors: ["Brian Portnoy"],
   status: BookStatuses.Finished,

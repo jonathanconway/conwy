@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "right-story-wrong-story",
   authors: ["Tyson Yunkaporta"],
   status: BookStatuses.Finished,

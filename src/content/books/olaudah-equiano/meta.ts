@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "olaudah-equiano",
   authors: ["Olaudah Equiano"],
   status: BookStatuses.Reading,

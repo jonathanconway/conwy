@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "cracking-coding-interview",
   authors: ["Gayle Laakmann"],
   status: BookStatuses.Reading,

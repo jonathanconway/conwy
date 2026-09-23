@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-storm-before-the-calm",
   authors: ["George Friedman"],
   status: BookStatuses.Finished,

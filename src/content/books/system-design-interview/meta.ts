@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "system-design-interview",
   authors: ["Alex Xu"],
   status: BookStatuses.Reading,

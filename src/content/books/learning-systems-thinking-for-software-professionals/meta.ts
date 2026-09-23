@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "learning-systems-thinking-for-software-professionals",
   authors: ["Diana Montalion"],
   status: BookStatuses.Reading,

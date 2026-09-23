@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "shoe-dog",
   authors: ["Phil Knight"],
   status: BookStatuses.Listed,

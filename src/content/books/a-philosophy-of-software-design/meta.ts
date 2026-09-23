@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "a-philosophy-of-software-design",
   authors: ["John Ousterhout"],
   status: BookStatuses.Finished,

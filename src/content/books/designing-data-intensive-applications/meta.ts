@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "designing-data-intensive-applications",
   authors: ["Martin Kleppmann"],
   status: BookStatuses.Reading,

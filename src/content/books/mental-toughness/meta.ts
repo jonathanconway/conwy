@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "mental-toughness",
   authors: ["Steve Siebold"],
   status: BookStatuses.Finished,

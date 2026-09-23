@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "flow-the-psychology-of-optimal-experience",
   authors: ["Mihaly Csikszentmihalyi"],
   status: BookStatuses.Finished,

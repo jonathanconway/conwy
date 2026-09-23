@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "of-providence",
   authors: ["Seneca"],
   status: BookStatuses.Finished,

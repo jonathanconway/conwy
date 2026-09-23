@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "advanced-react",
   authors: ["Nadia Makarevich"],
   status: BookStatuses.Finished,

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "introduction-to-mathematical-thinking",
   authors: ["Keith Devlin"],
   status: BookStatuses.Reading,

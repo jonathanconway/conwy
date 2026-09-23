@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-human-tide",
   authors: ["Paul Morland"],
   status: BookStatuses.Finished,

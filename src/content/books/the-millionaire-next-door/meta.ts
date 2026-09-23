@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-millionaire-next-door",
   authors: ["Thomas Stanley"],
   status: BookStatuses.Finished,

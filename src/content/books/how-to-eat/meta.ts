@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "how-to-eat",
   authors: ["Thích Nhất Hạnh"],
   status: BookStatuses.Finished,

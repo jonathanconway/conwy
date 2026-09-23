@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-seven-sins-of-memory",
   authors: ["Daniel Schacter"],
   status: BookStatuses.Reading,

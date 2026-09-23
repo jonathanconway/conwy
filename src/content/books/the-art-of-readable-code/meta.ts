@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-art-of-readable-code",
   authors: ["Dustin Boswell"],
   status: BookStatuses.Finished,

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "algorithms-louridas",
   authors: ["Panos Louridas"],
   status: BookStatuses.Finished,

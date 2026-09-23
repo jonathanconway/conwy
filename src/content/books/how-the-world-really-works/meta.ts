@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "how-the-world-really-works",
   authors: ["Vaclav Smil"],
   status: BookStatuses.Finished,

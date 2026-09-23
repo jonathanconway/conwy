@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "freakonomics",
   authors: ["Steven Levity"],
   status: BookStatuses.Finished,

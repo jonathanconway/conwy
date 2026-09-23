@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "how-to-read-a-book",
   authors: ["Mortimer Adler"],
   status: BookStatuses.Listed,

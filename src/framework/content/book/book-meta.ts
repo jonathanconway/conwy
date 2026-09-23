@@ -6,7 +6,6 @@ import { BookCategory } from "./book-category";
 import { BookStatus } from "./book-status";
 
 export interface BookMeta extends MetaBase {
-  readonly type: "book";
   readonly slug: Slug;
   readonly title: string;
   readonly authors: readonly string[];

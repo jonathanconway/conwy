@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "eat-drink-be-healthy",
   authors: ["Walter Willett"],
   status: BookStatuses.Finished,

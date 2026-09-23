@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "how-not-to-age",
   authors: ["Michael Greger"],
   status: BookStatuses.Listed,

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "software-engineering-after-the-vibe-shift",
   authors: ["Sean Goedecke"],
   status: BookStatuses.Reading,

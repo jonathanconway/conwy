@@ -6,7 +6,6 @@ export function createBookMock1(): Book {
   return {
     type: "book",
     meta: {
-      type: "book",
       slug: "influence",
       authors: ["Robert Cialdini"],
       status: BookStatuses.Finished,
@@ -22,7 +21,6 @@ export function createBookMock2(): Book {
   return {
     type: "book",
     meta: {
-      type: "book",
       slug: "introduction-to-mathematical-thinking",
       authors: ["Keith Devlin"],
       status: BookStatuses.Reading,

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-book-of-five-rings",
   authors: ["Miyamoto Musashi"],
   status: BookStatuses.Finished,

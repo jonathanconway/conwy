@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-7-habits-of-highly-successful-people",
   authors: ["Stephen Covey"],
   status: BookStatuses.Finished,

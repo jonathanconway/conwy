@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "crucial-conversations",
   authors: ["Joseph Grenny"],
   status: BookStatuses.Finished,

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "full-catastrophe-living",
   authors: ["Jon Kabat-Zinn"],
   status: BookStatuses.Finished,

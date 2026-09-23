@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-80000-hours-career-guide",
   authors: ["Benjamin Todd"],
   status: BookStatuses.Reading,

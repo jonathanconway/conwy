@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "how-brands-grow",
   authors: ["Byron Sharp"],
   status: BookStatuses.Finished,

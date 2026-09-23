@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "on-writing",
   authors: ["Stephen King"],
   status: BookStatuses.Listed,

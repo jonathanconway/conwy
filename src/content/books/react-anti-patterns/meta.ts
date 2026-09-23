@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "react-anti-patterns",
   authors: ["Juntao Qiu"],
   status: BookStatuses.Listed,

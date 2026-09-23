@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "tidy-first",
   authors: ["Kent Beck"],
   status: BookStatuses.Listed,

@@ -12,7 +12,7 @@ import {
 import { join } from "path";
 import pluralize from "pluralize";
 
-import { Meta, MetaType } from "../content";
+import { ContentType, Meta } from "../content";
 
 export const PublicStaticAssetTypes = {
   Images: "images",
@@ -20,20 +20,6 @@ export const PublicStaticAssetTypes = {
 } as const;
 
 export type PublicStaticAssetType = TypeOfConst<typeof PublicStaticAssetTypes>;
-
-export function getMainImageUrl(meta: Meta) {
-  const path = getPublicStaticContentPath("images", meta.type, meta.slug);
-  const base = "main";
-  const extension = getExtensionWhichExists(path, "main", [
-    "svg",
-    "png",
-    "jpg",
-    "jpeg",
-    "gif",
-  ]);
-  const url = `/images/${pluralize(meta.type)}/${meta.slug}/${base}.${extension}`;
-  return url;
-}
 
 export function getExtensionWhichExists(
   path: string,
@@ -51,7 +37,7 @@ export function getExtensionWhichExists(
 
 export function getPublicStaticContentPath(
   assetType: PublicStaticAssetType,
-  contentType: MetaType,
+  contentType: ContentType,
   contentSlug: string,
   assetSubType?: string,
 ) {

@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "zen-and-the-art-of-motorcycle-maintenance",
   authors: ["Robert Pirsig"],
   status: BookStatuses.Listed,

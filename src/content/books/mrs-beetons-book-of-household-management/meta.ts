@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "mrs-beetons-book-of-household-management",
   authors: ["Isabella Beeton"],
   status: BookStatuses.Reading,

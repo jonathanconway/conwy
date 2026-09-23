@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-journey-of-humanity",
   authors: ["Oded Galor"],
   status: BookStatuses.Listed,

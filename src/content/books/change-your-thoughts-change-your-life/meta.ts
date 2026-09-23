@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "change-your-thoughts-change-your-life",
   authors: ["Wayne Dyer"],
   status: BookStatuses.Finished,

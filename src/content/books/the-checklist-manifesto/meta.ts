@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-checklist-manifesto",
   authors: ["Atul Gawande"],
   status: BookStatuses.Listed,

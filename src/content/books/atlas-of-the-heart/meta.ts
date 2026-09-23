@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "atlas-of-the-heart",
   authors: ["Brené Brown"],
   status: BookStatuses.Finished,

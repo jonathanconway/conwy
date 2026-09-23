@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-hero-with-a-thousand-faces",
   authors: ["Joseph Campbell"],
   status: BookStatuses.Listed,

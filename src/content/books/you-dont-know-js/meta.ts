@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "you-dont-know-js",
   authors: ["Kyle Simpson"],
   status: BookStatuses.Finished,

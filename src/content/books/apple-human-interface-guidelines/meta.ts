@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "apple-human-interface-guidelines",
   authors: ["Apple"],
   status: BookStatuses.Listed,

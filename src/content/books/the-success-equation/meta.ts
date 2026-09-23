@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "the-success-equation",
   authors: ["Michael MAUBOUSSIN"],
   status: BookStatuses.Finished,

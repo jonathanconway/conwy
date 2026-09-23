@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "good-life",
   authors: ["Robert Waldinger", "Marc Schulz"],
   status: BookStatuses.Finished,

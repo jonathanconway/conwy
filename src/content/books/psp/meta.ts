@@ -5,7 +5,6 @@ import {
 } from "@/framework/content/book";
 
 export const meta: BookMeta = {
-  type: "book",
   slug: "psp",
   authors: ["Watts Humphrey"],
   status: BookStatuses.Reading,
