@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "How documentation can substitute for big refactorings.",
   createdDate: "2023-07-02",
   slug: "refactoring-documentation",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: refactoringDocumentationIllustrationComposite,
   smallImage: cycleIllustrationStatic,

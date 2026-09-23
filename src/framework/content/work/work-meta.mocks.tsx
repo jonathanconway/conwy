@@ -18,7 +18,6 @@ export const WORK_META_MOCK: WorkMeta = {
   ],
   slug: "optus",
   tags: [],
-  type: "work",
   images: [
     {
       src: "optus-1.svg",

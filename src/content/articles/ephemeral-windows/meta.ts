@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "How I use small ephemeral windows to manage concurrent work items",
   createdDate: "2026-09-22",
   slug: "ephemeral-windows",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: ephemeralWindowsIllustrationComposite,
   smallImage: magicHatWandIllustrationStatic,

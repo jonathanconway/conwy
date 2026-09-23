@@ -1,9 +1,7 @@
-import { lstatSync, readdirSync } from "fs";
-
-import { getContentFileRootPath } from "../content-read/content-file-path-get.server";
 import { ContentType } from "../content-type/content-types";
 import { MetaBase } from "../meta/meta-base";
 
+import { getContentFolders } from "./content-folders-get";
 import { getContentImportPath } from "./content-import-path-get.server";
 
 /**
@@ -20,13 +18,4 @@ export async function importContentMetas<T extends MetaBase>(
         (await import(`${getContentImportPath({ type, slug })}/meta`)).meta,
     ),
   );
-}
-
-function getContentFolders(contentType: ContentType) {
-  const contentFileRootPath = getContentFileRootPath(contentType);
-  const contentFilePaths = readdirSync(contentFileRootPath);
-  const contentFilePathsValid = contentFilePaths.filter((contentFolder) =>
-    lstatSync(`${contentFileRootPath}/${contentFolder}`).isDirectory(),
-  );
-  return contentFilePathsValid;
 }

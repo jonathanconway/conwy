@@ -11,7 +11,6 @@ export const meta: ProjectMeta = {
   date: "2017-12-03",
   slug: "htmldoc",
   tags: [PostTags.SoftwareDevelopment],
-  type: "project",
   subType: ProjectSubTypes.Standard,
   socialLinks: [
     {

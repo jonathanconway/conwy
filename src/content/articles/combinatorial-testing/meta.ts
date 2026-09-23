@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
   shortBlurb: "Increase your test coverage with combinatorial testing",
   createdDate: "2022-10-10",
   slug: "combinatorial-testing",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: combinatorialTestingIllustrationComposite,
   smallImage: tableIllustrationStatic,

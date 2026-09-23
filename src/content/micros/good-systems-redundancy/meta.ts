@@ -4,7 +4,6 @@ export const meta: MicroMeta = {
   createdDate: "2023-12-02",
   slug: "good-systems-redundancy",
   tags: [PostTags.SoftwareDevelopment],
-  type: "micro",
   socialLinks: [
     {
       type: "twitter",

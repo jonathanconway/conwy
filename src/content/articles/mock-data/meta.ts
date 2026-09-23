@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "Mock data can boost developer productivity and enjoyment",
   createdDate: "2021-09-28",
   slug: "mock-data",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: mockDataIllustrationComposite,
   smallImage: circlesStackedDynamicGradientIllustrationStatic,

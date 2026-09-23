@@ -27,7 +27,6 @@ export const meta: WorkMeta = {
   ],
   slug: "mycastingnet",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: ".NET",

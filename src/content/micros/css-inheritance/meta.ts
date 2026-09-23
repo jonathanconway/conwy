@@ -4,7 +4,6 @@ export const meta: MicroMeta = {
   createdDate: "2024-04-20",
   slug: "css-inheritance",
   tags: [PostTags.SoftwareDevelopment],
-  type: "micro",
   socialLinks: [
     {
       type: "twitter",

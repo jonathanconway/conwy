@@ -56,7 +56,6 @@ export const meta: WorkMeta = {
   ],
   slug: "anz",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "react",

@@ -38,7 +38,6 @@ export const meta: WorkMeta = {
   ],
   slug: "coles",
   tags: [],
-  type: "work",
   images: [
     { src: "coles-1.png", title: "Delivery scheduling sidebar" },
     { src: "coles-2.png", title: "Payment screen - Payment details entry" },

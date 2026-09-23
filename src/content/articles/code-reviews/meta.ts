@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
     "Having a good code review process can make code reviews easier, more enjoyable and higher quality",
   createdDate: "2023-08-06",
   slug: "code-reviews",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: codeReviewsIllustrationComposite,
   smallImage: chatBubbleDynamicGradientIllustrationStatic,

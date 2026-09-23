@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "I am on a personal and professional mission to write bug-free code.",
   createdDate: "2019-12-01",
   slug: "towards-zero-bugs",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: towardsZeroBugsIllustrationComposite,
   smallImage: bugIllustrationStatic,

@@ -6,7 +6,6 @@ import { SocialLink } from "../social-link";
 import { ArticleMetaExtensions } from "./article-meta-extensions";
 
 export interface ArticleMeta extends MetaBase<ArticleMetaExtensions> {
-  readonly type: "article";
   readonly title: string;
   readonly createdDate: string;
   readonly updatedDate?: string;

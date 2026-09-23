@@ -10,7 +10,6 @@ export const meta: ProjectMeta = {
   date: "2024-05-01",
   slug: "testmatic",
   tags: ["software-development"],
-  type: "project",
   subType: ProjectSubTypes.Tool,
   socialLinks: [
     {

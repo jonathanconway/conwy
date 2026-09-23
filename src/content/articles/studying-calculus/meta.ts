@@ -12,7 +12,6 @@ export const meta: ArticleMeta = {
     "Reflections on studying a subject outside my usual comfort zone.",
   createdDate: "2024-09-10",
   slug: "studying-calculus",
-  type: "article",
   tags: [PostTags.Learning],
   mainImage: studyingCalculusIllustrationComposite,
   smallImage: curveIllustrationStatic,

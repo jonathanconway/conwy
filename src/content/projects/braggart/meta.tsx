@@ -6,7 +6,6 @@ export const meta: ProjectMeta = {
   date: "2024-03-01",
   slug: "braggart",
   tags: [],
-  type: "project",
   subType: ProjectSubTypes.Tool,
   socialLinks: [
     {

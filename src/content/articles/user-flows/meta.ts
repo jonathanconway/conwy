@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "Current techniques for collaboratively designing user flows.",
   createdDate: "2025-01-18",
   slug: "user-flows",
-  type: "article",
   tags: [PostTags.Design],
   socialLinks: [],
   discussionLinks: [],

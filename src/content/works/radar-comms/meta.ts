@@ -18,7 +18,6 @@ export const meta: WorkMeta = {
   ],
   slug: "radar-comms",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "HTML",

@@ -39,7 +39,7 @@ export function ArticlesList(props: ArticlesListProps) {
     .filter((item) => item.meta.isPinned)
     .slice(0, ARTICLES_RECENT_LIST_TILE_COUNT);
   const itemsRest = difference(itemsSorted, itemsTiled)
-    .filter((item) => item.meta.type === "article")
+    .filter((item) => item.type === "article")
     .slice(
       0,
       limitSmallListItems ? ARTICLES_RECENT_LIST_REST_COUNT : undefined,

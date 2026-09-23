@@ -13,7 +13,6 @@ export const meta: ArticleMeta = {
     "Having a process around handling dependency updates can smooth the updates while minimising vulnerabilities.",
   createdDate: "2026-07-08",
   slug: "dependency-updates",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: dependencyUpdatesIllustrationComposite,
   smallImage: packageIllustrationStatic,

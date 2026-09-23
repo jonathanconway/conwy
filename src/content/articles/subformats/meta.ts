@@ -12,7 +12,6 @@ export const meta: ArticleMeta = {
     "Adding information to a format while maintaining backwards-compatibility",
   createdDate: "2024-09-21",
   slug: "subformats",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: subformatsIllustrationComposite,
   smallImage: mdIllustrationStatic,

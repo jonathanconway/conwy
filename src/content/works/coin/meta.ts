@@ -31,7 +31,6 @@ export const meta: WorkMeta = {
   images: [],
   slug: "coin",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: ".NET",

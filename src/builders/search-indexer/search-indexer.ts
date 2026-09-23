@@ -6,6 +6,7 @@ import {
   ArticleMeta,
   ContentTypes,
   MicroMeta,
+  createContentLink,
   getContentUrlPath,
   titleCase,
 } from "@/framework";
@@ -44,8 +45,13 @@ async function addCustomRecordArticle(
   contentMeta: ArticleMeta,
 ) {
   const title = contentMeta.title;
-  const { slug: contentSlug, type: contentType } = contentMeta;
-  const url = "/" + getContentUrlPath(contentMeta);
+  const { slug: contentSlug } = contentMeta;
+  const contentType = ContentTypes.Article;
+  const url =
+    "/" +
+    getContentUrlPath(
+      createContentLink(ContentTypes.Article, contentMeta.slug),
+    );
   const contentUrl = url;
   const content = readContentMdx(ContentTypes.Article, contentMeta.slug);
 
@@ -77,8 +83,11 @@ async function addCustomRecordMicro(
   contentMeta: MicroMeta,
 ) {
   const title = titleCase(contentMeta.slug);
-  const { slug: contentSlug, type: contentType } = contentMeta;
-  const url = "/" + getContentUrlPath(contentMeta);
+  const { slug: contentSlug } = contentMeta;
+  const contentType = ContentTypes.Micro;
+  const url =
+    "/" +
+    getContentUrlPath(createContentLink(ContentTypes.Micro, contentMeta.slug));
   const contentUrl = url;
   const content = readContentMdx(ContentTypes.Micro, contentMeta.slug);
 

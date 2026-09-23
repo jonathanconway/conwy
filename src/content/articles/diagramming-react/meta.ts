@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "Using UML to model React structures",
   createdDate: "2024-10-14",
   slug: "diagramming-react",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: diagrammingReactIllustrationComposite,
   smallImage: reactColorIllustrationStatic,

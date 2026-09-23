@@ -13,7 +13,6 @@ export const meta: ArticleMeta = {
     "Structured manual testing offers distinct and powerful benefits when delivering with speed and quality.",
   createdDate: "2024-09-13",
   slug: "manual-testing",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   smallImage: labDynamicColorIllustrationStatic,
   mainImage: manualTestingIllustrationComposite,

@@ -19,7 +19,6 @@ export const meta: WorkMeta = {
   ],
   slug: "bigw",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "react",

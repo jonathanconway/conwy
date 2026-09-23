@@ -12,7 +12,6 @@ export const meta: ArticleMeta = {
   shortBlurb: "Execution flowcharts for visualising runtime behaviour",
   createdDate: "2023-08-01",
   slug: "visualising-execution-flows",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: visualisingExecutionFlowsIllustrationComposite,
   smallImage: pathIllustrationStatic,

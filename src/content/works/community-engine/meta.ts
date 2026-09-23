@@ -13,7 +13,6 @@ export const meta: WorkMeta = {
   images: [],
   slug: "community-engine",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: ".NET",

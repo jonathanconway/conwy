@@ -3,7 +3,6 @@ import { PostTag } from "../post";
 import { SocialLink } from "../social-link";
 
 export interface MicroMeta extends MetaBase {
-  readonly type: "micro";
   readonly createdDate: string;
   readonly updatedDate?: string;
 

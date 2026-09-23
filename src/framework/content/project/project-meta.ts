@@ -7,7 +7,6 @@ import { SocialLink } from "../social-link/social-link";
 import { ProjectSubType } from "./project-sub-type";
 
 export interface ProjectMeta extends MetaBase {
-  readonly type: "project";
   readonly title: string;
 
   readonly date: DateTimeString;

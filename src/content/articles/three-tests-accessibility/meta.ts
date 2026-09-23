@@ -13,7 +13,6 @@ export const meta: ArticleMeta = {
     "Three simple tests you can run on your applications to assess their accessibility.",
   createdDate: "2023-07-02",
   slug: "three-tests-accessibility",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: threeTestsAccessibilityIllustrationComposite,
   smallImage: earIllustrationStatic,

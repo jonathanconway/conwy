@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
   shortBlurb: "My routine for getting in shape while having fun!",
   createdDate: "2025-01-03",
   slug: "lose-weight",
-  type: "article",
   tags: [PostTags.Life],
   mainImage: loseWeightIllustrationComposite,
   smallImage: gymDynamicPremiumIllustrationStatic,

@@ -14,7 +14,6 @@ export const meta: WorkMeta = {
   images: [],
   slug: "tal",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: ".NET",

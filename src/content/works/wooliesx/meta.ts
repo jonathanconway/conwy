@@ -38,7 +38,6 @@ export const meta: WorkMeta = {
   ],
   slug: "wooliesx",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "angular",

@@ -57,7 +57,6 @@ export const meta: WorkMeta = {
   ],
   slug: "revolut",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "react",

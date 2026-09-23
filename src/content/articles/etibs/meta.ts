@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
     "An under-discussed means of inflation protection available to Australians.",
   createdDate: "2026-07-26",
   slug: "etibs",
-  type: "article",
   tags: [PostTags.Finance],
   mainImage: etibsIllustrationComposite,
   smallImage: cubeDynamicPremiumIllustrationStatic,

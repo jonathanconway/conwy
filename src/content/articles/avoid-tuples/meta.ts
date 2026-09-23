@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
     "How I avoid anonymous tuples and use objects with named fields instead.",
   createdDate: "2026-07-04",
   slug: "avoid-tuples",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: avoidTuplesIllustrationComposite,
   smallImage: cubeDynamicClayIllustrationStatic,

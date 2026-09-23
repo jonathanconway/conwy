@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
     "Types are build-time guarantees, assertions are run-time guarantees. Both are beneficial.",
   createdDate: "2026-07-24",
   slug: "types-vs-assertions",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: typesVsAssertionsIllustrationComposite,
   smallImage: typescriptIllustrationStatic,

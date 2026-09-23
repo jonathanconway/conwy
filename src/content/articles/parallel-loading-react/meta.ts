@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "How to load parallel requests in one component.",
   createdDate: "2021-04-17",
   slug: "parallel-loading-react",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: parallelLoadingReactIllustrationComposite,
   smallImage: road2LaneIllustrationStatic,

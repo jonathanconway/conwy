@@ -6,7 +6,6 @@ export const meta: ProjectMeta = {
   date: "2024-05-02",
   slug: "tailwindjs",
   tags: ["software-development"],
-  type: "project",
   subType: "library",
   socialLinks: [
     {

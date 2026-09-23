@@ -12,7 +12,6 @@ export const meta: ArticleMeta = {
     "Observing the state of front end applications running in production",
   createdDate: "2023-07-02",
   slug: "front-end-observability",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: frontEndObservabilityIllustrationComposite,
   smallImage: webBrowserIllustrationStatic,

@@ -13,7 +13,6 @@ export const meta: ArticleMeta = {
     "There seems to be a recent trend toward software engineers working full stack.",
   createdDate: "2026-08-19",
   slug: "full-stack",
-  type: "article",
   tags: [PostTags.SoftwareEngineering],
   mainImage: fullStackIllustrationComposite,
   smallImage: serverIllustrationStatic,

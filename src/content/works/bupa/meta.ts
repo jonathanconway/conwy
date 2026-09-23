@@ -48,7 +48,6 @@ export const meta: WorkMeta = {
   ],
   slug: "bupa",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "HTML",

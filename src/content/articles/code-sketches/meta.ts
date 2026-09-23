@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
     "Using commented ellipses, we can create 'code sketches' to aid communication.",
   createdDate: "2026-07-09",
   slug: "code-sketches",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: codeSketchesIllustrationComposite,
   smallImage: codeBracesIllustrationStatic,

@@ -76,7 +76,6 @@ export const meta: WorkMeta = {
   ],
   slug: "refugee-connect",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "angular-1.3",

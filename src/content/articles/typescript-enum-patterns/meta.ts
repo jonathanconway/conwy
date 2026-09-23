@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
   createdDate: "2026-03-15",
   updatedDate: "2026-03-15",
   slug: "typescript-enum-patterns",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   isPinned: true,
   mainImage: typescriptEnumPatternsIllustrationComposite,

@@ -27,7 +27,6 @@ export const meta: WorkMeta = {
   ],
   slug: "villa-plus",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "react",

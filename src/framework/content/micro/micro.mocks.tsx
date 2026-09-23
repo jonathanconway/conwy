@@ -15,7 +15,6 @@ export function createMicroMock(): Micro {
       createdDate: "2023-09-02",
       slug: "front-end-observability",
       tags: ["software-development"],
-      type: "micro",
       socialLinks: [
         {
           type: SocialLinkTypes.LinkedIn,

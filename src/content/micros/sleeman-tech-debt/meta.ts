@@ -4,7 +4,6 @@ export const meta: MicroMeta = {
   createdDate: "2024-09-03",
   slug: "sleeman-tech-debt",
   tags: [PostTags.SoftwareDevelopment],
-  type: "micro",
   socialLinks: [
     {
       type: SocialLinkTypes.Mastodon,

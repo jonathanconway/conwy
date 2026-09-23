@@ -11,7 +11,6 @@ export const meta: ProjectMeta = {
   date: "2023-08-01",
   slug: "codeselectors",
   tags: [PostTags.SoftwareDevelopment],
-  type: "project",
   subType: ProjectSubTypes.Standard,
   socialLinks: [
     {

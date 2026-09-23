@@ -13,7 +13,6 @@ export function createArticleMock(): Article {
       blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
       createdDate: "2023-09-02",
       tags: [PostTags.SoftwareDevelopment],
-      type: "article",
       socialLinks: [
         {
           type: SocialLinkTypes.LinkedIn,
@@ -46,7 +45,6 @@ export function createArticleMock2(): Article {
       blurb:
         "Having a good code review process can make code reviews easier, more enjoyable and higher quality",
       createdDate: "2023-08-06",
-      type: "article",
       tags: [PostTags.SoftwareDevelopment, PostTags.Design],
       socialLinks: [
         {

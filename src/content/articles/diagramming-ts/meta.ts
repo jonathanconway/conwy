@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "Using UML to model Typescript structures",
   createdDate: "2022-01-02",
   slug: "diagramming-ts",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: diagrammingTypescriptIllustrationComposite,
   smallImage: typescriptIllustrationStatic,

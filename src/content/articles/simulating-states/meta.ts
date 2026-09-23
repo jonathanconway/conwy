@@ -12,7 +12,6 @@ export const meta: ArticleMeta = {
     "Review of simulation techniques and ideas for structuring and documenting simulations.",
   createdDate: "2025-02-12",
   slug: "simulating-states",
-  type: "article",
   mainImage: simulatingStatesIllustrationComposite,
   smallImage: memoryChipIllustrationStatic,
   tags: [PostTags.SoftwareDevelopment],

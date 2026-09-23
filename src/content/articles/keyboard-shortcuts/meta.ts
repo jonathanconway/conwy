@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "My favourite keystrokes for getting stuff done fast",
   createdDate: "2025-01-21",
   slug: "keyboard-shortcuts",
-  type: "article",
   mainImage: keyboardShortcutsIllustrationComposite,
   smallImage: keyboardIllustrationStatic,
   tags: [PostTags.SoftwareDevelopment],

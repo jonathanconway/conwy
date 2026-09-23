@@ -54,7 +54,6 @@ export const meta: WorkMeta = {
   ],
   slug: "cibc",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "angular",

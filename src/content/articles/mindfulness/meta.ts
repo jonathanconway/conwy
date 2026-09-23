@@ -12,7 +12,6 @@ export const meta: ArticleMeta = {
     "Experiences practicing mindfulness meditation, from a sample size of one.",
   createdDate: "2024-09-13",
   slug: "mindfulness",
-  type: "article",
   tags: [PostTags.Life],
   mainImage: mindfulnessIllustrationComposite,
   smallImage: crossLeggedIllustrationStatic,

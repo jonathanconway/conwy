@@ -14,7 +14,6 @@ export const meta: WorkMeta = {
   images: [],
   slug: "news-limited",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "HTML",

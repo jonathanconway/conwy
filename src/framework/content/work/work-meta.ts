@@ -10,27 +10,15 @@ import { WorkMetaTech } from "./work-meta-tech";
 export interface WorkMeta extends MetaBase {
   readonly startDate: string;
   readonly endDate: string;
-
   readonly blurbShort: string;
-
   readonly tags: readonly string[];
-
   readonly client: string;
-
   readonly jobTitle: string;
-
   readonly mainImage?: Image;
   readonly images: readonly Image[];
-
   readonly techs: readonly WorkMetaTech[];
-
   readonly feedbacks: readonly Testimonial[];
-
   readonly projects: readonly WorkMetaProject[];
-
   readonly socialLinks: readonly SocialLink[];
-
-  readonly type: "work";
-
   readonly colleagueRelationships?: readonly ColleagueRelationship[];
 }

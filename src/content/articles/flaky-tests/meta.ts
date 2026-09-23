@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
     "Some tips for reproducing and solving or mitigating non-deterministic broken tests.",
   createdDate: "2026-03-01",
   slug: "flaky-tests",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: flakyTestsIllustration,
   smallImage: snowflakeDynamicColorIllustrationStatic,

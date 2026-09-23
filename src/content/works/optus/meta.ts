@@ -24,7 +24,6 @@ export const meta: WorkMeta = {
   ],
   slug: "optus",
   tags: [],
-  type: "work",
   images: [
     {
       src: "optus-1.svg",

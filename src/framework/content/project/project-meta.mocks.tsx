@@ -13,7 +13,6 @@ export function createProjectMock(): Project {
       blurb: `Tailwind classes as Javascript functions for intellisense and type safety.`,
       date: "2024-05-02",
       tags: ["software-development"],
-      type: "project",
       subType: "library",
       socialLinks: [
         {

@@ -32,7 +32,6 @@ export const meta: WorkMeta = {
   ],
   slug: "amaysim",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "aws",

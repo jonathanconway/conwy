@@ -13,7 +13,6 @@ export const meta: ArticleMeta = {
     "AI can do a lot of cool things, but replacing engineers seems unlikely.",
   createdDate: "2026-02-28",
   slug: "ai-replacement",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: aiReplacementIllustrationComposite,
   smallImage: robotColorIllustrationStatic,

@@ -10,7 +10,6 @@ export const meta: ArticleMeta = {
   blurb: "A simpler way to write acceptance tests",
   createdDate: "2022-02-14",
   slug: "testing-steps",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: testingStepsIllustrationComposite,
   smallImage: routeIllustrationStatic,

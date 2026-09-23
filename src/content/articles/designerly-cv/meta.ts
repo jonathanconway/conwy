@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
     "Using LibreOffice with embedded open-source fonts to create a nicely formatted and portable CV",
   createdDate: "2025-12-19",
   slug: "designerly-cv",
-  type: "article",
   tags: [PostTags.Design],
   mainImage: designerlyCvIllustrationComposite,
   smallImage: documentIllustrationStatic,

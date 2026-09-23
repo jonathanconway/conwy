@@ -40,7 +40,6 @@ export const meta: WorkMeta = {
   ],
   slug: "ninemsn",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "HTML",

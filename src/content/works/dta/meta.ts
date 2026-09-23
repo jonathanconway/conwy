@@ -97,7 +97,6 @@ export const meta: WorkMeta = {
   ],
   slug: "dta",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "react",

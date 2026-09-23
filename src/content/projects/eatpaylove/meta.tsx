@@ -10,7 +10,6 @@ export const meta: ProjectMeta = {
   date: "2019-05-01",
   slug: "eatpaylove",
   tags: [],
-  type: "project",
   subType: ProjectSubTypes.Tool,
   socialLinks: [
     {

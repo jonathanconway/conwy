@@ -42,7 +42,6 @@ export const meta: WorkMeta = {
   ],
   slug: "razorfish",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: ".NET",

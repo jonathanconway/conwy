@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
     "Folder pattern I have been using to organise more complex code projects.",
   createdDate: "2026-03-02",
   slug: "self-similar-folder-pattern",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: selfSimilarFolderPatternIllustration,
   smallImage: folderDynamicColorIllustrationStatic,

@@ -77,7 +77,6 @@ export const meta: WorkMeta = {
   ],
   slug: "fiserv",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: ".NET",

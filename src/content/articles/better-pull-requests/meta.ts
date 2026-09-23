@@ -11,7 +11,6 @@ export const meta: ArticleMeta = {
   shortBlurb: "Some best practices I've learned about effective pull requests.",
   createdDate: "2026-08-22",
   slug: "better-pull-requests",
-  type: "article",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: betterPullRequestsIllustrationComposite,
   smallImage: pullRequestIllustrationStatic,

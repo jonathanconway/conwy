@@ -1,5 +1,5 @@
 import { chatBubbleDynamicGradientIllustrationStatic } from "@/content";
-import { Micro } from "@/framework/client";
+import { ContentTypes, Micro } from "@/framework/client";
 
 import { ContentListItem, ContentListItemType } from "../../../content-list";
 import { DateView } from "../../../date";
@@ -52,7 +52,7 @@ export function MicrosListItem({
               <SocialLinksIcons socialLinks={props.micro.meta.socialLinks} />
             )}
 
-            <ContentListItemType>{props.micro.meta.type}</ContentListItemType>
+            <ContentListItemType>{ContentTypes.Micro}</ContentListItemType>
           </>
         }
       />

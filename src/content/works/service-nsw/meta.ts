@@ -39,7 +39,6 @@ export const meta: WorkMeta = {
   ],
   slug: "service-nsw",
   tags: [],
-  type: "work",
   techs: [
     {
       categoryName: "angular 1.3",
