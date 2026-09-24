@@ -1,1 +1,1 @@
-export * from "./book.gen";
+export * from "./book-gen";

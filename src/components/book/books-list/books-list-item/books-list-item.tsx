@@ -1,6 +1,6 @@
 "use client";
 
-import { Book, BookStatuses, sentenceCase } from "@/framework/client";
+import { Book, BookMeta, BookStatuses, sentenceCase } from "@/framework/client";
 
 import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
@@ -18,10 +18,17 @@ const BOOK_STATUS_EMOJI = {
   [BookStatuses.Finished]: "✅",
 };
 
+function getSearchUrl({ title, authors }: BookMeta) {
+  const searchString = `${title} ${authors.join(", ")}`;
+  return `https://duckduckgo.com/?q=${encodeURIComponent(searchString)}`;
+}
+
 export function BooksListItem({ book }: BooksListItemProps) {
+  const url = book.meta.url ?? getSearchUrl(book.meta);
+
   return (
     <li key={book.meta.title} className={styles.booksListItem}>
-      <LinkBox href={book.meta.url} target="_blank">
+      <LinkBox href={url} target="_blank">
         <div className={styles.bookLinkBoxInner}>
           <LinkBoxTitle>{book.meta.title}</LinkBoxTitle>
           <Text type={TextTypes.Body}>by {book.meta.authors.join(", ")}</Text>
