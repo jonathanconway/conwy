@@ -3,6 +3,7 @@ import { omit } from "lodash";
 import { runGenPrompts } from "./gen-prompt-run";
 import { GenSchema, GenSchemaFields } from "./gen-schema";
 import { convertGenSchemaToCommandOptionValues } from "./gen-schema-convert-to-command";
+import { generateSchemaFieldLabel } from "./gen-schema-field-label-generate";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export async function getGenSchemaValues<TGenSchemaRoot extends GenSchemaRoot>(
@@ -18,10 +19,10 @@ export async function getGenSchemaValues<TGenSchemaRoot extends GenSchemaRoot>(
     Object.keys(commandOptionValues),
   ) as GenSchemaFields<TGenSchemaRoot>;
 
-  const promptsAnswerValues = await runGenPrompts<
-    Partial<TGenSchemaRoot>,
-    Partial<TGenSchemaRoot>
-  >(genSchemaExceptCommandOptionValue, commandOptionValues);
+  const promptsAnswerValues = await runGenPrompts(
+    genSchemaExceptCommandOptionValue,
+    commandOptionValues,
+  );
 
   const combinedValues = {
     ...commandOptionValues,
@@ -30,7 +31,7 @@ export async function getGenSchemaValues<TGenSchemaRoot extends GenSchemaRoot>(
 
   console.table(
     Object.entries(combinedValues).map(([key, value]) => [
-      genSchema.fields[key].label,
+      generateSchemaFieldLabel(key, genSchema.fields[key]),
       value,
     ]),
   );

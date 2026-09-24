@@ -8,6 +8,8 @@ import {
   GenSchemaFieldYesNo,
 } from "./gen-schema-field";
 import { GenSchemaFieldDefault } from "./gen-schema-field-default";
+import { generateSchemaFieldHint } from "./gen-schema-field-hint-generate";
+import { generateSchemaFieldLabel } from "./gen-schema-field-label-generate";
 import { GenSchemaFieldTypes } from "./gen-schema-field-type";
 import { GenSchemaRoot } from "./gen-schema-root";
 
@@ -21,6 +23,12 @@ export function convertGenSchemaFieldToPromptField<
   switch (genSchemaField.type) {
     case GenSchemaFieldTypes.Text:
       return convertGenSchemaFieldToPromptFieldText(
+        name,
+        genSchemaField,
+        valuesSoFar,
+      );
+    case GenSchemaFieldTypes.TextList:
+      return convertGenSchemaFieldToPromptFieldTextList(
         name,
         genSchemaField,
         valuesSoFar,
@@ -67,11 +75,16 @@ function convertGenSchemaFieldToPromptFieldBase<
   name: string,
   genSchemaField: GenSchemaField<TGenSchemaRoot>,
   valuesSoFar: Partial<TGenSchemaRoot>,
-) {
+): Omit<PromptObject, "type"> {
+  const message = generateSchemaFieldLabel(name, genSchemaField);
+  const hint = generateSchemaFieldHint(genSchemaField);
+  const initial = evalDefault(genSchemaField.default, valuesSoFar);
+
   return {
     name,
-    message: genSchemaField.label,
-    initial: evalDefault(genSchemaField.default, valuesSoFar),
+    message,
+    hint,
+    initial,
   };
 }
 
@@ -89,6 +102,23 @@ export function convertGenSchemaFieldToPromptFieldText<
       valuesSoFar,
     ),
     type: "text",
+  };
+}
+
+export function convertGenSchemaFieldToPromptFieldTextList<
+  TGenSchemaRoot extends GenSchemaRoot,
+>(
+  name: string,
+  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  valuesSoFar: Partial<TGenSchemaRoot>,
+): PromptObject {
+  return {
+    ...convertGenSchemaFieldToPromptFieldBase(
+      name,
+      genSchemaField,
+      valuesSoFar,
+    ),
+    type: "list",
   };
 }
 

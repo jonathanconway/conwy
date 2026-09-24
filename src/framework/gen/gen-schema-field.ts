@@ -10,12 +10,19 @@ interface GenSchemaFieldBase<
   TGenSchemaRoot extends GenSchemaRoot,
 > {
   readonly type: TFieldType;
-  readonly label: string;
+  readonly label?: string;
   readonly default?: GenSchemaFieldDefault<TGenSchemaRoot>;
+  readonly required?: boolean;
 }
 
 export interface GenSchemaFieldText<TGenSchemaRoot extends GenSchemaRoot>
   extends GenSchemaFieldBase<typeof GenSchemaFieldTypes.Text, TGenSchemaRoot> {}
+
+export interface GenSchemaFieldTextList<TGenSchemaRoot extends GenSchemaRoot>
+  extends GenSchemaFieldBase<
+    typeof GenSchemaFieldTypes.TextList,
+    TGenSchemaRoot
+  > {}
 
 export interface GenSchemaFieldYesNo<TGenSchemaRoot extends GenSchemaRoot>
   extends GenSchemaFieldBase<
@@ -41,6 +48,7 @@ export interface GenSchemaFieldMultiSelect<TGenSchemaRoot extends GenSchemaRoot>
 
 export type GenSchemaField<TGenSchemaRoot extends GenSchemaRoot> =
   | GenSchemaFieldText<TGenSchemaRoot>
+  | GenSchemaFieldTextList<TGenSchemaRoot>
   | GenSchemaFieldYesNo<TGenSchemaRoot>
   | GenSchemaFieldSelect<TGenSchemaRoot>
   | GenSchemaFieldMultiSelect<TGenSchemaRoot>;

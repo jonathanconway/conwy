@@ -10,16 +10,13 @@ export const articleGenSchema: GenSchema<ArticleGenParams> = {
   fields: {
     title: {
       type: GenSchemaFieldTypes.Text,
-      label: "Title",
     },
     category: {
       type: GenSchemaFieldTypes.Select,
-      label: "Category",
       options: Object.values(PostTags),
     },
     slug: {
       type: GenSchemaFieldTypes.Text,
-      label: "Slug",
       default: ({ valuesSoFar }) => kebabCase(valuesSoFar.title ?? ""),
     },
   },

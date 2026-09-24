@@ -1,4 +1,4 @@
-import { getGenSchemaValues } from "@/framework/gen";
+import { getGenSchemaValues } from "@/framework/server";
 
 import {
   fileAppendAndSortLines,

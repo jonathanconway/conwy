@@ -1,4 +1,3 @@
-import { GenSchemaFieldType } from "./gen-schema-field-type";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export type GenSchemaFieldDefaultValue<TGenSchemaRootField> =

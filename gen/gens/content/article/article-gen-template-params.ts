@@ -9,10 +9,13 @@ export interface ArticleGenTemplateParams extends ArticleGenParams {
   readonly date: string;
 }
 
-export function generateArticleGenTemplateParams(params: ArticleGenParams) {
+export function generateArticleGenTemplateParams(
+  params: ArticleGenParams,
+): ArticleGenTemplateParams {
   const { title, category } = params;
   const nameRootObject = `${camelCase(title)}Article`;
   const slug = kebabCase(title);
+
   const date = DateTime.now().toFormat("yyyy-MM-dd");
 
   return {
