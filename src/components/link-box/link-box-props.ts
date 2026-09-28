@@ -1,5 +1,5 @@
 import { LinkProps as NextLinkProps } from "next/link";
-import { HTMLProps } from "react";
+import { HTMLProps, ReactNode } from "react";
 
 import { TextSize } from "../text";
 
@@ -10,4 +10,5 @@ export interface LinkBoxProps
   readonly size?: LinkBoxSize;
   readonly textSize?: TextSize;
   readonly hasMaxWidth?: boolean;
+  readonly iconSlot?: ReactNode;
 }

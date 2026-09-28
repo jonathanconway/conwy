@@ -20,11 +20,13 @@ globalStyle(`${themeFocusOutlineEnabledClass} *:focus`, {
 
 globalStyle(`${themeFocusOutlineEnabledClass} *:focus:after`, {
   position: "absolute",
-  // content: " ",
+  content: " ",
   top: "-2px",
   right: "-2px",
   bottom: "-2px",
   left: "-2px",
   border: "solid 3px black",
   borderRadius: "3px",
+  outline: "solid 3px yellow",
+  outlineOffset: "2px",
 });

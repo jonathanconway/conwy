@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as mixins from "./link.mixins";
 
@@ -7,6 +7,7 @@ export const link = style(mixins.link);
 export const linkContainer = style(mixins.linkContainer);
 
 export const linkInnerContainer = style(mixins.linkInnerContainer);
+globalStyle(`${linkInnerContainer} *`, mixins.linkInnerContainerAll);
 export const linkInnerContainerContents = style(
   mixins.linkInnerContainerContents,
 );

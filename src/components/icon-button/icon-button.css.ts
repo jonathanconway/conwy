@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as buttonStyles from "../button/button.css";
 import * as buttonMixins from "../button/button.mixins";
@@ -29,12 +29,16 @@ export const iconButtonAppearanceNone = style({
   borderWidth: "0",
   background: "none",
   padding: 0,
-  selectors: {
-    "&:hover": filterBrightness2_5,
-    "&:focus": filterBrightness2_5,
-    "&:active": filterBrightness2_5,
-  },
 });
+
+globalStyle(
+  [
+    `${iconButtonAppearanceNone}:hover span`,
+    `${iconButtonAppearanceNone}:focus span`,
+    `${iconButtonAppearanceNone}:active span`,
+  ].join(", "),
+  filterBrightness2_5,
+);
 
 export const iconButtonSelected = buttonStyles.buttonSelected;
 

@@ -7,6 +7,7 @@ export const container = style({
   alignItems: "center",
   gap: "1rem",
   width: "100%",
+  overflow: "hidden",
 });
 
 export const mainColumn = style({

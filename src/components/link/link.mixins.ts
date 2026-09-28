@@ -64,6 +64,13 @@ export const linkContainer = {
 
 export const linkInnerContainer = {
   display: "inline-block",
+  flex: 1,
+  overflow: "hidden",
+};
+
+export const linkInnerContainerAll = {
+  color: "initial",
+  textDecoration: "none",
 };
 
 export const linkInnerContainerContents = {

@@ -1,7 +1,7 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as linkMixins from "../../link/link.mixins";
-import { filters, media } from "../../styling";
+import { filters } from "../../styling";
 import { vars } from "../../theme";
 
 export const faceAndLogoContainer = style({
@@ -9,25 +9,20 @@ export const faceAndLogoContainer = style({
   flexDirection: "row",
   gap: "1rem",
   alignItems: "center",
-});
-
-export const logoContainer = style({
-  position: "relative",
+  outline: "none",
 });
 
 export const link = style({
   ...linkMixins.link,
   display: "inline-block",
-  // Allow extra surface area for pointer events: hover, click
-  marginLeft: "-0.25rem",
+  marginLeft: "-0.25rem", // Allow extra surface area for pointer events: hover, click
   marginTop: "0.5rem",
   height: "2.5rem",
-  ":hover": {
-    filter: filters.brightness_110,
-  },
-  ":focus": {
-    filter: filters.brightness_110,
-  },
+  outline: "none",
+});
+
+globalStyle([`${link}:hover > span`, `${link}:focus > span`].join(", "), {
+  filter: filters.brightness_110,
 });
 
 export const logo = style({
