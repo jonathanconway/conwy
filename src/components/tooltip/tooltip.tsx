@@ -70,6 +70,7 @@ export function Tooltip(props: TooltipProps) {
         }}
         closeEvents={{
           mouseleave: true,
+          blur: true,
         }}
         openOnClick={breakpointIsSm}
         style={{
