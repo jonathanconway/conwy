@@ -1,10 +1,9 @@
 "use client";
 
-import { Breakpoints } from "@/components/styling";
-
 import { ItemsCount } from "../../items-count";
 import { ResponsiveStack } from "../../responsive";
 import { Stack, StackDirections, StackDistributions } from "../../stack";
+import { Breakpoints } from "../../styling";
 import { useChecklistContext } from "../checklist-context";
 
 import { ChecklistDownload } from "./checklist-download";

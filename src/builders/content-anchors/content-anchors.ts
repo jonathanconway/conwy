@@ -1,4 +1,4 @@
-import { lstatSync, readFileSync, readdirSync, writeFileSync } from "fs";
+import { readFileSync, readdirSync, writeFileSync } from "fs";
 import { JSDOM } from "jsdom";
 import { kebabCase, uniq } from "lodash";
 import { marked } from "marked";
@@ -11,7 +11,11 @@ import {
   ContentTypes,
   Slug,
 } from "@/framework";
-import { mkDirSyncIfNotExists } from "@/framework/server";
+import {
+  checkIsDir,
+  checkIsDirEmpty,
+  mkDirSyncIfNotExists,
+} from "@/framework/server";
 
 /**
  * Builds a JSON-encoded list of content anchors.
@@ -29,8 +33,12 @@ async function buildContentAnchorsFromArticles() {
 
   for (const articleFolderName of articlesFolders) {
     const articleFolderPath = join(articlesFoldersPath, articleFolderName);
-    const isDirectory = lstatSync(articleFolderPath).isDirectory();
-    if (!isDirectory) {
+
+    if (!checkIsDir(articleFolderPath)) {
+      continue;
+    }
+
+    if (checkIsDirEmpty(articleFolderPath)) {
       continue;
     }
 

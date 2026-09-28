@@ -1,5 +1,5 @@
 import { REDIRECTS, site } from "@/content";
-import * as pages from "@/content/pages";
+import * as pagesMap from "@/content/pages";
 import { ContentTypes } from "@/framework/client";
 import { findImportedContent } from "@/framework/server";
 
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
     slug,
   }));
 
-  const pagesParams = Object.values(pages).map((item) => item.meta);
+  const pagesParams = Object.values(pagesMap).map((item) => item.meta);
 
   return [...redirectsParams, ...pagesParams];
 }
@@ -33,15 +33,19 @@ export async function generateMetadata(props: PageProps) {
   // Here because they are top-level paths, same as page paths.
   const redirect = REDIRECTS[params.slug];
   if (redirect) {
+    const title = `${site.title} - redirect - ${redirect}`;
+
     return {
-      title: `${site.title} - redirect - ${redirect}`,
+      title,
     };
   }
 
   // Pages
-  const page = findImportedContent(pages, ContentTypes.Page, params.slug);
+  const page = findImportedContent(pagesMap, ContentTypes.Page, params.slug);
   const pageTitle = page.meta.title.toLowerCase();
+
   const title = `${site.title} - pages - ${pageTitle}`;
+
   return {
     title,
   };

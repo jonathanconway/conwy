@@ -1,8 +1,8 @@
-import { TextSizes } from "@/components/text/text-size/text-size";
 import { CONTENT_TYPE_LABELS_PLURAL } from "@/framework/client";
 import { packageInfo } from "@/package-info";
 
 import { Link } from "../../link";
+import { TextSizes } from "../../text";
 
 import { ContentPageHeaderPart } from "./content-page-header-part";
 

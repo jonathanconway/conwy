@@ -1,6 +1,7 @@
 import { colinColleague, jinderColleague } from "@/content/colleagues";
 import {
   ColleagueRelationshipTypes,
+  ContentTypes,
   SocialLinkTypes,
   WorkMeta,
 } from "@/framework/client";
@@ -17,33 +18,53 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content: "“That demo went really well, well done!”",
-      authorTitle: "Executive Director, Digital Markets Initiatives",
-      date: "2018-05-31",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "cibc-1",
+        content: "“That demo went really well, well done!”",
+        authorTitle: "Executive Director, Digital Markets Initiatives",
+        date: "2018-05-31",
+      },
     },
     {
-      content:
-        "“Just wanted to let you know, great work with the Symphony stuff.”",
-      authorTitle: "Executive Director, Digital Markets Initiatives",
-      date: "2018-03-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "cibc-2",
+        content:
+          "“Just wanted to let you know, great work with the Symphony stuff.”",
+        authorTitle: "Executive Director, Digital Markets Initiatives",
+        date: "2018-03-01",
+      },
     },
     {
-      content:
-        "“Mosaic is looking good in production, well done for getting this out on time!”",
-      authorTitle: "Executive Director",
-      date: "2018-03-26",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "cibc-3",
+        content:
+          "“Mosaic is looking good in production, well done for getting this out on time!”",
+        authorTitle: "Executive Director",
+        date: "2018-03-26",
+      },
     },
     {
-      content:
-        "“Thanks for all your hard work on Nexus, and your attention to detail.”",
-      authorTitle: "Technical Lead",
-      date: "2019-06-26",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "cibc-4",
+        content:
+          "“Thanks for all your hard work on Nexus, and your attention to detail.”",
+        authorTitle: "Technical Lead",
+        date: "2019-06-26",
+      },
     },
     {
-      content:
-        "“Thanks for all your work on the Security UI. You did a great job working through the detailed and endless specifications!”",
-      authorTitle: "Senior Developer",
-      date: "2019-06-26",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "cibc-5",
+        content:
+          "“Thanks for all your work on the Security UI. You did a great job working through the detailed and endless specifications!”",
+        authorTitle: "Senior Developer",
+        date: "2019-06-26",
+      },
     },
   ],
   images: [

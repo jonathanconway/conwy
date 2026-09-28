@@ -1,6 +1,7 @@
-import { Content } from "../content";
+import { ContentBase } from "../content-base";
 import { ContentTypes } from "../content-type";
 
 import { StudyMeta } from "./study-meta";
 
-export interface Study extends Content<typeof ContentTypes.Study, StudyMeta> {}
+export interface Study
+  extends ContentBase<typeof ContentTypes.Study, StudyMeta> {}

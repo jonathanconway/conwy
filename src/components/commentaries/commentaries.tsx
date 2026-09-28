@@ -1,24 +1,29 @@
-import { CommentaryMeta, sortCommentaryMetas } from "@/framework/client";
+import { orderBy } from "lodash";
+
+import { Commentary, ContentLinkInfo, Slug } from "@/framework/client";
 
 import { ContentList } from "../content-list";
 
 import { CommentariesListItem } from "./commentaries-list-item";
 
 interface CommentariesProps {
-  readonly commentaryMetas: readonly CommentaryMeta[];
+  readonly commentaries: readonly Commentary[];
+  readonly commentarySourceContentLinkInfos: Record<Slug, ContentLinkInfo>;
 }
 
 export function Commentaries(props: CommentariesProps) {
-  const { commentaryMetas } = props;
-
-  const sortedWorkHistoryListItems = sortCommentaryMetas(commentaryMetas);
+  const { commentaries, commentarySourceContentLinkInfos } = props;
+  const commentariesSorted = orderBy(commentaries, "date", "desc");
 
   return (
     <ContentList>
-      {sortedWorkHistoryListItems.map((workHistoryListItem) => (
+      {commentariesSorted.map((commentary) => (
         <CommentariesListItem
-          key={workHistoryListItem.slug}
-          commentaryMeta={workHistoryListItem}
+          key={commentary.meta.slug}
+          commentary={commentary}
+          sourceLinkInfo={
+            commentarySourceContentLinkInfos[commentary.meta.slug]
+          }
         />
       ))}
     </ContentList>

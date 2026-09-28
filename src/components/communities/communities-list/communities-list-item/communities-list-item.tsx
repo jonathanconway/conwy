@@ -1,4 +1,3 @@
-import { TextSizes, TextTypes } from "@/components/text";
 import { Community as Community_ } from "@/framework/client";
 
 import { ContentListItem } from "../../../content-list";
@@ -6,7 +5,7 @@ import { Image } from "../../../image";
 import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { MdxContainer } from "../../../mdx";
-import { Text } from "../../../text";
+import { TextSizes } from "../../../text";
 
 import * as styles from "./communities-list-item.css";
 

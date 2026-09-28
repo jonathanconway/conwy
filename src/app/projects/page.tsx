@@ -1,10 +1,10 @@
 import { MdxContainer, PageLayout, ProjectsList } from "@/components";
 import { projectsFragment, site } from "@/content";
-import * as projects from "@/content/projects";
+import * as projectsMap from "@/content/projects";
 import { getProjectMetas } from "@/framework/client";
 
 export default function Projects() {
-  const projectMetas = getProjectMetas(projects);
+  const projectMetas = getProjectMetas(projectsMap);
 
   return (
     <PageLayout

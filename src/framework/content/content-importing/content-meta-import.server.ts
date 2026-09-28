@@ -1,7 +1,7 @@
 import { ContentType } from "../content-type/content-types";
 import { MetaBase } from "../meta/meta-base";
 
-import { getContentFolders } from "./content-folders-get";
+import { getContentFolders } from "./content-folders-get.server";
 import { getContentImportPath } from "./content-import-path-get.server";
 
 /**

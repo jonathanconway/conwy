@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "EPA / Demonz",
@@ -12,9 +12,13 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content: "“I had a quick play; all works seamlessly and easy to use.”",
-      authorTitle: "Project Sponsor",
-      date: "2015-08-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "demonz-1",
+        content: "“I had a quick play; all works seamlessly and easy to use.”",
+        authorTitle: "Project Sponsor",
+        date: "2015-08-01",
+      },
     },
   ],
   images: [

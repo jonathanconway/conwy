@@ -1,4 +1,4 @@
-import { Content } from "../content";
+import { ContentBase } from "../content-base";
 import { ContentType } from "../content-type/content-types";
 import { MetaBase } from "../meta/meta-base";
 
@@ -11,7 +11,7 @@ export function getContentAnchors<
   TMetaExtensions extends object = object,
 >(
   contentAnchorsMap: ContentAnchorsMap,
-  content: Content<TType, TMeta, TMetaExtensions>,
+  content: ContentBase<TType, TMeta, TMetaExtensions>,
 ) {
   const contentAnchorsMapType: ContentAnchorsMap[ContentType] =
     contentAnchorsMap[content.type]!;

@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "amaysim",
@@ -11,9 +11,13 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content: "“Your baby has been born. Devices is now live!”",
-      authorTitle: "Senior Engineer",
-      date: "2017-08-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "amaysim-1",
+        content: "“Your baby has been born. Devices is now live!”",
+        authorTitle: "Senior Engineer",
+        date: "2017-08-01",
+      },
     },
   ],
   images: [

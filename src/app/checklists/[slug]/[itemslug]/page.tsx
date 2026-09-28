@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 import { ChecklistItemPage, Redirect } from "@/components";
 import { site } from "@/content";
-import * as checklists from "@/content/checklists";
+import * as checklistsMap from "@/content/checklists";
 import {
   ContentTypes,
   generateChecklistMetaExtensions,
@@ -30,7 +30,7 @@ export default async function Page(props: ChecklistItemPageProps) {
   const { slug, itemslug } = params;
 
   const checklistBase = findImportedContent(
-    checklists,
+    checklistsMap,
     ContentTypes.Checklist,
     params.slug,
   );
@@ -66,7 +66,7 @@ export default async function Page(props: ChecklistItemPageProps) {
 export async function generateStaticParams() {
   const paramsSets = [];
 
-  for (const checklist of Object.values(checklists)) {
+  for (const checklist of Object.values(checklistsMap)) {
     const checklistMd = getChecklistMd(checklist.meta.slug);
 
     const extensions = await generateChecklistMetaExtensions(
@@ -97,7 +97,7 @@ export async function generateMetadata(
   const params = await props.params;
   const { itemslug } = params;
   const checklist = findImportedContent(
-    checklists,
+    checklistsMap,
     ContentTypes.Checklist,
     params.slug,
   );
@@ -110,9 +110,11 @@ export async function generateMetadata(
   const item = extensions?.itemsByName[itemslug];
 
   const checklistTitle = checklist.meta.title.toLowerCase();
-  const checklistItemTitle = item?.title ?? "";
+  const checklistItemTitle = (item?.title ?? "").toLowerCase();
+
+  const title = `${site.title} - checklists - ${checklistTitle} - ${checklistItemTitle}`;
 
   return {
-    title: `${site.title} - checklists - ${checklistTitle} - ${checklistItemTitle}`,
+    title,
   };
 }

@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Fiserv",
@@ -12,20 +12,28 @@ export const meta: WorkMeta = {
   jobTitle: "Senior Software Developer",
   feedbacks: [
     {
-      content:
-        "“Jonathan was the type of developer I wish I could replicate! Hard working, dedicated, talented in all aspects of development, always a team player willing to help out and always dependable.”",
-      authorTitle: "Program Director",
-      date: "2014-05-04",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "fiserv-1",
+        content:
+          "“Jonathan was the type of developer I wish I could replicate! Hard working, dedicated, talented in all aspects of development, always a team player willing to help out and always dependable.”",
+        authorTitle: "Program Director",
+        date: "2014-05-04",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content:
-        "“Jonathan has an excellent web development skill, the passion to go along with it, and the dedication to finish the job no matter what. It has been a pleasure working with Jon during my tenure at Fiserv within the Westpac project.”",
-      authorTitle: "Technical Lead",
-      date: "2014-05-02",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "fiserv-2",
+        content:
+          "“Jonathan has an excellent web development skill, the passion to go along with it, and the dedication to finish the job no matter what. It has been a pleasure working with Jon during my tenure at Fiserv within the Westpac project.”",
+        authorTitle: "Technical Lead",
+        date: "2014-05-02",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
   ],
   images: [

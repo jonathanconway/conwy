@@ -11,6 +11,7 @@ import {
 } from "@/content/colleagues";
 import {
   ColleagueRelationshipTypes,
+  ContentTypes,
   SocialLinkTypes,
   WorkMeta,
 } from "@/framework/client";
@@ -27,21 +28,33 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content: "“always prompt and well structured in everything”",
-      authorTitle: "Senior Engineer",
-      date: "2025-12-19",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "anz-1",
+        content: "“always prompt and well structured in everything”",
+        authorTitle: "Senior Engineer",
+        date: "2025-12-19",
+      },
     },
     {
-      content:
-        "“[Kudos to Jon for] proactively maintaining the Bluestone documentation“",
-      authorTitle: "Staff Engineer",
-      date: "2024-11-22",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "anz-2",
+        content:
+          "“[Kudos to Jon for] proactively maintaining the Bluestone documentation“",
+        authorTitle: "Staff Engineer",
+        date: "2024-11-22",
+      },
     },
     {
-      content:
-        "“[Kudos to] Jon for his Ted Talk on PayId, way to set a bar so high”",
-      authorTitle: "Engineering Manager",
-      date: "2025-01-24",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "anz-3",
+        content:
+          "“[Kudos to] Jon for his Ted Talk on PayId, way to set a bar so high”",
+        authorTitle: "Engineering Manager",
+        date: "2025-01-24",
+      },
     },
   ],
   images: [

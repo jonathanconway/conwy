@@ -1,4 +1,4 @@
-import { TypeOfConst } from "@/framework/utils";
+import { TypeOfConst } from "../../utils/typing";
 
 export const ColleagueRelationshipTypes = {
   Coworker: "coworker",

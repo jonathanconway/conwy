@@ -1,13 +1,11 @@
-import { DateTimeString } from "../date-time";
-import { Url } from "../url";
+import { ContentBase } from "../content-base";
+import { ContentTypes } from "../content-type";
 import { WorkMeta } from "../work";
 
-export interface Testimonial {
-  readonly authorTitle?: string;
-  readonly date?: DateTimeString;
-  readonly content: string;
-  readonly linkedInUrl?: Url;
-}
+import { TestimonialMeta } from "./testimonial-meta";
+
+export interface Testimonial
+  extends ContentBase<typeof ContentTypes.Testimonial, TestimonialMeta> {}
 
 export interface TestimonialAndWork extends Testimonial {
   readonly work?: WorkMeta;

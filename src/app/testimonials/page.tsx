@@ -5,11 +5,11 @@ import {
   Testimonials,
 } from "@/components";
 import { site, testimonialsFragment } from "@/content";
-import * as works from "@/content/works";
+import * as worksMap from "@/content/works";
 import { getTestimonials } from "@/framework/client";
 
 export default function Page() {
-  const testimonials = getTestimonials(works);
+  const testimonials = getTestimonials(worksMap);
 
   return (
     <PageLayout

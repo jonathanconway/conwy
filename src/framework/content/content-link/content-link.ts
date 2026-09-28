@@ -1,5 +1,5 @@
 import { MetaBase } from "../../content/meta/meta-base";
-import { Content } from "../content";
+import { ContentBase } from "../content-base";
 import { ContentType } from "../content-type/content-types";
 import { Slug } from "../slug";
 
@@ -20,7 +20,7 @@ export function createContentLink<
 export function getContentLink<
   TContentType extends ContentType = ContentType,
   TContentMeta extends MetaBase = MetaBase,
->(content: Content<TContentType, TContentMeta>): ContentLink<TContentType> {
+>(content: ContentBase<TContentType, TContentMeta>): ContentLink<TContentType> {
   const type = content.type;
   const slug = content.meta.slug;
   return {

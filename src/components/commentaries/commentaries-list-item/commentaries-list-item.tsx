@@ -1,4 +1,4 @@
-import { CommentaryMeta } from "@/framework/client";
+import { Commentary, ContentLinkInfo } from "@/framework/client";
 
 import { ContentListItem } from "../../content-list";
 import { LinkBox } from "../../link-box";
@@ -10,29 +10,36 @@ import { CommentariesListItemSource } from "./commentaries-list-item-source";
 import * as styles from "./commentaries-list-item.css";
 
 interface CommentariesListItemProps {
-  readonly commentaryMeta: CommentaryMeta;
+  readonly commentary: Commentary;
+  readonly sourceLinkInfo: ContentLinkInfo;
 }
 
 export function CommentariesListItem(props: CommentariesListItemProps) {
-  const { commentaryMeta } = props;
+  const {
+    commentary: {
+      meta: { slug, shortBlurb, commentCount },
+    },
+    sourceLinkInfo,
+  } = props;
 
   return (
-    <LinkBox href={`commentaries/${commentaryMeta.slug}`}>
+    <LinkBox href={`commentaries/${slug}`}>
       <ContentListItem
         mainSlot={
           <>
-            <CommentariesListItemSource commentaryMeta={commentaryMeta} />
+            <CommentariesListItemSource
+              commentary={props.commentary}
+              sourceLinkInfo={sourceLinkInfo}
+            />
 
-            <Text type={TextTypes.Summary}>{commentaryMeta.shortBlurb}</Text>
+            <Text type={TextTypes.Summary}>{shortBlurb}</Text>
           </>
         }
         asideSlot={
-          commentaryMeta.commentCount && (
+          commentCount && (
             <div className={styles.aside}>
-              <Tooltip contents={`${commentaryMeta.commentCount} notes`}>
-                <Text type={TextTypes.Small}>
-                  💬 {commentaryMeta.commentCount}
-                </Text>
+              <Tooltip contents={`${commentCount} notes`}>
+                <Text type={TextTypes.Small}>💬 {commentCount}</Text>
               </Tooltip>
             </div>
           )

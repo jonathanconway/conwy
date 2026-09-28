@@ -16,3 +16,7 @@ export async function filterAsync<T>(
   const inputFiltered = input.filter((_, inputIndex) => values[inputIndex]);
   return inputFiltered;
 }
+
+export const noopUndefined = () => undefined;
+
+export const noopAsync = async () => undefined;

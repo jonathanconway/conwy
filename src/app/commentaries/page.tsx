@@ -4,12 +4,31 @@ import {
   PageLayout,
   ResponsiveMdHalf,
 } from "@/components";
+import * as content from "@/content";
 import { commentariesFragment, site } from "@/content";
-import * as notes from "@/content/commentaries";
-import { getCommentaryMetas } from "@/framework/client";
+import * as commentariesMap from "@/content/commentaries";
+import {
+  ContentLinkInfo,
+  ContentMap,
+  Slug,
+  getContentLinkInfo,
+} from "@/framework";
 
-export default function Page() {
-  const noteMetas = getCommentaryMetas(notes);
+const contentMap = content as unknown as ContentMap;
+const commentaries = Object.values(commentariesMap);
+
+export default async function Page() {
+  const commentarySourceContentLinkInfos: Record<Slug, ContentLinkInfo> =
+    Object.fromEntries(
+      await Promise.all(
+        commentaries.map(async (commentary) => {
+          return [
+            commentary.meta.source.slug,
+            getContentLinkInfo(contentMap, commentary.meta.source),
+          ];
+        }),
+      ),
+    );
 
   return (
     <PageLayout
@@ -20,7 +39,10 @@ export default function Page() {
             <MdxContainer>{commentariesFragment.content}</MdxContainer>
           </ResponsiveMdHalf>
 
-          <Commentaries commentaryMetas={noteMetas} />
+          <Commentaries
+            commentaries={commentaries}
+            commentarySourceContentLinkInfos={commentarySourceContentLinkInfos}
+          />
         </>
       }
     />

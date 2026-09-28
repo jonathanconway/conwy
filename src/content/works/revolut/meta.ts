@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Revolut",
@@ -12,33 +12,53 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“Great teammate, always there to help. Asks the right questions, dives deep to understand business needs.”",
-      authorTitle: "Product Owner",
-      date: "2023-07-05",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "revolut-1",
+        content:
+          "“Great teammate, always there to help. Asks the right questions, dives deep to understand business needs.”",
+        authorTitle: "Product Owner",
+        date: "2023-07-05",
+      },
     },
     {
-      content:
-        "“Provides methodical, well-tested and well-communicated solutions. Communicates effectively with team members and stakeholders.“",
-      authorTitle: "Functional Manager",
-      date: "2023-04-11",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "revolut-2",
+        content:
+          "“Provides methodical, well-tested and well-communicated solutions. Communicates effectively with team members and stakeholders.“",
+        authorTitle: "Functional Manager",
+        date: "2023-04-11",
+      },
     },
     {
-      content:
-        "“FYI - till now we had only positive feedbacks from analysts regarding history of notes! Never happened before 💪 great job!“",
-      authorTitle: "KYB Analyst",
-      date: "2020-06-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "revolut-3",
+        content:
+          "“FYI - till now we had only positive feedbacks from analysts regarding history of notes! Never happened before 💪 great job!“",
+        authorTitle: "KYB Analyst",
+        date: "2020-06-01",
+      },
     },
     {
-      content:
-        "“Really liked Jon's feedback history story - not a massive new feature, but a simple design and delivers big value for our agents and for our customers. Should give good boost to KPI.“",
-      authorTitle: "Head of Product, Business",
-      date: "2020-05-07",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "revolut-4",
+        content:
+          "“Really liked Jon's feedback history story - not a massive new feature, but a simple design and delivers big value for our agents and for our customers. Should give good boost to KPI.“",
+        authorTitle: "Head of Product, Business",
+        date: "2020-05-07",
+      },
     },
     {
-      content: "“Jonathan is a master of the Backoffice!“",
-      authorTitle: "Senior Product Owner, Business",
-      date: "2022-07-22",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "revolut-5",
+        content: "“Jonathan is a master of the Backoffice!“",
+        authorTitle: "Senior Product Owner, Business",
+        date: "2022-07-22",
+      },
     },
   ],
   images: [

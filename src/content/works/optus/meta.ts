@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Optus",
@@ -12,14 +12,22 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "Positive feedback from Lead and Senior Developers on my\n full-stack work and problem-solving at late hours.",
-      date: "2024-03-22",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "optus-1",
+        content:
+          "Positive feedback from Lead and Senior Developers on my\n full-stack work and problem-solving at late hours.",
+        date: "2024-03-22",
+      },
     },
     {
-      content:
-        "“We’d like to thank you once again for your hard work and contributions to date.”",
-      date: "2024-02-20",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "optus-2",
+        content:
+          "“We’d like to thank you once again for your hard work and contributions to date.”",
+        date: "2024-02-20",
+      },
     },
   ],
   slug: "optus",

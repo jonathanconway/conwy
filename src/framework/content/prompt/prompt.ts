@@ -1,11 +1,11 @@
 import { JSX } from "react";
 
-import { Content } from "../content";
+import { ContentBase } from "../content-base";
 import { ContentTypes } from "../content-type";
 
 import { PromptMeta } from "./prompt-meta";
 
 export interface Prompt
-  extends Content<typeof ContentTypes.Prompt, PromptMeta> {
+  extends ContentBase<typeof ContentTypes.Prompt, PromptMeta> {
   readonly content: JSX.Element;
 }

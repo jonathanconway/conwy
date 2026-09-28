@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Article } from "@/components";
 import { site } from "@/content";
-import * as articles from "@/content/articles";
+import * as articlesMap from "@/content/articles";
 import { ContentTypes } from "@/framework/client";
 import { findImportedContent, getArticle } from "@/framework/server";
 
@@ -16,21 +16,23 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allMetas = Object.values(articles).map((item) => item.meta);
+  const allMetas = Object.values(articlesMap).map((item) => item.meta);
   return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
+
   const article = findImportedContent(
-    articles,
+    articlesMap,
     ContentTypes.Article,
     params.slug,
   );
-
   const articleTitle = article.meta.title.toLowerCase();
 
+  const title = `${site.title} - articles - ${articleTitle}`;
+
   return {
-    title: `${site.title} - articles - ${articleTitle}`,
+    title,
   };
 }

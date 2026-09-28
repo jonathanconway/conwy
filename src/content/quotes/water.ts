@@ -14,6 +14,6 @@ This is because there is nothing that can take its place.`,
       title: "Tao Te Ching • 78",
       url: "https://terebess.hu/english/tao/lau.html#Kap78",
     },
-    slug: "vocation",
+    slug: "water",
   },
 };

@@ -1,4 +1,4 @@
-import { TypeOfConst } from "@/framework/client";
+import { TypeOfConst } from "../../utils/typing";
 
 export const BookStatuses = {
   Listed: "listed",

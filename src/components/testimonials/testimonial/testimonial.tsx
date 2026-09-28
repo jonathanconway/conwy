@@ -1,12 +1,12 @@
-import { DateFormats, DateView } from "@/components/date";
-import { IconTypes } from "@/components/icon";
-import { LinkLayoutTypes } from "@/components/link/link-layout-type";
-import { Stack } from "@/components/stack";
 import { TestimonialAndWork as TestimonialAndWork_ } from "@/framework/client";
 
 import { Box } from "../../box";
 import { Chain } from "../../chain";
+import { DateFormats, DateView } from "../../date";
+import { IconTypes } from "../../icon";
 import { Link } from "../../link";
+import { LinkLayoutTypes } from "../../link/link-layout-type";
+import { Stack } from "../../stack";
 import { TextSizes } from "../../text";
 
 import * as styles from "./testimonial.css";
@@ -16,7 +16,10 @@ export interface TestimonialProps {
 }
 
 export function Testimonial({
-  testimonial: { content, authorTitle, date, linkedInUrl, work },
+  testimonial: {
+    work,
+    meta: { content, authorTitle, date, linkedInUrl },
+  },
 }: TestimonialProps) {
   return (
     <Box key={content}>

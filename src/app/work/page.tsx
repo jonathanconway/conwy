@@ -9,12 +9,12 @@ import {
   Works,
 } from "@/components";
 import { site, workFragment } from "@/content";
-import * as works from "@/content/works";
+import * as worksMap from "@/content/works";
 import { getTestimonials, getWorkMetas } from "@/framework/client";
 
 export default function Page() {
-  const workMetas = getWorkMetas(works);
-  const testimonialsCount = getTestimonials(works).length;
+  const workMetas = getWorkMetas(worksMap);
+  const testimonialsCount = getTestimonials(worksMap).length;
 
   return (
     <PageLayout

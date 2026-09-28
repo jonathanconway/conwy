@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Bupa",
@@ -12,28 +12,40 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“Jonathan was an enthusiastic Technical Lead pushing new exciting technologies, setting up strong standards and provided clear directions on tasks.”",
-      authorTitle: "Developer",
-      date: "2011-06-27",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "bupa-1",
+        content:
+          "“Jonathan was an enthusiastic Technical Lead pushing new exciting technologies, setting up strong standards and provided clear directions on tasks.”",
+        authorTitle: "Developer",
+        date: "2011-06-27",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content:
-        "“Jonathan strived to provide the team with easy to use development environments, documented processes and clear direction on tasks. Great Technical Lead I'd enjoy working with again.”",
-      authorTitle: "Senior Developer",
-      date: "2011-06-03",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "bupa-2",
+        content:
+          "“Jonathan strived to provide the team with easy to use development environments, documented processes and clear direction on tasks. Great Technical Lead I'd enjoy working with again.”",
+        authorTitle: "Senior Developer",
+        date: "2011-06-03",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content:
-        "“Jonathan was a great front end developer/lead. He not only helped establish the front end development team, but also set the direction and standards. Full of initiative and great ideas, Jonathan made a great and valuable contribution to the team.”",
-      authorTitle: "Delivery Manager",
-      date: "2011-05-23",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "bupa-3",
+        content:
+          "“Jonathan was a great front end developer/lead. He not only helped establish the front end development team, but also set the direction and standards. Full of initiative and great ideas, Jonathan made a great and valuable contribution to the team.”",
+        authorTitle: "Delivery Manager",
+        date: "2011-05-23",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
   ],
   images: [

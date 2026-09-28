@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "DTA",
@@ -12,31 +12,47 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“Jonathan was friendly and easy to work with. In addition to rapidly delivering prototypes, he communicated well and provided valuable input into ideation sessions.”",
-      authorTitle: "Product Owner",
-      date: "2017-05-01",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "dta-1",
+        content:
+          "“Jonathan was friendly and easy to work with. In addition to rapidly delivering prototypes, he communicated well and provided valuable input into ideation sessions.”",
+        authorTitle: "Product Owner",
+        date: "2017-05-01",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content:
-        "“Jonathan ... was a passionate advocate of user-centered design; such as being active in attending user research sessions and contributing to the design process in ideation sessions.”",
-      authorTitle: "Technical Architect",
-      date: "2017-03-01",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "dta-2",
+        content:
+          "“Jonathan ... was a passionate advocate of user-centered design; such as being active in attending user research sessions and contributing to the design process in ideation sessions.”",
+        authorTitle: "Technical Architect",
+        date: "2017-03-01",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content: "“Thanks for all your enthusiasm and passion for the user.”",
-      authorTitle: "Content Specialist",
-      date: "2017-06-04",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "dta-3",
+        content: "“Thanks for all your enthusiasm and passion for the user.”",
+        authorTitle: "Content Specialist",
+        date: "2017-06-04",
+      },
     },
     {
-      content:
-        "“Thanks ... for all your hard work and your constant dedication.”",
-      authorTitle: "Agile Lead",
-      date: "2017-06-04",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "dta-4",
+        content:
+          "“Thanks ... for all your hard work and your constant dedication.”",
+        authorTitle: "Agile Lead",
+        date: "2017-06-04",
+      },
     },
   ],
   images: [

@@ -1,3 +1,5 @@
+import { ContentTypes } from "../content-type";
+
 import { WorkMeta } from "./work-meta";
 
 export const WORK_META_MOCK: WorkMeta = {
@@ -12,8 +14,12 @@ export const WORK_META_MOCK: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "Positive feedback from Lead and Senior Developers on my\n full-stack work and problem-solving at late hours.",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "optus-1",
+        content:
+          "Positive feedback from Lead and Senior Developers on my\n full-stack work and problem-solving at late hours.",
+      },
     },
   ],
   slug: "optus",

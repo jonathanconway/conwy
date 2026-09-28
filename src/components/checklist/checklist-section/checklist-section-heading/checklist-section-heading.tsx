@@ -1,13 +1,12 @@
 import { kebabCase } from "lodash";
 
-import { StackDistributions } from "@/components/stack/stack-distribution";
-
 import {
   Heading,
   SectionHeading,
   getHeadingSpacingStyles,
 } from "../../../heading";
 import { ItemsCount } from "../../../items-count";
+import { StackDistributions } from "../../../stack";
 import { Stack, StackDirections } from "../../../stack";
 
 import { ChecklistSectionHeadingProps } from "./checklist-section-heading-props";

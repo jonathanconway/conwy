@@ -1,17 +1,21 @@
-import { ContentListSection } from "@/components/content-list/content-list-sections/content-list-section";
-import * as communities from "@/content/communities";
-import { sentenceCase } from "@/framework/client";
+import { Community, sentenceCase } from "@/framework/client";
 
-import { ContentList, ContentListSections } from "../../content-list";
+import {
+  ContentList,
+  ContentListSection,
+  ContentListSections,
+} from "../../content-list";
 import { SectionHeading } from "../../heading";
 
 import { CommunitiesListItem } from "./communities-list-item";
 import { getCommunitiesList } from "./get-communities-list";
 
-export function CommunitiesList() {
-  const { communityCategoryEntries } = getCommunitiesList(
-    Object.values(communities),
-  );
+interface CommunitiesListProps {
+  readonly communities: readonly Community[];
+}
+
+export function CommunitiesList(props: CommunitiesListProps) {
+  const { communityCategoryEntries } = getCommunitiesList(props.communities);
 
   return (
     <ContentListSections>

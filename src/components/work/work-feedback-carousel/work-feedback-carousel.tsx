@@ -28,7 +28,11 @@ export function WorkFeedbackCarousel(props: WorkFeedbackCarouselProps) {
             contents: `Feedback ${feedbackIndex + 1}`,
           },
         }))}
-        renderBody={({ item: { content, authorTitle } }) => (
+        renderBody={({
+          item: {
+            meta: { content, authorTitle },
+          },
+        }) => (
           <div key={content}>
             <div className={styles.feedbackItemQuote}>{content}</div>
 

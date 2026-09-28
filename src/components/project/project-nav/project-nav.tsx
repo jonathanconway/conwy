@@ -1,4 +1,4 @@
-import * as projects from "@/content/projects";
+import * as projectsMap from "@/content/projects";
 import { ProjectMeta, getProjectMetas } from "@/framework/client";
 
 import { ItemNav } from "../../item";
@@ -8,7 +8,7 @@ interface ProjectNavProps {
 }
 
 export function ProjectNav(props: ProjectNavProps) {
-  const projectMetas = getProjectMetas(projects);
+  const projectMetas = getProjectMetas(projectsMap);
   return (
     <ItemNav
       itemMeta={props.projectMeta}

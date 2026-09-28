@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Refugee Connect",
@@ -12,9 +12,13 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "The Refugee Connect proposal was judged the winner, out of 20+ others, by a panel of aid agencies, including Amnesty International.",
-      date: "2016-12-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "refugee-connect-1",
+        content:
+          "The Refugee Connect proposal was judged the winner, out of 20+ others, by a panel of aid agencies, including Amnesty International.",
+        date: "2016-12-01",
+      },
     },
   ],
   images: [

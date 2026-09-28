@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import { Breadcrumb, Idea, PageLayout, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
-import * as ideas from "@/content/ideas";
+import * as ideasMap from "@/content/ideas";
 import { ContentTypes } from "@/framework/client";
 import { findImportedContent } from "@/framework/server";
 
@@ -11,7 +11,7 @@ import { PageProps } from "../../[slug]/types";
 export default async function Page(props: PageProps) {
   const params = await props.params;
 
-  const idea = findImportedContent(ideas, ContentTypes.Idea, params.slug);
+  const idea = findImportedContent(ideasMap, ContentTypes.Idea, params.slug);
 
   return (
     <PageLayout
@@ -40,18 +40,19 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allMetas = Object.values(ideas).map((item) => item.meta);
+  const allMetas = Object.values(ideasMap).map((item) => item.meta);
   return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
 
-  const idea = findImportedContent(ideas, ContentTypes.Idea, params.slug);
+  const idea = findImportedContent(ideasMap, ContentTypes.Idea, params.slug);
+  const ideaTitle = idea.meta.title.toLowerCase();
 
-  const title = idea.meta.title.toLowerCase();
+  const title = `${site.title} - idea - ${ideaTitle}`;
 
   return {
-    title: `${site.title} - idea - ${title}`,
+    title,
   };
 }

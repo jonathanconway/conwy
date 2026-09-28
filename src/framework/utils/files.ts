@@ -1,5 +1,3 @@
-import { TypeOfConst } from ".";
-
 import {
   existsSync,
   lstatSync,
@@ -12,7 +10,9 @@ import {
 import { join } from "path";
 import pluralize from "pluralize";
 
-import { ContentType, Meta } from "../content";
+import { ContentType } from "../content/content-type/content-types";
+
+import { TypeOfConst } from "./typing";
 
 export const PublicStaticAssetTypes = {
   Images: "images",
@@ -69,6 +69,15 @@ export function emptyAndRmDirSyncIfExists(path: string) {
     emptyDirSync(path);
     rmdirSync(path);
   }
+}
+
+export function checkIsDir(path: string) {
+  return existsSync(path) && lstatSync(path).isDirectory();
+}
+
+export function checkIsDirEmpty(path: string) {
+  const files = readdirSync(path);
+  return files.length == 0;
 }
 
 export function mkDirSyncIfNotExists(path: string) {

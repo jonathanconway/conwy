@@ -4,8 +4,8 @@ import {
   PageLayout,
   ResponsiveMdHalf,
 } from "@/components";
-import * as pages from "@/content/pages";
-import { ContentTypes } from "@/framework/client";
+import * as pagesMap from "@/content/pages";
+import { ContentTypes, Page as Page_ } from "@/framework/client";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "./types";
@@ -13,7 +13,7 @@ import { PageProps } from "./types";
 export async function PagePage(props: PageProps) {
   const params = await props.params;
 
-  const page = findImportedContent(pages, ContentTypes.Page, params.slug);
+  const page = findImportedContent(pagesMap, ContentTypes.Page, params.slug);
 
   return (
     <PageLayout

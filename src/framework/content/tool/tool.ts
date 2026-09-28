@@ -1,4 +1,4 @@
-import { Content } from "../content";
+import { ContentBase } from "../content-base";
 import { ContentTypes } from "../content-type";
 
 import { ToolMeta } from "./tool-meta";
@@ -6,4 +6,4 @@ import { ToolMeta } from "./tool-meta";
 /**
  * A `Tool` is something I use frequently – either software or a physical device or belonging.
  */
-export interface Tool extends Content<typeof ContentTypes.Tool, ToolMeta> {}
+export interface Tool extends ContentBase<typeof ContentTypes.Tool, ToolMeta> {}

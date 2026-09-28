@@ -15,5 +15,9 @@ export function useWorkFeedbackCarousel(params: UseWorkFeedbackCarouselParams) {
 }
 
 function sortWorkFeedbacks(workFeedbacks: readonly Testimonial[]) {
-  return orderBy(workFeedbacks, (feedback) => feedback.content.length, "desc");
+  return orderBy(
+    workFeedbacks,
+    (feedback) => feedback.meta.content.length,
+    "desc",
+  );
 }

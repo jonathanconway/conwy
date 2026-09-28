@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Razorfish",
@@ -12,20 +12,28 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“I had the pleasure of interviewing, recommending and working with Jonathan at the beginning of a large software project. He is a keen listener and offered practical solutions. Jonathan is a pragmatic programmer who would be a good hire for your next project.”",
-      authorTitle: "Technical Lead",
-      date: "2009-04-15",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "razorfish-1",
+        content:
+          "“I had the pleasure of interviewing, recommending and working with Jonathan at the beginning of a large software project. He is a keen listener and offered practical solutions. Jonathan is a pragmatic programmer who would be a good hire for your next project.”",
+        authorTitle: "Technical Lead",
+        date: "2009-04-15",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content:
-        "“I got to know Jonathan at Amnesia. It was a pleasure working with Jonathan on the Channel V project. He is a great communicator and a very capable developer who can implement requirements to a point where exceed clients expectations.”",
-      authorTitle: "Senior Developer",
-      date: "2009-03-29",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "razorfish-2",
+        content:
+          "“I got to know Jonathan at Amnesia. It was a pleasure working with Jonathan on the Channel V project. He is a great communicator and a very capable developer who can implement requirements to a point where exceed clients expectations.”",
+        authorTitle: "Senior Developer",
+        date: "2009-03-29",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
   ],
   images: [

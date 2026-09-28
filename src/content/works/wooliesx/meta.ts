@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "WooliesX",
@@ -12,10 +12,14 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“Jon has done phenomenal work on Rubix platform, i.e. developing first micro front end platform at WooliesX. In a span of one year the Rubix platform is hosting 4 micro front end apps and is currently used by 3 squads (Gamma, Omega and Bodega).”",
-      authorTitle: "Technical Lead",
-      date: "2021-11-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "wooliesx-1",
+        content:
+          "“Jon has done phenomenal work on Rubix platform, i.e. developing first micro front end platform at WooliesX. In a span of one year the Rubix platform is hosting 4 micro front end apps and is currently used by 3 squads (Gamma, Omega and Bodega).”",
+        authorTitle: "Technical Lead",
+        date: "2021-11-01",
+      },
     },
   ],
   images: [

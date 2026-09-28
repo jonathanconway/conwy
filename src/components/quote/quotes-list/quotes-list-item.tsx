@@ -1,10 +1,9 @@
 "use client";
 
-import { Quote } from "@/framework/client";
+import { ContentAnchorLinkAndInfo, Quote } from "@/framework/client";
 
 import { BlockQuotePullQuote } from "../../aside";
 import { ContentAnchors } from "../../content-anchors";
-import { LinkBox } from "../../link-box";
 import { Stack, StackDirections } from "../../stack";
 import { Text, TextTypes } from "../../text";
 
@@ -13,10 +12,11 @@ import * as styles from "./quotes-list-item.css";
 
 interface QuotesListItemProps {
   readonly quote: Quote;
+  readonly quoteContentAnchorLinkAndInfos: readonly ContentAnchorLinkAndInfo[];
 }
 
 export function QuotesListItem(props: QuotesListItemProps) {
-  const { quote } = props;
+  const { quote, quoteContentAnchorLinkAndInfos } = props;
 
   return (
     <li key={quote.meta.slug} className={styles.quotesListItem}>
@@ -26,7 +26,9 @@ export function QuotesListItem(props: QuotesListItemProps) {
 
           <QuoteAttribution quote={quote} />
 
-          <ContentAnchors content={quote} />
+          <ContentAnchors
+            contentAnchorLinkAndInfos={quoteContentAnchorLinkAndInfos}
+          />
         </Stack>
       </BlockQuotePullQuote>
     </li>

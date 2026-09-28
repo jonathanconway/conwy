@@ -1,5 +1,4 @@
-import { ContentAnchors } from "@/components/content-anchors";
-
+import { ContentAnchors } from "../../content-anchors";
 import { LinkHeading } from "../../heading";
 import { MdxContainer } from "../../mdx";
 import { Stack } from "../../stack";
@@ -15,7 +14,9 @@ export function Prompt(props: PromptProps) {
 
       <MdxContainer>{props.prompt.content}</MdxContainer>
 
-      <ContentAnchors content={props.prompt} />
+      <ContentAnchors
+        contentAnchorLinkAndInfos={props.promptContentAnchorLinkAndInfos}
+      />
     </Stack>
   );
 }

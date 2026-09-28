@@ -1,8 +1,7 @@
-import { Responsive } from "@/components/responsive";
-import { Breakpoints } from "@/components/styling";
-
 import { IconTypes } from "../../icon";
 import { IconButton } from "../../icon-button";
+import { Responsive } from "../../responsive";
+import { Breakpoints } from "../../styling";
 import { CarouselItem } from "../carousel-item";
 import { UseCarouselResult } from "../use-carousel.hook";
 

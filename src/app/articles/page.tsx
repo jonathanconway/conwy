@@ -7,12 +7,12 @@ import {
   PageLayout,
 } from "@/components";
 import { articlesFragment, site } from "@/content";
-import * as articles from "@/content/articles";
-import * as micros from "@/content/micros";
+import * as articlesMap from "@/content/articles";
+import * as microsMap from "@/content/micros";
 import { Post, pickAndCombineListItems } from "@/framework/client";
 
 export default function Page() {
-  const items = pickAndCombineListItems<Post>([articles, micros]);
+  const items = pickAndCombineListItems<Post>([articlesMap, microsMap]);
 
   return (
     <Suspense>

@@ -1,7 +1,6 @@
 "use client";
 
-import { ActionAndModal } from "@/components/action-and-modal";
-
+import { ActionAndModal } from "../../action-and-modal";
 import { SearchButton } from "../search-button/search-button";
 import { SearchModal } from "../search-modal";
 

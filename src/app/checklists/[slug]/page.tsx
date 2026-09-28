@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 import { ChecklistPage } from "@/components";
 import { site } from "@/content";
-import * as checklists from "@/content/checklists";
+import * as checklistsMap from "@/content/checklists";
 import {
   Checklist as Checklist_,
   ContentTypes,
@@ -25,7 +25,7 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
 
   const checklist = findImportedContent(
-    checklists,
+    checklistsMap,
     ContentTypes.Checklist,
     params.slug,
   );
@@ -53,20 +53,23 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allMetas = Object.values(checklists).map((item) => item.meta);
+  const allMetas = Object.values(checklistsMap).map((item) => item.meta);
   return allMetas;
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
+
   const checklist = findImportedContent(
-    checklists,
+    checklistsMap,
     ContentTypes.Checklist,
     params.slug,
   );
-
   const checklistTitle = checklist.meta.title.toLowerCase();
+
+  const title = `${site.title} - checklists - ${checklistTitle}`;
+
   return {
-    title: `${site.title} - checklists - ${checklistTitle}`,
+    title,
   };
 }

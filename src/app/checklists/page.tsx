@@ -7,10 +7,10 @@ import {
   PageLayout,
 } from "@/components";
 import { checklistsFragment, site } from "@/content";
-import * as checklists from "@/content/checklists";
+import * as checklistsMap from "@/content/checklists";
 
 export default function Page() {
-  const items = Object.values(checklists);
+  const items = Object.values(checklistsMap);
 
   return (
     <Suspense>

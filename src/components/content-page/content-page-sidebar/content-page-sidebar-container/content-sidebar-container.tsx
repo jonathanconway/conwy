@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 
-import { Stack, StackDirections, StackDistributions } from "@/components";
+import { Stack, StackDirections, StackDistributions } from "../../../stack";
 
 import { CONTENT_SIDEBAR_CONTAINER_ID } from "./content-sidebar-container.const";
 import * as styles from "./content-sidebar-container.css";

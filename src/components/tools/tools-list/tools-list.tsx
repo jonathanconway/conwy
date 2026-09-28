@@ -1,6 +1,6 @@
 import { groupBy, orderBy } from "lodash";
 
-import * as tools from "@/content/tools";
+import * as toolsMap from "@/content/tools";
 import { ToolSectionTitles, ToolSections } from "@/framework/client";
 
 import { ContentList } from "../../content-list";
@@ -12,7 +12,7 @@ import { ToolsListItem } from "./tools-list-item";
 import * as styles from "./tools-list.css";
 
 export function ToolsList() {
-  const toolsItems = Object.values(tools);
+  const toolsItems = Object.values(toolsMap);
   const toolsOrdered = orderBy(toolsItems, (tool) => tool.meta.title);
   const toolsSections = Object.values(ToolSections);
   const toolsBySection = groupBy(toolsOrdered, (tool) => tool.meta.section);

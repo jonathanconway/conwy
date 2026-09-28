@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "COIN Software",
@@ -12,20 +12,28 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“Jonathan was really easy to bounce ideas off and had a very strong understanding of UI principals and requirements; and I'd happily do another contract working with him.”",
-      authorTitle: "Senior Software Developer",
-      date: "2010-05-10",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "coin-1",
+        content:
+          "“Jonathan was really easy to bounce ideas off and had a very strong understanding of UI principals and requirements; and I'd happily do another contract working with him.”",
+        authorTitle: "Senior Software Developer",
+        date: "2010-05-10",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content:
-        "“Jonathan is a highly skilled web developer. He gives attention to detail and is a good communicator. He has delivered his tasks under tight deadlines and look forward to working with him again.”",
-      authorTitle: "Program Manager",
-      date: "2010-05-01",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "coin-1",
+        content:
+          "“Jonathan is a highly skilled web developer. He gives attention to detail and is a good communicator. He has delivered his tasks under tight deadlines and look forward to working with him again.”",
+        authorTitle: "Program Manager",
+        date: "2010-05-01",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
   ],
   images: [],

@@ -7,7 +7,6 @@ import { vars } from "../../theme";
 export const navsContainer = {
   display: "flex",
   flex: 1,
-  alignItems: "center",
   ...responsive.flexDirectionMobileColumnRowElse,
   ...gap._2,
 };

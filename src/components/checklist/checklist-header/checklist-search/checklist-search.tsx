@@ -1,7 +1,6 @@
 "use client";
 
-import { IconTypes } from "@/components/icon";
-
+import { IconTypes } from "../../../icon";
 import { TextBox } from "../../../text-box";
 
 import { ChecklistSearchProps } from "./checklist-search-props";

@@ -4,7 +4,26 @@ import {
   PromptsList,
   ResponsiveMdHalf,
 } from "@/components";
+import * as contentMap_ from "@/content";
 import { promptsFragment, site } from "@/content";
+import * as promptsMap from "@/content/prompts";
+import { ContentAnchorsMap, ContentMap } from "@/framework";
+import {
+  Prompt as Prompt_,
+  reduceContentsAnchorLinkAndInfos,
+} from "@/framework/client";
+
+import contentAnchorsMap_ from "../../../builder-out/content-anchors.json";
+
+const contentAnchorsMap = contentAnchorsMap_ as ContentAnchorsMap;
+const contentMap = contentMap_ as unknown as ContentMap;
+const prompts = Object.values(promptsMap) as readonly Prompt_[];
+
+const promptsContentAnchorLinkAndInfos = reduceContentsAnchorLinkAndInfos(
+  prompts,
+  contentMap,
+  contentAnchorsMap,
+);
 
 export default function PromptsPage() {
   return (
@@ -16,7 +35,10 @@ export default function PromptsPage() {
             <MdxContainer>{promptsFragment.content}</MdxContainer>
           </ResponsiveMdHalf>
 
-          <PromptsList />
+          <PromptsList
+            prompts={prompts}
+            promptsContentAnchorLinkAndInfos={promptsContentAnchorLinkAndInfos}
+          />
         </>
       }
     />

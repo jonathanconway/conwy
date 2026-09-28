@@ -2,7 +2,7 @@
 
 import Giscus from "@giscus/react";
 
-import { useSelectedTheme } from "@/components/theme";
+import { useSelectedTheme } from "../../../theme";
 
 export function ArticleDiscussionInlineGisqus() {
   const { selectedTheme } = useSelectedTheme();

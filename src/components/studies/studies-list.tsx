@@ -1,6 +1,6 @@
 "use client";
 
-import * as studies_ from "@/content/studies";
+import * as studiesMap from "@/content/studies";
 import { sentenceCase } from "@/framework/client";
 
 import { TagFilters, useTagFiltersResults } from "../filters";
@@ -11,7 +11,7 @@ import * as styles from "./studies-list.css";
 import { Study } from "./study";
 
 export function StudiesList() {
-  const studyItems = Object.values(studies_);
+  const studyItems = Object.values(studiesMap);
 
   const studiesCategoryTagFiltersParams = {
     items: studyItems,

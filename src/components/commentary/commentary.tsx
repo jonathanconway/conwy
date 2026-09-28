@@ -1,4 +1,8 @@
-import { Commentary as Commentary_ } from "@/framework/client";
+import {
+  CONTENT_TYPE_LABELS,
+  Commentary as Commentary_,
+  ContentLinkInfo,
+} from "@/framework/client";
 
 import { Breadcrumb } from "../breadcrumb";
 import { MainAsideLayout } from "../layouts";
@@ -9,11 +13,16 @@ import { CommentarySource } from "./commentary-source";
 
 interface CommentaryProps {
   readonly commentary: Commentary_;
+  readonly sourceLinkInfo: ContentLinkInfo;
 }
 
 export function Commentary(props: CommentaryProps) {
   const {
-    commentary: { meta, content },
+    commentary: {
+      meta: { source },
+      content,
+    },
+    sourceLinkInfo,
   } = props;
 
   return (
@@ -28,12 +37,15 @@ export function Commentary(props: CommentaryProps) {
                   url: "/commentaries",
                 },
                 {
-                  title: meta.source.title,
+                  title: `${CONTENT_TYPE_LABELS[source.type]}: ${sourceLinkInfo.title}`,
                 },
               ]}
             />
 
-            <CommentarySource commentaryMeta={meta} />
+            <CommentarySource
+              sourceLink={source}
+              sourceLinkInfo={sourceLinkInfo}
+            />
           </Stack>
 
           <MdxContainer>{content}</MdxContainer>

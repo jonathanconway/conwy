@@ -1,5 +1,5 @@
-import { influenceBook } from "@/content";
-import { Commentary, ContentTypes } from "@/framework/client";
+import { influenceBook } from "@/content/books/influence";
+import { Commentary, getContentLink } from "@/framework/client";
 
 import Content from "./content.mdx";
 import { influenceCommentarySlug } from "./slug";
@@ -7,7 +7,7 @@ import { influenceCommentarySlug } from "./slug";
 export const influenceCommentary: Commentary = {
   type: "commentary",
   meta: {
-    source: { ...influenceBook.meta, type: ContentTypes.Book },
+    source: getContentLink(influenceBook),
     slug: influenceCommentarySlug,
     date: "2025-04-13",
     tags: [],

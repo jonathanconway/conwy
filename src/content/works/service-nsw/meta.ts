@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Service NSW",
@@ -12,12 +12,16 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“I gave JC responsibility for extensive liaison with the Digital Team and we were able to get a GO from them as a result. I recommend JC for any similar role.”",
-      authorTitle: "Project Manager",
-      date: "2015-11-12",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "service-nsw-1",
+        content:
+          "“I gave JC responsibility for extensive liaison with the Digital Team and we were able to get a GO from them as a result. I recommend JC for any similar role.”",
+        authorTitle: "Project Manager",
+        date: "2015-11-12",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
   ],
   images: [

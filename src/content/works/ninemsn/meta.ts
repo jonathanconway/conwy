@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "ninemsn",
@@ -11,20 +11,28 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“Jonathan is proactive, efficient and approachable. He was always on top of tasks and delivered the highest quality work and solutions. It was a pleasure working with Jonathan - I recommend Jonathan without hesitation.”",
-      authorTitle: "Program Manager",
-      date: "2009-05-07",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "ninemsn-1",
+        content:
+          "“Jonathan is proactive, efficient and approachable. He was always on top of tasks and delivered the highest quality work and solutions. It was a pleasure working with Jonathan - I recommend Jonathan without hesitation.”",
+        authorTitle: "Program Manager",
+        date: "2009-05-07",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
     {
-      content:
-        "“Worked with Jonathan a few years ago at Ninemsn, while he was on the NZ project. A smart developer who has a wide range of skills in both user experience & .Net development. Someone who delivers great work and willing to share all his knowledge with his team members. Looking forward to work with you again in the near future.”",
-      authorTitle: "Senior Developer",
-      date: "2011-06-14",
-      linkedInUrl:
-        "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "ninemsn-2",
+        content:
+          "“Worked with Jonathan a few years ago at Ninemsn, while he was on the NZ project. A smart developer who has a wide range of skills in both user experience & .Net development. Someone who delivers great work and willing to share all his knowledge with his team members. Looking forward to work with you again in the near future.”",
+        authorTitle: "Senior Developer",
+        date: "2011-06-14",
+        linkedInUrl:
+          "https://www.linkedin.com/in/jonathanconway/details/recommendations",
+      },
     },
   ],
   images: [

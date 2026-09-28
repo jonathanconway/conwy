@@ -1,4 +1,4 @@
-import { SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
 
 export const meta: WorkMeta = {
   client: "Coles",
@@ -12,28 +12,44 @@ export const meta: WorkMeta = {
   },
   feedbacks: [
     {
-      content:
-        "“My team speak very highly about your code. Apparently your Coles Plus code is very slick.”",
-      authorTitle: "Senior Software Engineer",
-      date: "2022-06-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "coles-1",
+        content:
+          "“My team speak very highly about your code. Apparently your Coles Plus code is very slick.”",
+        authorTitle: "Senior Software Engineer",
+        date: "2022-06-01",
+      },
     },
     {
-      content:
-        "“I wanted to say a huge thank you. You have been an integral part of the team since joining. We could not have re-launched Coles Plus without you.”",
-      authorTitle: "Group Product Manager",
-      date: "2023-08-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "coles-2",
+        content:
+          "“I wanted to say a huge thank you. You have been an integral part of the team since joining. We could not have re-launched Coles Plus without you.”",
+        authorTitle: "Group Product Manager",
+        date: "2023-08-01",
+      },
     },
     {
-      content:
-        "“Congratulations ... This is a great demonstration of understanding our customer pain points and building a solution [that] rewards them for their loyalty to Coles and just in time for Christmas. Well done team!”",
-      authorTitle: "General Manager",
-      date: "2022-12-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "coles-3",
+        content:
+          "“Congratulations ... This is a great demonstration of understanding our customer pain points and building a solution [that] rewards them for their loyalty to Coles and just in time for Christmas. Well done team!”",
+        authorTitle: "General Manager",
+        date: "2022-12-01",
+      },
     },
     {
-      content:
-        "“I wanted to thank you for the contribution you made to the 1Site project, and you should be super proud of all your achievements.”",
-      authorTitle: "Development Manager",
-      date: "2023-07-01",
+      type: ContentTypes.Testimonial,
+      meta: {
+        slug: "coles-4",
+        content:
+          "“I wanted to thank you for the contribution you made to the 1Site project, and you should be super proud of all your achievements.”",
+        authorTitle: "Development Manager",
+        date: "2023-07-01",
+      },
     },
   ],
   slug: "coles",

@@ -1,10 +1,10 @@
-import { TextSizes } from "@/components/text";
 import { sentenceCase } from "@/framework/client";
 
 import { IconTypes } from "../../icon";
 import { Link, LinkLayoutTypes } from "../../link";
 import { ListExpandable } from "../../list";
 import { Section } from "../../section";
+import { TextSizes } from "../../text";
 
 import * as styles from "./work-colleagues.css";
 import { WorkProjectsProps } from "./work-colleagues.types";

@@ -5,7 +5,7 @@ import { Commentary } from "./commentary";
 
 export function createCommentaryMock(): Commentary {
   return {
-    type: "commentary",
+    type: ContentTypes.Commentary,
     content: <></>,
     meta: {
       blurb: `Observing the state of front end applications running in production can boost troubleshooting / debugging.`,
@@ -20,7 +20,7 @@ export function createCommentaryMock(): Commentary {
 
 export function createCommentaryMock2(): Commentary {
   return {
-    type: "commentary",
+    type: ContentTypes.Commentary,
     content: <></>,
     meta: {
       blurb:

@@ -1,4 +1,4 @@
-import { isNotNil } from "@/framework/utils";
+import { isNotNil } from "../../utils/typing";
 
 import { Illustration } from "./illustration";
 import { IllustrationLayout } from "./illustration-layout";

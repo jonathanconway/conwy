@@ -1,4 +1,4 @@
-import * as works from "@/content/works";
+import * as worksMap from "@/content/works";
 import { WorkMeta, getWorkMetas } from "@/framework/client";
 
 import { ItemNav } from "../../item";
@@ -8,7 +8,7 @@ interface WorkNavProps {
 }
 
 export function WorkNav(props: WorkNavProps) {
-  const workMetas = getWorkMetas(works);
+  const workMetas = getWorkMetas(worksMap);
   return (
     <ItemNav
       itemMeta={props.workMeta}

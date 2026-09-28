@@ -13,7 +13,7 @@ export function Testimonials(props: TestimonialsProps) {
   return (
     <ContentList>
       {testimonials.map((testimonial) => (
-        <Testimonial key={testimonial.content} testimonial={testimonial} />
+        <Testimonial key={testimonial.meta.content} testimonial={testimonial} />
       ))}
     </ContentList>
   );
