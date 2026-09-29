@@ -1,9 +1,13 @@
+import { orderBy } from "lodash";
+
 import { MdxContainer, MicrosList, PageLayout } from "@/components";
 import { microsFragment, site } from "@/content";
 import * as microsMap from "@/content/micros";
 
 export default function Page() {
   const micros = Object.values(microsMap);
+
+  const microsSorted = orderBy(micros, "meta.createdDate", "desc");
 
   return (
     <PageLayout
@@ -12,7 +16,7 @@ export default function Page() {
         <>
           <MdxContainer>{microsFragment.content}</MdxContainer>
 
-          <MicrosList micros={micros} />
+          <MicrosList micros={microsSorted} />
         </>
       }
     />
