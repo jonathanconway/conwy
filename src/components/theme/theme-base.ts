@@ -11,6 +11,7 @@ import { checklistThemeBase } from "../checklist/checklist.css-theme";
 import { codeThemeBase } from "../code/code.css-theme";
 import { contentListItemThemeBase } from "../content-list/content-list-item/content-list-item.css-theme";
 import { dividerThemeBase } from "../divider/divider.css-theme";
+import { focusOutlineThemeBase } from "../focus-outline/focus-outline.css-theme";
 import { footerThemeBase } from "../footer/footer.css-theme";
 import { headerHamburgerThemeBase } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeBase } from "../header/header-logo/header-logo.css-theme";
@@ -45,6 +46,7 @@ export const themeBase = {
   code: codeThemeBase,
   contentListItem: contentListItemThemeBase,
   divider: dividerThemeBase,
+  focusOutline: focusOutlineThemeBase,
   footer: footerThemeBase,
   headerHamburger: headerHamburgerThemeBase,
   headerLogo: headerLogoThemeBase,

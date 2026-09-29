@@ -1,17 +1,24 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
-import { vars } from "./focus-outline-theme-contract.css";
+import { vars } from "../theme";
 
-export const outline: ComplexStyleRule = {
-  outline: vars.outline,
-  outlineOffset: vars.outlineOffset,
-  borderRadius: "3px",
+const focusOutlineWidth = 3;
+
+export const focusOutline: ComplexStyleRule & GlobalStyleRule = {
+  position: "relative",
+  outline: "none",
 };
 
-export const focusWithinOutline: ComplexStyleRule = {
-  ":focus-within": outline,
-};
-
-export const focusOutline: ComplexStyleRule = {
-  ":focus": outline,
+export const focusOutlineAfter: ComplexStyleRule & GlobalStyleRule = {
+  position: "absolute",
+  content: " ",
+  top: `-${focusOutlineWidth - 1}px`,
+  right: `-${focusOutlineWidth - 1}px`,
+  bottom: `-${focusOutlineWidth - 1}px`,
+  left: `-${focusOutlineWidth - 1}px`,
+  border: `solid ${focusOutlineWidth}px ${vars.focusOutline.inner.border.color}`,
+  borderRadius: `${focusOutlineWidth}px`,
+  outline: `solid ${focusOutlineWidth}px ${vars.focusOutline.outer.border.color}`,
+  outlineOffset: `${focusOutlineWidth - 2}px`,
+  zIndex: 1000,
 };

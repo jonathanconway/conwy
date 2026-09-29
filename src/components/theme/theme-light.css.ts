@@ -13,6 +13,7 @@ import { checklistThemeLight } from "../checklist/checklist.css-theme";
 import { codeThemeLight } from "../code/code.css-theme";
 import { contentListItemThemeLight } from "../content-list/content-list-item/content-list-item.css-theme";
 import { dividerThemeLight } from "../divider/divider.css-theme";
+import { focusOutlineThemeLight } from "../focus-outline/focus-outline.css-theme";
 import { footerThemeLight } from "../footer/footer.css-theme";
 import { headerHamburgerThemeLight } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeLight } from "../header/header-logo/header-logo.css-theme";
@@ -49,6 +50,7 @@ export const themeLightClass = createTheme(vars, {
   code: codeThemeLight,
   contentListItem: contentListItemThemeLight,
   divider: dividerThemeLight,
+  focusOutline: focusOutlineThemeLight,
   footer: footerThemeLight,
   headerHamburger: headerHamburgerThemeLight,
   headerLogo: headerLogoThemeLight,

@@ -1,7 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
 import { boxBorderDecorative } from "../box/box.mixins";
-import { focusOutline } from "../focus-outline";
 import { rounded, text } from "../styling";
 import { vars } from "../theme";
 
@@ -25,7 +24,6 @@ const imageBorder = {
 
 const imageContainerBase = {
   ...imageBorder,
-  ...focusOutline,
 };
 
 export const imageContainerSingle = style({

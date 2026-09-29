@@ -1,4 +1,3 @@
-import { focusOutline } from "../focus-outline";
 import { rounded } from "../styling";
 import { vars } from "../theme";
 
@@ -14,7 +13,6 @@ export const buttonBase = {
   padding: "0.125rem 0.25rem" /* 4px */,
   cursor: "pointer",
   color: vars.button.color,
-  ...focusOutline,
 };
 
 export const buttonBaseNone = {

@@ -2,26 +2,19 @@
 
 import { useEffect } from "react";
 
-import {
-  themeFocusOutlineDisabledClass,
-  themeFocusOutlineEnabledClass,
-} from "./focus-outline-theme.css";
+import * as styles from "./focus-outline-theme.css";
 
 function setFocusOutline(isEnabled: boolean) {
   if (isEnabled) {
-    window.document.body.classList.remove(themeFocusOutlineDisabledClass);
     if (
-      !window.document.body.classList.contains(themeFocusOutlineEnabledClass)
+      !window.document.body.classList.contains(
+        styles.themeFocusOutlineEnabledClass,
+      )
     ) {
-      window.document.body.classList.add(themeFocusOutlineEnabledClass);
+      window.document.body.classList.add(styles.themeFocusOutlineEnabledClass);
     }
   } else {
-    window.document.body.classList.remove(themeFocusOutlineEnabledClass);
-    if (
-      !window.document.body.classList.contains(themeFocusOutlineDisabledClass)
-    ) {
-      window.document.body.classList.add(themeFocusOutlineDisabledClass);
-    }
+    window.document.body.classList.remove(styles.themeFocusOutlineEnabledClass);
   }
 }
 

@@ -13,6 +13,7 @@ import { checklistThemeDark } from "../checklist/checklist.css-theme";
 import { codeThemeDark } from "../code/code.css-theme";
 import { contentListItemThemeDark } from "../content-list/content-list-item/content-list-item.css-theme";
 import { dividerThemeDark } from "../divider/divider.css-theme";
+import { focusOutlineThemeDark } from "../focus-outline/focus-outline.css-theme";
 import { footerThemeDark } from "../footer/footer.css-theme";
 import { headerHamburgerThemeDark } from "../header/header-hamburger/header-hamburger.css-theme";
 import { headerLogoThemeDark } from "../header/header-logo/header-logo.css-theme";
@@ -49,6 +50,7 @@ export const themeDarkClass = createTheme(vars, {
   code: codeThemeDark,
   contentListItem: contentListItemThemeDark,
   divider: dividerThemeDark,
+  focusOutline: focusOutlineThemeDark,
   footer: footerThemeDark,
   headerHamburger: headerHamburgerThemeDark,
   headerLogo: headerLogoThemeDark,

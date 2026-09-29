@@ -1,6 +1,5 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 
-import { focusOutline } from "../focus-outline";
 import { rounded } from "../styling";
 import { vars } from "../theme";
 
@@ -18,7 +17,6 @@ export const textBox: ComplexStyleRule = {
   ...rounded.regular,
   borderWidth: "1px",
   padding: "0.25rem 0.25rem" /* 4px */,
-  ...focusOutline,
 };
 
 export const inputWithIcon: ComplexStyleRule = {

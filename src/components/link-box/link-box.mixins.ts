@@ -1,6 +1,5 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 
-import { focusOutline } from "../focus-outline";
 import { media, rounded } from "../styling";
 import { vars } from "../theme";
 
@@ -19,7 +18,6 @@ export const linkBox: ComplexStyleRule = {
   alignItems: "start",
 
   ...rounded.md,
-  ...focusOutline,
 
   ":hover": {
     backgroundColor: vars.linkBox.hover.background.color,
