@@ -5,7 +5,12 @@ import * as microsMap from "@/content/micros";
 export default function Page() {
   const micros = Object.values(microsMap);
 
-  return <PageLayout main={<MicrosList micros={micros} />} />;
+  return (
+    <PageLayout
+      selectedNavPath="/micros"
+      main={<MicrosList micros={micros} />}
+    />
+  );
 }
 
 export const metadata = {

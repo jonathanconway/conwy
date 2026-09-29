@@ -1,4 +1,4 @@
-import { orderBy, sortBy, uniq } from "lodash";
+import { orderBy } from "lodash";
 
 import { Post } from "./post";
 
@@ -17,22 +17,6 @@ function sortPosts(posts: readonly Post[]): readonly Post[] {
     (post) => post.meta.updatedDate ?? post.meta.createdDate,
     ["desc"],
   );
-}
-
-export function getItemsTags(items: readonly Post[]) {
-  return sortBy(uniq(items.flatMap((item) => item.meta.tags)));
-}
-
-export function getPinnedPosts({
-  itemSets,
-}: {
-  readonly itemSets: readonly Record<string, Post>[];
-}): readonly Post[] {
-  const postsAll = itemSets.map((itemSet) => Object.values(itemSet)).flat();
-  const postsPinned = postsAll.filter((post) => post.meta.isPinned);
-  const postsPinnedSlicedSorted = sortPosts(postsPinned);
-
-  return postsPinnedSlicedSorted;
 }
 
 export function getPosts({

@@ -29,6 +29,7 @@ export * from "./project";
 export * from "./prompt";
 export * from "./quote";
 export * from "./slug";
+export * from "./slug-from-text-generate";
 export * from "./social-link";
 export * from "./study";
 export * from "./testimonial";

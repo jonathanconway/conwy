@@ -59,6 +59,7 @@ export function convertGenSchemaFieldToCommandOption<
 >) {
   switch (genSchemaField.type) {
     case GenSchemaFieldTypes.Text:
+    case GenSchemaFieldTypes.TextMultiLine:
       return convertGenSchemaFieldToCommandOptionText([name, genSchemaField]);
     case GenSchemaFieldTypes.TextList:
       return convertGenSchemaFieldToCommandOptionTextList([

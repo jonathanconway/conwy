@@ -1,6 +1,7 @@
 import { TypeOfConst } from "../../utils/typing";
 
 export const PostTags = {
+  Business: "business",
   Career: "career",
   Design: "design",
   Finance: "finance",
@@ -13,6 +14,7 @@ export const PostTags = {
 export type PostTag = TypeOfConst<typeof PostTags>;
 
 export const POST_TAG_TITLES: Record<PostTag, string> = {
+  [PostTags.Business]: "Business",
   [PostTags.Career]: "Career",
   [PostTags.Design]: "Design",
   [PostTags.Finance]: "Finance",

@@ -7,9 +7,11 @@ export function generateSchemaFieldHint(
 ) {
   switch (genSchemaField.type) {
     case GenSchemaFieldTypes.Text:
-      return undefined;
+      return "Input text in one line.";
     case GenSchemaFieldTypes.TextList:
       return "Input values separated by comma: ','.";
+    case GenSchemaFieldTypes.TextMultiLine:
+      return "Input text line by line. Leave a blank line when done.";
     case GenSchemaFieldTypes.YesNo:
       return "Select yes or no.";
     case GenSchemaFieldTypes.Select:

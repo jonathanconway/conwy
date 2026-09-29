@@ -27,6 +27,12 @@ export function convertGenSchemaFieldToPromptField<
         genSchemaField,
         valuesSoFar,
       );
+    case GenSchemaFieldTypes.TextMultiLine:
+      return convertGenSchemaFieldToPromptFieldTextMultiLine(
+        name,
+        genSchemaField,
+        valuesSoFar,
+      );
     case GenSchemaFieldTypes.TextList:
       return convertGenSchemaFieldToPromptFieldTextList(
         name,
@@ -89,6 +95,23 @@ function convertGenSchemaFieldToPromptFieldBase<
 }
 
 export function convertGenSchemaFieldToPromptFieldText<
+  TGenSchemaRoot extends GenSchemaRoot,
+>(
+  name: string,
+  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  valuesSoFar: Partial<TGenSchemaRoot>,
+): PromptObject {
+  return {
+    ...convertGenSchemaFieldToPromptFieldBase(
+      name,
+      genSchemaField,
+      valuesSoFar,
+    ),
+    type: "text",
+  };
+}
+
+export function convertGenSchemaFieldToPromptFieldTextMultiLine<
   TGenSchemaRoot extends GenSchemaRoot,
 >(
   name: string,

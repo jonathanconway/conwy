@@ -24,6 +24,13 @@ export interface GenSchemaFieldTextList<TGenSchemaRoot extends GenSchemaRoot>
     TGenSchemaRoot
   > {}
 
+export interface GenSchemaFieldTextMultiLine<
+  TGenSchemaRoot extends GenSchemaRoot,
+> extends GenSchemaFieldBase<
+    typeof GenSchemaFieldTypes.TextMultiLine,
+    TGenSchemaRoot
+  > {}
+
 export interface GenSchemaFieldYesNo<TGenSchemaRoot extends GenSchemaRoot>
   extends GenSchemaFieldBase<
     typeof GenSchemaFieldTypes.YesNo,
@@ -49,6 +56,7 @@ export interface GenSchemaFieldMultiSelect<TGenSchemaRoot extends GenSchemaRoot>
 export type GenSchemaField<TGenSchemaRoot extends GenSchemaRoot> =
   | GenSchemaFieldText<TGenSchemaRoot>
   | GenSchemaFieldTextList<TGenSchemaRoot>
+  | GenSchemaFieldTextMultiLine<TGenSchemaRoot>
   | GenSchemaFieldYesNo<TGenSchemaRoot>
   | GenSchemaFieldSelect<TGenSchemaRoot>
   | GenSchemaFieldMultiSelect<TGenSchemaRoot>;

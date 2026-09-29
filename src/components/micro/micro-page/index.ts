@@ -1,2 +1,1 @@
 export * from "./micro-page";
-export * from "./micro";

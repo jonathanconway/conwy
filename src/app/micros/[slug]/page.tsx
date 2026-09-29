@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
-import { Micro, PageLayout } from "@/components";
+import { MicroPage } from "@/components";
+import { generateMicroPageTitle } from "@/components/micro/micro-page/micro-page-header";
 import { site } from "@/content";
 import * as microsMap from "@/content/micros";
 import { ContentTypes } from "@/framework/client";
@@ -13,7 +14,7 @@ export default async function Page(props: PageProps) {
 
   const micro = findImportedContent(microsMap, ContentTypes.Micro, params.slug);
 
-  return <PageLayout main={<Micro micro={micro} />} />;
+  return <MicroPage micro={micro} />;
 }
 
 export async function generateStaticParams() {
@@ -25,7 +26,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
 
   const micro = findImportedContent(microsMap, ContentTypes.Micro, params.slug);
-  const microTitle = micro.meta.createdDate.toLowerCase();
+  const microTitle = generateMicroPageTitle(micro);
 
   const title = `${site.title} - micro - ${microTitle}`;
 

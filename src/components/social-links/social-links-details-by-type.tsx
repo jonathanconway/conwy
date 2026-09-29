@@ -27,6 +27,10 @@ export const SOCIAL_LINKS_DETAILS_BY_TYPE: Record<
     iconType: IconTypes.LinkedIn,
     title: "LinkedIn article",
   },
+  [SocialLinkTypes.LinkedInPost]: {
+    iconType: IconTypes.LinkedIn,
+    title: "LinkedIn post",
+  },
   [SocialLinkTypes.Mastodon]: {
     iconType: IconTypes.Mastodon,
     title: "Mastodon post",

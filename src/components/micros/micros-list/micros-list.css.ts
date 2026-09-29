@@ -1,9 +1,12 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 
 export const container = style({
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   flexWrap: "wrap",
-  alignItems: "center",
   gap: "1rem",
+});
+
+globalStyle(`${container} > *`, {
+  flex: 1,
 });
