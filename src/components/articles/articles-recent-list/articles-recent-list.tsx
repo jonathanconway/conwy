@@ -19,6 +19,7 @@ const RECENTS_SECTION_TAGS: readonly PostTag[] = [
   PostTags.Learning,
   PostTags.Life,
   PostTags.Finance,
+  PostTags.Business,
 ];
 
 export function ArticlesRecentList(props: ArticlesRecentListProps) {
