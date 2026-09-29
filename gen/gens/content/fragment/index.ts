@@ -1,1 +1,1 @@
-export * from "./fragment.gen";
+export * from "./fragment-gen";

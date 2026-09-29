@@ -86,7 +86,7 @@ async function runGenPromptTextMultiLine<TGenSchemaRoot extends GenSchemaRoot>(
   const answers = await prompts(prompt);
   const answer = answers?.[name];
 
-  if (answer.trim() === "") {
+  if (answer === "") {
     return {
       [name]: prevLines,
     };

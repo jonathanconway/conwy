@@ -1,6 +1,6 @@
-import { FragmentGenTemplateParams } from "./fragment.params";
+import { FragmentGenTemplateParams } from "./fragment-gen-template-params";
 
-export const fragmentIndexGen = ({
+export const fragmentGenIndexTemplate = ({
   name,
   nameRootObject,
 }: FragmentGenTemplateParams) =>
@@ -13,7 +13,5 @@ import Content from "./content.mdx";
 export const ${nameRootObject}: Fragment = {
   content: <Content />,
 };
-
-export * from "./${name}";
 
 `.trim();
