@@ -1,3 +1,4 @@
+import { DateString } from "../date";
 import { Image } from "../image";
 import { MetaBase } from "../meta";
 import { PostTag } from "../post";
@@ -7,7 +8,7 @@ import { ArticleMetaExtensions } from "./article-meta-extensions";
 
 export interface ArticleMeta extends MetaBase<ArticleMetaExtensions> {
   readonly title: string;
-  readonly createdDate: string;
+  readonly createdDate: DateString;
   readonly updatedDate?: string;
 
   readonly blurb: string;

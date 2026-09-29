@@ -1,3 +1,4 @@
+import { DateString } from "../date";
 import { MetaBase } from "../meta";
 import { Url } from "../url";
 
@@ -10,7 +11,7 @@ export interface ToolMeta extends MetaBase {
   readonly operatingSystems?: readonly string[];
   readonly mainImage?: string;
   readonly description?: string;
-  readonly date: string;
+  readonly date: DateString;
   readonly usage?: string;
   readonly section: ToolSection;
 }

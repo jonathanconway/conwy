@@ -5,7 +5,7 @@ export const introductionToPhilosophyUniversityOfSydneyStudy: Study = {
   meta: {
     title: "Introduction to Philosophy",
     mainUrl: "https://cce.sydney.edu.au/course/inph",
-    date: "2014",
+    date: "2014-01-01",
     institution: "University of Sydney",
     slug: "introduction-to-philosophy-university-of-sydney",
     type: "Short Course",

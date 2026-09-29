@@ -1,3 +1,5 @@
+import { DateString } from "@/framework";
+
 export interface ToolGenParams {
   readonly name: string;
 
@@ -19,7 +21,7 @@ export interface ToolGenParams {
 export interface ToolGenTemplateParams extends ToolGenParams {
   readonly nameRootObject: string;
 
-  readonly date: string;
+  readonly date: DateString;
 
   readonly sectionEnumName: string;
 }

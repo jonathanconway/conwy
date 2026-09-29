@@ -5,7 +5,7 @@ export const microsoftCertifiedProfessionalMicrosoftStudy: Study = {
   meta: {
     title: "Microsoft Certified Professional",
     mainUrl: "https://en.wikipedia.org/wiki/Microsoft_Certified_Professional",
-    date: "2001",
+    date: "2001-01-01",
     institution: "Microsoft",
     slug: "microsoft-certified-professional-microsoft",
     type: "Self-study + Proctored Exam",

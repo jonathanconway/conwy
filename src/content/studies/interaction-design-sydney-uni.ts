@@ -7,7 +7,7 @@ export const interactionDesignSydneyUniStudy: Study = {
     mainUrl:
       "https://www.sydney.edu.au/courses/courses/pc/graduate-certificate-in-interaction-design-and-electronic-arts.html",
     credential: "Graduate Certificate",
-    date: "2015-2017",
+    date: "2017-12-30",
     institution: "University of Sydney",
     slug: "interaction-design-sydney-uni",
     status: StudyStatuses.Completed,

@@ -5,7 +5,7 @@ export const nextJs15AndReactUdemyStudy: Study = {
   meta: {
     title: "Next.js 15 and React",
     mainUrl: "https://www.udemy.com/course/nextjs-react-the-complete-guide",
-    date: "2025",
+    date: "2025-01-01",
     institution: "Udemy",
     slug: "next-js-15-and-react-udemy",
     type: "Online Course",

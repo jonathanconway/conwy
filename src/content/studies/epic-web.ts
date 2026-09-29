@@ -5,7 +5,7 @@ export const epicWebStudy: Study = {
   meta: {
     title: "Epic React",
     mainUrl: "https://www.epicweb.dev",
-    date: "2025",
+    date: "2025-01-01",
     institution: "Kent C. Dodds",
     slug: "epic-web",
     type: "Online Course",

@@ -1,7 +1,12 @@
 import { camelCase, kebabCase } from "lodash";
 import { DateTime } from "luxon";
 
-import { BookCategories } from "@/framework";
+import {
+  BookCategories,
+  DateString,
+  assert,
+  checkIsValidDateString,
+} from "@/framework";
 
 import { getEnumName } from "../../../gen-utils";
 
@@ -9,7 +14,7 @@ import { BookGenParams } from "./book-gen-params";
 
 export interface BookGenTemplateParams extends BookGenParams {
   readonly nameRootObject: string;
-  readonly date: string;
+  readonly date: DateString;
 
   readonly title: string;
   readonly authors: readonly string[];
@@ -28,8 +33,12 @@ export function generateBookGenTemplateParams(
     url,
   } = params;
   const nameRootObject = `${camelCase(title)}Book`;
+
   const slug = kebabCase(title);
+
   const date = DateTime.now().toFormat("yyyy-MM-dd");
+  assert(checkIsValidDateString(date));
+
   const categoryEnumName = getEnumName(BookCategories, category);
 
   return {

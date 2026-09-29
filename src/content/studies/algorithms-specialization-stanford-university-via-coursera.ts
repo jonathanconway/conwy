@@ -6,7 +6,7 @@ export const algorithmsSpecializationStanfordUniversityViaCourseraStudy: Study =
     meta: {
       title: "Algorithms Specialization",
       mainUrl: "https://www.coursera.org/specializations/algorithms",
-      date: "2025",
+      date: "2025-01-01",
       institution: "Stanford University (via Coursera)",
       slug: "algorithms-specialization-stanford-university-via-coursera",
       type: "Online Course",

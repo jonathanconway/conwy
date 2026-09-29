@@ -7,7 +7,7 @@ export const programmingTafeStudy: Study = {
     mainUrl:
       "https://www.tafensw.edu.au/course-areas/information-and-communication-technology/courses/certificate-iv-in-information-technology-programming--ICT40120-06",
     credential: "Certificate IV",
-    date: "2004",
+    date: "2004-01-01",
     institution: "Hornsby College of TAFE",
     slug: "programming-tafe",
     type: "College Course",

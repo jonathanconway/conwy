@@ -1,7 +1,12 @@
 import { camelCase, kebabCase } from "lodash";
 import { DateTime } from "luxon";
 
-import { ToolSections, titleCase } from "@/framework";
+import {
+  ToolSections,
+  assert,
+  checkIsValidDateString,
+  titleCase,
+} from "@/framework";
 
 import {
   fileAppendAndSortLines,
@@ -20,6 +25,7 @@ export async function tool(params: ToolGenParams) {
   const toolsPath = `src/content/tools`;
 
   const date = DateTime.now().toFormat("yyyy-MM-dd");
+  assert(checkIsValidDateString(date));
 
   const sectionEnumName = getEnumName(
     ToolSections,

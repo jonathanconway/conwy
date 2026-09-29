@@ -1,3 +1,4 @@
+import { DateString } from "../date";
 import { Link } from "../link";
 import { MetaBase } from "../meta";
 
@@ -9,7 +10,7 @@ export interface StudyMeta extends MetaBase {
   readonly mainUrl?: string;
   readonly institution: string;
   readonly type: string;
-  readonly date: string;
+  readonly date: DateString;
   readonly status: StudyStatus;
   readonly credential?: string;
   readonly mark?: string;

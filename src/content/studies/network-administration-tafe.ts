@@ -7,7 +7,7 @@ export const networkAdministrationHornsbyCollegeOfTafeStudy: Study = {
     mainUrl:
       "https://www.tafensw.edu.au/international/courses/Certificate-III-in-Information-Technology-(Networking)--ICT30120N",
     credential: "Certificate III",
-    date: "2004",
+    date: "2004-01-01",
     institution: "Hornsby College of TAFE",
     slug: "network-administration-tafe",
     type: "College Course",

@@ -6,7 +6,7 @@ export const calculusCourseraStudy: Study = {
     title: "Introduction to Calculus",
     mainUrl: "https://www.coursera.org/learn/introduction-to-calculus",
     credential: "Non-credit",
-    date: "2024",
+    date: "2024-01-01",
     institution: "University of Sydney",
     slug: "interaction-design-sydney-uni",
     status: StudyStatuses.Completed,

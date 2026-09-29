@@ -1,4 +1,5 @@
 import { ColleagueRelationship } from "../colleague";
+import { DateString } from "../date";
 import { Image } from "../image";
 import { MetaBase } from "../meta";
 import { SocialLink } from "../social-link";
@@ -8,8 +9,8 @@ import { WorkMetaProject } from "./work-meta-project";
 import { WorkMetaTech } from "./work-meta-tech";
 
 export interface WorkMeta extends MetaBase {
-  readonly startDate: string;
-  readonly endDate: string;
+  readonly startDate: DateString;
+  readonly endDate: DateString;
   readonly blurbShort: string;
   readonly tags: readonly string[];
   readonly client: string;

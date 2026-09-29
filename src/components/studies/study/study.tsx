@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 import { Study as Study_, isNotNil } from "@/framework/client";
 
 import { ContentListItem } from "../../content-list";
@@ -30,7 +32,9 @@ export function Study(props: StudyProps) {
     },
   } = props;
 
-  const details = [credential, mark, institution, type, date]
+  const year = DateTime.fromJSDate(new Date(date)).year;
+
+  const details = [credential, mark, institution, type, year]
     .filter(isNotNil)
     .join(" • ");
 

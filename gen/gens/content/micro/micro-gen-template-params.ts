@@ -1,7 +1,14 @@
 import { camelCase } from "lodash";
 import { DateTime } from "luxon";
 
-import { PostTags, SocialLink, parseSocialLinkTypeFromUrl } from "@/framework";
+import {
+  DateString,
+  PostTags,
+  SocialLink,
+  assert,
+  checkIsValidDateString,
+  parseSocialLinkTypeFromUrl,
+} from "@/framework";
 
 import { getEnumName } from "../../../gen-utils";
 
@@ -13,7 +20,7 @@ export interface MicroGenTemplateParams extends MicroGenParams {
   readonly mainLink?: string;
   readonly socialLinks: readonly SocialLink[];
   readonly tagsEnumNames: readonly string[];
-  readonly createdDate: string;
+  readonly createdDate: DateString;
 }
 
 export function generateMicroGenTemplateParams(
@@ -22,7 +29,9 @@ export function generateMicroGenTemplateParams(
   const { content, slug, mainLink, tags, socialLinkUrls } = params;
 
   const nameRootObject = `${camelCase(slug)}Micro`;
+
   const createdDate = DateTime.now().toFormat("yyyy-MM-dd");
+  assert(checkIsValidDateString(createdDate));
 
   const socialLinks = socialLinkUrls.map(
     (socialLinkUrl) =>

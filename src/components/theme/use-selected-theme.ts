@@ -38,10 +38,6 @@ export function useSelectedTheme() {
   const selectedTheme = selectedThemeState;
 
   const setSelectedTheme = (theme: Theme) => {
-    // if (!isClient) {
-    //   return;
-    // }
-
     setSelectedThemeState(theme);
     setSelectedThemeToLocalStorage(theme);
   };

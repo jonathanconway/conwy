@@ -5,7 +5,7 @@ export const testingJavascriptStudy: Study = {
   meta: {
     title: "Testing Javascript",
     mainUrl: "https://www.testingjavascript.com",
-    date: "2025",
+    date: "2025-01-01",
     institution: "Kent C. Dodds",
     slug: "testing-javascript",
     type: "Online Course",

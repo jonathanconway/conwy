@@ -6,7 +6,7 @@ export const introductionToStatisticsStanfordUniversityViaCourseraStudy: Study =
     meta: {
       title: "Introduction to Statistics",
       mainUrl: "https://www.coursera.org/learn/stanford-statistics",
-      date: "2025",
+      date: "2025-01-01",
       institution: "Stanford University (via Coursera)",
       slug: "introduction-to-statistics-stanford-university-via-coursera",
       type: "Online Course",

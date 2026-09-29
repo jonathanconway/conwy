@@ -4,7 +4,7 @@ export const secureCodeWarriorNodeStudy: Study = {
   type: "study",
   meta: {
     title: "Secure Development Assessment - Javascript, Node.js, Express",
-    date: "2025",
+    date: "2025-01-01",
     institution: "Secure Code Warrior",
     slug: "secure-development-assessment-javascript",
     type: "Online Course",

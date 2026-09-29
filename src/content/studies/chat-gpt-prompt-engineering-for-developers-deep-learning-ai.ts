@@ -5,7 +5,7 @@ export const chatGptPromptEngineeringForDevelopersDeepLearningAiStudy: Study = {
   meta: {
     title: "ChatGPT Prompt Engineering for Developers",
     mainUrl: "https://learn.deeplearning.ai/courses/chatgpt-prompt-eng",
-    date: "2024",
+    date: "2024-01-01",
     institution: "DeepLearning.AI",
     slug: "chat-gpt-prompt-engineering-for-developers-deep-learning-ai",
     type: "Online Course",

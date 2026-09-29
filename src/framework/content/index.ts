@@ -12,6 +12,7 @@ export * from "./content-map";
 export * from "./content-path";
 export * from "./content-type";
 export * from "./content";
+export * from "./date";
 export * from "./date-time";
 export * from "./fragment";
 export * from "./html";
