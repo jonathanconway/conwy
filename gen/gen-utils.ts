@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "fs";
+import { existsSync, readFileSync, writeFileSync } from "fs";
 import { orderBy } from "lodash";
 import { join } from "path";
 
@@ -12,13 +12,27 @@ function getFullPath(filePath: string) {
 export function folderWrite(folderPath: string) {
   const fullPath = getFullPath(folderPath);
 
+  const existedBeforeWrite = existsSync(fullPath);
+
   mkDirSyncIfNotExists(fullPath);
+
+  if (!existedBeforeWrite) {
+    console.log(`📁 Created folder: ${folderPath}`);
+  }
 }
 
 export function fileWrite(filePath: string, contents: string) {
   const fullPath = getFullPath(filePath);
 
+  const existedBeforeWrite = existsSync(fullPath);
+
   writeFileSync(fullPath, contents);
+
+  if (existedBeforeWrite) {
+    console.log(`📄 Updated file ${filePath}`);
+  } else {
+    console.log(`📄 Created file ${filePath}`);
+  }
 }
 
 export function fileAppendAndSortLines(filePath: string, contents: string) {
