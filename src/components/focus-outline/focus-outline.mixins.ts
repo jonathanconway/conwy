@@ -5,6 +5,7 @@ import { vars } from "./focus-outline-theme-contract.css";
 export const outline: ComplexStyleRule = {
   outline: vars.outline,
   outlineOffset: vars.outlineOffset,
+  borderRadius: "3px",
 };
 
 export const focusWithinOutline: ComplexStyleRule = {
