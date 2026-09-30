@@ -1,4 +1,5 @@
 
+export * from "./answer-question-from-material-with";
 export * from "./answer-question-with-sources";
 export * from "./code-impact-analysis";
 export * from "./code-review-branch";
