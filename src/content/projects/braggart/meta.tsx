@@ -1,4 +1,8 @@
-import { ProjectMeta, ProjectSubTypes } from "@/framework/client";
+import {
+  ProjectMeta,
+  ProjectSubTypes,
+  SocialLinkTypes,
+} from "@/framework/client";
 
 export const meta: ProjectMeta = {
   title: "braggart",
@@ -9,7 +13,7 @@ export const meta: ProjectMeta = {
   subType: ProjectSubTypes.Tool,
   socialLinks: [
     {
-      type: "github",
+      type: SocialLinkTypes.GitHub,
       url: "https://github.com/jonathanconway/braggart",
     },
   ],
