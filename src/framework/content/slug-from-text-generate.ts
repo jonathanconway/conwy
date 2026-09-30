@@ -5,11 +5,13 @@ import { isNotNil } from "../utils";
 export function generateSlugFromText(text: string) {
   return kebabCase(
     text
+      .split("\n")
+      .join(" ")
       .split(" ")
       .map(trim)
       .filter(isNotNil)
       .filter(checkIsNotConjunctionWord)
-      .slice(5)
+      .slice(0, 5)
       .join(" "),
   );
 }
