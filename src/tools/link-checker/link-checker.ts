@@ -5,7 +5,7 @@ import { partition } from "lodash";
 import { marked } from "marked";
 import { join } from "path";
 
-import { isNotNil } from "@/framework";
+import { Url, isNotNil } from "@/framework";
 import { getFolderFileTree } from "@/framework/server";
 
 import linkCheckerSkipList from "./link-checker-skip-list.json";
@@ -64,11 +64,11 @@ async function toolLinkCheckerContentMdx(
   });
 }
 
-function checkIsExternalHttpUrl(url: string) {
+function checkIsExternalHttpUrl(url: Url) {
   return url.startsWith("http://") || url.startsWith("https://");
 }
 
-async function toolLinkCheckerCheckLink(url: string) {
+async function toolLinkCheckerCheckLink(url: Url) {
   const { passed } = await check({ path: url });
 
   console.log(`Checking ${url}`, passed ? "✅" : "❌");

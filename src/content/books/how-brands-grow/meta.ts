@@ -1,3 +1,4 @@
+import { howBrandsGrowCommentarySlug } from "@/content/commentaries/how-brands-grow/slug";
 import {
   BookCategories,
   BookMeta,
@@ -11,5 +12,5 @@ export const meta: BookMeta = {
   title: "How Brands Grow",
   url: "http://www.amazon.com/How-Brands-Grow-What-Marketers/dp/0195573560",
   category: BookCategories.Business,
-  commentarySlug: "how-brands-grow",
+  commentarySlug: howBrandsGrowCommentarySlug,
 };

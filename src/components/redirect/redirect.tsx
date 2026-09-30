@@ -2,8 +2,10 @@
 
 import { useEffect } from "react";
 
+import { Url } from "@/framework";
+
 interface RedirectProps {
-  readonly redirectUrl: string;
+  readonly redirectUrl: Url;
 }
 
 export function Redirect(props: RedirectProps) {
