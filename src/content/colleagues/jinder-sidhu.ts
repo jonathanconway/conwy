@@ -1,7 +1,7 @@
-import { Colleague, SocialLinkTypes } from "@/framework/client";
+import { Colleague, ContentTypes, SocialLinkTypes } from "@/framework/client";
 
 export const jinderColleague: Colleague = {
-  type: "colleague",
+  type: ContentTypes.Colleague,
   fullName: "Jinder Sidhu",
   meta: {
     slug: "jinder",
