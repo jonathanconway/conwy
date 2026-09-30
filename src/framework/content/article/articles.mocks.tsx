@@ -1,3 +1,4 @@
+import { ContentTypes } from "../content-type";
 import { PostTags } from "../post";
 import { SocialLinkTypes } from "../social-link";
 
@@ -5,7 +6,7 @@ import { Article } from "./article";
 
 export function createArticleMock(): Article {
   return {
-    type: "article",
+    type: ContentTypes.Article,
     content: <></>,
     meta: {
       slug: "front-end-observability",
@@ -37,7 +38,7 @@ export function createArticleMock(): Article {
 
 export function createArticleMock2(): Article {
   return {
-    type: "article",
+    type: ContentTypes.Article,
     content: <></>,
     meta: {
       slug: "streamlining-code-reviews",

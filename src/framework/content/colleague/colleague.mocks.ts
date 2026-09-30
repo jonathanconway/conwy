@@ -1,10 +1,11 @@
+import { ContentTypes } from "../content-type";
 import { SocialLinkTypes } from "../social-link";
 
 import { Colleague } from "./colleague";
 
 export function createColleagueMock1(): Colleague {
   return {
-    type: "colleague",
+    type: ContentTypes.Colleague,
     fullName: "First Colleague",
     meta: {
       slug: "first-colleague",
@@ -20,7 +21,7 @@ export function createColleagueMock1(): Colleague {
 
 export function createColleagueMock2(): Colleague {
   return {
-    type: "colleague",
+    type: ContentTypes.Colleague,
     fullName: "Second Colleague",
     meta: {
       slug: "second-colleague",

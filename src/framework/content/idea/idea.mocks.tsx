@@ -1,8 +1,10 @@
+import { ContentTypes } from "../content-type";
+
 import { Idea } from "./idea";
 
 export function createIdeaMock(): Idea {
   return {
-    type: "idea",
+    type: ContentTypes.Idea,
     meta: {
       slug: "mock-idea",
       title: "Mock idea`",

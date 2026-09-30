@@ -1,11 +1,13 @@
 import { DateTime } from "luxon";
 
+import { ContentTypes } from "../content-type";
+
 import { Checklist } from "./checklist";
 import { ChecklistTags } from "./checklist-tags";
 
 export function createChecklistMock(): Checklist {
   return {
-    type: "checklist",
+    type: ContentTypes.Checklist,
     startnotes: <></>,
     content: <></>,
     endnotes: <></>,

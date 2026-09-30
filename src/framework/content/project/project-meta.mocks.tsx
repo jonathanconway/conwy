@@ -1,11 +1,11 @@
+import { ContentTypes } from "../content-type";
 import { SocialLinkTypes } from "../social-link";
 
 import { Project } from "./project";
-import { ProjectMeta } from "./project-meta";
 
 export function createProjectMock(): Project {
   return {
-    type: "project",
+    type: ContentTypes.Project,
     content: <></>,
     meta: {
       slug: "tailwindjs",

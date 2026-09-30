@@ -1,10 +1,12 @@
+import { ContentTypes } from "../content-type";
+
 import { Book } from "./book";
 import { BookCategories } from "./book-category";
 import { BookStatuses } from "./book-status";
 
 export function createBookMock1(): Book {
   return {
-    type: "book",
+    type: ContentTypes.Book,
     meta: {
       slug: "influence",
       authors: ["Robert Cialdini"],
@@ -19,7 +21,7 @@ export function createBookMock1(): Book {
 
 export function createBookMock2(): Book {
   return {
-    type: "book",
+    type: ContentTypes.Book,
     meta: {
       slug: "introduction-to-mathematical-thinking",
       authors: ["Keith Devlin"],

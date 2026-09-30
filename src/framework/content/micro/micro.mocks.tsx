@@ -1,10 +1,11 @@
+import { ContentTypes } from "../content-type";
 import { SocialLinkTypes } from "../social-link";
 
 import { Micro } from "./micro";
 
 export function createMicroMock(): Micro {
   return {
-    type: "micro",
+    type: ContentTypes.Micro,
     content: (
       <>
         Observing the state of front end applications running in production can
