@@ -1,8 +1,8 @@
-import { Book } from "@/framework/content/book";
+import { Book, ContentTypes } from "@/framework/client";
 
 import { meta } from "./meta";
 
 export const learningSystemsThinkingForSoftwareProfessionalsBook: Book = {
-  type: "book",
+  type: ContentTypes.Book,
   meta,
 };
