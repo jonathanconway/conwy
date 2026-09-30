@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const chatGptPromptEngineeringForDevelopersDeepLearningAiStudy: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "ChatGPT Prompt Engineering for Developers",
     mainUrl: "https://learn.deeplearning.ai/courses/chatgpt-prompt-eng",

@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const calculusCourseraStudy: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "Introduction to Calculus",
     mainUrl: "https://www.coursera.org/learn/introduction-to-calculus",

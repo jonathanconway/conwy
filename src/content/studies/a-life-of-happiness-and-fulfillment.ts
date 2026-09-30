@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const aLifeOfHappinessAndFulfilmentCourse: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "A Life of Happiness and Fulfilment",
     mainUrl:

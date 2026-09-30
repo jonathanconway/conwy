@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const secureCodeWarriorJavascriptStudy: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "Secure Development Assessment - Javascript Basic",
     date: "2024-01-01",

@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const introductionToPhilosophyUniversityOfSydneyStudy: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "Introduction to Philosophy",
     mainUrl: "https://cce.sydney.edu.au/course/inph",

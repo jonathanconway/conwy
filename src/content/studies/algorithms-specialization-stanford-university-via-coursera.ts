@@ -1,8 +1,13 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const algorithmsSpecializationStanfordUniversityViaCourseraStudy: Study =
   {
-    type: "study",
+    type: ContentTypes.Study,
     meta: {
       title: "Algorithms Specialization",
       mainUrl: "https://www.coursera.org/specializations/algorithms",

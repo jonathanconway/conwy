@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const microsoftCertifiedProfessionalMicrosoftStudy: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "Microsoft Certified Professional",
     mainUrl: "https://en.wikipedia.org/wiki/Microsoft_Certified_Professional",

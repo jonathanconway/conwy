@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const nextJs15AndReactUdemyStudy: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "Next.js 15 and React",
     mainUrl: "https://www.udemy.com/course/nextjs-react-the-complete-guide",

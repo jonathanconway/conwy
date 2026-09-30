@@ -1,8 +1,13 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const decentralizedFinanceDeFiTheFutureOfFinanceSpecializationDukeUniversityViaCourseraStudy: Study =
   {
-    type: "study",
+    type: ContentTypes.Study,
     meta: {
       title:
         "Decentralized Finance (DeFi): The Future of Finance Specialization",

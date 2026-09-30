@@ -1,7 +1,12 @@
-import { Study, StudyCategories, StudyStatuses } from "@/framework/client";
+import {
+  ContentTypes,
+  Study,
+  StudyCategories,
+  StudyStatuses,
+} from "@/framework/client";
 
 export const interactionDesignSydneyUniStudy: Study = {
-  type: "study",
+  type: ContentTypes.Study,
   meta: {
     title: "Interaction Design and Electronic Arts",
     mainUrl:
