@@ -1,4 +1,3 @@
-
 export * from "./are-strong-deterministic-highly-specified";
 export * from "./css-inheritance";
 export * from "./good-systems-redundancy";
