@@ -1,9 +1,11 @@
+
+export * from "./answer-question-with-sources";
 export * from "./code-impact-analysis";
 export * from "./code-review-branch";
 export * from "./code-review-whole-codebase";
 export * from "./explain-ci-job-error";
-export * from "./explain-code-error";
 export * from "./explain-code";
+export * from "./explain-code-error";
 export * from "./explain-pr";
 export * from "./find-code-performing-function";
 export * from "./implement-requirements";
