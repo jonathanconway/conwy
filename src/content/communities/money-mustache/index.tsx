@@ -1,9 +1,13 @@
-import { Community, CommunityCategories } from "@/framework/client";
+import {
+  Community,
+  CommunityCategories,
+  ContentTypes,
+} from "@/framework/client";
 
 import BlurbShort from "./blurb-short.mdx";
 
 export const moneyMustacheCommunity: Community = {
-  type: "community",
+  type: ContentTypes.Community,
   meta: {
     slug: "money-mustache",
     title: "Mr Money Mustache",

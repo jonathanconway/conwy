@@ -1,9 +1,13 @@
-import { Community, CommunityCategories } from "@/framework/client";
+import {
+  Community,
+  CommunityCategories,
+  ContentTypes,
+} from "@/framework/client";
 
 import BlurbShort from "./blurb-short.mdx";
 
 export const rationalReminderCommunity: Community = {
-  type: "community",
+  type: ContentTypes.Community,
   meta: {
     slug: "rational-reminder",
     title: "Rational Reminder",
