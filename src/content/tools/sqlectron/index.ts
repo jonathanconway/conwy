@@ -1,5 +1,5 @@
-import { Tool } from "@/framework/client";
+import { ContentTypes, Tool } from "@/framework/client";
 
 import { meta } from "./meta";
 
-export const sqlectronTool: Tool = { type: "tool", meta };
+export const sqlectronTool: Tool = { type: ContentTypes.Tool, meta };
