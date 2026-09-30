@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const eatQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Eat food. Not too much. Mostly plants.",
   meta: {
     author: {

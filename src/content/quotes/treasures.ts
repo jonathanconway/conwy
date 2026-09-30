@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const treasuresQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: `I have three treasures
 Which I hold and cherish.
 The first is known as compassion,

@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const legacyQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Legacy code is condescending engineering-speak for 'it makes money'.",
   meta: {
     author: {

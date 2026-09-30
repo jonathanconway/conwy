@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const everythingSpiritualQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Where do you seek the spiritual? You seek the spiritual in every ordinary thing that you do every day. Sweeping the floor, watering the vegetables, and washing the dishes become holy and sacred if mindfulness is there. With mindfulness and concentration, everything becomes spiritual.",
   meta: {
     author: {

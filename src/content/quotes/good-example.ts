@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const goodExampleQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Few things are harder to put up with than the annoyance of a good example.",
   meta: {
     author: {

@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const adaptableQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "It is not the strongest species that survive, nor the most intelligent but the ones most adaptable to change.",
   meta: {
     author: {

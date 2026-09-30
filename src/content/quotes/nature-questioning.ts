@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const natureQuestioningQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "What we observe is not nature itself, but nature exposed to our method of questioning.",
   meta: {
     author: {

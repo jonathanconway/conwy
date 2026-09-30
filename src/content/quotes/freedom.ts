@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const freedomQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "I began to develop a system in which freedom was possible, and I conquered my own freedom",
   meta: {
     author: {

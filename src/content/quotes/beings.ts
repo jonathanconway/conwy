@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const beingsQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Let all those beings which exist – without enemies, without obstacles, overcoming their grief and attaining happiness, be able to move freely, each in the path destined for them.",
   meta: {
     author: {

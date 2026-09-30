@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const habitQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
   meta: {
     author: {

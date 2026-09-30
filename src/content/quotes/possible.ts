@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const possibleQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: `Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.`,
   meta: {
     author: {

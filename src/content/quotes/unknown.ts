@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const unknownQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Only the unknown frightens men. But, for whoever confronts it, it is already no longer the unknown.",
   meta: {
     author: {

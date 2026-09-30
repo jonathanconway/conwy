@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const notEnoughTimeQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "To achieve great things, two things are needed: a plan, and not quite enough time.",
   meta: {
     author: {

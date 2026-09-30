@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const billionsQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "How many ‘nos’ are there? Billions. And how many ‘yeses’? Just one.",
   meta: {
     author: {

@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const vocationQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "I do remember that I was happy; and if that is what it means to have a vocation, then it is a very pleasant thing.",
   meta: {
     author: {

@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const idiotQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "I always hope that I can look back every year on myself the previous year and feel like that guy last year was an idiot.",
   meta: {
     author: {

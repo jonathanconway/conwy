@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const cookQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "A good cook changes his knife once a year — because he cuts. A mediocre cook changes his knife once a month — because he hacks.",
   meta: {
     author: {

@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const knowledgeQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Knowledge is no guarantee of good behavior, but ignorance is a virtual guarantee of bad behavior.",
   meta: {
     author: {

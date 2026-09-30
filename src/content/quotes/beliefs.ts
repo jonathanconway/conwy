@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const beliefsQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Beliefs are hypotheses to be tested, not treasures to be guarded.",
   meta: {
     author: {

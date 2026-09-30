@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const longQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "The long term is made up of many short terms.",
   meta: {
     author: {

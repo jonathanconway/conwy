@@ -1,7 +1,7 @@
-import { Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework/client";
 
 export const researchQuote: Quote = {
-  type: "quote",
+  type: ContentTypes.Quote,
   text: "Solid research speeds up the decision-making process because it prevents much of the opinion-based wrangling.",
   meta: {
     author: {
