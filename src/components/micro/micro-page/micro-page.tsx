@@ -1,6 +1,7 @@
 import { ContentSidebarContainer } from "../../content-page";
 import { MainAsideLayout } from "../../layouts";
 import { MdxContainer } from "../../mdx";
+import { PostDiscussion } from "../../post";
 import { Stack } from "../../stack";
 
 import { MicroPageHeader } from "./micro-page-header";
@@ -16,6 +17,8 @@ export function MicroPage(props: MicroPageProps) {
             <MicroPageHeader micro={props.micro} />
 
             <MdxContainer>{props.micro.content}</MdxContainer>
+
+            <PostDiscussion post={props.micro} />
           </Stack>
         }
         aside={

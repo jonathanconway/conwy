@@ -4,7 +4,7 @@ import Giscus from "@giscus/react";
 
 import { useSelectedTheme } from "../../../theme";
 
-export function ArticleDiscussionInlineGisqus() {
+export function PostDiscussionInlineGisqus() {
   const { selectedTheme } = useSelectedTheme();
   return (
     <Giscus

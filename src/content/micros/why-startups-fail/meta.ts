@@ -11,4 +11,5 @@ export const meta: MicroMeta = {
     },
   ],
   isPinned: true,
+  discussionLinks: [],
 };

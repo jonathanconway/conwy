@@ -4,6 +4,7 @@ export const articleGenMetaTemplate = ({
   slug,
   title,
   date,
+  tagsEnumNames,
 }: ArticleGenTemplateParams) =>
   `
 
@@ -14,8 +15,13 @@ export const meta: ArticleMeta = {
   blurb: "",
   createdDate: "${date}",
   slug: "${slug}",
-  type: "article",
-  tags: [],
+  tags: [
+    ${tagsEnumNames.map((tagEnumName) =>
+      `
+      PostTags.${tagEnumName}
+      `.trim(),
+    )}
+  ],
   socialLinks: [],
   discussionLinks: []
 };

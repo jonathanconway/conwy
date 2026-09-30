@@ -1,18 +1,16 @@
-import { Article } from "@/framework/client";
+import { Post } from "@/framework/client";
 
 import { SocialLinksListItem } from "../../../social-links";
 
-import * as styles from "./article-discussion-links.css";
-import { getArticleDiscussionLinksDetails } from "./article-discussion-links.utils";
+import * as styles from "./post-discussion-links.css";
+import { getPostDiscussionLinksDetails } from "./post-discussion-links.utils";
 
-export interface ArticleDiscussionLinkProps {
-  readonly article: Article;
+export interface PostDiscussionLinkProps {
+  readonly post: Post;
 }
 
-export function ArticleDiscussionLink(props: ArticleDiscussionLinkProps) {
-  const discussionLinksDetails = getArticleDiscussionLinksDetails(
-    props.article.meta,
-  );
+export function PostDiscussionLink(props: PostDiscussionLinkProps) {
+  const discussionLinksDetails = getPostDiscussionLinksDetails(props.post.meta);
 
   if (!discussionLinksDetails?.length) {
     return null;

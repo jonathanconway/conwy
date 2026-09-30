@@ -1,7 +1,14 @@
 import { camelCase, kebabCase } from "lodash";
 import { DateTime } from "luxon";
 
-import { DateString, assert, checkIsValidDateString } from "@/framework";
+import {
+  DateString,
+  PostTags,
+  assert,
+  checkIsValidDateString,
+} from "@/framework";
+
+import { getEnumName } from "../../../gen-utils";
 
 import { ArticleGenParams } from "./article-gen-params";
 
@@ -9,21 +16,26 @@ export interface ArticleGenTemplateParams extends ArticleGenParams {
   readonly nameRootObject: string;
   readonly slug: string;
   readonly date: DateString;
+  readonly tagsEnumNames: readonly string[];
 }
 
 export function generateArticleGenTemplateParams(
   params: ArticleGenParams,
 ): ArticleGenTemplateParams {
-  const { title, category } = params;
+  const { title, tags } = params;
   const nameRootObject = `${camelCase(title)}Article`;
   const slug = kebabCase(title);
 
   const date = DateTime.now().toFormat("yyyy-MM-dd");
   assert(checkIsValidDateString(date));
 
+  const tagsEnumNames = tags.map((tag) => getEnumName(PostTags, tag));
+
   return {
     title,
-    category,
+
+    tags,
+    tagsEnumNames,
 
     nameRootObject,
     slug,

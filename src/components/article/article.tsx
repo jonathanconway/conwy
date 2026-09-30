@@ -1,9 +1,9 @@
 import { Article as Article_ } from "@/framework/client";
 
+import { PostDiscussion } from "../post/post-discussion";
 import { Stack } from "../stack";
 
 import { ArticleBody } from "./article-body";
-import { ArticleDiscussion } from "./article-discussion";
 import { ArticleHeader } from "./article-header";
 import { ArticleImage } from "./article-image";
 import { ArticleTableOfContents } from "./article-table-of-contents";
@@ -23,7 +23,7 @@ export function Article({ article }: ArticleProps) {
 
       <ArticleBody article={article} />
 
-      <ArticleDiscussion article={article} />
+      <PostDiscussion post={article} />
     </Stack>
   );
 }

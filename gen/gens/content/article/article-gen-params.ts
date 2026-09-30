@@ -4,5 +4,5 @@ export interface ArticleGenParams {
   readonly title: string;
   readonly slug: string;
 
-  readonly category: PostTag;
+  readonly tags: readonly PostTag[];
 }

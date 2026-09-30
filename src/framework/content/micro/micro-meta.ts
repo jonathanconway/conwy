@@ -1,9 +1,9 @@
 import { DateString } from "../date";
-import { MetaBase } from "../meta";
 import { PostTag } from "../post";
+import { PostMetaBase } from "../post/post-meta-base";
 import { SocialLink } from "../social-link";
 
-export interface MicroMeta extends MetaBase {
+export interface MicroMeta extends PostMetaBase {
   readonly createdDate: DateString;
   readonly updatedDate?: string;
 

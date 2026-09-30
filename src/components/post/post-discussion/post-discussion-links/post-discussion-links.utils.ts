@@ -1,21 +1,21 @@
 import pluralize from "pluralize";
 
 import {
-  ArticleMeta,
-  ArticleMetaDiscussionLink,
+  PostDiscussionLink,
+  PostMeta,
   SocialLinkLabels,
 } from "@/framework/client";
 
-export function getArticleDiscussionLinksDetails(articleMeta: ArticleMeta) {
-  if (!articleMeta.discussionLinks) {
+export function getPostDiscussionLinksDetails(postMeta: PostMeta) {
+  if (!postMeta.discussionLinks) {
     return null;
   }
 
-  return articleMeta.discussionLinks.map(getArticleDiscussionLinkDetails);
+  return postMeta.discussionLinks.map(getPostDiscussionLinkDetails);
 }
 
-export function getArticleDiscussionLinkDetails(
-  discussionLink: ArticleMetaDiscussionLink,
+export function getPostDiscussionLinkDetails(
+  discussionLink: PostDiscussionLink,
 ) {
   const type = SocialLinkLabels[discussionLink.type];
 

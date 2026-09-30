@@ -25,6 +25,7 @@ export function createMicroMock(): Micro {
           url: "https://linkedin.com/in/jonathanconway",
         },
       ],
+      discussionLinks: [],
     },
   };
 }

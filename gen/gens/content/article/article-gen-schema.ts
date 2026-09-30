@@ -11,13 +11,14 @@ export const articleGenSchema: GenSchema<ArticleGenParams> = {
     title: {
       type: GenSchemaFieldTypes.Text,
     },
-    category: {
-      type: GenSchemaFieldTypes.Select,
-      options: Object.values(PostTags),
-    },
     slug: {
       type: GenSchemaFieldTypes.Text,
       default: ({ valuesSoFar }) => kebabCase(valuesSoFar.title ?? ""),
+    },
+
+    tags: {
+      type: GenSchemaFieldTypes.MultiSelect,
+      options: Object.values(PostTags),
     },
   },
 };
