@@ -12,6 +12,7 @@ export * from "./designerly-cv";
 export * from "./diagramming-react";
 export * from "./diagramming-ts";
 export * from "./ephemeral-windows";
+export * from "./escaping-json";
 export * from "./etibs";
 export * from "./flaky-tests";
 export * from "./front-end-development-checklist";
