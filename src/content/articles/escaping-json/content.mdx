@@ -28,9 +28,9 @@ Producing output like this in a log entry:
     "EventId": 0,
     "LogLevel": "Debug",
     "Category": "MyProject.OrderApi",
-    "Message": "Response has {\"UserName\": \"conwy\",\"FullName\": \"Jonathan Conway\",\"Email\": \"jon@conwy.co\"} customer profile; {3} orders.",
+    "Message": "Response has {\\"UserName\\":\\"conwy\\",\\"FullName\\":\\"Jonathan Conway\\",\\"Email\\":\\"jon@conwy.co\\"} customer profile; {3} orders.",
     "State": {
-      "Message": "Response has {\"UserName\": \"conwy\",\"FullName\": \"Jonathan Conway\",\"Email\": \"jon@conwy.co\"} customer profile; {3} orders.",
+      "Message": "Response has {\\"UserName\\":\\"conwy\\",\\"FullName\\":\\"Jonathan Conway\\",\\"Email\\":\\"jon@conwy.co\\"} customer profile; {3} orders.",
       "CustomerProfile": "",
       "OrderCount": 3,
     }
@@ -40,7 +40,11 @@ Producing output like this in a log entry:
   </MdxCode>
 </MdxPre>
 
-Notice the `Message` field containing JSON content with escape sequences, e.g. `\"UserName\":\"conwy\"`.
+Notice the `Message` field containing JSON content with escape sequences:
+
+```
+{\"UserName\":\"conwy\",\"FullName\":\"Jonathan Conway\",\"Email\":\"jon@conwy.co\"}
+```
 
 
 ## Sublime Text and extensions
@@ -81,76 +85,32 @@ The output is neatly indented:
 
 ## Web tools and browser extensions
 
-There is a web tool [JSONLint JSON Unescape](https://jsonlint.com/json-unescape), and it also has a [JSONLint Chrome Extension](https://chromewebstore.google.com/detail/json-formatter/ondecobpcidaehknoegeapmclapnkgcl) providing similar functionality. (These were suggested by Claude Code.)
+I tried searching for Chrome extensions that could format any piece of JSON, but was unable to find one.
 
-However these might not be suitable for sensitive data that needs to be kept private and/or corporate environments where browser extensions are blocked.
+AI to the rescue! Using Claude Code, I vibe coded a simple extension that seem to do the job well: [json-selection-formatter](https://github.com/jonathanconway/json-selection-formatter).
 
+<table>
+<tbody>
+<tr>
+<td>
+<img
+  src="/images/articles/escaping-json/screenshot-chrome-right-click-menu-item.png"
+  alt="Screenshot of right click menu in Chrome with Format selected JSON menu item"
+  width="300px"
+/>
+</td>
+<td>
+<img
+  src="/images/articles/escaping-json/screenshot-chrome-json-formatted-output.png"
+  alt="Screenshot of Chrome window with JSON formatted output"
+  width="300px"
+/>
+</td>
+</tr>
+</tbody>
+</table>
 
-## Asking AI
-
-Claude Code provided useful suggestions, similar to the above.
-
-Prompt
-
-```md
-Log lines viewed in Grafana Loki sometimes contain JSON with escape sequences (for example: \" for double quotes) and also tend to be compressed into one stream of text, with no indentation. This makes it difficult to read and analyse. What's the easiest and best way to format and view this JSON in a readable way? That is, without the escaping and with indentation and syntax highlighting?
-```
-
-
-Reply from Claude Opus 5.5:
-
-```md
-
-It depends on whether you want to fix it inside Grafana or just read a line you've copied. I'd set up both. The Grafana fix is best when you're scrolling through many lines, and the clipboard command is quickest for picking apart one line.
-
-1. In Grafana: let Loki un-escape it for you
-
-Grafana usually shows \" because the JSON is stored as a string inside another field, such as {"msg":"{\"user\":...}"}. LogQL can pull that field out and parse it again:
-
-logql
-{app="my-service"} | json | line_format "{{.msg}}" | json
-
-- | json parses the outer line. The field values come out already un-escaped.
-- line_format "{{.msg}}" makes that inner JSON string the whole log line.
-- The second | json turns its keys into fields you can filter on and see when you expand a line.
-
-Then turn on Prettify JSON in Explore → Logs options (Grafana 10.x/11+; in the Logs panel it's under panel options). You'll get indentation, and expanding a line shows every parsed field in a table.
-
-Swap msg for whatever field holds the nested JSON, e.g. message, body or payload.
-
-2. Clipboard to terminal: a jq one-liner (macOS)
-
-Add this to your ~/.zshrc:
-
-pj() {
-  pbpaste | jq -R '
-    def unwrap: if type=="string" and test("^\\s*[\\[{]")
-                then (. as $s | try (fromjson|unwrap) catch $s) else . end;
-    . as $l | (try fromjson catch ("\"" + $l + "\"" | fromjson)) | unwrap | walk(unwrap)'
-}
-
-Copy a log line in Grafana and run pj. You'll get indented, colour-highlighted JSON. It handles:
-- plain JSON
-- a whole line that's escaped ({\"level\":\"info\",...})
-- JSON strings nested inside fields, at any depth, even when they're escaped twice
-
-I tested it on both kinds of input. For example:
-
-{\"level\":\"info\",\"body\":\"{\\\"a\\\":1}\"}
-becomes
-{
-  "level": "info",
-  "body": {
-    "a": 1
-  }
-}
-
-If you don't have jq, install it with brew install jq. Add | less -R if you want to scroll through long output, or pipe it to pbcopy to put it back on the clipboard.
-
-3. No setup: a browser tool
-
-Paste the line into an online tool like jsonformatter.org or the "JSON Unescape" tool on it-tools.tech. You'll often need to click "unescape" before "format." That's fine for occasional use, but avoid it for logs that might hold personal data or secrets, because you'd be pasting them into a third-party site.
-```
+> Aside: Browser extensions might not be suitable for sensitive data that needs to be kept private and/or corporate environments where browser extensions are blocked.
 
 
 ## Closing remarks
