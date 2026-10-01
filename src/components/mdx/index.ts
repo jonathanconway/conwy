@@ -3,6 +3,7 @@ export * from "./mdx-aside";
 export * from "./mdx-blockquote";
 export * from "./mdx-code";
 export * from "./mdx-container";
+export * from "./mdx-details";
 export * from "./mdx-div";
 export * from "./mdx-h1";
 export * from "./mdx-h2";

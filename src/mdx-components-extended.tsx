@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 
 import { MdxAside } from "./components/mdx/mdx-aside";
+import { MdxDetails } from "./components/mdx/mdx-details";
 import { MdxDiv } from "./components/mdx/mdx-div";
 import { MdxKbd } from "./components/mdx/mdx-kbd";
 import { MdxSection } from "./components/mdx/mdx-section";
@@ -11,6 +12,7 @@ export const mdxComponentsExtended: Record<
   FunctionComponent<HasChildrenOptional>
 > = {
   aside: MdxAside,
+  details: MdxDetails,
   div: MdxDiv,
   kbd: MdxKbd,
   section: MdxSection,
