@@ -5,13 +5,13 @@ export const microGenIndexTemplate = ({
 }: MicroGenTemplateParams) =>
   `
 
-import { Micro } from "@/framework/client";
+import { ContentTypes, Micro } from "@/framework/client";
 
 import { meta } from "./meta";
 import Content from "./content.mdx"
 
 export const ${nameRootObject}: Micro = {
-  type: "micro",
+  type: ContentTypes.Micro,
   meta,
   content: <Content />,
 };

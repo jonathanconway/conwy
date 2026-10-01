@@ -8,12 +8,12 @@ export const communityIndexGen = ({
 }: CommunityGenTemplateParams) =>
   `
 
-import { Community, CommunityCategories } from "@/framework/client";
+import { Community, CommunityCategories, ContentTypes } from "@/framework/client";
 
 import BlurbShort from "./blurb-short.mdx";
 
 export const ${nameRootObject}: Community = {
-  type: "community",
+  type: ContentTypes.Community,
   meta: {
     slug: "${name}",
     title: "${title}",

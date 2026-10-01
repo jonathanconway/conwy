@@ -5,12 +5,12 @@ export const bookGenIndexTemplate = ({
 }: BookGenTemplateParams) =>
   `
 
-import { Book } from "@/framework/content/book";
+import { Book, ContentTypes } from "@/framework/client";
 
 import { meta } from "./meta";
 
 export const ${nameRootObject}: Book = {
-  type: "book",
+  type: ContentTypes.Book,
   meta,
 };
 

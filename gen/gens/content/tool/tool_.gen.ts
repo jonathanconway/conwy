@@ -13,10 +13,10 @@ export const toolGen = ({
 }: ToolGenTemplateParams) =>
   `
 
-import { Tool, ToolSections } from "@/framework/client";
+import { ContentTypes, Tool, ToolSections } from "@/framework/client";
 
 export const ${nameRootObject}: Tool = {
-  type: "tool",
+  type: ContentTypes.Tool,
   meta: {
     slug: "${name}",
     title: "${title}",

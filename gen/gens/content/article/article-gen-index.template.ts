@@ -5,13 +5,13 @@ export const articleGenIndexTemplate = ({
 }: ArticleGenTemplateParams) =>
   `
 
-import { Article } from "@/framework/client";
+import { Article, ContentTypes } from "@/framework/client";
 
 import Content from "./content.mdx";
 import { meta } from "./meta";
 
 export const ${nameRootObject}: Article = {
-  type: "article",
+  type: ContentTypes.Article,
   meta,
   content: <Content />,
 };
