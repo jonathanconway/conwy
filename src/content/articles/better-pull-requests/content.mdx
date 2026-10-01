@@ -276,7 +276,45 @@ Depending on the set up at your organisation, your team members might automatica
 It might be helpful to tag specific individuals if broadcasting a PR to a larger team through, say, the team chat channel. This way, you can involve the right people in code review while keeping the rest of the team in the loop.
 
 
-## Discussions
+## Responding to feedback
+
+I find it best to take on any reasonable feedback and action it as quickly and effectively as possible, assuming good faith.
+
+What if you want to indicate agreement? What if when there are multiple points of feedback and you need to keep track of them? For the above, I like to keep a checklist of feedback items for each of my open pull requests in a local text file.
+
+Additionally, I usually leave a small indicator to show I've seen and approve the feedback, such as a thumbs-up emoji: 👍.
+
+I also leave a comment with a checklist item for actioning. For example:
+
+> ```typescript
+> function sumNumbers() { ... }
+> ```
+
+> Reviewer: Let's add a unit test and some mock data for this.
+
+> Me: 👍
+> 
+> - [ ] add unit test for `sumNumbers`
+> - [ ] add mock data for `sumNumbers`
+
+I try to action each checklist item in its own separate commit, naming the commit after the item. This helps me to keep track of my progress.
+
+For example:
+```
+fix: add unit test for sumNumbers
+```
+
+I keep the commit history prior to merging. And as I push each change, I check off the checklist items one by one. That way, the reviewers and the engineering manager can view my progress and the evolution of the solution. After actioning a raft of feedback items, pushing them all and ensuring the CI is green, I submit the pull request for another round of review.
+
+> Me: 👍
+> 
+> - [x] add unit test for `sumNumbers`
+> - [x] add mock data for `sumNumbers`
+
+I often find it helpful to perform another self review after actioning feedback and before submitting each round. This way, you can anticipate any follow up feedback and action it pre emptively. This may be helpful in situations where the quality of your work as an engineer is measured based on iteration count. (For example: [QuantumLight's Performance Management for Deliverables](https://quantumlightcapital.com/playbooks/performance-management/the-framework#deliverables) mentions "# of iterations to completion" as a KPI.)
+
+
+## Extended discussions
 
 Discussions in code review can get pretty deep, especially during the early stages of a project or when discussing a complex issue. Too many nested comments in a pull request can be difficult for reviewers to keep track of and obscure the communication from the wider team.
 
