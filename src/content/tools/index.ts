@@ -62,6 +62,7 @@ export * from "./ratio";
 export * from "./real-favicon-generator";
 export * from "./regex-101";
 export * from "./requestly";
+export * from "./resize-me";
 export * from "./rider";
 export * from "./rothco-snorkel-parka";
 export * from "./run-js";
