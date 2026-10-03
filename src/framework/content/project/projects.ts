@@ -4,7 +4,7 @@ import { Project } from "./project";
 import { ProjectMeta } from "./project-meta";
 
 export function sortProjectMetas(ProjectMetas: readonly ProjectMeta[]) {
-  return orderBy(ProjectMetas, "endDate", "desc");
+  return orderBy(ProjectMetas, ["date", "endDate"], "desc");
 }
 
 export function getProjectMetas(Projects: Record<string, Project>) {
