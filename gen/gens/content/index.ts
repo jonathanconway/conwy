@@ -5,5 +5,6 @@ export * from "./community";
 export * from "./fragment";
 export * from "./idea";
 export * from "./illustration";
+export * from "./project";
 export * from "./prompt";
 export * from "./tool";

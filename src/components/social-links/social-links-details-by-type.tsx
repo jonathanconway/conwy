@@ -1,6 +1,6 @@
 import { SocialLinkType, SocialLinkTypes } from "@/framework/client";
 
-import { IconType, IconTypes } from "../icon";
+import { IconType, IconTypes } from "../icon/icon-types";
 
 interface SocialLinkDetails {
   readonly iconType: IconType;

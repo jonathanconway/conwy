@@ -5,3 +5,4 @@ export * from "../client-utils";
 export * from "../note";
 export * from "../tracking";
 export * from "../search";
+export * from "../validation";
