@@ -5,6 +5,7 @@ export const meta: MicroMeta = {
   slug: "using-ai-broad-research",
   tags: [PostTags.AI],
   socialLinks: [],
+  isPinned: true,
   discussionLinks: [
     {
       type: SocialLinkTypes.LinkedInPost,
