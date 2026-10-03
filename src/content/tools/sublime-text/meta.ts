@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "sublime-text",
   title: "Sublime Text",
   category: "Editor",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://www.sublimetext.com/",
   description: "Fast, feature-packed text editor.",

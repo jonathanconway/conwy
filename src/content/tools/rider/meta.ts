@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "rider",
   title: "IntelliJ Rider",
   category: "IDE",
-  date: "2026-06-10",
+  createdDate: "2026-06-10",
   operatingSystems: ["MacOS", "Linux", "Windows"],
   url: "https://www.jetbrains.com/rider/",
   description:

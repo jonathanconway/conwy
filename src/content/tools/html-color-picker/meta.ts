@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "html-color-picker",
   title: "HtmlColorPicker",
   category: "Color",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["Web"],
   url: "https://www.w3schools.com/colors/colors_picker.asp",
   description: "Web-compatible HTML color picker.",

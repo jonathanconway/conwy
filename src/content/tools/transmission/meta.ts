@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "transmission",
   title: "Transmission",
   category: "BitTorrent client",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://transmissionbt.com",
   description: "Fast, Easy and Free Bittorrent Client.",

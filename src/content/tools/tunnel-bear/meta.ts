@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "tunnel-bear",
   title: "TunnelBear",
   category: "VPN",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "iOS", "Android", "Windows"],
   url: "https://www.tunnelbear.com/",
   description:

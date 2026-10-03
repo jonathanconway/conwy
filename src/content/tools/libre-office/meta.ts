@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "libre-office",
   title: "LibreOffice",
   category: "Office",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://www.libreoffice.org/",
   description:

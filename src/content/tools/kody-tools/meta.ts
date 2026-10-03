@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "kody-tools",
   title: "Kody Tools",
   category: "Converters",
-  date: "2025-01-05",
+  createdDate: "2025-01-05",
   operatingSystems: ["Web"],
   url: "https://www.kodytools.com/",
   description:

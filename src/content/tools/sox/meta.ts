@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "sox",
   title: "SOX (Sound eXchange)",
   category: "Audio Converter",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://sourceforge.net/projects/sox/",
   description:

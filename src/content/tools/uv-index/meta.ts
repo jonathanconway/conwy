@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "uv-index",
   title: "UV Index",
   category: "Health",
-  date: "2026-03-05",
+  createdDate: "2026-03-05",
   operatingSystems: ["iOS"],
   url: "https://www.uvindex.apphttps://sites.google.com/view/uvindexwidgetworldwide/home",
   description: "Protect yourself from sunburn and skin cancer.",

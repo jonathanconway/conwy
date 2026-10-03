@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "i-fun-box",
   title: "IFunBox",
   category: "Mobile File Manager",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows"],
   url: "https://www.i-funbox.com",
   description:

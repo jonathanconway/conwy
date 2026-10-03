@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "mokku",
   title: "Mokku",
   category: "Developer Tool",
-  date: "2025-02-17",
+  createdDate: "2025-02-17",
   operatingSystems: ["Chrome"],
   url: "https://chromewebstore.google.com/detail/mokku/llflfcikklhgamfmnjkgpdadpmdplmji",
   description:

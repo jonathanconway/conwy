@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "fzf",
   title: "Fzf",
   category: "Developer Tool",
-  date: "2025-06-06",
+  createdDate: "2025-06-06",
   operatingSystems: ["MacOS", "Linux"],
   url: "https://junegunn.github.io/fzf/",
   description: "General-purpose command-line fuzzy finder",

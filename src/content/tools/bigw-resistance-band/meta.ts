@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "bigw-circuit-resistance-band",
   title: "Circuit Medium Resistance Band - Black",
   category: "Workout Equipment",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: [],
   url: "https://www.bigw.com.au/product/circuit-medium-resistance-band-black/p/388754",
   description:

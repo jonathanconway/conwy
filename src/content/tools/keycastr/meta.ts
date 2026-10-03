@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "keycastr",
   title: "KeyCastr",
   category: "Visualiser",
-  date: "2025-05-26",
+  createdDate: "2025-05-26",
   operatingSystems: ["MacOS"],
   url: "https://github.com/keycastr/keycastr",
   description:

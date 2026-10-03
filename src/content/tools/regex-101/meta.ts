@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "regex-101",
   title: "RegEx101",
   category: "RegEx",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["MacOS"],
   url: "https://regex101.com/",
   description:

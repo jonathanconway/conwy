@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "imagemagick",
   title: "ImageMagick",
   category: "Image Converter",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://imagemagick.org/script/index.php",
   description:

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "color-slurp",
   title: "ColorSlurp",
   category: "Color Picker",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://colorslurp.com",
   description:

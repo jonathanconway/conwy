@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "fork",
   title: "Fork",
   category: "Git Client",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows"],
   url: "https://git-fork.com/",
   description: "Fast and friendly Git client.",

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "file-browser-pro",
   title: "FileBrowserPro",
   category: "File Management",
-  date: "2025-08-16",
+  createdDate: "2025-08-16",
   operatingSystems: ["iOS"],
   url: "https://www.stratospherix.com/products/filebrowserprofessional/",
   description:

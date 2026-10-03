@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "gitlens",
   title: "GitLens",
   category: "Git Blame UI",
-  date: "2026-07-13",
+  createdDate: "2026-07-13",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://www.gitkraken.com/gitlens",
   description:

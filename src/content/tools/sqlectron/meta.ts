@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "sqlectron",
   title: "Sqlectron",
   category: "Database client",
-  date: "2026-06-10",
+  createdDate: "2026-06-10",
   operatingSystems: ["MacOS", "Linux", "Windows"],
   url: "https://sqlectron.github.io/",
   description:

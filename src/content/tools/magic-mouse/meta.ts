@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   title: "Apple Magic Mouse",
   section: ToolSections.Belonging,
   category: "Computer Accessories",
-  date: "2026-08-30",
+  createdDate: "2026-08-30",
   mainImage: "/images/tools/magic-mouse.jpeg",
   operatingSystems: [],
   description:

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "ollama",
   title: "Ollama",
   category: "AI",
-  date: "2026-03-05",
+  createdDate: "2026-03-05",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://obsproject.com/",
   description: "Free and open source AI models.",

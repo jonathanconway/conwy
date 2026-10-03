@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "wuben-x4",
   title: "Wuben X4 Flashlight",
   category: "Flashlight",
-  date: "2026-06-22",
+  createdDate: "2026-06-22",
   operatingSystems: [],
   url: "https://wuben.au/products/wuben-x4-compact-multi-function-flashlight",
   description:

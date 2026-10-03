@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   title: "Electric candle lighter",
   section: ToolSections.Belonging,
   category: "Electric Lighter",
-  date: "2026-04-20",
+  createdDate: "2026-04-20",
   mainImage: "/images/tools/electric-candle-lighter.png",
   operatingSystems: [],
   description:

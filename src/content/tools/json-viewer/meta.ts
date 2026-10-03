@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "json-viewer",
   title: "JsonViewer",
   category: "Code Playground",
-  date: "2025-01-13",
+  createdDate: "2025-01-13",
   operatingSystems: ["MacOS"],
   url: "https://jsonviewer.app",
   description:

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "jsoning",
   title: "JSONing",
   category: "Code Playground",
-  date: "2025-01-13",
+  createdDate: "2025-01-13",
   operatingSystems: ["Web"],
   url: "https://jsoning.com/",
   description:

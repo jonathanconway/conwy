@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "hand-brake",
   title: "HandBrake",
   category: "Video Converter",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows"],
   url: "https://handbrake.fr/",
   description:

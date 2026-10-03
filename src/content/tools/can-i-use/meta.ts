@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "can-i-use",
   title: "Can I Use",
   category: "Accessibility",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["Web"],
   url: "https://caniuse.com/",
   description: "Check browser support for web features.",

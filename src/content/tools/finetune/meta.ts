@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "finetune",
   title: "FineTune",
   category: "Audio mixer",
-  date: "2026-06-12",
+  createdDate: "2026-06-12",
   operatingSystems: ["MacOS"],
   url: "https://github.com/ronitsingh10/FineTune",
   description:

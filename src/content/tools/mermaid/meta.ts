@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "mermaid",
   title: "Mermaid",
   category: "Diagramming",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["Web"],
   url: "https://mermaid.live/",
   description:

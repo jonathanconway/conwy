@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "idea",
   title: "IntelliJ IDEA",
   category: "IDE",
-  date: "2026-06-10",
+  createdDate: "2026-06-10",
   operatingSystems: ["MacOS", "Linux", "Windows"],
   url: "https://www.jetbrains.com/idea/",
   description:

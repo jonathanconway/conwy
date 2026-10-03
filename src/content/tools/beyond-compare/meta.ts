@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "beyond-compare",
   title: "Beyond Compare",
   category: "Comparison",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://www.scootersoftware.com/",
   description:

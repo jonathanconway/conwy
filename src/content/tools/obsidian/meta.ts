@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "obsidian",
   title: "Obsidian",
   category: "Notes",
-  date: "2026-03-05",
+  createdDate: "2026-03-05",
   operatingSystems: ["MacOS", "Android", "iOS", "Windows", "Linux"],
   url: "http://obsidian.md",
   description:

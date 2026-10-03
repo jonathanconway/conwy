@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "simple-note",
   title: "SimpleNote",
   category: "Note Taking",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "iOS", "Android", "Windows", "Linux"],
   url: "https://simplenote.com/",
   description: "All your notes, synced on all your devices. Supports Markdown.",

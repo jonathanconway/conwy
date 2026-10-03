@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "wave",
   title: "WebAIM WAVE",
   category: "Accessibility",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["Web"],
   url: "https://wave.webaim.org/",
   description: "Widely used web accessibility evaluation tool.",

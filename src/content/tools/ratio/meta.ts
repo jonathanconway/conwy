@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "ratio",
   title: "Ratio",
   category: "Accessibility",
-  date: "2026-04-25",
+  createdDate: "2026-04-25",
   operatingSystems: ["MacOS"],
   url: "https://ratioapp.markwyner.com",
   description:

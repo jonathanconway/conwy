@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "net-news-wire",
   title: "NetNewsWire",
   category: "RSS Reader",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "iOS"],
   url: "https://netnewswire.com",
   description:

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "draw",
   title: "Draw",
   category: "Diagramming",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://www.drawio.com/",
   description:

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "accessible-colors",
   title: "AccessibleColors",
   category: "Accessibility",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["MacOS"],
   url: "https://accessible-colors.com/",
   description: "Automatically find the closest accessible color combination.",

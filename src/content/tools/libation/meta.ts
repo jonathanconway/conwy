@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "libation",
   title: "Libation",
   category: "Audiobook Downloader",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://getlibation.com/",
   description: "App to manage your Audible books.",

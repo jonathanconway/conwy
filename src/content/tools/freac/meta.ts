@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "freac",
   title: "fre:ac",
   category: "Audio Converter",
-  date: "2025-02-20",
+  createdDate: "2025-02-20",
   operatingSystems: ["Windows"],
   url: "https://www.freac.org",
   description:

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "vlc",
   title: "VLC",
   category: "Media player",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "iOS", "Android", "Windows", "Mac"],
   url: "https://www.videolan.org/vlc/",
   description:

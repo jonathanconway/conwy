@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "free-ruler",
   title: "FreeRuler",
   category: "Ruler",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://www.pascal.com/freeruler",
   description:

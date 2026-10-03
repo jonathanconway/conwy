@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "genius-scan",
   title: "GeniusScan",
   category: "Office",
-  date: "2025-02-10",
+  createdDate: "2025-02-10",
   operatingSystems: ["iOS", "Android"],
   url: "https://thegrizzlylabs.com/genius-scan/",
   description:

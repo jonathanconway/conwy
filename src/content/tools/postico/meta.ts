@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "postico",
   title: "Postico",
   category: "Database client",
-  date: "2026-06-10",
+  createdDate: "2026-06-10",
   operatingSystems: ["MacOS"],
   url: "https://eggerapps.at/postico2/",
   description:

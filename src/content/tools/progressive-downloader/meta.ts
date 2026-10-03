@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "progressive-downloader",
   title: "Progressive Downloader",
   category: "Downloader",
-  date: "2025-01-05",
+  createdDate: "2025-01-05",
   operatingSystems: ["MacOS"],
   url: "https://www.macpsd.net",
   description:

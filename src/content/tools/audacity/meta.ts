@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "audacity",
   title: "Audacity",
   category: "Audio Editor",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://www.audacityteam.org",
   description: "Audio editing and recording app.",

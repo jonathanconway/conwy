@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   title: "Grifiti Band Wallet",
   section: ToolSections.Belonging,
   category: "Wallet",
-  date: "2026-07-26",
+  createdDate: "2026-07-26",
   mainImage: "/images/tools/grifiti-band-wallet.jpg",
   description:
     "Minimalism at its purest! A simple rubber band. Sleek but strong and perfectly sized for a small bundle of credit cards. Treated with care, they last for years.",

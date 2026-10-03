@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "run-js",
   title: "RunJS",
   category: "Code Playground",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://runjs.app",
   description:

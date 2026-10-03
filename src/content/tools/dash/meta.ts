@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "dash",
   title: "Dash",
   category: "Documentation Browser",
-  date: "2026-08-25",
+  createdDate: "2026-08-25",
   operatingSystems: ["MacOS"],
   url: "https://mac.getutm.app",
   description:

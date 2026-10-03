@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "inkscape",
   title: "InkScape",
   category: "Vector Image Editor",
-  date: "2025-12-25",
+  createdDate: "2025-12-25",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://inkscape.org",
   description:

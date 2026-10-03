@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "nitecore-nb-10000",
   title: "Nitecore NB10000 Ultra Slim Battery",
   category: "Battery",
-  date: "2026-03-06",
+  createdDate: "2026-03-06",
   operatingSystems: [],
   url: "https://www.nitecore.com/product/nb10000",
   description:

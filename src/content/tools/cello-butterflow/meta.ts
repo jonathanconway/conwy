@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   title: "Cello Butterflow Pens",
   section: ToolSections.Belonging,
   category: "Stationary",
-  date: "2026-03-03",
+  createdDate: "2026-03-03",
   mainImage: "/images/tools/cello-butterflow.jpg",
   operatingSystems: [],
   description: `Smooth, lightweight black pen. Fine stroke, great for writing in a small handheld notebook. Great for taking quick notes during a meeting or diagramming a solution.`,

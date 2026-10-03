@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "requestly",
   title: "Requestly",
   category: "Developer Tool",
-  date: "2026-04-24",
+  createdDate: "2026-04-24",
   operatingSystems: ["MacOS", "Windows", "Linux", "Web"],
   url: "https://requestly.com",
   description:

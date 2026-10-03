@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "github-cli",
   title: "GitHub CLI",
   category: "Git Tool",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://cli.github.com",
   description:

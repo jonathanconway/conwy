@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "real-favicon-generator",
   title: "RealFaviconGenerator",
   category: "Icons",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["Web"],
   url: "https://realfavicongenerator.net/",
   description:

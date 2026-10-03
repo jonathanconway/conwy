@@ -1,1 +1,1 @@
-export * from "./tool.gen";
+export * from "./tool-gen";

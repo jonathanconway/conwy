@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   title: "Oasis Insulated Stainless Steel Skinny Mini Drink Bottle",
   section: ToolSections.Belonging,
   category: "Mug",
-  date: "2026-06-27",
+  createdDate: "2026-06-27",
   mainImage: "/images/tools/oasis-bottle.jpg",
   operatingSystems: [],
   description: `Sleek, slim, elegant, durable coffee mug. Screw-on tight-sealing lid.`,

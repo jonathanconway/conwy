@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "openrouter",
   title: "OpenRouter",
   category: "AI",
-  date: "2026-07-13",
+  createdDate: "2026-07-13",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://openrouter.ai",
   description: "Unified Interface For LLMs, leveraging multiple models.",

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   title: "SD Cards",
   section: ToolSections.Belonging,
   category: "Physical Storage",
-  date: "2025-11-16",
+  createdDate: "2025-11-16",
   mainImage: "/images/tools/sd-card.png",
   operatingSystems: [],
   description: `Once a niche storage solution for photographers, these have morphed into a popular general storage solution. Very popular, widely compatible, ultra small and lightweight, these are great for anything from music collections to photos.`,

@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "jest-vitest-runner",
   title: "Jest / Vitest Runner",
   category: "Test Runner",
-  date: "2025-12-25",
+  createdDate: "2025-12-25",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner",
   description:

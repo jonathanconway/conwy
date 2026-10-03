@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "obs-studio",
   title: "OBS Studio",
   category: "Video Recording",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS", "Windows", "Linux"],
   url: "https://obsproject.com/",
   description:

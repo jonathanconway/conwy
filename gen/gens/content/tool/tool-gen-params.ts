@@ -1,17 +1,13 @@
-import { DateString } from "../date";
-import { MetaBase } from "../meta";
-import { Url } from "../url";
+import { ToolSection, Url } from "@/framework";
 
-import { ToolSection } from "./tool-sections";
-
-export interface ToolMeta extends MetaBase {
+export interface ToolGenParams {
   readonly title: string;
+  readonly slug: string;
   readonly category?: string;
   readonly url?: Url;
   readonly operatingSystems?: readonly string[];
   readonly mainImage?: string;
   readonly description?: string;
-  readonly createdDate: DateString;
   readonly usage?: string;
   readonly section: ToolSection;
 }

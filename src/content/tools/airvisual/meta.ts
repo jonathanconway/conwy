@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "airvisual",
   title: "AirVisual",
   category: "Health",
-  date: "2026-04-25",
+  createdDate: "2026-04-25",
   operatingSystems: ["iOS", "Android"],
   url: "https://www.iqair.com/au/air-quality-monitors/air-quality-app",
   description:

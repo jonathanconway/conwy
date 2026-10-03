@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "calibre",
   title: "Calibre",
   category: "Converter",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://www.calibre-ebook.com",
   description:

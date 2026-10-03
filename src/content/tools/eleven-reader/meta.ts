@@ -4,7 +4,7 @@ export const meta: ToolMeta = {
   slug: "eleven-reader",
   title: "Eleven reader",
   section: ToolSections.MobileApp,
-  date: "2026-01-08",
+  createdDate: "2026-01-08",
   mainImage: "/images/tools/elevenreader.webp",
   operatingSystems: ["iOS", "Android"],
   url: "https://elevenlabs.io/mobile",

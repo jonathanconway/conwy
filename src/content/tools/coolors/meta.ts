@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "coolors",
   title: "Coolors",
   category: "Design",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["Web"],
   url: "https://coolors.co/",
   description: "The super fast color palettes generator.",

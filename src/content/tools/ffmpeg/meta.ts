@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "ffmpeg",
   title: "FFmpeg",
   category: "Multimedia Converter",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["MacOS"],
   url: "https://ffmpeg.org/",
   description: "Record, convert and stream audio and video.",

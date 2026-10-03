@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "utm",
   title: "UTM",
   category: "Virtual Machines",
-  date: "2025-01-05",
+  createdDate: "2025-01-05",
   operatingSystems: ["MacOS"],
   url: "https://mac.getutm.app",
   description:

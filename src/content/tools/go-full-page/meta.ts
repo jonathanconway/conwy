@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "go-full-page",
   title: "GoFullPage",
   category: "Developer Tool",
-  date: "2025-01-14",
+  createdDate: "2025-01-14",
   operatingSystems: ["MacOS"],
   url: "https://gofullpage.com/",
   description:

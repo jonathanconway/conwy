@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "shntool",
   title: "shntool",
   category: "Audio Converter",
-  date: "2024-12-07",
+  createdDate: "2024-12-07",
   operatingSystems: ["MacOS"],
   url: "http://shnutils.freeshell.org/shntool/",
   description: "Lossless audio manipulation utility",

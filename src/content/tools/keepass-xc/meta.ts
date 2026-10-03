@@ -5,7 +5,7 @@ export const meta: ToolMeta = {
   slug: "keepass-xc",
   title: "KeePassXC",
   category: "Password Manager",
-  date: "2024-12-06",
+  createdDate: "2024-12-06",
   operatingSystems: ["MacOS"],
   url: "https://keepassxc.org/",
   description:
