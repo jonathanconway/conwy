@@ -4,6 +4,7 @@ import { DateTime } from "luxon";
 import {
   BookCategories,
   DateString,
+  Url,
   assert,
   checkIsValidDateString,
 } from "@/framework";
@@ -18,7 +19,7 @@ export interface BookGenTemplateParams extends BookGenParams {
 
   readonly title: string;
   readonly authors: readonly string[];
-  readonly url?: string;
+  readonly url?: Url;
 
   readonly categoryEnumName: string;
 }
