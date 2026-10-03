@@ -3,7 +3,10 @@ import { GenSchemaFieldTypes } from "./gen-schema-field-type";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export function generateSchemaFieldHint(
-  genSchemaField: GenSchemaField<GenSchemaField<GenSchemaRoot>>,
+  genSchemaField: GenSchemaField<
+    GenSchemaRoot,
+    GenSchemaRoot[keyof GenSchemaRoot]
+  >,
 ) {
   switch (genSchemaField.type) {
     case GenSchemaFieldTypes.Text:

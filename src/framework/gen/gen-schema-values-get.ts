@@ -1,9 +1,9 @@
 import { omit } from "lodash";
 
-import { runGenPrompts } from "./gen-prompt-run";
 import { GenSchema, GenSchemaFields } from "./gen-schema";
-import { convertGenSchemaToCommandOptionValues } from "./gen-schema-convert-to-command";
+import { convertGenSchemaToCommandOptionValues } from "./gen-schema-command-convert-to";
 import { generateSchemaFieldLabel } from "./gen-schema-field-label-generate";
+import { runGenPrompts } from "./gen-schema-prompt-run";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export async function getGenSchemaValues<TGenSchemaRoot extends GenSchemaRoot>(

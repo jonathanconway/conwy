@@ -17,7 +17,10 @@ export function convertGenSchemaFieldToPromptField<
   TGenSchemaRoot extends GenSchemaRoot,
 >(
   name: string,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
   valuesSoFar: Partial<TGenSchemaRoot>,
 ): PromptObject {
   switch (genSchemaField.type) {
@@ -79,7 +82,10 @@ function convertGenSchemaFieldToPromptFieldBase<
   TGenSchemaRoot extends GenSchemaRoot,
 >(
   name: string,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
   valuesSoFar: Partial<TGenSchemaRoot>,
 ): Omit<PromptObject, "type"> {
   const message = generateSchemaFieldLabel(name, genSchemaField);
@@ -98,7 +104,10 @@ export function convertGenSchemaFieldToPromptFieldText<
   TGenSchemaRoot extends GenSchemaRoot,
 >(
   name: string,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
   valuesSoFar: Partial<TGenSchemaRoot>,
 ): PromptObject {
   return {
@@ -115,7 +124,10 @@ export function convertGenSchemaFieldToPromptFieldTextMultiLine<
   TGenSchemaRoot extends GenSchemaRoot,
 >(
   name: string,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
   valuesSoFar: Partial<TGenSchemaRoot>,
 ): PromptObject {
   return {
@@ -132,7 +144,10 @@ export function convertGenSchemaFieldToPromptFieldTextList<
   TGenSchemaRoot extends GenSchemaRoot,
 >(
   name: string,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
   valuesSoFar: Partial<TGenSchemaRoot>,
 ): PromptObject {
   return {

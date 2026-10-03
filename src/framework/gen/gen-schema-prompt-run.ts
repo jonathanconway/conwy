@@ -1,16 +1,18 @@
 import { isString } from "lodash";
 import prompts, { Choice, PromptObject } from "prompts";
 
+import { isNotNil } from "../utils";
+
 import { GenSchemaFields } from "./gen-schema";
-import { convertGenSchemaFieldToPromptField } from "./gen-schema-convert-to-prompt";
 import { GenSchemaField } from "./gen-schema-field";
 import { generateSchemaFieldLabel } from "./gen-schema-field-label-generate";
 import { GenSchemaFieldTypes } from "./gen-schema-field-type";
+import { convertGenSchemaFieldToPromptField } from "./gen-schema-prompt-convert-to";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export async function runGenPrompts<TGenSchemaRoot extends GenSchemaRoot>(
   genSchemaFields: GenSchemaFields<TGenSchemaRoot>,
-  valuesSoFar: TGenSchemaRoot,
+  valuesSoFar: Partial<TGenSchemaRoot>,
 ) {
   let answers: Partial<TGenSchemaRoot> = { ...valuesSoFar };
   for await (const [name, genSchemaField] of Object.entries(genSchemaFields)) {
@@ -22,8 +24,11 @@ export async function runGenPrompts<TGenSchemaRoot extends GenSchemaRoot>(
 
 async function runGenPrompt<TGenSchemaRoot extends GenSchemaRoot>(
   name: string,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
-  valuesSoFar: TGenSchemaRoot,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
+  valuesSoFar: Partial<TGenSchemaRoot>,
 ) {
   const prompt = convertGenSchemaFieldToPromptField<TGenSchemaRoot>(
     name,
@@ -45,13 +50,16 @@ async function runGenPrompt<TGenSchemaRoot extends GenSchemaRoot>(
 
 async function getGenPromptAnswer<TGenSchemaRoot extends GenSchemaRoot>(
   prompt: PromptObject,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
 ): Promise<prompts.Answers<string> | undefined> {
   switch (genSchemaField.type) {
     case GenSchemaFieldTypes.Text:
       return runGenPromptText(prompt);
     case GenSchemaFieldTypes.TextList:
-      return runGenPromptList(prompt);
+      return runGenPromptTextList(prompt);
     case GenSchemaFieldTypes.TextMultiLine:
       return runGenPromptTextMultiLine(prompt, genSchemaField);
     case GenSchemaFieldTypes.YesNo:
@@ -64,16 +72,25 @@ async function getGenPromptAnswer<TGenSchemaRoot extends GenSchemaRoot>(
 }
 
 async function runGenPromptText(prompt: PromptObject) {
-  return await prompts(prompt);
+  return await prompts(prompt, {});
 }
 
-async function runGenPromptList(prompt: PromptObject) {
-  return await prompts(prompt);
+async function runGenPromptTextList(prompt: PromptObject) {
+  const name = String(prompt.name);
+  const answers = await prompts(prompt, {});
+  const answer = answers?.[name];
+
+  return {
+    [name]: answer?.filter(isNotNil),
+  };
 }
 
 async function runGenPromptTextMultiLine<TGenSchemaRoot extends GenSchemaRoot>(
   prompt: PromptObject,
-  genSchemaField: GenSchemaField<TGenSchemaRoot>,
+  genSchemaField: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
   prevLines = "",
   lineNumber = 1,
 ) {

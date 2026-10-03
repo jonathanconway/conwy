@@ -80,16 +80,19 @@ export function convertGenSchemaFieldToCommandOption<
 
 type GenSchemaFieldEntry<
   TGenSchemaRoot extends GenSchemaRoot,
-  TGenSchemaField extends GenSchemaField<TGenSchemaRoot>,
+  TGenSchemaField extends GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
 > = [string, TGenSchemaField];
 
 function convertGenSchemaFieldToCommandOptionBase<
   TGenSchemaRoot extends GenSchemaRoot,
-  TGenSchemaField extends GenSchemaField<TGenSchemaRoot>,
->([name, genSchema]: GenSchemaFieldEntry<
-  GenSchemaFieldText<TGenSchemaRoot>,
-  TGenSchemaField
->) {
+  TGenSchemaField extends GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[keyof TGenSchemaRoot]
+  >,
+>([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   const label = generateSchemaFieldLabel(name, genSchema);
   const hint = generateSchemaFieldHint(genSchema);
   const description = [label, hint].filter(isNotNil).join("\n");
@@ -102,20 +105,14 @@ function convertGenSchemaFieldToCommandOptionBase<
 export function convertGenSchemaFieldToCommandOptionText<
   TGenSchemaRoot extends GenSchemaRoot,
   TGenSchemaField extends GenSchemaFieldText<TGenSchemaRoot>,
->([name, genSchema]: GenSchemaFieldEntry<
-  GenSchemaFieldText<TGenSchemaRoot>,
-  TGenSchemaField
->) {
+>([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   return convertGenSchemaFieldToCommandOptionBase([name, genSchema]);
 }
 
 export function convertGenSchemaFieldToCommandOptionTextList<
   TGenSchemaRoot extends GenSchemaRoot,
   TGenSchemaField extends GenSchemaFieldText<TGenSchemaRoot>,
->([name, genSchema]: GenSchemaFieldEntry<
-  GenSchemaFieldText<TGenSchemaRoot>,
-  TGenSchemaField
->) {
+>([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   // todo: make sure it works with multiple swithces or comma delimited
   return convertGenSchemaFieldToCommandOptionBase([name, genSchema]);
 }
@@ -123,20 +120,14 @@ export function convertGenSchemaFieldToCommandOptionTextList<
 export function convertGenSchemaFieldToCommandOptionYesNo<
   TGenSchemaRoot extends GenSchemaRoot,
   TGenSchemaField extends GenSchemaFieldYesNo<TGenSchemaRoot>,
->([name, genSchema]: GenSchemaFieldEntry<
-  GenSchemaFieldYesNo<TGenSchemaRoot>,
-  TGenSchemaField
->) {
+>([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   return convertGenSchemaFieldToCommandOptionBase([name, genSchema]);
 }
 
 export function convertGenSchemaFieldToCommandOptionSelect<
   TGenSchemaRoot extends GenSchemaRoot,
   TGenSchemaField extends GenSchemaFieldSelect<TGenSchemaRoot>,
->([name, genSchema]: GenSchemaFieldEntry<
-  GenSchemaFieldSelect<TGenSchemaRoot>,
-  TGenSchemaField
->) {
+>([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   return convertGenSchemaFieldToCommandOptionBase([name, genSchema]).choices(
     genSchema.options,
   );
@@ -145,10 +136,7 @@ export function convertGenSchemaFieldToCommandOptionSelect<
 export function convertGenSchemaFieldToCommandOptionMultiSelect<
   TGenSchemaRoot extends GenSchemaRoot,
   TGenSchemaField extends GenSchemaFieldMultiSelect<TGenSchemaRoot>,
->([name, genSchema]: GenSchemaFieldEntry<
-  GenSchemaFieldMultiSelect<TGenSchemaRoot>,
-  TGenSchemaField
->) {
+>([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   return convertGenSchemaFieldToCommandOptionBase([name, genSchema]).choices(
     genSchema.options,
   );

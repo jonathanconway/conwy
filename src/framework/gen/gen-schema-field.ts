@@ -3,60 +3,96 @@ import {
   GenSchemaFieldType,
   GenSchemaFieldTypes,
 } from "./gen-schema-field-type";
+import { GenSchemaFieldValidator } from "./gen-schema-field-validator";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 interface GenSchemaFieldBase<
   TFieldType extends GenSchemaFieldType,
   TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends
+    TGenSchemaRoot[keyof TGenSchemaRoot] = TGenSchemaRoot[keyof TGenSchemaRoot],
 > {
   readonly type: TFieldType;
   readonly label?: string;
-  readonly default?: GenSchemaFieldDefault<TGenSchemaRoot>;
+  readonly default?: GenSchemaFieldDefault<TGenSchemaRoot, TGenSchemaRootField>;
   readonly required?: boolean;
+  readonly validators?: readonly GenSchemaFieldValidator<
+    TGenSchemaRoot,
+    TGenSchemaRootField
+  >[];
 }
 
-export interface GenSchemaFieldText<TGenSchemaRoot extends GenSchemaRoot>
-  extends GenSchemaFieldBase<typeof GenSchemaFieldTypes.Text, TGenSchemaRoot> {}
+export interface GenSchemaFieldText<
+  TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends
+    TGenSchemaRoot[keyof TGenSchemaRoot] = TGenSchemaRoot[keyof TGenSchemaRoot],
+> extends GenSchemaFieldBase<
+    typeof GenSchemaFieldTypes.Text,
+    TGenSchemaRoot,
+    TGenSchemaRootField
+  > {}
 
-export interface GenSchemaFieldTextList<TGenSchemaRoot extends GenSchemaRoot>
-  extends GenSchemaFieldBase<
+export interface GenSchemaFieldTextList<
+  TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends
+    TGenSchemaRoot[keyof TGenSchemaRoot] = TGenSchemaRoot[keyof TGenSchemaRoot],
+> extends GenSchemaFieldBase<
     typeof GenSchemaFieldTypes.TextList,
-    TGenSchemaRoot
+    TGenSchemaRoot,
+    TGenSchemaRootField
   > {}
 
 export interface GenSchemaFieldTextMultiLine<
   TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends
+    TGenSchemaRoot[keyof TGenSchemaRoot] = TGenSchemaRoot[keyof TGenSchemaRoot],
 > extends GenSchemaFieldBase<
     typeof GenSchemaFieldTypes.TextMultiLine,
-    TGenSchemaRoot
+    TGenSchemaRoot,
+    TGenSchemaRootField
   > {}
 
-export interface GenSchemaFieldYesNo<TGenSchemaRoot extends GenSchemaRoot>
-  extends GenSchemaFieldBase<
+export interface GenSchemaFieldYesNo<
+  TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends
+    TGenSchemaRoot[keyof TGenSchemaRoot] = TGenSchemaRoot[keyof TGenSchemaRoot],
+> extends GenSchemaFieldBase<
     typeof GenSchemaFieldTypes.YesNo,
-    TGenSchemaRoot
+    TGenSchemaRoot,
+    TGenSchemaRootField
   > {}
 
-export interface GenSchemaFieldSelect<TGenSchemaRoot extends GenSchemaRoot>
-  extends GenSchemaFieldBase<
+export interface GenSchemaFieldSelect<
+  TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends
+    TGenSchemaRoot[keyof TGenSchemaRoot] = TGenSchemaRoot[keyof TGenSchemaRoot],
+> extends GenSchemaFieldBase<
     typeof GenSchemaFieldTypes.Select,
-    TGenSchemaRoot
+    TGenSchemaRoot,
+    TGenSchemaRootField
   > {
   readonly options: readonly string[];
 }
 
-export interface GenSchemaFieldMultiSelect<TGenSchemaRoot extends GenSchemaRoot>
-  extends GenSchemaFieldBase<
+export interface GenSchemaFieldMultiSelect<
+  TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends
+    TGenSchemaRoot[keyof TGenSchemaRoot] = TGenSchemaRoot[keyof TGenSchemaRoot],
+> extends GenSchemaFieldBase<
     typeof GenSchemaFieldTypes.MultiSelect,
-    TGenSchemaRoot
+    TGenSchemaRoot,
+    TGenSchemaRootField
   > {
   readonly options: readonly string[];
 }
 
-export type GenSchemaField<TGenSchemaRoot extends GenSchemaRoot> =
-  | GenSchemaFieldText<TGenSchemaRoot>
-  | GenSchemaFieldTextList<TGenSchemaRoot>
-  | GenSchemaFieldTextMultiLine<TGenSchemaRoot>
-  | GenSchemaFieldYesNo<TGenSchemaRoot>
-  | GenSchemaFieldSelect<TGenSchemaRoot>
-  | GenSchemaFieldMultiSelect<TGenSchemaRoot>;
+export type GenSchemaField<
+  TGenSchemaRoot extends GenSchemaRoot,
+  TGenSchemaRootField extends TGenSchemaRoot[keyof TGenSchemaRoot],
+> =
+  | GenSchemaFieldText<TGenSchemaRoot, TGenSchemaRootField>
+  | GenSchemaFieldTextList<TGenSchemaRoot, TGenSchemaRootField>
+  | GenSchemaFieldTextMultiLine<TGenSchemaRoot, TGenSchemaRootField>
+  | GenSchemaFieldYesNo<TGenSchemaRoot, TGenSchemaRootField>
+  | GenSchemaFieldSelect<TGenSchemaRoot, TGenSchemaRootField>
+  | GenSchemaFieldMultiSelect<TGenSchemaRoot, TGenSchemaRootField>;

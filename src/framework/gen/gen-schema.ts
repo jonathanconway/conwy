@@ -7,5 +7,8 @@ export interface GenSchema<TGenSchemaRoot extends GenSchemaRoot> {
 }
 
 export type GenSchemaFields<TGenSchemaRoot extends GenSchemaRoot> = {
-  readonly [key in keyof TGenSchemaRoot]: GenSchemaField<TGenSchemaRoot>;
+  readonly [TGenSchemaField in keyof TGenSchemaRoot]: GenSchemaField<
+    TGenSchemaRoot,
+    TGenSchemaRoot[TGenSchemaField]
+  >;
 };
