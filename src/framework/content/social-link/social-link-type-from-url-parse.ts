@@ -1,3 +1,5 @@
+import { difference, isArray } from "lodash";
+
 import { Url } from "../url";
 
 import { SocialLinkType, SocialLinkTypes } from "./social-link-type";
@@ -6,7 +8,13 @@ import { SocialLinkTypeHosts } from "./social-link-type-hosts";
 export function parseSocialLinkTypeFromUrl(url: Url): SocialLinkType {
   const matchingSocialLinkTypeHostsEntry = Object.entries(
     SocialLinkTypeHosts,
-  ).find(([_socialLinkType, host]) => url.includes(host));
+  ).find(([_socialLinkType, host]) => {
+    if (isArray(host)) {
+      return host.find((hostItem) => url.includes(hostItem));
+    }
+
+    return url.includes(String(host));
+  });
 
   if (matchingSocialLinkTypeHostsEntry) {
     const [matchingSocialLinkType] = matchingSocialLinkTypeHostsEntry;
