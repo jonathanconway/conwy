@@ -3,6 +3,7 @@ import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 export const meta: MicroMeta = {
   createdDate: "2024-04-20",
   slug: "css-inheritance",
+  shortBlurb: "Inheritance in CSS vs OO",
   tags: [PostTags.SoftwareDevelopment],
   socialLinks: [
     {

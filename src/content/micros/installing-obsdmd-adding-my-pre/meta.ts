@@ -3,6 +3,7 @@ import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 export const meta: MicroMeta = {
   createdDate: "2024-09-17",
   slug: "installing-obsdmd-adding-my-pre",
+  shortBlurb: "Plugging Obsidian in to my pre existing notes",
   tags: [PostTags.Design],
   socialLinks: [
     {

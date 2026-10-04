@@ -3,6 +3,7 @@ import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 export const meta: MicroMeta = {
   createdDate: "2023-12-02",
   slug: "good-systems-redundancy",
+  shortBlurb: "Good systems can be highly redundant",
   tags: [PostTags.SoftwareDevelopment],
   socialLinks: [
     {

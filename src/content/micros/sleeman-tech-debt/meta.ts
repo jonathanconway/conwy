@@ -3,6 +3,7 @@ import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework/client";
 export const meta: MicroMeta = {
   createdDate: "2024-09-03",
   slug: "sleeman-tech-debt",
+  shortBlurb: "Code quality as a continuous process",
   tags: [PostTags.SoftwareDevelopment],
   socialLinks: [
     {

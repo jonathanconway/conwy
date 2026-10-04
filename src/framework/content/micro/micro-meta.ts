@@ -9,6 +9,8 @@ export interface MicroMeta extends PostMetaBase {
 
   readonly mainLink?: string;
 
+  readonly shortBlurb?: string;
+
   readonly socialLinks: readonly SocialLink[];
   readonly tags: readonly PostTag[];
 

@@ -31,9 +31,6 @@ export function TextExpandable(props: TextExpandableProps) {
         })}
       >
         <div ref={textExpandable.innerContainerRef}>{props.children}</div>
-        {!textExpandable.isExpanded && (
-          <span className={styles.ellipsis}>...</span>
-        )}
       </div>
       <Link
         className={styles.toggleLink}
