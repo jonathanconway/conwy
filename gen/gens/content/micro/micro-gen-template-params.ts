@@ -31,6 +31,7 @@ export function generateMicroGenTemplateParams(
   const {
     content,
     slug,
+    shortBlurb,
     mainLink,
     tags,
     socialLinkUrls,
@@ -63,6 +64,8 @@ export function generateMicroGenTemplateParams(
 
   return {
     content,
+    shortBlurb,
+
     mainLink,
 
     socialLinkUrls,

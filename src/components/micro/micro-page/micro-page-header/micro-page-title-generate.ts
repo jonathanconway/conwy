@@ -1,5 +1,5 @@
 import { Micro, sentenceCase } from "@/framework/client";
 
 export function generateMicroPageTitle(micro: Micro) {
-  return sentenceCase(micro.meta.slug) + " ...";
+  return micro.meta.shortBlurb ?? sentenceCase(micro.meta.slug) + " ...";
 }
