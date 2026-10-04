@@ -12,7 +12,7 @@ export const meta: ArticleMeta = {
   shortBlurb: "How might we surface AI capabilities in user interfaces?",
   createdDate: "2024-09-13",
   slug: "ai-patterns",
-  tags: [PostTags.Design],
+  tags: [PostTags.AI],
   mainImage: aiUiPatternsIllustrationComposite,
   smallImage: robotColorIllustrationStatic,
   socialLinks: [],
