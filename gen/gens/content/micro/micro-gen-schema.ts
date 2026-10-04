@@ -6,6 +6,9 @@ import { MicroGenParams } from "./micro-gen-params";
 export const microGenSchema: GenSchema<MicroGenParams> = {
   name: "micro",
   fields: {
+    shortBlurb: {
+      type: GenSchemaFieldTypes.Text,
+    },
     content: {
       type: GenSchemaFieldTypes.TextMultiLine,
       required: true,
@@ -13,8 +16,10 @@ export const microGenSchema: GenSchema<MicroGenParams> = {
     slug: {
       type: GenSchemaFieldTypes.Text,
       default: ({ valuesSoFar }) => {
-        assert(valuesSoFar.content);
-        return generateSlugFromText(valuesSoFar.content);
+        const shortBlurbOrContent =
+          valuesSoFar.shortBlurb ?? valuesSoFar.content;
+        assert(shortBlurbOrContent);
+        return generateSlugFromText(shortBlurbOrContent);
       },
     },
 
@@ -25,10 +30,19 @@ export const microGenSchema: GenSchema<MicroGenParams> = {
       type: GenSchemaFieldTypes.TextList,
       label: "Social Link URL(s)",
     },
+    discussionLinkUrls: {
+      type: GenSchemaFieldTypes.TextList,
+      label: "Discussion Link URL(s)",
+    },
 
     tags: {
       type: GenSchemaFieldTypes.MultiSelect,
       options: Object.values(PostTags),
+    },
+
+    isPinned: {
+      type: GenSchemaFieldTypes.YesNo,
+      default: true,
     },
   },
 };

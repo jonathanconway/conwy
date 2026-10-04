@@ -3,6 +3,7 @@ import { DateTime } from "luxon";
 
 import {
   DateString,
+  PostDiscussionLink,
   PostTags,
   SocialLink,
   assert,
@@ -19,6 +20,7 @@ export interface MicroGenTemplateParams extends MicroGenParams {
   readonly slug: string;
   readonly mainLink?: string;
   readonly socialLinks: readonly SocialLink[];
+  readonly discussionLinks: readonly PostDiscussionLink[];
   readonly tagsEnumNames: readonly string[];
   readonly createdDate: DateString;
 }
@@ -26,7 +28,15 @@ export interface MicroGenTemplateParams extends MicroGenParams {
 export function generateMicroGenTemplateParams(
   params: MicroGenParams,
 ): MicroGenTemplateParams {
-  const { content, slug, mainLink, tags, socialLinkUrls } = params;
+  const {
+    content,
+    slug,
+    mainLink,
+    tags,
+    socialLinkUrls,
+    discussionLinkUrls,
+    isPinned,
+  } = params;
 
   const nameRootObject = `${camelCase(slug)}Micro`;
 
@@ -41,6 +51,14 @@ export function generateMicroGenTemplateParams(
       }) as SocialLink,
   );
 
+  const discussionLinks = discussionLinkUrls.map(
+    (discussionLinkUrl) =>
+      ({
+        type: parseSocialLinkTypeFromUrl(discussionLinkUrl),
+        url: discussionLinkUrl,
+      }) as PostDiscussionLink,
+  );
+
   const tagsEnumNames = tags.map((tag) => getEnumName(PostTags, tag));
 
   return {
@@ -49,11 +67,15 @@ export function generateMicroGenTemplateParams(
 
     socialLinkUrls,
     socialLinks,
+    discussionLinkUrls,
+    discussionLinks,
     tags,
     tagsEnumNames,
 
     nameRootObject,
     slug,
     createdDate,
+
+    isPinned,
   };
 }
