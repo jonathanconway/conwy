@@ -9,7 +9,7 @@ import {
   SocialLink,
   SocialLinkTypes,
   assert,
-  checkIsValidDateString,
+  checkIsDateString,
   parseSocialLinkTypeFromUrl,
 } from "@/framework";
 
@@ -46,7 +46,7 @@ export function generateProjectGenTemplateParams(
   const slug = kebabCase(title);
 
   const date = DateTime.now().toFormat("yyyy-MM-dd");
-  assert(checkIsValidDateString(date));
+  assert(checkIsDateString(date));
 
   const subTypeEnumName = getEnumName(ProjectSubTypes, subType);
 

@@ -1,12 +1,7 @@
 import { camelCase, kebabCase } from "lodash";
 import { DateTime } from "luxon";
 
-import {
-  DateString,
-  PostTags,
-  assert,
-  checkIsValidDateString,
-} from "@/framework";
+import { DateString, PostTags, assert, checkIsDateString } from "@/framework";
 
 import { getEnumName } from "../../../gen-utils";
 
@@ -27,7 +22,7 @@ export function generateArticleGenTemplateParams(
   const slug = kebabCase(title);
 
   const date = DateTime.now().toFormat("yyyy-MM-dd");
-  assert(checkIsValidDateString(date));
+  assert(checkIsDateString(date));
 
   const tagsEnumNames = tags.map((tag) => getEnumName(PostTags, tag));
 

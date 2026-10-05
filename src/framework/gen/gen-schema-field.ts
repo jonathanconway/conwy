@@ -14,6 +14,7 @@ interface GenSchemaFieldBase<
 > {
   readonly type: TFieldType;
   readonly label?: string;
+  readonly description?: string;
   readonly default?: GenSchemaFieldDefault<TGenSchemaRoot, TGenSchemaRootField>;
   readonly required?: boolean;
   readonly validators?: readonly GenSchemaFieldValidator<

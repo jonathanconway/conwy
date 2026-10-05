@@ -1,8 +1,22 @@
+import { isNotNil } from "../utils";
+
 import { GenSchemaField } from "./gen-schema-field";
 import { GenSchemaFieldTypes } from "./gen-schema-field-type";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export function generateSchemaFieldHint(
+  genSchemaField: GenSchemaField<
+    GenSchemaRoot,
+    GenSchemaRoot[keyof GenSchemaRoot]
+  >,
+) {
+  const firstLine = generateSchemaFieldFirstLine(genSchemaField);
+  const secondLine = genSchemaField.description;
+
+  return [firstLine, secondLine].filter(isNotNil).join("\n");
+}
+
+export function generateSchemaFieldFirstLine(
   genSchemaField: GenSchemaField<
     GenSchemaRoot,
     GenSchemaRoot[keyof GenSchemaRoot]

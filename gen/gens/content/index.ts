@@ -7,4 +7,5 @@ export * from "./illustration";
 export * from "./micro";
 export * from "./project";
 export * from "./prompt";
+export * from "./study";
 export * from "./tool";

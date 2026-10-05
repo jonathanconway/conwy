@@ -6,7 +6,7 @@ import {
   DateString,
   Url,
   assert,
-  checkIsValidDateString,
+  checkIsDateString,
 } from "@/framework";
 
 import { getEnumName } from "../../../gen-utils";
@@ -38,7 +38,7 @@ export function generateBookGenTemplateParams(
   const slug = kebabCase(title);
 
   const date = DateTime.now().toFormat("yyyy-MM-dd");
-  assert(checkIsValidDateString(date));
+  assert(checkIsDateString(date));
 
   const categoryEnumName = getEnumName(BookCategories, category);
 

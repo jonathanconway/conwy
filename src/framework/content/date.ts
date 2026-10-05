@@ -34,6 +34,6 @@ export type DateString = `${DatePartYYYY}-${DatePartMM}-${DatePartDD}`;
 
 export const DATE_STRING_FORMAT = "yyyy-MM-dd";
 
-export function checkIsValidDateString(input: string): input is DateString {
+export function checkIsDateString(input: string): input is DateString {
   return DateTime.fromFormat(input, DATE_STRING_FORMAT).isValid;
 }

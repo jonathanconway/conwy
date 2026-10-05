@@ -7,7 +7,7 @@ import {
   PostTags,
   SocialLink,
   assert,
-  checkIsValidDateString,
+  checkIsDateString,
   parseSocialLinkTypeFromUrl,
 } from "@/framework";
 
@@ -42,7 +42,7 @@ export function generateMicroGenTemplateParams(
   const nameRootObject = `${camelCase(slug)}Micro`;
 
   const createdDate = DateTime.now().toFormat("yyyy-MM-dd");
-  assert(checkIsValidDateString(createdDate));
+  assert(checkIsDateString(createdDate));
 
   const socialLinks = socialLinkUrls.map(
     (socialLinkUrl) =>

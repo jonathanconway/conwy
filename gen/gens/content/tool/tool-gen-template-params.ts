@@ -5,7 +5,7 @@ import {
   DateString,
   ToolSections,
   assert,
-  checkIsValidDateString,
+  checkIsDateString,
 } from "@/framework";
 
 import { getEnumName } from "../../../gen-utils";
@@ -36,7 +36,7 @@ export function generateToolGenTemplateParams(
   const nameRootObject = `${camelCase(slug)}Tool`;
 
   const createdDate = DateTime.now().toFormat("yyyy-MM-dd");
-  assert(checkIsValidDateString(createdDate));
+  assert(checkIsDateString(createdDate));
 
   const sectionEnumName = getEnumName(ToolSections, params.section);
 
