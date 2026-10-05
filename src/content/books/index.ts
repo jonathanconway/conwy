@@ -52,6 +52,7 @@ export * from "./of-providence";
 export * from "./olaudah-equiano";
 export * from "./on-writing";
 export * from "./orientations";
+export * from "./overcoming-gravity";
 export * from "./positive-psychology";
 export * from "./programming-interviews-exposed";
 export * from "./psp";
