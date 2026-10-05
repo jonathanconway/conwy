@@ -6,7 +6,7 @@ import { ArticleMeta, PostTags } from "@/framework/client";
 
 export const meta: ArticleMeta = {
   title: "Escaping JSON",
-  blurb: "",
+  blurb: "Techniques for quickly making encoded JSON more readable.",
   createdDate: "2026-10-01",
   slug: "escaping-json",
   tags: [PostTags.SoftwareDevelopment],
