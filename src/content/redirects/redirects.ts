@@ -82,4 +82,6 @@ export const REDIRECTS: Redirects = {
   testmaticui: "https://heroic-kitten-eb0230.netlify.app",
   htmldoc: "http://usehtmldoc.surge.sh",
   call: "https://calendly.com/conwy",
+  formatselectedjson:
+    "https://chromewebstore.google.com/detail/format-selected-json/fnkpkdgghhniojemjaefijfdfenabmbe",
 };
