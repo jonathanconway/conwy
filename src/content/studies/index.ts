@@ -11,6 +11,7 @@ export * from "./introduction-to-statistics-stanford-university-via-coursera";
 export * from "./microsoft-certified-professional-microsoft";
 export * from "./network-administration-tafe";
 export * from "./next-js-15-and-react-udemy";
+export * from "./overcoming-gravity";
 export * from "./programming-tafe";
 export * from "./secure-code-warrior-javascript";
 export * from "./secure-code-warrior-node";
