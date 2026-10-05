@@ -71,7 +71,7 @@ export function Study(props: StudyProps) {
             </UnorderedList>
           )}
 
-          {description && <Text>{description}</Text>}
+          {description && <Text type={TextTypes.Small}>{description}</Text>}
         </>
       }
     />
