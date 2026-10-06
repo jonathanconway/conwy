@@ -1,4 +1,5 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -17,7 +18,12 @@ import { booksIndexGen } from "./books-gen-index.template";
 
 export async function book() {
   const bookGenParams = await getGenSchemaValues(bookGenSchema);
-  const bookGenTemplateParams = generateBookGenTemplateParams(bookGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(bookGenParams)) {
+    return;
+  }
+  const bookGenTemplateParams = generateBookGenTemplateParams(
+    bookGenParams.value,
+  );
 
   const booksPath = `src/content/books`;
   const bookPath = `${booksPath}/${bookGenTemplateParams.slug}`;

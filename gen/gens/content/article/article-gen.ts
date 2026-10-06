@@ -1,4 +1,5 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -18,8 +19,12 @@ import { articlesGenIndexTemplate } from "./articles-gen-index.template";
 
 export async function article() {
   const articleGenParams = await getGenSchemaValues(articleGenSchema);
-  const articleGenTemplateParams =
-    generateArticleGenTemplateParams(articleGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(articleGenParams)) {
+    return;
+  }
+  const articleGenTemplateParams = generateArticleGenTemplateParams(
+    articleGenParams.value,
+  );
 
   const articlesPath = `src/content/articles`;
   const articlePath = `${articlesPath}/${articleGenTemplateParams.slug}`;

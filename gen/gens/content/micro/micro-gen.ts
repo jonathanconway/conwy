@@ -1,4 +1,5 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -18,7 +19,12 @@ import { microsGenIndexTemplate } from "./micros-gen-index.template";
 
 export async function micro() {
   const microGenParams = await getGenSchemaValues(microGenSchema);
-  const microGenTemplateParams = generateMicroGenTemplateParams(microGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(microGenParams)) {
+    return;
+  }
+  const microGenTemplateParams = generateMicroGenTemplateParams(
+    microGenParams.value,
+  );
 
   const microsPath = `src/content/micros`;
   const microPath = `${microsPath}/${microGenTemplateParams.slug}`;

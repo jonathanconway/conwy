@@ -1,4 +1,5 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -17,8 +18,12 @@ import { fragmentsGenIndexTemplate } from "./fragments-gen-index.template";
 
 export async function fragment() {
   const fragmentGenParams = await getGenSchemaValues(fragmentGenSchema);
-  const fragmentGenTemplateParams =
-    generateFragmentGenTemplateParams(fragmentGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(fragmentGenParams)) {
+    return;
+  }
+  const fragmentGenTemplateParams = generateFragmentGenTemplateParams(
+    fragmentGenParams.value,
+  );
 
   const { slug } = fragmentGenTemplateParams;
 

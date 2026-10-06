@@ -1,4 +1,5 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -17,7 +18,12 @@ import { toolsIndexGen } from "./tools-gen-index.template";
 
 export async function tool() {
   const toolGenParams = await getGenSchemaValues(toolGenSchema);
-  const toolGenTemplateParams = generateToolGenTemplateParams(toolGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(toolGenParams)) {
+    return;
+  }
+  const toolGenTemplateParams = generateToolGenTemplateParams(
+    toolGenParams.value,
+  );
 
   const toolsPath = `src/content/tools`;
   const toolPath = `${toolsPath}/${toolGenTemplateParams.slug}`;

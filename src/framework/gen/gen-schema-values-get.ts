@@ -4,6 +4,10 @@ import { GenSchema, GenSchemaFields } from "./gen-schema";
 import { convertGenSchemaToCommandOptionValues } from "./gen-schema-command-convert-to";
 import { generateSchemaFieldLabel } from "./gen-schema-field-label-generate";
 import { runGenPrompts } from "./gen-schema-prompt-run";
+import {
+  checkIsGenSchemaPromptsRunResultUserCancelled,
+  createGenSchemaPromptsRunResultOk,
+} from "./gen-schema-prompts-run-result";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export async function getGenSchemaValues<TGenSchemaRoot extends GenSchemaRoot>(
@@ -19,10 +23,17 @@ export async function getGenSchemaValues<TGenSchemaRoot extends GenSchemaRoot>(
     Object.keys(commandOptionValues),
   ) as GenSchemaFields<TGenSchemaRoot>;
 
-  const promptsAnswerValues = await runGenPrompts(
+  const promptsAnswer = await runGenPrompts(
     genSchemaExceptCommandOptionValue,
     commandOptionValues,
   );
+
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(promptsAnswer)) {
+    console.log("Generator process cancelled.");
+    return promptsAnswer;
+  }
+
+  const promptsAnswerValues = promptsAnswer.value;
 
   const combinedValues = {
     ...commandOptionValues,
@@ -36,5 +47,5 @@ export async function getGenSchemaValues<TGenSchemaRoot extends GenSchemaRoot>(
     ]),
   );
 
-  return combinedValues as TGenSchemaRoot;
+  return createGenSchemaPromptsRunResultOk(combinedValues as TGenSchemaRoot);
 }

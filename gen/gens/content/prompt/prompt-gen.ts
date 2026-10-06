@@ -1,4 +1,5 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -18,8 +19,12 @@ import { promptsGenIndexTemplate } from "./prompts-gen-index.template";
 
 export async function prompt() {
   const promptGenParams = await getGenSchemaValues(promptGenSchema);
-  const promptGenTemplateParams =
-    generatePromptGenTemplateParams(promptGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(promptGenParams)) {
+    return;
+  }
+  const promptGenTemplateParams = generatePromptGenTemplateParams(
+    promptGenParams.value,
+  );
 
   const promptsPath = `src/content/prompts`;
   const promptPath = `${promptsPath}/${promptGenTemplateParams.slug}`;

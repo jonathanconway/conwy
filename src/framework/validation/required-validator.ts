@@ -6,16 +6,12 @@ import {
 
 import { ModelFieldValidatorValueSingle } from "./model-field-validator-value";
 
-export class UrlValidator<
+export class RequiredValidator<
   TModel extends object,
   TModelField extends TModel[keyof TModel] & ModelFieldValidatorValueSingle,
 > implements ModelFieldValidator<TModel, TModelField>
 {
   validate(value: TModelField): ModelFieldValidatorResults {
-    return checkIsUrl(String(value ?? ""))
-      ? []
-      : [
-          "Invalid URL. Should be in form: [<host>://]<host>.<top-level-domain>. For example: https://google.com",
-        ];
+    return !!value ? [] : ["Value is required and cannot be left blank."];
   }
 }

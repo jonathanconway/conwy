@@ -1,4 +1,5 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -18,8 +19,12 @@ import { projectsIndexGen } from "./projects-gen-index.template";
 
 export async function project() {
   const projectGenParams = await getGenSchemaValues(projectGenSchema);
-  const projectGenTemplateParams =
-    generateProjectGenTemplateParams(projectGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(projectGenParams)) {
+    return;
+  }
+  const projectGenTemplateParams = generateProjectGenTemplateParams(
+    projectGenParams.value,
+  );
   const projectSlug = projectGenTemplateParams.slug;
 
   const projectsPath = `src/content/projects`;

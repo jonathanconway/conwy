@@ -1,13 +1,23 @@
 import { isString } from "lodash";
 import prompts, { Choice, PromptObject } from "prompts";
 
-import { isNotNil } from "../utils";
+import { assert, isNotNil } from "../utils";
 
 import { GenSchemaFields } from "./gen-schema";
 import { GenSchemaField } from "./gen-schema-field";
 import { generateSchemaFieldLabel } from "./gen-schema-field-label-generate";
 import { GenSchemaFieldTypes } from "./gen-schema-field-type";
 import { convertGenSchemaFieldToPromptField } from "./gen-schema-prompt-convert-to";
+import {
+  checkIsGenSchemaPromptRunResultUserCancelled,
+  createGenSchemaPromptRunResultOk,
+  createGenSchemaPromptRunResultUserCancelled,
+} from "./gen-schema-prompt-run-result";
+import { validateGenSchemaPrompt } from "./gen-schema-prompt-validate";
+import {
+  createGenSchemaPromptsRunResultOk,
+  createGenSchemaPromptsRunResultUserCancelled,
+} from "./gen-schema-prompts-run-result";
 import { GenSchemaRoot } from "./gen-schema-root";
 
 export async function runGenPrompts<TGenSchemaRoot extends GenSchemaRoot>(
@@ -17,9 +27,12 @@ export async function runGenPrompts<TGenSchemaRoot extends GenSchemaRoot>(
   let answers: Partial<TGenSchemaRoot> = { ...valuesSoFar };
   for await (const [name, genSchemaField] of Object.entries(genSchemaFields)) {
     const answer = await runGenPrompt(name, genSchemaField, answers);
+    if (checkIsGenSchemaPromptRunResultUserCancelled(answer)) {
+      return createGenSchemaPromptsRunResultUserCancelled();
+    }
     answers = { ...answers, ...answer };
   }
-  return answers;
+  return createGenSchemaPromptsRunResultOk(answers);
 }
 
 async function runGenPrompt<TGenSchemaRoot extends GenSchemaRoot>(
@@ -37,15 +50,32 @@ async function runGenPrompt<TGenSchemaRoot extends GenSchemaRoot>(
   );
 
   const answer = await getGenPromptAnswer(prompt, genSchemaField);
+  assert(answer);
+  if (!(name in answer)) {
+    return createGenSchemaPromptRunResultUserCancelled();
+  }
 
-  if (!answer?.[name] && genSchemaField.required) {
+  const answerValue = answer?.[name];
+
+  const validationErrors = validateGenSchemaPrompt(genSchemaField, answerValue);
+  if (validationErrors.length > 0) {
+    console.log(
+      [
+        `${generateSchemaFieldLabel(name, genSchemaField)} is not valid.`,
+        ...validationErrors.map((validationError) => `- ${validationError}`),
+      ].join("\n"),
+    );
+    return await runGenPrompt(name, genSchemaField, valuesSoFar);
+  }
+
+  if (!answerValue && genSchemaField.required) {
     console.log(
       `${generateSchemaFieldLabel(name, genSchemaField)} is required.`,
     );
     return await runGenPrompt(name, genSchemaField, valuesSoFar);
   }
 
-  return answer;
+  return createGenSchemaPromptRunResultOk(answerValue);
 }
 
 async function getGenPromptAnswer<TGenSchemaRoot extends GenSchemaRoot>(

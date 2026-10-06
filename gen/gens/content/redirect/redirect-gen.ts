@@ -1,3 +1,4 @@
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
@@ -11,6 +12,9 @@ import { redirectsGenIndexTemplate } from "./redirects-gen-index.template";
 
 export async function redirect() {
   const redirectGenParams = await getGenSchemaValues(redirectGenSchema);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(redirectGenParams)) {
+    return;
+  }
 
   const redirectsPath = `src/content/redirects/redirects.ts`;
 
@@ -18,9 +22,9 @@ export async function redirect() {
     redirectsPath,
     "REDIRECTS",
     "Redirects",
-    redirectsGenIndexTemplate(redirectGenParams),
+    redirectsGenIndexTemplate(redirectGenParams.value),
   );
   await runPrettier(redirectsPath);
 
-  logCommitMessageContentCreated("redirect", redirectGenParams.slug);
+  logCommitMessageContentCreated("redirect", redirectGenParams.value.slug);
 }

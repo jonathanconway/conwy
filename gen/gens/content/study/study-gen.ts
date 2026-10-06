@@ -1,10 +1,10 @@
 import { ContentTypes } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
   fileAppendAndSortLines,
   fileWrite,
-  folderWrite,
   logCommitMessageContentCreated,
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
@@ -16,7 +16,12 @@ import { generateStudyGenTemplateParams } from "./study-gen-template-params";
 
 export async function study() {
   const studyGenParams = await getGenSchemaValues(studyGenSchema);
-  const studyGenTemplateParams = generateStudyGenTemplateParams(studyGenParams);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(studyGenParams)) {
+    return;
+  }
+  const studyGenTemplateParams = generateStudyGenTemplateParams(
+    studyGenParams.value,
+  );
 
   const studiesPath = `src/content/studies`;
 
