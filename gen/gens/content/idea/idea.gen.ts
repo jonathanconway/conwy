@@ -1,6 +1,8 @@
 import { camelCase } from "lodash";
 
 import { ContentTypes, titleCase } from "@/framework";
+import { checkIsGenSchemaPromptsRunResultUserCancelled } from "@/framework/gen";
+import { getGenSchemaValues } from "@/framework/server";
 
 import {
   fileAppendAndSortLines,
@@ -10,29 +12,32 @@ import {
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
+import { IdeaGenParams } from "./idea-gen-params";
+import { ideaGenSchema } from "./idea-gen-schema";
+import { generateIdeaGenTemplateParams } from "./idea-gen-template-params";
 import { ideaBlurbGen } from "./idea.blurb.mdx.gen";
 import { ideaContentGen } from "./idea.content.mdx.gen";
 import { ideaIndexGen } from "./idea.index.gen";
 import { ideaMetaGen } from "./idea.meta.gen";
-import { IdeaGenParams, IdeaGenTemplateParams } from "./idea.params";
 import { ideasIndexGen } from "./ideas.index.gen";
 
-export async function idea(params: IdeaGenParams) {
-  const { name } = params;
+export async function idea() {
+  const ideaGenParams = await getGenSchemaValues(ideaGenSchema);
+  if (checkIsGenSchemaPromptsRunResultUserCancelled(ideaGenParams)) {
+    return;
+  }
+  const ideaGenTemplateParams = generateIdeaGenTemplateParams(
+    ideaGenParams.value,
+  );
+
+  const { slug } = ideaGenTemplateParams;
 
   const ideasPath = `src/content/ideas`;
-  const ideaPath = `${ideasPath}/${name}`;
-
-  const ideaGenTemplateParams: IdeaGenTemplateParams = {
-    ...params,
-
-    title: titleCase(name),
-    nameRootObject: `${camelCase(name)}Idea`,
-  };
+  const ideaPath = `${ideasPath}/${slug}`;
 
   folderWrite(ideaPath);
 
-  fileWrite(`${ideaPath}/blurb.mdx`, ideaBlurbGen());
+  fileWrite(`${ideaPath}/blurb.mdx`, ideaBlurbGen(ideaGenTemplateParams));
 
   fileWrite(`${ideaPath}/content.mdx`, ideaContentGen(ideaGenTemplateParams));
 
@@ -48,5 +53,5 @@ export async function idea(params: IdeaGenParams) {
   fileAppendAndSortLines(ideasIndexPath, ideasIndexGen(ideaGenTemplateParams));
   runPrettier(ideasIndexPath);
 
-  logCommitMessageContentCreated(ContentTypes.Idea, name);
+  logCommitMessageContentCreated(ContentTypes.Idea, slug);
 }

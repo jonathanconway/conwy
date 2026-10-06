@@ -1,6 +1,6 @@
-import { IdeaGenTemplateParams } from "./idea.params";
+import { IdeaGenTemplateParams } from "./idea-gen-template-params";
 
-export const ideaIndexGen = ({ name, nameRootObject }: IdeaGenTemplateParams) =>
+export const ideaIndexGen = ({ nameRootObject }: IdeaGenTemplateParams) =>
   `
 
 import { ContentTypes, Idea } from "@/framework/client";
@@ -11,12 +11,10 @@ import { meta } from "./meta";
 
 export const ${nameRootObject}: Idea = {
   type: ContentTypes.Idea,
-  slug: "${name}",
   meta,
   blurb: <Blurb />,
   content: <Content />,
 };
 
-export * from "./${name}";
 
 `.trim();

@@ -1,8 +1,8 @@
-import { IdeaGenTemplateParams } from "./idea.params";
+import { IdeaGenTemplateParams } from "./idea-gen-template-params";
 
-export const ideasIndexGen = ({ name }: IdeaGenTemplateParams) =>
+export const ideasIndexGen = ({ slug }: IdeaGenTemplateParams) =>
   `
 
-export * from "./${name}";
+export * from "./${slug}";
 
 `.trim();

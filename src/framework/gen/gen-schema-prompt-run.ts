@@ -26,11 +26,14 @@ export async function runGenPrompts<TGenSchemaRoot extends GenSchemaRoot>(
 ) {
   let answers: Partial<TGenSchemaRoot> = { ...valuesSoFar };
   for await (const [name, genSchemaField] of Object.entries(genSchemaFields)) {
-    const answer = await runGenPrompt(name, genSchemaField, answers);
-    if (checkIsGenSchemaPromptRunResultUserCancelled(answer)) {
+    const promptRunResult = await runGenPrompt(name, genSchemaField, answers);
+    if (checkIsGenSchemaPromptRunResultUserCancelled(promptRunResult)) {
       return createGenSchemaPromptsRunResultUserCancelled();
     }
-    answers = { ...answers, ...answer };
+
+    const { value: answer } = promptRunResult;
+
+    answers = { ...answers, [name]: answer };
   }
   return createGenSchemaPromptsRunResultOk(answers);
 }

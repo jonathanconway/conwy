@@ -1,6 +1,8 @@
-export const ideaBlurbGen = () =>
+import { IdeaGenParams } from "./idea-gen-params";
+
+export const ideaBlurbGen = ({ blurb }: IdeaGenParams) =>
   `
 
-{/* Full text here */}
+${blurb ?? `{/* Full text here */}`}
 
 `.trim();
