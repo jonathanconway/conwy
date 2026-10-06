@@ -12,6 +12,10 @@ export class RequiredValidator<
 > implements ModelFieldValidator<TModel, TModelField>
 {
   validate(value: TModelField): ModelFieldValidatorResults {
-    return !!value ? [] : ["Value is required and cannot be left blank."];
+    return !!value ? [] : [`Invalid answer. ${this.generateHelpText()}`];
+  }
+
+  generateHelpText() {
+    return "Value is required and cannot be left blank.";
   }
 }

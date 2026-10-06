@@ -5,5 +5,6 @@ export interface ModelFieldValidator<
   TModel extends object,
   TModelField extends TModel[keyof TModel] & ModelFieldValidatorValue,
 > {
-  readonly validate: (value: TModelField) => ModelFieldValidatorResults;
+  validate(value: TModelField): ModelFieldValidatorResults;
+  generateHelpText(): string;
 }

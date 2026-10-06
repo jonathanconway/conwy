@@ -14,8 +14,10 @@ export class UrlValidator<
   validate(value: TModelField): ModelFieldValidatorResults {
     return checkIsUrl(String(value ?? ""))
       ? []
-      : [
-          "Invalid URL. Should be in form: [<host>://]<host>.<top-level-domain>. For example: https://google.com",
-        ];
+      : [`Invalid URL. ${this.generateHelpText()}`];
+  }
+
+  generateHelpText() {
+    return "Should be in form: [<host>://]<host>.<top-level-domain>. For example: https://google.com";
   }
 }

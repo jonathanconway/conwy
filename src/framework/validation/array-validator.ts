@@ -29,4 +29,8 @@ export class ArrayValidator<
     }
     return errors;
   }
+
+  generateHelpText() {
+    return this.validator.generateHelpText();
+  }
 }
