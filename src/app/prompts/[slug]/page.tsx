@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, PageLayout, Prompt } from "@/components";
+import { Breadcrumb, PageLayout, Prompt, ResponsiveMdHalf } from "@/components";
 import * as contentMap_ from "@/content";
 import { site } from "@/content";
 import * as promptsMap from "@/content/prompts";
@@ -51,11 +51,13 @@ export default async function Page(props: PageProps) {
             ]}
           />
 
-          <Prompt
-            title={`Prompt: ${prompt.meta.title}`}
-            prompt={prompt}
-            promptContentAnchorLinkAndInfos={promptContentAnchorLinkAndInfos}
-          />
+          <ResponsiveMdHalf>
+            <Prompt
+              title={`Prompt: ${prompt.meta.title}`}
+              prompt={prompt}
+              promptContentAnchorLinkAndInfos={promptContentAnchorLinkAndInfos}
+            />
+          </ResponsiveMdHalf>
         </>
       }
     />

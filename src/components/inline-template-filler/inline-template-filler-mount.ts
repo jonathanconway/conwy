@@ -49,6 +49,7 @@ async function mountInlineTemplateFillerNode(
   editableElement.className = styles.editable;
   editableElement.innerText = elementTextContentEscaped;
   editableElement.setAttribute("contenteditable", "true");
+  editableElement.setAttribute("tabindex", "0");
   editableElement.addEventListener("focus", () => {
     setTimeout(() => {
       window.getSelection()?.selectAllChildren(editableElement);

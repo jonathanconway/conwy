@@ -4,6 +4,7 @@ import {
   Slug,
 } from "@/framework/content";
 
+import { Stack, StackDirections } from "../../stack";
 import { Prompt } from "../prompt";
 
 interface PromptsListProps {
@@ -18,7 +19,7 @@ export function PromptsList(props: PromptsListProps) {
   const { prompts, promptsContentAnchorLinkAndInfos } = props;
 
   return (
-    <>
+    <Stack direction={StackDirections.Column} gap={0.5}>
       {prompts.map((prompt) => (
         <Prompt
           key={prompt.meta.slug}
@@ -28,6 +29,6 @@ export function PromptsList(props: PromptsListProps) {
           }
         />
       ))}
-    </>
+    </Stack>
   );
 }

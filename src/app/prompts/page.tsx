@@ -35,10 +35,14 @@ export default function PromptsPage() {
             <MdxContainer>{promptsFragment.content}</MdxContainer>
           </ResponsiveMdHalf>
 
-          <PromptsList
-            prompts={prompts}
-            promptsContentAnchorLinkAndInfos={promptsContentAnchorLinkAndInfos}
-          />
+          <ResponsiveMdHalf>
+            <PromptsList
+              prompts={prompts}
+              promptsContentAnchorLinkAndInfos={
+                promptsContentAnchorLinkAndInfos
+              }
+            />
+          </ResponsiveMdHalf>
         </>
       }
     />
