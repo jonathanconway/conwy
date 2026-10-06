@@ -2,12 +2,7 @@ import { existsSync, readFileSync, writeFileSync } from "fs";
 import { orderBy } from "lodash";
 import { join } from "path";
 
-import {
-  CONTENT_TYPE_LABELS_PLURAL,
-  ContentType,
-  Slug,
-  isNotNil,
-} from "@/framework";
+import { CONTENT_TYPE_LABELS_PLURAL, ContentType, Slug } from "@/framework";
 import { mkDirSyncIfNotExists } from "@/framework/server";
 
 function getFullPath(filePath: string) {
@@ -55,38 +50,46 @@ export function fileAppendAndSortLines(filePath: string, contents: string) {
 export function fileAppendToConstObject(
   filePath: string,
   constName: string,
+  constType: string | undefined,
   contents: string,
 ) {
-  const beforeContent = readFileSync(filePath).toString();
+  const fileContent = readFileSync(filePath).toString();
+  const fileContentLines = fileContent.split("\n");
 
-  const lines = beforeContent.split("\n");
+  const constMatch = constType
+    ? `const ${constName}: ${constType} = {`
+    : `const ${constName} = {`;
 
-  const constOpenLineIndex = lines.findIndex((line) =>
-    line.endsWith(`const ${constName} = {`),
+  const constOpenLineIndex = fileContentLines.findIndex((line) =>
+    line.includes(constMatch),
   );
-  const constCloseLineIndex =
-    lines
-      .slice(constOpenLineIndex)
-      .findIndex((line) => line.endsWith(`} as const;`)) + constOpenLineIndex;
+  const linesUpToConst = fileContentLines.slice(0, constOpenLineIndex);
 
-  const beforeConstLines = lines.slice(
+  const constDeclareLine = fileContentLines[constOpenLineIndex];
+  const constCloseLineIndex = fileContentLines
+    .slice(constOpenLineIndex, fileContentLines.length)
+    .findIndex((line) => line === "};");
+
+  const linesAfterConst = fileContentLines.slice(
+    constCloseLineIndex,
+    fileContentLines.length,
+  );
+  const constLines = fileContentLines.slice(
     constOpenLineIndex + 1,
     constCloseLineIndex,
   );
-  const beforeConstEntries = beforeConstLines
-    .join("")
-    .split(",")
-    .filter(isNotNil);
 
-  const afterConstLines = orderBy([...beforeConstEntries, `  ${contents}`]);
+  const constLinesWithNewEntry = [...constLines, contents];
 
-  const afterContent = [
-    ...lines.slice(0, constOpenLineIndex + 1),
-    ...afterConstLines,
-    ...lines.slice(constCloseLineIndex),
-  ].join(`,\n`);
+  const fileContentLinesWithNewEntry = [
+    ...linesUpToConst,
+    constDeclareLine,
+    ...constLinesWithNewEntry,
+    ...linesAfterConst,
+  ];
+  const fileContentWithNewEntry = fileContentLinesWithNewEntry.join("\n");
 
-  fileWrite(filePath, afterContent);
+  fileWrite(filePath, fileContentWithNewEntry);
 }
 
 export function getEnumName<T extends Record<string, string>>(
@@ -99,11 +102,11 @@ export function getEnumName<T extends Record<string, string>>(
 }
 
 export async function logCommitMessageContentCreated(
-  contentType: ContentType,
+  contentType: ContentType | string,
   contentSlug: Slug,
 ) {
   const { default: clipboard } = await import("clipboardy");
-  const commitMessage = `content(${CONTENT_TYPE_LABELS_PLURAL[contentType]}): ${contentSlug}`;
+  const commitMessage = `content(${CONTENT_TYPE_LABELS_PLURAL[contentType] ?? contentType}): ${contentSlug}`;
   console.log(`⑂ Commit message: ${commitMessage}`);
   clipboard.write(commitMessage);
 }
