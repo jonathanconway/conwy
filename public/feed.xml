@@ -1079,14 +1079,15 @@ None of the above is meant to suggest that we should ignore AI, hesitate in inve
 
 ## Further reading and watching
 
-- [The software dev job market is picking up! • Maximilian SCHWARZMÜLLER](https://www.youtube.com/watch?v=7ov2M4ljccA)
-- [Don&#39;t Let AI Dull Your Software Engineering Edge • Andy WONG](https://www.awongcm.io/blog/2026/04/25/don-t-let-ai-dull-your-software-engineering-edge/)
-- [AI Is Not Improving Productivity • Daron ACEMOGLU](https://www.youtube.com/watch?v=UXK-LJ1VoDs)
-- [The Eternal Promise: A History of Attempts to Eliminate Programmers • Ivan TURKOVIC](https://www.ivanturkovic.com/2026/01/22/history-software-simplification-cobol-ai-hype/)
+- [Blog: Don&#39;t Let AI Dull Your Software Engineering Edge • Andy WONG](https://www.awongcm.io/blog/2026/04/25/don-t-let-ai-dull-your-software-engineering-edge/)
+- [Blog: The Eternal Promise: A History of Attempts to Eliminate Programmers • Ivan TURKOVIC](https://www.ivanturkovic.com/2026/01/22/history-software-simplification-cobol-ai-hype/)
+- [Blog: Coding is NOT solved • Alex EWERLÖF](https://blog.alexewerlof.com/p/coding-is-not-solved)
+- [Video: The software dev job market is picking up! • Maximilian SCHWARZMÜLLER](https://www.youtube.com/watch?v=7ov2M4ljccA)
+- [Video: AI Is Not Improving Productivity • Daron ACEMOGLU](https://www.youtube.com/watch?v=UXK-LJ1VoDs)
 
 Alternative opinion:
 
-- [On the success of &#39;natural language programming&#39; • Marc BROOKER](https://brooker.co.za/blog/2025/12/16/natural-language.html)
+- [Blog: On the success of &#39;natural language programming&#39; • Marc BROOKER](https://brooker.co.za/blog/2025/12/16/natural-language.html)
 </content>
   </entry>
   
@@ -1476,7 +1477,45 @@ Depending on the set up at your organisation, your team members might automatica
 It might be helpful to tag specific individuals if broadcasting a PR to a larger team through, say, the team chat channel. This way, you can involve the right people in code review while keeping the rest of the team in the loop.
 
 
-## Discussions
+## Responding to feedback
+
+I find it best to take on any reasonable feedback and action it as quickly and effectively as possible, assuming good faith.
+
+What if you want to indicate agreement? What if when there are multiple points of feedback and you need to keep track of them? For the above, I like to keep a checklist of feedback items for each of my open pull requests in a local text file.
+
+Additionally, I usually leave a small indicator to show I&#39;ve seen and approve the feedback, such as a thumbs-up emoji: 👍.
+
+I also leave a comment with a checklist item for actioning. For example:
+
+&gt; ```typescript
+&gt; function sumNumbers() 
+&gt; ```
+
+&gt; Reviewer: Let&#39;s add a unit test and some mock data for this.
+
+&gt; Me: 👍
+&gt; 
+&gt; - [ ] add unit test for `sumNumbers`
+&gt; - [ ] add mock data for `sumNumbers`
+
+I try to action each checklist item in its own separate commit, naming the commit after the item. This helps me to keep track of my progress.
+
+For example:
+```
+fix: add unit test for sumNumbers
+```
+
+I keep the commit history prior to merging. And as I push each change, I check off the checklist items one by one. That way, the reviewers and the engineering manager can view my progress and the evolution of the solution. After actioning a raft of feedback items, pushing them all and ensuring the CI is green, I submit the pull request for another round of review.
+
+&gt; Me: 👍
+&gt; 
+&gt; - [x] add unit test for `sumNumbers`
+&gt; - [x] add mock data for `sumNumbers`
+
+I often find it helpful to perform another self review after actioning feedback and before submitting each round. This way, you can anticipate any follow up feedback and action it pre emptively. This may be helpful in situations where the quality of your work as an engineer is measured based on iteration count. (For example: [QuantumLight&#39;s Performance Management for Deliverables](https://quantumlightcapital.com/playbooks/performance-management/the-framework#deliverables) mentions &quot;# of iterations to completion&quot; as a KPI.)
+
+
+## Extended discussions
 
 Discussions in code review can get pretty deep, especially during the early stages of a project or when discussing a complex issue. Too many nested comments in a pull request can be difficult for reviewers to keep track of and obscure the communication from the wider team.
 
@@ -2048,19 +2087,19 @@ These books inspired this article:
   
 
   <entry>
-    <title>Dependency updates</title>
-    <link href="https://conwy.co/articles/dependency-updates" />
+    <title>Dependency monitoring</title>
+    <link href="https://conwy.co/articles/dependency-monitoring" />
     <updated>2026-02-18T00:00:00.000Z</updated>
-    <id>dependency-updates</id>
-    <content xml:lang="en" type="html">It&#39;s best practice to keep an eye on dependency updates, especially where security fixes are needed. This can help us to avoid [software supply chain vulnerabilities](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/), which often feature in the OWASP Top 10.
+    <id>dependency-monitoring</id>
+    <content xml:lang="en" type="html">It&#39;s best practice to keep an eye on dependency updates, especially where vulnerabilities on specific packages are identified and security fixes potentially needed. This can help us to avoid [software supply chain vulnerabilities](https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/), which often feature in the OWASP Top 10.
 
 Many organisations use an automated pipeline tool, such as [Dependabot](https://github.com/dependabot), to continuously scan for updates and generate pull requests into repos.
 
 I recommend following a consistent process around reviewing and merging these generated pull requests. Especially in continuously deployed or mission-critical applications, we don&#39;t want to just merge anything and everything. If an upgrade explicitly addresses a known vulnerability, we should prioritise it. At the same time, we should perform appropriate tests to ensure the upgrade doesn&#39;t cause breakage generally.
 
-To address the above, I came up with a checklist around dependency updates.
+To address the above, I came up with a checklist around dependency monitoring.
 
-## Dependency updates checklist
+## Dependency monitoring checklist
 
 Here is the link to the checklist:
 
@@ -2630,13 +2669,29 @@ After experimenting with various window configurations, I&#39;ve settled on this
 
 ***Ephemeral windows***
 
-Basically, I keep multiple small windows open, each focussed a single task or theme, and only for as long as needed (hence, &quot;ephemeral&quot;).
+I keep multiple small windows open, each focussed a single task or theme, and only for as long as needed (hence, &quot;ephemeral&quot;). Whenever two or more windows are related, I group them spatially.
 
-Whenever two or more windows are related to eachother, I group them spatially.
-
-Aside: This configuration is somewhat inspired by the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy): &quot;do one thing and do it well&quot;.
+&gt; Aside: This is inspired by the [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy): &quot;do one thing and do it well&quot;.
 
 ![Screenshot depicting ephemeral windows grouped spatially](/images/articles/ephemeral-windows/ephemeral.png)
+
+
+## Window sizing, positioning and titling
+
+I size each window to be fairly small and keep them in quadrants of the display.
+
+* 4 inner corners of the screen
+* 4 outer corners of the screen
+
+![Diagram depicting ephemeral windows grouped into outer and inner screen quadrants](/images/articles/ephemeral-windows/quadrants.png)
+
+Whenever I need to focus on one specific window for a while, I double click its title bar to expand the window. After I&#39;m done, I double click the title bar again to contract it back to its previous size.
+
+![Screen recording demonstrating double click to zoom on ephemeral windows](/screencasts/articles/ephemeral-windows/double-click-zoom.gif)
+
+Some apps have a &quot;Rename Title&quot; feature. For example, [iTerm2 has &quot;Edit Window Title&quot;](https://iterm2.com/python-api/menu_ids.html). Occasionally I use this feature when I have many Terminal windows open, to help me to quickly locate whichever one I need.
+
+![Screenshots of &quot;Edit Window Title&quot; feature in iTerm2](/images/articles/ephemeral-windows/rename-window-title.png)
 
 
 ## Examples and details
@@ -2655,29 +2710,18 @@ Here are some common examples:
 
     👉 Open a new Figma window.
 
-I only keep each window open as long as needed to complete a given piece of work, then I quickly close it out to reduce clutter.
-
-I size each window to be fairly small and keep them in quadrants of the display.
-
-* 4 inner corners of the screen
-* 4 outer corners of the screen
-
-![Diagram depicting ephemeral windows grouped into outer and inner screen quadrants](/images/articles/ephemeral-windows/quadrants.png)
-
-Whenever I need to focus on one specific window for a while, I double click its title bar to expand the window. After I&#39;m done, I double click the title bar again to contract it back to its previous size.
-
-![Screen recording demonstrating double click to zoom on ephemeral windows](/screencasts/articles/ephemeral-windows/double-click-zoom.gif)
-
-I can drag windows around to be closer to related windows, visually group related windows together and making it quick to switch to exactly the window I want.
-
 This works nicely with my workflows, which I find tend to be somewhat unpredictable and widely varying in time scale.
 
-For example:
-- **Long-running:** An AI agent doing a significant piece of research might be sitting there on its own for up to 15 minutes.
-- **Medium-running:** A code code review with an AI app, perhaps paired with a VS Code instance with the same code base open and a Git client for me to quickly review the AI&#39;s changed might only be open for 5-10 minutes.
-- **Short-running:** A quick Chrome instance just to check the day&#39;s calendar in the morning might only be open for 2 minutes max.
+- **Long-running:** For example, an AI agent doing a significant piece of research might be sitting there on its own for up to 15 minutes. Or a local server might be running in the background for several hours.
+- **Medium-running:** For example, a code code review with an AI app, perhaps paired with a VS Code instance with the same code base open and a Git client for me to quickly review the AI&#39;s changes, might only be open for 5-10 minutes.
+- **Short-running:** For example, a quick Chrome instance just to check the day&#39;s calendar in the morning might be open for only 2 minutes.
 
-Some apps have a &quot;Rename Title&quot; feature. For example, [iTerm2 has &quot;Edit Window Title&quot;](https://iterm2.com/python-api/menu_ids.html). Occasionally I use this feature when I have many Terminal windows open, to help me to quickly locate whichever one I need.
+![Screenshot of local server running in the background](/images/articles/ephemeral-windows/nextjs-screenshot.png)
+
+
+## Managing cognitive load
+
+For deep and focussed work, such as a complex Git operation like a merge, I find it helpful to keep the work in its own terminal window. This helps me mentally separate the work from other items. This can be particularly useful when context switching during an interruption, such as responding to an unrelated question from a team member. After the interruption I can return to the more focussed work by simply switching to the related window, with all my context still there.
 
 
 ## AI efficiency
@@ -2722,7 +2766,6 @@ Depending on the nature of the work, I can group the windows however makes sense
 ![Diagram depicting grouping micro service and micro front end windows](/images/articles/ephemeral-windows/grouping-micro-services-front-ends.png)
 
 
-
 ## Alternatives considered
 
 Before settling on ephemeral windows, I did experiment with various alternatives:
@@ -2756,6 +2799,155 @@ You might recall a phase in the early 2010s, when it was fashionable to do every
 ## Further reading
 
 - [Blog: Commanding Your Claude Code Army • Peter STEINBERGER](https://steipete.me/posts/2025/commanding-your-claude-code-army)
+
+</content>
+  </entry>
+  
+
+  <entry>
+    <title>Escaping JSON</title>
+    <link href="https://conwy.co/articles/escaping-json" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>escaping-json</id>
+    <content xml:lang="en" type="html">It&#39;s not uncommon to encounter encoded JSON strings, embedded in content such as log output, NoSQL database query results and SQL database query results with nested JSON fields.
+
+This JSON has escape sequences (for example: `\&quot;` for double quotes) and also tends to be compressed into one stream of text, with no indentation. This makes it difficult to read and analyse.
+
+JSON like this can be quickly unescaped and formatted nicely, but you need to have the right tools at hand. I did some searching, AI prompting, exploration and trial &amp; error and settled on a couple of practical solutions.
+
+## Example
+
+One recent case I encountered was viewing structured logging output in [DynaTrace](https://www.dynatrace.com/), generated by a .NET Core service via the [Microsoft logging extensions](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging/overview?tabs=command-line), passing a whole object as a parameter, serialised to JSON.
+
+For example, we have a logging statement like this:
+
+```csharp
+_logger.LogDebug(
+  &quot;Response has  customer profile;  orders.&quot;,  
+  JsonSerializer.Serialize(customerProfile),
+  customerOrders.Count
+);
+```
+
+Producing output like this in a log entry:
+
+
+   customer profile;  orders.&quot;,
+    &quot;State&quot;:  customer profile;  orders.&quot;,
+      &quot;CustomerProfile&quot;: &quot;&quot;,
+      &quot;OrderCount&quot;: 3,
+    }
+    ...
+  }
+`}
+  
+
+
+Notice the `Message` field containing JSON content with escape sequences:
+
+```
+
+```
+
+
+## Web tools and browser extensions
+
+I tried searching for Chrome extensions that could format any piece of JSON, but was unable to find one.
+
+AI to the rescue! Using Claude Code, I vibe coded a simple Chrome extension that turned out to do the job well!
+
+You can access it here [Format Selected JSON](https://chromewebstore.google.com/detail/format-selected-json/fnkpkdgghhniojemjaefijfdfenabmbe?pli=1).
+
+The code and prompts used to generate it are open source and available here: [json-selection-formatter](https://github.com/jonathanconway/json-selection-formatter).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Sublime Text and extensions
+
+Browser extensions might not be suitable for sensitive data that needs to be kept private and/or corporate environments where browser extensions are blocked.
+
+For sensitive, work related or file system based work, I&#39;ve found a good solution: [Sublime Text](https://www.sublimetext.com) with [SublimeStringEncode](https://github.com/colinta/SublimeStringEncode), [SublimePrettyJson](https://github.com/dzhibas/SublimePrettyJson) extensions.
+
+I use `StringEncode: JSON Unescape` to unescape then `Pretty JSON: Format JSON` to automatically add spacing and `Set Syntax: JSON` to add syntax highlighting.
+
+This solution is fast, reliable and private (keeps data locally). Being integrated into Sublime Text, it fits easily into my existing folder / file structure and file based workflows.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Command line
+
+A command line alternative is `jq`.
+
+For example, I can copy and paste the whole string and pipe it to `jq`:
+
+```bash
+echo &#39;&quot;&quot;&#39; | jq -r &#39;.&#39; | jq &#39;.&#39;
+```
+
+Or I can copy it to the clipboard, read (using e.g. `pbpaste` on MacOS) and echo out.
+
+```bash
+pbpaste | jq -r &#39;.&#39; | jq &#39;.&#39;
+```
+
+The output is neatly indented:
+
+```json
+
+```
+
+
+## Closing remarks
+
+Hopefully major logging tools will future provide this kind of unpacking out of the box.
 
 </content>
   </entry>
@@ -5342,7 +5534,15 @@ I found it possible to carve out time for my practice by &quot;chaining&quot; it
 
 I hope you found these insights interesting and that perhaps I&#39;ve whetted your appetite for practising mindfulness – in whichever way works best for you.
 
-Namaste!</content>
+Namaste!
+
+## Further reading
+
+- [Book: The Heart Of The Buddhas Teaching • Thich Nhat HANH](https://www.penguin.com.au/books/the-heart-of-buddhas-teaching-9781409020547)
+- [Book: Full Catastrophe Living • Jon KABAT-ZINN](https://en.wikipedia.org/wiki/Full_Catastrophe_Living)
+- [Book: Change Your Thoughts Change Your Life • Wayne DYER](https://terebess.hu/english/tao/dy.pdf)
+- [Blog: Effortless meditation • Alex SIDORENKO](https://alexsidorenko.com/blog/effortless-meditation)
+</content>
   </entry>
   
 
@@ -6872,7 +7072,11 @@ We should especially avoid buying into hype but consider realistic trade-offs an
 
 ## Further reading
 
-- [Blog: Moving away from Tailwind, and learning to structure my CSS • Julia EVANS](https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/)</content>
+- [Blog: Moving away from Tailwind, and learning to structure my CSS • Julia EVANS](https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/)
+
+### Alternative opinions
+
+- [Blog: Tailwind is the Worst of All Worlds • Colton Voege](https://colton.dev/blog/tailwind-is-the-worst-of-all-worlds/)</content>
   </entry>
   
 
@@ -8055,6 +8259,38 @@ These books inspired this article:
 - [_The Pocket Guide to Debugging_](https://jvns.ca/blog/2022/12/21/new-zine--the-pocket-guide-to-debugging/) • Julia EVANS
 - [_UML Distilled_](https://www.martinfowler.com/books/uml.html) • Martin FOWLER
 
+</content>
+  </entry>
+  
+
+  <entry>
+    <title>Why write?</title>
+    <link href="https://conwy.co/articles/why-write" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>why-write</id>
+    <content xml:lang="en" type="html">&gt; Pull-quote: “Writing is God&#39;s way of telling you you don&#39;t know what you&#39;re talking about.”
+&gt;
+&gt; – Paul JOHNSON • [Interview at Fordham Investments Club](https://www.youtube.com/watch?v=9-NcaJdC1TQ)
+
+&gt; Pull-quote: “If nobody read my blog post, I&#39;m still Ok with that, because I got something out of this: an understanding.”
+&gt;
+&gt; – Aswath DAMODARAN • [Interview on Personable](https://www.youtube.com/watch?v=8Q2Am37pagk)
+
+Why do I write [articles](/articles), [micros](/micros), [commentaries](/commentaries), etc.?
+
+Why do anything – the first reason is **for fun**!
+
+I don&#39;t have a massive audience, so my writing is mostly for myself, though I hope others will find it useful.
+
+It&#39;s definitely helpful for learning and understanding concepts. [Studies on learning](https://www.frontiersin.org/journals/education/articles/10.3389/feduc.2021.581216/full) show that **Elaborative Interrogation** (generating an explanation of a fact or concept) and **Self-Explanation** (where the student explains how new information is related to already-known information) help moderately with learning. Writing triggers me to perform both kinds of activities.
+
+Additionally I sometimes share pieces of what I&#39;ve written with others, to get their critical viewpoint. These critiques help me correct errors in my own knowledge or thought process.
+
+Why do you write? Tell me in the comments!
+
+## Further reading
+
+- [Blog: Blogging myths you should care about • Anton ZHIYANOV](https://antonz.org/blogging-myths/)
 </content>
   </entry>
   
