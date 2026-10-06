@@ -1,10 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
-import { text } from "../styling";
+import * as mixins from "./breadcrumb.mixins";
 
-export const container = style({
-  display: "flex",
-  flexFlow: "wrap",
-  alignItems: "center",
-  ...text.size.sm,
-});
+export const container = style(mixins.container);
+
+export const titleSegment = style(mixins.titleSegment);

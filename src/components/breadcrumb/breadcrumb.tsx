@@ -15,16 +15,20 @@ export function Breadcrumb(props: BreadcrumbProps) {
   return (
     <div className={styles.container}>
       {props.segments.map((segment, segmentIndex) => (
-        <div key={segment.title}>
+        <>
           {segment.url ? (
-            <Link href={segment.url}>{segment.title}</Link>
+            <div key={segment.title}>
+              <Link href={segment.url}>{segment.title}</Link>
+            </div>
           ) : (
-            <span>{segment.title}</span>
+            <div key={segment.title} className={styles.titleSegment}>
+              <span>{segment.title}</span>
+            </div>
           )}
           {segmentIndex < props.segments.length - 1 && (
             <span>&nbsp;&gt;&nbsp;</span>
           )}
-        </div>
+        </>
       ))}
     </div>
   );
