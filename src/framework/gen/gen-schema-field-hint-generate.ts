@@ -9,14 +9,28 @@ export function generateSchemaFieldHint(
     GenSchemaRoot,
     GenSchemaRoot[keyof GenSchemaRoot]
   >,
+  includeInputInstructions = true,
 ) {
-  const firstLine = generateSchemaFieldFirstLine(genSchemaField);
-  const secondLine = genSchemaField.description;
+  const inputInstructions = includeInputInstructions
+    ? generateSchemaFieldInputInstructions(genSchemaField)
+    : undefined;
 
-  return [firstLine, secondLine].filter(isNotNil).join("\n");
+  const description = genSchemaField.description;
+
+  const validationHelpTexts = (
+    genSchemaField.validators?.map((validator) =>
+      validator.generateHelpText(),
+    ) ?? []
+  )
+    .filter(isNotNil)
+    .join("\n");
+
+  return [inputInstructions, description, validationHelpTexts]
+    .filter(isNotNil)
+    .join("\n");
 }
 
-export function generateSchemaFieldFirstLine(
+export function generateSchemaFieldInputInstructions(
   genSchemaField: GenSchemaField<
     GenSchemaRoot,
     GenSchemaRoot[keyof GenSchemaRoot]

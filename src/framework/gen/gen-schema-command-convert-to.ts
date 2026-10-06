@@ -94,7 +94,7 @@ function convertGenSchemaFieldToCommandOptionBase<
   >,
 >([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   const label = generateSchemaFieldLabel(name, genSchema);
-  const hint = generateSchemaFieldHint(genSchema);
+  const hint = generateSchemaFieldHint(genSchema, false);
   const description = [label, hint].filter(isNotNil).join("\n");
   const flags = `--${kebabCase(name)} <${name}>`;
   const option = new Option(flags, description);
