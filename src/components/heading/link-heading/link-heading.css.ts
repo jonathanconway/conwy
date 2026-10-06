@@ -10,6 +10,7 @@ export const link = style({
   color: vars.text.body.color,
   cursor: "pointer",
   textDecorationLine: "none",
+  display: "inline-block",
 
   ":hover": {
     textDecorationLine: "underline",

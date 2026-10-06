@@ -31,8 +31,6 @@ export const listItemSelected = style({
 
 export const link = style({
   ...linkMixins.link,
-  overflow: "hidden",
-  textOverflow: "ellipsis",
 
   "@media": {
     [media.lgAndUp]: {
