@@ -1,9 +1,11 @@
+import { ContentTypes } from "@/framework";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
   fileAppendAndSortLines,
   fileWrite,
   folderWrite,
+  logCommitMessageContentCreated,
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
@@ -42,4 +44,9 @@ export async function micro() {
     microsGenIndexTemplate(microGenTemplateParams),
   );
   await runPrettier(microIndexPath);
+
+  logCommitMessageContentCreated(
+    ContentTypes.Micro,
+    microGenTemplateParams.slug,
+  );
 }

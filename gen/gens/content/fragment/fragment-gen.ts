@@ -1,9 +1,11 @@
+import { ContentTypes } from "@/framework";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
   fileAppendAndSortLines,
   fileWrite,
   folderWrite,
+  logCommitMessageContentCreated,
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
@@ -43,4 +45,9 @@ export async function fragment() {
     fragmentsGenIndexTemplate(fragmentGenTemplateParams),
   );
   await runPrettier(fragmentsIndexPath);
+
+  logCommitMessageContentCreated(
+    ContentTypes.Article,
+    fragmentGenTemplateParams.slug,
+  );
 }

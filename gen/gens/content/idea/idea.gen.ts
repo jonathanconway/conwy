@@ -1,11 +1,12 @@
 import { camelCase } from "lodash";
 
-import { titleCase } from "@/framework";
+import { ContentTypes, titleCase } from "@/framework";
 
 import {
   fileAppendAndSortLines,
   fileWrite,
   folderWrite,
+  logCommitMessageContentCreated,
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
@@ -46,4 +47,6 @@ export async function idea(params: IdeaGenParams) {
   const ideasIndexPath = `${ideasPath}/index.ts`;
   fileAppendAndSortLines(ideasIndexPath, ideasIndexGen(ideaGenTemplateParams));
   runPrettier(ideasIndexPath);
+
+  logCommitMessageContentCreated(ContentTypes.Idea, name);
 }

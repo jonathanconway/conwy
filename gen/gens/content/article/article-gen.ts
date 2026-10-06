@@ -1,9 +1,11 @@
+import { ContentTypes } from "@/framework";
 import { getGenSchemaValues } from "@/framework/server";
 
 import {
   fileAppendAndSortLines,
   fileWrite,
   folderWrite,
+  logCommitMessageContentCreated,
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
@@ -46,4 +48,9 @@ export async function article() {
     articlesGenIndexTemplate(articleGenTemplateParams),
   );
   runPrettier(articlesIndexPath);
+
+  logCommitMessageContentCreated(
+    ContentTypes.Article,
+    articleGenTemplateParams.slug,
+  );
 }

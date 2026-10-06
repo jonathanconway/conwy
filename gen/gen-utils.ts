@@ -2,7 +2,12 @@ import { existsSync, readFileSync, writeFileSync } from "fs";
 import { orderBy } from "lodash";
 import { join } from "path";
 
-import { isNotNil } from "@/framework";
+import {
+  CONTENT_TYPE_LABELS_PLURAL,
+  ContentType,
+  Slug,
+  isNotNil,
+} from "@/framework";
 import { mkDirSyncIfNotExists } from "@/framework/server";
 
 function getFullPath(filePath: string) {
@@ -91,4 +96,14 @@ export function getEnumName<T extends Record<string, string>>(
   return Object.entries(enumObject).find(
     ([, value]) => value === enumValue,
   )?.[0] as string;
+}
+
+export async function logCommitMessageContentCreated(
+  contentType: ContentType,
+  contentSlug: Slug,
+) {
+  const { default: clipboard } = await import("clipboardy");
+  const commitMessage = `content(${CONTENT_TYPE_LABELS_PLURAL[contentType]}): ${contentSlug}`;
+  console.log(`⑂ Commit message: ${commitMessage}`);
+  clipboard.write(commitMessage);
 }

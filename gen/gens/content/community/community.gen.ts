@@ -1,11 +1,12 @@
 import { camelCase } from "lodash";
 
-import { titleCase } from "@/framework";
+import { ContentTypes, titleCase } from "@/framework";
 
 import {
   fileAppendAndSortLines,
   fileWrite,
   folderWrite,
+  logCommitMessageContentCreated,
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
@@ -44,4 +45,6 @@ export async function community(params: CommunityGenParams) {
     communitiesIndexGen(communityGenTemplateParams),
   );
   runPrettier(communitiesIndexPath);
+
+  logCommitMessageContentCreated(ContentTypes.Community, name);
 }
