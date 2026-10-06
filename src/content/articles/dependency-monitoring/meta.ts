@@ -6,13 +6,13 @@ import {
 } from "../../illustrations";
 
 export const meta: ArticleMeta = {
-  title: "Dependency updates",
+  title: "Dependency monitoring",
   blurb:
-    "Having a process around handling dependency updates can smooth the updates while minimising vulnerabilities.",
+    "Having a process around dependency monitoring can smooth the updates while minimising vulnerabilities.",
   shortBlurb:
-    "Having a process around handling dependency updates can smooth the updates while minimising vulnerabilities.",
+    "Having a process around dependency monitoring can smooth the updates while minimising vulnerabilities.",
   createdDate: "2026-07-08",
-  slug: "dependency-updates",
+  slug: "dependency-monitoring",
   tags: [PostTags.SoftwareDevelopment],
   mainImage: dependencyUpdatesIllustrationComposite,
   smallImage: packageIllustrationStatic,

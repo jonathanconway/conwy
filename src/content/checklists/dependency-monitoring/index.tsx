@@ -5,7 +5,7 @@ import Endnotes from "./endnotes.mdx";
 import { meta } from "./meta";
 import Startnotes from "./startnotes.mdx";
 
-export const dependencyUpdatesChecklist: Checklist = {
+export const dependencyMonitoringChecklist: Checklist = {
   type: ContentTypes.Checklist,
   meta,
   startnotes: <Startnotes />,

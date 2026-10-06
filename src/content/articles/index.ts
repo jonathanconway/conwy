@@ -7,7 +7,7 @@ export * from "./better-pull-requests";
 export * from "./code-reviews";
 export * from "./code-sketches";
 export * from "./combinatorial-testing";
-export * from "./dependency-updates";
+export * from "./dependency-monitoring";
 export * from "./designerly-cv";
 export * from "./diagramming-react";
 export * from "./diagramming-ts";
