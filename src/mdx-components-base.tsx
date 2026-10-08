@@ -14,6 +14,7 @@ import { MdxOl } from "./components/mdx/mdx-ol";
 import { MdxP } from "./components/mdx/mdx-p";
 import { MdxPre } from "./components/mdx/mdx-pre";
 import { MdxSection } from "./components/mdx/mdx-section";
+import { MdxSmall } from "./components/mdx/mdx-small";
 import { MdxTable } from "./components/mdx/mdx-table";
 import { MdxTBody } from "./components/mdx/mdx-tbody";
 import { MdxTd } from "./components/mdx/mdx-td";
@@ -42,6 +43,7 @@ export const mdxComponents: Record<
   p: MdxP,
   pre: MdxPre,
   section: MdxSection,
+  small: MdxSmall,
   table: MdxTable,
   tbody: MdxTBody,
   td: MdxTd,

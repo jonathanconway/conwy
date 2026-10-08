@@ -1,6 +1,7 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { rounded, text } from "../../styling";
+import { rounded } from "../../styling";
+import * as textMixins from "../../text/text-size";
 import { vars } from "../../theme";
 
 export const summaryContainer = style({
@@ -8,12 +9,12 @@ export const summaryContainer = style({
   borderColor: vars.blockQuoteSummary.border.color,
   borderStyle: "solid",
   backgroundColor: vars.blockQuoteSummary.background.color,
-  ...rounded.regular,
   padding: "1rem",
   marginTop: "1rem",
   marginBottom: "1rem",
   color: vars.blockQuoteSummary.color,
-  ...text.size.sm,
+  ...rounded.regular,
+  ...textMixins.sm,
 });
 
 globalStyle(`${summaryContainer} > p`, {

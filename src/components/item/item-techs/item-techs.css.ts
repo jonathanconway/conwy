@@ -1,11 +1,18 @@
 import { style } from "@vanilla-extract/css";
 
-import { text } from "../../styling";
+import * as textMixins from "../../text/text.mixins";
 
 export const techCategory = "";
 
+export const techList = style({
+  margin: 0,
+  padding: 0,
+  listStyle: "none",
+});
+
 export const techListItem = style({
-  ...text.size.sm,
+  ...textMixins.li,
+  marginTop: 0,
 });
 
 export const techSubList = style({
@@ -13,7 +20,7 @@ export const techSubList = style({
 });
 
 export const techSubListItem = style({
+  ...textMixins.liSmall,
   display: "inline-block",
-  ...text.size.xs,
   marginRight: "0.5rem",
 });

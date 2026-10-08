@@ -2,6 +2,7 @@ import { Project as Project_ } from "@/framework/client";
 
 import { Heading, HeadingLevels } from "../heading";
 import { Section } from "../section";
+import { Text } from "../text";
 
 import { ProjectImageCascade } from "./product-image-cascade";
 import { ProjectBody } from "./project-body";
@@ -32,7 +33,7 @@ export function Project(props: ProjectProps) {
           <div className={styles.headerLeftTitle}>
             <Heading level={HeadingLevels.Level2}>{meta.title}</Heading>
 
-            <div className={styles.blurb}>{meta.blurb}</div>
+            <Text>{meta.blurb}</Text>
           </div>
         </div>
 

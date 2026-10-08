@@ -1,9 +1,7 @@
 import { ProjectMeta } from "@/framework/client";
 
-import { UnorderedList } from "../../list";
+import { ListItem, UnorderedList } from "../../list";
 import { Section } from "../../section";
-
-import * as styles from "./project-platforms.css";
 
 interface ProjectPlatformsProps {
   readonly projectMeta: ProjectMeta;
@@ -18,9 +16,7 @@ export function ProjectPlatforms(props: ProjectPlatformsProps) {
     <Section label="Platforms">
       <UnorderedList>
         {props.projectMeta.platforms.map((platform) => (
-          <li key={platform} className={styles.platformText}>
-            {platform}
-          </li>
+          <ListItem key={platform}>{platform}</ListItem>
         ))}
       </UnorderedList>
     </Section>

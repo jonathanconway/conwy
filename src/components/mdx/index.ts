@@ -18,6 +18,7 @@ export * from "./mdx-ol";
 export * from "./mdx-p";
 export * from "./mdx-pre";
 export * from "./mdx-section";
+export * from "./mdx-small";
 export * from "./mdx-table";
 export * from "./mdx-tbody";
 export * from "./mdx-td";

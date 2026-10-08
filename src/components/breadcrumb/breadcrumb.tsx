@@ -1,4 +1,5 @@
 import { Link } from "../link";
+import { TextSizes } from "../text";
 
 import * as styles from "./breadcrumb.css";
 
@@ -17,16 +18,16 @@ export function Breadcrumb(props: BreadcrumbProps) {
       {props.segments.map((segment, segmentIndex) => (
         <>
           {segment.url ? (
-            <div key={segment.title}>
-              <Link href={segment.url}>{segment.title}</Link>
-            </div>
+            <Link key={segment.title} href={segment.url} size={TextSizes.xs}>
+              {segment.title}
+            </Link>
           ) : (
-            <div key={segment.title} className={styles.titleSegment}>
-              <span>{segment.title}</span>
-            </div>
+            <span key={segment.title} className={styles.titleSegment}>
+              {segment.title}
+            </span>
           )}
           {segmentIndex < props.segments.length - 1 && (
-            <span>&nbsp;&gt;&nbsp;</span>
+            <span className={styles.chevronSegment}>&nbsp;&gt;&nbsp;</span>
           )}
         </>
       ))}

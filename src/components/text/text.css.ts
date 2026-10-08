@@ -40,7 +40,7 @@ export const body = style(textMixins.body);
 
 export const label = style(textMixins.label);
 
-export const paragraph = style(textMixins.paragraph);
+export const p = style(textMixins.p);
 
 export const small = style(textMixins.small);
 
@@ -51,5 +51,3 @@ export const summary = style(textMixins.summary);
 export const collapsibleTitle = style(textMixins.collapsibleTitle);
 
 export const postDate = style(textMixins.postDate);
-
-export const salll = style(textMixins.postDate);

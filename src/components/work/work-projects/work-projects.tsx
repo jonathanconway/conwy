@@ -1,5 +1,5 @@
 import { Icon, IconTypes } from "../../icon";
-import { ListExpandable } from "../../list";
+import { ListExpandable, ListItem, UnorderedList } from "../../list";
 import { Section } from "../../section";
 
 import * as styles from "./work-projects.css";
@@ -12,16 +12,24 @@ export function WorkProjects(props: WorkProjectsProps) {
 
   return (
     <Section label="Projects">
-      <ul>
+      <UnorderedList className={styles.workProjectsList}>
         <ListExpandable
           listItems={props.projects.map((project) => (
-            <li key={project.title} className={styles.item}>
-              <Icon className={styles.icon} icon={IconTypes.CheckBox} />
-              <span className={styles.title}>{project.title}</span>
-            </li>
+            <ListItem
+              key={project.title}
+              className={styles.workProjectsListItem}
+            >
+              <Icon
+                className={styles.workProjectsListItemIcon}
+                icon={IconTypes.CheckBox}
+              />
+              <span className={styles.workProjectsListItemTitle}>
+                {project.title}
+              </span>
+            </ListItem>
           ))}
         />
-      </ul>
+      </UnorderedList>
     </Section>
   );
 }

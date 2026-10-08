@@ -1,6 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { rounded, text } from "../styling";
+import { rounded } from "../styling";
 import { vars } from "../theme";
 
 export const aside = style({
@@ -16,9 +16,4 @@ export const aside = style({
 
 globalStyle(`${aside} > *:first-child:first-child:first-child:first-child`, {
   paddingTop: 0,
-});
-
-export const asideHeading = style({
-  ...text.size.md,
-  fontWeight: 600,
 });

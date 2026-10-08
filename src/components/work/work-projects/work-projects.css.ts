@@ -2,17 +2,30 @@ import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as iconMixins from "../../icon/icon.mixins";
 import { text } from "../../styling";
+import * as textMixins from "../../text/text.mixins";
 
-export const item = style({
+export const workProjectsList = style({
+  paddingLeft: 0,
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.25rem",
+});
+
+export const workProjectsListItem = style({
+  ...textMixins.liSmall,
+  margin: 0,
   listStyle: "none",
+  lineHeight: "1.2rem",
+  display: "inline-flex",
 });
 
-export const title = style({
+export const workProjectsListItemTitle = style({
   ...text.size.xs,
-  lineHeight: "1.5rem",
+  lineHeight: "1rem",
+  flex: 1,
 });
 
-export const icon = style({
+export const workProjectsListItemIcon = style({
   ...iconMixins.iconContainer,
   width: "1rem",
   height: "1rem",
@@ -22,6 +35,6 @@ export const icon = style({
   marginRight: "0.25rem",
 });
 
-globalStyle(`${icon} linearGradient`, {
+globalStyle(`${workProjectsListItemIcon} linearGradient`, {
   filter: "brightness(2)",
 });

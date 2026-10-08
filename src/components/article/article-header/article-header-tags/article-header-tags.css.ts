@@ -2,10 +2,10 @@ import { style } from "@vanilla-extract/css";
 
 import * as boxMixins from "../../../box/box.mixins";
 import { rounded } from "../../../styling";
+import * as textMixins from "../../../text/text.mixins";
 
 export const tags = style({
-  fontSize: "0.75rem" /* 12px */,
-  lineHeight: "1rem" /* 16px */,
+  ...textMixins.small,
 });
 
 export const tag = style({

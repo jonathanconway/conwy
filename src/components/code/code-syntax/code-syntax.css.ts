@@ -12,6 +12,7 @@ export const code = style({
   position: "relative",
   display: "inline",
   paddingRight: "2rem", // allow space for Copy button
+  width: "100%",
   ...rounded.md,
   ...boxMixins.boxBorderDecorative,
 });
@@ -24,7 +25,35 @@ const codeWrapping = {
   whiteSpace: "pre-wrap",
 };
 
-globalStyle(`pre > code.language-md`, codeWrapping);
+// Some languages are amenable to text wrapping, as they do not need to support line numbers.
+
+const wrappingLanguages = ["md"];
+
+globalStyle(
+  wrappingLanguages
+    .map((wrappingLanguage) => `pre > code.language-${wrappingLanguage}`)
+    .join(","),
+  codeWrapping,
+);
+
+// For all other languages, scrolling should be used rather than wrapping, to support line numbers.
+
+const codeScrolling = {
+  display: "inline-block",
+  overflow: "scroll",
+};
+
+globalStyle(
+  wrappingLanguages
+    .map((wrappingLanguage) => `pre > code.language-${wrappingLanguage}`)
+    .join(","),
+  codeWrapping,
+);
+
+globalStyle(
+  `pre > code${wrappingLanguages.map((wrappingLanguage) => `:not(.language-${wrappingLanguage})`).join("")}`,
+  codeScrolling,
+);
 
 globalStyle(`pre > code[class*=language-]`, {
   "@media": {

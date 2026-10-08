@@ -1,4 +1,3 @@
-import { title } from "@/components/work/work-projects/work-projects.css";
 import { chatBubbleDynamicGradientIllustrationStatic } from "@/content";
 import { ContentTypes, Micro } from "@/framework/client";
 
@@ -9,7 +8,6 @@ import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { MdxContainer } from "../../../mdx";
 import { SocialLinksIcons } from "../../../social-links";
-import { Text } from "../../../text";
 import { TextExpandable } from "../../../text";
 
 import * as styles from "./micros-list-item.css";

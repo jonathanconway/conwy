@@ -67,11 +67,6 @@ export const main = style({
   },
 });
 
-export const blurb = style({
-  ...text.size.sm,
-  flex: 1,
-});
-
 export const body = style({
   flex: 1,
 });

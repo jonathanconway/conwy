@@ -1,11 +1,12 @@
+import { text } from "../../styling";
+
 export const _2xs = {
   fontSize: "0.65rem",
   lineHeight: "1rem" /* 16px */,
 };
 
 export const xs = {
-  fontSize: "0.75rem" /* 12px */,
-  lineHeight: "1rem" /* 16px */,
+  ...text.size.xs,
 };
 
 export const sm = {

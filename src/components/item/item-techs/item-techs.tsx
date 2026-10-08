@@ -1,6 +1,6 @@
 import { ProjectMeta, WorkMeta } from "@/framework/client";
 
-import { UnorderedList } from "../../list";
+import { ListItem, UnorderedList } from "../../list";
 import { Section } from "../../section";
 
 import * as styles from "./item-techs.css";
@@ -18,19 +18,22 @@ export function ItemTechs<TMeta extends WorkMeta | ProjectMeta>(
 
   return (
     <Section label="Tech">
-      <UnorderedList>
+      <UnorderedList className={styles.techList}>
         {props.itemMeta.techs.map((tech) => (
-          <li key={tech.categoryName} className={styles.techListItem}>
+          <ListItem key={tech.categoryName} className={styles.techListItem}>
             {tech.categoryName}
 
-            <ul className={styles.techSubList}>
+            <UnorderedList className={styles.techSubList}>
               {tech.items.map((item) => (
-                <li key={item.itemName} className={styles.techSubListItem}>
+                <ListItem
+                  key={item.itemName}
+                  className={styles.techSubListItem}
+                >
                   {item.itemName}
-                </li>
+                </ListItem>
               ))}
-            </ul>
-          </li>
+            </UnorderedList>
+          </ListItem>
         ))}
       </UnorderedList>
     </Section>

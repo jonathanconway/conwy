@@ -4,9 +4,9 @@ import { Testimonial as Testimonial_ } from "@/framework/client";
 
 import { Carousel } from "../../carousel";
 import { Section } from "../../section";
+import { Text, TextTypes } from "../../text";
 
 import { useWorkFeedbackCarousel } from "./use-work-feedback-carousel.hook";
-import * as styles from "./work-feedback-carousel.css";
 
 interface WorkFeedbackCarouselProps {
   readonly workFeedbacks: readonly Testimonial_[];
@@ -34,11 +34,11 @@ export function WorkFeedbackCarousel(props: WorkFeedbackCarouselProps) {
           },
         }) => (
           <div key={content}>
-            <div className={styles.feedbackItemQuote}>{content}</div>
+            <Text type={TextTypes.Small} as="p">
+              {content}
+            </Text>
 
-            {authorTitle && (
-              <div className={styles.feedbackItemAuthor}>– {authorTitle}</div>
-            )}
+            {authorTitle && <Text type={TextTypes.Small}>– {authorTitle}</Text>}
           </div>
         )}
       />

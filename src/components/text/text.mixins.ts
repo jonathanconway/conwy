@@ -1,9 +1,10 @@
 import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
-import { colors, rounded } from "../styling";
+import { colors, rounded, text } from "../styling";
 import { vars } from "../theme";
 
 import * as textSizeMixins from "./text-size/text-size.mixins";
+import * as textWeightMixins from "./text-weight/text-weight.mixins";
 
 export const h1: ComplexStyleRule & GlobalStyleRule = {
   marginTop: "1.25rem",
@@ -65,12 +66,13 @@ export const hr: ComplexStyleRule & GlobalStyleRule = {
   marginTop: "1rem",
 };
 
-export const paragraph: ComplexStyleRule & GlobalStyleRule = {
+export const p: ComplexStyleRule & GlobalStyleRule = {
   paddingTop: "0.5rem",
+  ...textWeightMixins.body,
   ...textSizeMixins.sm,
 };
 
-export const paragraphFirst: ComplexStyleRule & GlobalStyleRule = {
+export const pFirst: ComplexStyleRule & GlobalStyleRule = {
   paddingTop: 0,
 };
 
@@ -98,6 +100,13 @@ export const li: ComplexStyleRule & GlobalStyleRule = {
   marginTop: "0.5rem",
   fontSize: "0.875rem",
   lineHeight: "1.5rem",
+  ...textWeightMixins.body,
+};
+
+export const liSmall: ComplexStyleRule & GlobalStyleRule = {
+  marginTop: "0.25rem",
+  ...textSizeMixins.xs,
+  ...textWeightMixins.body,
 };
 
 export const pre: ComplexStyleRule & GlobalStyleRule = {
@@ -130,8 +139,8 @@ export const a: ComplexStyleRule & GlobalStyleRule = {
 
 export const body: ComplexStyleRule & GlobalStyleRule = {
   color: vars.text.body.color,
-  fontWeight: 400,
   paddingTop: 0,
+  ...textWeightMixins.body,
   ...textSizeMixins.sm,
 };
 
@@ -157,6 +166,7 @@ export const subtitle: ComplexStyleRule & GlobalStyleRule = {
 export const summary: ComplexStyleRule & GlobalStyleRule = {
   ...textSizeMixins.sm,
   lineHeight: "1.125rem",
+  ...textWeightMixins.body,
 };
 
 export const collapsibleTitle: ComplexStyleRule & GlobalStyleRule = {
@@ -168,6 +178,5 @@ export const collapsibleTitle: ComplexStyleRule & GlobalStyleRule = {
 };
 
 export const postDate: ComplexStyleRule & GlobalStyleRule = {
-  fontSize: "0.75rem" /* 12px */,
-  lineHeight: "1rem" /* 16px */,
+  ...text.size.xs,
 };
