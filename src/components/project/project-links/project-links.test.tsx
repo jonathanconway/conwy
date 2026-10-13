@@ -1,11 +1,12 @@
 import { render } from "@testing-library/react";
+import { describe, it } from "vitest";
 
-import { PROJECT_META_MOCK } from "@/framework/client";
+import { createProjectMock } from "@/framework";
 
 import { ProjectLinks } from "./project-links";
 
 describe("ProjectLinks", () => {
   it("renders", () => {
-    render(<ProjectLinks projectMeta={PROJECT_META_MOCK} />);
+    render(<ProjectLinks projectMeta={createProjectMock().meta} />);
   });
 });

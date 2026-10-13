@@ -1,4 +1,4 @@
-import { Article } from "@/framework/client";
+import { Article } from "@/framework";
 
 import { Image } from "../../image";
 import { Responsive } from "../../responsive";

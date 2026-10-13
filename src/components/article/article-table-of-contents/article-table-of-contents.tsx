@@ -1,4 +1,4 @@
-import { Article } from "@/framework/client";
+import { Article } from "@/framework";
 
 import { Collapsible } from "../../collapsible";
 import { Link } from "../../link";

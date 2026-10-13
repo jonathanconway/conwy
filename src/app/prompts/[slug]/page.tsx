@@ -10,7 +10,7 @@ import {
   ContentMap,
   ContentTypes,
   reduceContentAnchorLinkAndInfos,
-} from "@/framework/client";
+} from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import contentAnchorsMap_ from "../../../../builder-out/content-anchors.json";

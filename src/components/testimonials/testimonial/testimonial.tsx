@@ -1,4 +1,4 @@
-import { TestimonialAndWork as TestimonialAndWork_ } from "@/framework/client";
+import { TestimonialAndWork as TestimonialAndWork_ } from "@/framework";
 
 import { Box } from "../../box";
 import { Chain } from "../../chain";

@@ -2,7 +2,7 @@
 to: src/content/micros/<%- h.contentName() %>/meta.ts
 ---
 
-import { MicroMeta, SocialLinkTypes } from "@/framework/client";
+import { MicroMeta, SocialLinkTypes } from "@/framework";
 
 export const metadata: MicroMeta = {
   blurb: `<%- h.content() %>`,

@@ -1,4 +1,4 @@
-import { SocialLinkTypes } from "@/framework/client";
+import { SocialLinkTypes } from "@/framework";
 
 import { SocialLinksIconsProps } from "./social-links-icons";
 

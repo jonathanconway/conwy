@@ -1,6 +1,6 @@
 import { MouseEventHandler, useId } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import * as focusOutlineStyles from "../focus-outline/focus-outline.css";
 

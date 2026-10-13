@@ -1,6 +1,6 @@
 import { orderBy } from "lodash";
 
-import { Testimonial } from "@/framework/client";
+import { Testimonial } from "@/framework";
 
 interface UseWorkFeedbackCarouselParams {
   readonly workFeedbacks: readonly Testimonial[];

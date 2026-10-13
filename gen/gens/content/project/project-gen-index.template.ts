@@ -5,7 +5,7 @@ export const projectGenIndexTemplate = ({
 }: ProjectGenTemplateParams) =>
   `
 
-import { ContentTypes, Project } from "@/framework/client";
+import { ContentTypes, Project } from "@/framework";
 
 import Content from "./content.mdx";
 import { meta } from "./meta";

@@ -1,4 +1,4 @@
-import { createIllustrationStatic } from "@/framework/client";
+import { createIllustrationStatic } from "@/framework";
 
 export const memoryChipIllustrationStatic = createIllustrationStatic({
   slug: "memory-chip",

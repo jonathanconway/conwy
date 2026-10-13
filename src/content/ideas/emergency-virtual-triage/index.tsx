@@ -1,4 +1,4 @@
-import { ContentTypes, Idea } from "@/framework/client";
+import { ContentTypes, Idea } from "@/framework";
 
 import Blurb from "./blurb.mdx";
 import Content from "./content.mdx";

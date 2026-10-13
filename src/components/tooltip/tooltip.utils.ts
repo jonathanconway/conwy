@@ -1,4 +1,4 @@
-import { Maybe } from "@/framework/client";
+import { Maybe } from "@/framework";
 
 // Source - https://stackoverflow.com/a/59909152/23341
 export function checkIsElementOverflowing(anchor?: Maybe<Element>) {

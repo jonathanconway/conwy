@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { createIdeaMock } from "@/framework/client";
+import { createIdeaMock } from "@/framework";
 
 import { Idea } from "./idea";
 

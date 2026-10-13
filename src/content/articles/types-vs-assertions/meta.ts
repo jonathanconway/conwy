@@ -2,7 +2,7 @@ import {
   typesVsAssertionsIllustrationComposite,
   typescriptIllustrationStatic,
 } from "@/content/illustrations";
-import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework";
 
 export const meta: ArticleMeta = {
   title: "Types vs assertions",

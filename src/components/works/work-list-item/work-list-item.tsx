@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { WorkMeta } from "@/framework";
 
 import { ContentListItem, ContentListItemImage } from "../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../link-box";

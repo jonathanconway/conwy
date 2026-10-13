@@ -1,4 +1,4 @@
-import { createPostMocks } from "@/framework/client";
+import { createPostMocks } from "@/framework";
 
 import { ArticlesTagFiltersProps } from "./articles-tag-filters";
 

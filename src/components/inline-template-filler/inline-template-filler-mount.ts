@@ -1,4 +1,4 @@
-import { waitFor } from "@/framework/client";
+import { waitFor } from "@/framework";
 
 import * as styles from "./inline-template-filler.css";
 

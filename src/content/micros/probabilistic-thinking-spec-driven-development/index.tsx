@@ -1,4 +1,4 @@
-import { ContentTypes, Micro } from "@/framework/client";
+import { ContentTypes, Micro } from "@/framework";
 
 import Content from "./content.mdx";
 import { meta } from "./meta";

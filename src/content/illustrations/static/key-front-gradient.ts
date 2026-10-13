@@ -1,7 +1,4 @@
-import {
-  IllustrationStatic,
-  createIllustrationStatic,
-} from "@/framework/client";
+import { IllustrationStatic, createIllustrationStatic } from "@/framework";
 
 export const keyFrontGradientIllustrationStatic = createIllustrationStatic({
   slug: "key-front-gradient",

@@ -1,4 +1,4 @@
-import { WorkMeta } from "@/framework/client";
+import { WorkMeta } from "@/framework";
 
 import { Image } from "../../image";
 

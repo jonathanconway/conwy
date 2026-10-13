@@ -11,7 +11,7 @@ import { ContentAnchorsMap, ContentMap } from "@/framework";
 import {
   Prompt as Prompt_,
   reduceContentsAnchorLinkAndInfos,
-} from "@/framework/client";
+} from "@/framework";
 
 import contentAnchorsMap_ from "../../../builder-out/content-anchors.json";
 

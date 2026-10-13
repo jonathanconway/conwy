@@ -1,4 +1,4 @@
-import { IdeaMeta } from "@/framework/client";
+import { IdeaMeta } from "@/framework";
 
 export const meta: IdeaMeta = {
   slug: "emergency-virtual-triage",

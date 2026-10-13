@@ -7,7 +7,7 @@ export default ({
 }: IllustrationStaticGenTemplateParams) =>
   `
 
-import { createIllustrationStatic } from "@/framework/client";
+import { createIllustrationStatic } from "@/framework";
 
 export const ${nameCamel}IllustrationStatic = createIllustrationStatic({
   slug: "${name}",${

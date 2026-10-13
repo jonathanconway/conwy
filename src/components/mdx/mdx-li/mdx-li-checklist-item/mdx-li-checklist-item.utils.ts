@@ -12,7 +12,7 @@ import {
   ChecklistItemTagGroup,
   ChecklistMeta,
   generateChecklistItemKey,
-} from "@/framework/client";
+} from "@/framework";
 
 import {
   ChecklistPropsSectionItem,

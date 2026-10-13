@@ -1,4 +1,4 @@
-import { Post } from "@/framework/client";
+import { Post } from "@/framework";
 
 import { PostDiscussionInline } from "./post-discussion-inline";
 import { PostDiscussionLink } from "./post-discussion-links";

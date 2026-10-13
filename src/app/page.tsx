@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { AboutMe, ArticlesRecentList, PageLayout } from "@/components";
 import * as articlesMap from "@/content/articles";
 import * as microsMap from "@/content/micros";
-import { getPosts } from "@/framework/client";
+import { getPosts } from "@/framework";
 
 export default function Home() {
   const items = getPosts({

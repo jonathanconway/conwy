@@ -1,4 +1,4 @@
-import { Podcast } from "@/framework/client";
+import { Podcast } from "@/framework";
 
 export const iCodeItPodcast: Podcast = {
   title: "I Code It",

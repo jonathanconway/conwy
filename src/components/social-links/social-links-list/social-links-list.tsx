@@ -1,4 +1,4 @@
-import { SocialLink } from "@/framework/client";
+import { SocialLink } from "@/framework";
 
 import { SocialLinksListItem } from "./social-links-list-item";
 import * as styles from "./social-links-list.css";

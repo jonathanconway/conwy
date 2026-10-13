@@ -3,7 +3,7 @@
 import { isUndefined } from "lodash";
 import { MouseEvent } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { IconTypes } from "../icon";
 import * as textSizeStyles from "../text/text-size/text-size.css";

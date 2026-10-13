@@ -1,8 +1,5 @@
-import {
-  Checklist,
-  ChecklistItem,
-  truncateWithEllipsis,
-} from "@/framework/client";
+import { truncateWithEllipsis } from "@/framework";
+import { Checklist, ChecklistItem } from "@/framework";
 
 import { Breadcrumb } from "../../../breadcrumb";
 import { ContentPageHeader } from "../../../content-page";

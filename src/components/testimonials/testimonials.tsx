@@ -1,4 +1,4 @@
-import { Testimonial as Testimonial_ } from "@/framework/client";
+import { Testimonial as Testimonial_ } from "@/framework";
 
 import { ContentList } from "../content-list";
 

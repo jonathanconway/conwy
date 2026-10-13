@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { CheckboxBaseColors } from "./checkbox-base-colors";
 import { CheckboxProps } from "./checkbox-props";

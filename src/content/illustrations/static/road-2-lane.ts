@@ -1,4 +1,4 @@
-import { createIllustrationStatic } from "@/framework/client";
+import { createIllustrationStatic } from "@/framework";
 
 export const road2LaneIllustrationStatic = createIllustrationStatic({
   slug: "road-2-lane",

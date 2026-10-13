@@ -1,5 +1,5 @@
 import * as projectsMap from "@/content/projects";
-import { ProjectMeta, getProjectMetas } from "@/framework/client";
+import { ProjectMeta, getProjectMetas } from "@/framework";
 
 import { ItemNav } from "../../item";
 

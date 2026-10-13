@@ -14,7 +14,7 @@ import {
   ContentTypes,
   SocialLinkTypes,
   WorkMeta,
-} from "@/framework/client";
+} from "@/framework";
 
 export const meta: WorkMeta = {
   client: "ANZ Bank",

@@ -10,7 +10,7 @@ import {
 } from "@/components";
 import { site, workFragment } from "@/content";
 import * as worksMap from "@/content/works";
-import { getTestimonials, getWorkMetas } from "@/framework/client";
+import { getTestimonials, getWorkMetas } from "@/framework";
 
 export default function Page() {
   const workMetas = getWorkMetas(worksMap);

@@ -6,8 +6,8 @@ import {
   StorageListener,
   isEventType,
   parseStorageValue,
-} from "./storage.utils";
-import { useEvent } from "./use-event.hook";
+} from "./storage.utils.client";
+import { useEvent } from "./use-event.hook.client";
 
 function getValueFromSessionStorage<TState>(key: string): TState | undefined {
   const value = sessionStorage?.getItem(key);

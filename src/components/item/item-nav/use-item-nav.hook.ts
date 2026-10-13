@@ -1,4 +1,4 @@
-import { ItemMeta } from "@/framework/client";
+import { ItemMeta } from "@/framework";
 
 interface UseItemNavParams<TMeta extends ItemMeta> {
   readonly itemMetas: readonly TMeta[];

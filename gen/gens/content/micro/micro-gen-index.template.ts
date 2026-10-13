@@ -5,7 +5,7 @@ export const microGenIndexTemplate = ({
 }: MicroGenTemplateParams) =>
   `
 
-import { ContentTypes, Micro } from "@/framework/client";
+import { ContentTypes, Micro } from "@/framework";
 
 import { meta } from "./meta";
 import Content from "./content.mdx"

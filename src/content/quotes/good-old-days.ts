@@ -1,4 +1,4 @@
-import { ContentTypes, Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework";
 
 export const goodOldDaysQuote: Quote = {
   type: ContentTypes.Quote,

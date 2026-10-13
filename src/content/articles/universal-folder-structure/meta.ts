@@ -2,7 +2,7 @@ import {
   folderDynamicColorIllustrationStatic,
   universalFolderStructureIllustrationComposite,
 } from "@/content/illustrations";
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework";
 
 export const meta: ArticleMeta = {
   title: "Organise your life with a universal folder structure",

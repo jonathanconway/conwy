@@ -1,6 +1,6 @@
 import NextImage from "next/image";
 
-import { Image as Image_ } from "@/framework/client";
+import { Image as Image_ } from "@/framework";
 
 type NextImageProps = Partial<Parameters<typeof NextImage>[0]>;
 

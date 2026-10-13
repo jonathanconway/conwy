@@ -1,6 +1,6 @@
 import { REDIRECTS, site } from "@/content";
 import * as pagesMap from "@/content/pages";
-import { ContentTypes } from "@/framework/client";
+import { ContentTypes } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PagePage } from "./page-page";

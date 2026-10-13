@@ -1,4 +1,4 @@
-import { Checklist, ContentTypes } from "@/framework/client";
+import { Checklist, ContentTypes } from "@/framework";
 
 import Content from "./content.mdx";
 import Endnotes from "./endnotes.mdx";

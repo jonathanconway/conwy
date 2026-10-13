@@ -1,6 +1,6 @@
 import { ElementType } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { TextProps } from "./text-props";
 import { TextTypes } from "./text-type";

@@ -1,4 +1,4 @@
-import { POST_TAG_TITLES, Post, PostTag } from "@/framework/client";
+import { POST_TAG_TITLES, Post, PostTag } from "@/framework";
 
 import { Heading, HeadingLevels } from "../../heading";
 import { ItemsCount } from "../../items-count";

@@ -5,7 +5,7 @@ import { MdxDetails } from "./components/mdx/mdx-details";
 import { MdxDiv } from "./components/mdx/mdx-div";
 import { MdxKbd } from "./components/mdx/mdx-kbd";
 import { MdxSection } from "./components/mdx/mdx-section";
-import { HasChildrenOptional } from "./framework/client";
+import { HasChildrenOptional } from "./framework";
 
 export const mdxComponentsExtended: Record<
   string,

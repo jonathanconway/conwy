@@ -1,4 +1,4 @@
-import { Work } from "@/framework/client";
+import { Work } from "@/framework";
 
 import BlurbLong from "./blurb-long.mdx";
 import BlurbShort from "./blurb-short.mdx";

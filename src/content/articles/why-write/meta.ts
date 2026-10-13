@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework";
 
 export const meta: ArticleMeta = {
   title: "Why write?",

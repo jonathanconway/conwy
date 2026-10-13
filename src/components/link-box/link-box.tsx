@@ -2,7 +2,7 @@
 
 import { MouseEvent } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { Link } from "../link";
 import { withTooltip } from "../tooltip";

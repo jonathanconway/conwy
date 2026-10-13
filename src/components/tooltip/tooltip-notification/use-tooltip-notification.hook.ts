@@ -3,7 +3,7 @@
 import { ReactNode, RefObject, useEffect, useState } from "react";
 import { TooltipRefProps } from "react-tooltip";
 
-import { Maybe } from "@/framework/client";
+import { Maybe } from "@/framework";
 
 interface UseTooltipNotificationParams {
   readonly targetRef: RefObject<TooltipRefProps | null>;

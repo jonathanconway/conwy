@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { CarouselItem } from "../carousel-item";
 import { UseCarouselResult } from "../use-carousel.hook";

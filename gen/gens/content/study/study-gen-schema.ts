@@ -1,12 +1,13 @@
 import { kebabCase } from "lodash";
 
-import { BookCategories, StudyCategories, StudyStatuses } from "@/framework";
-import { GenSchema, GenSchemaFieldTypes } from "@/framework/gen";
 import {
   ArrayValidator,
   DateStringValidator,
+  StudyCategories,
+  StudyStatuses,
   UrlValidator,
-} from "@/framework/validation";
+} from "@/framework";
+import { GenSchema, GenSchemaFieldTypes } from "@/framework/gen";
 
 import { StudyGenParams } from "./study-gen-params";
 

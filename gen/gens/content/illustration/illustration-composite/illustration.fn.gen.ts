@@ -3,7 +3,7 @@ import { IllustrationCompositeGenTemplateParams } from "./illustration.params";
 export default ({ name, nameCamel }: IllustrationCompositeGenTemplateParams) =>
   `
 
-import { createIllustrationCompositePost3Circle } from "@/framework/client";
+import { createIllustrationCompositePost3Circle } from "@/framework";
 
 export const ${nameCamel}IllustrationComposite =
   createIllustrationCompositePost3Circle({

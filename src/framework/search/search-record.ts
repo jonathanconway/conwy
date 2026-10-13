@@ -1,4 +1,4 @@
-import { ContentType, Slug, Url } from "../client";
+import { ContentType, Slug, Url } from "../content";
 
 /**
  * An item of content that is indexed and searchable.

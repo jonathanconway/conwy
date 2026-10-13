@@ -1,4 +1,4 @@
-import { PageMeta } from "@/framework/client";
+import { PageMeta } from "@/framework";
 
 export const meta: PageMeta = {
   title: "What I’m doing now",

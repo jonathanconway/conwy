@@ -4,7 +4,7 @@ import { MicroPage } from "@/components";
 import { generateMicroPageTitle } from "@/components/micro/micro-page/micro-page-header";
 import { site } from "@/content";
 import * as microsMap from "@/content/micros";
-import { ContentTypes } from "@/framework/client";
+import { ContentTypes } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";

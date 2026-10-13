@@ -1,4 +1,4 @@
-import { IllustrationLayout } from "@/framework/client";
+import { IllustrationLayout } from "@/framework";
 
 const size = {
   w: 800,

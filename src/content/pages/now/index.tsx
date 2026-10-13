@@ -1,4 +1,4 @@
-import { ContentTypes, Page } from "@/framework/client";
+import { ContentTypes, Page } from "@/framework";
 
 import Content from "./content.mdx";
 import { meta } from "./meta";

@@ -1,4 +1,4 @@
-import { createIllustrationStatic } from "@/framework/client";
+import { createIllustrationStatic } from "@/framework";
 
 export const fileTextDynamicColorIllustrationStatic = createIllustrationStatic({
   slug: "file-text-dynamic-color",

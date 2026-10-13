@@ -1,3 +1,3 @@
-import { Slug } from "@/framework/client";
+import { Slug } from "@/framework";
 
 export const howBrandsGrowCommentarySlug: Slug = "how-brands-grow";

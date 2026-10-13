@@ -1,4 +1,4 @@
-import { Post } from "@/framework/client";
+import { Post } from "@/framework";
 
 import { PostDiscussionInlineGisqus } from "./post-discussion-inline-gisqus";
 

@@ -6,7 +6,7 @@ export const promptGenMetaTemplate = ({
 }: PromptGenTemplateParams) =>
   `
 
-import { PromptMeta } from "@/framework/client";
+import { PromptMeta } from "@/framework";
 
 export const meta: PromptMeta = {
   slug: "${slug}",

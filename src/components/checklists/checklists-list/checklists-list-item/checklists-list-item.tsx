@@ -1,4 +1,4 @@
-import { ChecklistMeta } from "@/framework/client";
+import { ChecklistMeta } from "@/framework";
 
 import { ContentListItem, ContentListItemBlurb } from "../../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";

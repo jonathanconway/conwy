@@ -1,4 +1,4 @@
-import { createProjectMock } from "@/framework/client";
+import { createProjectMock } from "@/framework";
 
 export function createProjectsListItemMock() {
   return {

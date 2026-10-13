@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 
-import { Image as Image_ } from "@/framework/client";
+import { Image as Image_ } from "@/framework";
 
 import { UseCarouselResult, useCarousel } from "../carousel";
 

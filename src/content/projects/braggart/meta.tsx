@@ -1,8 +1,4 @@
-import {
-  ProjectMeta,
-  ProjectSubTypes,
-  SocialLinkTypes,
-} from "@/framework/client";
+import { ProjectMeta, ProjectSubTypes, SocialLinkTypes } from "@/framework";
 
 export const meta: ProjectMeta = {
   title: "braggart",

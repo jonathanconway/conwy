@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Breadcrumb, PageLayout, Work } from "@/components";
 import { site } from "@/content";
 import * as worksMap from "@/content/works";
-import { ContentTypes } from "@/framework/client";
+import { ContentTypes } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";

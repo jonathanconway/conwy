@@ -1,4 +1,4 @@
-import { createMicroMock } from "@/framework/client";
+import { createMicroMock } from "@/framework";
 
 import { MicroSidebarProps } from "./micro-sidebar";
 

@@ -1,8 +1,5 @@
-import {
-  ModelFieldValidator,
-  ModelFieldValidatorResults,
-  checkIsDateString,
-} from "../client";
+import { checkIsDateString } from "../content";
+import { ModelFieldValidator, ModelFieldValidatorResults } from "../validation";
 
 import { ModelFieldValidatorValueSingle } from "./model-field-validator-value";
 

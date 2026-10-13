@@ -1,6 +1,6 @@
 "use client";
 
-import { ContentAnchorLinkAndInfo, Quote, Slug } from "@/framework/client";
+import { ContentAnchorLinkAndInfo, Quote, Slug } from "@/framework";
 
 import { ListUnordered } from "../../list";
 

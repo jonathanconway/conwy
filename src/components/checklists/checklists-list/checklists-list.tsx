@@ -1,6 +1,6 @@
 "use client";
 
-import { Checklist } from "@/framework/client";
+import { Checklist } from "@/framework";
 
 import { ContentList } from "../../content-list";
 import { useTagFiltersResults } from "../../filters";

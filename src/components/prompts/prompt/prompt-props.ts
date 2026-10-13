@@ -1,4 +1,4 @@
-import { ContentAnchorLinkAndInfo, Prompt } from "@/framework/client";
+import { ContentAnchorLinkAndInfo, Prompt } from "@/framework";
 
 export interface PromptProps {
   readonly title?: string;

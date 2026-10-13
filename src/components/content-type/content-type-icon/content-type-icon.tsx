@@ -1,4 +1,4 @@
-import { ContentType as ContentType_, ContentTypes } from "@/framework/client";
+import { ContentType as ContentType_, ContentTypes } from "@/framework";
 
 export interface ContentTypeIconProps {
   readonly contentType: ContentType_;

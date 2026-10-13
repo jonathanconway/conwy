@@ -2,7 +2,7 @@
 
 import { isValidElement } from "react";
 
-import { checkHasChildren, hasProps } from "@/framework/client";
+import { checkHasChildren, hasProps } from "@/framework";
 
 import { MdxWrapper } from "../mdx-wrapper";
 

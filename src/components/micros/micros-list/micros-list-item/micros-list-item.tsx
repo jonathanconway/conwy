@@ -1,5 +1,5 @@
 import { chatBubbleDynamicGradientIllustrationStatic } from "@/content";
-import { ContentTypes, Micro } from "@/framework/client";
+import { ContentTypes, Micro } from "@/framework";
 
 import { ContentListItem, ContentListItemType } from "../../../content-list";
 import { DateView } from "../../../date";

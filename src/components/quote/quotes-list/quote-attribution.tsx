@@ -1,4 +1,4 @@
-import { Quote, assert } from "@/framework/client";
+import { Quote, assert } from "@/framework";
 
 import { Link } from "../../link";
 import { Text, TextSizes, TextTypes } from "../../text";

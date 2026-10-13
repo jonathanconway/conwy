@@ -1,4 +1,4 @@
-import { ChecklistMeta, ChecklistTags } from "@/framework/client";
+import { ChecklistMeta, ChecklistTags } from "@/framework";
 
 import { tagGroupTitles } from "./tag-group-titles";
 import { tagTitles } from "./tag-titles";

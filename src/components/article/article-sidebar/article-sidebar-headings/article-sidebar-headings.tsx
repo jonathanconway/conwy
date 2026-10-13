@@ -1,6 +1,6 @@
 "use client";
 
-import { ArticleMeta } from "@/framework/client";
+import { ArticleMeta } from "@/framework";
 
 import { Link } from "../../../link";
 import { Section } from "../../../section";

@@ -1,4 +1,4 @@
-import { createPostMock } from "@/framework/client";
+import { createPostMock } from "@/framework";
 
 import { PostDiscussionLinkProps } from "./post-discussion-links";
 

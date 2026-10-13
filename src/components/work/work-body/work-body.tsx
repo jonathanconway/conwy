@@ -1,7 +1,7 @@
 import { isFunction, isObject } from "lodash";
 import { ReactNode } from "react";
 
-import { Work as Work_ } from "@/framework/client";
+import { Work as Work_ } from "@/framework";
 
 import { MdxContainer } from "../../mdx";
 import { Section } from "../../section";

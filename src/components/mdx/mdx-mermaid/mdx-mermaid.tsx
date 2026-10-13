@@ -4,7 +4,7 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 //   buildMermaidDiagramImage,
 //   generateMermaidDiagramImageUrl,
 // } from "@/builders";
-import { Meta } from "@/framework/client";
+import { Meta } from "@/framework";
 
 import { MdxImg } from "../mdx-img";
 

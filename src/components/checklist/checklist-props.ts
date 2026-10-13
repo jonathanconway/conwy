@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { ChecklistItemTag, ChecklistItemTagGroup } from "@/framework/client";
+import { ChecklistItemTag, ChecklistItemTagGroup } from "@/framework";
 
 import { HeadingLevel } from "../heading";
 

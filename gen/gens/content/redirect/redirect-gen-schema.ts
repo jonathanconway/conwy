@@ -1,5 +1,5 @@
+import { UrlValidator } from "@/framework";
 import { GenSchema, GenSchemaFieldTypes } from "@/framework/gen";
-import { UrlValidator } from "@/framework/validation";
 
 import { RedirectGenParams } from "./redirect-gen-params";
 

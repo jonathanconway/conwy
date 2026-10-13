@@ -8,7 +8,7 @@ import {
 } from "@/components";
 import { site } from "@/content";
 import * as booksMap from "@/content/books";
-import { ContentTypes } from "@/framework/client";
+import { ContentTypes } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";

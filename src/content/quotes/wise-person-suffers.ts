@@ -1,4 +1,4 @@
-import { ContentTypes, Quote } from "@/framework/client";
+import { ContentTypes, Quote } from "@/framework";
 
 import { theHeartOfTheBuddhasTeachingBook } from "../books/the-heart-of-the-buddhas-teaching";
 

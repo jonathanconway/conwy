@@ -1,7 +1,7 @@
 import { isArray } from "lodash";
 import { isValidElement } from "react";
 
-import { checkHasChildren, hasProps } from "@/framework/client";
+import { checkHasChildren, hasProps } from "@/framework";
 
 import { mdxComponentsExtended } from "../../../../mdx-components-extended";
 import { MdxWrapper } from "../mdx-wrapper";

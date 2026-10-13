@@ -1,4 +1,4 @@
-import { Image } from "@/framework/client";
+import { Image } from "@/framework";
 
 export interface ImageModalProps {
   readonly images: readonly Image[];

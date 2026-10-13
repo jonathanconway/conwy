@@ -1,4 +1,4 @@
-import { MicroMeta, PostTags } from "@/framework/client";
+import { MicroMeta, PostTags } from "@/framework";
 
 export const meta: MicroMeta = {
   createdDate: "2026-10-11",

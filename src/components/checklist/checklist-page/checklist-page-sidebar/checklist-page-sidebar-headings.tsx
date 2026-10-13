@@ -1,6 +1,6 @@
 "use client";
 
-import { getTreeSubBranchDescendantsCount } from "@/framework/client";
+import { getTreeSubBranchDescendantsCount } from "@/framework";
 
 import { ContentPageSidebarHeadings } from "../../../content-page";
 import { useChecklistContext } from "../../checklist-context";

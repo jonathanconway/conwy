@@ -1,4 +1,4 @@
-import { ContentAnchorLinkAndInfo } from "@/framework/client";
+import { ContentAnchorLinkAndInfo } from "@/framework";
 
 import { Divider } from "../divider";
 import { Stack } from "../stack";

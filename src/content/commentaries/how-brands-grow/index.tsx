@@ -1,5 +1,5 @@
 import { howBrandsGrowBook } from "@/content/books/how-brands-grow";
-import { Commentary, ContentTypes, getContentLink } from "@/framework/client";
+import { Commentary, ContentTypes, getContentLink } from "@/framework";
 
 import Content from "./content.mdx";
 import { howBrandsGrowCommentarySlug } from "./slug";

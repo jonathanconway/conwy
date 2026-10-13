@@ -13,7 +13,7 @@ import {
   ContentMap,
   Quote,
   reduceContentsAnchorLinkAndInfos,
-} from "@/framework/client";
+} from "@/framework";
 
 import contentAnchorsMap_ from "../../../builder-out/content-anchors.json";
 

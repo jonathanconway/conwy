@@ -1,5 +1,5 @@
 import { influenceBook } from "@/content/books/influence";
-import { Commentary, ContentTypes, getContentLink } from "@/framework/client";
+import { Commentary, ContentTypes, getContentLink } from "@/framework";
 
 import Content from "./content.mdx";
 import { influenceCommentarySlug } from "./slug";

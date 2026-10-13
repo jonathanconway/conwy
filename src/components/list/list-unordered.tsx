@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import * as styles from "./list.css";
 

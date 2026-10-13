@@ -1,4 +1,4 @@
-import { Micro as Micro_ } from "@/framework/client";
+import { Micro as Micro_ } from "@/framework";
 
 import { ContentSidebarContainer } from "../../../content-page";
 

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { Article } from "@/components";
 import { site } from "@/content";
 import * as articlesMap from "@/content/articles";
-import { ContentTypes } from "@/framework/client";
+import { ContentTypes } from "@/framework";
 import { findImportedContent, getArticle } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";

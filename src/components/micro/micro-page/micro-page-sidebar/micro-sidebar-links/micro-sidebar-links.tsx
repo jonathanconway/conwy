@@ -1,4 +1,4 @@
-import { MicroMeta } from "@/framework/client";
+import { MicroMeta } from "@/framework";
 
 import { Section } from "../../../../section";
 import { SocialLinksList } from "../../../../social-links";

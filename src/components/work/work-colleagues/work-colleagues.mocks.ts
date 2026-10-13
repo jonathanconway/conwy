@@ -1,4 +1,4 @@
-import { createColleagueRelationshipsMock } from "@/framework/client";
+import { createColleagueRelationshipsMock } from "@/framework";
 
 import { WorkProjectsProps } from "./work-colleagues.types";
 

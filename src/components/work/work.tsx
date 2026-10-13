@@ -1,4 +1,4 @@
-import { Work as Work_ } from "@/framework/client";
+import { Work as Work_ } from "@/framework";
 
 import { Heading, HeadingLevels } from "../heading";
 import { Text, TextTypes } from "../text";

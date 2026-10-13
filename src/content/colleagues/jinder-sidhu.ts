@@ -1,4 +1,4 @@
-import { Colleague, ContentTypes, SocialLinkTypes } from "@/framework/client";
+import { Colleague, ContentTypes, SocialLinkTypes } from "@/framework";
 
 export const jinderColleague: Colleague = {
   type: ContentTypes.Colleague,

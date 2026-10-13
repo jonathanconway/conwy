@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-import { HasChildrenOptional } from "@/framework/client";
+import { HasChildrenOptional } from "@/framework";
 
 export type MdxWrapperProps = HasChildrenOptional;

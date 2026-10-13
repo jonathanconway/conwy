@@ -1,4 +1,4 @@
-import { Checklist } from "@/framework/client";
+import { Checklist } from "@/framework";
 
 export interface ChecklistPageHeaderProps {
   readonly checklist: Checklist;

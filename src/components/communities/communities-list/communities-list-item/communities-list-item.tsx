@@ -1,4 +1,4 @@
-import { Community as Community_ } from "@/framework/client";
+import { Community as Community_ } from "@/framework";
 
 import { ContentListItem } from "../../../content-list";
 import { Image } from "../../../image";

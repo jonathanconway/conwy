@@ -1,4 +1,4 @@
-import { ProjectMeta, WorkMeta } from "@/framework/client";
+import { ProjectMeta, WorkMeta } from "@/framework";
 
 import { ListItem, ListItemSizes, ListUnordered } from "../../list";
 import { Section } from "../../section";

@@ -4,11 +4,7 @@ import { ArticleLayout, Commentary } from "@/components";
 import * as contentMap_ from "@/content";
 import { site } from "@/content";
 import * as commentariesMap from "@/content/commentaries";
-import {
-  ContentMap,
-  ContentTypes,
-  getContentLinkInfo,
-} from "@/framework/client";
+import { ContentMap, ContentTypes, getContentLinkInfo } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";

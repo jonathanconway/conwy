@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
-import { Image as Image_, setSearchParams } from "@/framework/client";
+import { Image as Image_ } from "@/framework";
+import { setSearchParams } from "@/framework/client";
 
 import { ImageModalProps } from "./image-modal-props";
 

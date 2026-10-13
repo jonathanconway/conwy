@@ -1,4 +1,4 @@
-import { Image, Work, WorkMeta } from "@/framework/client";
+import { Image, Work, WorkMeta } from "@/framework";
 
 export function workImageFullPath({ slug }: WorkMeta) {
   return ({ src }: Image) => {

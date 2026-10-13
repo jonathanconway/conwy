@@ -1,6 +1,8 @@
-import { NOTE_A_ID_PREFIX, assert } from "@/framework/client";
+import { assert } from "@/framework";
 
 import { MdxAProps } from "../../mdx-a-props";
+
+const NOTE_A_ID_PREFIX = `user-content-fnref-`;
 
 export function checkIsASubformatFootnotePopupLinkProps(props: MdxAProps) {
   return props.id?.startsWith(NOTE_A_ID_PREFIX);

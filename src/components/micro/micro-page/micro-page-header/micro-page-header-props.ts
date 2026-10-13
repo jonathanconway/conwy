@@ -1,4 +1,4 @@
-import { Micro } from "@/framework/client";
+import { Micro } from "@/framework";
 
 export interface MicroPageHeaderProps {
   readonly micro: Micro;

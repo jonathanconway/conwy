@@ -19,7 +19,7 @@ import {
   ProjectMeta,
   ProjectSubTypes,
   SocialLinkTypes,
-} from "@/framework/client";
+} from "@/framework";
 
 export const meta: ProjectMeta = {
   title: "${title}",

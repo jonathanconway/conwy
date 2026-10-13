@@ -1,4 +1,4 @@
-import { IllustrationComposite, IllustrationLayout } from "@/framework/client";
+import { IllustrationComposite, IllustrationLayout } from "@/framework";
 
 export interface IllustrationCompositeProps {
   readonly illustration: IllustrationComposite;

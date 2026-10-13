@@ -1,4 +1,4 @@
-import { ContentLinkAndInfo, Slug } from "@/framework/client";
+import { ContentLinkAndInfo, Slug } from "@/framework";
 
 export type ContentsAnchorContentLinkInfos = Record<
   Slug,

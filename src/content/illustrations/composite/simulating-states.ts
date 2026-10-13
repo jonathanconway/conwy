@@ -1,4 +1,4 @@
-import { createIllustrationCompositePost3Circle } from "@/framework/client";
+import { createIllustrationCompositePost3Circle } from "@/framework";
 
 import {
   appColorIllustrationStatic,

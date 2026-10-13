@@ -1,6 +1,6 @@
 import { isArray } from "lodash";
 
-import { checkHasChildren } from "@/framework/client";
+import { checkHasChildren } from "@/framework";
 
 import { MdxUlProps } from "../mdx-ul-props";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Props } from "@/framework/client";
+import { Props } from "@/framework";
 
 import { ChecklistHeading, useChecklistContext } from "../../checklist";
 import { HeadingLevels, SectionHeading } from "../../heading";

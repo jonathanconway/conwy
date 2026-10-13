@@ -9,7 +9,7 @@ import {
 import { articlesFragment, site } from "@/content";
 import * as articlesMap from "@/content/articles";
 import * as microsMap from "@/content/micros";
-import { Post, pickAndCombineListItems } from "@/framework/client";
+import { Post, pickAndCombineListItems } from "@/framework";
 
 export default function Page() {
   const items = pickAndCombineListItems<Post>([articlesMap, microsMap]);

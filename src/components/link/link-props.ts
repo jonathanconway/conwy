@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 
-import { Link as Link_ } from "@/framework/client";
+import { Link as Link_ } from "@/framework";
 
 import { IconType } from "../icon";
 import { TextSize } from "../text/text-size";

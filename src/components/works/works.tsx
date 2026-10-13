@@ -1,4 +1,4 @@
-import { WorkMeta, sortWorkMetas } from "@/framework/client";
+import { WorkMeta, sortWorkMetas } from "@/framework";
 
 import { ContentList } from "../content-list";
 

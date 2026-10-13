@@ -2,7 +2,7 @@
 
 import { difference, orderBy } from "lodash";
 
-import { Article, Post } from "@/framework/client";
+import { Article, Post } from "@/framework";
 
 import { ContentList, ContentListSmall } from "../../content-list";
 import { useTagFiltersResults } from "../../filters";

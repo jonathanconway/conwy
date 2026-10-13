@@ -1,4 +1,4 @@
-import { ToolMeta, ToolSections } from "@/framework/client";
+import { ToolMeta, ToolSections } from "@/framework";
 
 export const meta: ToolMeta = {
   slug: "silverant-titanium-800ml-bottle",

@@ -5,10 +5,7 @@ import { Suspense } from "react";
 import { ChecklistItemPage, Redirect } from "@/components";
 import { site } from "@/content";
 import * as checklistsMap from "@/content/checklists";
-import {
-  ContentTypes,
-  generateChecklistMetaExtensions,
-} from "@/framework/client";
+import { ContentTypes, generateChecklistMetaExtensions } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../../[slug]/types";

@@ -1,4 +1,4 @@
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { ChecklistItemTitleProps } from "./checklist-item-title-props";
 import { CHECKLIST_ITEM_TITLE_CLASS_NAME } from "./checklist-item-title.const";

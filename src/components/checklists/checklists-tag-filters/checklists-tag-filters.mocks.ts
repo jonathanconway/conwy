@@ -1,4 +1,4 @@
-import { createChecklistMocks } from "@/framework/client";
+import { createChecklistMocks } from "@/framework";
 
 import { ChecklistsTagFiltersProps } from "./checklists-tag-filters";
 

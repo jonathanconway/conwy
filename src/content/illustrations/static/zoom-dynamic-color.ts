@@ -1,4 +1,4 @@
-import { createIllustrationStatic } from "@/framework/client";
+import { createIllustrationStatic } from "@/framework";
 
 export const zoomDynamicColorIllustrationStatic = createIllustrationStatic({
   slug: "zoom-dynamic-color",

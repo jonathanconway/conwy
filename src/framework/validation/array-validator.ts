@@ -1,4 +1,4 @@
-import { ModelFieldValidator } from "../client";
+import { ModelFieldValidator } from "../validation";
 
 import {
   ModelFieldValidatorValueArray,

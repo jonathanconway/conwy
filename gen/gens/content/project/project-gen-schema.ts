@@ -1,8 +1,7 @@
 import { kebabCase } from "lodash";
 
-import { ProjectSubTypes } from "@/framework";
+import { ArrayValidator, ProjectSubTypes, UrlValidator } from "@/framework";
 import { GenSchema, GenSchemaFieldTypes } from "@/framework/gen";
-import { ArrayValidator, UrlValidator } from "@/framework/validation";
 
 import { ProjectGenParams } from "./project-gen-params";
 

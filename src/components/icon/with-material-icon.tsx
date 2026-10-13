@@ -1,8 +1,7 @@
-import { SvgIconProps, SvgIconTypeMap } from "@mui/material";
+import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { FC } from "react";
 
-import { Props } from "@/framework/client";
+import { Props } from "@/framework";
 
 import { SvgProps } from "./icon-svg-props";
 import * as styles from "./icon.css";

@@ -1,4 +1,4 @@
-import { Project as Project_ } from "@/framework/client";
+import { Project as Project_ } from "@/framework";
 
 import { Heading, HeadingLevels } from "../heading";
 import { Section } from "../section";

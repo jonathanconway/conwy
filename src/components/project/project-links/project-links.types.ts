@@ -1,4 +1,4 @@
-import { ProjectMeta } from "@/framework/client";
+import { ProjectMeta } from "@/framework";
 
 export interface ProjectLinksProps {
   readonly projectMeta: ProjectMeta;

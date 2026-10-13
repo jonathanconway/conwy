@@ -1,4 +1,4 @@
-import { ChecklistItemTag, ChecklistItemTagGroup } from "@/framework/client";
+import { ChecklistItemTag, ChecklistItemTagGroup } from "@/framework";
 
 export interface ChecklistFiltersProps {
   readonly tagGroups: readonly ChecklistItemTagGroup[];

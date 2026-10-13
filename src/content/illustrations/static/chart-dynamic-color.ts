@@ -1,4 +1,4 @@
-import { createIllustrationStatic } from "@/framework/client";
+import { createIllustrationStatic } from "@/framework";
 
 export const chartDynamicColorIllustrationStatic = createIllustrationStatic({
   slug: "chart-dynamic-color",

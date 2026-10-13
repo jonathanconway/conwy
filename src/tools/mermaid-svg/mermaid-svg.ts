@@ -1,7 +1,6 @@
 import { execSync } from "child_process";
 import {
   existsSync,
-  mkdirSync,
   readFileSync,
   readdirSync,
   rmSync,

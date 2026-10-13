@@ -3,7 +3,7 @@ import {
   Study,
   StudyCategories,
   StudyStatuses,
-} from "@/framework/client";
+} from "@/framework";
 
 export const epicWebStudy: Study = {
   type: ContentTypes.Study,

@@ -1,6 +1,6 @@
 import { groupBy, orderBy } from "lodash";
 
-import { Community } from "@/framework/client";
+import { Community } from "@/framework";
 
 export function getCommunitiesList(communities: readonly Community[]) {
   const communitiesOrdered = orderBy(

@@ -23,7 +23,7 @@ import { MdxTHead } from "./components/mdx/mdx-thead";
 import { MdxTr } from "./components/mdx/mdx-tr";
 import { MdxUl } from "./components/mdx/mdx-ul";
 import { MdxWrapper } from "./components/mdx/mdx-wrapper";
-import { HasChildrenOptional } from "./framework/client";
+import { HasChildrenOptional } from "./framework";
 
 export const mdxComponents: Record<
   string,

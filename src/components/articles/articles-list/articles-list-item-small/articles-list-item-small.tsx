@@ -1,4 +1,4 @@
-import { ArticleMeta } from "@/framework/client";
+import { ArticleMeta } from "@/framework";
 
 import { ContentListItemSmall } from "../../../content-list";
 import { DateFormats, DateView } from "../../../date";

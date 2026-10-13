@@ -1,4 +1,4 @@
-import { Image as Image_, checkIsOdd } from "@/framework/client";
+import { Image as Image_, checkIsOdd } from "@/framework";
 
 import { vars } from "../theme";
 

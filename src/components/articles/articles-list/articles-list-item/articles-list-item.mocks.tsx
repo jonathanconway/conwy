@@ -1,4 +1,4 @@
-import { createArticleMock } from "@/framework/client";
+import { createArticleMock } from "@/framework";
 
 import { ArticlesListItemProps } from "./articles-list-item";
 

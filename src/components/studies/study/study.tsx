@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 
 import { isNotNil } from "@/framework";
-import { Study as Study_ } from "@/framework/client";
+import { Study as Study_ } from "@/framework";
 
 import { ContentListItem } from "../../content-list";
 import { Heading, HeadingLevels } from "../../heading";

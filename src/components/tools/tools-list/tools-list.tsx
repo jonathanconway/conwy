@@ -1,7 +1,7 @@
 import { groupBy, orderBy } from "lodash";
 
 import * as toolsMap from "@/content/tools";
-import { ToolSectionTitles, ToolSections } from "@/framework/client";
+import { ToolSectionTitles, ToolSections } from "@/framework";
 
 import { ContentList } from "../../content-list";
 import { SectionHeading } from "../../heading";

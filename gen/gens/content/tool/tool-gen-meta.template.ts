@@ -12,7 +12,7 @@ export const toolGenMetaTemplate = ({
 }: ToolGenTemplateParams) =>
   `
 
-import { ToolMeta, ToolSections } from "@/framework/client";
+import { ToolMeta, ToolSections } from "@/framework";
 
 export const meta: ToolMeta = {
   section: ToolSections.App,

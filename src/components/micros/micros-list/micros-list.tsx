@@ -1,6 +1,6 @@
 "use client";
 
-import { Micro } from "@/framework/client";
+import { Micro } from "@/framework";
 
 import { MicrosListItem } from "./micros-list-item";
 import * as styles from "./micros-list.css";

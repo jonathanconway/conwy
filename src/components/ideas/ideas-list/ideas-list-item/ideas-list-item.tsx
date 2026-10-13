@@ -1,6 +1,6 @@
 "use client";
 
-import { Idea as Idea_ } from "@/framework/client";
+import { Idea as Idea_ } from "@/framework";
 
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { MdxContainer } from "../../../mdx";

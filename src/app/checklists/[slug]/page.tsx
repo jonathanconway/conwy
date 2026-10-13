@@ -9,7 +9,7 @@ import {
   Checklist as Checklist_,
   ContentTypes,
   generateChecklistMetaExtensions,
-} from "@/framework/client";
+} from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";

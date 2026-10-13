@@ -1,6 +1,6 @@
 "use client";
 
-import { Post } from "@/framework/client";
+import { Post } from "@/framework";
 
 import { TagFilters } from "../../filters";
 

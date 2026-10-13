@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ItemMeta } from "@/framework/client";
+import { ItemMeta } from "@/framework";
 
 import * as styles from "./item-main-image.css";
 

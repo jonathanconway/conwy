@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-import { HasChildrenOptional, ReactNodeSingle } from "@/framework/client";
+import { HasChildrenOptional, ReactNodeSingle } from "@/framework";
 
 export interface MdxWrapperElementProps {
   readonly children: ReactNodeSingle;

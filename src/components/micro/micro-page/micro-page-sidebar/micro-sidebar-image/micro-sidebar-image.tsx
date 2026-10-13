@@ -1,5 +1,5 @@
 import { chatBubbleDynamicGradientIllustrationStatic } from "@/content";
-import { MicroMeta } from "@/framework/client";
+import { MicroMeta } from "@/framework";
 
 import { Image } from "../../../../image";
 

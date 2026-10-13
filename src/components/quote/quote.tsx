@@ -1,6 +1,6 @@
 "use client";
 
-import { ContentAnchorLinkAndInfo, Quote as Quote_ } from "@/framework/client";
+import { ContentAnchorLinkAndInfo, Quote as Quote_ } from "@/framework";
 
 import { BlockQuotePullQuote } from "../aside";
 import { ContentAnchors } from "../content-anchors";

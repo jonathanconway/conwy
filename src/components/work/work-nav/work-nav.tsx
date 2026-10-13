@@ -1,5 +1,5 @@
 import * as worksMap from "@/content/works";
-import { WorkMeta, getWorkMetas } from "@/framework/client";
+import { WorkMeta, getWorkMetas } from "@/framework";
 
 import { ItemNav } from "../../item";
 

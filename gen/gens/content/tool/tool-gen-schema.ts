@@ -1,6 +1,6 @@
 import { assert, generateSlugFromText } from "@/framework";
+import { UrlValidator } from "@/framework";
 import { GenSchema, GenSchemaFieldTypes } from "@/framework/gen";
-import { UrlValidator } from "@/framework/validation";
 
 import { ToolGenParams } from "./tool-gen-params";
 

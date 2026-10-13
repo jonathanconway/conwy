@@ -1,4 +1,4 @@
-import { Commentary, ContentLinkInfo } from "@/framework/client";
+import { Commentary, ContentLinkInfo } from "@/framework";
 
 import { BookAuthors } from "../../../book";
 import { ContentTypeIcon } from "../../../content-type";

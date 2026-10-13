@@ -5,7 +5,7 @@ export const promptGenIndexTemplate = ({
 }: PromptGenTemplateParams) =>
   `
 
-import { ContentTypes, Prompt } from "@/framework/client";
+import { ContentTypes, Prompt } from "@/framework";
 
 import { meta } from "./meta";
 import Content from "./content.mdx"

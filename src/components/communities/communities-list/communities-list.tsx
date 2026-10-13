@@ -1,5 +1,5 @@
 import { sentenceCase } from "@/framework";
-import { Community } from "@/framework/client";
+import { Community } from "@/framework";
 
 import {
   ContentList,

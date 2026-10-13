@@ -1,8 +1,4 @@
-import {
-  ModelFieldValidator,
-  ModelFieldValidatorResults,
-  checkIsUrl,
-} from "../client";
+import { ModelFieldValidator, ModelFieldValidatorResults } from "../validation";
 
 import { ModelFieldValidatorValueSingle } from "./model-field-validator-value";
 

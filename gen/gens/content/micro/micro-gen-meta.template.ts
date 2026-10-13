@@ -15,7 +15,7 @@ export const microGenMetaTemplate = ({
 }: MicroGenTemplateParams) =>
   `
 
-import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework/client";
+import { MicroMeta, PostTags, SocialLinkTypes } from "@/framework";
 
 export const meta: MicroMeta = {
   createdDate: "${createdDate}",

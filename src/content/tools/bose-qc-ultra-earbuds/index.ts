@@ -1,4 +1,4 @@
-import { ContentTypes, Tool } from "@/framework/client";
+import { ContentTypes, Tool } from "@/framework";
 
 import { meta } from "./meta";
 

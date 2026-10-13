@@ -1,4 +1,4 @@
-import { createArticleMock } from "@/framework/client";
+import { createArticleMock } from "@/framework";
 
 import { ArticleSidebarProps } from "./article-sidebar";
 

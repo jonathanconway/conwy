@@ -1,4 +1,4 @@
-import { ProjectMeta, SocialLinkTypes } from "@/framework/client";
+import { ProjectMeta, SocialLinkTypes } from "@/framework";
 
 export const meta: ProjectMeta = {
   title: "tailwindjs",

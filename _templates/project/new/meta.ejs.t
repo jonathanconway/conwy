@@ -2,7 +2,7 @@
 to: src/content/projects/<%- name %>/meta.ts
 ---
 
-import { ProjectMeta } from "@/framework/client";
+import { ProjectMeta } from "@/framework";
 
 export const <%- name %>: ProjectMeta = {
   title: "<%- name %>",

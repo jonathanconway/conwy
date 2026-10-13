@@ -1,4 +1,4 @@
-import { ContentTypes, Prompt } from "@/framework/client";
+import { ContentTypes, Prompt } from "@/framework";
 
 import Content from "./content.mdx";
 import { meta } from "./meta";

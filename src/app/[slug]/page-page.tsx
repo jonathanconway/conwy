@@ -5,7 +5,7 @@ import {
   ResponsiveMdHalf,
 } from "@/components";
 import * as pagesMap from "@/content/pages";
-import { ContentTypes, Page as Page_ } from "@/framework/client";
+import { ContentTypes } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "./types";

@@ -1,7 +1,7 @@
 "use client";
 
 import { Prompt as Prompt_ } from "@/framework";
-import { ContentAnchorLinkAndInfo } from "@/framework/client";
+import { ContentAnchorLinkAndInfo } from "@/framework";
 
 import { Prompt } from "../prompt/prompt";
 

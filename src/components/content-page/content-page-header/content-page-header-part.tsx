@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { ContentType, MetaBase } from "@/framework/client";
+import { ContentType, MetaBase } from "@/framework";
 
 import { ContentPageHeaderPartProps } from "./content-page-header-part-props";
 

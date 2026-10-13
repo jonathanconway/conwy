@@ -1,4 +1,4 @@
-import { createSearchRecordMock } from "@/framework/client";
+import { createSearchRecordMock } from "@/framework";
 
 import { SearchResultsItemProps } from "./search-results-item-props";
 

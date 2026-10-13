@@ -1,4 +1,4 @@
-import { SearchResult } from "@/framework/client";
+import { SearchResult } from "@/framework";
 
 export interface SearchResultsItemProps {
   readonly searchResult: SearchResult;

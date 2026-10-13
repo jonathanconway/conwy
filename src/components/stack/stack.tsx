@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 
-import { cn, pickByNotUndefined } from "@/framework/client";
+import { pickByNotUndefined } from "@/framework";
+import { cn } from "@/framework";
 import { rems } from "@/framework/css";
 
 import { StackDirections } from "./stack-direction";

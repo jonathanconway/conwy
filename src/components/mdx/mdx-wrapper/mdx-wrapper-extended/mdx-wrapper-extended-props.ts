@@ -1,3 +1,3 @@
-import { HasChildrenOptional } from "@/framework/client";
+import { HasChildrenOptional } from "@/framework";
 
 export type MdxWrapperExtendedProps = HasChildrenOptional;

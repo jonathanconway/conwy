@@ -1,7 +1,7 @@
 import { kebabCase } from "lodash";
 import pluralize from "pluralize";
 
-import { ToolSectionTitles, ToolSections } from "@/framework/client";
+import { ToolSectionTitles, ToolSections } from "@/framework";
 
 import { Link } from "../../link";
 import { ListItem, ListUnordered } from "../../list";

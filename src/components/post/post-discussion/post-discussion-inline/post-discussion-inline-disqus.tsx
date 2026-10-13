@@ -4,7 +4,7 @@ import { DiscussionEmbed } from "disqus-react";
 import { usePathname } from "next/navigation";
 
 import { sentenceCase } from "@/framework";
-import { PostMeta } from "@/framework/client";
+import { PostMeta } from "@/framework";
 import { packageInfo } from "@/package-info";
 
 import { Collapsible } from "../../../collapsible";

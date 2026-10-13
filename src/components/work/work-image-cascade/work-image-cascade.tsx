@@ -1,4 +1,4 @@
-import { Work } from "@/framework/client";
+import { Work } from "@/framework";
 
 import { ImageCascade } from "../../image-cascade";
 

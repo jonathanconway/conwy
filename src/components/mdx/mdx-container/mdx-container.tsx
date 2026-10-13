@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import * as spacingStyles from "../../spacing/spacing.css";
 

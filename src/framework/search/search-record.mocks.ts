@@ -2,7 +2,7 @@ import {
   createArticleMock,
   getContentLink,
   getContentUrlPath,
-} from "../client";
+} from "../content";
 
 import { SearchRecord } from "./search-record";
 

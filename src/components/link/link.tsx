@@ -2,7 +2,7 @@
 
 import NextLink from "next/link";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { Icon, IconTypes } from "../icon";
 import { withTooltip } from "../tooltip";

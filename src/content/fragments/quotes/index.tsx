@@ -1,4 +1,4 @@
-import { Fragment } from "@/framework/client";
+import { Fragment } from "@/framework";
 
 import Content from "./content.mdx";
 

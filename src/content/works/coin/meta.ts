@@ -1,4 +1,4 @@
-import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework/client";
+import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
   client: "COIN Software",

@@ -1,4 +1,4 @@
-import { Commentary, ContentLinkInfo } from "@/framework/client";
+import { Commentary, ContentLinkInfo } from "@/framework";
 
 import { ContentListItem } from "../../content-list";
 import { LinkBox } from "../../link-box";

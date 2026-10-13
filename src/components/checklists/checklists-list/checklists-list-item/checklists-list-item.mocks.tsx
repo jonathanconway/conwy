@@ -1,4 +1,4 @@
-import { createChecklistMock } from "@/framework/client";
+import { createChecklistMock } from "@/framework";
 
 import { ChecklistsListItemProps } from "./checklists-list-item";
 

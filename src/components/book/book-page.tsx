@@ -1,4 +1,4 @@
-import { Book } from "@/framework/client";
+import { Book } from "@/framework";
 
 import { MainAsideLayout } from "../layouts";
 

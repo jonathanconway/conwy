@@ -1,4 +1,4 @@
-import { Article as Article_ } from "@/framework/client";
+import { Article as Article_ } from "@/framework";
 
 import { PostDiscussion } from "../post/post-discussion";
 import { Stack } from "../stack";

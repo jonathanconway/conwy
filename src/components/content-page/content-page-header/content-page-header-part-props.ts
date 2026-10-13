@@ -1,4 +1,4 @@
-import { ContentBase, ContentType, MetaBase } from "@/framework/client";
+import { ContentBase, ContentType, MetaBase } from "@/framework";
 
 export interface ContentPageHeaderPartProps<
   T extends ContentType,

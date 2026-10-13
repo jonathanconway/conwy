@@ -3,7 +3,7 @@ import { marked } from "marked";
 import { useEffect, useState } from "react";
 
 import { TypeOfConst } from "@/framework";
-import { SearchResult } from "@/framework/client";
+import { SearchResult } from "@/framework";
 
 interface SearchFormAndResultsState {
   readonly searchText: string;

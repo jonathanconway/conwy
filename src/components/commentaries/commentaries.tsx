@@ -1,6 +1,6 @@
 import { orderBy } from "lodash";
 
-import { Commentary, ContentLinkInfo, Slug } from "@/framework/client";
+import { Commentary, ContentLinkInfo, Slug } from "@/framework";
 
 import { ContentList } from "../content-list";
 

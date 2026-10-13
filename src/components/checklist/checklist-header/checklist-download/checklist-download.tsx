@@ -2,11 +2,7 @@
 
 import { MouseEvent } from "react";
 
-import {
-  TrackingEvents,
-  cn,
-  createTrackingClassName,
-} from "@/framework/client";
+import { TrackingEvents, cn, createTrackingClassName } from "@/framework";
 
 import { IconTypes } from "../../../icon";
 import { Link } from "../../../link";

@@ -3,7 +3,7 @@ import {
   ContentAnchor as ContentAnchor_,
   ContentLinkAndInfo,
   getContentAnchorLink,
-} from "@/framework/client";
+} from "@/framework";
 
 import { Link } from "../link";
 import { TextSizes } from "../text";

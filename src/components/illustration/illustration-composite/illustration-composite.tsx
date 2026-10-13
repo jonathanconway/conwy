@@ -1,4 +1,4 @@
-import { createIllustrationAssetUrlPath } from "@/framework/client";
+import { createIllustrationAssetUrlPath } from "@/framework";
 
 import { IllustrationCompositeProps } from "./illustration-composite-props";
 

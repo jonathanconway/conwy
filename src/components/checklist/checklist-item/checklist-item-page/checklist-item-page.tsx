@@ -2,7 +2,7 @@ import { compile, run } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
 
-import { Checklist, ChecklistItem as ChecklistItem_ } from "@/framework/client";
+import { Checklist, ChecklistItem as ChecklistItem_ } from "@/framework";
 import { useMDXComponents } from "@/mdx-components";
 import { mdxComponents } from "@/mdx-components-base";
 

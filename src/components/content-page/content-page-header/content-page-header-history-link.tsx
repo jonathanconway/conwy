@@ -1,4 +1,4 @@
-import { CONTENT_TYPE_LABELS_PLURAL } from "@/framework/client";
+import { CONTENT_TYPE_LABELS_PLURAL } from "@/framework";
 import { packageInfo } from "@/package-info";
 
 import { Link } from "../../link/link";

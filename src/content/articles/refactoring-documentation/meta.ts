@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework";
 
 import {
   cycleIllustrationStatic,

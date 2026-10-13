@@ -1,4 +1,4 @@
-import { SearchResult } from "@/framework/client";
+import { SearchResult } from "@/framework";
 
 import { Stack, StackDirections } from "../../../stack";
 import { Text, TextTypes } from "../../../text";

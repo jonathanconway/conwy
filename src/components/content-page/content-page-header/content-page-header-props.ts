@@ -5,7 +5,7 @@ import {
   ContentType,
   DateTimeString,
   MetaBase,
-} from "@/framework/client";
+} from "@/framework";
 
 export interface ContentPageHeaderProps<
   T extends ContentType,

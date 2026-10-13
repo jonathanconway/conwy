@@ -1,4 +1,4 @@
-import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework/client";
+import { ArticleMeta, PostTags, SocialLinkTypes } from "@/framework";
 
 import {
   earIllustrationStatic,

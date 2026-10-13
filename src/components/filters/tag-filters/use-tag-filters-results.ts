@@ -2,7 +2,7 @@
 
 import { get, isArray } from "lodash";
 
-import { getAreSomeSame } from "@/framework/client";
+import { getAreSomeSame } from "@/framework";
 
 import { ALL } from "./default-selected-tags";
 import { createTagFiltersParamKey } from "./tag-filters-param-key";

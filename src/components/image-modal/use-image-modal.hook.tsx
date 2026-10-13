@@ -1,4 +1,4 @@
-import { Image as Image_ } from "@/framework/client";
+import { Image as Image_ } from "@/framework";
 
 import { CarouselItem } from "../carousel/carousel-item";
 

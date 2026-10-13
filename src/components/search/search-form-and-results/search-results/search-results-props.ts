@@ -1,4 +1,4 @@
-import { SearchResult } from "@/framework/client";
+import { SearchResult } from "@/framework";
 
 import { SearchState } from "../use-search-form-and-results.hook";
 

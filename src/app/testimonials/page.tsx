@@ -6,7 +6,7 @@ import {
 } from "@/components";
 import { site, testimonialsFragment } from "@/content";
 import * as worksMap from "@/content/works";
-import { getTestimonials } from "@/framework/client";
+import { getTestimonials } from "@/framework";
 
 export default function Page() {
   const testimonials = getTestimonials(worksMap);

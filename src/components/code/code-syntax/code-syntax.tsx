@@ -30,7 +30,7 @@ import "../../../../public/css/prismjs/themes/prism.min.css";
 
 import * as styles from "./code-syntax.css";
 import { CodeSyntaxCopyButton } from "./code-syntax-copy-button";
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 type CodeSyntaxProps = DetailedHTMLProps<
   HTMLAttributes<HTMLElement>,

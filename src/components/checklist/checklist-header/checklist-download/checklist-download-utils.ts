@@ -1,4 +1,4 @@
-import { ChecklistMeta } from "@/framework/client";
+import { ChecklistMeta } from "@/framework";
 
 import { CHECKLIST_CONTAINER_CLASS_NAME } from "../../checklist-container/checklist-container.const";
 import { CHECKLIST_ITEM_TITLE_CLASS_NAME } from "../../checklist-item/checklist-item-title/checklist-item-title.const";

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { ChecklistMeta } from "@/framework/client";
+import { ChecklistMeta } from "@/framework";
 
 export interface ChecklistContainerProps {
   readonly children: ReactNode;

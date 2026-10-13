@@ -1,6 +1,6 @@
 "use client";
 
-import { Post, PostTag, PostTags } from "@/framework/client";
+import { Post, PostTag, PostTags } from "@/framework";
 
 import { Link } from "../../link";
 import { Stack } from "../../stack";

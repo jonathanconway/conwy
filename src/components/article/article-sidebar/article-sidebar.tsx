@@ -1,4 +1,4 @@
-import { Article as Article_ } from "@/framework/client";
+import { Article as Article_ } from "@/framework";
 
 import { ContentSidebarContainer } from "../../content-page";
 

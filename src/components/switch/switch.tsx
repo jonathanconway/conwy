@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-import { cn } from "@/framework/client";
+import { cn } from "@/framework";
 
 import { SwitchOption } from "./switch-option";
 import * as styles from "./switch.css";

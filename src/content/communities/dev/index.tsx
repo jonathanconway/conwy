@@ -1,8 +1,4 @@
-import {
-  Community,
-  CommunityCategories,
-  ContentTypes,
-} from "@/framework/client";
+import { Community, CommunityCategories, ContentTypes } from "@/framework";
 
 import BlurbShort from "./blurb-short.mdx";
 

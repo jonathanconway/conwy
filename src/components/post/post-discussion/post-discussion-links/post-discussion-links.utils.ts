@@ -1,10 +1,6 @@
 import pluralize from "pluralize";
 
-import {
-  PostDiscussionLink,
-  PostMeta,
-  SocialLinkLabels,
-} from "@/framework/client";
+import { PostDiscussionLink, PostMeta, SocialLinkLabels } from "@/framework";
 
 export function getPostDiscussionLinksDetails(postMeta: PostMeta) {
   if (!postMeta.discussionLinks) {

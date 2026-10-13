@@ -1,6 +1,6 @@
 "use client";
 
-import { Testimonial as Testimonial_ } from "@/framework/client";
+import { Testimonial as Testimonial_ } from "@/framework";
 
 import { Carousel } from "../../carousel";
 import { Section } from "../../section";

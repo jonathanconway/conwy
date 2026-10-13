@@ -1,4 +1,4 @@
-import { createWithHOC } from "@/framework/client";
+import { createWithHOC } from "@/framework";
 
 import { Copyable } from "./copyable";
 

@@ -2,7 +2,7 @@ import {
   CONTENT_TYPE_LABELS,
   Commentary as Commentary_,
   ContentLinkInfo,
-} from "@/framework/client";
+} from "@/framework";
 
 import { Breadcrumb } from "../breadcrumb";
 import { MainAsideLayout } from "../layouts";
