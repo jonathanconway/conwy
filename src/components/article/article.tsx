@@ -14,7 +14,7 @@ export interface ArticleProps {
 
 export function Article({ article }: ArticleProps) {
   return (
-    <Stack gap={2}>
+    <Stack gap={1}>
       <ArticleImage article={article} />
 
       <ArticleHeader article={article} />

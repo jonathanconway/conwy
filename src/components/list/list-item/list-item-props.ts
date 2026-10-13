@@ -4,4 +4,6 @@ import { HTMLProps } from "react";
 
 export type ListItemProps = HTMLProps<HTMLLIElement> & {
   // readonly icon?: IconType; todo
+  readonly noSpacing?: boolean;
+  readonly small?: boolean;
 };

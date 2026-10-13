@@ -2,6 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 import * as linkMixins from "../../../link/link.mixins";
 import { media } from "../../../styling";
+import * as textWeightMixins from "../../../text/text-weight/text-weight.mixins";
 
 export const list = style({
   display: "flex",
@@ -17,9 +18,9 @@ export const listItem = style({
 });
 
 export const listItemSelected = style({
-  fontWeight: 700,
   overflow: "hidden",
   textOverflow: "ellipsis",
+  ...textWeightMixins.sidebarHeadingSelected,
 
   "@media": {
     [media.lgAndUp]: {

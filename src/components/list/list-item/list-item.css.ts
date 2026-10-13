@@ -1,7 +1,15 @@
 import { style } from "@vanilla-extract/css";
 
-import * as textMixins from "../../text/text.mixins";
+import * as listItemMixins from "./list-item.mixins";
 
-export const listItem = style(textMixins.li);
+export const listItem = style(listItemMixins.listItem);
 
-export const listItemSmall = style(textMixins.liSmall);
+export const listItemWithoutSpacing = style(
+  listItemMixins.listItemWithoutSpacing,
+);
+
+export const listItemSmall = style(listItemMixins.listItemSmall);
+
+export const listItemSmallWithoutSpacing = style(
+  listItemMixins.listItemSmallWithoutSpacing,
+);

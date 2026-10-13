@@ -1,5 +1,13 @@
 import { style } from "@vanilla-extract/css";
 
-import * as textMixins from "../text/text.mixins";
+import * as mixins from "./list.mixins";
 
-export const list = style(textMixins.ul);
+export const list = style(mixins.list);
+
+export const unorderedList = style(mixins.unorderedList);
+
+export const unorderedListBullets = style(mixins.unorderedListBullets);
+
+export const unorderedListNoBullets = style(mixins.unorderedListNoBullets);
+
+export const orderedList = style(mixins.orderedList);

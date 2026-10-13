@@ -11,7 +11,7 @@ export function BlockQuoteSummary({
 }: BlockQuoteSummaryProps) {
   return (
     <blockquote className={className} {...restProps}>
-      ℹ️ TL;DR: {children}
+      ℹ️ <strong>TL;DR:</strong> {children}
     </blockquote>
   );
 }

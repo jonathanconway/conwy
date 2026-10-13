@@ -19,5 +19,5 @@ export function MdxLi(props: MdxLiProps) {
     }
   }
 
-  return <li className={styles.li} {...restProps} />;
+  return <li className={styles.listItem} {...restProps} />;
 }

@@ -1,30 +1,19 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 import { link } from "../../link/link.css";
-import * as textSizeMixins from "../../text/text-size/text-size.mixins";
-import { vars } from ".././../theme";
-import { linkBox, linkBoxSmall } from "../link-box.css";
+import { linkBox } from "../link-box.css";
 
-export const linkBoxTitle = style({
-  fontWeight: "bold",
-  color: vars.text.body.color,
-});
+import * as mixins from "./link-box-title.mixins";
 
-export const linkBoxTitleMedium = style({});
+export const linkBoxTitle = style(mixins.linkBoxTitle);
 
-export const linkBoxTitleSmall = style({
-  ...textSizeMixins.sm,
-  textOverflow: "ellipsis",
-  overflow: "hidden",
-  whiteSpace: "nowrap",
-});
+export const linkBoxTitleMedium = style(mixins.linkBoxTitleMedium);
+
+export const linkBoxTitleSmall = style(mixins.linkBoxTitleSmall);
 
 globalStyle(
   [`${link}:hover ${linkBoxTitle}`, `${linkBox}:hover ${linkBoxTitle}`].join(
     ",",
   ),
-  {
-    textDecoration: "underline",
-    color: vars.linkBoxTitle.color,
-  },
+  mixins.linkBoxTitleHover,
 );

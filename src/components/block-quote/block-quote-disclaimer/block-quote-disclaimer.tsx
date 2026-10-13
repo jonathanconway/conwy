@@ -14,7 +14,7 @@ export function BlockQuoteDisclaimer(props: BlockQuoteDisclaimerProps) {
 
   return (
     <blockquote className={className} {...restProps}>
-      ⚠️ {prefix} {children}
+      ⚠️ <strong>{prefix}</strong> {children}
     </blockquote>
   );
 }

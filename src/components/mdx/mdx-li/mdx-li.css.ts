@@ -1,10 +1,10 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import * as textMixins from "../../text/text.mixins";
+import * as listItemMixins from "../../list/list-item/list-item.mixins";
 import { mdx } from "../mdx-container/mdx-container.css";
 
-export const li = style(textMixins.li);
+export const listItem = style(listItemMixins.listItem);
 
-globalStyle(`${mdx} ol > ${li}`, textMixins.li);
+globalStyle(`${mdx} ol > ${listItem}`, listItemMixins.listItem);
 
-globalStyle(`${mdx} ul > ${li}`, textMixins.li);
+globalStyle(`${mdx} ul > ${listItem}`, listItemMixins.listItem);

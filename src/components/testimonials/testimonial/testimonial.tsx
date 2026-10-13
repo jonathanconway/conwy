@@ -7,9 +7,7 @@ import { IconTypes } from "../../icon";
 import { Link } from "../../link";
 import { LinkLayoutTypes } from "../../link/link-layout-type";
 import { Stack } from "../../stack";
-import { TextSizes } from "../../text";
-
-import * as styles from "./testimonial.css";
+import { Text, TextSizes, TextTypes } from "../../text";
 
 export interface TestimonialProps {
   readonly testimonial: TestimonialAndWork_;
@@ -24,19 +22,19 @@ export function Testimonial({
   return (
     <Box key={content}>
       <Stack gap={0.25}>
-        <div className={styles.feedbackItemQuote}>{content}</div>
+        <Text type={TextTypes.Body}>{content}</Text>
 
         <Stack gap={0.25}>
           <Chain>
             {[
               authorTitle && (
-                <div className={styles.feedbackItemAuthor}>– {authorTitle}</div>
+                <Text type={TextTypes.Small}>– {authorTitle}</Text>
               ),
 
               date && (
-                <div className={styles.feedbackItemDate}>
+                <Text type={TextTypes.Small}>
                   <DateView format={DateFormats.Short}>{date}</DateView>
-                </div>
+                </Text>
               ),
             ]}
           </Chain>

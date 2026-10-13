@@ -6,7 +6,7 @@ import * as textMixins from "../../text/text.mixins";
 import { mdx } from "../mdx-container/mdx-container.css";
 
 globalStyle(`${mdx} pre[class*=language-][class*=language-]`, {
-  ...textMixins.pre,
+  ...textMixins.preFormatted,
   ...focusOutlineMixins.focusOutline,
   overflow: "unset",
 });

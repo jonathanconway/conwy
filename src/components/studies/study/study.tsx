@@ -5,7 +5,7 @@ import { Study as Study_, isNotNil } from "@/framework/client";
 import { ContentListItem } from "../../content-list";
 import { Heading, HeadingLevels } from "../../heading";
 import { Link } from "../../link";
-import { UnorderedList } from "../../list";
+import { ListUnordered } from "../../list";
 import { Text, TextSizes } from "../../text";
 import { TextTypes } from "../../text/text-type";
 
@@ -42,7 +42,7 @@ export function Study(props: StudyProps) {
     <ContentListItem
       mainSlot={
         <>
-          <Heading level={HeadingLevels.Level5} className={styles.headingStyle}>
+          <Heading level={HeadingLevels.Level5}>
             {mainUrl ? (
               <Link href={mainUrl} target="_blank">
                 {title}
@@ -55,7 +55,7 @@ export function Study(props: StudyProps) {
           <Text type={TextTypes.Small}>{details}</Text>
 
           {Boolean(links?.length) && (
-            <UnorderedList className={styles.linksList}>
+            <ListUnordered className={styles.linksList}>
               {links?.map(({ url, title }) => (
                 <li key={url}>
                   <Link
@@ -68,7 +68,7 @@ export function Study(props: StudyProps) {
                   </Link>
                 </li>
               ))}
-            </UnorderedList>
+            </ListUnordered>
           )}
 
           {description && <Text type={TextTypes.Small}>{description}</Text>}

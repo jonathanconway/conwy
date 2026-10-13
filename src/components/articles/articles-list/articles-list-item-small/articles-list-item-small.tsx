@@ -33,7 +33,7 @@ export function ArticlesListItemSmall(props: ArticlesListItemSmallProps) {
           </LinkBoxTitle>
         }
         asideSlot={
-          <Text type={TextTypes.PostDate} textAlign="right">
+          <Text type={TextTypes.Small} as="time" textAlign="right">
             <DateView format={DateFormats.Short}>{date}</DateView>
           </Text>
         }

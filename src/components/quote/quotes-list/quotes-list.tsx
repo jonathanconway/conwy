@@ -2,7 +2,7 @@
 
 import { ContentAnchorLinkAndInfo, Quote, Slug } from "@/framework/client";
 
-import { UnorderedList } from "../../list";
+import { ListUnordered } from "../../list";
 
 import { QuotesListItem } from "./quotes-list-item";
 import * as styles from "./quotes-list.css";
@@ -19,7 +19,7 @@ export function QuotesList(props: QuotesListProps) {
   const { quotes, quotesContentAnchorLinkAndInfos } = props;
 
   return (
-    <UnorderedList className={styles.quotesList}>
+    <ListUnordered className={styles.quotesList}>
       {quotes.map((quote) => (
         <QuotesListItem
           key={quote.meta.slug}
@@ -29,6 +29,6 @@ export function QuotesList(props: QuotesListProps) {
           }
         />
       ))}
-    </UnorderedList>
+    </ListUnordered>
   );
 }

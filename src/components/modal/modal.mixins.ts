@@ -1,6 +1,7 @@
 import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
-import { colors, media, rounded, text } from "../styling";
+import { colors, media, rounded } from "../styling";
+import * as textMixins from "../text/text.mixins";
 import { vars } from "../theme";
 
 export const backdrop: ComplexStyleRule = {
@@ -64,8 +65,7 @@ export const modalHeader: ComplexStyleRule = {
 };
 
 export const modalTitle: ComplexStyleRule = {
-  ...text.size.xl,
-  fontWeight: "bold",
+  ...textMixins.heading4Inner,
   display: "inline-flex",
 };
 

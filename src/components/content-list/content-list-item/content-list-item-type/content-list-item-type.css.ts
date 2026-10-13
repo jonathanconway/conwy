@@ -1,13 +1,14 @@
 import { style } from "@vanilla-extract/css";
 
-import { text } from "../../../styling";
+import * as textSizeMixins from "../../../text/text-size/text-size.mixins";
+import * as textWeightMixins from "../../../text/text-weight/text-weight.mixins";
 import { vars } from "../../../theme";
 
 export const type = style({
   display: "inline-block",
   color: vars.contentListItem.type.color,
-  ...text.size.xs,
-  fontWeight: 500,
   textTransform: "uppercase",
   textAlign: "right",
+  ...textWeightMixins.body,
+  ...textSizeMixins.xs,
 });

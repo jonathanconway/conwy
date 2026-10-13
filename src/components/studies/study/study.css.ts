@@ -29,8 +29,3 @@ export const linksListItem = style({
     },
   },
 });
-
-export const headingStyle = style({
-  ...textMixins.h5,
-  fontWeight: "500",
-});

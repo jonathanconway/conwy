@@ -1,8 +1,8 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as iconMixins from "../../icon/icon.mixins";
-import { colors, media, text } from "../../styling";
-import { vars } from "../../theme";
+import * as labelMixins from "../../label/label.mixins";
+import { colors, media } from "../../styling";
 
 export const mobileCollapsibleContainer = style({
   border: "none",
@@ -49,10 +49,7 @@ export const header = style({
 });
 
 export const title = style({
-  textTransform: "uppercase",
-  color: vars.label.color,
-  ...text.size.sm,
-  fontWeight: 500,
+  ...labelMixins.label,
 });
 
 export const content = style({

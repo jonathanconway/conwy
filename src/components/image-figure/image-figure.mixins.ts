@@ -25,6 +25,8 @@ const imgBase = {
 
 export const img = {
   ...imgBase,
+  maxWidth: "100%",
+  maxHeight: "100%",
 };
 
 export const imgSized = {

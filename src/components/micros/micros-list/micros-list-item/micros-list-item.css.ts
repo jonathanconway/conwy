@@ -7,11 +7,6 @@ import { rounded, text } from "../../../styling";
 import * as textMixins from "../../../text/text.mixins";
 import { vars } from "../../../theme";
 
-// todo: extract to separate component
-export const date = style(
-  merge(linkMixins.link, text.size.xs, textMixins.body),
-);
-
 export const mainLink = style(merge(linkMixins.link, text.size.xs));
 
 // todo: extract to separate component

@@ -13,7 +13,7 @@ export function MicroPage(props: MicroPageProps) {
     <>
       <MainAsideLayout
         main={
-          <Stack gap={2}>
+          <Stack gap={1}>
             <MicroPageHeader micro={props.micro} />
 
             <MdxContainer>{props.micro.content}</MdxContainer>

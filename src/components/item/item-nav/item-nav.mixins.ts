@@ -2,6 +2,8 @@ import { ComplexStyleRule } from "@vanilla-extract/css";
 
 import * as labelMixins from "../../label/label.mixins";
 import { gap, media, responsive, rounded, size, text } from "../../styling";
+import * as textSizeMixins from "../../text/text-size/text-size.mixins";
+import * as textWeightMixins from "../../text/text-weight/text-weight.mixins";
 import { vars } from "../../theme";
 
 export const navsContainer = {
@@ -55,8 +57,8 @@ export const label = {
 export const labelText = {};
 
 export const title = {
-  fontWeight: "bold",
-  ...text.size.xs,
+  ...textWeightMixins.navText,
+  ...textSizeMixins.xs,
   textOverflow: "ellipsis",
   overflow: "hidden",
   whiteSpace: "nowrap",

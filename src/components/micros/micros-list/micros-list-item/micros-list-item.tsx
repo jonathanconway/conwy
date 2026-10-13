@@ -8,7 +8,8 @@ import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { MdxContainer } from "../../../mdx";
 import { SocialLinksIcons } from "../../../social-links";
-import { TextExpandable } from "../../../text";
+import { Text } from "../../../text";
+import { TextExpandable, TextTypes } from "../../../text";
 
 import * as styles from "./micros-list-item.css";
 
@@ -26,9 +27,9 @@ export function MicrosListItem({
       <ContentListItem
         mainSlot={
           <>
-            <LinkBoxTitle className={styles.date}>
+            <Text type={TextTypes.Small} as="time">
               <DateView>{props.micro.meta.createdDate}</DateView>
-            </LinkBoxTitle>
+            </Text>
 
             {isCollapsed ? (
               <TextExpandable height="5rem">

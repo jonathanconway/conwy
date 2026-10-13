@@ -1,11 +1,22 @@
-import { HTMLProps } from "react";
+import { HTMLAttributes, HTMLElementType } from "react";
 
-import * as styles from "./list.css";
+import { ListOrdered } from "./list-ordered";
+import { ListUnordered, ListUnorderedProps } from "./list-unordered";
 
-type UnorderedListProps = HTMLProps<HTMLUListElement>;
+type ListProps =
+  | (HTMLAttributes<HTMLUListElement> & {
+      readonly as?: HTMLElementType & "ul";
+    } & ListUnorderedProps)
+  | (HTMLAttributes<HTMLOListElement> & {
+      readonly as: HTMLElementType & "ol";
+    });
 
-export function UnorderedList(props: UnorderedListProps) {
-  const { className = styles.list, ...restProps } = props;
-
-  return <ul className={className} {...restProps} />;
+export function List(props: ListProps) {
+  switch (props.as) {
+    case "ol":
+      return <ListOrdered {...props} />;
+    case "ul":
+    default:
+      return <ListUnordered {...props} />;
+  }
 }

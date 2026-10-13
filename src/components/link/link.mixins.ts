@@ -5,12 +5,13 @@ import * as buttonMixins from "../button/button.mixins";
 import { focusOutline } from "../focus-outline";
 import * as iconMixins from "../icon/icon.mixins";
 import { media } from "../styling";
+import * as textWeightMixins from "../text/text-weight/text-weight.mixins";
 import { vars } from "../theme";
 
 export const linkBase = {
-  fontWeight: 500,
   cursor: "pointer",
   display: "inline-flex",
+  ...textWeightMixins.body,
 };
 
 export const linkLayoutInline = {};

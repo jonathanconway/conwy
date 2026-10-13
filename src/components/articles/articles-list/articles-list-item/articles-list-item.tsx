@@ -36,7 +36,7 @@ export function ArticlesListItem(props: ArticlesListItemProps) {
       <ContentListItem
         mainSlot={
           <>
-            <Text type={TextTypes.PostDate}>
+            <Text type={TextTypes.Small} as="time">
               <DateView>{date}</DateView>
             </Text>
 

@@ -11,7 +11,7 @@ export const blockQuoteSummaryThemeBase = {
 };
 
 export const blockQuoteSummaryThemeLight = {
-  color: colors.purple_900,
+  color: colors.purple_700,
   background: {
     color: colors.purple_50,
   },

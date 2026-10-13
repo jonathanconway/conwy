@@ -1,6 +1,6 @@
 import { ProjectMeta } from "@/framework/client";
 
-import { ListItem, UnorderedList } from "../../list";
+import { ListItem, ListUnordered } from "../../list";
 import { Section } from "../../section";
 
 interface ProjectPlatformsProps {
@@ -14,11 +14,13 @@ export function ProjectPlatforms(props: ProjectPlatformsProps) {
 
   return (
     <Section label="Platforms">
-      <UnorderedList>
+      <ListUnordered noBullets>
         {props.projectMeta.platforms.map((platform) => (
-          <ListItem key={platform}>{platform}</ListItem>
+          <ListItem key={platform} noSpacing>
+            {platform}
+          </ListItem>
         ))}
-      </UnorderedList>
+      </ListUnordered>
     </Section>
   );
 }

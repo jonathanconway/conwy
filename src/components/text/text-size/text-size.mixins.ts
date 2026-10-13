@@ -1,5 +1,7 @@
 import { text } from "../../styling";
 
+// todo: derive all these from text.*
+
 export const _2xs = {
   fontSize: "0.65rem",
   lineHeight: "1rem" /* 16px */,

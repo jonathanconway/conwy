@@ -3,5 +3,5 @@ import { globalStyle } from "@vanilla-extract/css";
 import * as textMixins from "../../text/text.mixins";
 import { mdx } from "../mdx-container/mdx-container.css";
 
-globalStyle(`${mdx} .h5`, textMixins.h5);
-globalStyle(`${mdx} .h5Inner`, textMixins.h5Inner);
+globalStyle(`${mdx} .h5`, textMixins.heading5);
+globalStyle(`${mdx} .h5Inner`, textMixins.heading5Inner);

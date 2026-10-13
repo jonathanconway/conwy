@@ -15,5 +15,5 @@ export const contentContainer = style({});
 
 // todo: find a way to override without !important
 globalStyle(`${contentContainer} > *`, {
-  paddingRight: "2rem !important",
+  paddingRight: "3rem !important",
 });

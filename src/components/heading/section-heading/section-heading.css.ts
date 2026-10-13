@@ -2,11 +2,12 @@ import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as linkMixins from "../../link/link.mixins";
 import { text } from "../../styling";
+import * as textWeightMixins from "../../text/text-weight/text-weight.mixins";
 import { vars } from "../../theme";
 
 export const link = style({
   position: "relative",
-  fontWeight: 600,
+  ...textWeightMixins.heading3,
   color: vars.text.body.color,
   cursor: "pointer",
   textDecorationLine: "none",

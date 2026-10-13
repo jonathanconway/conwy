@@ -1,9 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
-import * as textMixins from "../../text/text.mixins";
+import * as listItemMixins from "../../list/list-item/list-item.mixins";
 
 export const checklistLi = style({
-  ...textMixins.li,
+  ...listItemMixins.listItem,
   lineHeight: "unset",
   marginTop: 0,
   listStyle: "none",

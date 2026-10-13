@@ -21,11 +21,9 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
       <ContentListItem
         mainSlot={
           <>
-            <div>
-              <LinkBoxTitle>{projectMeta.title}</LinkBoxTitle>
+            <LinkBoxTitle>{projectMeta.title}</LinkBoxTitle>
 
-              <Text type={TextTypes.Summary}>{projectMeta.blurb}</Text>
-            </div>
+            <Text type={TextTypes.Summary}>{projectMeta.blurb}</Text>
           </>
         }
         asideSlot={

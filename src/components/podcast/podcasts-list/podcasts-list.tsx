@@ -1,5 +1,5 @@
 import { Link } from "../../link";
-import { ListItem, UnorderedList } from "../../list";
+import { ListItem, ListUnordered } from "../../list";
 
 import { getPodcastsList } from "./get-podcasts-list";
 
@@ -7,7 +7,7 @@ export function PodcastsList() {
   const podcastItems = getPodcastsList();
 
   return (
-    <UnorderedList>
+    <ListUnordered>
       {podcastItems.map((podcast) => (
         <ListItem key={podcast.title}>
           <Link href={podcast.url} target="_blank">
@@ -15,6 +15,6 @@ export function PodcastsList() {
           </Link>
         </ListItem>
       ))}
-    </UnorderedList>
+    </ListUnordered>
   );
 }
