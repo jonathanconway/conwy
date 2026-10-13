@@ -1,4 +1,4 @@
-import { ContentType, MetaBase, isNotNil } from "@/framework/client";
+import { ContentType, MetaBase, isNotNil } from "@/framework";
 
 import { DateView } from "../../date";
 

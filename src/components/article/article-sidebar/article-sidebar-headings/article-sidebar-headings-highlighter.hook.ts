@@ -1,14 +1,10 @@
 "use client";
 
 import { map, memoize } from "lodash";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import {
-  ArticleHeading,
-  isClient,
-  isNotNil,
-  querySelector,
-} from "@/framework/client";
+import { isNotNil } from "@/framework";
+import { ArticleHeading, isClient, querySelector } from "@/framework/client";
 
 function getIsElementInViewport(el?: Element | null) {
   if (!isClient) {

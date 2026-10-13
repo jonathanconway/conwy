@@ -1,7 +1,8 @@
 import { isString } from "lodash";
 import prompts, { Choice, PromptObject } from "prompts";
 
-import { assert, isNotNil } from "../utils";
+import { assert } from "../utils/assert";
+import { isNotNil } from "../utils/typing";
 
 import { GenSchemaFields } from "./gen-schema";
 import { GenSchemaField } from "./gen-schema-field";

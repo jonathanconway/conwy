@@ -4,20 +4,21 @@ import pluralize from "pluralize";
 import { ToolSectionTitles, ToolSections } from "@/framework/client";
 
 import { Link } from "../../link";
-import { Text, TextSizes, TextTypes } from "../../text";
+import { ListItem, ListUnordered } from "../../list";
+import { TextSizes } from "../../text";
 
 export function ToolsSections() {
   const sections = Object.values(ToolSections);
 
   return (
-    <Text type={TextTypes.UnorderedList}>
+    <ListUnordered noBullets>
       {sections.map((section) => (
-        <li key={section}>
+        <ListItem key={section}>
           <Link href={`#${kebabCase(pluralize(section))}`} size={TextSizes.sm}>
             {ToolSectionTitles[section]}
           </Link>
-        </li>
+        </ListItem>
       ))}
-    </Text>
+    </ListUnordered>
   );
 }

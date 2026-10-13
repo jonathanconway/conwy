@@ -1,6 +1,9 @@
 import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
-import { colors, media, rounded, text } from "../styling";
+import { rems } from "@/framework/utils/rems.css_";
+
+import { colors, media, rounded } from "../styling";
+import * as textSizeConsts from "../text/text-size/text-size.consts";
 import { vars } from "../theme";
 
 import * as textSizeMixins from "./text-size/text-size.mixins";
@@ -181,10 +184,10 @@ export const subTitle: ComplexStyleRule & GlobalStyleRule = {
   ...textWeightMixins.subTitle,
   "@media": {
     [media.mdAndUp]: {
-      ...text.size.sm,
+      fontSize: rems(textSizeConsts.fontSizeRems.sm),
     },
     [media.sm]: {
-      ...text.size.xs,
+      fontSize: rems(textSizeConsts.fontSizeRems.xs),
     },
   },
 };

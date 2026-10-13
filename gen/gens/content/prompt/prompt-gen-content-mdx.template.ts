@@ -4,7 +4,7 @@ export const promptGenContentMdxTemplate = ({
   content,
 }: PromptGenTemplateParams) =>
   `
-
-${content}
+  
+${content ?? "{/* Full text here */}"}
 
 `.trim();

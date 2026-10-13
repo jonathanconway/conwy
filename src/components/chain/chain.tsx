@@ -1,6 +1,6 @@
 import { HTMLProps, ReactNode } from "react";
 
-import { isNotNil } from "@/framework/client";
+import { isNotNil } from "@/framework";
 
 import { Text, TextTypes } from "../text";
 

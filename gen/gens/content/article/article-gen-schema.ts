@@ -15,7 +15,9 @@ export const articleGenSchema: GenSchema<ArticleGenParams> = {
       type: GenSchemaFieldTypes.Text,
       default: ({ valuesSoFar }) => kebabCase(valuesSoFar.title ?? ""),
     },
-
+    content: {
+      type: GenSchemaFieldTypes.TextMultiLine,
+    },
     tags: {
       type: GenSchemaFieldTypes.MultiSelect,
       options: Object.values(PostTags),

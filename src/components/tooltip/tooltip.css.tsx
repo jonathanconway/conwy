@@ -6,4 +6,5 @@ export const childrenContainer = style({
   justifyContent: "center",
   alignItems: "center",
   borderWidth: "1px",
+  color: "green",
 });

@@ -1,4 +1,4 @@
-import { isNotNil } from "@/framework/client";
+import { isNotNil } from "@/framework";
 
 import { Breakpoint } from "../styling";
 

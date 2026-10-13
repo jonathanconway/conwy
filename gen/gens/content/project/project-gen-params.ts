@@ -1,7 +1,9 @@
 export interface ProjectGenParams {
   readonly title: string;
   readonly slug: string;
+
   readonly blurb: string;
+  readonly content?: string;
 
   readonly subType: string;
 

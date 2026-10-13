@@ -1,6 +1,7 @@
 "use client";
 
-import { Book, BookMeta, BookStatuses, sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
+import { Book, BookMeta, BookStatuses } from "@/framework/client";
 
 import { Link } from "../../../link";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";

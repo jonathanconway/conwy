@@ -2,7 +2,7 @@ import { orderBy } from "lodash";
 import { plural } from "pluralize";
 import { useCallback } from "react";
 
-import { sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
 
 import { ALL } from "./default-selected-tags";
 import { getItemsTags } from "./get-items-tags";

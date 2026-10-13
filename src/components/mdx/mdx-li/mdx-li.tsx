@@ -1,13 +1,13 @@
 "use client";
 
-import { useChecklistContext } from "../../checklist/checklist-context";
+import { useChecklistContext } from "../../checklist";
+import { ListItem } from "../../list";
 
 import {
   MdxLiChecklistItem,
   checkIsChecklistItem,
 } from "./mdx-li-checklist-item";
 import { MdxLiProps } from "./mdx-li-props";
-import * as styles from "./mdx-li.css";
 
 export function MdxLi(props: MdxLiProps) {
   const { className, ...restProps } = props;
@@ -19,5 +19,5 @@ export function MdxLi(props: MdxLiProps) {
     }
   }
 
-  return <li className={styles.listItem} {...restProps} />;
+  return <ListItem {...restProps} />;
 }

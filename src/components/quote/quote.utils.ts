@@ -1,6 +1,6 @@
 import { trim } from "lodash";
 
-import { isNotNil } from "@/framework/client";
+import { isNotNil } from "@/framework";
 
 export function formatQuoteAuthorName(authorName: string) {
   const authorNameWords = authorName.split(" ").map(trim).filter(isNotNil);

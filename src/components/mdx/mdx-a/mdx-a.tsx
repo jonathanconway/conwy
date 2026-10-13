@@ -8,7 +8,6 @@ import {
   checkIsASubformatFootnotePopupLinkProps,
   getASubformatProps,
 } from "./mdx-a-subformat";
-import "./mdx-a.css";
 
 export function MdxA(props: MdxAProps) {
   props = getASubformatProps(props);

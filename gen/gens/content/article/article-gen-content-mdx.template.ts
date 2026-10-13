@@ -1,12 +1,10 @@
 import { ArticleGenTemplateParams } from "./article-gen-template-params";
 
 export const articleGenContentMdxTemplate = ({
-  title,
+  content,
 }: ArticleGenTemplateParams) =>
   `
 
-## ${title}
-
-{/* Full text here */}
+${content ?? "{/* Full text here */}"}
 
 `.trim();

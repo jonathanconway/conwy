@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { PageLayout, Project } from "@/components";
+import { Breadcrumb, PageLayout, Project } from "@/components";
 import { site } from "@/content";
 import * as projectsMap from "@/content/projects";
 import { ContentTypes } from "@/framework/client";
@@ -20,7 +20,23 @@ export default async function Page(props: PageProps) {
   return (
     <PageLayout
       selectedNavPath="/project"
-      main={<Project project={project} />}
+      main={
+        <>
+          <Breadcrumb
+            segments={[
+              {
+                title: "Projects",
+                url: "/projects",
+              },
+              {
+                title: project.meta.title,
+              },
+            ]}
+          />
+
+          <Project project={project} />
+        </>
+      }
     />
   );
 }

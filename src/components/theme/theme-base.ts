@@ -17,6 +17,7 @@ import { headerHamburgerThemeBase } from "../header/header-hamburger/header-hamb
 import { headerLogoThemeBase } from "../header/header-logo/header-logo.css-theme";
 import { headerNavThemeBase } from "../header/header-nav/header-nav.css-theme";
 import { iconThemeBase } from "../icon/icon.css-theme";
+import { imageCascadeThemeBase } from "../image-cascade/image-cascade.css-theme";
 import { imageFigureThemeBase } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeBase } from "../image-modal/image-modal.css-theme";
 import { itemNavThemeBase } from "../item/item-nav/item-nav.css-theme";
@@ -52,6 +53,7 @@ export const themeBase = {
   headerLogo: headerLogoThemeBase,
   headerNav: headerNavThemeBase,
   icon: iconThemeBase,
+  imageCascade: imageCascadeThemeBase,
   imageFigure: imageFigureThemeBase,
   imageModal: imageModalThemeBase,
   itemNav: itemNavThemeBase,

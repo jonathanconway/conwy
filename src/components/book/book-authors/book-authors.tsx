@@ -1,6 +1,6 @@
 import { upperCase } from "lodash";
 
-import { isNotNil } from "@/framework/client";
+import { isNotNil } from "@/framework";
 
 interface BookAuthorsProps {
   readonly authors: readonly string[];

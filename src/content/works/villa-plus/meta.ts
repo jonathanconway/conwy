@@ -13,12 +13,12 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      src: "villa-plus-1.png",
-      title: "Date range picker, built in React - Desktop web",
-    },
-    {
       src: "villa-plus-screencast.gif",
       title: "Date range picker, built in React - Mobile web",
+    },
+    {
+      src: "villa-plus-1.png",
+      title: "Date range picker, built in React - Desktop web",
     },
     {
       src: "villa-plus-2.jpg",

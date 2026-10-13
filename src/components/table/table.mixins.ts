@@ -1,14 +1,14 @@
 import { GlobalStyleRule } from "@vanilla-extract/css";
 
 import * as boxMixins from "../box/box.mixins";
-import { media, text } from "../styling";
+import { media } from "../styling";
 import * as textMixins from "../text/text.mixins";
 
 export const table: GlobalStyleRule = {
   marginTop: "1rem",
   borderSpacing: 0,
   borderCollapse: "unset",
-  ...text.size.sm,
+  ...textMixins.small,
   ...boxMixins.boxBorderStructural,
 };
 
@@ -42,7 +42,6 @@ export const tableCellHeader = {
   ...textMixins.label,
   borderTop: "none",
   borderBottom: "none",
-  fontSize: "0.6rem",
 
   "@media": {
     [media.lgAndUp]: {

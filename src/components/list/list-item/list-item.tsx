@@ -1,24 +1,16 @@
 import { ListItemProps } from "./list-item-props";
+import { ListItemSizes } from "./list-item-size";
 import * as styles from "./list-item.css";
 
 export function ListItem(props: ListItemProps) {
-  const { className = generateListItemClassName(props), ...restProps } = props;
+  const {
+    className = {
+      [ListItemSizes.Regular]: styles.listItem,
+      [ListItemSizes.Small]: styles.listItemSmall,
+    }[props.size ?? ListItemSizes.Regular],
+    size,
+    ...restProps
+  } = props;
 
   return <li className={className} {...restProps} />;
-}
-
-function generateListItemClassName(props: ListItemProps) {
-  if (props.small) {
-    if (props.noSpacing) {
-      return styles.listItemSmallWithoutSpacing;
-    } else {
-      return styles.listItemSmall;
-    }
-  } else {
-    if (props.noSpacing) {
-      return styles.listItemWithoutSpacing;
-    } else {
-      return styles.listItem;
-    }
-  }
 }

@@ -1,4 +1,4 @@
-import { HasChildren } from "@/framework/client";
+import { HasChildren } from "@/framework";
 
 import { Stack, StackDirections } from "../../../stack";
 

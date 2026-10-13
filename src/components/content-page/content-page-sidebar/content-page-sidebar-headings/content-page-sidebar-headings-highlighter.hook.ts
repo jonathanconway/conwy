@@ -3,7 +3,8 @@
 import { kebabCase, memoize } from "lodash";
 import { useEffect, useState } from "react";
 
-import { isClient, isNotNil, querySelector } from "@/framework/client";
+import { isNotNil } from "@/framework";
+import { isClient } from "@/framework/client";
 
 import { CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX } from "./content-page-sidebar-headings.const";
 

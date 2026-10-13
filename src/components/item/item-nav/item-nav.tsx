@@ -3,8 +3,9 @@ import { startCase } from "lodash";
 import { ItemMeta } from "@/framework/client";
 
 import { Icon, IconTypes } from "../../icon";
-import { Label } from "../../label";
+import { Label, LabelSizes } from "../../label";
 import { LinkBox } from "../../link-box";
+import { Stack, StackDirections, StackDistributions } from "../../stack";
 import { ItemMainImage } from "../item-main-image";
 
 import * as styles from "./item-nav.css";
@@ -24,14 +25,22 @@ export function ItemNav<TMeta extends ItemMeta>(props: ItemNavProps<TMeta>) {
         itemMeta ? (
           <LinkBox key={type} href={itemMeta.slug}>
             <div className={styles.mainColumn}>
-              <Label as="div" className={styles.label}>
-                {type === "back" && (
-                  <Icon icon={IconTypes.ArrowChevronLeft} size="0.75rem" />
-                )}
-                <span className={styles.labelText}>{startCase(type)}</span>
-                {type === "next" && (
-                  <Icon icon={IconTypes.ArrowChevronRight} size="0.75rem" />
-                )}
+              <Label as="div" size={LabelSizes.Small}>
+                <Stack
+                  direction={StackDirections.Row}
+                  distribution={StackDistributions.Flow}
+                  gap={0.25}
+                >
+                  {type === "back" && (
+                    <Icon icon={IconTypes.ArrowChevronLeft} size="0.75rem" />
+                  )}
+
+                  <span>{startCase(type)}</span>
+
+                  {type === "next" && (
+                    <Icon icon={IconTypes.ArrowChevronRight} size="0.75rem" />
+                  )}
+                </Stack>
               </Label>
 
               <div className={styles.title}>

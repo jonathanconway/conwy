@@ -25,7 +25,6 @@ export * from "./filters";
 export * from "./focus-outline";
 export * from "./follows";
 export * from "./footer";
-export * from "./footnote";
 export * from "./group";
 export * from "./header";
 export * from "./heading";

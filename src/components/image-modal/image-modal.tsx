@@ -1,6 +1,6 @@
 "use client";
 
-import { sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
 import { getUrlFilename } from "@/framework/content/url";
 
 import { CarouselNav } from "../carousel";
@@ -45,6 +45,7 @@ export function ImageModal(props: ImageModalProps) {
 
             {alt && title && <Text type="small">▲ {alt}</Text>}
           </Stack>
+
           <ImageModalHotspots carousel={carousel} />
         </div>
 

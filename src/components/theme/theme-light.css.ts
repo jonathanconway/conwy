@@ -19,6 +19,7 @@ import { headerHamburgerThemeLight } from "../header/header-hamburger/header-ham
 import { headerLogoThemeLight } from "../header/header-logo/header-logo.css-theme";
 import { headerNavThemeLight } from "../header/header-nav/header-nav.css-theme";
 import { iconThemeLight } from "../icon/icon.css-theme";
+import { imageCascadeThemeLight } from "../image-cascade/image-cascade.css-theme";
 import { imageFigureThemeLight } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeLight } from "../image-modal/image-modal.css-theme";
 import { itemNavThemeLight } from "../item/item-nav/item-nav.css-theme";
@@ -56,6 +57,7 @@ export const themeLightClass = createTheme(vars, {
   headerLogo: headerLogoThemeLight,
   headerNav: headerNavThemeLight,
   icon: iconThemeLight,
+  imageCascade: imageCascadeThemeLight,
   imageFigure: imageFigureThemeLight,
   imageModal: imageModalThemeLight,
   itemNav: itemNavThemeLight,

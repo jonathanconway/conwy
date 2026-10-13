@@ -1,6 +1,7 @@
 "use client";
 
-import { cn, sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
+import { cn } from "@/framework/client";
 
 import { MobileCollapsible } from "../../mobile";
 

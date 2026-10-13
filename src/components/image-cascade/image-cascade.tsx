@@ -8,7 +8,10 @@ import { IconButton } from "../icon-button";
 import { ImageModal } from "../image-modal";
 import { Tooltip } from "../tooltip";
 
-import { IMAGE_CASCADE_SIZE_PX } from "./image-cascade-size";
+import {
+  IMAGE_CASCADE_IMAGE_SIZE_PX,
+  IMAGE_CASCADE_SIZE_PX,
+} from "./image-cascade-size";
 import * as styles from "./image-cascade.css";
 import * as inlineStyles from "./image-cascade.css-inline";
 import { ImageCascadeProps } from "./image-cascade.types";
@@ -40,46 +43,45 @@ function ImageCascade_(props: ImageCascadeProps) {
 
   return (
     <div className={styles.container}>
-      <div
-        className={styles.cascadeContainer}
-        style={inlineStyles.cascadeContainer(props)}
-      >
-        {items?.map((image, imageIndex) => (
-          <Tooltip
-            key={`image-cascade-item-${image.src}`}
-            contents={image.alt ?? image.title ?? `Image #${imageIndex}`}
-          >
-            <button
-              tabIndex={0}
-              type="button"
-              className={styles.imageContainer}
-              style={inlineStyles.imageContainer({
-                images,
-                imageIndex,
-                isSelected: selectedItem === image,
-              })}
-              onClick={handleImageClick(image)}
-              onKeyDown={handleImageKeyDown(image)}
+      {images.length > 1 && (
+        <div className={styles.cascadeContainer} style={IMAGE_CASCADE_SIZE_PX}>
+          {items?.map((image, imageIndex) => (
+            <Tooltip
+              key={`image-cascade-item-${image.src}`}
+              contents={image.alt ?? image.title ?? `Image #${imageIndex}`}
             >
-              {isCascade && (
-                <span className={styles.imageNumber}>
-                  {images.indexOf(image) + 1}
-                </span>
-              )}
+              <button
+                tabIndex={0}
+                type="button"
+                className={styles.imageContainer}
+                style={inlineStyles.imageContainer({
+                  images,
+                  imageIndex,
+                  isSelected: selectedItem === image,
+                })}
+                onClick={handleImageClick(image)}
+                onKeyDown={handleImageKeyDown(image)}
+              >
+                {isCascade && (
+                  <span className={styles.imageNumber}>
+                    {images.indexOf(image) + 1}
+                  </span>
+                )}
 
-              <div className={styles.imageInner}>
-                <Image
-                  className={styles.image}
-                  src={image.src}
-                  alt={image.src}
-                  width={IMAGE_CASCADE_SIZE_PX.width}
-                  height={IMAGE_CASCADE_SIZE_PX.height}
-                />
-              </div>
-            </button>
-          </Tooltip>
-        ))}
-      </div>
+                <div className={styles.imageInner}>
+                  <Image
+                    className={styles.image}
+                    src={image.src}
+                    alt={image.src}
+                    width={IMAGE_CASCADE_IMAGE_SIZE_PX.width}
+                    height={IMAGE_CASCADE_IMAGE_SIZE_PX.height}
+                  />
+                </div>
+              </button>
+            </Tooltip>
+          ))}
+        </div>
+      )}
 
       {selectedItem && (
         <button
@@ -93,8 +95,8 @@ function ImageCascade_(props: ImageCascadeProps) {
             className={styles.selectedImage}
             src={selectedItem.src}
             alt={selectedItem.src}
-            width={IMAGE_CASCADE_SIZE_PX.width * 2}
-            height={IMAGE_CASCADE_SIZE_PX.height * 2}
+            width={IMAGE_CASCADE_IMAGE_SIZE_PX.width * 2}
+            height={IMAGE_CASCADE_IMAGE_SIZE_PX.height * 2}
           />
         </button>
       )}

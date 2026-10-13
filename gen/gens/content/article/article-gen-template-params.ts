@@ -17,7 +17,7 @@ export interface ArticleGenTemplateParams extends ArticleGenParams {
 export function generateArticleGenTemplateParams(
   params: ArticleGenParams,
 ): ArticleGenTemplateParams {
-  const { title, tags } = params;
+  const { title, tags, content } = params;
   const nameRootObject = `${camelCase(title)}Article`;
   const slug = kebabCase(title);
 
@@ -28,6 +28,8 @@ export function generateArticleGenTemplateParams(
 
   return {
     title,
+
+    content,
 
     tags,
     tagsEnumNames,

@@ -11,31 +11,33 @@ interface WorkListItemProps {
 }
 
 export function WorkListItem(props: WorkListItemProps) {
-  const { workMeta } = props;
+  const {
+    workMeta: { techs, slug, client, jobTitle, blurbShort, mainImage },
+  } = props;
 
-  const techNames = workMeta.techs.map((tech) => tech.categoryName).join(", ");
+  const techNames = techs.map((tech) => tech.categoryName).join(", ");
 
   return (
-    <LinkBox href={`work/${workMeta.slug}`}>
+    <LinkBox href={`work/${slug}`}>
       <ContentListItem
         mainSlot={
           <>
-            <LinkBoxTitle>{workMeta.client}</LinkBoxTitle>
+            <LinkBoxTitle>{client}</LinkBoxTitle>
 
-            <Text type={TextTypes.SubTitle}>{workMeta.jobTitle}</Text>
+            <Text type={TextTypes.ListItemSubTitle}>{jobTitle}</Text>
 
             <Stack gap={0.5}>
-              <Text type={TextTypes.Summary}>{workMeta.blurbShort}</Text>
+              <Text type={TextTypes.Summary}>{blurbShort}</Text>
 
               <Text type={TextTypes.Small}>Tech: {techNames}</Text>
             </Stack>
           </>
         }
         asideSlot={
-          props.workMeta.mainImage ? (
+          mainImage ? (
             <ContentListItemImage
-              src={props.workMeta.mainImage.src}
-              alt={`Work thumbnail image for ${props.workMeta.client}`}
+              src={mainImage.src}
+              alt={`Work thumbnail image for ${client}`}
             />
           ) : null
         }

@@ -17,6 +17,7 @@ export async function filterAsync<T>(
   return inputFiltered;
 }
 
+// todo: move to noop.ts
 export const noopUndefined = () => undefined;
 
 export const noopAsync = async () => undefined;

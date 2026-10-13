@@ -1,6 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { text } from "../../../styling";
+import { rems } from "@/framework/utils/rems.css_";
+
+import * as textSizeConsts from "../../../text/text-size/text-size.consts";
 
 export const discussion = style({
   display: "flex",
@@ -11,5 +13,5 @@ export const discussion = style({
 });
 
 export const count = style({
-  ...text.size.xs,
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
 });

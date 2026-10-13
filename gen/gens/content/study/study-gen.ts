@@ -9,7 +9,7 @@ import {
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
-import { studiesIndexGen } from "./studies-gen-index.template";
+import { studiesGenIndexTemplate } from "./studies-gen-index.template";
 import { studyGenIndexTemplate } from "./study-gen-index.template";
 import { studyGenSchema } from "./study-gen-schema";
 import { generateStudyGenTemplateParams } from "./study-gen-template-params";
@@ -32,7 +32,7 @@ export async function study() {
   const studiesIndexPath = `${studiesPath}/index.ts`;
   fileAppendAndSortLines(
     studiesIndexPath,
-    studiesIndexGen(studyGenTemplateParams),
+    studiesGenIndexTemplate(studyGenTemplateParams),
   );
   await runPrettier(studiesIndexPath);
 

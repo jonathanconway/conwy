@@ -1,8 +1,6 @@
 import { isArray, isNumber, isObject, isString } from "lodash";
 import { ReactNode } from "react";
 
-import { isReactNode } from "./react-node";
-
 export function convertReactNodeToString(input: ReactNode): string {
   if (!input) {
     return "";

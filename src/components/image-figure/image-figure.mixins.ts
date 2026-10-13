@@ -2,7 +2,7 @@ import { ComplexStyleRule } from "@vanilla-extract/css";
 
 import * as boxMixins from "../box/box.mixins";
 import * as linkMixins from "../link/link.mixins";
-import { text } from "../styling";
+import * as textSizeMixins from "../text/text-size/text-size.mixins";
 import { vars } from "../theme";
 
 export const container: ComplexStyleRule = {
@@ -38,7 +38,6 @@ export const imgSized = {
 };
 
 export const figCaption = {
-  ...text.size.xs,
-  lineHeight: "1rem",
+  ...textSizeMixins.xs,
   marginTop: "1.5rem",
 };

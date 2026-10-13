@@ -1,12 +1,10 @@
 import { ProjectGenTemplateParams } from "./project-gen-template-params";
 
 export const projectGenContentMdxTemplate = ({
-  title,
+  content,
 }: ProjectGenTemplateParams) =>
   `
 
-## ${title}
-
-{/* Full text here */}
+${content ?? "{/* Full text here */}"}
 
 `.trim();

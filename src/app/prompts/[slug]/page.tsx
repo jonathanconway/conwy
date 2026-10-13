@@ -4,12 +4,12 @@ import { Breadcrumb, PageLayout, Prompt, ResponsiveMdHalf } from "@/components";
 import * as contentMap_ from "@/content";
 import { site } from "@/content";
 import * as promptsMap from "@/content/prompts";
+import { sentenceCase } from "@/framework";
 import {
   ContentAnchorsMap,
   ContentMap,
   ContentTypes,
   reduceContentAnchorLinkAndInfos,
-  sentenceCase,
 } from "@/framework/client";
 import { findImportedContent } from "@/framework/server";
 

@@ -1,1 +1,1 @@
-export * from "./community.gen";
+export * from "./community-gen";

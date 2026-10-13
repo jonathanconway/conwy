@@ -1,4 +1,4 @@
-import { isNotNil } from "../utils";
+import { isNotNil } from "../utils/typing";
 
 import { GenSchemaField } from "./gen-schema-field";
 import { GenSchemaFieldTypes } from "./gen-schema-field-type";

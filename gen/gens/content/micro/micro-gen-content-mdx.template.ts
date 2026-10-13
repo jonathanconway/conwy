@@ -5,6 +5,6 @@ export const microGenContentMdxTemplate = ({
 }: MicroGenTemplateParams) =>
   `
 
-${content}
+${content ?? "{/* Full text here */}"}
 
 `.trim();

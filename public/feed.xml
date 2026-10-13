@@ -869,7 +869,7 @@ It seems likely that AI adoption among software engineers will grow, so it will 
     <content xml:lang="en" type="html">&gt; Summary: AI-enabled capabilities can be surfaced in user interfaces in a variety of ways, including inline suggestions, single and multi-agent chat, providing hints for filling in inputs and through controls that allow the user to nudge a preview until it matches what they want.
 
 As AI capabilities become increasingly available to everyday development
-teams, it might be useful to explore way to surface these capabilities to
+teams, it might be useful to explore ways to surface these capabilities to
 end-users.
 
 This article describes some user interface patterns for surfacing AI.
@@ -1392,7 +1392,7 @@ For screen recordings, I prefer to avoid animated GIFs and instead use formats s
 
 Collapsible regions, supported in GitHub pull request markdown, can be a great way to present a high-level outline to the viewer, hiding lower-level details until/unless the reader is interested to dig deeper by clicking to expand the region.
 
-![Screenshot of detail section with screenshot in GitHub pull request](/images/articles/better-pull-requests/screenshot-details-section-example.png)
+![Screenshot of detail section with screenshot in GitHub pull request](/images/articles/better-pull-requests/expand-collapse-regions.gif)
 
 ```md
 
@@ -3490,9 +3490,9 @@ Some solutions might become evident from examining output after reproducing flak
 
 ### Await your elements
 
-Problem: Operations occur before the DOM has completed loading. For example, the test tries to click a button inside a dialog before the dialog has loaded.
+**Problem:** Operations occur before the DOM has completed loading. For example, the test tries to click a button inside a dialog before the dialog has loaded.
 
-Solution: Wait until elements have been rendered before performing operations that depend on them.
+**Solution:** Wait until elements have been rendered before performing operations that depend on them.
 
 ❌
 ```ts
@@ -3517,9 +3517,9 @@ await userEvent.click(confirmButton);
 
 ### Keep your promises
 
-Problem: Test operations are being done before Promises on which they rely have been completed. For example, an async API call is made, but the test runs an operation that depends on the API result before the promise has completed.
+**Problem:** Test operations are being done before Promises on which they rely have been completed. For example, an async API call is made, but the test runs an operation that depends on the API result before the promise has completed.
 
-Solution: Wait for calls to have been made, using, say, a &quot;completed&quot; flag.
+**Solution:** Wait for calls to have been made, using, say, a &quot;completed&quot; flag.
 
 ❌
 ```tsx
@@ -3548,9 +3548,9 @@ expect(heading).toHaveText(&quot;Jack&#39;s Primary Account&quot;);
 
 ### Reduce test size
 
-Problem: A test is very long and, thus, times out before being completed.
+**Problem:** A test is very long and, thus, times out before being completed.
 
-Solution: Reduce test size.
+**Solution:** Reduce test size.
 
 Even if we prefer longer integration-style tests, as recommended by Kent C. Dodds in [Write fewer, longer tests], there can still be ways to reduce the size of our tests while preserving their scope.
 
@@ -3561,9 +3561,9 @@ For example:
 
 ### Reduce test file size
  
-Problem: Test files are large. Processing each large file ties up system resources (especially processor usage), causing other tests to time out.
+**Problem:** Test files are large. Processing each large file ties up system resources (especially processor usage), causing other tests to time out.
 
-Solution: Reduce test file size.
+**Solution:** Reduce test file size.
 
 One way is to split up test files by function or component.
 
@@ -3584,9 +3584,9 @@ Or we could use numbering or lettering system.
 
 ### Reduce the number of workers
 
-Problem: Test runners such as Jest may be greedy and fail to balance resource usage between tests when running many tests in parallel on resource-constrained environments such as CI
+**Problem:** Test runners such as Jest may be greedy and fail to balance resource usage between tests when running many tests in parallel on resource-constrained environments such as CI
 
-Solution: Check the CPU configuration of the CI if possible. Try to reduce the number of simultaneously running tests by configuring the test runner.
+**Solution:** Check the CPU configuration of the CI if possible. Try to reduce the number of simultaneously running tests by configuring the test runner.
 
 Contrary to our human intuition (&quot;more is better&quot;) it may be better to reduce the number of simultaneously running tests. This is because test runners can be greedy and consume as many resources as possible at any given time (CPU, memory, etc). Running multiple tests at once can cause resource usage to become imbalanced, as tests compete with eachother for resources. 
 
@@ -3594,9 +3594,9 @@ The solution may be to reduce the maximum number of workers. Jest allows this to
 
 ### Clean up at the end
 
-Problem: Tests leave behind &quot;uncollected garbage&quot;, such as memory usage, threads, promises, etc. This slows down the test suite as a whole, making some tests flaky.
+**Problem:** Tests leave behind &quot;uncollected garbage&quot;, such as memory usage, threads, promises, etc. This slows down the test suite as a whole, making some tests flaky.
 
-Solution: Cleaning up after each test reduces resource demand on the test runner, which reduces the occurrence of flakiness.
+**Solution:** Cleaning up after each test reduces resource demand on the test runner, which reduces the occurrence of flakiness.
 
 Note that the flaky test itself might not be the culprit here, but rather, some or all other test(s) as a whole generating garbage. This uncollected garbage might only be noticeable when all tests are run together in CI, not when running an individual test on its own. This can make the &quot;uncollected garbage&quot; issue tricky to detect. It might only be detectable by trial-and-error – say, observing resource usage on the whole test suite over repeated runs.
 
@@ -3615,9 +3615,9 @@ Where the test framework allows it, longer-running integration-style tests or en
 
 ### Optimise test code
 
-Problem: The test code is slow, leading to flakiness from timeouts during execution.
+**Problem:** The test code is slow, leading to flakiness from timeouts during execution.
 
-Solution: Find slow points in the test code and optimise their performance.
+**Solution:** Find slow points in the test code and optimise their performance.
 
 Test code can be optimised in various ways, including:
 
@@ -3628,9 +3628,9 @@ Test code can be optimised in various ways, including:
 
 ### Optimise the application under test
 
-Problem: The application we&#39;re testing is itself buggy or just slow. If the application itself is slow, then the automated tests that exercise it will probably also be slow, leading to flakiness.
+**Problem:** The application we&#39;re testing is itself buggy or just slow. If the application itself is slow, then the automated tests that exercise it will probably also be slow, leading to flakiness.
 
-Solution: Find slow points in the application under test and optimise their performance.
+**Solution:** Find slow points in the application under test and optimise their performance.
 
 To find slow points, we can add timer statements to different parts of the test or application.
 
@@ -3658,7 +3658,7 @@ These might be used temporarily as an emergency resort or permanently if conside
 
 ### Disable resource-intensive application features when running in tests
 
-Problem: Some features of our application may be resource-intensive, causing flakiness, while not offering much value in an automated testing context.
+**Problem:** Some features of our application may be resource-intensive, causing flakiness, while not offering much value in an automated testing context.
 
 Mitigation: Disable resource-intensive features for test environment only.
 
@@ -3673,7 +3673,7 @@ These features can be disabled only for test execution, via, say, feature flags.
 
 ### Reconfigure test runners
 
-Problem: Flakiness produced by resource-constrained environments is not worth the cost savings of the resource constraints.
+**Problem:** Flakiness produced by resource-constrained environments is not worth the cost savings of the resource constraints.
 
 Mitigation: Increase resources to get better value for investment, such as higher developer productivity during a critical period.
 
@@ -3685,7 +3685,7 @@ Or suppose the business context is seasonally sensitive, such as an online retai
 
 ### Tag known flaky tests and configure accordingly
 
-Problem: Flaky tests block the whole pipeline, interfering with delivery velocity.
+**Problem:** Flaky tests block the whole pipeline, interfering with delivery velocity.
 
 Mitigation: Separate flaky tests from non-flaky tests, to ensure that they run correctly or at least do not disrupt other tests.
 
@@ -7720,6 +7720,127 @@ This might be more suitable for those who understand OO or have a background usi
 I think the ***Object const pattern*** provides a viable enumeration pattern for most use-cases in Typescript should be easy to pick up for a broad range of Typescript developers.
 
 The ***Class with static fields pattern*** provides more advanced usability, such as strictly coupling methods to enum items, but comes at the cost of a small learning curve for developers less experienced in class-based programming.</content>
+  </entry>
+  
+
+  <entry>
+    <title>Organise your life with a universal folder structure</title>
+    <link href="https://conwy.co/articles/universal-folder-structure" />
+    <updated>2026-02-18T00:00:00.000Z</updated>
+    <id>universal-folder-structure</id>
+    <content xml:lang="en" type="html">Staying organised and focused is a common and growing challenge in our digital age, with the relentless torrent of novelty and associated complexity.
+
+A common difficulty is having information spread across many separate websites, applications and systems.
+
+Take, for example, planning a holiday trip.
+
+You might have any number of the following...
+
+- Some wish list apartment or room stays in **AirBnB**.
+- Some hotel or hostel bookings in **Booking.com**.
+- Tour bookings and flight plans in **GMail**.
+- Sight seeing recommendations from a friend in your **Notes App**.
+
+You can see the complexity of managing all this scattered information.
+
+In the past, various solutions tried to address this. Notebook apps, reminder apps, todo apps. Now there are a myriad of AI solutions claiming to solve it, with varying results. The problem with many of these &quot;solutions&quot; is that they are trying to force together information which sits in different systems. This creates various frictions and makes the solution a headache in itself.
+
+
+
+An alternative is: leave the data where it is and just enforce a common organisational pattern. Instead of trying to force information together, focus on making the information as findable as possible. To this end, I&#39;ve come up with what I term a &quot;universal folder structure&quot; for organising my life. I use this common structure to organise all the information across all systems I use.
+
+
+
+For example, the travel part of my folder structure looks like this:
+
+- 📁 Travel
+  - 📁 [Departure Date] (for example, &quot;2029-01-01&quot;)
+    - 📁 [Country] (for example, &quot;Singapore, US, Canada, Italy&quot;)
+      - 📁 [City] (for example, &quot;Singapore, Arizona, Toronto, Rome&quot;)
+        - 📁 Stays
+        - 📁 Flights
+        - 📁 Sights
+
+Suppose I&#39;m planning travel to the US and Singapore. I might develop the following structure:
+
+- 📁 Travel
+  - 📁 2029-01-01
+    - 📁 US
+      - 📁 LA
+        - 📁 Flights
+          - 📄 SYD-LAX
+        - 📁 Stays
+          - 📄 2029-01-03-venice-beach-hostel
+      - 📁 Arizona
+        - 📁 Stays
+          - 📄 2029-01-07-springhill-suites-marriott
+        - 📁 Flights
+          - 📄 LAX-AZ
+        - 📁 Sights
+          - 📄 Grand Canyon
+    - 📁 Singapore
+      - 📁 Dempsey Hills
+        - 📁 Stays
+          - 📄 airbnb-2029-01-14
+        - 📁 Sights
+          - 📄 open-farm-community
+
+I simply replicate the applicable parts of the structure in each system I have an account in.
+
+For example, in my **AirBnB account**, I use their &quot;wishlists&quot;, with slash-delimited (&quot;/&quot;) names, to create a nested structure.
+
+- 🩶 Singapore / Dempsey Hills
+- 🩶 US / AZ
+- 🩶 Canada / Toronto
+
+Similarly, for my **Booking.com account**, I use **browser bookmarks** with the same structure:
+
+- 📁 Travel
+  - 📁 2029-01-01
+    - 📁 US
+      - 📁 Arizona
+        - 📁 Stays
+          - 🌏 Venice Beach Hostel | My Bookings | Booking.com
+      - 📁 LA
+        - 📁 Stays
+          - 🌏 Springhill Suites Marriott | My Bookings | Booking.com
+
+![Screenshot of Chrome bookmarks, allowing custom folders and renaming]()
+
+And, for my flight and tour bookings, I use **Labels in GMail** with the same structure:
+
+- 🏷️ Travel
+  - 🏷️ 2029-01-01
+    - 🏷️ US
+      - 🏷️ Arizona
+        - 🏷️ Flights
+          - 📧 LAX-AZ
+        - 🏷️ Sights
+      - 🏷️ LA
+        - 🏷️ Flights
+          - 📧 SYD-LAX
+        - 🏷️ Sights
+          - 📧 Tour of Grand Canyon | Booking Confirmation
+    - 🏷️ Singapore
+      - 🏷️ Dempsey Hills
+          - 📧 Core Collective Yoga | Booking Confirmation
+
+The same kind of method can be applied to any kind of personal information.
+
+- Health
+- Job applications
+- Study
+- Finances
+- Investments
+- Purchases
+- etc...
+
+This organisational method works well for me. When I need to access a particular piece of information (such as checking the address of an AirBnB booking or checking in to a flight) I simply navigate to the appropriate part of the folder structure in the appropriate system (AirBnB or GMail).
+
+Will this ever be as nice as having everything in one system with zero friction or overhead? No. But as far I know, no such system exists.
+
+For the time being this is good enough. I won&#39;t let the perfect be the enemy of the good.
+</content>
   </entry>
   
 

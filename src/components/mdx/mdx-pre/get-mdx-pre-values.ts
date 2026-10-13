@@ -5,7 +5,7 @@ import {
   ReactNode,
 } from "react";
 
-import { sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
 
 export function getMdxPreValues({
   children,

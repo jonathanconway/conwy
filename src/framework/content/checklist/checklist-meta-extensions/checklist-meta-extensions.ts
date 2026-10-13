@@ -1,4 +1,4 @@
-import { Tree } from "../../../utils";
+import { Tree } from "../../../utils/tree";
 import { Link } from "../../link";
 
 export interface ChecklistMetaExtensions {

@@ -40,6 +40,7 @@ export * from "./towards-zero-bugs";
 export * from "./types-vs-assertions";
 export * from "./typescript-enum-patterns";
 export * from "./unit-tests-cloud";
+export * from "./universal-folder-structure";
 export * from "./user-flows";
 export * from "./visualising-execution-flows";
 export * from "./wireframing-techniques";

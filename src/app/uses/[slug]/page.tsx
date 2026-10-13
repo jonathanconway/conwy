@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import { Breadcrumb, PageLayout, ToolsListItem } from "@/components";
 import { site } from "@/content";
 import * as toolsMap from "@/content/tools";
-import { ContentTypes, sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
+import { ContentTypes } from "@/framework/client";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";

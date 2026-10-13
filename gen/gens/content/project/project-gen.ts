@@ -15,7 +15,7 @@ import { projectGenIndexTemplate } from "./project-gen-index.template";
 import { projectGenMetaTemplate } from "./project-gen-meta.template";
 import { projectGenSchema } from "./project-gen-schema";
 import { generateProjectGenTemplateParams } from "./project-gen-template-params";
-import { projectsIndexGen } from "./projects-gen-index.template";
+import { projectsGenIndexTemplate } from "./projects-gen-index.template";
 
 export async function project() {
   const projectGenParams = await getGenSchemaValues(projectGenSchema);
@@ -51,7 +51,7 @@ export async function project() {
   const projectsIndexPath = `${projectsPath}/index.ts`;
   fileAppendAndSortLines(
     projectsIndexPath,
-    projectsIndexGen(projectGenTemplateParams),
+    projectsGenIndexTemplate(projectGenTemplateParams),
   );
   await runPrettier(projectsIndexPath);
 

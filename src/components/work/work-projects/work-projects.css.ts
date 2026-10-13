@@ -1,8 +1,9 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as iconMixins from "../../icon/icon.mixins";
-import { text } from "../../styling";
-import * as textMixins from "../../text/text.mixins";
+import * as listItemMixins from "../../list/list-item/list-item.mixins";
+import * as textSizeMixins from "../../text/text-size/text-size.mixins";
+import * as textWeightMixins from "../../text/text-weight/text-weight.mixins";
 
 export const workProjectsList = style({
   paddingLeft: 0,
@@ -12,7 +13,7 @@ export const workProjectsList = style({
 });
 
 export const workProjectsListItem = style({
-  ...textMixins.liSmall,
+  ...listItemMixins.listItemSmall,
   margin: 0,
   listStyle: "none",
   lineHeight: "1.2rem",
@@ -20,8 +21,8 @@ export const workProjectsListItem = style({
 });
 
 export const workProjectsListItemTitle = style({
-  ...text.size.xs,
-  lineHeight: "1rem",
+  ...textSizeMixins.xs,
+  ...textWeightMixins.body,
   flex: 1,
 });
 

@@ -1,7 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/utils/rems.css_";
+
 import { linkContent } from "../link/link.mixins";
-import { text } from "../styling";
+import * as textSizeConsts from "../text/text-size/text-size.consts";
 import { vars } from "../theme";
 
 export const left = style({
@@ -24,7 +26,7 @@ export const row = style({
   display: "flex",
   flexDirection: "row",
   gap: "0.5rem",
-  ...text.size.xs,
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
 });
 
 export const link = style({

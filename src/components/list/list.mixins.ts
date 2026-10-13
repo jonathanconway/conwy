@@ -1,5 +1,9 @@
 import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/css";
+
+import * as spacingConsts from "../spacing/spacing.consts";
+
 // todo: within text flow, e.g. MdxContainer, generically apply top margin to direct children
 // elsewhere, don't
 
@@ -12,6 +16,10 @@ export const list: ComplexStyleRule & GlobalStyleRule = {
   paddingLeft: "1.5rem",
 };
 
+export const listItemSpacing = {
+  paddingTop: rems(spacingConsts.xs),
+};
+
 export const unorderedList: ComplexStyleRule & GlobalStyleRule = {
   ...list,
 };
@@ -21,7 +29,6 @@ export const unorderedListBullets: ComplexStyleRule & GlobalStyleRule = {
 };
 
 export const unorderedListNoBullets: ComplexStyleRule & GlobalStyleRule = {
-  // margin: 0,
   paddingInline: 0,
   listStyle: "none",
 };

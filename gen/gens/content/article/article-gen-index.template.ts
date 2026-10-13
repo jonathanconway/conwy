@@ -5,7 +5,7 @@ export const articleGenIndexTemplate = ({
 }: ArticleGenTemplateParams) =>
   `
 
-import { Article, ContentTypes } from "@/framework/client";
+import { Article, ContentTypes } from "@/framework";
 
 import Content from "./content.mdx";
 import { meta } from "./meta";

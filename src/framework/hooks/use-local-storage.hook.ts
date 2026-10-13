@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-// import { isClient } from "../utils";
 import {
   StorageListener,
   isEventType,
@@ -11,10 +10,6 @@ import {
 import { useEvent } from "./use-event.hook";
 
 function getValueFromLocalStorage<TState>(key: string): TState | undefined {
-  // if (!isClient) {
-  //   return undefined;
-  // }
-
   const value = localStorage?.getItem(key);
   return parseStorageValue(value);
 }
@@ -23,10 +18,6 @@ export function saveValueToLocalStorage<TState>(
   key: string,
   value: TState | undefined,
 ) {
-  // if (!isClient) {
-  //   return undefined;
-  // }
-
   if (value) {
     localStorage?.setItem(key, JSON.stringify(value));
   } else {

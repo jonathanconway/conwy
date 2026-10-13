@@ -12,14 +12,14 @@ import {
 } from "../../../gen-utils";
 import { runPrettier } from "../../../run-prettier";
 
+import { ideaGenBlurbMdxTemplate } from "./idea-gen-blurb-mdx.template";
+import { ideaGenContentMdxTemplate } from "./idea-gen-content-mdx.template";
+import { ideaGenIndexTemplate } from "./idea-gen-index.template";
+import { ideaGenMetaTemplate } from "./idea-gen-meta.template";
 import { IdeaGenParams } from "./idea-gen-params";
 import { ideaGenSchema } from "./idea-gen-schema";
 import { generateIdeaGenTemplateParams } from "./idea-gen-template-params";
-import { ideaBlurbGen } from "./idea.blurb.mdx.gen";
-import { ideaContentGen } from "./idea.content.mdx.gen";
-import { ideaIndexGen } from "./idea.index.gen";
-import { ideaMetaGen } from "./idea.meta.gen";
-import { ideasIndexGen } from "./ideas.index.gen";
+import { ideasGenIndexTemplate } from "./ideas-gen-index.template";
 
 export async function idea() {
   const ideaGenParams = await getGenSchemaValues(ideaGenSchema);
@@ -37,20 +37,29 @@ export async function idea() {
 
   folderWrite(ideaPath);
 
-  fileWrite(`${ideaPath}/blurb.mdx`, ideaBlurbGen(ideaGenTemplateParams));
+  fileWrite(
+    `${ideaPath}/blurb.mdx`,
+    ideaGenBlurbMdxTemplate(ideaGenTemplateParams),
+  );
 
-  fileWrite(`${ideaPath}/content.mdx`, ideaContentGen(ideaGenTemplateParams));
+  fileWrite(
+    `${ideaPath}/content.mdx`,
+    ideaGenContentMdxTemplate(ideaGenTemplateParams),
+  );
 
   const ideaIndexPath = `${ideaPath}/index.tsx`;
-  fileWrite(ideaIndexPath, ideaIndexGen(ideaGenTemplateParams));
+  fileWrite(ideaIndexPath, ideaGenIndexTemplate(ideaGenTemplateParams));
   runPrettier(ideaIndexPath);
 
   const ideaMetaPath = `${ideaPath}/meta.ts`;
-  fileWrite(ideaMetaPath, ideaMetaGen(ideaGenTemplateParams));
+  fileWrite(ideaMetaPath, ideaGenMetaTemplate(ideaGenTemplateParams));
   runPrettier(ideaMetaPath);
 
   const ideasIndexPath = `${ideasPath}/index.ts`;
-  fileAppendAndSortLines(ideasIndexPath, ideasIndexGen(ideaGenTemplateParams));
+  fileAppendAndSortLines(
+    ideasIndexPath,
+    ideasGenIndexTemplate(ideaGenTemplateParams),
+  );
   runPrettier(ideasIndexPath);
 
   logCommitMessageContentCreated(ContentTypes.Idea, slug);

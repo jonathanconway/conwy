@@ -16,9 +16,10 @@ export function generatePromptGenTemplateParams(
 
   return {
     title,
+    slug,
+
     content,
 
     nameRootObject,
-    slug,
   };
 }

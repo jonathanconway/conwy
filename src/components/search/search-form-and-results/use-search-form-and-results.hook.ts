@@ -2,7 +2,8 @@ import { max, trim, unescape } from "lodash";
 import { marked } from "marked";
 import { useEffect, useState } from "react";
 
-import { SearchResult, TypeOfConst } from "@/framework/client";
+import { TypeOfConst } from "@/framework";
+import { SearchResult } from "@/framework/client";
 
 interface SearchFormAndResultsState {
   readonly searchText: string;

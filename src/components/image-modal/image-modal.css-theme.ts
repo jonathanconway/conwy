@@ -8,12 +8,12 @@ export const imageModalThemeBase = {
 
 export const imageModalThemeLight = {
   background: {
-    color: colors.white,
+    color: colors.stone_950,
   },
 };
 
 export const imageModalThemeDark = {
   background: {
-    color: colors.black,
+    color: colors.white,
   },
 };

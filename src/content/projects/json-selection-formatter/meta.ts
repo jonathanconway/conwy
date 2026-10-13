@@ -7,14 +7,13 @@ import {
 
 export const meta: ProjectMeta = {
   title: "JSON Selection Formatter",
-  blurb:
-    "Chrome extension that unescapes, formats and syntax-highlights any piece of JSON selected in a web page.",
+  blurb: "Chrome extension to format any JSON selected in a web page.",
   date: "2026-10-03",
   slug: "json-selection-formatter",
   tags: [PostTags.SoftwareDevelopment],
   subType: ProjectSubTypes.Tool,
   mainImage: {
-    src: "/images/projects/json-selection-formatter/json-selection-formatter.png",
+    src: "/images/projects/json-selection-formatter/json-selection-formatter.svg",
   },
   socialLinks: [
     {

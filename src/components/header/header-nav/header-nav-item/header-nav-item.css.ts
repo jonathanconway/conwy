@@ -1,6 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
-import { colors, media, text as text_ } from "../../../styling";
+import { rems } from "@/framework/utils/rems.css_";
+
+import { colors, media } from "../../../styling";
+import * as textSizeConsts from "../../../text/text-size/text-size.consts";
 import { vars } from "../../../theme";
 
 export const link = style({
@@ -30,7 +33,7 @@ export const linkInner = style({
 });
 
 export const text = style({
-  ...text_.size.lg,
+  fontSize: rems(textSizeConsts.fontSizeRems.lg),
   paddingLeft: "0.5rem",
   paddingRight: "0.5rem",
 });

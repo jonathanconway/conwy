@@ -2,7 +2,6 @@ import { BookGenTemplateParams } from "./book-gen-template-params";
 
 export const bookGenMetaTemplate = ({
   slug,
-  nameRootObject,
   title,
   authors,
   url,

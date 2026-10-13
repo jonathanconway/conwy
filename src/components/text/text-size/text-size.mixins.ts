@@ -1,47 +1,48 @@
-import { text } from "../../styling";
+import { rems } from "@/framework/utils/rems.css_";
 
-// todo: derive all these from text.*
+import * as textSizeConsts from "./text-size.consts";
 
 export const _2xs = {
-  fontSize: "0.65rem",
-  lineHeight: "1rem" /* 16px */,
+  fontSize: rems(textSizeConsts.fontSizeRems._2xs),
+  lineHeight: rems(textSizeConsts.lineHeightRems._2xs),
 };
 
 export const xs = {
-  ...text.size.xs,
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xs),
 };
 
 export const sm = {
-  fontSize: "0.875rem" /* 14px */,
-  lineHeight: "1.5rem" /* 20px */,
+  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+  lineHeight: rems(textSizeConsts.lineHeightRems.sm),
 };
 
 export const md = {
-  fontSize: "1rem" /* 16px */,
-  lineHeight: "1.5rem" /* 24px */,
+  fontSize: rems(textSizeConsts.fontSizeRems.md),
+  lineHeight: rems(textSizeConsts.lineHeightRems.md),
 };
 
 export const lg = {
-  fontSize: "1.125rem" /* 18px */,
-  lineHeight: "1.75rem" /* 28px */,
+  fontSize: rems(textSizeConsts.fontSizeRems.lg),
+  lineHeight: rems(textSizeConsts.lineHeightRems.lg),
 };
 
 export const xl = {
-  fontSize: "1.25rem" /* 20px */,
-  lineHeight: "1.75rem" /* 28px */,
+  fontSize: rems(textSizeConsts.fontSizeRems.xl),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xl),
 };
 
 export const _2xl = {
-  fontSize: "1.5rem" /* 24px */,
-  lineHeight: "2rem" /* 32px */,
+  fontSize: rems(textSizeConsts.fontSizeRems._2xl),
+  lineHeight: rems(textSizeConsts.lineHeightRems._2xl),
 };
 
 export const _3xl = {
-  fontSize: "1.875rem" /* 30px */,
-  lineHeight: "2.25rem" /* 36px */,
+  fontSize: rems(textSizeConsts.fontSizeRems._3xl),
+  lineHeight: rems(textSizeConsts.lineHeightRems._3xl),
 };
 
 export const _4xl = {
-  fontSize: "2.25rem" /* 36px */,
-  lineHeight: "2.5rem" /* 40px */,
+  fontSize: rems(textSizeConsts.fontSizeRems._4xl),
+  lineHeight: rems(textSizeConsts.lineHeightRems._4xl),
 };

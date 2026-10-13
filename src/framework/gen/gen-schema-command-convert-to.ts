@@ -1,7 +1,7 @@
 import { Command, Option, program } from "commander";
 import { kebabCase } from "lodash";
 
-import { isNotNil } from "../utils";
+import { isNotNil } from "../utils/typing";
 
 import { GenSchemaFields } from "./gen-schema";
 import {

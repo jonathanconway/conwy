@@ -33,6 +33,7 @@ export function generateProjectGenTemplateParams(
   const {
     title,
     blurb,
+    content,
     subType,
     mainImageUrl,
     imageUrls,
@@ -67,8 +68,10 @@ export function generateProjectGenTemplateParams(
     nameRootObject,
     date,
     title,
-    blurb,
     slug,
+
+    blurb,
+    content,
 
     subType,
 

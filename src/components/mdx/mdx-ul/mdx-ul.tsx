@@ -1,10 +1,11 @@
 "use client";
 
+import { ListUnordered } from "@/components/list";
+
 import { useChecklistContext } from "../../checklist/checklist-context";
 
 import { MdxUlChecklist, checkIsChecklist } from "./mdx-ul-checklist";
 import { MdxUlProps } from "./mdx-ul-props";
-import * as styles from "./mdx-ul.css";
 
 export function MdxUl(props: MdxUlProps) {
   const { className, ...restProps } = props;
@@ -14,5 +15,5 @@ export function MdxUl(props: MdxUlProps) {
     return <MdxUlChecklist>{props.children}</MdxUlChecklist>;
   }
 
-  return <ul className={styles.ul} {...restProps} />;
+  return <ListUnordered {...restProps} />;
 }

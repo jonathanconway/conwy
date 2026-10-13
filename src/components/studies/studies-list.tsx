@@ -1,7 +1,7 @@
 "use client";
 
 import * as studiesMap from "@/content/studies";
-import { sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
 
 import { TagFilters, useTagFiltersResults } from "../filters";
 import { SectionHeading } from "../heading";

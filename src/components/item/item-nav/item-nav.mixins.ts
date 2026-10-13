@@ -1,7 +1,7 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 
 import * as labelMixins from "../../label/label.mixins";
-import { gap, media, responsive, rounded, size, text } from "../../styling";
+import { gap, media, responsive, rounded } from "../../styling";
 import * as textSizeMixins from "../../text/text-size/text-size.mixins";
 import * as textWeightMixins from "../../text/text-weight/text-weight.mixins";
 import { vars } from "../../theme";
@@ -20,11 +20,12 @@ export const navItem = {
 
 export const containerEmpty = {
   display: "flex",
-  width: size.full,
-  ...rounded.md,
+  width: "100%",
   padding: "0.25rem",
   backgroundColor: vars.itemNav.placeholder.background.color,
   opacity: 0.5,
+
+  ...rounded.md,
 
   "@media": {
     [media.sm]: {
@@ -37,7 +38,7 @@ export const mainColumn: ComplexStyleRule = {
   display: "flex",
   flexDirection: "column",
   flex: 1,
-  gap: "0.25rem",
+  gap: "0.5rem",
   justifyContent: "center",
   overflow: "hidden",
 };

@@ -1,7 +1,10 @@
 import { style } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/utils/rems.css_";
+
 import * as shadowMixins from "../../shadow";
-import { colors, rounded, text } from "../../styling";
+import { colors, rounded } from "../../styling";
+import * as textSizeConsts from "../../text/text-size/text-size.consts";
 
 export const noteHotspot = style({
   position: "absolute",
@@ -9,7 +12,7 @@ export const noteHotspot = style({
   alignItems: "center",
   justifyContent: "center",
   fontWeight: "bold",
-
+  fontSize: rems(textSizeConsts.fontSizeRems.sm),
   backgroundColor: colors.stone_700,
   color: colors.white,
   borderColor: colors.yellow_400,
@@ -20,5 +23,4 @@ export const noteHotspot = style({
   height: "1.5rem",
 
   ...rounded.full,
-  ...text.size.sm,
 });

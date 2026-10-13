@@ -1,13 +1,18 @@
 import { globalStyle, style } from "@vanilla-extract/css";
-import { merge } from "lodash";
+
+import { rems } from "@/framework/utils/rems.css_";
 
 import * as iconMixins from "../../../icon/icon.mixins";
 import * as linkMixins from "../../../link/link.mixins";
-import { rounded, text } from "../../../styling";
+import { rounded } from "../../../styling";
+import * as textSizeConsts from "../../../text/text-size/text-size.consts";
 import * as textMixins from "../../../text/text.mixins";
 import { vars } from "../../../theme";
 
-export const mainLink = style(merge(linkMixins.link, text.size.xs));
+export const mainLink = style({
+  ...linkMixins.link,
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
+});
 
 // todo: extract to separate component
 export const decorationContainer = style({

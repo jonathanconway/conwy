@@ -1,6 +1,6 @@
 import { ProjectGenTemplateParams } from "./project-gen-template-params";
 
-export const projectsIndexGen = ({ slug }: ProjectGenTemplateParams) =>
+export const projectsGenIndexTemplate = ({ slug }: ProjectGenTemplateParams) =>
   `
 
 export * from "./${slug}";

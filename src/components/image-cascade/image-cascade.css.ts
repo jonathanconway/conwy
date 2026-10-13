@@ -1,18 +1,26 @@
 import { style } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/utils/rems.css_";
+
 import { boxBorderDecorative } from "../box/box.mixins";
-import { rounded, text } from "../styling";
+import { rounded } from "../styling";
+import * as textSizeConsts from "../text/text-size/text-size.consts";
 import { vars } from "../theme";
+
+import { IMAGE_CASCADE_SIZE_PX } from "./image-cascade-size";
 
 export const container = style({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
+  marginTop: "1rem",
 });
 
 export const cascadeContainer = style({
   position: "relative",
   margin: "auto",
+  backgroundColor: vars.imageCascade.background.color,
+  overflow: "hidden",
 });
 
 const imageBorder = {
@@ -58,12 +66,13 @@ export const imageInner = style({
 
 export const imageNumber = style({
   position: "absolute",
-  left: "-0.5rem",
+  right: "-0.5rem",
   top: "-0.5rem",
   backgroundColor: vars.imageModal.background.color,
+  color: vars.text.body.inverseColor,
   width: "1.5rem",
   height: "1.5rem",
-  fontSize: text.size.xs.fontSize,
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
@@ -86,7 +95,10 @@ export const selectedImageContainer = style({
   alignContent: "center",
   margin: "auto",
   cursor: "pointer",
-  overflow: "hidden",
+  maxWidth: IMAGE_CASCADE_SIZE_PX.width,
+  width: IMAGE_CASCADE_SIZE_PX.width,
+  maxHeight: IMAGE_CASCADE_SIZE_PX.height,
+  height: IMAGE_CASCADE_SIZE_PX.width,
 });
 
 export const selectedImage = style({
@@ -94,7 +106,9 @@ export const selectedImage = style({
   pointerEvents: "none",
   margin: "auto",
   maxHeight: "100%",
+  maxWidth: "100%",
   width: "auto",
+  height: "auto",
 });
 
 export const nav = style({

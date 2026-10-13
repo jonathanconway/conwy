@@ -3,16 +3,16 @@ import { trim, uniq } from "lodash";
 import { MarkedToken, Token, Tokens, lexer, marked, parser } from "marked";
 import { ReactNode } from "react";
 
+import { removeNonAlphaNumeric } from "../../../utils/non-alpha-numeric-remove";
+import { convertReactNodeToString } from "../../../utils/react-node-to-string-convert";
+import { REGEXP_WHITESPACE } from "../../../utils/regexp";
+import { sentenceCase } from "../../../utils/strings";
 import {
-  REGEXP_WHITESPACE,
   Tree,
   addTreeSubBranchChildren,
   addTreeSubBranchPath,
-  convertReactNodeToString,
-  isNotNil,
-  removeNonAlphaNumeric,
-  sentenceCase,
-} from "../../../utils";
+} from "../../../utils/tree";
+import { isNotNil } from "../../../utils/typing";
 import { ChecklistMeta } from "../checklist-meta";
 
 import {

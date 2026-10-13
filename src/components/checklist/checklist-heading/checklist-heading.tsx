@@ -3,7 +3,7 @@ import { isArray, isString } from "lodash";
 import {
   getTreeSubBranchByBranch,
   getTreeSubBranchDescendantsCount,
-} from "@/framework/client";
+} from "@/framework";
 
 import {
   ChecklistContextValue,

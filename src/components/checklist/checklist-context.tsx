@@ -9,7 +9,7 @@ import {
   getTreeLeaves,
   getTreeLeavesFiltered,
   isNotNil,
-} from "@/framework/client";
+} from "@/framework";
 
 import { useSearchTextFilter, useTagFiltersSelected } from "../filters";
 

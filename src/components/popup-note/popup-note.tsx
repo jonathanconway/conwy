@@ -7,9 +7,7 @@ import * as styles from "./popup-note.css";
 export function PopupNote(props: PopupNoteProps) {
   return (
     <Tooltip
-      contents={
-        <span className={styles.popupNoteContentsContainer}>{props.title}</span>
-      }
+      contents={props.title}
       style={{
         maxWidth: "15rem",
         padding: "0.5rem",

@@ -1,6 +1,6 @@
 import { ProjectMeta, WorkMeta } from "@/framework/client";
 
-import { ListItem, ListUnordered } from "../../list";
+import { ListItem, ListItemSizes, ListUnordered } from "../../list";
 import { Section } from "../../section";
 
 import * as styles from "./item-techs.css";
@@ -25,7 +25,7 @@ export function ItemTechs<TMeta extends WorkMeta | ProjectMeta>(
 
             <ListUnordered className={styles.itemTechsSubItems} noBullets>
               {tech.items.map((item) => (
-                <ListItem key={item.itemName} small>
+                <ListItem key={item.itemName} size={ListItemSizes.Small}>
                   {item.itemName}
                 </ListItem>
               ))}

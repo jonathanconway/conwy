@@ -1,7 +1,9 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/utils/rems.css_";
+
 import * as linkMixins from "../../link/link.mixins";
-import { text } from "../../styling";
+import * as textSizeConsts from "../../text/text-size/text-size.consts";
 import { vars } from "../../theme";
 
 export const link = style({
@@ -27,7 +29,7 @@ export const linkHoverIcon = style({
   bottom: 0,
   visibility: "hidden",
   paddingLeft: "1rem",
-  ...text.size.sm,
+  fontSize: rems(textSizeConsts.fontSizeRems.sm),
   color: linkMixins.linkContent[":hover"].color,
 });
 

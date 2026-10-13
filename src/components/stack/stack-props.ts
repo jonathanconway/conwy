@@ -1,13 +1,13 @@
 import { CSSProperties, HTMLProps, ReactNode } from "react";
 
-import { SizeRem } from "../styling";
+import { RemValue } from "@/framework/css";
 
 import { StackDirection } from "./stack-direction";
 import { StackDistribution } from "./stack-distribution";
 
 export interface StackProps extends HTMLProps<HTMLDivElement> {
   readonly direction?: StackDirection;
-  readonly gap?: SizeRem;
+  readonly gap?: RemValue;
   readonly children: ReactNode;
   readonly distribution?: StackDistribution;
   readonly className?: string;

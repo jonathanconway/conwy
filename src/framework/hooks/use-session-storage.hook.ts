@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-// import { isClient } from "../utils";
 import {
   StorageListener,
   isEventType,
@@ -11,10 +10,6 @@ import {
 import { useEvent } from "./use-event.hook";
 
 function getValueFromSessionStorage<TState>(key: string): TState | undefined {
-  // if (!isClient) {
-  //   return undefined;
-  // }
-
   const value = sessionStorage?.getItem(key);
   return parseStorageValue(value);
 }
@@ -23,10 +18,6 @@ export function saveValueToSessionStorage<TState>(
   key: string,
   value: TState | undefined,
 ) {
-  // if (!isClient) {
-  //   return undefined;
-  // }
-
   if (value) {
     sessionStorage?.setItem(key, JSON.stringify(value));
   } else {
@@ -95,10 +86,6 @@ export function useSessionStorage<TState>(
   }, []);
 
   const setValue = (value: TState) => {
-    // if (!isClient) {
-    //   return;
-    // }
-
     setCachedValue(value);
     saveValueToSessionStorage(key, value);
     dispatchCacheChangedEvent(new SessionStateChangedEvent(value));

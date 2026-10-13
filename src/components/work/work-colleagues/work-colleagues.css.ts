@@ -1,14 +1,19 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { text } from "../../styling";
+import * as listItemMixins from "../../list/list-item/list-item.mixins";
 
-export const item = style({
-  listStyle: "none",
+export const workColleaguesList = style({
+  paddingLeft: 0,
+  display: "flex",
+  flexDirection: "column",
 });
 
-export const title = style({
-  ...text.size.xs,
-  lineHeight: "1.5rem",
+export const workColleaguesListItem = style({
+  ...listItemMixins.listItemSmall,
+  margin: 0,
+  listStyle: "none",
+  lineHeight: "1.2rem",
+  display: "inline-flex",
 });
 
 export const icon = style({

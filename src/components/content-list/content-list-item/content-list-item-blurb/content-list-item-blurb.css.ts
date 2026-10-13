@@ -1,5 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
-import { text } from "../../../styling";
+import { rems } from "@/framework/utils/rems.css_";
 
-export const blurb = style(text.size.sm);
+import * as textSizeConsts from "../../../text/text-size/text-size.consts";
+
+export const blurb = style({
+  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+});

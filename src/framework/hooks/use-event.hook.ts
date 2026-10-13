@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-// import { isClient } from "../utils";
-
 interface CustomEventListener<TEvent> {
   (event: TEvent): void;
 }

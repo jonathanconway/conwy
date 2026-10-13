@@ -1,6 +1,6 @@
 import { ToolGenTemplateParams } from "./tool-gen-template-params";
 
-export const toolsIndexGen = ({ slug }: ToolGenTemplateParams) =>
+export const toolsGenIndexTemplate = ({ slug }: ToolGenTemplateParams) =>
   `
 
 export * from "./${slug}";

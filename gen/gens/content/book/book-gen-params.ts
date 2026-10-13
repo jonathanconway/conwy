@@ -1,4 +1,4 @@
-import { Url } from "@/framework/client";
+import { Url } from "@/framework";
 
 export interface BookGenParams {
   readonly title: string;

@@ -1,5 +1,7 @@
 import { style } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/utils/rems.css_";
+
 import { media } from "../../../styling";
 
 export const notScrolledDown = style({
@@ -9,7 +11,7 @@ export const notScrolledDown = style({
 export const scrolledDown = style({
   position: "fixed",
   top: "2.5rem",
-  maxWidth: `${(65 - 5) * 0.3}rem`,
+  maxWidth: rems((65 - 5) * 0.3),
   width: `calc( ( 100% * 0.3 ) - 1.55rem )`,
 
   "@media": {

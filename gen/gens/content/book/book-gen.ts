@@ -14,7 +14,7 @@ import { bookGenIndexTemplate } from "./book-gen-index.template";
 import { bookGenMetaTemplate } from "./book-gen-meta.template";
 import { bookGenSchema } from "./book-gen-schema";
 import { generateBookGenTemplateParams } from "./book-gen-template-params";
-import { booksIndexGen } from "./books-gen-index.template";
+import { booksGenIndexTemplate } from "./books-gen-index.template";
 
 export async function book() {
   const bookGenParams = await getGenSchemaValues(bookGenSchema);
@@ -39,7 +39,10 @@ export async function book() {
   await runPrettier(bookIndexPath);
 
   const booksIndexPath = `${booksPath}/index.ts`;
-  fileAppendAndSortLines(booksIndexPath, booksIndexGen(bookGenTemplateParams));
+  fileAppendAndSortLines(
+    booksIndexPath,
+    booksGenIndexTemplate(bookGenTemplateParams),
+  );
   await runPrettier(booksIndexPath);
 
   logCommitMessageContentCreated(

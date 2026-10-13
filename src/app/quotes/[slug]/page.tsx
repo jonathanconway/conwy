@@ -4,13 +4,12 @@ import { Breadcrumb, PageLayout, Quote, ResponsiveMdHalf } from "@/components";
 import { site } from "@/content";
 import * as contentMap_ from "@/content";
 import * as quotesMap from "@/content/quotes";
-import { Quote as Quote_ } from "@/framework";
+import { Quote as Quote_, sentenceCase } from "@/framework";
 import {
   ContentAnchorsMap,
   ContentMap,
   ContentTypes,
   reduceContentsAnchorLinkAndInfos,
-  sentenceCase,
 } from "@/framework/client";
 import { findImportedContent } from "@/framework/server";
 

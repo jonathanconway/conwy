@@ -1,5 +1,3 @@
-import { sentenceCase } from "@/framework/client";
-
 import { ChecklistItemTagsProps } from "./checklist-item-tags-props";
 import * as styles from "./checklist-item-tags.css";
 

@@ -12,18 +12,6 @@ import * as styles from "./tooltip.css";
 import * as mixins from "./tooltip.mixins";
 import { checkIsElementOverflowing } from "./tooltip.utils";
 
-function convertContentsToReactNode(contents?: ReactNode | string) {
-  if (!contents) {
-    return undefined;
-  }
-
-  if (isString(contents)) {
-    return <>{contents}</>;
-  }
-
-  return contents;
-}
-
 export function Tooltip(props: TooltipProps) {
   const contents = convertContentsToReactNode(props.contents);
   const children = convertContentsToReactNode(props.children);
@@ -90,4 +78,16 @@ export function Tooltip(props: TooltipProps) {
       </span>
     </>
   );
+}
+
+function convertContentsToReactNode(contents?: ReactNode | string) {
+  if (!contents) {
+    return undefined;
+  }
+
+  if (isString(contents)) {
+    return <>{contents}</>;
+  }
+
+  return contents;
 }

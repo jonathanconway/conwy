@@ -3,6 +3,7 @@ export * from "./assert";
 export * from "./async";
 export * from "./hashing";
 export * from "./logic";
+export * from "./math";
 export * from "./mutable";
 export * from "./non-alpha-numeric-remove";
 export * from "./object";

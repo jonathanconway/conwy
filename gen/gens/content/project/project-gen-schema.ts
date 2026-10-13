@@ -1,6 +1,6 @@
 import { kebabCase } from "lodash";
 
-import { BookCategories, ProjectSubTypes } from "@/framework";
+import { ProjectSubTypes } from "@/framework";
 import { GenSchema, GenSchemaFieldTypes } from "@/framework/gen";
 import { ArrayValidator, UrlValidator } from "@/framework/validation";
 
@@ -13,12 +13,16 @@ export const projectGenSchema: GenSchema<ProjectGenParams> = {
       type: GenSchemaFieldTypes.Text,
       required: true,
     },
-    blurb: {
-      type: GenSchemaFieldTypes.Text,
-    },
     slug: {
       type: GenSchemaFieldTypes.Text,
       default: ({ valuesSoFar }) => kebabCase(valuesSoFar.title ?? ""),
+    },
+
+    blurb: {
+      type: GenSchemaFieldTypes.Text,
+    },
+    content: {
+      type: GenSchemaFieldTypes.TextMultiLine,
     },
 
     mainImageUrl: {

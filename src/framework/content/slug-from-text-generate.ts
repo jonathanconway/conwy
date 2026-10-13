@@ -1,6 +1,6 @@
 import { kebabCase, trim } from "lodash";
 
-import { isNotNil } from "../utils";
+import { isNotNil } from "../utils/typing";
 
 export function generateSlugFromText(text: string) {
   return kebabCase(

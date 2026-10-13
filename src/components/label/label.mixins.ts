@@ -1,6 +1,9 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 
-import { media, text } from "../styling";
+import { rems } from "@/framework/utils/rems.css_";
+
+import { media } from "../styling";
+import * as textSizeConsts from "../text/text-size/text-size.consts";
 import * as textWeightMixins from "../text/text-weight/text-weight.mixins";
 import { vars } from "../theme";
 
@@ -13,14 +16,14 @@ export const label: ComplexStyleRule = {
 export const labelSizeSmall: ComplexStyleRule = {
   "@media": {
     [media.sm]: {
-      ...text.size._2xs,
+      fontSize: rems(textSizeConsts.fontSizeRems._2xs),
     },
     [media.mdAndUp]: {
-      ...text.size.xs,
+      fontSize: rems(textSizeConsts.fontSizeRems.xs),
     },
   },
 };
 
 export const labelSizeRegular: ComplexStyleRule = {
-  ...text.size.sm,
+  fontSize: rems(textSizeConsts.fontSizeRems.sm),
 };

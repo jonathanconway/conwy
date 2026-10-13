@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { media, text } from "../styling";
+import { media } from "../styling";
 
 export const container = style({
   position: "relative",

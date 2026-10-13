@@ -16,9 +16,7 @@ export function ProjectPlatforms(props: ProjectPlatformsProps) {
     <Section label="Platforms">
       <ListUnordered noBullets>
         {props.projectMeta.platforms.map((platform) => (
-          <ListItem key={platform} noSpacing>
-            {platform}
-          </ListItem>
+          <ListItem key={platform}>{platform}</ListItem>
         ))}
       </ListUnordered>
     </Section>

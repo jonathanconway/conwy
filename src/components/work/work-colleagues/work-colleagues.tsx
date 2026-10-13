@@ -1,8 +1,8 @@
-import { sentenceCase } from "@/framework/client";
+import { sentenceCase } from "@/framework";
 
 import { IconTypes } from "../../icon";
 import { Link, LinkLayoutTypes } from "../../link";
-import { ListExpandable } from "../../list";
+import { ListExpandable, ListItem, ListUnordered } from "../../list";
 import { Section } from "../../section";
 import { TextSizes } from "../../text";
 
@@ -16,11 +16,15 @@ export function WorkColleagues(props: WorkProjectsProps) {
 
   return (
     <Section label="Colleagues">
-      <ul>
+      <ListUnordered className={styles.workColleaguesList}>
         <ListExpandable
           listItems={props.colleagueRelationships.map(
             ({ colleague, relationshipType }) => (
-              <li key={colleague.fullName} className={styles.item}>
+              <ListItem
+                key={colleague.fullName}
+                className={styles.workColleaguesListItem}
+              >
+                {/* todo: add icon prop to ListItem and use it here */}
                 <Link
                   size={TextSizes.xs}
                   href={colleague.meta.links[0].url}
@@ -31,11 +35,11 @@ export function WorkColleagues(props: WorkProjectsProps) {
                 >
                   {colleague.fullName}
                 </Link>
-              </li>
+              </ListItem>
             ),
           )}
         />
-      </ul>
+      </ListUnordered>
     </Section>
   );
 }

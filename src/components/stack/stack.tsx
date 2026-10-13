@@ -1,9 +1,7 @@
-import { isNumber } from "lodash";
 import { CSSProperties } from "react";
 
 import { cn, pickByNotUndefined } from "@/framework/client";
-
-import { SizeRem } from "../styling";
+import { rems } from "@/framework/css";
 
 import { StackDirections } from "./stack-direction";
 import { StackDistributions } from "./stack-distribution";
@@ -51,7 +49,7 @@ export function Stack(props: StackProps) {
   const flex = fill ? "1" : undefined;
 
   const containerStyle = pickByNotUndefined({
-    gap: stringifySizeRem(gap),
+    gap: rems(gap),
     alignItems,
     justifyContent,
     flex,
@@ -68,16 +66,4 @@ function getAlignItemsDefault(props: StackProps): CSSProperties["alignItems"] {
   if (props.direction === "row" || props.direction === "row-reverse") {
     return "center";
   }
-}
-
-function stringifySizeRem(gap?: SizeRem) {
-  if (!gap) {
-    return;
-  }
-
-  if (isNumber(gap)) {
-    return `${gap}rem`;
-  }
-
-  return gap;
 }

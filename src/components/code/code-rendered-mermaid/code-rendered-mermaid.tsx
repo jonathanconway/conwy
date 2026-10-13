@@ -1,7 +1,7 @@
 import { usePathname } from "next/navigation";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { generateHash, isNotNil } from "@/framework/client";
+import { generateHash, isNotNil } from "@/framework";
 
 import { ImageFigure } from "../../image-figure";
 

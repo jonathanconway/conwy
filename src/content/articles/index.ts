@@ -25,6 +25,7 @@ export * from "./lose-weight";
 export * from "./manual-testing";
 export * from "./mindfulness";
 export * from "./mock-data";
+export * from "./universal-folder-structure";
 export * from "./parallel-loading-react";
 export * from "./react-generic-hoc-pattern";
 export * from "./refactoring-documentation";

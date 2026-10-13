@@ -11,6 +11,7 @@ export const meta: MicroMeta = {
     {
       type: SocialLinkTypes.LinkedInPost,
       url: "https://lnkd.in/p/gQTDe6am",
+      likeCount: 1,
     },
   ],
   isPinned: true,

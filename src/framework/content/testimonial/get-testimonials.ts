@@ -7,7 +7,7 @@ export function getTestimonials(works: Record<string, Work>) {
   const testimonials = workMetas.flatMap((workMeta) =>
     workMeta.feedbacks.map((feedback) => ({ ...feedback, work: workMeta })),
   );
-  const testimonialsOrdered = orderBy(testimonials, "date", "desc");
+  const testimonialsOrdered = orderBy(testimonials, "meta.date", "desc");
 
   return testimonialsOrdered;
 }

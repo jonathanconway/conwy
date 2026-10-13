@@ -19,6 +19,7 @@ import { headerHamburgerThemeDark } from "../header/header-hamburger/header-hamb
 import { headerLogoThemeDark } from "../header/header-logo/header-logo.css-theme";
 import { headerNavThemeDark } from "../header/header-nav/header-nav.css-theme";
 import { iconThemeDark } from "../icon/icon.css-theme";
+import { imageCascadeThemeDark } from "../image-cascade/image-cascade.css-theme";
 import { imageFigureThemeDark } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeDark } from "../image-modal/image-modal.css-theme";
 import { itemNavThemeDark } from "../item/item-nav/item-nav.css-theme";
@@ -56,6 +57,7 @@ export const themeDarkClass = createTheme(vars, {
   headerLogo: headerLogoThemeDark,
   headerNav: headerNavThemeDark,
   icon: iconThemeDark,
+  imageCascade: imageCascadeThemeDark,
   imageFigure: imageFigureThemeDark,
   imageModal: imageModalThemeDark,
   itemNav: itemNavThemeDark,

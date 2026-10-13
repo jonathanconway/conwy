@@ -185,9 +185,9 @@ Some solutions might become evident from examining output after reproducing flak
 
 ### Await your elements
 
-Problem: Operations occur before the DOM has completed loading. For example, the test tries to click a button inside a dialog before the dialog has loaded.
+**Problem:** Operations occur before the DOM has completed loading. For example, the test tries to click a button inside a dialog before the dialog has loaded.
 
-Solution: Wait until elements have been rendered before performing operations that depend on them.
+**Solution:** Wait until elements have been rendered before performing operations that depend on them.
 
 ❌
 ```ts
@@ -212,9 +212,9 @@ await userEvent.click(confirmButton);
 
 ### Keep your promises
 
-Problem: Test operations are being done before Promises on which they rely have been completed. For example, an async API call is made, but the test runs an operation that depends on the API result before the promise has completed.
+**Problem:** Test operations are being done before Promises on which they rely have been completed. For example, an async API call is made, but the test runs an operation that depends on the API result before the promise has completed.
 
-Solution: Wait for calls to have been made, using, say, a "completed" flag.
+**Solution:** Wait for calls to have been made, using, say, a "completed" flag.
 
 ❌
 ```tsx
@@ -261,9 +261,9 @@ expect(heading).toHaveText("Jack's Primary Account");
 
 ### Reduce test size
 
-Problem: A test is very long and, thus, times out before being completed.
+**Problem:** A test is very long and, thus, times out before being completed.
 
-Solution: Reduce test size.
+**Solution:** Reduce test size.
 
 Even if we prefer longer integration-style tests, as recommended by Kent C. Dodds in [Write fewer, longer tests], there can still be ways to reduce the size of our tests while preserving their scope.
 
@@ -274,9 +274,9 @@ For example:
 
 ### Reduce test file size
  
-Problem: Test files are large. Processing each large file ties up system resources (especially processor usage), causing other tests to time out.
+**Problem:** Test files are large. Processing each large file ties up system resources (especially processor usage), causing other tests to time out.
 
-Solution: Reduce test file size.
+**Solution:** Reduce test file size.
 
 One way is to split up test files by function or component.
 
@@ -297,9 +297,9 @@ Or we could use numbering or lettering system.
 
 ### Reduce the number of workers
 
-Problem: Test runners such as Jest may be greedy and fail to balance resource usage between tests when running many tests in parallel on resource-constrained environments such as CI
+**Problem:** Test runners such as Jest may be greedy and fail to balance resource usage between tests when running many tests in parallel on resource-constrained environments such as CI
 
-Solution: Check the CPU configuration of the CI if possible. Try to reduce the number of simultaneously running tests by configuring the test runner.
+**Solution:** Check the CPU configuration of the CI if possible. Try to reduce the number of simultaneously running tests by configuring the test runner.
 
 Contrary to our human intuition ("more is better") it may be better to reduce the number of simultaneously running tests. This is because test runners can be greedy and consume as many resources as possible at any given time (CPU, memory, etc). Running multiple tests at once can cause resource usage to become imbalanced, as tests compete with eachother for resources. 
 
@@ -307,9 +307,9 @@ The solution may be to reduce the maximum number of workers. Jest allows this to
 
 ### Clean up at the end
 
-Problem: Tests leave behind "uncollected garbage", such as memory usage, threads, promises, etc. This slows down the test suite as a whole, making some tests flaky.
+**Problem:** Tests leave behind "uncollected garbage", such as memory usage, threads, promises, etc. This slows down the test suite as a whole, making some tests flaky.
 
-Solution: Cleaning up after each test reduces resource demand on the test runner, which reduces the occurrence of flakiness.
+**Solution:** Cleaning up after each test reduces resource demand on the test runner, which reduces the occurrence of flakiness.
 
 Note that the flaky test itself might not be the culprit here, but rather, some or all other test(s) as a whole generating garbage. This uncollected garbage might only be noticeable when all tests are run together in CI, not when running an individual test on its own. This can make the "uncollected garbage" issue tricky to detect. It might only be detectable by trial-and-error – say, observing resource usage on the whole test suite over repeated runs.
 
@@ -328,9 +328,9 @@ Where the test framework allows it, longer-running integration-style tests or en
 
 ### Optimise test code
 
-Problem: The test code is slow, leading to flakiness from timeouts during execution.
+**Problem:** The test code is slow, leading to flakiness from timeouts during execution.
 
-Solution: Find slow points in the test code and optimise their performance.
+**Solution:** Find slow points in the test code and optimise their performance.
 
 Test code can be optimised in various ways, including:
 
@@ -341,9 +341,9 @@ Test code can be optimised in various ways, including:
 
 ### Optimise the application under test
 
-Problem: The application we're testing is itself buggy or just slow. If the application itself is slow, then the automated tests that exercise it will probably also be slow, leading to flakiness.
+**Problem:** The application we're testing is itself buggy or just slow. If the application itself is slow, then the automated tests that exercise it will probably also be slow, leading to flakiness.
 
-Solution: Find slow points in the application under test and optimise their performance.
+**Solution:** Find slow points in the application under test and optimise their performance.
 
 To find slow points, we can add timer statements to different parts of the test or application.
 
@@ -371,7 +371,7 @@ These might be used temporarily as an emergency resort or permanently if conside
 
 ### Disable resource-intensive application features when running in tests
 
-Problem: Some features of our application may be resource-intensive, causing flakiness, while not offering much value in an automated testing context.
+**Problem:** Some features of our application may be resource-intensive, causing flakiness, while not offering much value in an automated testing context.
 
 Mitigation: Disable resource-intensive features for test environment only.
 
@@ -386,7 +386,7 @@ These features can be disabled only for test execution, via, say, feature flags.
 
 ### Reconfigure test runners
 
-Problem: Flakiness produced by resource-constrained environments is not worth the cost savings of the resource constraints.
+**Problem:** Flakiness produced by resource-constrained environments is not worth the cost savings of the resource constraints.
 
 Mitigation: Increase resources to get better value for investment, such as higher developer productivity during a critical period.
 
@@ -398,7 +398,7 @@ Or suppose the business context is seasonally sensitive, such as an online retai
 
 ### Tag known flaky tests and configure accordingly
 
-Problem: Flaky tests block the whole pipeline, interfering with delivery velocity.
+**Problem:** Flaky tests block the whole pipeline, interfering with delivery velocity.
 
 Mitigation: Separate flaky tests from non-flaky tests, to ensure that they run correctly or at least do not disrupt other tests.
 

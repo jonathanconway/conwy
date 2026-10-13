@@ -1,6 +1,6 @@
 import { isNumber, isString } from "lodash";
 
-import { assert } from "../../utils";
+import { assert } from "../../utils/assert";
 
 export type Percentage = `${number}%`;
 

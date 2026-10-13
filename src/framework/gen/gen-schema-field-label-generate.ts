@@ -1,6 +1,6 @@
 import { kebabCase } from "lodash";
 
-import { sentenceCase } from "../utils";
+import { sentenceCase } from "../utils/strings";
 
 import { GenSchemaField } from "./gen-schema-field";
 import { GenSchemaRoot } from "./gen-schema-root";

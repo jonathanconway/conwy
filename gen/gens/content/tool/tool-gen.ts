@@ -14,7 +14,7 @@ import { toolGenIndexTemplate } from "./tool-gen-index.template";
 import { toolGenMetaTemplate } from "./tool-gen-meta.template";
 import { toolGenSchema } from "./tool-gen-schema";
 import { generateToolGenTemplateParams } from "./tool-gen-template-params";
-import { toolsIndexGen } from "./tools-gen-index.template";
+import { toolsGenIndexTemplate } from "./tools-gen-index.template";
 
 export async function tool() {
   const toolGenParams = await getGenSchemaValues(toolGenSchema);
@@ -39,7 +39,10 @@ export async function tool() {
   await runPrettier(toolIndexPath);
 
   const toolsIndexPath = `${toolsPath}/index.ts`;
-  fileAppendAndSortLines(toolsIndexPath, toolsIndexGen(toolGenTemplateParams));
+  fileAppendAndSortLines(
+    toolsIndexPath,
+    toolsGenIndexTemplate(toolGenTemplateParams),
+  );
   await runPrettier(toolsIndexPath);
 
   logCommitMessageContentCreated(ContentTypes.Tool, toolGenTemplateParams.slug);

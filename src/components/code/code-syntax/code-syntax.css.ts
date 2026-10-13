@@ -1,7 +1,10 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/utils/rems.css_";
+
 import * as boxMixins from "../../box/box.mixins";
-import { media, rounded, text } from "../../styling";
+import { media, rounded } from "../../styling";
+import * as textSizeConsts from "../../text/text-size/text-size.consts";
 
 export const container = style({
   position: "relative",
@@ -17,7 +20,9 @@ export const code = style({
   ...boxMixins.boxBorderDecorative,
 });
 
-globalStyle(`pre > code[class*=language-]`, text.size.sm);
+globalStyle(`pre > code[class*=language-]`, {
+  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+});
 
 const codeWrapping = {
   width: "100%",

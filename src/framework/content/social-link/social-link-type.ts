@@ -1,4 +1,4 @@
-import { TypeOfConst } from "../../utils";
+import { TypeOfConst } from "../../utils/typing";
 
 export const SocialLinkTypes = {
   Dev: "dev",

@@ -1,6 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
-import { rounded, text } from "../styling";
+import { rems } from "@/framework/utils/rems.css_";
+
+import { rounded } from "../styling";
+import * as textSizeConsts from "../text/text-size/text-size.consts";
 import { vars } from "../theme";
 
 export const optionContainer = style({
@@ -35,6 +38,5 @@ export const optionLabel = style({
   paddingTop: "0.25rem" /* 4px */,
   paddingBottom: "0.25rem" /* 4px */,
   cursor: "pointer",
-
-  ...text.size.xs,
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
 });

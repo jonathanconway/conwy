@@ -11,9 +11,9 @@ import {
 import { runPrettier } from "../../../run-prettier";
 
 import { fragmentGenContentMdxTemplate } from "./fragment-gen-content-mdx.template";
+import { fragmentGenIndexTemplate } from "./fragment-gen-index.template";
 import { fragmentGenSchema } from "./fragment-gen-schema";
 import { generateFragmentGenTemplateParams } from "./fragment-gen-template-params";
-import { fragmentGenIndexTemplate } from "./fragment.index.gen";
 import { fragmentsGenIndexTemplate } from "./fragments-gen-index.template";
 
 export async function fragment() {

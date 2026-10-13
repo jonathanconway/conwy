@@ -1,8 +1,7 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 import * as iconMixins from "../icon/icon.mixins";
-import { colors, text } from "../styling";
-import { vars } from "../theme";
+import { colors } from "../styling";
 
 export const nonCollapsibleContainer = style({
   border: "none",

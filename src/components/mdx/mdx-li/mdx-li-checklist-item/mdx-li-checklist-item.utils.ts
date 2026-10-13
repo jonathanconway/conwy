@@ -1,16 +1,17 @@
-import { isArray, isObject, isString, kebabCase, trim } from "lodash";
+import { isArray, isObject, isString, trim } from "lodash";
 import { ReactNode } from "react";
 
+import {
+  Maybe,
+  isNotNil,
+  isReactElementOfType,
+  sentenceCase,
+} from "@/framework";
 import {
   ChecklistItemTag,
   ChecklistItemTagGroup,
   ChecklistMeta,
-  Maybe,
   generateChecklistItemKey,
-  hasProps,
-  isNotNil,
-  isReactElementOfType,
-  sentenceCase,
 } from "@/framework/client";
 
 import {

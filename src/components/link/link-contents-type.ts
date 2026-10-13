@@ -1,4 +1,4 @@
-import { TypeOfConst } from "@/framework/client";
+import { TypeOfConst } from "@/framework";
 
 export const LinkContentsTypes = {
   Text: "text",

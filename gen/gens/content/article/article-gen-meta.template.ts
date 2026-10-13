@@ -8,7 +8,7 @@ export const articleGenMetaTemplate = ({
 }: ArticleGenTemplateParams) =>
   `
 
-import { ArticleMeta, PostTags } from "@/framework/client";
+import { ArticleMeta, PostTags } from "@/framework";
 
 export const meta: ArticleMeta = {
   title: "${title}",

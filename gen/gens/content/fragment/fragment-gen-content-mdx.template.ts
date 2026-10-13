@@ -4,5 +4,7 @@ export const fragmentGenContentMdxTemplate = ({
   content,
 }: FragmentGenTemplateParams) =>
   `
-${content}
+
+${content ?? "{/* Full text here */}"}
+
 `.trim();

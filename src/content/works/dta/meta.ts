@@ -57,6 +57,15 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
+      src: "dta-screencast.gif",
+      alt: "Researcher tools",
+      notes: [
+        {
+          text: "Researcher tools for controlling prototypes during usability testing sessions. Built in React.",
+        },
+      ],
+    },
+    {
       src: "dta-1.jpg",
       alt: "Accessibility article",
       notes: [
@@ -89,15 +98,6 @@ export const meta: WorkMeta = {
       notes: [
         {
           text: "Business Identity - Manage team members. Interactive mobile prototype built in React.",
-        },
-      ],
-    },
-    {
-      src: "dta-screencast.gif",
-      alt: "Researcher tools",
-      notes: [
-        {
-          text: "Researcher tools for controlling prototypes during usability testing sessions. Built in React.",
         },
       ],
     },

@@ -22,6 +22,7 @@ export * from "./ear";
 export * from "./file-text-dynamic-color";
 export * from "./file-text-iso-color";
 export * from "./flash-dynamic-color";
+export * from "./flight";
 export * from "./folder-dynamic-color";
 export * from "./folder-dynamic-color";
 export * from "./girl-iso-color";

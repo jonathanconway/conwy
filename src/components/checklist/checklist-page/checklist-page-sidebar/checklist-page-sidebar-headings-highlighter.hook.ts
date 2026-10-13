@@ -3,7 +3,8 @@
 import { kebabCase, memoize } from "lodash";
 import { useEffect, useState } from "react";
 
-import { isClient, isNotNil, querySelector } from "@/framework/client";
+import { isNotNil } from "@/framework";
+import { isClient, querySelector } from "@/framework/client";
 
 function getIsElementInViewport(el?: Element | null) {
   if (!isClient) {

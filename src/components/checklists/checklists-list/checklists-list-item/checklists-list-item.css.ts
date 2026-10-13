@@ -1,11 +1,14 @@
 import { style } from "@vanilla-extract/css";
 
-import { rounded, text } from "../../../styling";
+import { rems } from "@/framework/utils/rems.css_";
+
+import { rounded } from "../../../styling";
+import * as textSizeConsts from "../../../text/text-size/text-size.consts";
 
 export const image = style({
   ...rounded.md,
 });
 
 export const date = style({
-  ...text.size.xs,
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
 });
