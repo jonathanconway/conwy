@@ -1,7 +1,6 @@
 "use client";
 
-import { sentenceCase } from "@/framework";
-import { getUrlFilename } from "@/framework/content/url";
+import { getUrlFilename, sentenceCase } from "@/framework";
 
 import { CarouselNav } from "../carousel";
 import { Image } from "../image";
@@ -29,23 +28,25 @@ export function ImageModal(props: ImageModalProps) {
     >
       <div className={styles.imageModalMain}>
         <div className={styles.imageContainer}>
-          <Stack>
-            <Image
-              className={styles.image}
-              image={carousel.selectedItem}
-              src={src}
-              alt={alt ?? src}
-              style={{
-                maxHeight: "80vh",
-                height: "100%",
-                width: "100%",
-              }}
-            />
+          <div className={styles.imageContainerInner}>
+            <Stack>
+              <Image
+                className={styles.image}
+                image={carousel.selectedItem}
+                src={src}
+                alt={alt ?? src}
+                style={{
+                  maxHeight: "80vh",
+                  height: "100%",
+                  width: "100%",
+                }}
+              />
 
-            {alt && title && <Text type="small">▲ {alt}</Text>}
-          </Stack>
+              {alt && title && <Text type="small">▲ {alt}</Text>}
+            </Stack>
 
-          <ImageModalHotspots carousel={carousel} />
+            <ImageModalHotspots carousel={carousel} />
+          </div>
         </div>
 
         <ImageModalNotes carousel={carousel} hasHotspots={hasHotspots} />

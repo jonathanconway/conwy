@@ -1,3 +1,4 @@
+import { ListItem, ListUnordered } from "@/components/list";
 import { cn } from "@/framework";
 
 import { UseCarouselResult } from "../../carousel";
@@ -25,13 +26,9 @@ export function ImageModalNotes({
   }
 
   return (
-    <ul
-      className={
-        hasHotspots ? styles.notesContainer : styles.notesContainerWithHotspots
-      }
-    >
+    <ListUnordered noBullets>
       {notes?.map((note, noteIndex) => (
-        <li
+        <ListItem
           key={note.text}
           className={cn(
             styles.noteText,
@@ -42,8 +39,8 @@ export function ImageModalNotes({
             <span className={styles.noteNumber}>{noteIndex + 1}</span>
           )}
           {note.text}
-        </li>
+        </ListItem>
       ))}
-    </ul>
+    </ListUnordered>
   );
 }

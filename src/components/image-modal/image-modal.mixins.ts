@@ -50,6 +50,10 @@ export const imageContainer: ComplexStyleRule = {
   width: "100%",
 };
 
+export const imageContainerInner: ComplexStyleRule = {
+  position: "relative",
+};
+
 export const image = {
   margin: "auto",
   width: "100%",

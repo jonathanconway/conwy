@@ -12,4 +12,6 @@ export const imageModalMain = style(mixins.imageModalMain);
 
 export const imageContainer = style(mixins.imageContainer);
 
+export const imageContainerInner = style(mixins.imageContainerInner);
+
 export const image = style(mixins.image);
