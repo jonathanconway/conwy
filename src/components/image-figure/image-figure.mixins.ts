@@ -1,5 +1,7 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/css";
+
 import * as boxMixins from "../box/box.mixins";
 import * as linkMixins from "../link/link.mixins";
 import * as textSizeMixins from "../text/text-size/text-size.mixins";
@@ -39,5 +41,5 @@ export const imgSized = {
 
 export const figCaption = {
   ...textSizeMixins.small,
-  marginTop: "1.5rem",
+  marginTop: rems(0.5),
 };
