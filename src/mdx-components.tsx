@@ -25,9 +25,12 @@ import {
   MdxUl,
   MdxWrapper,
 } from "./components";
+import { capitaliseObjectKeys } from "./framework";
+import { mdxComponentsExtended } from "./mdx-components-extended";
 
 export function useMDXComponents(components?: MDXComponents): MDXComponents {
   return {
+    // Elements supported by MDX out of the box
     a: MdxA,
     blockquote: MdxBlockquote,
     code: MdxCode,
@@ -51,6 +54,12 @@ export function useMDXComponents(components?: MDXComponents): MDXComponents {
     th: MdxTh,
     td: MdxTd,
     wrapper: MdxWrapper,
+
+    // Elements *not* supported by MDX out of the box
+    // Keys are capitalised because `remark-mdx-jsx-components.mjs` renames those
+    // JSX elements (e.g. `<small>` → `<Small>`), so MDX looks them up here.
+    ...capitaliseObjectKeys(mdxComponentsExtended),
+
     ...components,
   };
 }

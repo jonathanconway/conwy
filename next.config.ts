@@ -1,13 +1,15 @@
-import remarkGfm from "remark-gfm";
-import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 import { createVanillaExtractPlugin } from "@vanilla-extract/next-plugin";
+import type { NextConfig } from "next";
+import remarkGfm from "remark-gfm";
+
+import { remarkMdxJsxComponents } from "./next-config-mdx-components-remark-jsx";
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkMdxJsxComponents],
   },
 });
 

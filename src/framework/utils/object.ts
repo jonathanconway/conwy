@@ -1,5 +1,7 @@
 import { isUndefined } from "lodash";
 
+import { pascalCase } from "./strings";
+
 type MapOfArrays<
   TKey extends string | number | symbol,
   TArrayItem,
@@ -39,4 +41,10 @@ export function pickByNotUndefined<T extends object>(object: T) {
     }
   }
   return objectWithNotUndefined;
+}
+
+export function capitaliseObjectKeys<T extends object>(object: T) {
+  return Object.fromEntries(
+    Object.entries(object).map(([key, value]) => [pascalCase(key), value]),
+  );
 }
