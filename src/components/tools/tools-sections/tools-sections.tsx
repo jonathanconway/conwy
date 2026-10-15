@@ -14,7 +14,7 @@ export function ToolsSections() {
     <ListUnordered noBullets>
       {sections.map((section) => (
         <ListItem key={section}>
-          <Link href={`#${kebabCase(pluralize(section))}`} size={TextSizes.sm}>
+          <Link href={`#${kebabCase(pluralize(section))}`} size={TextSizes.S}>
             {ToolSectionTitles[section]}
           </Link>
         </ListItem>

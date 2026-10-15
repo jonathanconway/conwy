@@ -12,7 +12,7 @@ export const ContentPageHeaderHistoryLink: ContentPageHeaderPart = (props) => {
   const historyUrl = `${repoUrl}/commits/main/src/content/${CONTENT_TYPE_LABELS_PLURAL[props.content.type]}/${slug}/content.mdx`;
 
   return (
-    <Link href={historyUrl} size={TextSizes.xs} showOpenInNew={false}>
+    <Link href={historyUrl} size={TextSizes.XS} showOpenInNew={false}>
       History
     </Link>
   );

@@ -41,7 +41,7 @@ export const meta: WorkMeta = {
       meta: {
         slug: "anz-2",
         content:
-          "“[Kudos to Jon for] proactively maintaining the Bluestone documentation“",
+          "“[Kudos to Jon for] proactively maintaining the Bluestone documentation”",
         authorTitle: "Staff Engineer",
         date: "2024-11-22",
       },

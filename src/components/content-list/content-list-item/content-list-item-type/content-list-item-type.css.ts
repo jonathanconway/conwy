@@ -10,5 +10,5 @@ export const type = style({
   textTransform: "uppercase",
   textAlign: "right",
   ...textWeightMixins.body,
-  ...textSizeMixins.xs,
+  ...textSizeMixins.small,
 });

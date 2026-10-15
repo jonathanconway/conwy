@@ -26,7 +26,7 @@ export const meta: WorkMeta = {
       meta: {
         slug: "revolut-2",
         content:
-          "“Provides methodical, well-tested and well-communicated solutions. Communicates effectively with team members and stakeholders.“",
+          "“Provides methodical, well-tested and well-communicated solutions. Communicates effectively with team members and stakeholders.”",
         authorTitle: "Functional Manager",
         date: "2023-04-11",
       },
@@ -36,7 +36,7 @@ export const meta: WorkMeta = {
       meta: {
         slug: "revolut-3",
         content:
-          "“FYI - till now we had only positive feedbacks from analysts regarding history of notes! Never happened before 💪 great job!“",
+          "“FYI - till now we had only positive feedbacks from analysts regarding history of notes! Never happened before 💪 great job!”",
         authorTitle: "KYB Analyst",
         date: "2020-06-01",
       },
@@ -46,7 +46,7 @@ export const meta: WorkMeta = {
       meta: {
         slug: "revolut-4",
         content:
-          "“Really liked Jon's feedback history story - not a massive new feature, but a simple design and delivers big value for our agents and for our customers. Should give good boost to KPI.“",
+          "“Really liked Jon's feedback history story - not a massive new feature, but a simple design and delivers big value for our agents and for our customers. Should give good boost to KPI.”",
         authorTitle: "Head of Product, Business",
         date: "2020-05-07",
       },
@@ -55,7 +55,7 @@ export const meta: WorkMeta = {
       type: ContentTypes.Testimonial,
       meta: {
         slug: "revolut-5",
-        content: "“Jonathan is a master of the Backoffice!“",
+        content: "“Jonathan is a master of the Backoffice!”",
         authorTitle: "Senior Product Owner, Business",
         date: "2022-07-22",
       },

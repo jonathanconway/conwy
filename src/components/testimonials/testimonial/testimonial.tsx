@@ -45,7 +45,7 @@ export function Testimonial({
                 <Link
                   href={linkedInUrl}
                   icon={IconTypes.LinkedIn}
-                  size={TextSizes.xs}
+                  size={TextSizes.XS}
                   layoutType={LinkLayoutTypes.Compact}
                 >
                   LinkedIn
@@ -55,7 +55,7 @@ export function Testimonial({
               work && (
                 <Link
                   href={`/work/${work.slug}`}
-                  size={TextSizes.xs}
+                  size={TextSizes.XS}
                   layoutType={LinkLayoutTypes.Compact}
                 >
                   {work.client}

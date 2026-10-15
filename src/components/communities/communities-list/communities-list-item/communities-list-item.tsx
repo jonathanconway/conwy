@@ -40,7 +40,7 @@ export function CommunitiesListItem(props: CommunitiesListItemProps) {
                 href={props.community.meta.profileLink.url}
                 target="_blank"
                 showOpenInNew
-                size={TextSizes.xs}
+                size={TextSizes.XS}
               >
                 {props.community.meta.profileLink.title ?? "My Profile"}
               </Link>

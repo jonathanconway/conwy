@@ -1,12 +1,12 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import "./mdx-ol.css";
+import { ListOrdered } from "@/components/list";
 
 export type MdxOLProps = DetailedHTMLProps<
   HTMLAttributes<HTMLOListElement>,
   HTMLOListElement
 >;
 
-export function MdxOl({ className, children, ...restProps }: MdxOLProps) {
-  return <ol {...restProps}>{children}</ol>;
+export function MdxOl(props: MdxOLProps) {
+  return <ListOrdered {...props} />;
 }

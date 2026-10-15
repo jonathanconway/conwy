@@ -14,10 +14,12 @@ export default function Contact() {
       selectedNavPath="/contact"
       main={
         <TwoColLayout>
-          <Stack gap={0.5}>
-            <MdxContainer>{contactFragment.content}</MdxContainer>
+          <Stack gap={1}>
+            <Stack gap={0.5}>
+              <MdxContainer>{contactFragment.content}</MdxContainer>
 
-            <ContactDetails />
+              <ContactDetails />
+            </Stack>
 
             <MdxContainer>{contactPgpFragment.content}</MdxContainer>
           </Stack>

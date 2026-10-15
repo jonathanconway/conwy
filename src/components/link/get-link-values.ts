@@ -6,10 +6,10 @@ import { MouseEvent } from "react";
 import { cn } from "@/framework";
 
 import { IconTypes } from "../icon";
-import * as textSizeStyles from "../text/text-size/text-size.css";
 
 import { LinkLayoutTypes } from "./link-layout-type";
 import { LinkProps } from "./link-props";
+import { LinkSizes } from "./link-size";
 import * as linkStyles from "./link.css";
 
 export function getLinkValues(props: LinkProps) {
@@ -70,18 +70,26 @@ function getLinkDefaultIcon(props: LinkProps) {
 }
 
 function getLinkClassName(props: LinkProps) {
-  const sizeStyle = props.size ? textSizeStyles[props.size] : "";
+  if (props.className) {
+    return cn(props.className, props.classNameExtended);
+  }
 
-  const layoutStyle =
-    {
-      [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
-      [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
-    }[props.layoutType ?? LinkLayoutTypes.Inline] ?? "";
+  const sizeClassName = {
+    [LinkSizes.XXS]: linkStyles.linkSizeXXS,
+    [LinkSizes.XS]: linkStyles.linkSizeXS,
+    [LinkSizes.S]: linkStyles.linkSizeS,
+  }[props.size ?? LinkSizes.S];
+
+  const layoutClassName = {
+    [LinkLayoutTypes.Compact]: linkStyles.linkLayoutCompact,
+    [LinkLayoutTypes.Inline]: linkStyles.linkLayoutInline,
+  }[props.layoutType ?? LinkLayoutTypes.Inline];
 
   const className = cn(
-    props.className ?? linkStyles.link,
-    sizeStyle,
-    layoutStyle,
+    linkStyles.link,
+    sizeClassName,
+    layoutClassName,
+    props.classNameExtended,
   );
 
   return className;

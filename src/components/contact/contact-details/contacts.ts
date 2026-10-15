@@ -10,14 +10,14 @@ export const CONTACT_DETAILS_EMAIL = {
 };
 
 export const CONTACT_DETAILS_PROTONMAIL = {
-  iconType: IconTypes.Email,
+  iconType: IconTypes.ProtonMail,
   label: "ProtonMail",
   id: "jonathan.conway@protonmail.com",
   href: "mailto:jonathan.conway@protonmail.com",
 };
 
 export const CONTACT_DETAILS_GMAIL = {
-  iconType: IconTypes.Email,
+  iconType: IconTypes.GMail,
   label: "Gmail",
   id: "jonathan.conway@gmail.com",
   href: "mailto:jonathan.conway@gmail.com",

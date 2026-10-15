@@ -20,7 +20,7 @@ export function Breadcrumb(props: BreadcrumbProps) {
       {props.segments.map((segment, segmentIndex) => (
         <Fragment key={segment.title}>
           {segment.url ? (
-            <Link href={segment.url} size={TextSizes.xs}>
+            <Link href={segment.url} size={TextSizes.XS}>
               {segment.title}
             </Link>
           ) : (

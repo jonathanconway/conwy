@@ -62,7 +62,7 @@ export function Study(props: StudyProps) {
                   <Link
                     className={styles.linksListItem}
                     href={url}
-                    size={TextSizes._2xs}
+                    size={TextSizes.XXS}
                     target="_blank"
                   >
                     {title}

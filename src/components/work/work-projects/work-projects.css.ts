@@ -21,7 +21,7 @@ export const workProjectsListItem = style({
 });
 
 export const workProjectsListItemTitle = style({
-  ...textSizeMixins.xs,
+  ...textSizeMixins.small,
   ...textWeightMixins.body,
   flex: 1,
 });

@@ -43,7 +43,7 @@ export function ChecklistDownload(props: ChecklistDownloadProps) {
       <Link
         href={`/downloads/checklists/${slug}-checklist/${slug}-checklist.md`}
         download
-        size={TextSizes.xs}
+        size={TextSizes.XS}
         aria-label={`Download ${props.checklistMeta.title} checklist as Markdown`}
         className={cn(
           linkStyles.link,
@@ -62,7 +62,7 @@ export function ChecklistDownload(props: ChecklistDownloadProps) {
         tooltip={copyTooltip}
         href="#"
         icon={IconTypes.Copy}
-        size={TextSizes.xs}
+        size={TextSizes.XS}
         aria-label={`Copy ${props.checklistMeta.title} checklist as Markdown`}
         className={cn(
           linkStyles.link,

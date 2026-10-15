@@ -4,6 +4,10 @@ import * as mixins from "./link.mixins";
 
 export const link = style(mixins.link);
 
+export const linkSizeXXS = style(mixins.linkSizeXXS);
+export const linkSizeXS = style(mixins.linkSizeXS);
+export const linkSizeS = style(mixins.linkSizeS);
+
 export const linkContainer = style(mixins.linkContainer);
 
 export const linkInnerContainer = style(mixins.linkInnerContainer);

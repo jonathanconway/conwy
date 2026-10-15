@@ -14,7 +14,7 @@ export const summaryContainer = style({
   marginBottom: "1rem",
   color: vars.blockQuoteSummary.color,
   ...rounded.regular,
-  ...textSizeMixins.sm,
+  ...textSizeMixins.small,
 });
 
 globalStyle(`${summaryContainer} > p`, {

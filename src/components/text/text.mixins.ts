@@ -1,9 +1,7 @@
-import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
+import { ComplexStyleRule } from "@vanilla-extract/css";
 
-import { rems } from "@/framework/utils/rems.css_";
-
-import { colors, media, rounded } from "../styling";
-import * as textSizeConsts from "../text/text-size/text-size.consts";
+import { colors, rounded } from "../styling";
+import * as textSpacingMixins from "../text/text-spacing/text-spacing.mixins";
 import { vars } from "../theme";
 
 import * as textSizeMixins from "./text-size/text-size.mixins";
@@ -11,191 +9,196 @@ import * as textWeightMixins from "./text-weight/text-weight.mixins";
 
 // body
 
-export const body: ComplexStyleRule & GlobalStyleRule = {
+export const bodyInner: ComplexStyleRule = {
   color: vars.text.body.color,
-  ...textSizeMixins.sm,
+  ...textSizeMixins.body,
   ...textWeightMixins.body,
+};
+
+export const body: ComplexStyleRule = {
+  ...bodyInner,
+  ...textSpacingMixins.body,
 };
 
 // collapsibleTitle
 
-export const collapsibleTitle: ComplexStyleRule & GlobalStyleRule = {
-  ...textSizeMixins.sm,
-  ...textWeightMixins.body,
+export const collapsibleTitleInner: ComplexStyleRule = {
   textTransform: "uppercase",
   color: vars.label.color,
-  paddingTop: 0,
+  ...textSizeMixins.collapsibleTitle,
+  ...textWeightMixins.body,
+};
+
+export const collapsibleTitle: ComplexStyleRule = {
+  ...collapsibleTitleInner,
+  ...textSpacingMixins.collapsibleTitle,
 };
 
 // heading1
 
-export const heading1Spacing: ComplexStyleRule & GlobalStyleRule = {
-  marginTop: "1.25rem",
-  marginBottom: "1.25rem",
-};
-
-export const heading1Inner: ComplexStyleRule & GlobalStyleRule = {
-  ...textSizeMixins._4xl,
+export const heading1Inner: ComplexStyleRule = {
+  color: vars.text.body.color,
+  ...textSizeMixins.heading1,
   ...textWeightMixins.heading1,
 };
 
-export const heading1: ComplexStyleRule & GlobalStyleRule = {
+export const heading1: ComplexStyleRule = {
   ...heading1Inner,
+  ...textSpacingMixins.heading1,
 };
 
 // heading2
 
-export const heading2Spacing: ComplexStyleRule & GlobalStyleRule = {
-  marginTop: 0,
-};
-
-export const heading2Inner: ComplexStyleRule & GlobalStyleRule = {
-  ...textSizeMixins._2xl,
+export const heading2Inner: ComplexStyleRule = {
+  ...textSizeMixins.heading2,
   ...textWeightMixins.heading2,
 };
 
-export const heading2: ComplexStyleRule & GlobalStyleRule = {
-  ...heading2Spacing,
+export const heading2: ComplexStyleRule = {
   ...heading2Inner,
+  ...textSpacingMixins.heading2,
 };
 
 // heading3
 
-export const heading3Spacing: ComplexStyleRule & GlobalStyleRule = {
-  paddingTop: "1.25rem",
+export const heading3Inner: ComplexStyleRule = {
+  ...textSizeMixins.heading3,
+  ...textWeightMixins.heading3,
 };
 
-export const heading3Inner: ComplexStyleRule & GlobalStyleRule = {};
-
-export const heading3: ComplexStyleRule & GlobalStyleRule = {
-  ...heading3Spacing,
+export const heading3: ComplexStyleRule = {
   ...heading3Inner,
+  ...textSpacingMixins.heading3,
 };
 
 // heading4
 
-export const heading4Spacing: ComplexStyleRule & GlobalStyleRule = {
-  paddingTop: "1.25rem",
+export const heading4Inner: ComplexStyleRule = {
+  ...textSizeMixins.heading4,
+  ...textWeightMixins.heading4,
 };
 
-export const heading4Inner: ComplexStyleRule & GlobalStyleRule = {};
-
-export const heading4: ComplexStyleRule & GlobalStyleRule = {
-  ...heading4Spacing,
+export const heading4: ComplexStyleRule = {
   ...heading4Inner,
+  ...textSpacingMixins.heading4,
 };
 
 // heading5
 
-export const heading5Spacing: ComplexStyleRule & GlobalStyleRule = {
-  paddingTop: "1.25rem",
-};
-
-export const heading5Inner: ComplexStyleRule & GlobalStyleRule = {
+export const heading5Inner: ComplexStyleRule = {
+  ...textSizeMixins.heading5,
   ...textWeightMixins.heading5,
 };
 
-export const heading5: ComplexStyleRule & GlobalStyleRule = {
-  ...heading5Spacing,
+export const heading5: ComplexStyleRule = {
   ...heading5Inner,
+  ...textSpacingMixins.heading5,
 };
 
 // label
 
-export const label: ComplexStyleRule & GlobalStyleRule = {
+export const labelInner: ComplexStyleRule = {
   textTransform: "uppercase",
   color: vars.label.color,
   cursor: "inherit",
+  ...textSizeMixins.label,
   ...textWeightMixins.body,
-  ...textSizeMixins.xs,
+};
+
+export const label: ComplexStyleRule = {
+  ...labelInner,
+  ...textSpacingMixins.label,
 };
 
 // listItemSubTitle
 
-export const listItemSubTitle: ComplexStyleRule & GlobalStyleRule = {
+export const listItemSubTitleInner: ComplexStyleRule = {
   color: vars.text.body.color,
-  ...textSizeMixins.xs,
+  ...textSizeMixins.listItemSubTitle,
   ...textWeightMixins.listItemSubTitle,
 };
 
-// orderedList
-
-export const orderedList: ComplexStyleRule & GlobalStyleRule = {
-  listStyleType: "decimal",
-  marginLeft: "auto",
-  marginRight: "auto",
-  paddingTop: 0,
-  paddingRight: "1.5rem",
-  paddingBottom: 0,
-  paddingLeft: "1.5rem",
+export const listItemSubTitle: ComplexStyleRule = {
+  ...listItemSubTitleInner,
+  ...textSpacingMixins.listItemSubTitle,
 };
 
 // paragraph
 
-export const paragraphSpacing: ComplexStyleRule & GlobalStyleRule = {
-  paddingTop: "0.5rem",
+export const paragraphInner: ComplexStyleRule = {
+  ...bodyInner,
+  ...textSizeMixins.paragraph,
+  ...textWeightMixins.paragraph,
 };
 
-export const paragraph: ComplexStyleRule & GlobalStyleRule = {
-  ...body,
-  ...paragraphSpacing,
-};
-
-// paragraphFirst
-
-export const paragraphFirst: ComplexStyleRule & GlobalStyleRule = {
-  paddingTop: 0,
+export const paragraph: ComplexStyleRule = {
+  ...paragraphInner,
+  ...textSpacingMixins.paragraph,
 };
 
 // preFormatted
 
-export const preFormatted: ComplexStyleRule & GlobalStyleRule = {
-  marginTop: "1rem",
-  marginBottom: "1rem",
-  padding: "1rem",
+export const preFormattedInner = {
   backgroundColor: colors.stone_200,
   borderStyle: "solid",
   borderWidth: "1px",
   borderColor: colors.stone_400,
-  ...rounded.md,
   whiteSpace: "pre-wrap",
-  fontSize: "0.875rem",
-  lineHeight: "1.25rem",
+  ...textSizeMixins.preFormatted,
+  ...textWeightMixins.preFormatted,
+  ...rounded.md,
+};
+
+export const preFormatted: ComplexStyleRule = {
+  ...preFormattedInner,
+  ...textSpacingMixins.preFormatted,
 };
 
 // table
 
-export const table: ComplexStyleRule & GlobalStyleRule = {
-  marginTop: "1rem",
-  marginBottom: "1rem",
+export const tableInner: ComplexStyleRule = {
+  ...textSizeMixins.body,
+  ...textWeightMixins.body,
+};
+
+export const table: ComplexStyleRule = {
+  ...tableInner,
+  ...textSpacingMixins.table,
 };
 
 // small
 
-export const small: ComplexStyleRule & GlobalStyleRule = {
-  ...body,
-  ...textSizeMixins.xs,
+export const smallInner: ComplexStyleRule = {
+  ...textSizeMixins.small,
+  ...textWeightMixins.small,
+};
+
+export const small: ComplexStyleRule = {
+  ...smallInner,
+  ...textSpacingMixins.small,
 };
 
 // subTitle
 
-export const subTitle: ComplexStyleRule & GlobalStyleRule = {
+export const subTitleInner: ComplexStyleRule = {
   color: vars.text.body.color,
+  ...textSizeMixins.subTitle,
   ...textWeightMixins.subTitle,
-  "@media": {
-    [media.mdAndUp]: {
-      fontSize: rems(textSizeConsts.fontSizeRems.sm),
-    },
-    [media.sm]: {
-      fontSize: rems(textSizeConsts.fontSizeRems.xs),
-    },
-  },
+};
+
+export const subTitle: ComplexStyleRule = {
+  ...subTitleInner,
+  ...textSpacingMixins.subTitle,
 };
 
 // summary
 
-export const summary: ComplexStyleRule & GlobalStyleRule = {
-  ...textSizeMixins.sm,
-  lineHeight: "1.125rem",
-  ...textWeightMixins.body,
+export const summaryInner: ComplexStyleRule = {
+  ...textSizeMixins.summary,
+  ...textWeightMixins.summary,
+};
+
+export const summary: ComplexStyleRule = {
+  ...summaryInner,
+  ...textSpacingMixins.summary,
 };

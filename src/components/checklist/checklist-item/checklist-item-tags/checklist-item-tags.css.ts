@@ -5,11 +5,11 @@ import { vars } from "../../../theme";
 
 export const tags = style({
   marginTop: "0.25rem",
-  ...textSizeMixins.xs,
   display: "flex",
   flexDirection: "row",
   gap: "0.5rem",
   flexFlow: "wrap",
+  ...textSizeMixins.small,
 });
 
 export const tag = style({

@@ -2,8 +2,6 @@ import { ReactNode } from "react";
 
 import { cn } from "@/framework";
 
-import * as spacingStyles from "../../spacing/spacing.css";
-
 import * as styles from "./mdx-container.css";
 
 interface MdxContainerProps {
@@ -11,9 +9,5 @@ interface MdxContainerProps {
 }
 
 export function MdxContainer(props: MdxContainerProps) {
-  return (
-    <div className={cn(styles.mdx, spacingStyles.spacingContainer)}>
-      {props.children}
-    </div>
-  );
+  return <div className={cn(styles.mdx)}>{props.children}</div>;
 }

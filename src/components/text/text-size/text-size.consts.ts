@@ -1,42 +1,43 @@
+import { TextSizes } from "./text-size";
+
 export const fontSizeRems = {
-  // todo: rename to xxs
   /** 10.4px */
-  _2xs: 0.65,
+  [TextSizes.XXS]: 0.65,
   /** 12px */
-  xs: 0.75,
+  [TextSizes.XS]: 0.75,
   /** 14px */
-  sm: 0.875,
+  [TextSizes.S]: 0.875,
   /** 16px */
-  md: 1,
+  [TextSizes.M]: 1,
   /** 18px */
-  lg: 1.125,
+  [TextSizes.L]: 1.125,
   /** 20px */
-  xl: 1.25,
+  [TextSizes.XL]: 1.25,
   /** 24px */
-  _2xl: 1.5,
+  [TextSizes.XXL]: 1.5,
   /** 30px */
-  _3xl: 1.875,
+  [TextSizes.XXXL]: 1.875,
   /** 36px */
-  _4xl: 2.25,
+  [TextSizes.XXXXL]: 2.25,
 };
 
 export const lineHeightRems = {
   /* 12px */
-  _2xs: 0.75,
+  [TextSizes.XXS]: 0.75,
   /* 16px */
-  xs: 1,
+  [TextSizes.XS]: 1,
+  /* 20px */
+  [TextSizes.S]: 1.25,
   /* 24px */
-  sm: 1.5,
-  /* 24px */
-  md: 1.5,
+  [TextSizes.M]: 1.5,
   /* 28px */
-  lg: 1.75,
+  [TextSizes.L]: 1.75,
   /* 28px */
-  xl: 1.75,
+  [TextSizes.XL]: 1.75,
   /* 32px */
-  _2xl: 2,
+  [TextSizes.XXL]: 2,
   /* 36px */
-  _3xl: 2.25,
+  [TextSizes.XXXL]: 2.25,
   /* 40px */
-  _4xl: 2.5,
+  [TextSizes.XXXXL]: 2.5,
 };

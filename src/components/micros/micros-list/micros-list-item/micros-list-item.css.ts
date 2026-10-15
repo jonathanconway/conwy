@@ -1,4 +1,4 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
 import { rems } from "@/framework/utils/rems.css_";
 
@@ -6,7 +6,6 @@ import * as iconMixins from "../../../icon/icon.mixins";
 import * as linkMixins from "../../../link/link.mixins";
 import { rounded } from "../../../styling";
 import * as textSizeConsts from "../../../text/text-size/text-size.consts";
-import * as textMixins from "../../../text/text.mixins";
 import { vars } from "../../../theme";
 
 export const mainLink = style({
@@ -33,7 +32,3 @@ export const decorativeImage = style({
   float: "right",
   opacity: 0.25,
 });
-
-export const contentContainer = style({});
-
-globalStyle(`${contentContainer} p`, textMixins.summary);

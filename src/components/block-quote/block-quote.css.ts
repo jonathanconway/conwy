@@ -1,23 +1,20 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-import { colors } from "../styling";
+import { colors, rounded } from "../styling";
 import { vars } from "../theme";
 
 export const blockquote = style({
+  padding: "1rem",
   marginTop: "1rem",
   marginBottom: "1rem",
-  padding: "1rem",
   backgroundColor: vars.blockQuote.background.color,
   borderLeftWidth: "8px",
   borderColor: colors.stone_400,
+  ...rounded.md,
 
   selectors: {
     "&:first-child": {
       marginTop: 0,
     },
   },
-});
-
-globalStyle(`${blockquote} > *:first-child:first-child:first-child`, {
-  paddingTop: 0,
 });

@@ -30,7 +30,7 @@ export async function ArticleTableOfContents(
                 id={`${id}-article-link`}
                 href={`#${id}`}
                 title={title}
-                size={TextSizes.sm}
+                size={TextSizes.S}
               >
                 {shortTitle ?? title}
               </Link>

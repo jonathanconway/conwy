@@ -26,7 +26,7 @@ export function WorkColleagues(props: WorkProjectsProps) {
               >
                 {/* todo: add icon prop to ListItem and use it here */}
                 <Link
-                  size={TextSizes.xs}
+                  size={TextSizes.XS}
                   href={colleague.meta.links[0].url}
                   icon={IconTypes.Person}
                   tooltip={{ contents: sentenceCase(relationshipType) }}

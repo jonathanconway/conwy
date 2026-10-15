@@ -5,8 +5,6 @@ import { Props } from "@/framework";
 import { ChecklistHeading, useChecklistContext } from "../../checklist";
 import { HeadingLevels, SectionHeading } from "../../heading";
 
-import "./mdx-h2.css";
-
 export type MdxH2Props = Props<typeof SectionHeading>;
 
 export function MdxH2(props: MdxH2Props) {

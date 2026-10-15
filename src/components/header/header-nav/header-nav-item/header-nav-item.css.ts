@@ -33,7 +33,7 @@ export const linkInner = style({
 });
 
 export const text = style({
-  fontSize: rems(textSizeConsts.fontSizeRems.lg),
+  fontSize: rems(textSizeConsts.fontSizeRems.l),
   paddingLeft: "0.5rem",
   paddingRight: "0.5rem",
 });

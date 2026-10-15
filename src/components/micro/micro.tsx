@@ -7,5 +7,5 @@ export interface MicroProps {
 }
 
 export function Micro(props: MicroProps) {
-  return <MicrosListItem isCollapsed={false} {...props} />;
+  return <MicrosListItem isExpandable={false} {...props} />;
 }

@@ -2,10 +2,10 @@ import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
 
 import * as textMixins from "../../text/text.mixins";
 
-export const listItem: ComplexStyleRule & GlobalStyleRule = {
-  ...textMixins.body,
+export const listItem: ComplexStyleRule = {
+  ...textMixins.paragraph,
 };
 
-export const listItemSmall: ComplexStyleRule & GlobalStyleRule = {
+export const listItemSmall: ComplexStyleRule = {
   ...textMixins.small,
 };

@@ -1,12 +1,19 @@
 import { ComplexStyleRule } from "@vanilla-extract/css";
-import { merge } from "lodash";
+
+import { rems } from "@/framework/css";
 
 import * as buttonMixins from "../button/button.mixins";
 import { focusOutline } from "../focus-outline";
 import * as iconMixins from "../icon/icon.mixins";
 import { media } from "../styling";
+import * as textSizeConsts from "../text/text-size/text-size.consts";
+import * as textSizeMixins from "../text/text-size/text-size.mixins";
 import * as textWeightMixins from "../text/text-weight/text-weight.mixins";
 import { vars } from "../theme";
+
+/**
+ * Base
+ */
 
 export const linkBase = {
   cursor: "pointer",
@@ -14,20 +21,9 @@ export const linkBase = {
   ...textWeightMixins.body,
 };
 
-export const linkLayoutInline = {};
-
-export const linkLayoutCompact = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: "0.25rem",
-
-  "@media": {
-    [media.lgAndUp]: {
-      // Only on larger screens; otherwise, a wide link might blow out the page width.
-      whiteSpace: "nowrap",
-    },
-  },
-};
+/**
+ * Contents
+ */
 
 export const linkContentsText = {
   display: "inline-flex",
@@ -36,6 +32,10 @@ export const linkContentsText = {
 export const linkContentsImage = {
   display: "inline-block",
 };
+
+/**
+ * Decoration
+ */
 
 export const linkDecoration = {
   textDecorationColor: vars.link.text.decoration.color,
@@ -46,6 +46,10 @@ export const linkDecoration = {
   },
 };
 
+/**
+ * Content
+ */
+
 export const linkContent = {
   color: vars.link.text.color,
   ":hover": {
@@ -53,7 +57,39 @@ export const linkContent = {
   },
 };
 
-export const link = merge(linkBase, linkDecoration, linkContent, focusOutline);
+/**
+ * Link
+ */
+
+export const link: ComplexStyleRule = {
+  ...linkBase,
+  ...linkDecoration,
+  ...linkContent,
+  ...focusOutline,
+};
+
+/**
+ * Size
+ */
+
+export const linkSizeXXS = {
+  fontSize: rems(textSizeConsts.fontSizeRems.xxs),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xxs),
+};
+
+export const linkSizeXS = {
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xs),
+};
+
+export const linkSizeS = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
+};
+
+/**
+ * Container
+ */
 
 export const linkContainer = {
   display: "inline-flex",
@@ -77,11 +113,38 @@ export const linkInnerContainerContents = {
   display: "contents",
 };
 
+/**
+ * Layout
+ */
+
+export const linkLayoutInline = {};
+
+export const linkLayoutCompact = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "0.25rem",
+
+  "@media": {
+    [media.lgAndUp]: {
+      // Only on larger screens; otherwise, a wide link might blow out the page width.
+      whiteSpace: "nowrap",
+    },
+  },
+};
+
+/**
+ * Appearance
+ */
+
 export const linkAppearanceText = {};
 
 export const linkAppearanceButton = {
   ...buttonMixins.buttonBase,
 };
+
+/**
+ * Icon
+ */
 
 export const linkIcon: ComplexStyleRule = {
   ...iconMixins.iconContainer,

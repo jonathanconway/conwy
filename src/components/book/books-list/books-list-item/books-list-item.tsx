@@ -41,7 +41,7 @@ export function BooksListItem({ book }: BooksListItemProps) {
           {book.meta.commentarySlug && (
             <Link
               className={styles.bookCommentaryLink}
-              size={TextSizes.xs}
+              size={TextSizes.XS}
               href={`/commentaries/${book.meta.commentarySlug}`}
             >
               💬 Commentary

@@ -7,7 +7,6 @@ import { vars } from "../theme";
 
 export const kbd: ComplexStyleRule = {
   background: vars.kbd.background,
-  ...borderMixins.boxBorderDecorative,
   boxShadow: boxShadowMixins.boxShadowRegular,
   display: "inline-flex",
   justifyContent: "center",
@@ -15,5 +14,6 @@ export const kbd: ComplexStyleRule = {
   paddingLeft: "0.25rem",
   paddingRight: "0.25rem",
   fontVariantLigatures: "none",
-  ...textSizesMixins.sm,
+  ...borderMixins.boxBorderDecorative,
+  ...textSizesMixins.small,
 };

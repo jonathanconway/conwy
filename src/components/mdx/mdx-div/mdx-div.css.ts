@@ -1,8 +1,7 @@
-import { globalStyle } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
-import * as textMixins from "../../text/text.mixins";
-import { mdx } from "../mdx-container/mdx-container.css";
+import * as mixins from "./mdx-div.mixins";
 
-globalStyle(`${mdx} > div`, {
-  ...textMixins.paragraphSpacing,
+export const div = style({
+  ...mixins.div,
 });

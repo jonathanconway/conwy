@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { ComplexStyleRule, style } from "@vanilla-extract/css";
 
 import * as linkMixins from "../../link/link.mixins";
 import * as textMixins from "../../text/text.mixins";
@@ -14,4 +14,4 @@ export const toggleLink = style({
   ...textMixins.small,
 
   color: vars.text.body.color,
-});
+} as ComplexStyleRule);

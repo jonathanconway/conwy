@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 
 import { rems } from "@/framework/utils/rems.css_";
 
-import * as shadowMixins from "../../shadow";
+import * as shadowMixins from "../../shadow/shadow.mixins";
 import { colors, rounded } from "../../styling";
 import * as textSizeConsts from "../../text/text-size/text-size.consts";
 
@@ -12,7 +12,7 @@ export const noteHotspot = style({
   alignItems: "center",
   justifyContent: "center",
   fontWeight: "bold",
-  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
   backgroundColor: colors.stone_700,
   color: colors.white,
   borderColor: colors.yellow_400,

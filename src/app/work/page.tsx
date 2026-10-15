@@ -25,7 +25,7 @@ export default function Page() {
             <MdxContainer>{workFragment.content}</MdxContainer>
 
             <Text type={TextTypes.Paragraph}>
-              <Link href="/testimonials" size={TextSizes.sm}>
+              <Link href="/testimonials" size={TextSizes.S}>
                 Testimonials
               </Link>
 

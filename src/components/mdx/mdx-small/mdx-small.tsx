@@ -1,6 +1,7 @@
+import { Text, TextTypes } from "../../text";
+
 import { MdxSmallProps } from "./mdx-small-props";
-import "./mdx-small.css";
 
 export function MdxSmall(props: MdxSmallProps) {
-  return <small {...props} />;
+  return <Text type={TextTypes.Small} {...props} />;
 }

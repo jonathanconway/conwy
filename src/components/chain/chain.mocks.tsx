@@ -11,7 +11,7 @@ export function createChainPropsMock() {
         key="Link-1"
         icon={IconTypes.Copy}
         href="https://linkedin.com"
-        size={TextSizes.sm}
+        size={TextSizes.S}
       >
         Three
       </Link>,

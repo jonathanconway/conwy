@@ -37,9 +37,8 @@ export function ImageModal(props: ImageModalProps) {
               alt={alt ?? src}
               style={{
                 maxHeight: "80vh",
-                maxWidth: "80vw",
                 height: "100%",
-                width: "auto",
+                width: "100%",
               }}
             />
 

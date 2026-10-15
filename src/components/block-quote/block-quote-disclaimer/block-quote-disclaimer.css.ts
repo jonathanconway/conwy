@@ -14,7 +14,7 @@ export const disclaimerContainer = style({
   marginBottom: "1rem",
   color: vars.blockQuoteDisclaimer.color,
   ...rounded.regular,
-  ...textSizeMixins.sm,
+  ...textSizeMixins.small,
 });
 
 globalStyle(`${disclaimerContainer} > p`, {

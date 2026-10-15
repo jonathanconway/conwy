@@ -32,12 +32,7 @@ export function ArticleSidebarHeadings(props: ArticleSidebarProps) {
                 {shortTitle ?? title}
               </span>
             ) : (
-              <Link
-                className={styles.link}
-                id={`${id}-article-link`}
-                href={`#${id}`}
-                title={title}
-              >
+              <Link id={`${id}-article-link`} href={`#${id}`} title={title}>
                 {shortTitle ?? title}
               </Link>
             )}

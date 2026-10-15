@@ -20,7 +20,7 @@ export const linksList = style({
 
 export const linksListItem = style({
   ...linkMixins.link,
-  ...textSizeMixins.xs,
+  ...textSizeMixins.small,
   display: "contents",
 
   selectors: {

@@ -1,4 +1,6 @@
-import { style } from "@vanilla-extract/css";
+import { ComplexStyleRule, style } from "@vanilla-extract/css";
+
+import { rems } from "@/framework/css";
 
 import * as linkMixins from "../../link/link.mixins";
 import * as textMixins from "../../text/text.mixins";
@@ -10,7 +12,7 @@ export const toggleLink = style({
   ...textMixins.small,
   ...linkMixins.link,
 
-  marginTop: "0.5rem",
+  marginTop: rems(0.5),
 
   color: vars.text.body.color,
-});
+} as ComplexStyleRule);

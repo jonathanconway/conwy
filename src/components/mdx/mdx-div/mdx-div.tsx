@@ -1,8 +1,8 @@
 "use client";
 
 import { MdxDivProps } from "./mdx-div-props";
-import "./mdx-div.css";
+import * as styles from "./mdx-div.css";
 
 export function MdxDiv(props: MdxDivProps) {
-  return <div {...props} />;
+  return <div className={styles.div} {...props} />;
 }

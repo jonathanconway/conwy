@@ -5,7 +5,7 @@ import * as textSizeMixins from "../../../text/text-size/text-size.mixins";
 
 export const link = style({
   ...linkMixins.link,
-  ...textSizeMixins.xs,
+  ...textSizeMixins.small,
   display: "inline-flex",
   flexDirection: "row",
   alignItems: "center",

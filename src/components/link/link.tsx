@@ -14,6 +14,7 @@ import * as styles from "./link.css";
 
 export function Link_(props: LinkProps) {
   const { appearance = LinkAppearances.Text } = props;
+
   const {
     nextLinkProps,
     icon,

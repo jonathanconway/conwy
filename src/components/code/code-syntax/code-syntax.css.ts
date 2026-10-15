@@ -21,7 +21,7 @@ export const code = style({
 });
 
 globalStyle(`pre > code[class*=language-]`, {
-  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
 });
 
 const codeWrapping = {

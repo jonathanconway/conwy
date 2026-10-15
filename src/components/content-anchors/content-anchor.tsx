@@ -33,7 +33,7 @@ export function ContentAnchor(props: ContentAnchorProps) {
   const anchorContentTypeLabel = CONTENT_TYPE_LABELS[anchorContentLink.type];
 
   return (
-    <Link href={anchorLinkHref} size={TextSizes._2xs}>
+    <Link href={anchorLinkHref} size={TextSizes.XXS}>
       {anchorContentTypeLabel}: {title}
     </Link>
   );

@@ -16,7 +16,7 @@ export const label: ComplexStyleRule = {
 export const labelSizeSmall: ComplexStyleRule = {
   "@media": {
     [media.sm]: {
-      fontSize: rems(textSizeConsts.fontSizeRems._2xs),
+      fontSize: rems(textSizeConsts.fontSizeRems.xxs),
     },
     [media.mdAndUp]: {
       fontSize: rems(textSizeConsts.fontSizeRems.xs),
@@ -25,5 +25,5 @@ export const labelSizeSmall: ComplexStyleRule = {
 };
 
 export const labelSizeRegular: ComplexStyleRule = {
-  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
 };

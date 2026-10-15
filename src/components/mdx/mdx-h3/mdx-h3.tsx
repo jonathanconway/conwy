@@ -5,8 +5,6 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { ChecklistHeading, useChecklistContext } from "../../checklist";
 import { Heading, HeadingLevels } from "../../heading";
 
-import "./mdx-h3.css";
-
 export type MdxH3Props = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement

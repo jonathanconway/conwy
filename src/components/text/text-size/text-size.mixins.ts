@@ -1,48 +1,83 @@
 import { rems } from "@/framework/utils/rems.css_";
 
+import { media } from "../../styling";
+
 import * as textSizeConsts from "./text-size.consts";
 
-export const _2xs = {
-  fontSize: rems(textSizeConsts.fontSizeRems._2xs),
-  lineHeight: rems(textSizeConsts.lineHeightRems._2xs),
+export const body = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
 };
 
-export const xs = {
+export const collapsibleTitle = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
+};
+
+export const heading1 = {
+  fontSize: rems(textSizeConsts.fontSizeRems.xxxxl),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xxxxl),
+};
+
+export const heading2 = {
+  fontSize: rems(textSizeConsts.fontSizeRems.xxl),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xxl),
+};
+
+export const heading3 = {
+  fontSize: rems(textSizeConsts.fontSizeRems.l),
+  lineHeight: rems(textSizeConsts.lineHeightRems.l),
+};
+
+export const heading4 = {
+  fontSize: rems(textSizeConsts.fontSizeRems.m),
+  lineHeight: rems(textSizeConsts.lineHeightRems.m),
+};
+
+export const heading5 = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
+};
+
+export const label = {
   fontSize: rems(textSizeConsts.fontSizeRems.xs),
   lineHeight: rems(textSizeConsts.lineHeightRems.xs),
 };
 
-export const sm = {
-  fontSize: rems(textSizeConsts.fontSizeRems.sm),
-  lineHeight: rems(textSizeConsts.lineHeightRems.sm),
+export const listItemSubTitle = {
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xs),
 };
 
-export const md = {
-  fontSize: rems(textSizeConsts.fontSizeRems.md),
-  lineHeight: rems(textSizeConsts.lineHeightRems.md),
+export const paragraph = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.m),
 };
 
-export const lg = {
-  fontSize: rems(textSizeConsts.fontSizeRems.lg),
-  lineHeight: rems(textSizeConsts.lineHeightRems.lg),
+export const preFormatted = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
 };
 
-export const xl = {
-  fontSize: rems(textSizeConsts.fontSizeRems.xl),
-  lineHeight: rems(textSizeConsts.lineHeightRems.xl),
+export const table = {};
+
+export const small = {
+  fontSize: rems(textSizeConsts.fontSizeRems.xs),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xs),
 };
 
-export const _2xl = {
-  fontSize: rems(textSizeConsts.fontSizeRems._2xl),
-  lineHeight: rems(textSizeConsts.lineHeightRems._2xl),
+export const subTitle = {
+  "@media": {
+    [media.mdAndUp]: {
+      fontSize: rems(textSizeConsts.fontSizeRems.s),
+    },
+    [media.sm]: {
+      fontSize: rems(textSizeConsts.fontSizeRems.xs),
+    },
+  },
 };
 
-export const _3xl = {
-  fontSize: rems(textSizeConsts.fontSizeRems._3xl),
-  lineHeight: rems(textSizeConsts.lineHeightRems._3xl),
-};
-
-export const _4xl = {
-  fontSize: rems(textSizeConsts.fontSizeRems._4xl),
-  lineHeight: rems(textSizeConsts.lineHeightRems._4xl),
+export const summary = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.xs),
 };

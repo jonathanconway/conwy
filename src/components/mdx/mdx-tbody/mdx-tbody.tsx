@@ -1,11 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
-
 import { MdxWrapper } from "../mdx-wrapper";
 
-export type MdxTBodyProps = DetailedHTMLProps<
-  HTMLAttributes<HTMLTableSectionElement>,
-  HTMLTableSectionElement
->;
+import { MdxTBodyProps } from "./mdx-tbody-props";
 
 export function MdxTBody({ children, ...restProps }: MdxTBodyProps) {
   return (

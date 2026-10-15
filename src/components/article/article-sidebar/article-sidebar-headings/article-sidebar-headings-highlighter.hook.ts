@@ -3,8 +3,7 @@
 import { map, memoize } from "lodash";
 import { useEffect, useState } from "react";
 
-import { isNotNil } from "@/framework";
-import { ArticleHeading } from "@/framework";
+import { ArticleHeading, isNotNil } from "@/framework";
 import { isClient, querySelector } from "@/framework/client";
 
 function getIsElementInViewport(el?: Element | null) {

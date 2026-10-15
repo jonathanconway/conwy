@@ -1,10 +1,10 @@
-import { GlobalStyleRule } from "@vanilla-extract/css";
+import { ComplexStyleRule } from "@vanilla-extract/css";
 
 import * as boxMixins from "../box/box.mixins";
 import { media } from "../styling";
 import * as textMixins from "../text/text.mixins";
 
-export const table: GlobalStyleRule = {
+export const table: ComplexStyleRule = {
   marginTop: "1rem",
   borderSpacing: 0,
   borderCollapse: "unset",

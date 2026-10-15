@@ -2,7 +2,7 @@
 
 import { ContentAnchorLinkAndInfo, Quote } from "@/framework";
 
-import { BlockQuotePullQuote } from "../../aside";
+import { BlockQuotePullQuote } from "../../block-quote";
 import { ContentAnchors } from "../../content-anchors";
 import { Stack, StackDirections } from "../../stack";
 import { Text, TextTypes } from "../../text";

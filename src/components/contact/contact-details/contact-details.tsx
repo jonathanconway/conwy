@@ -34,7 +34,7 @@ export function ContactDetailsColumn(props: ContactDetailsColumnProps) {
           target="_blank"
           bracketedItems={id ? [id] : []}
           icon={iconType}
-          size={TextSizes.sm}
+          size={TextSizes.S}
         >
           {label}
         </Link>

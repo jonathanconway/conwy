@@ -1,10 +1,3 @@
-import { globalStyle, style } from "@vanilla-extract/css";
-
-import * as mixins from "./spacing.mixins";
+import { style } from "@vanilla-extract/css";
 
 export const spacingContainer = style({});
-
-globalStyle(
-  `${spacingContainer} > *:not(:first-child)`,
-  mixins.spacingContainerChild,
-);

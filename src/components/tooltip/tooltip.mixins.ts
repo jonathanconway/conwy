@@ -8,7 +8,7 @@ import * as textWeightMixins from "../text/text-weight/text-weight.mixins";
 import { vars } from "../theme";
 
 export const tooltip: CSSProperties = {
-  ...textSizeMixins.sm,
+  ...textSizeMixins.small,
   ...textWeightMixins.body,
   backgroundColor: vars.tooltip.background.color,
   color: vars.tooltip.color,

@@ -8,7 +8,7 @@ export function ScrollToTopLink() {
   return (
     <Link
       href={`#${SCROLL_TO_TOP_ANCHOR_ID}`}
-      size={TextSizes.xs}
+      size={TextSizes.XS}
       icon={IconTypes.ArrowUp}
     >
       Back to top

@@ -1,31 +1,11 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { rounded } from "../styling";
-import { vars } from "../theme";
+import * as mixins from "./about-me.mixins";
 
-export const outerContainer = style({
-  borderBottom: "solid 1px",
-  borderBottomColor: vars.aboutMe.container.border.bottom.color,
-});
+export const outerContainer = style(mixins.outerContainer);
 
-export const container = style({
-  display: "flex",
+export const container = style(mixins.container);
 
-  flexDirection: "row",
-  gap: "1rem",
-  alignItems: "flex-start",
+globalStyle(`${container} h1`, mixins.h1);
 
-  marginTop: "2.5rem",
-  marginBottom: "1.5rem",
-});
-
-globalStyle(`${container} h1`, {
-  marginTop: 0,
-});
-
-export const face = style({
-  ...rounded.full,
-  borderWidth: "2px",
-  borderColor: vars.aboutMe.face.border.color,
-  borderStyle: "solid",
-});
+export const face = style(mixins.face);

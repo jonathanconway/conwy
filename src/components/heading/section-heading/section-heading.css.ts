@@ -29,7 +29,7 @@ export const linkHoverHash = style({
   bottom: 0,
   visibility: "hidden",
   paddingLeft: "1rem",
-  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
   color: linkMixins.linkContent[":hover"].color,
 });
 

@@ -21,7 +21,7 @@ export function Modal(props: ModalProps) {
       <dialog className={props.className ?? styles.modal} ref={modalRef}>
         <header className={styles.modalHeader}>
           {props.title && (
-            <Heading level={HeadingLevels.Level2} className={styles.modalTitle}>
+            <Heading level={HeadingLevels.Level3} className={styles.modalTitle}>
               {props.title}
             </Heading>
           )}

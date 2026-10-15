@@ -59,7 +59,7 @@ export const labelText = {};
 
 export const title = {
   ...textWeightMixins.navText,
-  ...textSizeMixins.xs,
+  ...textSizeMixins.small,
   textOverflow: "ellipsis",
   overflow: "hidden",
   whiteSpace: "nowrap",

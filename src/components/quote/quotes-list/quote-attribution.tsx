@@ -46,7 +46,7 @@ function QuoteAttributionAuthor({ quote }: QuoteAttributionProps) {
     return (
       <Text type={TextTypes.Small}>
         –{" "}
-        <Link href={quote.meta.author.url} target="_blank" size={TextSizes.sm}>
+        <Link href={quote.meta.author.url} target="_blank" size={TextSizes.S}>
           {formattedQuoteAuthorName}
         </Link>
       </Text>
@@ -59,7 +59,7 @@ function QuoteAttributionAuthor({ quote }: QuoteAttributionProps) {
 function QuoteAttributionSource({ quote }: QuoteAttributionProps) {
   if (quote.meta.source?.url) {
     return (
-      <Link href={quote.meta.source.url} target="_blank" size={TextSizes.xs}>
+      <Link href={quote.meta.source.url} target="_blank" size={TextSizes.XS}>
         {quote.meta.source.title}
       </Link>
     );

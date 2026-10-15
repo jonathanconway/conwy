@@ -38,6 +38,6 @@ export const imgSized = {
 };
 
 export const figCaption = {
-  ...textSizeMixins.xs,
+  ...textSizeMixins.small,
   marginTop: "1.5rem",
 };

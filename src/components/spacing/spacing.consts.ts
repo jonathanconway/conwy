@@ -1,24 +1,16 @@
-export const xxs = 0.125;
-export const xs = 0.25;
-export const s = 0.5;
-export const m = 1;
-export const l = 1.25;
-export const xl = 1.5;
-export const xxl = 2;
-
 export const spacingRems = {
   /** 2px */
-  xxs,
+  xxs: 0.125,
   /** 4px */
-  xs,
+  xs: 0.25,
   /** 8px */
-  s,
+  s: 0.5,
   /** 16px */
-  m,
+  m: 1,
   /** 20px */
-  l,
+  l: 1.25,
   /** 24px */
-  xl,
+  xl: 1.5,
   /** 32px */
-  xxl,
+  xxl: 2,
 };

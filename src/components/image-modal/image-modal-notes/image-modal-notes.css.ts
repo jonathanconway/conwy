@@ -10,13 +10,17 @@ export const notesContainer = style({
   display: "flex",
   flexDirection: "column",
   gap: "1rem",
-  // width: "12rem",
 
   "@media": {
-    [media.lessThanLg]: {
+    [media.lessThanMd]: {
       marginBottom: "1rem",
       marginLeft: "1rem",
-      width: "100%",
+    },
+    [media.mdAndUp]: {
+      marginBottom: "1rem",
+      marginLeft: "1rem",
+      width: "33%",
+      minWidth: "10rem",
     },
   },
 });
@@ -28,7 +32,7 @@ export const notesContainerWithHotspots = style({
 export const noteText = style({
   position: "relative",
   paddingTop: "0.125rem",
-  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
 });
 
 export const noteTextWithHotspots = style({
@@ -55,6 +59,6 @@ export const noteNumber = style({
   alignItems: "center",
   justifyContent: "center",
   fontWeight: "bold",
-  fontSize: rems(textSizeConsts.fontSizeRems.sm),
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
   ...rounded.full,
 });

@@ -1,5 +1,4 @@
 export * from "./mdx-a";
-export * from "./mdx-aside";
 export * from "./mdx-blockquote";
 export * from "./mdx-code";
 export * from "./mdx-container";
@@ -19,6 +18,7 @@ export * from "./mdx-p";
 export * from "./mdx-pre";
 export * from "./mdx-section";
 export * from "./mdx-small";
+export * from "./mdx-summary";
 export * from "./mdx-table";
 export * from "./mdx-tbody";
 export * from "./mdx-td";
