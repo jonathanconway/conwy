@@ -18,7 +18,7 @@ export function ToolsList() {
   const toolsBySection = groupBy(toolsOrdered, (tool) => tool.meta.section);
 
   return (
-    <Stack gap={2}>
+    <Stack>
       {toolsSections.map((section) => (
         <div key={section} className={styles.section}>
           <Stack>
@@ -26,10 +26,13 @@ export function ToolsList() {
               direction={StackDirections.Row}
               distribution={StackDistributions.Flow}
             >
-              <SectionHeading styleInner>
+              <SectionHeading
+                afterSlot={
+                  <ItemsCount count={toolsBySection[section].length} />
+                }
+              >
                 {ToolSectionTitles[section]}
               </SectionHeading>
-              <ItemsCount count={toolsBySection[section].length} />
             </Stack>
 
             <ContentList>

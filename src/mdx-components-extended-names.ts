@@ -12,6 +12,12 @@ export const mdxComponentsExtendedNames = [
   "small",
   "section",
   "summary",
+  "table",
+  "tbody",
+  "td",
+  "th",
+  "thead",
+  "tr",
 ] as const;
 
 export type MdxComponentsExtendedName =

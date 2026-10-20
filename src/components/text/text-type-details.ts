@@ -15,6 +15,7 @@ export const TEXT_TYPES_DETAILS: Record<TextType, TextTypeDetails> = {
   [TextTypes.Heading4]: { element: "h4" },
   [TextTypes.Heading5]: { element: "h5" },
   [TextTypes.Label]: { element: "label" },
+  [TextTypes.LinkBoxTitleSmall]: { element: "span" },
   [TextTypes.ListItem]: { element: "li" },
   [TextTypes.ListItemSmall]: { element: "li" },
   [TextTypes.ListItemSubTitle]: { element: "p" },

@@ -3,22 +3,18 @@ import pluralize from "pluralize";
 
 import { ToolSectionTitles, ToolSections } from "@/framework";
 
-import { Link } from "../../link";
-import { ListItem, ListUnordered } from "../../list";
-import { TextSizes } from "../../text";
+import { SectionHeadingsList } from "../../section";
 
 export function ToolsSections() {
-  const sections = Object.values(ToolSections);
+  const toolsSections = Object.values(ToolSections);
 
-  return (
-    <ListUnordered noBullets>
-      {sections.map((section) => (
-        <ListItem key={section}>
-          <Link href={`#${kebabCase(pluralize(section))}`} size={TextSizes.S}>
-            {ToolSectionTitles[section]}
-          </Link>
-        </ListItem>
-      ))}
-    </ListUnordered>
-  );
+  const toolsSectionHeadings = toolsSections.map((toolSection) => {
+    const title = pluralize(ToolSectionTitles[toolSection]);
+    const slug = kebabCase(title);
+    return {
+      title,
+      slug,
+    };
+  });
+  return <SectionHeadingsList sectionHeadings={toolsSectionHeadings} />;
 }

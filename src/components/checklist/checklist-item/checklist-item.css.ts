@@ -1,6 +1,9 @@
 import { style } from "@vanilla-extract/css";
 
+import { rems } from "@/framework/css";
+
 import * as listItemMixins from "../../list/list-item/list-item.mixins";
+import * as textSpacingConsts from "../../text/text-spacing/text-spacing.consts";
 
 export const checklistLi = style({
   ...listItemMixins.listItem,
@@ -17,6 +20,9 @@ export const checklistLi = style({
     "&:has(:checked)": {
       backgroundColor: "lightyellow",
       border: "solid 1px darkgoldenrod",
+    },
+    "&:not(:first-child)": {
+      marginTop: rems(textSpacingConsts.paragraph),
     },
   },
 });

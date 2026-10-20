@@ -9,7 +9,7 @@ export const linkBoxTitle = {
 export const linkBoxTitleMedium = {};
 
 export const linkBoxTitleSmall = {
-  ...textSizeMixins.small,
+  ...textSizeMixins.linkBoxTitleSmall,
   textOverflow: "ellipsis",
   overflow: "hidden",
   whiteSpace: "nowrap",

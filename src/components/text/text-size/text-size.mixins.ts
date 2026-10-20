@@ -1,4 +1,4 @@
-import { rems } from "@/framework/utils/rems.css_";
+import { rems } from "@/framework/css";
 
 import { media } from "../../styling";
 
@@ -47,6 +47,11 @@ export const label = {
 export const listItemSubTitle = {
   fontSize: rems(textSizeConsts.fontSizeRems.xs),
   lineHeight: rems(textSizeConsts.lineHeightRems.xs),
+};
+
+export const linkBoxTitleSmall = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
 };
 
 export const paragraph = {

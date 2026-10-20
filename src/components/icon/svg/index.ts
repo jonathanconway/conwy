@@ -12,6 +12,7 @@ export * from "./dev";
 export * from "./dev-talk";
 export * from "./download";
 export * from "./email";
+export * from "./forum";
 export * from "./github";
 export * from "./gmail";
 export * from "./goodreads";

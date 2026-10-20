@@ -6,7 +6,6 @@ import { TrackingEvents, cn, createTrackingClassName } from "@/framework";
 
 import { IconTypes } from "../../../icon";
 import { Link } from "../../../link";
-import * as linkStyles from "../../../link/link.css";
 import { Stack, StackDirections, StackDistributions } from "../../../stack";
 import { TextSizes } from "../../../text";
 import { useTooltip } from "../../../tooltip";
@@ -45,8 +44,7 @@ export function ChecklistDownload(props: ChecklistDownloadProps) {
         download
         size={TextSizes.XS}
         aria-label={`Download ${props.checklistMeta.title} checklist as Markdown`}
-        className={cn(
-          linkStyles.link,
+        classNameExtended={cn(
           createTrackingClassName(
             TrackingEvents.Click,
             `${trackingId}-download-md`,
@@ -64,8 +62,7 @@ export function ChecklistDownload(props: ChecklistDownloadProps) {
         icon={IconTypes.Copy}
         size={TextSizes.XS}
         aria-label={`Copy ${props.checklistMeta.title} checklist as Markdown`}
-        className={cn(
-          linkStyles.link,
+        classNameExtended={cn(
           createTrackingClassName(
             TrackingEvents.Click,
             `${trackingId}-copy-md`,

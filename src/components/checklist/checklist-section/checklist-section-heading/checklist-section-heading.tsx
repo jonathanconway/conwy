@@ -1,13 +1,10 @@
 import { kebabCase } from "lodash";
 
-import {
-  Heading,
-  SectionHeading,
-  getHeadingSpacingStyles,
-} from "../../../heading";
+import { SpacingSizes } from "@/components/spacing/spacing-sizes";
+
+import { Heading, SectionHeading } from "../../../heading";
 import { ItemsCount } from "../../../items-count";
-import { StackDistributions } from "../../../stack";
-import { Stack, StackDirections } from "../../../stack";
+import { SpacingContainer } from "../../../spacing";
 
 import { ChecklistSectionHeadingProps } from "./checklist-section-heading-props";
 import { CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME } from "./checklist-section-heading.const";
@@ -20,39 +17,29 @@ export function ChecklistSectionHeading(props: ChecklistSectionHeadingProps) {
   }
 
   const headingInner = (
-    <Stack
-      className={CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME}
-      gap={0.5}
-      direction={StackDirections.Row}
-      distribution={StackDistributions.Flow}
-    >
-      {children}
-    </Stack>
+    <div className={CHECKLIST_SECTION_HEADING_TEXT_CLASS_NAME}>{children}</div>
   );
+
+  const headerAfterSlot = <ItemsCount count={itemsCount} />;
 
   const headingOuter =
     props.level === 3 ? (
-      <SectionHeading styleInner id={kebabCase(headingText)} {...restProps}>
+      <SectionHeading
+        id={kebabCase(headingText)}
+        afterSlot={headerAfterSlot}
+        {...restProps}
+      >
         {headingInner}
       </SectionHeading>
     ) : (
-      <Heading styleInner {...restProps}>
+      <Heading afterSlot={headerAfterSlot} {...restProps}>
         {headingInner}
       </Heading>
     );
 
-  const outerClassName = getHeadingSpacingStyles(props.level ?? 0);
-
   return (
-    <Stack
-      className={outerClassName}
-      gap={1}
-      direction={StackDirections.Row}
-      distribution={StackDistributions.Flow}
-    >
+    <SpacingContainer marginTop={SpacingSizes.M}>
       {headingOuter}
-
-      <ItemsCount count={itemsCount} />
-    </Stack>
+    </SpacingContainer>
   );
 }

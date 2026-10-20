@@ -6,6 +6,8 @@ import { Image } from "../../../image";
 import { LinkBox, LinkBoxTitle, LinkBoxTitleSizes } from "../../../link-box";
 import { Text, TextTypes } from "../../../text";
 
+import * as styles from "./articles-list-item-small.css";
+
 export interface ArticlesListItemSmallProps {
   readonly articleMeta: ArticleMeta;
 }
@@ -33,7 +35,11 @@ export function ArticlesListItemSmall(props: ArticlesListItemSmallProps) {
           </LinkBoxTitle>
         }
         asideSlot={
-          <Text type={TextTypes.Small} as="time" textAlign="right">
+          <Text
+            type={TextTypes.Small}
+            as="time"
+            classNameExtended={styles.asideDate}
+          >
             <DateView format={DateFormats.Short}>{date}</DateView>
           </Text>
         }

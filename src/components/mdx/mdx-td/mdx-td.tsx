@@ -1,16 +1,12 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { MdxWrapper } from "../mdx-wrapper";
+import { Td } from "../../table";
 
 export type MdxTdProps = DetailedHTMLProps<
   HTMLAttributes<HTMLTableCellElement>,
   HTMLTableCellElement
 >;
 
-export function MdxTd({ children, ...restProps }: MdxTdProps) {
-  return (
-    <td {...restProps}>
-      <MdxWrapper>{children}</MdxWrapper>
-    </td>
-  );
+export function MdxTd(props: MdxTdProps) {
+  return <Td {...props} />;
 }

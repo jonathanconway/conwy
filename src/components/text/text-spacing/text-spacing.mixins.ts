@@ -1,56 +1,107 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { CSSProperties } from "@vanilla-extract/css";
 
 import { rems } from "@/framework/css";
 
-import { spacingRems } from "../../spacing/spacing.consts";
-import * as spacingMixins from "../../spacing/spacing.mixins";
+import { createNotFirstChildStyle } from "../../spacing/spacing.mixins";
 
-export const body = {
-  ...spacingMixins.spacingTop.xs,
+import * as textSpacing from "./text-spacing.consts";
+
+export const bodySpacing = {
+  paddingTop: rems(textSpacing.body),
+};
+export const bodySpacingFirstChild = {
+  ...createNotFirstChildStyle(bodySpacing),
 };
 
-export const collapsibleTitle = {};
-
-export const heading1 = {
-  ...spacingMixins.spacingTop.m,
+export const collapsibleTitleSpacing = {};
+export const collapsibleTitleSpacingFirstChild = {
+  ...createNotFirstChildStyle(collapsibleTitleSpacing),
 };
 
-export const heading2 = {
-  ...spacingMixins.spacingTop.m,
+export const heading1Spacing = {
+  paddingTop: rems(textSpacing.heading1),
+};
+export const heading1SpacingFirstChild = {
+  ...createNotFirstChildStyle(heading1Spacing),
 };
 
-export const heading3 = {
-  ...spacingMixins.spacingTop.m,
+export const heading2Spacing = {
+  paddingTop: rems(textSpacing.heading2),
+};
+export const heading2SpacingFirstChild = {
+  ...createNotFirstChildStyle(heading2Spacing),
 };
 
-export const heading4 = {
-  ...spacingMixins.spacingTop.s,
+export const heading3Spacing = {
+  paddingTop: rems(textSpacing.heading3),
+};
+export const heading3SpacingFirstChild = {
+  ...createNotFirstChildStyle(heading3Spacing),
 };
 
-export const heading5 = {
-  ...spacingMixins.spacingTop.s,
+export const heading4Spacing = {
+  paddingTop: rems(textSpacing.heading4),
+};
+export const heading4SpacingFirstChild = {
+  ...createNotFirstChildStyle(heading4Spacing),
 };
 
-export const label = {};
-
-export const listItemSubTitle = {};
-
-export const paragraph = {
-  ...spacingMixins.spacingTop.s,
+export const heading5Spacing = {
+  paddingTop: rems(textSpacing.heading5),
+};
+export const heading5SpacingFirstChild = {
+  ...createNotFirstChildStyle(heading5Spacing),
 };
 
-export const preFormatted = {
-  marginTop: rems(spacingRems.m),
-  marginBottom: rems(spacingRems.m),
-  padding: rems(spacingRems.m),
+export const labelSpacing = {};
+export const labelSpacingFirstChild = {
+  ...createNotFirstChildStyle(labelSpacing),
 };
 
-export const table = {
-  ...spacingMixins.spacingBlock.m,
+export const linkBoxTitleSmallSpacing = {};
+export const linkBoxTitleSmallSpacingFirstChild = {
+  ...createNotFirstChildStyle(linkBoxTitleSmallSpacing),
 };
 
-export const small: ComplexStyleRule = {};
+export const listItemSubTitleSpacing = {};
+export const listItemSubTitleSpacingFirstChild = {
+  ...createNotFirstChildStyle(listItemSubTitleSpacing),
+};
 
-export const subTitle = {};
+export const paragraphSpacing = {
+  paddingTop: rems(textSpacing.paragraph),
+};
+export const paragraphSpacingFirstChild = {
+  ...createNotFirstChildStyle(paragraphSpacing),
+};
 
-export const summary = {};
+export const preFormattedSpacing = {
+  marginTop: rems(textSpacing.preFormatted),
+  marginBottom: rems(textSpacing.preFormatted),
+  padding: rems(textSpacing.preFormatted),
+};
+export const preFormattedSpacingFirstChild = {
+  ...createNotFirstChildStyle(preFormattedSpacing),
+};
+
+export const tableSpacing = {
+  paddingBlock: rems(textSpacing.table),
+};
+export const tableSpacingFirstChild = {
+  ...createNotFirstChildStyle(tableSpacing),
+};
+
+export const smallSpacing: CSSProperties = {};
+export const smallSpacingFirstChild = {
+  ...createNotFirstChildStyle(smallSpacing),
+};
+
+export const subTitleSpacing = {};
+export const subTitleSpacingFirstChild = {
+  ...createNotFirstChildStyle(subTitleSpacing),
+};
+
+export const summarySpacing = {};
+export const summarySpacingFirstChild = {
+  ...createNotFirstChildStyle(summarySpacing),
+};

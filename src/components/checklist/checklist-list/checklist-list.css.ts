@@ -4,7 +4,6 @@ export const checklistUl = style({
   display: "flex",
   flexDirection: "column",
   padding: 0,
-  marginTop: "1rem",
   gap: "0.25rem",
 
   // Hide lists which have no list items.

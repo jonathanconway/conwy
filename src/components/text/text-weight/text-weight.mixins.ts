@@ -26,6 +26,10 @@ export const label = {
   fontWeight: 500,
 };
 
+export const linkBoxTitleSmall = {
+  fontWeight: "bold",
+};
+
 export const listItemSubTitle = {
   fontWeight: "bold",
 };

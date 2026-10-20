@@ -1,4 +1,4 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { CSSProperties, ComplexStyleRule } from "@vanilla-extract/css";
 
 import { colors, rounded } from "../styling";
 import * as textSpacingMixins from "../text/text-spacing/text-spacing.mixins";
@@ -17,7 +17,7 @@ export const bodyInner: ComplexStyleRule = {
 
 export const body: ComplexStyleRule = {
   ...bodyInner,
-  ...textSpacingMixins.body,
+  ...textSpacingMixins.bodySpacingFirstChild,
 };
 
 // collapsibleTitle
@@ -31,7 +31,7 @@ export const collapsibleTitleInner: ComplexStyleRule = {
 
 export const collapsibleTitle: ComplexStyleRule = {
   ...collapsibleTitleInner,
-  ...textSpacingMixins.collapsibleTitle,
+  ...textSpacingMixins.collapsibleTitleSpacingFirstChild,
 };
 
 // heading1
@@ -44,7 +44,7 @@ export const heading1Inner: ComplexStyleRule = {
 
 export const heading1: ComplexStyleRule = {
   ...heading1Inner,
-  ...textSpacingMixins.heading1,
+  ...textSpacingMixins.heading1SpacingFirstChild,
 };
 
 // heading2
@@ -56,7 +56,7 @@ export const heading2Inner: ComplexStyleRule = {
 
 export const heading2: ComplexStyleRule = {
   ...heading2Inner,
-  ...textSpacingMixins.heading2,
+  ...textSpacingMixins.heading2SpacingFirstChild,
 };
 
 // heading3
@@ -68,7 +68,7 @@ export const heading3Inner: ComplexStyleRule = {
 
 export const heading3: ComplexStyleRule = {
   ...heading3Inner,
-  ...textSpacingMixins.heading3,
+  ...textSpacingMixins.heading3SpacingFirstChild,
 };
 
 // heading4
@@ -80,7 +80,7 @@ export const heading4Inner: ComplexStyleRule = {
 
 export const heading4: ComplexStyleRule = {
   ...heading4Inner,
-  ...textSpacingMixins.heading4,
+  ...textSpacingMixins.heading4SpacingFirstChild,
 };
 
 // heading5
@@ -92,7 +92,7 @@ export const heading5Inner: ComplexStyleRule = {
 
 export const heading5: ComplexStyleRule = {
   ...heading5Inner,
-  ...textSpacingMixins.heading5,
+  ...textSpacingMixins.heading5SpacingFirstChild,
 };
 
 // label
@@ -107,7 +107,20 @@ export const labelInner: ComplexStyleRule = {
 
 export const label: ComplexStyleRule = {
   ...labelInner,
-  ...textSpacingMixins.label,
+  ...textSpacingMixins.labelSpacingFirstChild,
+};
+
+// LinkBoxTitleSmall
+
+export const linkBoxTitleSmallInner: ComplexStyleRule = {
+  color: vars.text.body.color,
+  ...textSizeMixins.linkBoxTitleSmall,
+  ...textWeightMixins.linkBoxTitleSmall,
+};
+
+export const linkBoxTitleSmall: ComplexStyleRule = {
+  ...linkBoxTitleSmallInner,
+  ...textSpacingMixins.linkBoxTitleSmallSpacingFirstChild,
 };
 
 // listItemSubTitle
@@ -120,7 +133,7 @@ export const listItemSubTitleInner: ComplexStyleRule = {
 
 export const listItemSubTitle: ComplexStyleRule = {
   ...listItemSubTitleInner,
-  ...textSpacingMixins.listItemSubTitle,
+  ...textSpacingMixins.listItemSubTitleSpacingFirstChild,
 };
 
 // paragraph
@@ -133,7 +146,7 @@ export const paragraphInner: ComplexStyleRule = {
 
 export const paragraph: ComplexStyleRule = {
   ...paragraphInner,
-  ...textSpacingMixins.paragraph,
+  ...textSpacingMixins.paragraphSpacingFirstChild,
 };
 
 // preFormatted
@@ -151,7 +164,7 @@ export const preFormattedInner = {
 
 export const preFormatted: ComplexStyleRule = {
   ...preFormattedInner,
-  ...textSpacingMixins.preFormatted,
+  ...textSpacingMixins.preFormattedSpacingFirstChild,
 };
 
 // table
@@ -163,7 +176,7 @@ export const tableInner: ComplexStyleRule = {
 
 export const table: ComplexStyleRule = {
   ...tableInner,
-  ...textSpacingMixins.table,
+  ...textSpacingMixins.tableSpacingFirstChild,
 };
 
 // small
@@ -173,9 +186,9 @@ export const smallInner: ComplexStyleRule = {
   ...textWeightMixins.small,
 };
 
-export const small: ComplexStyleRule = {
+export const small: CSSProperties = {
   ...smallInner,
-  ...textSpacingMixins.small,
+  ...textSpacingMixins.smallSpacingFirstChild,
 };
 
 // subTitle
@@ -188,7 +201,7 @@ export const subTitleInner: ComplexStyleRule = {
 
 export const subTitle: ComplexStyleRule = {
   ...subTitleInner,
-  ...textSpacingMixins.subTitle,
+  ...textSpacingMixins.subTitleSpacingFirstChild,
 };
 
 // summary
@@ -200,5 +213,5 @@ export const summaryInner: ComplexStyleRule = {
 
 export const summary: ComplexStyleRule = {
   ...summaryInner,
-  ...textSpacingMixins.summary,
+  ...textSpacingMixins.summarySpacingFirstChild,
 };

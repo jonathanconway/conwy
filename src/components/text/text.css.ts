@@ -26,6 +26,9 @@ export const heading5 = style(textMixins.heading5);
 export const labelInner = style(textMixins.labelInner);
 export const label = style(textMixins.label);
 
+export const linkBoxTitleSmallInner = style(textMixins.linkBoxTitleSmallInner);
+export const linkBoxTitleSmall = style(textMixins.linkBoxTitleSmall);
+
 export const listItemSubTitleInner = style(textMixins.listItemSubTitleInner);
 export const listItemSubTitle = style(textMixins.listItemSubTitle);
 

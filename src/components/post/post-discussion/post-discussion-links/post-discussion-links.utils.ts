@@ -14,6 +14,7 @@ export function getPostDiscussionLinkDetails(
   discussionLink: PostDiscussionLink,
 ) {
   const type = SocialLinkLabels[discussionLink.type];
+  const { title } = discussionLink;
 
   const commentCount = discussionLink.commentCount
     ? `${discussionLink.commentCount} ${pluralize("comment", discussionLink.commentCount)}`
@@ -25,7 +26,7 @@ export function getPostDiscussionLinkDetails(
 
   const socialLink = {
     ...discussionLink,
-    title: `Discussion on ${type}`,
+    title: `Discussion on ${title ?? type}`,
   };
 
   return {

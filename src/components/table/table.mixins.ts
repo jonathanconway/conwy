@@ -1,10 +1,9 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { CSSProperties } from "@vanilla-extract/css";
 
 import * as boxMixins from "../box/box.mixins";
-import { media } from "../styling";
 import * as textMixins from "../text/text.mixins";
 
-export const table: ComplexStyleRule = {
+export const table: CSSProperties = {
   marginTop: "1rem",
   borderSpacing: 0,
   borderCollapse: "unset",
@@ -12,7 +11,7 @@ export const table: ComplexStyleRule = {
   ...boxMixins.boxBorderStructural,
 };
 
-export const tableCell = {
+export const tableCell: CSSProperties = {
   borderLeftStyle: "solid",
   borderLeftWidth: "1px",
   borderLeftColor: boxMixins.boxBorderStructural.borderColor,
@@ -20,59 +19,4 @@ export const tableCell = {
   borderTopWidth: "1px",
   borderTopColor: boxMixins.boxBorderStructural.borderColor,
   padding: "0.25rem 0.5rem",
-};
-
-export const tableCellHeaderTop = {};
-
-export const tableCellLeft = {
-  borderLeftStyle: "none",
-};
-
-export const tableCellHeaderTopLeft = {
-  borderTopLeftRadius: boxMixins.boxBorderStructural.borderRadius,
-};
-
-export const tableCellHeaderTopRight = {
-  borderTopRightRadius: boxMixins.boxBorderStructural.borderRadius,
-  borderRight: "none",
-};
-
-export const tableCellHeader = {
-  ...tableCell,
-  ...textMixins.label,
-  borderTop: "none",
-  borderBottom: "none",
-
-  "@media": {
-    [media.lgAndUp]: {
-      // Only on larger screens; otherwise, a wide link might blow out the page width.
-      whiteSpace: "nowrap",
-    },
-  },
-};
-
-export const tableCellBodyWithoutHeadFirstRow = {
-  borderTop: "none",
-};
-
-export const tableCellBody = {
-  ...tableCell,
-  borderBottom: "none",
-};
-
-export const tableCellBodyTop = {
-  borderTop: "none",
-};
-
-export const tableCellBodyBottom = {
-  borderBottom: "none",
-};
-
-export const tableCellBodyBottomLeft = {
-  borderBottomLeftRadius: boxMixins.boxBorderStructural.borderRadius,
-};
-
-export const tableCellBodyBottomRight = {
-  borderBottomRightRadius: boxMixins.boxBorderStructural.borderRadius,
-  borderRight: "none",
 };

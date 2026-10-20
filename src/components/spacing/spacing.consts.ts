@@ -1,16 +1,20 @@
-export const spacingRems = {
+import { RemValue } from "@/framework/css";
+
+import { SpacingSize, SpacingSizes } from "./spacing-sizes";
+
+export const spacingRems: Record<SpacingSize, RemValue> = {
   /** 2px */
-  xxs: 0.125,
+  [SpacingSizes.XXS]: 0.125,
   /** 4px */
-  xs: 0.25,
+  [SpacingSizes.XS]: 0.25,
   /** 8px */
-  s: 0.5,
+  [SpacingSizes.S]: 0.5,
   /** 16px */
-  m: 1,
+  [SpacingSizes.M]: 1,
   /** 20px */
-  l: 1.25,
+  [SpacingSizes.L]: 1.25,
   /** 24px */
-  xl: 1.5,
+  [SpacingSizes.XL]: 1.5,
   /** 32px */
-  xxl: 2,
+  [SpacingSizes.XXL]: 2,
 };

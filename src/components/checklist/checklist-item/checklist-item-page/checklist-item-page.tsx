@@ -3,11 +3,12 @@ import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
 
 import { Checklist, ChecklistItem as ChecklistItem_ } from "@/framework";
-import { useMDXComponents } from "@/mdx-components";
+// import { useMDXComponents } from "@/mdx-components";
 import { mdxComponents } from "@/mdx-components-base";
 
 import { MainAsideLayout } from "../../../layouts";
 import { MdxContainer } from "../../../mdx";
+import { Stack } from "../../../stack";
 import { ChecklistContext } from "../../checklist-context";
 
 import { ChecklistItemPageHeader } from "./checklist-item-page-header";
@@ -50,13 +51,15 @@ export async function ChecklistItemPage(props: ChecklistItemPageProps) {
     <MainAsideLayout
       main={
         <ChecklistContext checklistMeta={props.checklist.meta} isSingleItemView>
-          <ChecklistItemPageHeader
-            checklist={props.checklist}
-            checklistItem={props.checklistItem}
-          />
-          <MdxContainer>
-            <MDXContent components={mdxComponents} />
-          </MdxContainer>
+          <Stack gap={1}>
+            <ChecklistItemPageHeader
+              checklist={props.checklist}
+              checklistItem={props.checklistItem}
+            />
+            <MdxContainer>
+              <MDXContent components={mdxComponents} />
+            </MdxContainer>
+          </Stack>
         </ChecklistContext>
       }
     />

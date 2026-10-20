@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { rems } from "@/framework/utils/rems.css_";
+import { rems } from "@/framework/css";
 
 import { boxBorderDecorative } from "../box/box.mixins";
 import { rounded } from "../styling";

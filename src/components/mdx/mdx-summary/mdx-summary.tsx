@@ -2,10 +2,11 @@
 
 import { HTMLProps } from "react";
 
-import * as styles from "./mdx-summary.css";
+import { Text, TextProps, TextTypes } from "../../text";
 
-export type MdxSummaryProps = HTMLProps<HTMLDetailsElement>;
+export type MdxSummaryProps = Exclude<HTMLProps<HTMLElement>, TextProps> &
+  TextProps;
 
 export function MdxSummary(props: MdxSummaryProps) {
-  return <summary className={styles.summary} {...props} />;
+  return <Text type={TextTypes.Summary} {...props} />;
 }

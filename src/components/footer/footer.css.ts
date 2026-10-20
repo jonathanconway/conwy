@@ -1,8 +1,8 @@
 import { style } from "@vanilla-extract/css";
 
-import { rems } from "@/framework/utils/rems.css_";
+import { rems } from "@/framework/css";
 
-import { linkContent } from "../link/link.mixins";
+import { linkColor } from "../link/link.mixins";
 import * as textSizeConsts from "../text/text-size/text-size.consts";
 import { vars } from "../theme";
 
@@ -30,6 +30,6 @@ export const row = style({
 });
 
 export const link = style({
-  ...linkContent,
+  ...linkColor,
   textDecorationLine: "underline",
 });

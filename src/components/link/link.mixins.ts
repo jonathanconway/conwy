@@ -40,21 +40,32 @@ export const linkContentsImage = {
 export const linkDecoration = {
   textDecorationColor: vars.link.text.decoration.color,
   textDecorationLine: "none",
-  ":hover": {
-    textDecorationColor: vars.link.hover.text.decoration.color,
-    textDecorationLine: "underline",
-  },
+};
+
+export const linkDecorationHover = {
+  textDecorationColor: vars.link.hover.text.decoration.color,
+  textDecorationLine: "underline",
 };
 
 /**
  * Content
  */
 
-export const linkContent = {
+export const linkColor = {
   color: vars.link.text.color,
-  ":hover": {
-    color: vars.link.hover.text.color,
-  },
+};
+
+export const linkColorHover = {
+  color: vars.link.hover.text.color,
+};
+
+/**
+ * Hover
+ */
+
+const linkHover = {
+  ...linkColorHover,
+  ...linkDecorationHover,
 };
 
 /**
@@ -64,8 +75,12 @@ export const linkContent = {
 export const link: ComplexStyleRule = {
   ...linkBase,
   ...linkDecoration,
-  ...linkContent,
+  ...linkColor,
   ...focusOutline,
+
+  ":hover": {
+    ...linkHover,
+  },
 };
 
 /**

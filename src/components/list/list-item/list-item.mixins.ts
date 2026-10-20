@@ -1,8 +1,8 @@
-import { ComplexStyleRule, GlobalStyleRule } from "@vanilla-extract/css";
+import { ComplexStyleRule } from "@vanilla-extract/css";
 
 import * as textMixins from "../../text/text.mixins";
 
-export const listItem: ComplexStyleRule = {
+export const listItem = {
   ...textMixins.paragraph,
 };
 

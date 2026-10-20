@@ -1,6 +1,13 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 
-import { Text, TextTypes } from "../text";
+import { Stack, StackDirections, StackDistributions } from "../stack";
+import {
+  Text,
+  TextSpacing,
+  TextSpacingStrategies,
+  TextType,
+  TextTypes,
+} from "../text";
 
 import { HeadingLevel } from "./heading-level";
 
@@ -8,16 +15,17 @@ export type HeadingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,
   HTMLHeadingElement
 > & {
+  readonly classNameExtended?: HTMLAttributes<HTMLHeadingElement>["className"];
   readonly level?: HeadingLevel;
-  readonly styleInner?: boolean;
+  readonly afterSlot?: ReactNode;
 };
 
 /**
  * `Heading` is a convenience component for `Text` of type `heading`.
- * @param param0
- * @returns
  */
-export function Heading({ level = 1, ...restProps }: HeadingProps) {
+export function Heading(props: HeadingProps) {
+  const { level = 1, children, afterSlot, ...restProps } = props;
+
   const type = {
     1: TextTypes.Heading1,
     2: TextTypes.Heading2,
@@ -26,5 +34,25 @@ export function Heading({ level = 1, ...restProps }: HeadingProps) {
     5: TextTypes.Heading5,
   }[level];
 
-  return <Text type={type} {...restProps} />;
+  return afterSlot ? (
+    <TextSpacing
+      type={type as TextType}
+      strategy={TextSpacingStrategies.Include}
+    >
+      <Stack
+        gap={1}
+        direction={StackDirections.Row}
+        distribution={StackDistributions.Flow}
+      >
+        <Text type={type} {...restProps}>
+          {children}
+        </Text>
+        <span>{afterSlot}</span>
+      </Stack>
+    </TextSpacing>
+  ) : (
+    <Text type={type} {...restProps}>
+      {children}
+    </Text>
+  );
 }

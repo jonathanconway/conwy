@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 
-import { rems } from "@/framework/utils/rems.css_";
+import { rems } from "@/framework/css";
 
 import { spacingRems } from "../spacing/spacing.consts";
 import * as textSizeMixins from "../text/text-size/text-size.mixins";

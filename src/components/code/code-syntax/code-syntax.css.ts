@@ -1,6 +1,6 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { rems } from "@/framework/utils/rems.css_";
+import { rems } from "@/framework/css";
 
 import * as boxMixins from "../../box/box.mixins";
 import { media, rounded } from "../../styling";

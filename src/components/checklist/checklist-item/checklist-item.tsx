@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 
+import { ListItem } from "../../list";
 import { useChecklistContext } from "../checklist-context";
 
 import { ChecklistItemDetails } from "./checklist-item-details";
@@ -24,7 +25,7 @@ export function ChecklistItem(props: ChecklistItemProps) {
   const checklistName = checklistContext.checklistMeta.slug!;
 
   return (
-    <li className={styles.checklistLi} id={props.item.name}>
+    <ListItem className={styles.checklistLi} id={props.item.name}>
       <label htmlFor={checklistItemId} className={styles.checklistLiLabel}>
         <ChecklistItemInput id={checklistItemId} />
         <ChecklistItemLabel>
@@ -44,6 +45,6 @@ export function ChecklistItem(props: ChecklistItemProps) {
           </div>
         </ChecklistItemLabel>
       </label>
-    </li>
+    </ListItem>
   );
 }

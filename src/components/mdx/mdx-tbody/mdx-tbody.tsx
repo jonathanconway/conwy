@@ -1,11 +1,7 @@
-import { MdxWrapper } from "../mdx-wrapper";
+import { TBody } from "../../table";
 
 import { MdxTBodyProps } from "./mdx-tbody-props";
 
-export function MdxTBody({ children, ...restProps }: MdxTBodyProps) {
-  return (
-    <tbody {...restProps}>
-      <MdxWrapper>{children}</MdxWrapper>
-    </tbody>
-  );
+export function MdxTBody(props: MdxTBodyProps) {
+  return <TBody {...props} />;
 }

@@ -6,6 +6,7 @@ export const SocialLinkTypeHosts: Record<
 > = {
   [SocialLinkTypes.Dev]: "dev.to",
   [SocialLinkTypes.DevTalk]: "devtalk.com",
+  [SocialLinkTypes.Forum]: "earlyretirementextreme.com",
   [SocialLinkTypes.GitHub]: "github.com",
   [SocialLinkTypes.LinkedIn]: "linkedin.com/pulse",
   [SocialLinkTypes.LinkedInPost]: ["linkedin.com/posts", "lnkd.in/p"],

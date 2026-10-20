@@ -1,5 +1,6 @@
-import { CSSProperties, DetailedHTMLProps, HTMLAttributes } from "react";
+import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+import { TextSpacingStrategy } from "./text-spacing";
 import { TextType } from "./text-type";
 
 export type TextProps<T extends HTMLElement = HTMLElement> = DetailedHTMLProps<
@@ -8,8 +9,8 @@ export type TextProps<T extends HTMLElement = HTMLElement> = DetailedHTMLProps<
 > &
   TextStyleProps & {
     readonly as?: React.HTMLElementType;
-    readonly textAlign?: CSSProperties["textAlign"];
-    readonly styleInner?: boolean;
+    readonly classNameExtended?: HTMLAttributes<HTMLElement>["className"];
+    readonly spacingStrategy?: TextSpacingStrategy;
   };
 
 export interface TextStyleProps {

@@ -1,9 +1,10 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import { rems } from "@/framework/utils/rems.css_";
+import { rems } from "@/framework/css";
 
 import * as linkMixins from "../../link/link.mixins";
 import * as textSizeConsts from "../../text/text-size/text-size.consts";
+import * as textSpacingMixins from "../../text/text-spacing/text-spacing.mixins";
 import * as textWeightMixins from "../../text/text-weight/text-weight.mixins";
 import { vars } from "../../theme";
 
@@ -30,7 +31,7 @@ export const linkHoverHash = style({
   visibility: "hidden",
   paddingLeft: "1rem",
   fontSize: rems(textSizeConsts.fontSizeRems.s),
-  color: linkMixins.linkContent[":hover"].color,
+  color: linkMixins.linkColorHover.color,
 });
 
 globalStyle(`${link}:hover ${linkHoverHash}, ${link}:focus ${linkHoverHash}`, {

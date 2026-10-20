@@ -9,6 +9,7 @@ export const TextTypes = {
   Heading4: "heading4",
   Heading5: "heading5",
   Label: "label",
+  LinkBoxTitleSmall: "linkBoxTitleSmall",
   ListItem: "listItem",
   ListItemSmall: "listItemSmall",
   ListItemSubTitle: "listItemSubTitle",

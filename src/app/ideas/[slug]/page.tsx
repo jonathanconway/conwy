@@ -1,6 +1,12 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, Idea, PageLayout, ResponsiveMdHalf } from "@/components";
+import {
+  Breadcrumb,
+  ContentPageHeader,
+  Idea,
+  PageLayout,
+  ResponsiveMdHalf,
+} from "@/components";
 import { site } from "@/content";
 import * as ideasMap from "@/content/ideas";
 import { ContentTypes } from "@/framework";
@@ -18,16 +24,22 @@ export default async function Page(props: PageProps) {
       selectedNavPath="/ideas"
       main={
         <>
-          <Breadcrumb
-            segments={[
-              {
-                title: "Ideas",
-                url: "/ideas",
-              },
-              {
-                title: idea.meta.title,
-              },
-            ]}
+          <ContentPageHeader
+            content={idea}
+            preHeader={
+              <Breadcrumb
+                segments={[
+                  {
+                    title: "Ideas",
+                    url: "/ideas",
+                  },
+                  {
+                    title: idea.meta.title,
+                  },
+                ]}
+              />
+            }
+            title={idea.meta.title}
           />
 
           <ResponsiveMdHalf>
