@@ -12,6 +12,7 @@ export * from "./can-i-use";
 export * from "./cello-butterflow";
 export * from "./color-slurp";
 export * from "./coolors";
+export * from "./darn-tough-socks";
 export * from "./dash";
 export * from "./draw";
 export * from "./electric-candle-lighter";
