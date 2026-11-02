@@ -1,4 +1,5 @@
 import { aboutMeThemeBase } from "../about-me/about-me.css-theme";
+import { layoutThemeBase } from "../app/app-layout/app-layout.css-theme";
 import { articlesTagFiltersThemeBase } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeBase } from "../aside/aside.css-theme";
 import { blockQuoteDisclaimerThemeBase } from "../block-quote/block-quote-disclaimer/block-quote-disclaimer.css-theme";
@@ -23,7 +24,6 @@ import { imageFigureThemeBase } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeBase } from "../image-modal/image-modal.css-theme";
 import { kbdThemeBase } from "../kbd/kbd.css-theme";
 import { labelThemeBase } from "../label/label.css-theme";
-import { layoutThemeBase } from "../layouts/app-layout/app-layout.css-theme";
 import { linkBoxTitleThemeBase } from "../link-box/link-box-title/link-box-title.css-theme";
 import { linkBoxThemeBase } from "../link-box/link-box.css-theme";
 import { linkThemeBase } from "../link/link.css-theme";

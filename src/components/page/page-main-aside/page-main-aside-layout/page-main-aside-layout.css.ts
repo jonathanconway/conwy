@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
 
-import { media } from "../../styling";
+import { media } from "../../../styling";
 
 export const container = style({
   marginTop: "1rem",

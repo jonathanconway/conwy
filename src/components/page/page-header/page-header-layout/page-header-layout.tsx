@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-import { Stack } from "../../stack";
-import { LayoutPropsBase } from "../layout-props";
+import { LayoutPropsBase } from "../../../layouts";
+import { Stack } from "../../../stack";
 
 interface PageHeaderLayoutProps extends LayoutPropsBase {
   readonly titleSlot?: ReactNode;

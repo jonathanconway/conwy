@@ -3,8 +3,8 @@ import { ChecklistContext } from "..";
 import { checklistsRoute, createChecklistsChecklistRoute } from "@/app/routes";
 
 import { ChecklistContainer } from "../../checklist";
-import { MainAsideLayout } from "../../layouts";
 import { MdxContainer } from "../../mdx";
+import { PageMainAsideLayout } from "../../page/page-main-aside/page-main-aside-layout";
 import { Page } from "../../page";
 import { Stack } from "../../stack";
 
@@ -22,7 +22,7 @@ export function ChecklistPage(props: ChecklistPageProps) {
       subHeaderSlot={<ChecklistPageSubHeader checklist={props.checklist} />}
     >
       <ChecklistContext checklistMeta={props.checklist.meta}>
-        <MainAsideLayout
+        <PageMainAsideLayout
           mainSlot={
             <Stack gap={1}>
               <MdxContainer>{props.checklist.startnotes}</MdxContainer>
@@ -36,7 +36,7 @@ export function ChecklistPage(props: ChecklistPageProps) {
         />
       </ChecklistContext>
 
-      <MainAsideLayout
+      <PageMainAsideLayout
         mainSlot={<MdxContainer>{props.checklist.endnotes}</MdxContainer>}
       />
     </Page>

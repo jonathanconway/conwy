@@ -2,7 +2,7 @@ import { articlesRoute, createArticlesArticleRoute } from "@/app/routes";
 import { Article as Article_ } from "@/framework";
 
 import { NavItems } from "../../header";
-import { MainAsidePage } from "../../page";
+import { PageMainAside } from "../../page";
 import { Stack } from "../../stack";
 import { ArticleBody } from "../article-body";
 import { ArticleDiscussion } from "../article-discussion";
@@ -20,7 +20,7 @@ export function ArticlePage(props: ArticlePageProps) {
   const articleRoute = createArticlesArticleRoute(article);
 
   return (
-    <MainAsidePage
+    <PageMainAside
       selectedNavItem={NavItems.Articles}
       breadcrumbSegments={[articlesRoute, { title: articleRoute.title }]}
       title={articleRoute.title}

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export interface MainAsideLayoutProps {
+export interface PageMainAsideLayoutProps {
   readonly mainSlot: ReactNode;
   readonly asideSlot?: ReactNode;
 }

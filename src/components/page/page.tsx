@@ -1,15 +1,15 @@
 import { isString } from "lodash";
 
-import { checkIsReactNode, checkIsReactNodeElement } from "@/framework";
+import { checkIsReactNodeElement } from "@/framework";
 
 import { Breadcrumb } from "../breadcrumb";
 import { Footer } from "../footer";
 import { Header } from "../header";
 import { Heading } from "../heading";
-import { PageLayout } from "../layouts";
 import { SCROLL_TO_TOP_ANCHOR_ID, ScrollToTopLink } from "../scroll-to-top";
 import { Stack, StackDirections } from "../stack";
 
+import { PageLayout } from "./page-layout";
 import { PageProps } from "./page-props";
 
 export function Page(props: PageProps) {

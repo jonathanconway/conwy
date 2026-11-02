@@ -1,11 +1,9 @@
 import { Suspense } from "react";
 
-import { AboutMe, ArticlesRecentList, Page, PageLayout } from "@/components";
+import { AboutMe, ArticlesRecentList, Page } from "@/components";
 import * as articlesMap from "@/content/articles";
 import * as microsMap from "@/content/micros";
 import { getPosts } from "@/framework";
-
-import { homeRoute } from "./routes";
 
 export default function Home() {
   const items = getPosts({

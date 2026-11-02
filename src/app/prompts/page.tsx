@@ -1,15 +1,15 @@
 import {
   MdxContainer,
   Page,
-  PageLayout,
   PromptsList,
   ResponsiveMdHalf,
 } from "@/components";
 import * as contentMap_ from "@/content";
 import { promptsFragment, site } from "@/content";
 import * as promptsMap from "@/content/prompts";
-import { ContentAnchorsMap, ContentMap } from "@/framework";
 import {
+  ContentAnchorsMap,
+  ContentMap,
   Prompt as Prompt_,
   reduceContentsAnchorLinkAndInfos,
 } from "@/framework";

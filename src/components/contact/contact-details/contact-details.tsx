@@ -1,5 +1,5 @@
-import { TwoColLayout } from "../../layouts";
 import { Link } from "../../link";
+import { PageLayoutTwoCol } from "../../page/page-layout";
 import { Stack } from "../../stack";
 import { TextSizes } from "../../text";
 
@@ -17,10 +17,10 @@ export function ContactDetails() {
   ];
 
   return (
-    <TwoColLayout>
+    <PageLayoutTwoCol>
       <ContactDetailsColumn key="contacts-col-1" contacts={contactsCol1} />
       <ContactDetailsColumn key="contacts-col-2" contacts={contactsCol2} />
-    </TwoColLayout>
+    </PageLayoutTwoCol>
   );
 }
 

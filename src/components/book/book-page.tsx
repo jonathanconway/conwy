@@ -1,6 +1,6 @@
 import { Book } from "@/framework";
 
-import { MainAsideLayout } from "../layouts";
+import { PageMainAsideLayout } from "../page/page-main-aside/page-main-aside-layout";
 
 import { BooksListItem } from "./books-list";
 
@@ -9,5 +9,5 @@ interface BookPageProps {
 }
 
 export function BookPage(props: BookPageProps) {
-  return <MainAsideLayout mainSlot={<BooksListItem book={props.book} />} />;
+  return <PageMainAsideLayout mainSlot={<BooksListItem book={props.book} />} />;
 }

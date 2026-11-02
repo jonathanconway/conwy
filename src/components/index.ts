@@ -1,5 +1,6 @@
 export * from "./about-me";
 export * from "./action-and-modal";
+export * from "./app";
 export * from "./article";
 export * from "./articles";
 export * from "./backdrop";

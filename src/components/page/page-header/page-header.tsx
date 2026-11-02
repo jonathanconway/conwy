@@ -1,6 +1,7 @@
 import { Heading } from "../../heading";
-import { PageHeaderLayout } from "../../layouts";
 import { SCROLL_TO_TOP_ANCHOR_ID } from "../../scroll-to-top";
+
+import { PageHeaderLayout } from "./page-header-layout";
 
 interface PageHeaderProps {
   readonly title: string;

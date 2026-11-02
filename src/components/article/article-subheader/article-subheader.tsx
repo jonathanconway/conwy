@@ -1,7 +1,7 @@
 import { Article as Article_ } from "@/framework";
 
 import { generateContentPageSubHeaderLinks } from "../../content-page";
-import { PageSubHeaderLayout } from "../../layouts";
+import { PageSubHeaderLayout } from "../../page/page-subheader";
 
 import { ArticleSubHeaderTags } from "./article-subheader-tags";
 

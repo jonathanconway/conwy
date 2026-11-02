@@ -1,6 +1,7 @@
 import { createTheme } from "@vanilla-extract/css";
 
 import { aboutMeThemeLight } from "../about-me/about-me.css-theme";
+import { layoutThemeLight } from "../app/app-layout/app-layout.css-theme";
 import { articlesTagFiltersThemeLight } from "../articles/articles-tag-filters/articles-tag-filters.css-theme";
 import { asideThemeLight } from "../aside/aside.css-theme";
 import { blockQuoteDisclaimerThemeLight } from "../block-quote/block-quote-disclaimer/block-quote-disclaimer.css-theme";
@@ -25,7 +26,6 @@ import { imageFigureThemeLight } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeLight } from "../image-modal/image-modal.css-theme";
 import { kbdThemeLight } from "../kbd/kbd.css-theme";
 import { labelThemeLight } from "../label/label.css-theme";
-import { layoutThemeLight } from "../layouts/app-layout/app-layout.css-theme";
 import { linkBoxTitleThemeLight } from "../link-box/link-box-title/link-box-title.css-theme";
 import { linkBoxThemeLight } from "../link-box/link-box.css-theme";
 import { linkThemeLight } from "../link/link.css-theme";

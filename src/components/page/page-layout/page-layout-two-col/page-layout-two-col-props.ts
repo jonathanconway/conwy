@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
 
-export interface TwoColLayoutProps {
+export interface PageLayoutTwoColProps {
   readonly children: [ReactNode, ReactNode];
   readonly justifyContent?: CSSProperties["justifyContent"];
 }

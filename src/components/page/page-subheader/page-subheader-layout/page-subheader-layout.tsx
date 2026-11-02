@@ -1,8 +1,8 @@
 import { isArray } from "lodash";
 import { ReactNode } from "react";
 
-import { Chain } from "../../chain";
-import { Stack, StackDirections, StackDistributions } from "../../stack";
+import { Chain } from "../../../chain";
+import { Stack, StackDirections, StackDistributions } from "../../../stack";
 
 interface PageSubHeaderLayoutProps {
   readonly linksSlot: ReactNode;

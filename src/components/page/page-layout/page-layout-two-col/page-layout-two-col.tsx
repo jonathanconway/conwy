@@ -1,7 +1,7 @@
-import { TwoColLayoutProps } from "./two-col-layout-props";
-import * as styles from "./two-col-layout.css";
+import { PageLayoutTwoColProps } from "./page-layout-two-col-props";
+import * as styles from "./page-layout-two-col.css";
 
-export function TwoColLayout(props: TwoColLayoutProps) {
+export function PageLayoutTwoCol(props: PageLayoutTwoColProps) {
   const {
     children: [child0, child1],
   } = props;

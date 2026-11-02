@@ -1,7 +1,7 @@
-import * as styles from "./main-aside-layout.css";
-import { MainAsideLayoutProps } from "./main-aside-props";
+import { PageMainAsideLayoutProps } from "./page-main-aside-layout-props";
+import * as styles from "./page-main-aside-layout.css";
 
-export function MainAsideLayout(props: MainAsideLayoutProps) {
+export function PageMainAsideLayout(props: PageMainAsideLayoutProps) {
   const { mainSlot: main, asideSlot: aside } = props;
 
   return (

@@ -1,6 +1,6 @@
 import { createMicrosMicroRoute, microsRoute } from "@/app/routes";
 
-import { MainAsidePage } from "../../page";
+import { PageMainAside } from "../../page";
 import { Stack } from "../../stack";
 
 import { MicroPageBody } from "./micro-page-body";
@@ -14,7 +14,7 @@ export function MicroPage(props: MicroPageProps) {
   const microRoute = createMicrosMicroRoute(micro);
 
   return (
-    <MainAsidePage
+    <PageMainAside
       breadcrumbSegments={[microsRoute, { title: microRoute.title }]}
       title={microRoute.title}
       subHeaderSlot={<MicroPageSubHeader micro={props.micro} />}

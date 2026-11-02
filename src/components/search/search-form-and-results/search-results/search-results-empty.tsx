@@ -1,4 +1,4 @@
-import { CenteredLayout } from "../../../layouts";
+import { LayoutCentered } from "../../../layouts";
 import { Text } from "../../../text";
 
 import * as styles from "./search-results.css";
@@ -6,9 +6,9 @@ import * as styles from "./search-results.css";
 export function SearchResultsEmpty() {
   return (
     <div className={styles.resultsContainer}>
-      <CenteredLayout>
+      <LayoutCentered>
         <Text>Please type in some search text ⤴</Text>
-      </CenteredLayout>
+      </LayoutCentered>
     </div>
   );
 }

@@ -8,8 +8,6 @@ export interface PageLayoutProps {
   readonly footerSlot: ReactNode;
 }
 
-// todo: move layouts into separate folders, e.g. /page/page-layout/....
-
 export function PageLayout(props: PageLayoutProps) {
   const { headerSlot, mainSlot, footerSlot } = props;
   return (

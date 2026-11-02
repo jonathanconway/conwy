@@ -4,8 +4,8 @@ import {
   MdxContainer,
   NavItems,
   Page,
+  PageLayoutTwoCol,
   Stack,
-  TwoColLayout,
 } from "@/components";
 import { contactFragment, contactPgpFragment, site } from "@/content";
 
@@ -14,7 +14,7 @@ import { contactRoute } from "../routes";
 export default function Contact() {
   return (
     <Page title={contactRoute.title} selectedNavItem={NavItems.Contact}>
-      <TwoColLayout>
+      <PageLayoutTwoCol>
         <Stack gap={1}>
           <Stack gap={0.5}>
             <MdxContainer>{contactFragment.content}</MdxContainer>
@@ -25,7 +25,7 @@ export default function Contact() {
           <MdxContainer>{contactPgpFragment.content}</MdxContainer>
         </Stack>
         <ContactForm />
-      </TwoColLayout>
+      </PageLayoutTwoCol>
     </Page>
   );
 }

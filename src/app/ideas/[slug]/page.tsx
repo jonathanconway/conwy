@@ -2,11 +2,9 @@ import { Metadata } from "next";
 
 import { createIdeasIdeaRoute, ideasRoute } from "@/app/routes";
 import {
-  Breadcrumb,
   ContentPageSubHeader,
   Idea,
   Page,
-  PageLayout,
   ResponsiveMdHalf,
 } from "@/components";
 import { site } from "@/content";
