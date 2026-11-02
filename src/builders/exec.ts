@@ -1,6 +1,6 @@
 import { chain, startCase } from "lodash";
 
-import { builderOrders } from "./builder-orders";
+import { buildersRunOnStart } from "./builders-run-on-start";
 import * as builders from "./index";
 import { Orders } from "./orders";
 
@@ -22,35 +22,25 @@ const [all, orderPre, orderPost] = [
   process.argv.includes("--order=post"),
 ];
 
-switch (true) {
-  case all && orderPre: {
-    builderOrders[Orders.Pre].forEach((builder) => {
-      const builderName = generateBuilderCLIName(builder.name);
-      console.log(`Running ${startCase(builderName)} build`);
-      builder();
-    });
-  }
-
-  case all && orderPost: {
-    builderOrders[Orders.Post].forEach((builder) => {
-      const builderName = generateBuilderCLIName(builder.name);
-      console.log(`Running ${startCase(builderName)} build`);
-      builder();
-    });
-  }
-
-  case all && !orderPre && !orderPost: {
-    Object.entries(buildersByCLIName).forEach(([builderName, builder]) => {
-      console.log(`Running ${startCase(builderName)} build`);
-
-      builder();
-    });
-    break;
-  }
-
-  default: {
-    const builderName = process.argv[2];
+if (all || orderPre) {
+  buildersRunOnStart[Orders.Pre].forEach((builder) => {
+    const builderName = generateBuilderCLIName(builder.name);
     console.log(`Running ${startCase(builderName)} build`);
-    buildersByCLIName[builderName]();
-  }
+    builder();
+  });
+}
+
+if (all || orderPost) {
+  buildersRunOnStart[Orders.Post].forEach((builder) => {
+    const builderName = generateBuilderCLIName(builder.name);
+    console.log(`Running ${startCase(builderName)} build`);
+    builder();
+  });
+}
+
+// Only run specific build
+if (!all && !orderPre && !orderPost) {
+  const builderName = process.argv[2];
+  console.log(`Running ${startCase(builderName)} build`);
+  buildersByCLIName[builderName]();
 }
