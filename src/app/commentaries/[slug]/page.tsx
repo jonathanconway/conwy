@@ -26,10 +26,7 @@ export default async function CommentariesPage(props: PageProps) {
 
   const sourceLinkInfo = getContentLinkInfo(contentMap, commentary.meta.source);
 
-  const commentaryRoute = createCommentariesCommentaryRoute(
-    commentary,
-    sourceLinkInfo,
-  );
+  const commentaryRoute = createCommentariesCommentaryRoute(commentary);
 
   return (
     <Page

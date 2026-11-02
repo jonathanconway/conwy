@@ -11,7 +11,6 @@ export interface CommentaryMeta {
   readonly blurb: string;
   readonly shortBlurb?: string;
 
-  // todo: ideally this should be a whole content item reference, bound at build time via a constructor, rather than just a link
   readonly source: ContentLink;
 
   readonly socialLinks: readonly SocialLink[];

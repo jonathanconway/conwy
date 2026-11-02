@@ -1,5 +1,5 @@
 import { howBrandsGrowBook } from "@/content/books/how-brands-grow";
-import { Commentary, ContentTypes, getContentLink } from "@/framework";
+import { Commentary, ContentTypes, getContentLinkWithTitle } from "@/framework";
 
 import Content from "./content.mdx";
 import { howBrandsGrowCommentarySlug } from "./slug";
@@ -7,7 +7,7 @@ import { howBrandsGrowCommentarySlug } from "./slug";
 export const howBrandsGrowCommentary: Commentary = {
   type: ContentTypes.Commentary,
   meta: {
-    source: getContentLink(howBrandsGrowBook),
+    source: getContentLinkWithTitle(howBrandsGrowBook),
     slug: howBrandsGrowCommentarySlug,
     date: "2025-04-18",
     tags: [],

@@ -63,14 +63,10 @@ export const commentariesRoute = {
   url: "/commentaries",
 };
 
-export function createCommentariesCommentaryRoute(
-  commentary: Commentary,
-  // todo: fix this to instead all be included in `CommentaryMeta`
-  sourceContentLinkInfo: ContentLinkInfo,
-) {
-  const contentTypeLbael = CONTENT_TYPE_LABELS[commentary.meta.source.type];
+export function createCommentariesCommentaryRoute(commentary: Commentary) {
+  const contentTypeLabel = CONTENT_TYPE_LABELS[commentary.meta.source.type];
   return {
-    title: `Commentary on ${contentTypeLbael}: ${sourceContentLinkInfo.title}`,
+    title: `Commentary on ${contentTypeLabel}: ${commentary.meta.source.title}`,
     url: join(commentariesRoute.url, commentary.meta.slug),
   };
 }

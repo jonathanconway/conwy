@@ -16,7 +16,7 @@ export function getContentLinkInfo(
     contentLink.slug,
   );
   const [title, authors] = [
-    getContentTitle(contentMap, content),
+    getContentTitle(content),
     getContentAuthors(contentMap, content),
   ];
   return {
