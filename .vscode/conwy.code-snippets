@@ -1,0 +1,381 @@
+{
+  "Const Enum": {
+    "body": [
+      "import { TypeOfConst } from \"@/framework\";",
+      "",
+      "export const $0s = {} as const;",
+      "",
+      "export type $0 = TypeOfConst<typeof $0s>;"
+    ]
+  },
+  "Component": {
+    "body": [
+      "interface $0Props {}",
+      "",
+      "export function $0(props: $0Props) {",
+      "  return <></>;",
+      "}"
+    ]
+  },
+  "Component Css Theme": {
+    "body": [
+      "export const $0ThemeBase = {};",
+      "",
+      "export const $0ThemeLight = {};",
+      "",
+      "export const $0ThemeDark = {};"
+    ]
+  },
+  "Component Css": {
+    "body": [
+      "import { style } from \"@vanilla-extract/css\";",
+      "",
+      "import * as mixins from \"./mixins\";",
+      "",
+      "export const $0 = style(mixins.$0);"
+    ]
+  },
+  "Component Index": { "body": ["export * from \"./$0\";"] },
+  "Component Mixins": { "body": ["export const $0 = {};"] },
+  "Component Mocks": {
+    "body": [
+      "import { $0 } from \"./$1-props\";",
+      "",
+      "export function $2(): $0 {",
+      "  return {};",
+      "}"
+    ]
+  },
+  "Component Props": { "body": ["export interface $0 {};"] },
+  "Component Readme": {
+    "body": [
+      "# $0",
+      "$1\\n` : \"\"}",
+      "\\`\\`\\`jsx",
+      "import { $0 } from \"@/components\";",
+      "",
+      "export default () => <$0 />;",
+      "\\`\\`\\`"
+    ]
+  },
+  "Component Stories": {
+    "body": [
+      "import type { Meta, StoryObj } from \"@storybook/nextjs-vite\";",
+      "",
+      "import { $0 } from \"./$1\";",
+      "import { $2 } from \"./$1.mocks\";",
+      "",
+      "const meta = {",
+      "  title: \"Components/$3\",",
+      "  component: $0,",
+      "  argTypes: {},",
+      "} satisfies Meta<typeof $0>;",
+      "",
+      "export default meta;",
+      "type Story = StoryObj<typeof meta>;",
+      "",
+      "export const Default: Story = {",
+      "  args: $2(),",
+      "};"
+    ]
+  },
+  "Component Tsx": {
+    "body": [
+      "import * as styles from \"./$0.css\";",
+      "import { $1 } from \"./$0-props\";",
+      "",
+      "/**",
+      " * $2",
+      " */",
+      "export function $3(props: $1) {",
+      "  const { className = styles.$4, ...restProps } = props;",
+      "  return (<div className={className} {...restProps} />);",
+      "}"
+    ]
+  },
+  "Content Article Mdx": { "body": ["$0"] },
+  "Content Article Index": {
+    "body": [
+      "import { Article, ContentTypes } from \"@/framework\";",
+      "",
+      "import Content from \"./content.mdx\";",
+      "import { meta } from \"./meta\";",
+      "",
+      "export const $0: Article = {",
+      "  type: ContentTypes.Article,",
+      "  meta,",
+      "  content: <Content />,",
+      "};"
+    ]
+  },
+  "Content Article Meta": {
+    "body": [
+      "import { ArticleMeta, PostTags } from \"@/framework\";",
+      "",
+      "export const meta: ArticleMeta = {",
+      "  title: \"$0\",",
+      "  blurb: \"\",",
+      "  createdDate: \"$1\",",
+      "  slug: \"$2\",",
+      "  tags: [$3],",
+      "  socialLinks: [],",
+      "  discussionLinks: []",
+      "};"
+    ]
+  },
+  "Content Article Articles Index": { "body": ["export * from \"./$0\";"] },
+  "Content Book Index": {
+    "body": [
+      "import { Book, ContentTypes } from \"@/framework\";",
+      "",
+      "import { meta } from \"./meta\";",
+      "",
+      "export const $0: Book = {",
+      "  type: ContentTypes.Book,",
+      "  meta,",
+      "};"
+    ]
+  },
+  "Content Book Meta": {
+    "body": [
+      "import { BookCategories, BookMeta, BookStatuses } from \"@/framework/content/book\";",
+      "",
+      "export const meta: BookMeta = {",
+      "  slug: \"$0\",",
+      "  authors: [$1\"`).join(\", \")}],",
+      "  status: BookStatuses.Listed,",
+      "  title: \"$2\",",
+      "  url: $3,",
+      "  category: BookCategories.$4,",
+      "};"
+    ]
+  },
+  "Content Book Books Index": { "body": ["export * from \"./$0\";"] },
+  "Content Community Communities Index": {
+    "body": ["export * from \"./$0\";"]
+  },
+  "Content Community Blurb Short Mdx": { "body": ["$0"] },
+  "Content Community Index": {
+    "body": [
+      "import { Community, CommunityCategories, ContentTypes } from \"@/framework\";",
+      "",
+      "import BlurbShort from \"./blurb-short.mdx\";",
+      "",
+      "export const $0: Community = {",
+      "  type: ContentTypes.Community,",
+      "  meta: {",
+      "    slug: \"$1\",",
+      "    title: \"$2\",",
+      "    url: \"$3\",",
+      "    mainImage: {",
+      "      src: \"/images/communities/$1.png\",",
+      "    },",
+      "    category: CommunityCategories.$4,",
+      "    myPosts: [],",
+      "  },",
+      "  blurbShort: <BlurbShort />,",
+      "};"
+    ]
+  },
+  "Content Fragment Mdx": { "body": ["$0"] },
+  "Content Fragment Index": {
+    "body": [
+      "import { Fragment } from \"@/framework\";",
+      "",
+      "import Content from \"./content.mdx\";",
+      "",
+      "export const $0: Fragment = {",
+      "  content: <Content />,",
+      "};"
+    ]
+  },
+  "Content Fragment Fragments Index": { "body": ["export * from \"./$0\";"] },
+  "Content Idea Blurb Mdx": { "body": ["$0"] },
+  "Content Idea Mdx": { "body": ["$0"] },
+  "Content Idea Index": {
+    "body": [
+      "import { ContentTypes, Idea } from \"@/framework\";",
+      "",
+      "import Blurb from \"./blurb.mdx\";",
+      "import Content from \"./content.mdx\";",
+      "import { meta } from \"./meta\";",
+      "",
+      "export const $0: Idea = {",
+      "  type: ContentTypes.Idea,",
+      "  meta,",
+      "  blurb: <Blurb />,",
+      "  content: <Content />,",
+      "};"
+    ]
+  },
+  "Content Idea Meta": {
+    "body": [
+      "import { IdeaMeta } from \"@/framework\";",
+      "",
+      "export const meta: IdeaMeta = {",
+      "  slug: \"$0\",",
+      "  title: \"$1\",",
+      "};"
+    ]
+  },
+  "Content Idea Ideas Index": { "body": ["export * from \"./$0\";"] },
+  "Content Micro Mdx": { "body": ["$0"] },
+  "Content Micro Index": {
+    "body": [
+      "import { ContentTypes, Micro } from \"@/framework\";",
+      "",
+      "import { meta } from \"./meta\";",
+      "import Content from \"./content.mdx\"",
+      "",
+      "export const $0: Micro = {",
+      "  type: ContentTypes.Micro,",
+      "  meta,",
+      "  content: <Content />,",
+      "};"
+    ]
+  },
+  "Content Micro Meta": {
+    "body": [
+      "import { MicroMeta, PostTags, SocialLinkTypes } from \"@/framework\";",
+      "",
+      "export const meta: MicroMeta = {",
+      "  createdDate: \"$0\",",
+      "  slug: \"$1\",",
+      "  shortBlurb: \"$2\",",
+      "  tags: [$3],",
+      "  socialLinks: [$4],",
+      "  discussionLinks: [$5],",
+      "  isPinned: $6,",
+      "};"
+    ]
+  },
+  "Content Micro Micros Index": { "body": ["export * from \"./$0\";"] },
+  "Content Project Mdx": { "body": ["$0"] },
+  "Content Project Index": {
+    "body": [
+      "import { ContentTypes, Project } from \"@/framework\";",
+      "",
+      "import Content from \"./content.mdx\";",
+      "import { meta } from \"./meta\";",
+      "",
+      "export const $0: Project = {",
+      "  type: ContentTypes.Project,",
+      "  meta,",
+      "  content: <Content />,",
+      "};"
+    ]
+  },
+  "Content Project Meta": {
+    "body": [
+      "import {",
+      "  PostTags,",
+      "  ProjectMeta,",
+      "  ProjectSubTypes,",
+      "  SocialLinkTypes,",
+      "} from \"@/framework\";",
+      "",
+      "export const meta: ProjectMeta = {",
+      "  title: \"$0\",",
+      "  blurb: \"$1\",",
+      "  date: \"$2\",",
+      "  slug: \"$3\",",
+      "  tags: [$4],",
+      "  subType: ProjectSubTypes.$5,",
+      "  mainImage: {",
+      "    src: \"$6\",",
+      "  },",
+      "  socialLinks: [$7],",
+      "  techs: [$8],",
+      "  platforms: [$9],",
+      "  images: [$10]",
+      "};"
+    ]
+  },
+  "Content Project Projects Index": { "body": ["export * from \"./$0\";"] },
+  "Content Prompt Mdx": { "body": ["$0"] },
+  "Content Prompt Index": {
+    "body": [
+      "import { ContentTypes, Prompt } from \"@/framework\";",
+      "",
+      "import { meta } from \"./meta\";",
+      "import Content from \"./content.mdx\"",
+      "",
+      "export const $0: Prompt = {",
+      "  type: ContentTypes.Prompt,",
+      "  meta,",
+      "  content: <Content />,",
+      "};"
+    ]
+  },
+  "Content Prompt Meta": {
+    "body": [
+      "import { PromptMeta } from \"@/framework\";",
+      "",
+      "export const meta: PromptMeta = {",
+      "  slug: \"$0\",",
+      "  title: \"$1\",",
+      "};"
+    ]
+  },
+  "Content Prompt Prompts Index": { "body": ["export * from \"./$0\";"] },
+  "Content Redirect Redirects Index": { "body": ["\"$0\": \"$1\","] },
+  "Content Study Studies Index": { "body": ["export * from \"./$0\";"] },
+  "Content Study Index": {
+    "body": [
+      "import {",
+      "  ContentTypes,",
+      "  Study,",
+      "  StudyCategories,",
+      "  StudyStatuses,",
+      "} from \"@/framework\";",
+      "",
+      "export const $0: Study = {",
+      "  type: ContentTypes.Study,",
+      "  meta: {",
+      "    title: \"$1\",",
+      "    mainUrl: \"$2\",",
+      "    date: \"$3\",",
+      "    institution: \"$4\",",
+      "    slug: \"$5\",",
+      "    type: \"$6\",",
+      "    status: StudyStatuses.$7,",
+      "    credential: $8,",
+      "    mark: $9,",
+      "    description: $10,",
+      "    category: StudyCategories.$11,",
+      "    links: [$12],",
+      "  },",
+      "};"
+    ]
+  },
+  "Content Tool Index": {
+    "body": [
+      "import { ContentTypes, Tool } from \"@/framework\";",
+      "",
+      "import { meta } from \"./meta\";",
+      "",
+      "export const $0: Tool = {",
+      "  type: ContentTypes.Tool,",
+      "  meta,",
+      "};"
+    ]
+  },
+  "Content Tool Meta": {
+    "body": [
+      "import { ToolMeta, ToolSections } from \"@/framework\";",
+      "",
+      "export const meta: ToolMeta = {",
+      "  section: ToolSections.App,",
+      "  slug: \"$0\",",
+      "  title: \"$1\",",
+      "  category: \"$2\",",
+      "  createdDate: \"$3\",",
+      "  operatingSystems: [$4],",
+      "  url: \"$5\",",
+      "  description: \"$6\",",
+      "  mainImage: $7,",
+      "};"
+    ]
+  },
+  "Content Tool Tools Index": { "body": ["export * from \"./$0\";"] }
+}
