@@ -4,9 +4,9 @@ import * as projectsMap from "@/content/projects";
 
 import { projectsRoute } from "../routes";
 
-export default function ProjectsPage() {
-  const projects = Object.values(projectsMap);
+const projects = Object.values(projectsMap);
 
+export default function ProjectsPage() {
   return (
     <Page selectedNavItem={NavItems.Projects} title={projectsRoute.title}>
       <MdxContainer>{projectsFragment.content}</MdxContainer>

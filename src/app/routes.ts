@@ -1,4 +1,4 @@
-import { meta as nowMeta } from "@/content/pages/now/meta";
+import { nowPage } from "@/content";
 import {
   Article,
   Book,
@@ -6,7 +6,6 @@ import {
   Checklist,
   ChecklistItem,
   Commentary,
-  ContentLinkInfo,
   Idea,
   Micro,
   Project,
@@ -111,7 +110,7 @@ export function createMicrosMicroRoute(micro: Micro) {
 }
 
 export const nowRoute = {
-  title: nowMeta.title,
+  title: nowPage.meta.title,
   url: "/now",
 };
 

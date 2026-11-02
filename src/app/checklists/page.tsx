@@ -6,9 +6,9 @@ import * as checklistsMap from "@/content/checklists";
 
 import { checklistsRoute } from "../routes";
 
-export default function Page() {
-  const checklists = Object.values(checklistsMap);
+const checklists = Object.values(checklistsMap);
 
+export default function Page() {
   return (
     <Suspense>
       <ChecklistsPage checklists={checklists} />

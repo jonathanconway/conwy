@@ -87,12 +87,6 @@ export const aside = style({
 export const asideFirst = style({
   display: "flex",
   flexDirection: "row",
-  "@media": {
-    [media.sm]: {
-      flexDirection: "column",
-      gap: rems(1),
-    },
-  },
 });
 
 export const asideFirstColumn = style({
@@ -100,7 +94,12 @@ export const asideFirstColumn = style({
   flex: 1,
   flexDirection: "column",
   gap: rems(1.5),
-  width: "50%",
+
+  "@media": {
+    [media.greaterThanSm]: {
+      width: "50%",
+    },
+  },
 });
 
 export const asideImages = style({});

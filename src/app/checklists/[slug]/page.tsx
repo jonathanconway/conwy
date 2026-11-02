@@ -1,62 +1,32 @@
-import { readFileSync } from "fs";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
 import { ChecklistPage } from "@/components";
 import { site } from "@/content";
 import * as checklistsMap from "@/content/checklists";
-import {
-  Checklist as Checklist_,
-  ContentTypes,
-  generateChecklistMetaExtensions,
-} from "@/framework";
+import { ContentTypes, NextPageProps } from "@/framework";
 import { findImportedContent } from "@/framework/server";
+import { generateChecklistPageProps } from "@/utils";
 
-import { PageProps } from "../../[slug]/types";
+const checklists = Object.values(checklistsMap);
 
-function getChecklistMd(slug: string) {
-  const checklistMdFilePathName = `${process.cwd()}/src/content/checklists/${slug}/content.mdx`;
-  const checklistMd = readFileSync(checklistMdFilePathName).toString();
-
-  return checklistMd;
-}
-
-export default async function Page(props: PageProps) {
-  const params = await props.params;
-
-  const checklist = findImportedContent(
-    checklistsMap,
-    ContentTypes.Checklist,
-    params.slug,
-  );
-
-  const checklistMd = getChecklistMd(checklist.meta.slug);
-
-  const extensions = await generateChecklistMetaExtensions(
-    checklist.meta,
-    checklistMd,
-  );
-
-  const checklistWithMetaExtensions: Checklist_ = {
-    ...checklist,
-    meta: {
-      ...checklist.meta,
-      extensions,
-    },
-  };
+export default async function Page(props: NextPageProps) {
+  const { checklist } = await generateChecklistPageProps(props);
 
   return (
     <Suspense>
-      <ChecklistPage checklist={checklistWithMetaExtensions} />
+      <ChecklistPage checklist={checklist} />
     </Suspense>
   );
 }
 
 export async function generateStaticParams() {
-  return Object.values(checklistsMap).map((item) => item.meta);
+  return checklists.map((item) => item.meta);
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NextPageProps,
+): Promise<Metadata> {
   const params = await props.params;
 
   const checklist = findImportedContent(

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import { createQuotesQuoteRoute, quotesRoute } from "@/app/routes";
-import { Page, Quote, ResponsiveMdHalf } from "@/components";
+import { Page, Quote, QuotePage, ResponsiveMdHalf } from "@/components";
 import * as contentMap_ from "@/content";
 import { site } from "@/content";
 import * as quotesMap from "@/content/quotes";
@@ -9,6 +9,7 @@ import {
   ContentAnchorsMap,
   ContentMap,
   ContentTypes,
+  NextPageProps,
   Quote as Quote_,
   reduceContentsAnchorLinkAndInfos,
   sentenceCase,
@@ -16,7 +17,6 @@ import {
 import { findImportedContent } from "@/framework/server";
 
 import contentAnchorsMap_ from "../../../../builder-out/content-anchors.json";
-import { PageProps } from "../../[slug]/types";
 
 const contentAnchorsMap = contentAnchorsMap_ as ContentAnchorsMap;
 const contentMap = contentMap_ as unknown as ContentMap;
@@ -27,26 +27,18 @@ const quotesContentAnchorLinkAndInfos = reduceContentsAnchorLinkAndInfos(
   contentAnchorsMap,
 );
 
-export default async function QuotesQuotePage(props: PageProps) {
+export default async function QuotesQuotePage(props: NextPageProps) {
   const params = await props.params;
 
   const quote = findImportedContent(quotesMap, ContentTypes.Quote, params.slug);
-  const quoteRoute = createQuotesQuoteRoute(quote);
+  const quoteContentAnchorLinkAndInfos =
+    quotesContentAnchorLinkAndInfos[quote.meta.slug];
 
   return (
-    <Page
-      title={quoteRoute.title}
-      breadcrumbSegments={[quotesRoute, { title: quoteRoute.title }]}
-    >
-      <ResponsiveMdHalf>
-        <Quote
-          quote={quote}
-          quoteContentAnchorLinkAndInfos={
-            quotesContentAnchorLinkAndInfos[quote.meta.slug]
-          }
-        />
-      </ResponsiveMdHalf>
-    </Page>
+    <QuotePage
+      quote={quote}
+      quoteContentAnchorLinkAndInfos={quoteContentAnchorLinkAndInfos}
+    />
   );
 }
 
@@ -55,7 +47,9 @@ export async function generateStaticParams() {
   return allMetas;
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NextPageProps,
+): Promise<Metadata> {
   const params = await props.params;
 
   const quote = findImportedContent(quotesMap, ContentTypes.Quote, params.slug);

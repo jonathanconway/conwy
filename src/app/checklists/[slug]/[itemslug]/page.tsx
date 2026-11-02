@@ -1,92 +1,53 @@
-import { readFileSync } from "fs";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
 import { ChecklistItemPage, Redirect } from "@/components";
 import { site } from "@/content";
 import * as checklistsMap from "@/content/checklists";
-import { ContentTypes, generateChecklistMetaExtensions } from "@/framework";
+import {
+  ContentTypes,
+  NextPageProps,
+  generateChecklistMetaExtensions,
+} from "@/framework";
 import { findImportedContent } from "@/framework/server";
+import {
+  generateChecklistItemPageProps,
+  generateChecklistItemPageStaticParams,
+  getChecklistMd,
+} from "@/utils";
 
-import { PageProps } from "../../../[slug]/types";
+const checklists = Object.values(checklistsMap);
 
-type ChecklistItemPageProps = PageProps<{
+interface ChecklistItemPagePropsParams {
   readonly slug: string;
   readonly itemslug: string;
-}>;
-
-function getChecklistMd(slug: string) {
-  const checklistMdFilePathName = `${process.cwd()}/src/content/checklists/${slug}/content.mdx`;
-  const checklistMd = readFileSync(checklistMdFilePathName).toString();
-
-  return checklistMd;
 }
 
+type ChecklistItemPageProps = NextPageProps<ChecklistItemPagePropsParams>;
+
 export default async function Page(props: ChecklistItemPageProps) {
-  // todo: try to extract most of this
-
-  const params = await props.params;
-  const { slug, itemslug } = params;
-  const checklistBase = findImportedContent(
+  const checklistItemPageProps = await generateChecklistItemPageProps(
     checklistsMap,
-    ContentTypes.Checklist,
-    params.slug,
+    props,
   );
 
-  const checklistMd = getChecklistMd(checklistBase.meta.slug);
-
-  const checklistMetaExtensions = await generateChecklistMetaExtensions(
-    checklistBase.meta,
-    checklistMd,
-  );
-
-  const checklist = {
-    ...checklistBase,
-    meta: {
-      ...checklistBase.meta,
-      extensions: checklistMetaExtensions,
-    },
-  };
-
-  const item = checklistMetaExtensions?.itemsByName[itemslug];
-
-  if (!item) {
+  if (!checklistItemPageProps) {
+    const params = await props.params;
+    const { slug } = params;
     return <Redirect redirectUrl={`/checklists/${slug}`} />;
   }
 
+  const { checklist, checklistItem } = checklistItemPageProps;
+
   return (
     <Suspense>
-      <ChecklistItemPage checklist={checklist} checklistItem={item} />
+      <ChecklistItemPage checklist={checklist} checklistItem={checklistItem} />
     </Suspense>
   );
 }
 
 export async function generateStaticParams() {
-  const paramsSets = [];
-
-  for (const checklist of Object.values(checklistsMap)) {
-    const checklistMd = getChecklistMd(checklist.meta.slug);
-
-    const extensions = await generateChecklistMetaExtensions(
-      checklist.meta,
-      checklistMd,
-    );
-
-    const {
-      meta: { slug },
-    } = checklist;
-
-    const itemSlugs = extensions?.items.map((item) => item.name) ?? [];
-
-    for (const itemslug of itemSlugs) {
-      paramsSets.push({
-        slug,
-        itemslug,
-      });
-    }
-  }
-
-  return paramsSets;
+  return generateChecklistItemPageStaticParams(checklists);
 }
 
 export async function generateMetadata(

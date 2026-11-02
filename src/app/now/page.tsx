@@ -4,7 +4,6 @@ import {
   MdxContainer,
   Page,
   ResponsiveStack,
-  Stack,
   StackDirections,
 } from "@/components";
 import { nowFragment, nowPage, nowSidebarFragment, site } from "@/content";

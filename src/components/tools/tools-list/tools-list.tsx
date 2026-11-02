@@ -1,7 +1,6 @@
 import { groupBy, orderBy } from "lodash";
 
-import * as toolsMap from "@/content/tools";
-import { ToolSectionTitles, ToolSections } from "@/framework";
+import { Tool, ToolSectionTitles, ToolSections } from "@/framework";
 
 import { ContentList } from "../../content-list";
 import { SectionHeading } from "../../heading";
@@ -10,9 +9,13 @@ import { Stack, StackDirections, StackDistributions } from "../../stack";
 
 import { ToolsListItem } from "./tools-list-item";
 
-export function ToolsList() {
-  const toolsItems = Object.values(toolsMap);
-  const toolsOrdered = orderBy(toolsItems, (tool) => tool.meta.title);
+interface ToolsListProps {
+  readonly tools?: readonly Tool[];
+}
+
+export function ToolsList(props: ToolsListProps) {
+  const { tools } = props;
+  const toolsOrdered = orderBy(tools, (tool) => tool.meta.title);
   const toolsSections = Object.values(ToolSections);
   const toolsBySection = groupBy(toolsOrdered, (tool) => tool.meta.section);
 

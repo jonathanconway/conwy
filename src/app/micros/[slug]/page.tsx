@@ -4,12 +4,10 @@ import { MicroPage } from "@/components";
 import { generateMicroPageHeaderTitle } from "@/components/micro/micro-page/micro-page-header";
 import { site } from "@/content";
 import * as microsMap from "@/content/micros";
-import { ContentTypes } from "@/framework";
+import { ContentTypes, NextPageProps } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
-import { PageProps } from "../../[slug]/types";
-
-export default async function Page(props: PageProps) {
+export default async function MicrosMicroPage(props: NextPageProps) {
   const params = await props.params;
 
   const micro = findImportedContent(microsMap, ContentTypes.Micro, params.slug);
@@ -22,7 +20,9 @@ export async function generateStaticParams() {
   return allMetas;
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NextPageProps,
+): Promise<Metadata> {
   const params = await props.params;
 
   const micro = findImportedContent(microsMap, ContentTypes.Micro, params.slug);

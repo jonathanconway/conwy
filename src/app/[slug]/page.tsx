@@ -1,13 +1,12 @@
 import { REDIRECTS, site } from "@/content";
 import * as pagesMap from "@/content/pages";
-import { ContentTypes } from "@/framework";
+import { ContentTypes, NextPageProps } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PagePage } from "./page-page";
 import { PageRedirect } from "./page-redirect";
-import { PageProps } from "./types";
 
-export default async function Page(props: PageProps) {
+export default async function Page(props: NextPageProps) {
   const params = await props.params;
   if (REDIRECTS[params.slug]) {
     return <PageRedirect {...props} />;
@@ -26,7 +25,7 @@ export async function generateStaticParams() {
   return [...redirectsParams, ...pagesParams];
 }
 
-export async function generateMetadata(props: PageProps) {
+export async function generateMetadata(props: NextPageProps) {
   const params = await props.params;
 
   // Redirects

@@ -11,6 +11,7 @@ export * from "./mutable";
 export * from "./non-alpha-numeric-remove";
 export * from "./object";
 export * from "./mdx";
+export * from "./next";
 export * from "./path";
 export * from "./react-children";
 export * from "./react-element";

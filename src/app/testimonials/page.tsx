@@ -1,25 +1,13 @@
-import { MdxContainer, Page, Testimonials } from "@/components";
-import { site, testimonialsFragment } from "@/content";
+import { TestimonialsPage } from "@/components";
+import { site } from "@/content";
 import * as worksMap from "@/content/works";
 import { getTestimonials } from "@/framework";
 
-import { testimonialsRoute, worksRoute } from "../routes";
-
 const works = Object.values(worksMap);
+const testimonials = getTestimonials(works);
 
-export default function TestimonialsPage() {
-  const testimonials = getTestimonials(works);
-
-  return (
-    <Page
-      title={testimonialsRoute.title}
-      breadcrumbSegments={[worksRoute, { title: testimonialsRoute.title }]}
-    >
-      <MdxContainer>{testimonialsFragment.content}</MdxContainer>
-
-      <Testimonials testimonials={testimonials} />
-    </Page>
-  );
+export default function TestimonialsPage_() {
+  return <TestimonialsPage testimonials={testimonials} />;
 }
 
 export const metadata = {

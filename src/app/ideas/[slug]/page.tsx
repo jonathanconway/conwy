@@ -9,12 +9,10 @@ import {
 } from "@/components";
 import { site } from "@/content";
 import * as ideasMap from "@/content/ideas";
-import { ContentTypes } from "@/framework";
+import { ContentTypes, NextPageProps } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
-import { PageProps } from "../../[slug]/types";
-
-export default async function IdeaPage(props: PageProps) {
+export default async function IdeasIdeaPage(props: NextPageProps) {
   const params = await props.params;
 
   const idea = findImportedContent(ideasMap, ContentTypes.Idea, params.slug);
@@ -38,7 +36,9 @@ export async function generateStaticParams() {
   return allMetas;
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NextPageProps,
+): Promise<Metadata> {
   const params = await props.params;
 
   const idea = findImportedContent(ideasMap, ContentTypes.Idea, params.slug);

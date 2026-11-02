@@ -1,11 +1,9 @@
 import { ContentPage } from "@/components";
 import * as pagesMap from "@/content/pages";
-import { ContentTypes } from "@/framework";
+import { ContentTypes, NextPageProps } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
-import { PageProps } from "./types";
-
-export async function PagePage(props: PageProps) {
+export async function PagePage(props: NextPageProps) {
   const params = await props.params;
 
   const page = findImportedContent(pagesMap, ContentTypes.Page, params.slug);

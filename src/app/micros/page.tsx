@@ -4,7 +4,7 @@ import { MicrosPage } from "@/components";
 import { site } from "@/content";
 import * as microsMap from "@/content/micros";
 
-export default function Page() {
+export default function MicrosPage_() {
   const micros = Object.values(microsMap);
   const microsSorted = orderBy(micros, "meta.createdDate", "desc");
 

@@ -11,7 +11,7 @@ import { contactFragment, contactPgpFragment, site } from "@/content";
 
 import { contactRoute } from "../routes";
 
-export default function Contact() {
+export default function ContactPage() {
   return (
     <Page title={contactRoute.title} selectedNavItem={NavItems.Contact}>
       <PageLayoutTwoCol>

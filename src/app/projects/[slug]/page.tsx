@@ -1,15 +1,12 @@
 import { Metadata } from "next";
 
-import { createProjectsProjectRoute } from "@/app/routes";
 import { ProjectPage as ProjectPage_ } from "@/components";
 import { site } from "@/content";
 import * as projectsMap from "@/content/projects";
-import { ContentTypes } from "@/framework";
+import { ContentTypes, NextPageProps } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
-import { PageProps } from "../../[slug]/types";
-
-export default async function ProjectPage(props: PageProps) {
+export default async function ProjectsProjectPage(props: NextPageProps) {
   const params = await props.params;
 
   const projects = Object.values(projectsMap);
@@ -20,8 +17,6 @@ export default async function ProjectPage(props: PageProps) {
     params.slug,
   );
 
-  const projectRoute = createProjectsProjectRoute(project);
-
   return <ProjectPage_ projects={projects} project={project} />;
 }
 
@@ -30,7 +25,9 @@ export async function generateStaticParams() {
   return allMetas;
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NextPageProps,
+): Promise<Metadata> {
   const params = await props.params;
 
   const project = findImportedContent(

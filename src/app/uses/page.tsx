@@ -1,42 +1,12 @@
-import {
-  Breakpoints,
-  MdxContainer,
-  Page,
-  ResponsiveStack,
-  Stack,
-  StackDirections,
-  ToolsList,
-  ToolsSections,
-} from "@/components";
-import { site, toolsFragment, toolsSidebarFragment } from "@/content";
+import { ToolsPage } from "@/components";
+import { site } from "@/content";
+import * as toolsMap from "@/content/tools";
+import { Tool } from "@/framework";
 
-import { toolsRoute } from "../routes";
+const tools = Object.values(toolsMap) as readonly Tool[];
 
-export default function ToolsPage() {
-  return (
-    <Page title={toolsRoute.title}>
-      <Stack gap={2}>
-        <ResponsiveStack
-          direction={{
-            [Breakpoints.Small]: StackDirections.ColumnReverse,
-            [Breakpoints.Medium]: StackDirections.ColumnReverse,
-            [Breakpoints.Large]: StackDirections.Row,
-          }}
-          alignItems="start"
-        >
-          <Stack>
-            <MdxContainer>{toolsFragment.content}</MdxContainer>
-
-            <ToolsSections />
-          </Stack>
-
-          <MdxContainer>{toolsSidebarFragment.content}</MdxContainer>
-        </ResponsiveStack>
-
-        <ToolsList />
-      </Stack>
-    </Page>
-  );
+export default function ToolsPage_() {
+  return <ToolsPage tools={tools} />;
 }
 
 export const metadata = {

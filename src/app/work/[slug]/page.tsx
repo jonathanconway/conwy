@@ -3,14 +3,12 @@ import { Metadata } from "next";
 import { WorkPage } from "@/components";
 import { site } from "@/content";
 import * as worksMap from "@/content/works";
-import { ContentTypes } from "@/framework";
+import { ContentTypes, NextPageProps } from "@/framework";
 import { findImportedContent } from "@/framework/server";
-
-import { PageProps } from "../../[slug]/types";
 
 const works = Object.values(worksMap);
 
-export default async function WorksWorkPage(props: PageProps) {
+export default async function WorksWorkPage(props: NextPageProps) {
   const params = await props.params;
 
   const work = findImportedContent(worksMap, ContentTypes.Work, params.slug);
@@ -23,7 +21,9 @@ export async function generateStaticParams() {
   return allMetas;
 }
 
-export async function generateMetadata(props: PageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: NextPageProps,
+): Promise<Metadata> {
   const params = await props.params;
 
   const work = findImportedContent(worksMap, ContentTypes.Work, params.slug);
