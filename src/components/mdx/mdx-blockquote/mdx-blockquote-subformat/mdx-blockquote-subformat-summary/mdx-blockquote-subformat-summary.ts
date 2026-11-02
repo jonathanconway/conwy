@@ -1,7 +1,7 @@
 import {
   getSubformatChildrenStartingWithPrefix,
   removeFirstChildPrefix,
-} from "@/framework/client";
+} from "@/framework";
 
 import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 

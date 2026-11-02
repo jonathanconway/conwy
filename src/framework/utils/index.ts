@@ -19,6 +19,7 @@ export * from "./react-node";
 export * from "./react-props";
 export * from "./regexp";
 export * from "./strings";
+export * from "./subformat";
 export * from "./template";
 export * from "./text";
 export * from "./tree";

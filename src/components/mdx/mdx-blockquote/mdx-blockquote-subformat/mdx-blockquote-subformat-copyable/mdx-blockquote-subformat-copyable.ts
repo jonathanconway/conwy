@@ -1,7 +1,7 @@
 import { isArray, isObject, isString } from "lodash";
 import { ReactNode } from "react";
 
-import { removeFirstChildPrefix } from "@/framework/client";
+import { removeFirstChildPrefix } from "@/framework";
 
 import { MdxBlockquoteProps } from "../../mdx-blockquote-props";
 
