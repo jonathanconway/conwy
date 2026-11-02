@@ -6,6 +6,7 @@ export * from "./good-systems-redundancy";
 export * from "./health-hack-mix-matcha";
 export * from "./installing-obsdmd-adding-my-pre";
 export * from "./learning-techniques-ranked-effectiveness";
+export * from "./minimalist-shoes";
 export * from "./models-are-reality-bonds-are";
 export * from "./probabilistic-thinking-spec-driven-development";
 export * from "./sleeman-tech-debt";
