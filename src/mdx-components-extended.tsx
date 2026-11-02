@@ -28,10 +28,11 @@ export const mdxComponentsExtended: Record<
   small: MdxSmall,
   section: MdxSection,
   summary: MdxSummary,
+
   table: MdxTable,
+  tr: MdxTr,
+  thead: MdxTHead,
+  th: MdxTh,
   tbody: MdxTBody,
-  td: MdxTHead,
-  th: MdxTr,
-  thead: MdxTh,
-  tr: MdxTd,
+  td: MdxTd,
 };
