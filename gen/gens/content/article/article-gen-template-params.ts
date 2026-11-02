@@ -12,6 +12,7 @@ export interface ArticleGenTemplateParams extends ArticleGenParams {
   readonly slug: string;
   readonly date: DateString;
   readonly tagsEnumNames: readonly string[];
+  readonly tagsItems: string;
 }
 
 export function generateArticleGenTemplateParams(
@@ -25,6 +26,13 @@ export function generateArticleGenTemplateParams(
   assert(checkIsDateString(date));
 
   const tagsEnumNames = tags.map((tag) => getEnumName(PostTags, tag));
+  const tagsItems = tagsEnumNames
+    .map((tagEnumName) =>
+      `
+      PostTags.${tagEnumName}
+      `.trim(),
+    )
+    .join(",\n");
 
   return {
     title,
@@ -33,6 +41,7 @@ export function generateArticleGenTemplateParams(
 
     tags,
     tagsEnumNames,
+    tagsItems,
 
     nameRootObject,
     slug,

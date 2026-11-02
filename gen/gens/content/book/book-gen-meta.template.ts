@@ -4,7 +4,7 @@ export const bookGenMetaTemplate = ({
   slug,
   title,
   authors,
-  url,
+  urlItem,
   categoryEnumName,
 }: BookGenTemplateParams) =>
   `
@@ -16,12 +16,7 @@ export const meta: BookMeta = {
   authors: [${authors.map((author) => `"${author}"`).join(", ")}],
   status: BookStatuses.Listed,
   title: "${title}",
-  ${
-    url
-      ? `
-  url: "${url}",`
-      : ""
-  }
+  url: ${urlItem},
   category: BookCategories.${categoryEnumName},
 };
 

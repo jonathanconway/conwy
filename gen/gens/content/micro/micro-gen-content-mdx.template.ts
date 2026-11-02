@@ -1,10 +1,12 @@
+import { MDX_TEXT_HERE_TOKEN } from "../../../template-utils";
+
 import { MicroGenTemplateParams } from "./micro-gen-template-params";
 
 export const microGenContentMdxTemplate = ({
-  content,
+  content = MDX_TEXT_HERE_TOKEN,
 }: MicroGenTemplateParams) =>
   `
 
-${content ?? "{/* Full text here */}"}
+${content}
 
 `.trim();

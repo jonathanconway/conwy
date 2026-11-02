@@ -1,1 +1,1 @@
-export * from "./component.gen";
+export * from "./component-gen";

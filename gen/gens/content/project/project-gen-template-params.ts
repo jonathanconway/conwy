@@ -24,7 +24,16 @@ export interface ProjectGenTemplateParams extends ProjectGenParams {
   readonly subTypeEnumName: string;
 
   readonly tagsEnumNames: readonly string[];
+  readonly tagsItems: string;
+
   readonly socialLinks: readonly SocialLink[];
+  readonly socialLinksItems: string;
+
+  readonly techsCategoryItems: string;
+
+  readonly platformsItems: string;
+
+  readonly imageUrlsItems: string;
 }
 
 export function generateProjectGenTemplateParams(
@@ -52,6 +61,7 @@ export function generateProjectGenTemplateParams(
   const subTypeEnumName = getEnumName(ProjectSubTypes, subType);
 
   const tagsEnumNames = tags.map((tag) => getEnumName(PostTags, tag));
+  const tagsItems = tagsEnumNames.map((name) => `PostTags.${name}`).join(", ");
 
   const socialLinks: readonly SocialLink[] = socialLinkUrls.map((url) => {
     const socialLinkType = parseSocialLinkTypeFromUrl(url);
@@ -63,6 +73,40 @@ export function generateProjectGenTemplateParams(
       title,
     } as SocialLink;
   });
+  const socialLinksItems = socialLinks
+    .map(
+      ({ type, url, title }) => `
+    {
+      type: SocialLinkTypes.${type},
+      url: "${url}",
+      title: "${title}",
+    }`,
+    )
+    .join(",\n  ");
+
+  const techsCategoryItems = techsCategoryNames
+    .map(
+      (name) => `{
+      categoryName: "${name}",
+      items: [],
+  }`,
+    )
+    .join(",\n  ");
+
+  const platformsItems = platforms
+    .map((platform) => `"${platform}"`)
+    .join(", ");
+
+  const imageUrlsItems = imageUrls
+    .map(
+      (url) => `
+    {
+      src: "${url}",
+      alt: "",
+      notes: [],
+    },`,
+    )
+    .join("\n    ");
 
   return {
     nameRootObject,
@@ -76,16 +120,24 @@ export function generateProjectGenTemplateParams(
     subType,
 
     mainImageUrl,
-    imageUrls,
+
     tags,
+    tagsItems,
 
     socialLinkUrls,
     socialLinks,
+    socialLinksItems,
 
     platforms,
+    platformsItems,
 
     subTypeEnumName,
     tagsEnumNames,
+
     techsCategoryNames,
+    techsCategoryItems,
+
+    imageUrls,
+    imageUrlsItems,
   };
 }

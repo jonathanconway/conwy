@@ -1,7 +1,7 @@
 import { Command, Option, program } from "commander";
 import { kebabCase } from "lodash";
 
-import { isNotNil } from "../utils/typing";
+import { checkIsNotNil } from "../utils/typing";
 
 import { GenSchemaFields } from "./gen-schema";
 import {
@@ -45,7 +45,7 @@ export function convertGenSchemaFieldsToCommandWithOptions<
   const options = Object.entries(genSchema).map(
     convertGenSchemaFieldToCommandOption,
   );
-  for (const option of options.filter(isNotNil)) {
+  for (const option of options.filter(checkIsNotNil)) {
     command = command.addOption(option);
   }
   return command;
@@ -95,7 +95,7 @@ function convertGenSchemaFieldToCommandOptionBase<
 >([name, genSchema]: GenSchemaFieldEntry<TGenSchemaRoot, TGenSchemaField>) {
   const label = generateSchemaFieldLabel(name, genSchema);
   const hint = generateSchemaFieldHint(genSchema, false);
-  const description = [label, hint].filter(isNotNil).join("\n");
+  const description = [label, hint].filter(checkIsNotNil).join("\n");
   const flags = `--${kebabCase(name)} <${name}>`;
   const option = new Option(flags, description);
   option.required = genSchema.required ?? false;

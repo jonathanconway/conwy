@@ -13,9 +13,11 @@ import { getEnumName } from "../../../gen-utils";
 import { ToolGenParams } from "./tool-gen-params";
 
 export interface ToolGenTemplateParams extends ToolGenParams {
+  readonly operatingSystemsItems: string;
   readonly nameRootObject: string;
   readonly sectionEnumName: string;
   readonly createdDate: DateString;
+  readonly mainImageCode: string;
 }
 
 export function generateToolGenTemplateParams(
@@ -40,6 +42,12 @@ export function generateToolGenTemplateParams(
 
   const sectionEnumName = getEnumName(ToolSections, params.section);
 
+  const operatingSystemsItems = (operatingSystems ?? [])
+    .map((os) => `"${os}"`)
+    .join(", ");
+
+  const mainImageCode = mainImage ? `${mainImage}` : "undefined";
+
   return {
     nameRootObject,
 
@@ -48,7 +56,9 @@ export function generateToolGenTemplateParams(
     category,
     url,
     operatingSystems,
+    operatingSystemsItems,
     mainImage,
+    mainImageCode,
     description,
     createdDate,
     usage,

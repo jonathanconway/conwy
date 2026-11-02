@@ -8,12 +8,16 @@ export const studyGenIndexTemplate = ({
   type,
   date,
   credential,
+  credentialItem,
   mark,
+  markItem,
   description,
+  descriptionItem,
   nameRootObject,
   statusEnumName,
   categoryEnumName,
   links,
+  linksItems,
 }: StudyGenTemplateParams) =>
   `
 
@@ -34,20 +38,11 @@ export const ${nameRootObject}: Study = {
     slug: "${slug}",
     type: "${type}",
     status: StudyStatuses.${statusEnumName},
-    credential: ${credential ? `"${credential}"` : "undefined"},
-    mark: ${mark ? `"${mark}"` : "undefined"},
-    description: ${description ? `"${description}"` : "undefined"},
+    credential: ${credentialItem},
+    mark: ${markItem},
+    description: ${descriptionItem},
     category: StudyCategories.${categoryEnumName},
-    links: [${links
-      .map((link) =>
-        `
-      {
-        url: "${link.url}",
-        title: ${link.title ? `"${link.title}"` : `""`},
-      }
-`.trim(),
-      )
-      .join(",\n    ")}],
+    links: [${linksItems}],
   },
 };
 

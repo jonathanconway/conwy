@@ -1,4 +1,4 @@
-import { isNotNil } from "../utils/typing";
+import { checkIsNotNil } from "../utils/typing";
 
 import { GenSchemaField } from "./gen-schema-field";
 import { GenSchemaFieldTypes } from "./gen-schema-field-type";
@@ -22,11 +22,11 @@ export function generateSchemaFieldHint(
       validator.generateHelpText(),
     ) ?? []
   )
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .join("\n");
 
   return [inputInstructions, description, validationHelpTexts]
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .join("\n");
 }
 

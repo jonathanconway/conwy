@@ -101,12 +101,33 @@ export function getEnumName<T extends Record<string, string>>(
   )?.[0] as string;
 }
 
+export async function logCommitMessageConventional(
+  prefix: string,
+  subPrefix?: string,
+  body?: string,
+) {
+  const prefixAndSubPrefix = subPrefix ? `${prefix}(${subPrefix})` : prefix;
+  const commitMessage = `${prefixAndSubPrefix}: ${body}`;
+
+  console.log(`⑂ Commit message: ${commitMessage}`);
+
+  const { default: clipboard } = await import("clipboardy");
+  clipboard.write(commitMessage);
+}
+
+export async function logCommitMessageStructureCreated(
+  structureType: string,
+  structureNameKebabCase: string,
+) {
+  logCommitMessageConventional("feat", structureType, structureNameKebabCase);
+}
+
 export async function logCommitMessageContentCreated(
   contentType: ContentType | string,
   contentSlug: Slug,
 ) {
-  const { default: clipboard } = await import("clipboardy");
-  const commitMessage = `content(${CONTENT_TYPE_LABELS_PLURAL[contentType] ?? contentType}): ${contentSlug}`;
-  console.log(`⑂ Commit message: ${commitMessage}`);
-  clipboard.write(commitMessage);
+  const contentTypeLabel =
+    CONTENT_TYPE_LABELS_PLURAL[contentType] ?? contentType;
+
+  logCommitMessageConventional("content", contentTypeLabel, contentSlug);
 }

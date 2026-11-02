@@ -5,10 +5,10 @@ export const toolGenMetaTemplate = ({
   title,
   category,
   url,
-  operatingSystems,
+  operatingSystemsItems,
   createdDate,
   description,
-  mainImage,
+  mainImageCode,
 }: ToolGenTemplateParams) =>
   `
 
@@ -20,10 +20,10 @@ export const meta: ToolMeta = {
   title: "${title}",
   category: "${category}",
   createdDate: "${createdDate}",
-  operatingSystems: [${(operatingSystems ?? []).map((os) => `"${os}"`).join(", ")}],
+  operatingSystems: [${operatingSystemsItems}],
   url: "${url}",
   description: "${description}",
-  mainImage: ${mainImage ? `"${mainImage}"` : undefined},
+  mainImage: ${mainImageCode},
 };
 
 `.trim();

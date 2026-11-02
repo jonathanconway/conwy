@@ -20,6 +20,7 @@ export interface BookGenTemplateParams extends BookGenParams {
   readonly title: string;
   readonly authors: readonly string[];
   readonly url?: Url;
+  readonly urlItem: string;
 
   readonly categoryEnumName: string;
 }
@@ -42,6 +43,8 @@ export function generateBookGenTemplateParams(
 
   const categoryEnumName = getEnumName(BookCategories, category);
 
+  const urlItem = url ? `"${url}"` : "undefined";
+
   return {
     title,
     slug,
@@ -49,6 +52,7 @@ export function generateBookGenTemplateParams(
     authors,
     category,
     url,
+    urlItem,
 
     nameRootObject,
     date,

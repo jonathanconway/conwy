@@ -2,7 +2,7 @@ import { isString } from "lodash";
 import prompts, { Choice, PromptObject } from "prompts";
 
 import { assert } from "../utils/assert";
-import { isNotNil } from "../utils/typing";
+import { checkIsNotNil } from "../utils/typing";
 
 import { GenSchemaFields } from "./gen-schema";
 import { GenSchemaField } from "./gen-schema-field";
@@ -115,7 +115,7 @@ async function runGenPromptTextList(prompt: PromptObject) {
   const answer = answers?.[name];
 
   return {
-    [name]: answer?.filter(isNotNil),
+    [name]: answer?.filter(checkIsNotNil),
   };
 }
 
