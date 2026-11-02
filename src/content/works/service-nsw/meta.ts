@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Service NSW",
   client: "Service NSW",
   blurbShort:
     "Led development of MyServiceNSW front end, working with design, infrastructure and service providers.",
@@ -26,17 +27,17 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "service-nsw-1.png",
+      src: "/images/works/service-nsw/service-nsw-1.png",
       alt: "Create Account flow",
       notes: [],
     },
     {
-      src: "service-nsw-2.jpg",
+      src: "/images/works/service-nsw/service-nsw-2.jpg",
       alt: "Linking government services such as RMS and Birth Deaths & Marriages",
       notes: [],
     },
     {
-      src: "service-nsw-3.jpg",
+      src: "/images/works/service-nsw/service-nsw-3.jpg",
       alt: "MyServiceNSW Dashboard",
       notes: [],
     },

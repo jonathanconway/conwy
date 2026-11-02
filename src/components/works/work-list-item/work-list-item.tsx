@@ -1,19 +1,21 @@
-import { WorkMeta } from "@/framework";
+import { Work } from "@/framework";
 
 import { ContentListItem, ContentListItemImage } from "../../content-list";
+import { Divider } from "../../divider";
 import { LinkBox, LinkBoxTitle } from "../../link-box";
 import { Stack } from "../../stack";
-import { Text } from "../../text";
+import { Text, TextSpacingStrategies } from "../../text";
 import { TextTypes } from "../../text/text-type";
 
 interface WorkListItemProps {
-  readonly workMeta: WorkMeta;
+  readonly work: Work;
 }
 
 export function WorkListItem(props: WorkListItemProps) {
   const {
-    workMeta: { techs, slug, client, jobTitle, blurbShort, mainImage },
+    work: { meta },
   } = props;
+  const { techs, slug, client, jobTitle, blurbShort, mainImage } = meta;
 
   const techNames = techs.map((tech) => tech.categoryName).join(", ");
 
@@ -27,7 +29,15 @@ export function WorkListItem(props: WorkListItemProps) {
             <Text type={TextTypes.ListItemSubTitle}>{jobTitle}</Text>
 
             <Stack gap={0.5}>
-              <Text type={TextTypes.Summary}>{blurbShort}</Text>
+              <Text
+                type={TextTypes.Paragraph}
+                spacingStrategy={TextSpacingStrategies.Exclude}
+                as="div"
+              >
+                {blurbShort}
+              </Text>
+
+              <Divider />
 
               <Text type={TextTypes.Small}>Tech: {techNames}</Text>
             </Stack>

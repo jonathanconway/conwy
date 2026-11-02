@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import { MicroPage } from "@/components";
-import { generateMicroPageTitle } from "@/components/micro/micro-page/micro-page-header";
+import { generateMicroPageHeaderTitle } from "@/components/micro/micro-page/micro-page-header";
 import { site } from "@/content";
 import * as microsMap from "@/content/micros";
 import { ContentTypes } from "@/framework";
@@ -26,7 +26,7 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
 
   const micro = findImportedContent(microsMap, ContentTypes.Micro, params.slug);
-  const microTitle = generateMicroPageTitle(micro);
+  const microTitle = generateMicroPageHeaderTitle(micro);
 
   const title = `${site.title} - micro - ${microTitle}`;
 

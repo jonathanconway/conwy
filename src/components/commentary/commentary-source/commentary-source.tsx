@@ -18,7 +18,9 @@ export function CommentarySource(props: CommentarySourceProps) {
   } = props;
   return (
     <Stack direction={StackDirections.Column} gap={0.25}>
-      <Heading level={2}>{title}</Heading>
+      <Heading level={2}>
+        <ContentTypeIcon contentType={sourceLink.type} /> {title}
+      </Heading>
 
       <Stack
         direction={StackDirections.Row}
@@ -26,14 +28,15 @@ export function CommentarySource(props: CommentarySourceProps) {
         gap={0.5}
       >
         <Text type={TextTypes.Label}>
-          <ContentTypeIcon contentType={sourceLink.type} />{" "}
           <>{sourceLink.type}</>
-          {authors && (
-            <>
-              {" "}
-              by <BookAuthors authors={authors} />
-            </>
-          )}
+          <>
+            {authors && (
+              <>
+                {" "}
+                by <BookAuthors authors={authors} />
+              </>
+            )}
+          </>
         </Text>
       </Stack>
     </Stack>

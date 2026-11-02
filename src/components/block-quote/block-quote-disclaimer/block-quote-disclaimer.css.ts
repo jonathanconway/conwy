@@ -24,3 +24,8 @@ globalStyle(`${disclaimerContainer} > p`, {
 globalStyle(`${disclaimerContainer} > ul`, {
   display: "block",
 });
+
+export const prefix = style({
+  color: vars.blockQuoteDisclaimer.color,
+  ...textSizeMixins.paragraph,
+});

@@ -2,26 +2,29 @@
 
 import { Idea as Idea_ } from "@/framework";
 
+import { ContentListItem, ContentListItemBlurb } from "../../../content-list";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
-import { MdxContainer } from "../../../mdx";
-import { Stack, StackDirections } from "../../../stack";
-
-import * as styles from "./ideas-list-item.css";
 
 interface IdeasListItemProps {
   readonly idea: Idea_;
 }
 
-export function IdeasListItem({ idea }: IdeasListItemProps) {
-  return (
-    <li key={idea.meta.slug} className={styles.ideasListItem}>
-      <LinkBox href={`/ideas/${idea.meta.slug}`}>
-        <Stack direction={StackDirections.Column} gap={0.000001}>
-          <LinkBoxTitle>{idea.meta.title}</LinkBoxTitle>
+export function IdeasListItem(props: IdeasListItemProps) {
+  const { idea } = props;
+  const { meta, blurb } = idea;
+  const { slug, title } = meta;
 
-          <MdxContainer>{idea.blurb}</MdxContainer>
-        </Stack>
-      </LinkBox>
-    </li>
+  return (
+    <LinkBox href={`/ideas/${slug}`}>
+      <ContentListItem
+        mainSlot={
+          <>
+            <LinkBoxTitle>{title}</LinkBoxTitle>
+
+            <ContentListItemBlurb>{blurb}</ContentListItemBlurb>
+          </>
+        }
+      />
+    </LinkBox>
   );
 }

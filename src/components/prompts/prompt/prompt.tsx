@@ -7,7 +7,7 @@ import { PromptProps } from "./prompt-props";
 
 export function Prompt(props: PromptProps) {
   return (
-    <Stack>
+    <Stack gap={0.5}>
       <LinkHeading level={3} href={`/prompts/${props.prompt.meta.slug}`}>
         {props.title ?? props.prompt.meta.title}
       </LinkHeading>

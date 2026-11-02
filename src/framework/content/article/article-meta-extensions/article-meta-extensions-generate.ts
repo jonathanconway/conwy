@@ -2,6 +2,8 @@ import { load as cheerioLoad } from "cheerio";
 import { kebabCase } from "lodash";
 import { marked } from "marked";
 
+import { SCROLL_TO_TOP_ANCHOR_ID } from "@/components/scroll-to-top/scroll-to-top-anchor.const";
+
 import { ArticleMetaExtensions } from "./article-meta-extensions";
 
 export async function generateArticleMetaExtensions(
@@ -17,7 +19,7 @@ export async function generateArticleMetaExtensions(
   );
 
   const articleHeadings = [
-    { id: "top", title: "Intro" },
+    { id: SCROLL_TO_TOP_ANCHOR_ID, title: "Intro" },
     ...articleHeadingTitles.map((title) => ({
       title,
       id: kebabCase(title),

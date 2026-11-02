@@ -1,11 +1,12 @@
-import { ProjectMeta } from "@/framework";
+import { Project } from "@/framework";
 
-import { ItemTechs } from "../../item";
+import { EngagementPageTechs } from "../../engagement";
 
 interface ProjectTechsProps {
-  readonly projectMeta: ProjectMeta;
+  readonly project: Project;
 }
 
 export function ProjectTechs(props: ProjectTechsProps) {
-  return <ItemTechs itemMeta={props.projectMeta} />;
+  const { project } = props;
+  return <EngagementPageTechs engagement={project} />;
 }

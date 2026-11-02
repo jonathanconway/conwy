@@ -11,16 +11,22 @@ export type ReactNodeSingle =
   | null
   | undefined;
 
-export function isReactNode(input: unknown): input is ReactNode {
+export function checkIsReactNode(input: unknown): input is ReactNode {
   return (
     (isObject(input) && "type" in input) ||
     isString(input) ||
-    (isArray(input) && isReactNode(input[0]))
+    (isArray(input) && checkIsReactNode(input[0]))
   );
 }
 
-export function isReactNodeArray(
+export function checkIsReactNodeArray(
   input?: ReactNode,
 ): input is readonly ReactNode[] {
   return isArray(input);
+}
+
+export function checkIsReactNodeElement(
+  input?: ReactNode,
+): input is ReactElement {
+  return isObject(input) && "type" in input;
 }

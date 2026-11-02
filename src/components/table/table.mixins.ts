@@ -7,7 +7,7 @@ export const table: CSSProperties = {
   marginTop: "1rem",
   borderSpacing: 0,
   borderCollapse: "unset",
-  ...textMixins.small,
+  ...textMixins.table,
   ...boxMixins.boxBorderStructural,
 };
 
@@ -19,4 +19,9 @@ export const tableCell: CSSProperties = {
   borderTopWidth: "1px",
   borderTopColor: boxMixins.boxBorderStructural.borderColor,
   padding: "0.25rem 0.5rem",
+  verticalAlign: "text-top",
+};
+
+export const tableCellInTrFirst: CSSProperties = {
+  borderTop: "none",
 };

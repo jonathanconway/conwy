@@ -1,18 +1,20 @@
-import { ProjectMeta } from "@/framework";
+import { Project } from "@/framework";
 
 import { ContentList } from "../../content-list";
 
 import { ProjectsListItem } from "./projects-list-item";
 
 export interface ProjectsListProps {
-  readonly projectMetas: readonly ProjectMeta[];
+  readonly projects: readonly Project[];
 }
 
-export function ProjectsList({ projectMetas }: ProjectsListProps) {
+export function ProjectsList(props: ProjectsListProps) {
+  const { projects } = props;
+
   return (
     <ContentList>
-      {projectMetas.map((projectMeta) => (
-        <ProjectsListItem key={projectMeta.slug} projectMeta={projectMeta} />
+      {projects.map((project) => (
+        <ProjectsListItem key={project.meta.slug} project={project} />
       ))}
     </ContentList>
   );

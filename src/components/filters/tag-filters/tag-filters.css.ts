@@ -12,9 +12,6 @@ export const container = style({
     [media.sm]: {
       flexDirection: "column",
     },
-    [media.mdAndUp]: {
-      marginBottom: "1rem",
-    },
   },
 });
 

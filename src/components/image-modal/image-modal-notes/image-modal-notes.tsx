@@ -1,7 +1,7 @@
-import { ListItem, ListUnordered } from "@/components/list";
 import { cn } from "@/framework";
 
 import { UseCarouselResult } from "../../carousel";
+import { ListItem, ListUnordered } from "../../list";
 import { ImageCarouselItem } from "../use-image-modal.hook";
 
 import * as styles from "./image-modal-notes.css";

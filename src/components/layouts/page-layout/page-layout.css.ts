@@ -23,7 +23,7 @@ export const container = style({
   },
 });
 
-export const mainWrapper = style({
+export const mainContainer = style({
   display: "flex",
   flexDirection: "column",
   flex: 1,

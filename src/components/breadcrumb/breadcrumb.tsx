@@ -3,16 +3,8 @@ import { Fragment } from "react";
 import { Link } from "../link";
 import { TextSizes } from "../text";
 
+import { BreadcrumbProps } from "./breadcrumb-props";
 import * as styles from "./breadcrumb.css";
-
-interface BreadcrumbProps {
-  readonly segments: readonly BreadcrumbPropsSegment[];
-}
-
-interface BreadcrumbPropsSegment {
-  readonly url?: string;
-  readonly title: string;
-}
 
 export function Breadcrumb(props: BreadcrumbProps) {
   return (

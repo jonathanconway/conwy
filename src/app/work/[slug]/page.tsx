@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, PageLayout, Work } from "@/components";
+import { WorkPage } from "@/components";
 import { site } from "@/content";
 import * as worksMap from "@/content/works";
 import { ContentTypes } from "@/framework";
@@ -8,33 +8,14 @@ import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
-export default async function Page(props: PageProps) {
+const works = Object.values(worksMap);
+
+export default async function WorksWorkPage(props: PageProps) {
   const params = await props.params;
 
   const work = findImportedContent(worksMap, ContentTypes.Work, params.slug);
 
-  return (
-    <PageLayout
-      selectedNavPath="/work"
-      main={
-        <>
-          <Breadcrumb
-            segments={[
-              {
-                title: "Work",
-                url: "/work",
-              },
-              {
-                title: work.meta.client,
-              },
-            ]}
-          />
-
-          <Work work={work} />
-        </>
-      }
-    />
-  );
+  return <WorkPage work={work} works={works} />;
 }
 
 export async function generateStaticParams() {

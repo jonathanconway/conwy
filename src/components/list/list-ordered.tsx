@@ -1,11 +1,15 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, HTMLElementType } from "react";
 
-import * as styles from "./list.css";
+import { ListPropsBase } from "./list-props-base";
+import { getListOrderedOlProps } from "./list.utils";
 
-type ListOrderedProps = HTMLAttributes<HTMLOListElement>;
+export type ListOrderedProps = ListPropsBase &
+  HTMLAttributes<HTMLOListElement> & {
+    readonly as?: HTMLElementType & "ol";
+  };
 
 export function ListOrdered(props: ListOrderedProps) {
-  const { className = styles.orderedList, ...restProps } = props;
+  const { olClassName, olRestProps } = getListOrderedOlProps(props);
 
-  return <ol className={className} {...restProps} />;
+  return <ol className={olClassName} {...olRestProps} />;
 }

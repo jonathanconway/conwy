@@ -1,6 +1,7 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
 import { rounded } from "../../styling";
+import * as textSizeMixins from "../../text/text-size/text-size.mixins";
 import { vars } from "../../theme";
 
 export const summaryContainer = style({
@@ -21,4 +22,9 @@ globalStyle(`${summaryContainer} > p`, {
 
 globalStyle(`${summaryContainer} > ul`, {
   display: "block",
+});
+
+export const prefix = style({
+  color: vars.blockQuoteSummary.color,
+  ...textSizeMixins.paragraph,
 });

@@ -1,6 +1,6 @@
 import { HTMLProps, ReactNode } from "react";
 
-import { isNotNil } from "@/framework";
+import { checkIsNotNil } from "@/framework";
 
 import { Text, TextTypes } from "../text";
 
@@ -13,7 +13,7 @@ interface ChainProps extends HTMLProps<HTMLDivElement> {
 export function Chain(props: ChainProps) {
   const { className = styles.chain, children, ...restProps } = props;
 
-  const renderableChildren = children.filter(isNotNil);
+  const renderableChildren = children.filter(checkIsNotNil);
   const maxChildIndex = renderableChildren.length - 1;
 
   return (

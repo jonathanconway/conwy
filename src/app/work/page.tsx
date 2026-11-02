@@ -1,43 +1,11 @@
-import {
-  Link,
-  MdxContainer,
-  PageLayout,
-  Stack,
-  Text,
-  TextSizes,
-  TextTypes,
-  Works,
-} from "@/components";
-import { site, workFragment } from "@/content";
+import { WorksPage } from "@/components";
+import { site } from "@/content";
 import * as worksMap from "@/content/works";
-import { getTestimonials, getWorkMetas } from "@/framework";
 
-export default function Page() {
-  const workMetas = getWorkMetas(worksMap);
-  const testimonialsCount = getTestimonials(worksMap).length;
+export default function WorksPage_() {
+  const works = Object.values(worksMap);
 
-  return (
-    <PageLayout
-      selectedNavPath="/work"
-      main={
-        <Stack gap={1}>
-          <div>
-            <MdxContainer>{workFragment.content}</MdxContainer>
-
-            <Text type={TextTypes.Paragraph}>
-              <Link href="/testimonials" size={TextSizes.S}>
-                Testimonials
-              </Link>
-
-              <Text type={TextTypes.Small}> ({testimonialsCount})</Text>
-            </Text>
-          </div>
-
-          <Works workMetas={workMetas} />
-        </Stack>
-      }
-    />
-  );
+  return <WorksPage works={works} />;
 }
 
 export const metadata = {

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { Article } from "@/components";
+import { ArticlePage } from "@/components";
 import { site } from "@/content";
 import * as articlesMap from "@/content/articles";
 import { ContentTypes } from "@/framework";
@@ -12,12 +12,11 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const article = await getArticle(params.slug);
 
-  return <Article article={article} />;
+  return <ArticlePage article={article} />;
 }
 
 export async function generateStaticParams() {
-  const allMetas = Object.values(articlesMap).map((item) => item.meta);
-  return allMetas;
+  return Object.values(articlesMap).map((item) => item.meta);
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {

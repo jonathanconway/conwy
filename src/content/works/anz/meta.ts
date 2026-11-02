@@ -17,6 +17,7 @@ import {
 } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "ANZ Bank",
   client: "ANZ Bank",
   blurbShort:
     "Built critical payments features and flows for the new ANZ Plus web banking UI.",
@@ -59,11 +60,11 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "anz-plus-01.jpeg",
+      src: "/images/works/anz/anz-plus-01.jpeg",
       title: "Login screen",
     },
     {
-      src: "anz-plus-02.png",
+      src: "/images/works/anz/anz-plus-02.png",
       title: "Component library - Button",
     },
   ],

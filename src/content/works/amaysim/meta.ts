@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "amaysim",
   client: "amaysim",
   blurbShort: "Built Serverless foundations for MyDevices + Devices API.",
   startDate: "2020-02-20",
@@ -22,15 +23,15 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "amaysim-01.png",
+      src: "/images/works/amaysim/amaysim-01.png",
       title: "Overview screen",
     },
     {
-      src: "amaysim-02.png",
+      src: "/images/works/amaysim/amaysim-02.png",
       title: "Overview screen (main area)",
     },
     {
-      src: "amaysim-03.png",
+      src: "/images/works/amaysim/amaysim-03.png",
       title: "Usage screen",
     },
   ],

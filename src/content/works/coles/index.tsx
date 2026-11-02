@@ -1,11 +1,11 @@
 import { Work } from "@/framework";
 
-import BlurbLong from "./blurb-long.mdx";
 import BlurbShort from "./blurb-short.mdx";
+import Content from "./content.mdx";
 import { meta } from "./meta";
 
 export const colesWork = {
   meta,
-  blurbLong: <BlurbLong />,
+  content: <Content />,
   blurbShort: <BlurbShort />,
 } as Work;

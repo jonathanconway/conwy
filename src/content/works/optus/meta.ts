@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Optus",
   client: "Optus",
   blurbShort:
     "Built SubHub Agent front end and parts of SubHub and Credit Offer back end.",
@@ -34,7 +35,7 @@ export const meta: WorkMeta = {
   tags: [],
   images: [
     {
-      src: "optus-1.svg",
+      src: "/images/works/optus/optus-1.svg",
       title: "Agent SubHub - Main screen",
       notes: [
         {
@@ -53,8 +54,14 @@ export const meta: WorkMeta = {
         },
       ],
     },
-    { src: "optus-2.svg", title: "SubHub - Subscription eligibility popup" },
-    { src: "optus-3.png", title: "Credit Offer - Solution design" },
+    {
+      src: "/images/works/optus/optus-2.svg",
+      title: "SubHub - Subscription eligibility popup",
+    },
+    {
+      src: "/images/works/optus/optus-3.png",
+      title: "Credit Offer - Solution design",
+    },
   ],
   techs: [
     {

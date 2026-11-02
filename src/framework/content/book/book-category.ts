@@ -25,3 +25,27 @@ export const BookCategories = {
 } as const;
 
 export type BookCategory = TypeOfConst<typeof BookCategories>;
+
+export const BOOK_CATEGORY_TITLES = {
+  [BookCategories.Business]: "Business",
+  [BookCategories.Culture]: "Culture",
+  [BookCategories.Design]: "Design",
+  [BookCategories.Diet]: "Diet",
+  [BookCategories.Economics]: "Economics",
+  [BookCategories.Finance]: "Finance",
+  [BookCategories.Fitness]: "Fitness",
+  [BookCategories.Geopolitics]: "Geopolitics",
+  [BookCategories.Health]: "Health",
+  [BookCategories.History]: "History",
+  [BookCategories.Mathematics]: "Mathematics",
+  [BookCategories.Music]: "Music",
+  [BookCategories.Philosophy]: "Philosophy",
+  [BookCategories.Politics]: "Politics",
+  [BookCategories.Psychology]: "Psychology",
+  [BookCategories.Science]: "Science",
+  [BookCategories.SelfHelp]: "Self-Help",
+  [BookCategories.SoftwareDevelopment]: "Software Development",
+  [BookCategories.SoftwareEngineering]: "Software Engineering",
+  [BookCategories.Spirituality]: "Spirituality",
+  [BookCategories.Writing]: "Writing",
+};

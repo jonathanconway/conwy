@@ -1,1 +1,1 @@
-export * from "./micro-sidebar";
+export * from "./micro-page-sidebar";

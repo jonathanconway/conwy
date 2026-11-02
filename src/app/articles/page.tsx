@@ -1,33 +1,17 @@
 import { Suspense } from "react";
 
-import {
-  ArticlesList,
-  ArticlesTagFilters,
-  MdxContainer,
-  PageLayout,
-} from "@/components";
-import { articlesFragment, site } from "@/content";
+import { ArticlesPage } from "@/components";
+import { site } from "@/content";
 import * as articlesMap from "@/content/articles";
 import * as microsMap from "@/content/micros";
 import { Post, pickAndCombineListItems } from "@/framework";
 
-export default function Page() {
-  const items = pickAndCombineListItems<Post>([articlesMap, microsMap]);
+export default function ArticlesPage_() {
+  const posts = pickAndCombineListItems<Post>([articlesMap, microsMap]);
 
   return (
     <Suspense>
-      <PageLayout
-        selectedNavPath="/articles"
-        main={
-          <>
-            <MdxContainer>{articlesFragment.content}</MdxContainer>
-
-            <ArticlesTagFilters items={items} />
-
-            <ArticlesList items={items} />
-          </>
-        }
-      />
+      <ArticlesPage posts={posts} />
     </Suspense>
   );
 }

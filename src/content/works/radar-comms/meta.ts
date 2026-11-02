@@ -1,6 +1,7 @@
 import { SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Radar Communications",
   client: "Radar Communications",
   blurbShort:
     "Built Radar's homepage as a static site with pixel-perfect, cross-browser design.",
@@ -13,7 +14,7 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      src: "website-capture.png",
+      src: "/images/works/radar-comms/website-capture.png",
     },
   ],
   slug: "radar-comms",

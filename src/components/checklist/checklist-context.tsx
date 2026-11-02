@@ -6,9 +6,9 @@ import { ReactNode, createContext, useContext, useMemo } from "react";
 import {
   ChecklistItemTag,
   ChecklistMeta,
+  checkIsNotNil,
   getTreeLeaves,
   getTreeLeavesFiltered,
-  isNotNil,
 } from "@/framework";
 
 import { useSearchTextFilter, useTagFiltersSelected } from "../filters";
@@ -38,7 +38,7 @@ export const ChecklistContext_ = createContext<
 >(undefined);
 
 export const ChecklistContext = (props: ChecklistContextProps) => {
-  const { selectedTags, setSelectedTags } = useTagFiltersSelected(
+  const { selectedTagValues, setSelectedTagValues } = useTagFiltersSelected(
     "checklist-filter",
     [],
   );
@@ -50,7 +50,7 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
     const newSelectedTags = selectedFilters.map((filter) =>
       [filter.tagGroupName, filter.name].join("--"),
     );
-    setSelectedTags(newSelectedTags);
+    setSelectedTagValues(newSelectedTags);
   }
 
   const itemsByHeadingText = props.checklistMeta.extensions
@@ -63,13 +63,13 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
   const itemsFilteredByHeadingText = useMemo(() => {
     let itemsFiltering = itemsByHeadingText;
 
-    if (selectedTags.length > 0) {
+    if (selectedTagValues.length > 0) {
       itemsFiltering = getTreeLeavesFiltered(itemsFiltering, (child) => {
         const childTags = child.tags.map(
           (tag) => `${tag.tagGroupName}--${tag.name}`,
         );
 
-        return intersection(childTags, selectedTags).length > 0;
+        return intersection(childTags, selectedTagValues).length > 0;
       });
     }
 
@@ -82,7 +82,7 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
     }
 
     return itemsFiltering;
-  }, [itemsByHeadingText, selectedTags, searchText]);
+  }, [itemsByHeadingText, selectedTagValues, searchText]);
 
   const [itemsFiltered, itemsFilteredByName] = useMemo(() => {
     const filtered = getTreeLeaves(itemsFilteredByHeadingText);
@@ -98,7 +98,7 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
       return [];
     }
 
-    return selectedTags
+    return selectedTagValues
       .map((selectedTagName: string) => {
         const [tagGroupName, tagName] = selectedTagName.split("--");
         const selectedTagGroup = props.checklistMeta.extensions?.tagGroups.find(
@@ -115,8 +115,8 @@ export const ChecklistContext = (props: ChecklistContextProps) => {
 
         return selectedTag;
       })
-      .filter(isNotNil);
-  }, [selectedTags, props.checklistMeta]);
+      .filter(checkIsNotNil);
+  }, [selectedTagValues, props.checklistMeta]);
 
   const value: ChecklistContextValue = {
     checklistMeta: {

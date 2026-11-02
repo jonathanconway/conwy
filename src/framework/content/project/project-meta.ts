@@ -1,12 +1,10 @@
 import { DateTimeString } from "../date-time";
-import { Image } from "../image";
+import { EngagementMeta, ProjectPlatform } from "../engagement";
 import { MetaBase } from "../meta/meta-base";
-import { PostTag } from "../post/post-tags";
-import { SocialLink } from "../social-link/social-link";
 
 import { ProjectSubType } from "./project-sub-type";
 
-export interface ProjectMeta extends MetaBase {
+export interface ProjectMeta extends MetaBase, EngagementMeta {
   readonly title: string;
 
   readonly date: DateTimeString;
@@ -14,21 +12,5 @@ export interface ProjectMeta extends MetaBase {
   readonly blurb?: string;
   readonly redirectUrl?: string;
   readonly subType: ProjectSubType;
-
-  readonly mainImage: Image;
-
-  readonly images: readonly Image[];
-  readonly tags: readonly PostTag[];
-  readonly socialLinks: readonly SocialLink[];
-  readonly techs: readonly ProjectTech[];
   readonly platforms: readonly ProjectPlatform[];
 }
-
-export interface ProjectTech {
-  readonly categoryName: string;
-  readonly items: readonly {
-    readonly itemName: string;
-  }[];
-}
-
-export type ProjectPlatform = string;

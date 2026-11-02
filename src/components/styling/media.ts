@@ -29,15 +29,32 @@ export const BREAKPOINT_RANGES = {
   },
 };
 
+const sm = `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Small] - 1}px)`;
+const greaterThanSm = `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Small]}px)`;
+const lessThanMd = `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Medium] - 1}px)`;
+const md = `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Small]}px) and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Medium] - 1}px)`;
+const mdAndUp = greaterThanSm;
+const greaterThanMd = `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Medium]}px)`;
+const lg = `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Medium]}px) and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Large] - 1}px)`;
+const lgAndUp = greaterThanMd;
+const lessThanLg = `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Medium] - 1}px)`;
+const greaterThanLg = `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Large]}px)`;
+const xl = `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Large]}px)`;
+const xlAndUp = greaterThanLg;
+const lessThanXl = `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Large] - 1}px)`;
+
 export const media = {
-  sm: `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Small] - 1}px)`,
-  lessThanMd: `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Medium] - 1}px)`,
-  md: `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Small]}px) and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Medium] - 1}px)`,
-  mdAndUp: `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Small]}px)`,
-  lg: `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Medium]}px) and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Large] - 1}px)`,
-  lgAndUp: `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Medium]}px)`,
-  lessThanLg: `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Medium] - 1}px)`,
-  xl: `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Large]}px)`,
-  xlAndUp: `screen and (min-width: ${BREAKPOINT_VALUES[Breakpoints.Large]}px)`,
-  lessThanXl: `screen and (max-width: ${BREAKPOINT_VALUES[Breakpoints.Large] - 1}px)`,
+  sm,
+  greaterThanSm,
+  lessThanMd,
+  md,
+  mdAndUp,
+  greaterThanMd,
+  lg,
+  lgAndUp,
+  lessThanLg,
+  greaterThanLg,
+  xl,
+  xlAndUp,
+  lessThanXl,
 };

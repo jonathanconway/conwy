@@ -6,7 +6,7 @@ import { Article, Post } from "@/framework";
 
 import { ContentList, ContentListSmall } from "../../content-list";
 import { useTagFiltersResults } from "../../filters";
-import { MicrosListItem } from "../../micros";
+import { MicrosPageListItem } from "../../micros";
 import {
   ARTICLES_RECENT_LIST_REST_COUNT,
   ARTICLES_RECENT_LIST_TILE_COUNT,
@@ -16,15 +16,15 @@ import { ArticlesListItem } from "./articles-list-item";
 import { ArticlesListItemSmall } from "./articles-list-item-small";
 
 interface ArticlesListProps {
-  readonly items: readonly Post[];
+  readonly posts: readonly Post[];
   readonly limitSmallListItems?: boolean;
 }
 
 export function ArticlesList(props: ArticlesListProps) {
-  const { items, limitSmallListItems } = props;
+  const { posts, limitSmallListItems } = props;
 
   const { filteredItems } = useTagFiltersResults({
-    items,
+    items: posts,
     contentType: "article",
     tagField: "meta.tags",
   });
@@ -74,7 +74,7 @@ function ArticlesListItemSwitch(props: ArticlesListItemSwitchProps) {
     case "article":
       return <ArticlesListItem article={post} />;
     case "micro":
-      return <MicrosListItem micro={post} />;
+      return <MicrosPageListItem micro={post} />;
     default:
       null;
   }

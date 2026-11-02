@@ -174,9 +174,8 @@ export const tableInner: ComplexStyleRule = {
   ...textWeightMixins.body,
 };
 
-export const table: ComplexStyleRule = {
+export const table: CSSProperties = {
   ...tableInner,
-  ...textSpacingMixins.tableSpacingFirstChild,
 };
 
 // small

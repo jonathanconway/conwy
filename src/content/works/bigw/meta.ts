@@ -1,6 +1,7 @@
 import { SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Big W",
   client: "Big W",
   blurbShort:
     "Implemented cost and time saving features on Pronto app, used by in-store and delivery teams.",
@@ -13,7 +14,7 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      src: "bigw-01.png",
+      src: "/images/works/bigw/bigw-01.png",
       title: "Team member devices",
     },
   ],

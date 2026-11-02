@@ -40,7 +40,7 @@ export function ToolsListItem(props: ToolsListItemProps) {
 
             <Stack gap={0.25}>
               {props.tool.meta.description && (
-                <Text type={TextTypes.Summary}>
+                <Text type={TextTypes.Paragraph}>
                   {props.tool.meta.description}
                 </Text>
               )}

@@ -1,39 +1,24 @@
-import {
-  Breadcrumb,
-  MdxContainer,
-  PageLayout,
-  Testimonials,
-} from "@/components";
+import { MdxContainer, Page, Testimonials } from "@/components";
 import { site, testimonialsFragment } from "@/content";
 import * as worksMap from "@/content/works";
 import { getTestimonials } from "@/framework";
 
-export default function Page() {
-  const testimonials = getTestimonials(worksMap);
+import { testimonialsRoute, worksRoute } from "../routes";
+
+const works = Object.values(worksMap);
+
+export default function TestimonialsPage() {
+  const testimonials = getTestimonials(works);
 
   return (
-    <PageLayout
-      selectedNavPath="/work"
-      main={
-        <>
-          <Breadcrumb
-            segments={[
-              {
-                title: "Work",
-                url: "/work",
-              },
-              {
-                title: "Testimonials",
-              },
-            ]}
-          />
+    <Page
+      title={testimonialsRoute.title}
+      breadcrumbSegments={[worksRoute, { title: testimonialsRoute.title }]}
+    >
+      <MdxContainer>{testimonialsFragment.content}</MdxContainer>
 
-          <MdxContainer>{testimonialsFragment.content}</MdxContainer>
-
-          <Testimonials testimonials={testimonials} />
-        </>
-      }
-    />
+      <Testimonials testimonials={testimonials} />
+    </Page>
   );
 }
 

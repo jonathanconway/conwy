@@ -1,32 +1,31 @@
-import { ContentSidebarContainer } from "../../content-page";
-import { MainAsideLayout } from "../../layouts";
-import { MdxContainer } from "../../mdx";
-import { PostDiscussion } from "../../post";
+import { createMicrosMicroRoute, microsRoute } from "@/app/routes";
+
+import { MainAsidePage } from "../../page";
 import { Stack } from "../../stack";
 
-import { MicroPageHeader } from "./micro-page-header";
+import { MicroPageBody } from "./micro-page-body";
+import { MicroPageDiscussion } from "./micro-page-discussion";
+import { MicroPageSubHeader } from "./micro-page-header";
 import { MicroPageProps } from "./micro-page-props";
-import { MicroSidebar } from "./micro-page-sidebar";
+import { MicroPageSidebar } from "./micro-page-sidebar";
 
 export function MicroPage(props: MicroPageProps) {
+  const { micro } = props;
+  const microRoute = createMicrosMicroRoute(micro);
+
   return (
-    <>
-      <MainAsideLayout
-        main={
-          <Stack gap={1}>
-            <MicroPageHeader micro={props.micro} />
+    <MainAsidePage
+      breadcrumbSegments={[microsRoute, { title: microRoute.title }]}
+      title={microRoute.title}
+      subHeaderSlot={<MicroPageSubHeader micro={props.micro} />}
+      mainSlot={
+        <Stack gap={1}>
+          <MicroPageBody micro={micro} />
 
-            <MdxContainer>{props.micro.content}</MdxContainer>
-
-            <PostDiscussion post={props.micro} />
-          </Stack>
-        }
-        aside={
-          <ContentSidebarContainer>
-            <MicroSidebar micro={props.micro} />
-          </ContentSidebarContainer>
-        }
-      />
-    </>
+          <MicroPageDiscussion micro={props.micro} />
+        </Stack>
+      }
+      asideSlot={<MicroPageSidebar micro={props.micro} />}
+    />
   );
 }

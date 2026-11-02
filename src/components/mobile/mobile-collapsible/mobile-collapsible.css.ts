@@ -1,92 +1,37 @@
 import { globalStyle, style } from "@vanilla-extract/css";
 
-import * as iconMixins from "../../icon/icon.mixins";
-import * as labelMixins from "../../label/label.mixins";
-import { colors, media } from "../../styling";
+import * as mixins from "./mobile-collapsible.mixins";
 
-export const mobileCollapsibleContainer = style({
-  border: "none",
+export const collapsibleContainer = style(mixins.collapsibleContainer);
 
-  "@media": {
-    [media.sm]: {
-      display: "flex",
-      gap: "0.5rem",
-      flexDirection: "column",
-      borderStyle: "solid",
-      borderWidth: "1px",
-      borderColor: colors.stone_300,
-    },
-  },
-});
+export const mobileCollapsibleContainer = style(
+  mixins.mobileCollapsibleContainer,
+);
 
-export const checkbox = style({
-  display: "none",
-});
+export const checkbox = style(mixins.checkbox);
 
-export const expandButton = style({
-  ...iconMixins.iconContainer,
-});
+export const expandButton = style(mixins.expandButton);
 
-export const collapseButton = style({
-  ...iconMixins.iconContainer,
-});
+export const collapseButton = style(mixins.collapseButton);
 
-export const header = style({
-  display: "none",
+export const header = style(mixins.header);
 
-  "@media": {
-    [media.sm]: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-      paddingLeft: "0.5rem" /* 8px */,
-      paddingRight: "0.5rem" /* 8px */,
-      paddingTop: "0.25rem" /* 4px */,
-      paddingBottom: "0.25rem" /* 4px */,
-    },
-  },
-});
+export const title = style(mixins.title);
 
-export const title = style({
-  ...labelMixins.label,
-});
+export const content = style(mixins.content);
 
-export const content = style({
-  "@media": {
-    [media.sm]: {
-      paddingLeft: "0.5rem",
-      paddingRight: "0.5rem",
-      paddingBottom: "0.5rem",
-    },
-  },
-});
+globalStyle(`${checkbox} ~ ${content}`, mixins.checkboxContent);
 
-globalStyle(`${checkbox} ~ ${content}`, {
-  "@media": {
-    [media.sm]: {
-      display: "none",
-    },
-  },
-});
+globalStyle(
+  `${checkbox}:not(:checked) ~ ${header} ${expandButton}`,
+  mixins.checkboxNotCheckedHeaderExpandButton,
+);
 
-globalStyle(`${checkbox}:not(:checked) ~ ${header} ${expandButton}`, {
-  display: "none",
-});
+globalStyle(
+  `${checkbox}:checked ~ ${header} ${collapseButton}`,
+  mixins.checkboxCheckedHeaderExpandButton,
+);
 
-globalStyle(`${checkbox}:checked ~ ${header} ${collapseButton}`, {
-  display: "none",
-});
+globalStyle(`${checkbox}:checked ~ ${content}`, mixins.checkboxCheckedContent);
 
-globalStyle(`${checkbox}:checked ~ ${content}`, {
-  display: "flex",
-});
-
-globalStyle(`${checkbox} ~ ${header}`, {
-  display: "none",
-  "@media": {
-    [media.sm]: {
-      display: "flex",
-    },
-  },
-});
+globalStyle(`${checkbox} ~ ${header}`, mixins.checkboxHeader);

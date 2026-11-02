@@ -1,2 +1,1 @@
-export * from "./work";
-export * from "./work-main-image";
+export * from "./work-page";

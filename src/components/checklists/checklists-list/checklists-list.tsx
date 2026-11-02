@@ -1,6 +1,6 @@
 "use client";
 
-import { Checklist } from "@/framework";
+import { Checklist, ContentTypes } from "@/framework";
 
 import { ContentList } from "../../content-list";
 import { useTagFiltersResults } from "../../filters";
@@ -16,7 +16,7 @@ export function ChecklistsList(props: ChecklistsListProps) {
 
   const { filteredItems } = useTagFiltersResults({
     items,
-    contentType: "checklist",
+    contentType: ContentTypes.Checklist,
     tagField: "meta.checklistTags",
   });
 

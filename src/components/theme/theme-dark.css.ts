@@ -13,6 +13,7 @@ import { checklistThemeDark } from "../checklist/checklist.css-theme";
 import { codeThemeDark } from "../code/code.css-theme";
 import { contentListItemThemeDark } from "../content-list/content-list-item/content-list-item.css-theme";
 import { dividerThemeDark } from "../divider/divider.css-theme";
+import { engagementPageHeaderNavThemeDark } from "../engagement/engagement-page/engagement-page-header/engagement-page-header-nav/engagement-page-header-nav.css-theme";
 import { focusOutlineThemeDark } from "../focus-outline/focus-outline.css-theme";
 import { footerThemeDark } from "../footer/footer.css-theme";
 import { headerHamburgerThemeDark } from "../header/header-hamburger/header-hamburger.css-theme";
@@ -22,14 +23,13 @@ import { iconThemeDark } from "../icon/icon.css-theme";
 import { imageCascadeThemeDark } from "../image-cascade/image-cascade.css-theme";
 import { imageFigureThemeDark } from "../image-figure/image-figure.css-theme";
 import { imageModalThemeDark } from "../image-modal/image-modal.css-theme";
-import { itemNavThemeDark } from "../item/item-nav/item-nav.css-theme";
 import { kbdThemeDark } from "../kbd/kbd.css-theme";
 import { labelThemeDark } from "../label/label.css-theme";
 import { layoutThemeDark } from "../layouts/app-layout/app-layout.css-theme";
 import { linkBoxTitleThemeDark } from "../link-box/link-box-title/link-box-title.css-theme";
 import { linkBoxThemeDark } from "../link-box/link-box.css-theme";
 import { linkThemeDark } from "../link/link.css-theme";
-import { microsListItemThemeDark } from "../micros/micros-list/micros-list-item/micros-list-item.css-theme";
+import { microsListItemThemeDark } from "../micros/micros-page/micros-page-list/micros-page-list-item/micros-page-list-item.css-theme";
 import { switchThemeDark } from "../switch/switch.css-theme";
 import { textBoxThemeDark } from "../text-box/text-box.css-theme";
 import { textThemeDark } from "../text/text.css-theme";
@@ -51,6 +51,7 @@ export const themeDarkClass = createTheme(vars, {
   code: codeThemeDark,
   contentListItem: contentListItemThemeDark,
   divider: dividerThemeDark,
+  engagementPageHeaderNav: engagementPageHeaderNavThemeDark,
   focusOutline: focusOutlineThemeDark,
   footer: footerThemeDark,
   headerHamburger: headerHamburgerThemeDark,
@@ -60,7 +61,6 @@ export const themeDarkClass = createTheme(vars, {
   imageCascade: imageCascadeThemeDark,
   imageFigure: imageFigureThemeDark,
   imageModal: imageModalThemeDark,
-  itemNav: itemNavThemeDark,
   kbd: kbdThemeDark,
   label: labelThemeDark,
   layout: layoutThemeDark,

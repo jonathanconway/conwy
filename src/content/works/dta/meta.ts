@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "DTA",
   client: "DTA",
   blurbShort:
     "Delivered designs, prototypes and components, across Web and Mobile, for the Australian Government.",
@@ -57,7 +58,7 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "dta-screencast.gif",
+      src: "/images/works/dta/dta-screencast.gif",
       alt: "Researcher tools",
       notes: [
         {
@@ -66,7 +67,7 @@ export const meta: WorkMeta = {
       ],
     },
     {
-      src: "dta-1.jpg",
+      src: "/images/works/dta/dta-1.jpg",
       alt: "Accessibility article",
       notes: [
         {
@@ -75,7 +76,7 @@ export const meta: WorkMeta = {
       ],
     },
     {
-      src: "dta-2.png",
+      src: "/images/works/dta/dta-2.png",
       alt: "Business identity - Delegation",
       notes: [
         {
@@ -84,7 +85,7 @@ export const meta: WorkMeta = {
       ],
     },
     {
-      src: "dta-3.png",
+      src: "/images/works/dta/dta-3.png",
       alt: "Business identity - Add team member",
       notes: [
         {
@@ -93,7 +94,7 @@ export const meta: WorkMeta = {
       ],
     },
     {
-      src: "dta-5.png",
+      src: "/images/works/dta/dta-5.png",
       alt: "Business identity - Manage team members",
       notes: [
         {
@@ -102,7 +103,7 @@ export const meta: WorkMeta = {
       ],
     },
     {
-      src: "dta-4.png",
+      src: "/images/works/dta/dta-4.png",
       alt: "Business identity - Technical architecture",
       notes: [
         {

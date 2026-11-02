@@ -1,5 +1,7 @@
 import { HTMLProps } from "react";
 
+import { Text, TextTypes } from "../../text";
+
 import * as styles from "./block-quote-disclaimer.css";
 
 type BlockQuoteDisclaimerProps = HTMLProps<HTMLQuoteElement>;
@@ -14,7 +16,7 @@ export function BlockQuoteDisclaimer(props: BlockQuoteDisclaimerProps) {
 
   return (
     <blockquote className={className} {...restProps}>
-      ⚠️ <strong>{prefix}</strong> {children}
+      <strong className={styles.prefix}>⚠️ {prefix}</strong> {children}
     </blockquote>
   );
 }

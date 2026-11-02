@@ -4,8 +4,8 @@ import { PostDiscussion } from "../post/post-discussion";
 import { Stack } from "../stack";
 
 import { ArticleBody } from "./article-body";
-import { ArticleHeader } from "./article-header";
 import { ArticleImage } from "./article-image";
+import { ArticleSubHeader } from "./article-subheader";
 import { ArticleTableOfContents } from "./article-table-of-contents";
 
 export interface ArticleProps {
@@ -17,7 +17,7 @@ export function Article({ article }: ArticleProps) {
     <Stack gap={1}>
       <ArticleImage article={article} />
 
-      <ArticleHeader article={article} />
+      <ArticleSubHeader article={article} />
 
       <ArticleTableOfContents article={article} />
 

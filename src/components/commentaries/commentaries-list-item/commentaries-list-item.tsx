@@ -2,7 +2,7 @@ import { Commentary, ContentLinkInfo } from "@/framework";
 
 import { ContentListItem } from "../../content-list";
 import { LinkBox } from "../../link-box";
-import { Text } from "../../text";
+import { Text, TextSpacingStrategies } from "../../text";
 import { TextTypes } from "../../text/text-type";
 import { Tooltip } from "../../tooltip";
 
@@ -15,12 +15,9 @@ interface CommentariesListItemProps {
 }
 
 export function CommentariesListItem(props: CommentariesListItemProps) {
-  const {
-    commentary: {
-      meta: { slug, shortBlurb, commentCount },
-    },
-    sourceLinkInfo,
-  } = props;
+  const { commentary, sourceLinkInfo } = props;
+  const { meta } = commentary;
+  const { slug, shortBlurb, commentCount } = meta;
 
   return (
     <LinkBox href={`commentaries/${slug}`}>
@@ -32,7 +29,13 @@ export function CommentariesListItem(props: CommentariesListItemProps) {
               sourceLinkInfo={sourceLinkInfo}
             />
 
-            <Text type={TextTypes.Summary}>{shortBlurb}</Text>
+            <Text
+              type={TextTypes.Paragraph}
+              spacingStrategy={TextSpacingStrategies.Exclude}
+              as="div"
+            >
+              {shortBlurb}
+            </Text>
           </>
         }
         asideSlot={

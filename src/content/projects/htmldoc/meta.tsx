@@ -39,7 +39,7 @@ export const meta: ProjectMeta = {
   platforms: ["Web"],
   images: [
     {
-      src: "htmldoc-screenshot.png",
+      src: "/images/projects/htmldoc/htmldoc-screenshot.png",
       alt: "Screenshot of HTMLDoc homepage",
     },
   ],

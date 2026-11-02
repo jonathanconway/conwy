@@ -39,7 +39,7 @@ export const meta: ProjectMeta = {
   platforms: ["Web", "VSCode"],
   images: [
     {
-      src: "codeselectors-screenshot.png",
+      src: "/images/projects/codeselectors/codeselectors-screenshot.png",
       alt: "Screenshot of CodeSelectors homepage",
     },
   ],

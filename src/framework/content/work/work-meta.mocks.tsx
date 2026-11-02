@@ -3,6 +3,7 @@ import { ContentTypes } from "../content-type";
 import { WorkMeta } from "./work-meta";
 
 export const WORK_META_MOCK: WorkMeta = {
+  title: "Optus",
   client: "Optus",
   blurbShort:
     "Built SubHub Agent front end and parts of SubHub and Credit Offer back end.",

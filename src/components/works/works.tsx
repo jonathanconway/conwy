@@ -1,24 +1,21 @@
-import { WorkMeta, sortWorkMetas } from "@/framework";
+import { Work, sortWorks } from "@/framework";
 
 import { ContentList } from "../content-list";
 
 import { WorkListItem } from "./work-list-item";
 
 interface WorksProps {
-  readonly workMetas: readonly WorkMeta[];
+  readonly works: readonly Work[];
 }
 
 export function Works(props: WorksProps) {
-  const { workMetas } = props;
-  const sortedWorkHistoryListItems = sortWorkMetas(workMetas);
+  const { works } = props;
+  const worksSorted = sortWorks(works);
 
   return (
     <ContentList>
-      {sortedWorkHistoryListItems.map((workHistoryListItem) => (
-        <WorkListItem
-          key={workHistoryListItem.slug}
-          workMeta={workHistoryListItem}
-        />
+      {worksSorted.map((work) => (
+        <WorkListItem key={work.meta.slug} work={work} />
       ))}
     </ContentList>
   );

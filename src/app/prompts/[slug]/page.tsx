@@ -1,15 +1,16 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, PageLayout, Prompt, ResponsiveMdHalf } from "@/components";
+import { createPromptsPromptRoute, promptsRoute } from "@/app/routes";
+import { Page, Prompt, ResponsiveMdHalf } from "@/components";
 import * as contentMap_ from "@/content";
 import { site } from "@/content";
 import * as promptsMap from "@/content/prompts";
-import { sentenceCase } from "@/framework";
 import {
   ContentAnchorsMap,
   ContentMap,
   ContentTypes,
   reduceContentAnchorLinkAndInfos,
+  sentenceCase,
 } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
@@ -19,7 +20,7 @@ import { PageProps } from "../../[slug]/types";
 const contentAnchorsMap = contentAnchorsMap_ as ContentAnchorsMap;
 const contentMap = contentMap_ as unknown as ContentMap;
 
-export default async function Page(props: PageProps) {
+export default async function PromptsPromptPage(props: PageProps) {
   const params = await props.params;
 
   const prompt = findImportedContent(
@@ -34,33 +35,21 @@ export default async function Page(props: PageProps) {
     contentAnchorsMap,
   );
 
-  return (
-    <PageLayout
-      selectedNavPath="/prompts"
-      main={
-        <>
-          <Breadcrumb
-            segments={[
-              {
-                title: "Prompts",
-                url: "/prompts",
-              },
-              {
-                title: prompt.meta.title,
-              },
-            ]}
-          />
+  const promptRoute = createPromptsPromptRoute(prompt);
 
-          <ResponsiveMdHalf>
-            <Prompt
-              title={`Prompt: ${prompt.meta.title}`}
-              prompt={prompt}
-              promptContentAnchorLinkAndInfos={promptContentAnchorLinkAndInfos}
-            />
-          </ResponsiveMdHalf>
-        </>
-      }
-    />
+  return (
+    <Page
+      title={promptRoute.title}
+      breadcrumbSegments={[promptsRoute, { title: promptRoute.title }]}
+    >
+      <ResponsiveMdHalf>
+        <Prompt
+          title={`Prompt: ${prompt.meta.title}`}
+          prompt={prompt}
+          promptContentAnchorLinkAndInfos={promptContentAnchorLinkAndInfos}
+        />
+      </ResponsiveMdHalf>
+    </Page>
   );
 }
 

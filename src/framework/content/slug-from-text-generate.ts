@@ -1,6 +1,6 @@
 import { kebabCase, trim } from "lodash";
 
-import { isNotNil } from "../utils/typing";
+import { checkIsNotNil } from "../utils/typing";
 
 export function generateSlugFromText(text: string) {
   return kebabCase(
@@ -9,7 +9,7 @@ export function generateSlugFromText(text: string) {
       .join(" ")
       .split(" ")
       .map(trim)
-      .filter(isNotNil)
+      .filter(checkIsNotNil)
       .filter(checkIsNotConjunctionWord)
       .slice(0, 5)
       .join(" "),

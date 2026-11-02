@@ -7,7 +7,7 @@ import {
   IllustrationComposite,
   IllustrationLayout,
   checkIsIllustrationTypeComposite,
-  isNotNil,
+  checkIsNotNil,
 } from "@/framework";
 import { drawToCanvasNodeIllustration } from "@/framework/server";
 
@@ -59,7 +59,7 @@ async function buildIllustrationTypeCompositeInLayout(
     illustration.slug,
     illustrationCompositeFilenameSuffix,
   ]
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .join("--");
   const illustrationCompositeFilename = `${illustrationCompositeFilenameBody}.png`;
   const illustrationOutputPathRelative =

@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 
 import {
   Maybe,
-  isNotNil,
+  checkIsNotNil,
   isReactElementOfType,
   sentenceCase,
 } from "@/framework";
@@ -80,7 +80,7 @@ export function selectChecklistItemProps(
   const tags = selectTags(
     ulLiElementChildrenWithoutInput,
     checklistMeta,
-  ).filter(isNotNil);
+  ).filter(checkIsNotNil);
 
   const name = generateChecklistItemKey(title);
 
@@ -114,10 +114,10 @@ export function selectTags(
   return input
     .filter(isString)
     .map(trim)
-    .filter(isNotNil)
-    .flatMap((part) => part.split(" ").map(trim).filter(isNotNil))
+    .filter(checkIsNotNil)
+    .flatMap((part) => part.split(" ").map(trim).filter(checkIsNotNil))
     .filter((part) => part.startsWith("#"))
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .map(convertTagStringToTag(checklistMeta));
 }
 

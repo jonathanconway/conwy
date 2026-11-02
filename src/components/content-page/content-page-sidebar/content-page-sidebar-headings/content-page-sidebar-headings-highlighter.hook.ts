@@ -3,8 +3,10 @@
 import { kebabCase, memoize } from "lodash";
 import { useEffect, useState } from "react";
 
-import { isNotNil } from "@/framework";
+import { checkIsNotNil } from "@/framework";
 import { isClient } from "@/framework/client";
+
+import { SCROLL_TO_TOP_ANCHOR_ID } from "../../../scroll-to-top";
 
 import { CONTENT_PAGE_SIDEBAR_HEADING_ID_PREFIX } from "./content-page-sidebar-headings.const";
 
@@ -17,7 +19,7 @@ function getHeadingElements(
 
   const headingElementsByIds = headingIds
     .map((id) => document.getElementById(id))
-    .filter(isNotNil);
+    .filter(checkIsNotNil);
 
   const headingElementTitle = Array.from(
     document.getElementsByTagName("H2"),
@@ -55,7 +57,9 @@ export function useContentPageSidebarHeadingsHighlighter(
 ) {
   const checklistHeadingIds = sidebarHeadings.map(kebabCase);
 
-  const [selectedHeadingId, setSelectedHeadingId] = useState("top");
+  const [selectedHeadingId, setSelectedHeadingId] = useState(
+    SCROLL_TO_TOP_ANCHOR_ID,
+  );
 
   function highlightScrolledToHeading() {
     const headingElements = getHeadingElementsMemoized(checklistHeadingIds);

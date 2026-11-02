@@ -1,40 +1,40 @@
 import {
   Breakpoints,
-  ContentPageHeader,
+  ContentPageSubHeader,
   MdxContainer,
-  PageLayout,
+  Page,
   ResponsiveStack,
   Stack,
   StackDirections,
 } from "@/components";
 import { nowFragment, nowPage, nowSidebarFragment, site } from "@/content";
 
-export default function Page() {
-  return (
-    <PageLayout
-      selectedNavPath="/now"
-      main={
-        <ResponsiveStack
-          direction={{
-            [Breakpoints.Small]: StackDirections.ColumnReverse,
-            [Breakpoints.Medium]: StackDirections.ColumnReverse,
-            [Breakpoints.Large]: StackDirections.Row,
-          }}
-          alignItems="start"
-        >
-          <Stack gap={2}>
-            <ContentPageHeader
-              content={nowPage}
-              title={nowPage.meta.title}
-              updatedDate={nowPage.meta.updatedDate}
-            />
-            <MdxContainer>{nowFragment.content}</MdxContainer>
-          </Stack>
+import { nowRoute } from "../routes";
 
-          <MdxContainer>{nowSidebarFragment.content}</MdxContainer>
-        </ResponsiveStack>
+export default function NowPage() {
+  return (
+    <Page
+      title={nowRoute.title}
+      subHeaderSlot={
+        <ContentPageSubHeader
+          content={nowPage}
+          updatedDate={nowPage.meta.updatedDate}
+        />
       }
-    />
+    >
+      <ResponsiveStack
+        direction={{
+          [Breakpoints.Small]: StackDirections.ColumnReverse,
+          [Breakpoints.Medium]: StackDirections.ColumnReverse,
+          [Breakpoints.Large]: StackDirections.Row,
+        }}
+        alignItems="start"
+      >
+        <MdxContainer>{nowFragment.content}</MdxContainer>
+
+        <MdxContainer>{nowSidebarFragment.content}</MdxContainer>
+      </ResponsiveStack>
+    </Page>
   );
 }
 

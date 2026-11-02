@@ -1,7 +1,7 @@
 import { createProjectMock } from "@/framework";
 
-export function createProjectsListItemMock() {
+export function createProjectsListItemPropsMock() {
   return {
-    projectMeta: createProjectMock().meta,
+    project: createProjectMock(),
   };
 }

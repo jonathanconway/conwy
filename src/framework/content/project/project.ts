@@ -7,5 +7,5 @@ import { ProjectMeta } from "./project-meta";
 
 export interface Project
   extends ContentBase<typeof ContentTypes.Project, ProjectMeta> {
-  readonly content: JSX.Element;
+  readonly content?: JSX.Element;
 }

@@ -10,6 +10,7 @@ import * as styles from "./mobile-collapsible.css";
 interface MobileCollapsibleProps {
   readonly title: string;
   readonly children?: ReactNode;
+  readonly collapsible?: boolean;
 }
 
 export function MobileCollapsible(props: MobileCollapsibleProps) {
@@ -27,9 +28,7 @@ export function MobileCollapsible(props: MobileCollapsibleProps) {
       />
 
       <label className={styles.header} htmlFor={inputId}>
-        <Heading level={HeadingLevels.Level3} className={styles.title}>
-          {props.title}
-        </Heading>
+        <div className={styles.title}>{props.title}</div>
 
         <Icon
           className={styles.expandButton}

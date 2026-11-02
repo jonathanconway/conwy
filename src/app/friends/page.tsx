@@ -1,44 +1,30 @@
 import {
   Breakpoints,
-  ContentPageHeader,
   MdxContainer,
-  PageLayout,
+  Page,
   ResponsiveStack,
-  Stack,
   StackDirections,
 } from "@/components";
 import { friendsFragment, friendsSidebarFragment, site } from "@/content";
-import { friendsPage } from "@/content/pages/friends";
 
-export default function Page() {
+import { friendsRoute } from "../routes";
+
+export default function FriendsPage() {
   return (
-    <PageLayout
-      selectedNavPath="/friends"
-      main={
-        <ResponsiveStack
-          direction={{
-            [Breakpoints.Small]: StackDirections.ColumnReverse,
-            [Breakpoints.Medium]: StackDirections.ColumnReverse,
-            [Breakpoints.Large]: StackDirections.Row,
-          }}
-          alignItems="start"
-        >
-          <Stack gap={2}>
-            <ContentPageHeader
-              content={friendsPage}
-              title={friendsPage.meta.title}
-              updatedDate={friendsPage.meta.updatedDate}
-              showHistoryLink={false}
-              showSubscribeLink={false}
-              showSuggestEditLink={false}
-            />
-            <MdxContainer>{friendsFragment.content}</MdxContainer>
-          </Stack>
+    <Page title={friendsRoute.title}>
+      <ResponsiveStack
+        direction={{
+          [Breakpoints.Small]: StackDirections.ColumnReverse,
+          [Breakpoints.Medium]: StackDirections.ColumnReverse,
+          [Breakpoints.Large]: StackDirections.Row,
+        }}
+        alignItems="start"
+      >
+        <MdxContainer>{friendsFragment.content}</MdxContainer>
 
-          <MdxContainer>{friendsSidebarFragment.content}</MdxContainer>
-        </ResponsiveStack>
-      }
-    />
+        <MdxContainer>{friendsSidebarFragment.content}</MdxContainer>
+      </ResponsiveStack>
+    </Page>
   );
 }
 

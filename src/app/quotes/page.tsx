@@ -1,6 +1,6 @@
 import {
   MdxContainer,
-  PageLayout,
+  Page,
   QuotesList,
   ResponsiveMdHalf,
   Stack,
@@ -16,6 +16,7 @@ import {
 } from "@/framework";
 
 import contentAnchorsMap_ from "../../../builder-out/content-anchors.json";
+import { quotesRoute } from "../routes";
 
 const contentAnchorsMap = contentAnchorsMap_ as ContentAnchorsMap;
 const contentMap = contentMap_ as unknown as ContentMap;
@@ -28,21 +29,18 @@ const quotesContentAnchorLinkAndInfos = reduceContentsAnchorLinkAndInfos(
 
 export default function QuotesPage() {
   return (
-    <PageLayout
-      selectedNavPath="/quotes"
-      main={
-        <Stack gap={1}>
-          <ResponsiveMdHalf>
-            <MdxContainer>{quotesFragment.content}</MdxContainer>
-          </ResponsiveMdHalf>
+    <Page title={quotesRoute.title}>
+      <Stack gap={1}>
+        <ResponsiveMdHalf>
+          <MdxContainer>{quotesFragment.content}</MdxContainer>
+        </ResponsiveMdHalf>
 
-          <QuotesList
-            quotes={quotes}
-            quotesContentAnchorLinkAndInfos={quotesContentAnchorLinkAndInfos}
-          />
-        </Stack>
-      }
-    />
+        <QuotesList
+          quotes={quotes}
+          quotesContentAnchorLinkAndInfos={quotesContentAnchorLinkAndInfos}
+        />
+      </Stack>
+    </Page>
   );
 }
 

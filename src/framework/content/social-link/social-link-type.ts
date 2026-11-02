@@ -4,6 +4,7 @@ export const SocialLinkTypes = {
   Dev: "dev",
   DevTalk: "dev-talk",
   GitHub: "github",
+  Forum: "forum",
   LinkedIn: "linkedin",
   LinkedInPost: "linkedin-post",
   Mastodon: "mastodon",
@@ -22,6 +23,7 @@ export const SocialLinkTypes = {
 export const SocialLinkLabels = {
   [SocialLinkTypes.Dev]: "DEV.to",
   [SocialLinkTypes.DevTalk]: "DevTalk",
+  [SocialLinkTypes.Forum]: "Forum",
   [SocialLinkTypes.GitHub]: "GitHub",
   [SocialLinkTypes.LinkedIn]: "LinkedIn",
   [SocialLinkTypes.LinkedInPost]: "LinkedIn",

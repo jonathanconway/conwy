@@ -1,5 +1,10 @@
-export interface TagFiltersProps<T> {
-  readonly contentType: string;
+import { ContentType } from "@/framework";
+
+import { TagFiltersTag } from "./tag-filters-tag";
+
+export interface TagFiltersProps {
+  readonly contentType: ContentType;
   readonly tagField: string;
-  readonly items: readonly T[];
+  readonly tags: readonly TagFiltersTag[];
+  readonly collapsible?: boolean;
 }

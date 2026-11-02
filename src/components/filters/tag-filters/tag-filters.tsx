@@ -1,6 +1,5 @@
 "use client";
 
-import { sentenceCase } from "@/framework";
 import { cn } from "@/framework";
 
 import { MobileCollapsible } from "../../mobile";
@@ -9,19 +8,19 @@ import { TagFiltersProps } from "./tag-filters-props";
 import * as styles from "./tag-filters.css";
 import { useTagFilters } from "./use-tag-filters";
 
-export function TagFilters<T>(props: TagFiltersProps<T>) {
-  const { title, displayTags, selectedTags, onSelectTag } =
+export function TagFilters(props: TagFiltersProps) {
+  const { title, displayTags, selectedTagValues, onSelectTag } =
     useTagFilters(props);
 
   return (
-    <MobileCollapsible title={title}>
+    <MobileCollapsible title={title} collapsible={props.collapsible}>
       <div className={styles.container} aria-description={title}>
         {displayTags.map((tag) => {
-          const isSelected = selectedTags.includes(tag);
+          const isSelected = selectedTagValues.includes(tag.slug);
 
           return (
             <span
-              key={tag}
+              key={tag.slug}
               className={styles.tagFilter}
               aria-description="Filter tag"
               onClick={onSelectTag(tag)}
@@ -38,7 +37,7 @@ export function TagFilters<T>(props: TagFiltersProps<T>) {
                   isSelected ? styles.tagFilterLabelSelected : undefined,
                 )}
               >
-                {sentenceCase(tag)}
+                {tag.title}
               </span>
             </span>
           );

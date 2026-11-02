@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "ninemsn",
   client: "ninemsn",
   blurbShort: "Developed MSN New Zealand site and OptusZoo components",
   startDate: "2007-06-01",
@@ -37,7 +38,7 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "ninemsn-01.jpg",
+      src: "/images/works/ninemsn/ninemsn-01.jpg",
       title: "NineMSN NZ Olympics page",
       notes: [
         {

@@ -1,35 +1,21 @@
 import { Suspense } from "react";
 
-import {
-  ChecklistsList,
-  ChecklistsTagFilters,
-  MdxContainer,
-  PageLayout,
-} from "@/components";
-import { checklistsFragment, site } from "@/content";
+import { ChecklistsPage } from "@/components";
+import { site } from "@/content";
 import * as checklistsMap from "@/content/checklists";
 
+import { checklistsRoute } from "../routes";
+
 export default function Page() {
-  const items = Object.values(checklistsMap);
+  const checklists = Object.values(checklistsMap);
 
   return (
     <Suspense>
-      <PageLayout
-        selectedNavPath="/checklists"
-        main={
-          <>
-            <MdxContainer>{checklistsFragment.content}</MdxContainer>
-
-            <ChecklistsTagFilters items={items} />
-
-            <ChecklistsList items={items} />
-          </>
-        }
-      />
+      <ChecklistsPage checklists={checklists} />
     </Suspense>
   );
 }
 
 export const metadata = {
-  title: `${site.title} - checklists`,
+  title: `${site.title} - ${checklistsRoute.title.toLowerCase()}`,
 };

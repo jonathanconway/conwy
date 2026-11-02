@@ -15,22 +15,24 @@ export interface UseTagFiltersParams<T> {
 }
 
 export function useTagFiltersResults<T>(params: UseTagFiltersParams<T>) {
-  const { selectedTags } = useTagFiltersSelected(
+  const { selectedTagValues } = useTagFiltersSelected(
     createTagFiltersParamKey(params),
   );
 
-  const filteredItems = selectedTags.includes(ALL)
+  const filteredItems = selectedTagValues.includes(ALL)
     ? params.items
     : params.items.filter((item) => {
         const tagFieldValue = get(item, params.tagField);
         if (isArray(tagFieldValue)) {
-          return getAreSomeSame(tagFieldValue, selectedTags);
+          return getAreSomeSame(tagFieldValue, selectedTagValues);
         } else {
-          return selectedTags.includes(tagFieldValue);
+          return selectedTagValues.includes(tagFieldValue);
         }
       });
 
-  const isFiltered = !(selectedTags.includes(ALL) || selectedTags.length === 0);
+  const isFiltered = !(
+    selectedTagValues.includes(ALL) || selectedTagValues.length === 0
+  );
 
   return {
     filteredItems,

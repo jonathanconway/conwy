@@ -1,5 +1,5 @@
 import { Checklist } from "@/framework";
 
-export interface ChecklistPageHeaderProps {
+export interface ChecklistPageSubHeaderProps {
   readonly checklist: Checklist;
 }

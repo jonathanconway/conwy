@@ -1,7 +1,5 @@
 import { HTMLProps } from "react";
 
-import { Text, TextTypes } from "../../text";
-
 import * as styles from "./block-quote-summary.css";
 
 type BlockQuoteSummaryProps = HTMLProps<HTMLQuoteElement>;
@@ -13,10 +11,7 @@ export function BlockQuoteSummary({
 }: BlockQuoteSummaryProps) {
   return (
     <blockquote className={className} {...restProps}>
-      <Text type={TextTypes.Body} as="strong">
-        ℹ️ TL;DR:
-      </Text>{" "}
-      {children}
+      <strong className={styles.prefix}>ℹ️ TL;DR:</strong> {children}
     </blockquote>
   );
 }

@@ -1,18 +1,18 @@
 import { HeaderLogo } from "./header-logo";
-import { HeaderNav } from "./header-nav";
+import { HeaderNav, NavItem } from "./header-nav";
 import * as styles from "./header.css";
 
 export interface HeaderProps {
-  readonly selectedNavPath?: string;
+  readonly selectedNavItem?: NavItem;
 }
 
-export function Header({ selectedNavPath }: HeaderProps) {
+export function Header({ selectedNavItem }: HeaderProps) {
   return (
     <>
       <div className={styles.container}>
         <HeaderLogo />
 
-        <HeaderNav selectedNavPath={selectedNavPath} />
+        <HeaderNav selectedNavItem={selectedNavItem} />
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import { WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Community Engine",
   client: "Community Engine",
   blurbShort: "Developed features for an early-stage social media startup.",
   startDate: "2011-04-01",

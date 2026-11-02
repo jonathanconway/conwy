@@ -1,45 +1,62 @@
-import { ProjectMeta } from "@/framework";
+import { Project } from "@/framework";
 
 import {
   ContentListItem,
   ContentListItemImage,
   ContentListItemType,
 } from "../../../content-list";
+import { Divider } from "../../../divider";
 import { LinkBox, LinkBoxTitle } from "../../../link-box";
 import { SocialLinksIcons } from "../../../social-links";
-import { Text, TextTypes } from "../../../text";
+import { Stack } from "../../../stack";
+import { Text, TextSpacingStrategies, TextTypes } from "../../../text";
 
 interface ProjectsListItemProps {
-  readonly projectMeta: ProjectMeta;
+  readonly project: Project;
 }
 
 export function ProjectsListItem(props: ProjectsListItemProps) {
-  const { projectMeta } = props;
+  const { project } = props;
+  const {
+    meta: { title, slug, blurb, mainImage, socialLinks, subType, techs },
+  } = project;
+
+  const techNames = techs.map((tech) => tech.categoryName).join(", ");
 
   return (
-    <LinkBox href={`projects/${projectMeta.slug}`}>
+    <LinkBox href={`projects/${slug}`}>
       <ContentListItem
         mainSlot={
           <>
-            <LinkBoxTitle>{projectMeta.title}</LinkBoxTitle>
+            <LinkBoxTitle>{title}</LinkBoxTitle>
 
-            <Text type={TextTypes.Summary}>{projectMeta.blurb}</Text>
+            <Stack gap={0.5}>
+              <Text
+                type={TextTypes.Paragraph}
+                spacingStrategy={TextSpacingStrategies.Exclude}
+                as="div"
+              >
+                {blurb}
+              </Text>
+
+              <Divider />
+
+              <Text type={TextTypes.Small}>Tech: {techNames}</Text>
+            </Stack>
           </>
         }
         asideSlot={
           <>
-            {projectMeta?.mainImage && (
+            {mainImage && (
               <ContentListItemImage
-                src={projectMeta.mainImage.src}
+                src={mainImage.src}
                 alt="Project main image"
               />
             )}
 
-            {projectMeta.socialLinks && (
-              <SocialLinksIcons socialLinks={projectMeta.socialLinks} />
-            )}
+            {socialLinks && <SocialLinksIcons socialLinks={socialLinks} />}
 
-            <ContentListItemType>{projectMeta.subType}</ContentListItemType>
+            <ContentListItemType>{subType}</ContentListItemType>
           </>
         }
       />

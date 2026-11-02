@@ -19,7 +19,7 @@ export function PromptsList(props: PromptsListProps) {
   const { prompts, promptsContentAnchorLinkAndInfos } = props;
 
   return (
-    <Stack direction={StackDirections.Column} gap={0.5}>
+    <Stack direction={StackDirections.Column} gap={2}>
       {prompts.map((prompt) => (
         <Prompt
           key={prompt.meta.slug}

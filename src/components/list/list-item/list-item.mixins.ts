@@ -3,7 +3,7 @@ import { ComplexStyleRule } from "@vanilla-extract/css";
 import * as textMixins from "../../text/text.mixins";
 
 export const listItem = {
-  ...textMixins.paragraph,
+  ...textMixins.paragraphInner,
 };
 
 export const listItemSmall: ComplexStyleRule = {

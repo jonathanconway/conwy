@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Bupa",
   client: "Bupa",
   blurbShort:
     "Led a team of 5-6 web developers on the a rebuild of Bupa’s online presence.",
@@ -50,11 +51,11 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "bupa-01.jpg",
+      src: "/images/works/bupa/bupa-01.jpg",
       title: "Bupa website - Cover comparison tool",
     },
     {
-      src: "bupa-02.jpg",
+      src: "/images/works/bupa/bupa-02.jpg",
       title: "Bupa website - Quick quote tool",
     },
   ],

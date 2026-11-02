@@ -9,3 +9,7 @@ export const thFirst = {
 export const thInTHead = {
   borderTop: "none",
 };
+
+export const thInTrFirst = {
+  ...tableMixins.tableCellInTrFirst,
+};

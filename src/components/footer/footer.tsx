@@ -1,6 +1,7 @@
 import { site } from "@/content";
 
 import { Link } from "../link";
+import { LinkSizes } from "../link/link-size";
 import { Stack, StackDirections } from "../stack";
 
 import { FooterIconLinks } from "./footer-icon-links";
@@ -19,13 +20,19 @@ export function Footer() {
           </div>
         </div>
         <div className={styles.row}>
-          <Link href={site.sourceUrl} target="_blank" showOpenInNew={false}>
+          <Link
+            href={site.sourceUrl}
+            target="_blank"
+            showOpenInNew={false}
+            size={LinkSizes.S}
+          >
             Source
           </Link>
           <Link
             href={`https://wave.webaim.org/report#/${site.url}`}
             target="_blank"
             showOpenInNew={false}
+            size={LinkSizes.S}
           >
             WCAG
           </Link>

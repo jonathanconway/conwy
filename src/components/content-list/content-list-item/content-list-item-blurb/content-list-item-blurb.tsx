@@ -1,11 +1,19 @@
 import { ReactNode } from "react";
 
-import { Text, TextTypes } from "../../../text";
+import { Text, TextSpacingStrategies, TextTypes } from "../../../text";
 
 interface ContentListItemBlurbProps {
   readonly children?: ReactNode;
 }
 
 export function ContentListItemBlurb(props: ContentListItemBlurbProps) {
-  return <Text type={TextTypes.Summary}>{props.children}</Text>;
+  return (
+    <Text
+      type={TextTypes.Paragraph}
+      spacingStrategy={TextSpacingStrategies.Exclude}
+      as="div"
+    >
+      {props.children}
+    </Text>
+  );
 }

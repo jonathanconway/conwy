@@ -1,6 +1,6 @@
 import { groupBy, orderBy } from "lodash";
 
-import { Community } from "@/framework";
+import { Community, CommunityCategories } from "@/framework";
 
 export function getCommunitiesList(communities: readonly Community[]) {
   const communitiesOrdered = orderBy(
@@ -13,8 +13,10 @@ export function getCommunitiesList(communities: readonly Community[]) {
     (community) => community.meta.category,
   );
   const communityCategoryEntries = Object.entries(communitiesByCategory);
+  const communityCategories = Object.values(CommunityCategories);
 
   return {
+    communityCategories,
     communityCategoryEntries,
   };
 }

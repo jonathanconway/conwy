@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Fiserv",
   client: "Fiserv",
   blurbShort:
     "Worked full-stack on Westpac Online Banking: payments, statements, accounts.",
@@ -38,23 +39,23 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "fiserv-01.jpeg",
+      src: "/images/works/fiserv/fiserv-01.jpeg",
       alt: "Staff award 1",
     },
     {
-      src: "fiserv-02.jpeg",
+      src: "/images/works/fiserv/fiserv-02.jpeg",
       alt: "Staff award 2",
     },
     {
-      src: "fiserv-03.gif",
+      src: "/images/works/fiserv/fiserv-03.gif",
       alt: "Accounts web interface",
     },
     {
-      src: "fiserv-05.png",
+      src: "/images/works/fiserv/fiserv-05.png",
       alt: "Make a payment web interface",
     },
     {
-      src: "fiserv-04.gif",
+      src: "/images/works/fiserv/fiserv-04.gif",
       alt: "DSynchronize tool",
       notes: [
         {
@@ -63,22 +64,22 @@ export const meta: WorkMeta = {
       ],
     },
     {
-      src: "fiserv-06.png",
+      src: "/images/works/fiserv/fiserv-06.png",
       alt: "Screenshot",
       notes: [],
     },
     {
-      src: "fiserv-07.png",
+      src: "/images/works/fiserv/fiserv-07.png",
       alt: "Screenshot",
       notes: [],
     },
     {
-      src: "fiserv-08.png",
+      src: "/images/works/fiserv/fiserv-08.png",
       alt: "Screenshot",
       notes: [],
     },
     {
-      src: "fiserv-09.png",
+      src: "/images/works/fiserv/fiserv-09.png",
       alt: "Screenshot",
       notes: [],
     },

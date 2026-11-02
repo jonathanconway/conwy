@@ -1,6 +1,6 @@
 import {
   MdxContainer,
-  PageLayout,
+  Page,
   Redirect as RedirectComponent,
 } from "@/components";
 import { REDIRECTS, redirectFragment } from "@/content";
@@ -12,14 +12,10 @@ export async function PageRedirect(props: PageProps) {
   const redirectUrl = REDIRECTS[params.slug];
 
   return (
-    <PageLayout
-      main={
-        <div>
-          <MdxContainer>{redirectFragment.content}</MdxContainer>
+    <Page title="Redirecting you now...">
+      <MdxContainer>{redirectFragment.content}</MdxContainer>
 
-          <RedirectComponent redirectUrl={redirectUrl} />
-        </div>
-      }
-    />
+      <RedirectComponent redirectUrl={redirectUrl} />
+    </Page>
   );
 }

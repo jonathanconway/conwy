@@ -1,6 +1,7 @@
 import { SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "TAL",
   client: "TAL",
   blurbShort:
     "Added new features and fixes to insurance software used by sales and customer service.",

@@ -56,7 +56,7 @@ export const linkBoxTitleSmall = {
 
 export const paragraph = {
   fontSize: rems(textSizeConsts.fontSizeRems.s),
-  lineHeight: rems(textSizeConsts.lineHeightRems.m),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
 };
 
 export const preFormatted = {

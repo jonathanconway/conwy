@@ -1,4 +1,4 @@
-import { isNotNil } from "@/framework";
+import { checkIsNotNil } from "@/framework";
 
 import { Breakpoint } from "../styling";
 
@@ -11,6 +11,6 @@ export function getResponsiveHidden(
     responsiveVisibility?.sm === false ? styles.hiddenSm : undefined,
     responsiveVisibility?.md === false ? styles.hiddenMd : undefined,
   ]
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .join(" ");
 }

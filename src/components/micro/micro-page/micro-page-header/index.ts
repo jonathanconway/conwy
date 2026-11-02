@@ -1,2 +1,2 @@
 export * from "./micro-page-header";
-export * from "./micro-page-title-generate";
+export * from "./micro-page-header-title-generate";

@@ -1,6 +1,7 @@
 import { SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "News Limited",
   client: "News Limited",
   blurbShort:
     "Developed the iPad app for The Australian and added various features to the Desktop website.",
@@ -46,6 +47,10 @@ export const meta: WorkMeta = {
       url: "http://theaustralian.com.au",
       title: "TheAustralian website",
     },
-    // todo: add top 50 from archive
+    {
+      type: SocialLinkTypes.Website,
+      url: "https://web.archive.org/web/20120206142017/http://www.theaustralian.com.au/top50",
+      title: "TheAustralian Top50 web page (Archive)",
+    },
   ],
 };

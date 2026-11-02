@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Refugee Connect",
   client: "Refugee Connect",
   blurbShort:
     "Prototyped an app to help refugees connect with local people and institutions",
@@ -23,57 +24,57 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "refugee-connect-1.png",
+      src: "/images/works/refugee-connect/refugee-connect-1.png",
       alt: "Desktop prototype",
       notes: [],
     },
     {
-      src: "refugee-connect-2.png",
+      src: "/images/works/refugee-connect/refugee-connect-2.png",
       alt: "Mobile prototype",
       notes: [],
     },
     {
-      src: "refugee-connect-pres-7.png",
+      src: "/images/works/refugee-connect/refugee-connect-pres-7.png",
       alt: "Presentation slide 7",
       notes: [],
     },
     {
-      src: "refugee-connect-pres-2.png",
+      src: "/images/works/refugee-connect/refugee-connect-pres-2.png",
       alt: "Presentation slide 2",
       notes: [],
     },
     {
-      src: "refugee-connect-pres-3.png",
+      src: "/images/works/refugee-connect/refugee-connect-pres-3.png",
       alt: "Presentation slide 3",
       notes: [],
     },
     {
-      src: "refugee-connect-pres-4.png",
+      src: "/images/works/refugee-connect/refugee-connect-pres-4.png",
       alt: "Presentation slide 4",
       notes: [],
     },
     {
-      src: "refugee-connect-pres-5.png",
+      src: "/images/works/refugee-connect/refugee-connect-pres-5.png",
       alt: "Presentation slide 5",
       notes: [],
     },
     {
-      src: "refugee-connect-pres-6.png",
+      src: "/images/works/refugee-connect/refugee-connect-pres-6.png",
       alt: "Presentation slide 6",
       notes: [],
     },
     {
-      src: "refugee-connect-pres-8.png",
+      src: "/images/works/refugee-connect/refugee-connect-pres-8.png",
       alt: "Presentation slide 8",
       notes: [],
     },
     {
-      src: "refugee-connect-prototype-1.png",
+      src: "/images/works/refugee-connect/refugee-connect-prototype-1.png",
       alt: "Prototype sample 1",
       notes: [],
     },
     {
-      src: "refugee-connect-prototype-2.png",
+      src: "/images/works/refugee-connect/refugee-connect-prototype-2.png",
       alt: "Prototype sample 2",
       notes: [],
     },

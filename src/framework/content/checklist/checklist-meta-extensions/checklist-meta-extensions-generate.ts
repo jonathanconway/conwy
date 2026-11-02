@@ -12,7 +12,7 @@ import {
   addTreeSubBranchChildren,
   addTreeSubBranchPath,
 } from "../../../utils/tree";
-import { isNotNil } from "../../../utils/typing";
+import { checkIsNotNil } from "../../../utils/typing";
 import { ChecklistMeta } from "../checklist-meta";
 
 import {
@@ -267,7 +267,7 @@ function parseChecklistItemTags(checklistItemText: string) {
   const checklistItemTagNames = checklistItemText
     .split(REGEXP_WHITESPACE)
     .map(trim)
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .filter((part) => part.startsWith("#"))
     .map((part) => part.replace("#", ""));
 

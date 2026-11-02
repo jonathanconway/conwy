@@ -5,6 +5,7 @@ import {
   Text,
   TextSpacing,
   TextSpacingStrategies,
+  TextSpacingStrategy,
   TextType,
   TextTypes,
 } from "../text";
@@ -18,13 +19,20 @@ export type HeadingProps = DetailedHTMLProps<
   readonly classNameExtended?: HTMLAttributes<HTMLHeadingElement>["className"];
   readonly level?: HeadingLevel;
   readonly afterSlot?: ReactNode;
+  readonly spacingStrategy?: TextSpacingStrategy;
 };
 
 /**
  * `Heading` is a convenience component for `Text` of type `heading`.
  */
 export function Heading(props: HeadingProps) {
-  const { level = 1, children, afterSlot, ...restProps } = props;
+  const {
+    level = 1,
+    spacingStrategy: strategy = TextSpacingStrategies.IncludeExceptFirstChild,
+    children,
+    afterSlot,
+    ...restProps
+  } = props;
 
   const type = {
     1: TextTypes.Heading1,
@@ -35,10 +43,7 @@ export function Heading(props: HeadingProps) {
   }[level];
 
   return afterSlot ? (
-    <TextSpacing
-      type={type as TextType}
-      strategy={TextSpacingStrategies.Include}
-    >
+    <TextSpacing type={type as TextType} strategy={strategy}>
       <Stack
         gap={1}
         direction={StackDirections.Row}
@@ -51,7 +56,7 @@ export function Heading(props: HeadingProps) {
       </Stack>
     </TextSpacing>
   ) : (
-    <Text type={type} {...restProps}>
+    <Text type={type} spacingStrategy={strategy} {...restProps}>
       {children}
     </Text>
   );

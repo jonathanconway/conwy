@@ -6,7 +6,7 @@ import {
 
 import { Rem } from "@/framework/css";
 
-export function createNotFirstChildStyle(
+export function createSpacingNotFirstChildStyle(
   cssProperties: CSSProperties,
 ): StyleRule {
   return {
@@ -16,10 +16,10 @@ export function createNotFirstChildStyle(
   };
 }
 
-export function createSpacingTopNotFirstChildStyle(
+export function createSpacingPaddingTopNotFirstChildStyle(
   paddingTop: Rem,
 ): ComplexStyleRule {
-  return createNotFirstChildStyle({
+  return createSpacingNotFirstChildStyle({
     paddingTop,
   });
 }

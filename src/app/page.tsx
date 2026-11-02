@@ -1,9 +1,11 @@
 import { Suspense } from "react";
 
-import { AboutMe, ArticlesRecentList, PageLayout } from "@/components";
+import { AboutMe, ArticlesRecentList, Page, PageLayout } from "@/components";
 import * as articlesMap from "@/content/articles";
 import * as microsMap from "@/content/micros";
 import { getPosts } from "@/framework";
+
+import { homeRoute } from "./routes";
 
 export default function Home() {
   const items = getPosts({
@@ -12,15 +14,11 @@ export default function Home() {
 
   return (
     <Suspense>
-      <PageLayout
-        main={
-          <>
-            <AboutMe />
+      <Page>
+        <AboutMe />
 
-            <ArticlesRecentList items={items} />
-          </>
-        }
-      />
+        <ArticlesRecentList items={items} />
+      </Page>
     </Suspense>
   );
 }

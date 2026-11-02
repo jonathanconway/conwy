@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, PageLayout, Project } from "@/components";
+import { createProjectsProjectRoute } from "@/app/routes";
+import { ProjectPage as ProjectPage_ } from "@/components";
 import { site } from "@/content";
 import * as projectsMap from "@/content/projects";
 import { ContentTypes } from "@/framework";
@@ -8,8 +9,10 @@ import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
-export default async function Page(props: PageProps) {
+export default async function ProjectPage(props: PageProps) {
   const params = await props.params;
+
+  const projects = Object.values(projectsMap);
 
   const project = findImportedContent(
     projectsMap,
@@ -17,28 +20,9 @@ export default async function Page(props: PageProps) {
     params.slug,
   );
 
-  return (
-    <PageLayout
-      selectedNavPath="/project"
-      main={
-        <>
-          <Breadcrumb
-            segments={[
-              {
-                title: "Projects",
-                url: "/projects",
-              },
-              {
-                title: project.meta.title,
-              },
-            ]}
-          />
+  const projectRoute = createProjectsProjectRoute(project);
 
-          <Project project={project} />
-        </>
-      }
-    />
-  );
+  return <ProjectPage_ projects={projects} project={project} />;
 }
 
 export async function generateStaticParams() {

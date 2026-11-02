@@ -1,4 +1,4 @@
-import { ComplexStyleRule } from "@vanilla-extract/css";
+import { CSSProperties, ComplexStyleRule } from "@vanilla-extract/css";
 
 import { rems } from "@/framework/css";
 
@@ -39,7 +39,8 @@ export const imgSized = {
   height: "auto",
 };
 
-export const figCaption = {
+export const figCaption: CSSProperties = {
   ...textSizeMixins.small,
   marginTop: rems(0.5),
+  whiteSpace: "pre-wrap",
 };

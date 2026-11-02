@@ -1,17 +1,19 @@
 "use client";
 
-import { Post } from "@/framework";
+import { ContentTypes, POST_TAG_TITLES, PostTags } from "@/framework";
 
-import { TagFilters } from "../../filters";
+import { TagFilters, TagFiltersTag } from "../../filters";
 
-export interface ArticlesTagFiltersProps {
-  readonly items: readonly Post[];
-}
-
-export function ArticlesTagFilters(props: ArticlesTagFiltersProps) {
-  const { items } = props;
+export function ArticlesTagFilters() {
+  const articlesTagFilterTags: readonly TagFiltersTag[] = Object.values(
+    PostTags,
+  ).map((slug) => ({ slug, title: POST_TAG_TITLES[slug] }));
 
   return (
-    <TagFilters contentType="article" items={items} tagField="meta.tags" />
+    <TagFilters
+      contentType={ContentTypes.Article}
+      tags={articlesTagFilterTags}
+      tagField="meta.tags"
+    />
   );
 }

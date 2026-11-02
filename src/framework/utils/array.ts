@@ -50,3 +50,19 @@ export function takeAfter<T>(
   }
   return result;
 }
+
+export function getPrevious<T>(items: readonly T[], item: T) {
+  const itemIndex = items.indexOf(item);
+  if (itemIndex <= 0) {
+    return undefined;
+  }
+  return items[itemIndex - 1];
+}
+
+export function getNext<T>(items: readonly T[], item: T) {
+  const itemIndex = items.indexOf(item);
+  if (itemIndex >= items.length - 1) {
+    return undefined;
+  }
+  return items[itemIndex + 1];
+}

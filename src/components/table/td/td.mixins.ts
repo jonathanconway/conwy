@@ -7,3 +7,7 @@ export const td = {
 export const tdFirst = {
   borderLeft: "none",
 };
+
+export const tdInTrFirst = {
+  ...tableMixins.tableCellInTrFirst,
+};

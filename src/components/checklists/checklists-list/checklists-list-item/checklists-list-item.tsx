@@ -9,7 +9,7 @@ export function ChecklistsListItem(props: ChecklistsListItemProps) {
   const { slug, title, blurb } = props;
 
   return (
-    <LinkBox href={`checklists/${slug}`}>
+    <LinkBox href={`/checklists/${slug}`}>
       <ContentListItem
         mainSlot={
           <>

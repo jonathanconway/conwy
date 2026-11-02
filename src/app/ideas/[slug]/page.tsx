@@ -1,9 +1,11 @@
 import { Metadata } from "next";
 
+import { createIdeasIdeaRoute, ideasRoute } from "@/app/routes";
 import {
   Breadcrumb,
-  ContentPageHeader,
+  ContentPageSubHeader,
   Idea,
+  Page,
   PageLayout,
   ResponsiveMdHalf,
 } from "@/components";
@@ -14,40 +16,22 @@ import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
-export default async function Page(props: PageProps) {
+export default async function IdeaPage(props: PageProps) {
   const params = await props.params;
 
   const idea = findImportedContent(ideasMap, ContentTypes.Idea, params.slug);
+  const ideaRoute = createIdeasIdeaRoute(idea);
 
   return (
-    <PageLayout
-      selectedNavPath="/ideas"
-      main={
-        <>
-          <ContentPageHeader
-            content={idea}
-            preHeader={
-              <Breadcrumb
-                segments={[
-                  {
-                    title: "Ideas",
-                    url: "/ideas",
-                  },
-                  {
-                    title: idea.meta.title,
-                  },
-                ]}
-              />
-            }
-            title={idea.meta.title}
-          />
-
-          <ResponsiveMdHalf>
-            <Idea idea={idea} />
-          </ResponsiveMdHalf>
-        </>
-      }
-    />
+    <Page
+      breadcrumbSegments={[ideasRoute, ideaRoute]}
+      title={ideaRoute.title}
+      subHeaderSlot={<ContentPageSubHeader content={idea} />}
+    >
+      <ResponsiveMdHalf>
+        <Idea idea={idea} />
+      </ResponsiveMdHalf>
+    </Page>
   );
 }
 

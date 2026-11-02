@@ -40,7 +40,7 @@ export const meta: ProjectMeta = {
   platforms: ["Mobile Web"],
   images: [
     {
-      src: "eatpaylove-01.png",
+      src: "/images/projects/eatpaylove/eatpaylove-01.png",
       alt: "EatPayLove - Mobile web app",
       notes: [],
     },

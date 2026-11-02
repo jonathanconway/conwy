@@ -1,22 +1,20 @@
 import Image from "next/image";
 
-import { ItemMeta } from "@/framework";
+import { Engagement } from "@/framework";
 
 import * as styles from "./item-main-image.css";
 
 type ImageProps = Omit<Parameters<typeof Image>[0], "src" | "alt">;
 
-interface ItemMainImageProps<TMeta extends ItemMeta> extends ImageProps {
-  readonly itemMeta: TMeta;
-  readonly titleKey: keyof TMeta;
+interface ItemMainImageProps extends ImageProps {
+  readonly engagement: Engagement;
+  readonly title: string;
 }
 
-export function ItemMainImage<TMeta extends ItemMeta>(
-  props: ItemMainImageProps<TMeta>,
-) {
-  const { itemMeta, titleKey, ...restProps } = props;
+export function ItemMainImage(props: ItemMainImageProps) {
+  const { engagement, title, ...restProps } = props;
 
-  if (!("mainImage" in itemMeta) || !itemMeta.mainImage?.src) {
+  if (!("mainImage" in engagement.meta) || !engagement.meta.mainImage?.src) {
     return;
   }
 
@@ -27,8 +25,8 @@ export function ItemMainImage<TMeta extends ItemMeta>(
       unoptimized={true}
       width={96}
       height={64}
-      src={itemMeta.mainImage?.src}
-      alt={`Thumbnail image for ${itemMeta[titleKey]}`}
+      src={engagement.meta.mainImage?.src}
+      alt={`Thumbnail image for ${title}`}
       {...restProps}
     />
   );

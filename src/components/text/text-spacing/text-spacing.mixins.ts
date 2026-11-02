@@ -2,7 +2,7 @@ import { CSSProperties } from "@vanilla-extract/css";
 
 import { rems } from "@/framework/css";
 
-import { createNotFirstChildStyle } from "../../spacing/spacing.mixins";
+import { createSpacingNotFirstChildStyle } from "../../spacing/spacing.mixins";
 
 import * as textSpacing from "./text-spacing.consts";
 
@@ -10,69 +10,69 @@ export const bodySpacing = {
   paddingTop: rems(textSpacing.body),
 };
 export const bodySpacingFirstChild = {
-  ...createNotFirstChildStyle(bodySpacing),
+  ...createSpacingNotFirstChildStyle(bodySpacing),
 };
 
 export const collapsibleTitleSpacing = {};
 export const collapsibleTitleSpacingFirstChild = {
-  ...createNotFirstChildStyle(collapsibleTitleSpacing),
+  ...createSpacingNotFirstChildStyle(collapsibleTitleSpacing),
 };
 
 export const heading1Spacing = {
   paddingTop: rems(textSpacing.heading1),
 };
 export const heading1SpacingFirstChild = {
-  ...createNotFirstChildStyle(heading1Spacing),
+  ...createSpacingNotFirstChildStyle(heading1Spacing),
 };
 
 export const heading2Spacing = {
   paddingTop: rems(textSpacing.heading2),
 };
 export const heading2SpacingFirstChild = {
-  ...createNotFirstChildStyle(heading2Spacing),
+  ...createSpacingNotFirstChildStyle(heading2Spacing),
 };
 
 export const heading3Spacing = {
   paddingTop: rems(textSpacing.heading3),
 };
 export const heading3SpacingFirstChild = {
-  ...createNotFirstChildStyle(heading3Spacing),
+  ...createSpacingNotFirstChildStyle(heading3Spacing),
 };
 
 export const heading4Spacing = {
   paddingTop: rems(textSpacing.heading4),
 };
 export const heading4SpacingFirstChild = {
-  ...createNotFirstChildStyle(heading4Spacing),
+  ...createSpacingNotFirstChildStyle(heading4Spacing),
 };
 
 export const heading5Spacing = {
   paddingTop: rems(textSpacing.heading5),
 };
 export const heading5SpacingFirstChild = {
-  ...createNotFirstChildStyle(heading5Spacing),
+  ...createSpacingNotFirstChildStyle(heading5Spacing),
 };
 
 export const labelSpacing = {};
 export const labelSpacingFirstChild = {
-  ...createNotFirstChildStyle(labelSpacing),
+  ...createSpacingNotFirstChildStyle(labelSpacing),
 };
 
 export const linkBoxTitleSmallSpacing = {};
 export const linkBoxTitleSmallSpacingFirstChild = {
-  ...createNotFirstChildStyle(linkBoxTitleSmallSpacing),
+  ...createSpacingNotFirstChildStyle(linkBoxTitleSmallSpacing),
 };
 
 export const listItemSubTitleSpacing = {};
 export const listItemSubTitleSpacingFirstChild = {
-  ...createNotFirstChildStyle(listItemSubTitleSpacing),
+  ...createSpacingNotFirstChildStyle(listItemSubTitleSpacing),
 };
 
 export const paragraphSpacing = {
   paddingTop: rems(textSpacing.paragraph),
 };
 export const paragraphSpacingFirstChild = {
-  ...createNotFirstChildStyle(paragraphSpacing),
+  ...createSpacingNotFirstChildStyle(paragraphSpacing),
 };
 
 export const preFormattedSpacing = {
@@ -81,27 +81,27 @@ export const preFormattedSpacing = {
   padding: rems(textSpacing.preFormatted),
 };
 export const preFormattedSpacingFirstChild = {
-  ...createNotFirstChildStyle(preFormattedSpacing),
+  ...createSpacingNotFirstChildStyle(preFormattedSpacing),
 };
 
 export const tableSpacing = {
   paddingBlock: rems(textSpacing.table),
 };
 export const tableSpacingFirstChild = {
-  ...createNotFirstChildStyle(tableSpacing),
+  ...createSpacingNotFirstChildStyle(tableSpacing),
 };
 
 export const smallSpacing: CSSProperties = {};
 export const smallSpacingFirstChild = {
-  ...createNotFirstChildStyle(smallSpacing),
+  ...createSpacingNotFirstChildStyle(smallSpacing),
 };
 
 export const subTitleSpacing = {};
 export const subTitleSpacingFirstChild = {
-  ...createNotFirstChildStyle(subTitleSpacing),
+  ...createSpacingNotFirstChildStyle(subTitleSpacing),
 };
 
 export const summarySpacing = {};
 export const summarySpacingFirstChild = {
-  ...createNotFirstChildStyle(summarySpacing),
+  ...createSpacingNotFirstChildStyle(summarySpacing),
 };

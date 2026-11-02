@@ -1,13 +1,13 @@
 import { upperCase } from "lodash";
 
-import { isNotNil } from "@/framework";
+import { checkIsNotNil } from "@/framework";
 
 interface BookAuthorsProps {
   readonly authors: readonly string[];
 }
 
 function formatAuthorName(authorName: string) {
-  const authorNameParts = authorName.trim().split(" ").filter(isNotNil);
+  const authorNameParts = authorName.trim().split(" ").filter(checkIsNotNil);
   const [authorFirstName, ...authorRestNames] = authorNameParts;
 
   const authorLastNamesUpper = authorRestNames.map(upperCase).join(" ");

@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "WooliesX",
   client: "WooliesX",
   blurbShort:
     "Planned, designed and built Rubix – a Web-based UI platform for managing Woolworths deliveries.",
@@ -24,19 +25,19 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "wooliesx-1.png",
+      src: "/images/works/wooliesx/wooliesx-1.png",
       title: "OTA Tracker - Deliveries grid with details sidebar",
     },
     {
-      src: "wooliesx-2.png",
+      src: "/images/works/wooliesx/wooliesx-2.png",
       title: "Street Service Time - Map with co-ordinates and details",
     },
     {
-      src: "wooliesx-3.png",
+      src: "/images/works/wooliesx/wooliesx-3.png",
       title: "Rubix Authentication - Sequence diagram",
     },
     {
-      src: "wooliesx-4.png",
+      src: "/images/works/wooliesx/wooliesx-4.png",
       title: "OTA Tracker - iPhone app prototype",
     },
   ],

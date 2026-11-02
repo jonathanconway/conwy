@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "EPA / Demonz",
   client: "EPA / Demonz",
   blurbShort:
     "Worked full-stack on the CRC app for municipal waste disposal tracking for NSW EPA.",
@@ -23,15 +24,15 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "demonz-1.jpg",
+      src: "/images/works/demonz/demonz-1.jpg",
       title: "Configuration - Inventory screen",
     },
     {
-      src: "demonz-2.jpg",
+      src: "/images/works/demonz/demonz-2.jpg",
       title: "Data Entry - Receptacles On Site Count",
     },
     {
-      src: "demonz-3.jpg",
+      src: "/images/works/demonz/demonz-3.jpg",
       title: "Reporting - Contractor Pricing",
     },
   ],

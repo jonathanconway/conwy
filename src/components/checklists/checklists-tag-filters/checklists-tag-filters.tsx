@@ -1,20 +1,19 @@
 "use client";
 
-import { Checklist } from "@/framework";
+import { CHECKLIST_TAG_TITLES, ChecklistTags, ContentTypes } from "@/framework";
 
 import { TagFilters } from "../../filters";
 
-export interface ChecklistsTagFiltersProps {
-  readonly items: readonly Checklist[];
-}
-
-export function ChecklistsTagFilters(props: ChecklistsTagFiltersProps) {
-  const { items } = props;
+export function ChecklistsTagFilters() {
+  const checklistTagFilterTags = Object.values(ChecklistTags).map((slug) => ({
+    slug,
+    title: CHECKLIST_TAG_TITLES[slug],
+  }));
 
   return (
     <TagFilters
-      contentType="checklist"
-      items={items}
+      contentType={ContentTypes.Checklist}
+      tags={checklistTagFilterTags}
       tagField="meta.checklistTags"
     />
   );

@@ -43,17 +43,17 @@ export const meta: ProjectMeta = {
   platforms: ["Chrome"],
   images: [
     {
-      src: "json-selection-formatter-store-screen-recording-1.gif",
+      src: "/images/projects/json-selection-formatter/json-selection-formatter-store-screen-recording-1.gif",
       alt: "Screen recording of right click menu with Format selected JSON menu item and JSON formatted output in Chrome Browser",
       notes: [],
     },
     {
-      src: "json-selection-formatter-store-screenshot-1.png",
+      src: "/images/projects/json-selection-formatter/json-selection-formatter-store-screenshot-1.png",
       alt: "Screenshot of right click menu with Format selected JSON menu item in Chrome Browser",
       notes: [],
     },
     {
-      src: "json-selection-formatter-store-screenshot-2.png",
+      src: "/images/projects/json-selection-formatter/json-selection-formatter-store-screenshot-2.png",
       alt: "Screenshot of JSON formatted output in Chrome Browser",
       notes: [],
     },

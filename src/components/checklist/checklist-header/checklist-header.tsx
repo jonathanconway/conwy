@@ -21,7 +21,7 @@ export function ChecklistHeader(props: ChecklistHeaderProps) {
     checklistContext.checklistMeta.extensions?.items.length ?? 0;
 
   return (
-    <Stack gap={3}>
+    <Stack gap={1}>
       <Stack>
         <ResponsiveStack
           direction={{
@@ -53,7 +53,7 @@ export function ChecklistHeader(props: ChecklistHeaderProps) {
       </Stack>
 
       <div>
-        <ItemsCount count={itemsCount} />
+        <ItemsCount count={itemsCount} suffix="total item" />
       </div>
     </Stack>
   );

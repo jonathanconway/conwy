@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Revolut",
   client: "Revolut",
   blurbShort:
     "Owned Business Backoffice, onboarding >10k businesses monthly during fast growth.",
@@ -63,15 +64,15 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "revolut-1.png",
+      src: "/images/works/revolut/revolut-1.png",
       title: "Revolut Business - Product page",
     },
     {
-      src: "revolut-2.png",
+      src: "/images/works/revolut/revolut-2.png",
       title: "Revolut Business - Onboarding - Shareholders editor",
     },
     {
-      src: "revolut-3.webp",
+      src: "/images/works/revolut/revolut-3.webp",
       title: "Revolut Business - Accounts view",
     },
   ],

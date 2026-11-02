@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 
-import { isNotNil } from "@/framework";
+import { checkIsNotNil } from "@/framework";
 import { Study as Study_ } from "@/framework";
 
 import { ContentListItem } from "../../content-list";
@@ -36,7 +36,7 @@ export function Study(props: StudyProps) {
   const year = DateTime.fromJSDate(new Date(date)).year;
 
   const details = [credential, mark, institution, type, year]
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .join(" • ");
 
   return (

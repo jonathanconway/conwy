@@ -2,6 +2,12 @@
 
 import { isString } from "lodash";
 
+import {
+  checkIsNotNil,
+  escapeUnescapedString,
+  replaceNewLinesWithSpace,
+} from "@/framework";
+
 import { getImageWidthHeightFromSize } from "../image";
 import { ImageModal } from "../image-modal";
 
@@ -19,15 +25,18 @@ export function ImageFigure(props: ImageFigureProps) {
   const srcBlobOrString = props.image?.src ?? props.src ?? "";
   const src = isString(srcBlobOrString) ? srcBlobOrString : "";
 
-  const alt = props.image?.alt ?? props.alt;
-  const title = props.title ?? alt;
-  const caption = title;
+  const alt = props.image?.alt ?? props.alt ?? "";
+  const altWithoutNewlines = replaceNewLinesWithSpace(alt);
+
+  const { title } = props;
+  const titleOrAlt = title ?? alt ?? "";
+  const titleOrAltEscaped = escapeUnescapedString(titleOrAlt).trim();
 
   const image = (
     <ImageFigureLink
       src={src}
-      alt={alt}
-      title={title}
+      alt={altWithoutNewlines}
+      title={titleOrAltEscaped}
       width={width}
       height={height}
       size={size}
@@ -37,13 +46,13 @@ export function ImageFigure(props: ImageFigureProps) {
 
   return (
     <>
-      {caption ? (
+      {titleOrAltEscaped ? (
         <figure className={styles.container} suppressHydrationWarning>
           {image}
 
-          {caption && (
-            <figcaption className={styles.figCaption}>▲ {caption}</figcaption>
-          )}
+          <figcaption className={styles.figCaption}>
+            <span>▲</span> {titleOrAltEscaped}
+          </figcaption>
         </figure>
       ) : (
         image
@@ -51,7 +60,7 @@ export function ImageFigure(props: ImageFigureProps) {
 
       {isModalOpen && (
         <ImageModal
-          images={[props?.image ?? { src, alt, notes: [] }]}
+          images={[props?.image ?? { src, alt: altWithoutNewlines, notes: [] }]}
           onClose={onModalClose}
         />
       )}

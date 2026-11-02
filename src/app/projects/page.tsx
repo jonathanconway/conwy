@@ -1,22 +1,18 @@
-import { MdxContainer, PageLayout, ProjectsList } from "@/components";
+import { MdxContainer, NavItems, Page, ProjectsList } from "@/components";
 import { projectsFragment, site } from "@/content";
 import * as projectsMap from "@/content/projects";
-import { getProjectMetas } from "@/framework";
 
-export default function Projects() {
-  const projectMetas = getProjectMetas(projectsMap);
+import { projectsRoute } from "../routes";
+
+export default function ProjectsPage() {
+  const projects = Object.values(projectsMap);
 
   return (
-    <PageLayout
-      selectedNavPath="/projects"
-      main={
-        <>
-          <MdxContainer>{projectsFragment.content}</MdxContainer>
+    <Page selectedNavItem={NavItems.Projects} title={projectsRoute.title}>
+      <MdxContainer>{projectsFragment.content}</MdxContainer>
 
-          <ProjectsList projectMetas={projectMetas} />
-        </>
-      }
-    />
+      <ProjectsList projects={projects} />
+    </Page>
   );
 }
 

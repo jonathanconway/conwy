@@ -1,5 +1,6 @@
 import {
   MdxContainer,
+  Page,
   PageLayout,
   PromptsList,
   ResponsiveMdHalf,
@@ -14,6 +15,7 @@ import {
 } from "@/framework";
 
 import contentAnchorsMap_ from "../../../builder-out/content-anchors.json";
+import { promptsRoute } from "../routes";
 
 const contentAnchorsMap = contentAnchorsMap_ as ContentAnchorsMap;
 const contentMap = contentMap_ as unknown as ContentMap;
@@ -27,25 +29,18 @@ const promptsContentAnchorLinkAndInfos = reduceContentsAnchorLinkAndInfos(
 
 export default function PromptsPage() {
   return (
-    <PageLayout
-      selectedNavPath="/prompts"
-      main={
-        <>
-          <ResponsiveMdHalf>
-            <MdxContainer>{promptsFragment.content}</MdxContainer>
-          </ResponsiveMdHalf>
+    <Page title={promptsRoute.title}>
+      <ResponsiveMdHalf>
+        <MdxContainer>{promptsFragment.content}</MdxContainer>
+      </ResponsiveMdHalf>
 
-          <ResponsiveMdHalf>
-            <PromptsList
-              prompts={prompts}
-              promptsContentAnchorLinkAndInfos={
-                promptsContentAnchorLinkAndInfos
-              }
-            />
-          </ResponsiveMdHalf>
-        </>
-      }
-    />
+      <ResponsiveMdHalf>
+        <PromptsList
+          prompts={prompts}
+          promptsContentAnchorLinkAndInfos={promptsContentAnchorLinkAndInfos}
+        />
+      </ResponsiveMdHalf>
+    </Page>
   );
 }
 

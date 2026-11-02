@@ -36,22 +36,22 @@ export const meta: ProjectMeta = {
   platforms: ["Web"],
   images: [
     {
-      src: "braggart-4.png",
+      src: "/images/projects/braggart/braggart-4.png",
       alt: "Home screen - Wireframe",
       notes: [],
     },
     {
-      src: "braggart-3.png",
+      src: "/images/projects/braggart/braggart-3.png",
       alt: "Add brag - Wireframe",
       notes: [],
     },
     {
-      src: "braggart-1.png",
+      src: "/images/projects/braggart/braggart-1.png",
       alt: "Home screen - Screenshot",
       notes: [],
     },
     {
-      src: "braggart-2.png",
+      src: "/images/projects/braggart/braggart-2.png",
       alt: "Add brag screen - Screenshot",
       notes: [],
     },

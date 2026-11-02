@@ -1,6 +1,7 @@
 import { SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Villa Plus",
   client: "Villa Plus",
   blurbShort:
     "Built new Resort Villas reservation UI and optimised performance.",
@@ -13,15 +14,15 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      src: "villa-plus-screencast.gif",
+      src: "/images/works/villa-plus/villa-plus-screencast.gif",
       title: "Date range picker, built in React - Mobile web",
     },
     {
-      src: "villa-plus-1.png",
+      src: "/images/works/villa-plus/villa-plus-1.png",
       title: "Date range picker, built in React - Desktop web",
     },
     {
-      src: "villa-plus-2.jpg",
+      src: "/images/works/villa-plus/villa-plus-2.jpg",
       title: "Collaborative Kan-ban-style planning on whiteboard",
     },
   ],

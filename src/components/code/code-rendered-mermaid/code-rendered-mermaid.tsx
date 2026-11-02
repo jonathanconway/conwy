@@ -1,7 +1,7 @@
 import { usePathname } from "next/navigation";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-import { generateHash, isNotNil } from "@/framework";
+import { checkIsNotNil, generateHash } from "@/framework";
 
 import { ImageFigure } from "../../image-figure";
 
@@ -21,7 +21,7 @@ export function CodeRenderedMermaid(props: CodeRenderedProps) {
   const commentLines = childrenText
     .trim()
     .split("\n")
-    .filter(isNotNil)
+    .filter(checkIsNotNil)
     .filter((line) => line.startsWith("%% "));
   const descriptionLine = commentLines.find((line) =>
     line.startsWith("%% @description "),

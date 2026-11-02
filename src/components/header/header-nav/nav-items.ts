@@ -1,25 +1,10 @@
-export const NAV_ITEMS = [
-  {
-    href: "/articles",
-    title: "Articles",
-  },
-  {
-    href: "/projects",
-    title: "Projects",
-  },
-  {
-    href: "/work",
-    title: "Work",
-  },
-  {
-    href: "/contact",
-    title: "Contact",
-  },
-];
+import { TypeOfConst } from "@/framework";
 
-export function getNavItemsWithSelected(selectedNavPath?: string) {
-  return NAV_ITEMS.map((navItem) => ({
-    ...navItem,
-    selected: selectedNavPath === navItem.href,
-  }));
-}
+export const NavItems = {
+  Articles: "articles",
+  Projects: "projects",
+  Work: "work",
+  Contact: "contact",
+} as const;
+
+export type NavItem = TypeOfConst<typeof NavItems>;

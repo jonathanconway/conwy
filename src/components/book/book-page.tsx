@@ -9,5 +9,5 @@ interface BookPageProps {
 }
 
 export function BookPage(props: BookPageProps) {
-  return <MainAsideLayout main={<BooksListItem book={props.book} />} />;
+  return <MainAsideLayout mainSlot={<BooksListItem book={props.book} />} />;
 }

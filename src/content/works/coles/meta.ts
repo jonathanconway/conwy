@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Coles",
   client: "Coles",
   blurbShort:
     "Led front end build of 1site for Coles Plus Account and related sign-up incentivisation features.",
@@ -55,9 +56,18 @@ export const meta: WorkMeta = {
   slug: "coles",
   tags: [],
   images: [
-    { src: "coles-1.png", title: "Delivery scheduling sidebar" },
-    { src: "coles-2.png", title: "Payment screen - Payment details entry" },
-    { src: "coles-3.png", title: "Payment screen - Confirmation" },
+    {
+      src: "/images/works/coles/coles-1.png",
+      title: "Delivery scheduling sidebar",
+    },
+    {
+      src: "/images/works/coles/coles-2.png",
+      title: "Payment screen - Payment details entry",
+    },
+    {
+      src: "/images/works/coles/coles-3.png",
+      title: "Payment screen - Confirmation",
+    },
   ],
   techs: [
     {

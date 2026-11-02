@@ -10,17 +10,19 @@ export function useTagFiltersSelected(
 ) {
   const searchParams = useSearchParams();
 
-  const selectedTags = Array.from(
+  const selectedTagValues = Array.from(
     searchParams.get(searchParamKey)?.split(",") ?? defaultFilters,
   ).filter((searchParamValue) => searchParamValue.trim() !== "");
 
-  function setSelectedTags(newSelectedTags: readonly string[]) {
+  function setSelectedTagValues(newSelectedTagValues: readonly string[]) {
     const params = new URLSearchParams(searchParams);
-    if (newSelectedTags.length === 0) {
+
+    if (newSelectedTagValues.length === 0) {
       params.delete(searchParamKey);
     } else {
-      params.set(searchParamKey, newSelectedTags.join(","));
+      params.set(searchParamKey, newSelectedTagValues.join(","));
     }
+
     window.history.pushState(
       null,
       "",
@@ -29,7 +31,7 @@ export function useTagFiltersSelected(
   }
 
   return {
-    selectedTags,
-    setSelectedTags,
+    selectedTagValues,
+    setSelectedTagValues,
   };
 }

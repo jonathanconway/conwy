@@ -1,4 +1,4 @@
-import { isNotNil } from "../../utils/typing";
+import { checkIsNotNil } from "../../utils/typing";
 
 import { Illustration } from "./illustration";
 import { IllustrationLayout } from "./illustration-layout";
@@ -8,8 +8,9 @@ export function createIllustrationAssetFilename(
   illustrationLayout: IllustrationLayout,
 ) {
   return (
-    [illustration.slug, illustrationLayout.name].filter(isNotNil).join("--") +
-    ".png"
+    [illustration.slug, illustrationLayout.name]
+      .filter(checkIsNotNil)
+      .join("--") + ".png"
   );
 }
 

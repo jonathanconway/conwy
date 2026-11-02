@@ -47,6 +47,7 @@ export * from "./micro";
 export * from "./micros";
 export * from "./mobile";
 export * from "./modal";
+export * from "./page";
 export * from "./podcast";
 export * from "./project";
 export * from "./projects";

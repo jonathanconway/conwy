@@ -1,6 +1,10 @@
 import { Metadata } from "next";
 
-import { ArticleLayout, Commentary } from "@/components";
+import {
+  commentariesRoute,
+  createCommentariesCommentaryRoute,
+} from "@/app/routes";
+import { Commentary, CommentarySource, Page } from "@/components";
 import * as contentMap_ from "@/content";
 import { site } from "@/content";
 import * as commentariesMap from "@/content/commentaries";
@@ -11,7 +15,7 @@ import { PageProps } from "../../[slug]/types";
 
 const contentMap = contentMap_ as unknown as ContentMap;
 
-export default async function Page(props: PageProps) {
+export default async function CommentariesPage(props: PageProps) {
   const params = await props.params;
 
   const commentary = findImportedContent(
@@ -22,13 +26,23 @@ export default async function Page(props: PageProps) {
 
   const sourceLinkInfo = getContentLinkInfo(contentMap, commentary.meta.source);
 
+  const commentaryRoute = createCommentariesCommentaryRoute(
+    commentary,
+    sourceLinkInfo,
+  );
+
   return (
-    <ArticleLayout
-      main={
-        <Commentary commentary={commentary} sourceLinkInfo={sourceLinkInfo} />
+    <Page
+      breadcrumbSegments={[commentariesRoute, { title: commentaryRoute.title }]}
+      title={
+        <CommentarySource
+          sourceLink={commentary.meta.source}
+          sourceLinkInfo={sourceLinkInfo}
+        />
       }
-      aside={<></>}
-    />
+    >
+      <Commentary commentary={commentary} />
+    </Page>
   );
 }
 

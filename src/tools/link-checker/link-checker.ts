@@ -5,7 +5,7 @@ import { partition } from "lodash";
 import { marked } from "marked";
 import { join } from "path";
 
-import { Url, isNotNil } from "@/framework";
+import { Url, checkIsNotNil } from "@/framework";
 import { getFolderFileTree } from "@/framework/server";
 
 import linkCheckerSkipList from "./link-checker-skip-list.json";
@@ -44,7 +44,7 @@ async function toolLinkCheckerContentMdx(
   const linkEls = Array.from(jsDom.window.document.querySelectorAll("a[href]"));
   const linkHrefs = linkEls
     .map((linkEl) => linkEl.getAttribute("href"))
-    .filter(isNotNil);
+    .filter(checkIsNotNil);
   const linkExternalHttpHrefs = linkHrefs
     .filter(checkIsExternalHttpUrl)
     .slice(0, 3);

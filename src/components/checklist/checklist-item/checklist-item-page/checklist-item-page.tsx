@@ -2,16 +2,20 @@ import { compile, run } from "@mdx-js/mdx";
 import * as runtime from "react/jsx-runtime";
 import remarkGfm from "remark-gfm";
 
+import {
+  checklistsRoute,
+  createChecklistsChecklistItemRoute,
+  createChecklistsChecklistRoute,
+} from "@/app/routes";
 import { Checklist, ChecklistItem as ChecklistItem_ } from "@/framework";
-// import { useMDXComponents } from "@/mdx-components";
 import { mdxComponents } from "@/mdx-components-base";
 
-import { MainAsideLayout } from "../../../layouts";
 import { MdxContainer } from "../../../mdx";
-import { Stack } from "../../../stack";
+import { Page } from "../../../page";
+import { ResponsiveMdHalf } from "../../../responsive";
 import { ChecklistContext } from "../../checklist-context";
 
-import { ChecklistItemPageHeader } from "./checklist-item-page-header";
+import { ChecklistItemPageSubHeader } from "./checklist-item-page-subheader";
 
 interface ChecklistItemPageProps {
   readonly checklist: Checklist;
@@ -44,24 +48,36 @@ export async function ChecklistItemPage(props: ChecklistItemPageProps) {
 
   const { default: MDXContent } = await run(compiledMdx, {
     ...runtime,
-    // useMDXComponents,
   });
 
+  const checklistRoute = createChecklistsChecklistRoute(props.checklist);
+  const checklistItemRoute = createChecklistsChecklistItemRoute(
+    props.checklist,
+    props.checklistItem,
+  );
+
   return (
-    <MainAsideLayout
-      main={
-        <ChecklistContext checklistMeta={props.checklist.meta} isSingleItemView>
-          <Stack gap={1}>
-            <ChecklistItemPageHeader
-              checklist={props.checklist}
-              checklistItem={props.checklistItem}
-            />
-            <MdxContainer>
-              <MDXContent components={mdxComponents} />
-            </MdxContainer>
-          </Stack>
-        </ChecklistContext>
+    <Page
+      breadcrumbSegments={[
+        checklistsRoute,
+        checklistRoute,
+        { title: checklistItemRoute.title },
+      ]}
+      title={checklistItemRoute.title}
+      subHeaderSlot={
+        <ChecklistItemPageSubHeader
+          checklist={props.checklist}
+          checklistItem={props.checklistItem}
+        />
       }
-    />
+    >
+      <ChecklistContext checklistMeta={props.checklist.meta} isSingleItemView>
+        <ResponsiveMdHalf>
+          <MdxContainer>
+            <MDXContent components={mdxComponents} />
+          </MdxContainer>
+        </ResponsiveMdHalf>
+      </ChecklistContext>
+    </Page>
   );
 }

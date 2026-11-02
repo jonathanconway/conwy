@@ -1,46 +1,54 @@
 import { orderBy } from "lodash";
-import { plural } from "pluralize";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 
-import { sentenceCase } from "@/framework";
+import { CONTENT_TYPE_LABELS_PLURAL, sentenceCase } from "@/framework";
 
-import { ALL } from "./default-selected-tags";
-import { getItemsTags } from "./get-items-tags";
+import { ALL_TAG } from "./default-selected-tags";
 import { createTagFiltersParamKey } from "./tag-filters-param-key";
 import { TagFiltersProps } from "./tag-filters-props";
+import { TagFiltersTag } from "./tag-filters-tag";
 import { useTagFiltersSelected } from "./use-tag-filters-selected";
 
-type UseTagFiltersParams<T> = TagFiltersProps<T>;
+type UseTagFiltersParams = TagFiltersProps;
 
-function getTagFieldLabel<T>(params: UseTagFiltersParams<T>) {
-  return sentenceCase(String(params.tagField.split(".").slice(-1)[0]));
-}
+export function useTagFilters(params: UseTagFiltersParams) {
+  const title = generateTagFiltersTitle(params);
 
-export function useTagFilters<T>(params: UseTagFiltersParams<T>) {
-  const title = `Filter ${plural(params.contentType)} by ${getTagFieldLabel(params)}`;
-
-  const { selectedTags, setSelectedTags } = useTagFiltersSelected(
+  const { selectedTagValues, setSelectedTagValues } = useTagFiltersSelected(
     createTagFiltersParamKey(params),
   );
 
-  const allTags = getItemsTags(params);
-
   const onSelectTag = useCallback(
-    (tag: string) => {
+    (tag: TagFiltersTag) => {
       return () => {
-        setSelectedTags([tag]);
+        setSelectedTagValues([tag.slug]);
       };
     },
-    [selectedTags],
+    [selectedTagValues],
   );
 
-  const displayTags = [ALL, ...orderBy(allTags)];
+  const tagsBySlug = useMemo(
+    () => Object.fromEntries(params.tags.map((tag) => [tag.slug, tag])),
+    [params.tags],
+  );
+
+  const selectedTags = selectedTagValues.map((slug) => tagsBySlug[slug]);
+
+  const displayTags = [ALL_TAG, ...orderBy(params.tags)];
 
   return {
     title,
     displayTags,
-    allTags,
     selectedTags,
+    selectedTagValues,
     onSelectTag,
   };
+}
+
+function generateTagFiltersTitle(params: UseTagFiltersParams) {
+  const tagFieldLabel = sentenceCase(
+    String(params.tagField.split(".").slice(-1)[0]),
+  );
+  const contentTypeLabelPlural = CONTENT_TYPE_LABELS_PLURAL[params.contentType];
+  return `Filter ${contentTypeLabelPlural} by ${tagFieldLabel}`;
 }

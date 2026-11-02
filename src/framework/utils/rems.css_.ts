@@ -1,9 +1,11 @@
+import { isUndefined } from "lodash";
+
 export type RemValue = number;
 
 export type Rem<T extends RemValue = RemValue> = `${T}rem`;
 
 export function rems(value?: number): Rem | undefined {
-  if (!value) {
+  if (isUndefined(value)) {
     return;
   }
 

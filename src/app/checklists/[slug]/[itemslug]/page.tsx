@@ -23,9 +23,10 @@ function getChecklistMd(slug: string) {
 }
 
 export default async function Page(props: ChecklistItemPageProps) {
+  // todo: try to extract most of this
+
   const params = await props.params;
   const { slug, itemslug } = params;
-
   const checklistBase = findImportedContent(
     checklistsMap,
     ContentTypes.Checklist,

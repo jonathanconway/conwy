@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "Razorfish",
   client: "Razorfish",
   blurbShort:
     "Worked on Channel[v] streaming media platform and built Aussie Freefall campaign.",
@@ -38,12 +39,12 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "razorfish-01.jpg",
+      src: "/images/works/razorfish/razorfish-01.jpg",
       alt: "Aussie Homeloans Freefall campaign",
       notes: [],
     },
     {
-      src: "razorfish-02.jpg",
+      src: "/images/works/razorfish/razorfish-02.jpg",
       alt: "Channel[v] / vMusic website",
       notes: [],
     },

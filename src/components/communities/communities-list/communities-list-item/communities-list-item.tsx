@@ -27,11 +27,7 @@ export function CommunitiesListItem(props: CommunitiesListItemProps) {
               />
             </div>
 
-            <LinkBoxTitle>
-              <Link href={props.community.meta.url} target="_blank">
-                {props.community.meta.title}
-              </Link>
-            </LinkBoxTitle>
+            <LinkBoxTitle>{props.community.meta.title}</LinkBoxTitle>
 
             <MdxContainer>{props.community.blurbShort}</MdxContainer>
 

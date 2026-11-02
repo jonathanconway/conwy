@@ -10,7 +10,7 @@ export const heading2 = spacingRems.m;
 
 export const heading3 = spacingRems.m;
 
-export const heading4 = spacingRems.s;
+export const heading4 = spacingRems.m;
 
 export const heading5 = spacingRems.s;
 

@@ -1,7 +1,7 @@
 import {
   Commentaries,
   MdxContainer,
-  PageLayout,
+  Page,
   ResponsiveMdHalf,
 } from "@/components";
 import * as content from "@/content";
@@ -14,10 +14,12 @@ import {
   getContentLinkInfo,
 } from "@/framework";
 
+import { commentariesRoute } from "../routes";
+
 const contentMap = content as unknown as ContentMap;
 const commentaries = Object.values(commentariesMap);
 
-export default async function Page() {
+export default async function CommentariesPage() {
   const commentarySourceContentLinkInfos: Record<Slug, ContentLinkInfo> =
     Object.fromEntries(
       await Promise.all(
@@ -31,21 +33,16 @@ export default async function Page() {
     );
 
   return (
-    <PageLayout
-      selectedNavPath="/commentaries"
-      main={
-        <>
-          <ResponsiveMdHalf>
-            <MdxContainer>{commentariesFragment.content}</MdxContainer>
-          </ResponsiveMdHalf>
+    <Page title={commentariesRoute.title}>
+      <ResponsiveMdHalf>
+        <MdxContainer>{commentariesFragment.content}</MdxContainer>
+      </ResponsiveMdHalf>
 
-          <Commentaries
-            commentaries={commentaries}
-            commentarySourceContentLinkInfos={commentarySourceContentLinkInfos}
-          />
-        </>
-      }
-    />
+      <Commentaries
+        commentaries={commentaries}
+        commentarySourceContentLinkInfos={commentarySourceContentLinkInfos}
+      />
+    </Page>
   );
 }
 

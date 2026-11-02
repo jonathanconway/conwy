@@ -53,8 +53,7 @@ export default async function Page(props: PageProps) {
 }
 
 export async function generateStaticParams() {
-  const allMetas = Object.values(checklistsMap).map((item) => item.meta);
-  return allMetas;
+  return Object.values(checklistsMap).map((item) => item.meta);
 }
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {

@@ -1,40 +1,27 @@
 import { Metadata } from "next";
 
-import { Breadcrumb, PageLayout, ToolsListItem } from "@/components";
+import { createToolsToolRoute, toolsRoute } from "@/app/routes";
+import { Page, ToolsListItem } from "@/components";
 import { site } from "@/content";
 import * as toolsMap from "@/content/tools";
-import { sentenceCase } from "@/framework";
-import { ContentTypes } from "@/framework";
+import { ContentTypes, sentenceCase } from "@/framework";
 import { findImportedContent } from "@/framework/server";
 
 import { PageProps } from "../../[slug]/types";
 
-export default async function Page(props: PageProps) {
+export default async function ToolsToolPage(props: PageProps) {
   const params = await props.params;
 
   const tool = findImportedContent(toolsMap, ContentTypes.Tool, params.slug);
+  const toolRoute = createToolsToolRoute(tool);
 
   return (
-    <PageLayout
-      selectedNavPath="/uses"
-      main={
-        <>
-          <Breadcrumb
-            segments={[
-              {
-                title: "Uses",
-                url: "/uses",
-              },
-              {
-                title: tool.meta.title,
-              },
-            ]}
-          />
-
-          <ToolsListItem tool={tool} />
-        </>
-      }
-    />
+    <Page
+      title={toolRoute.title}
+      breadcrumbSegments={[toolsRoute, { title: toolRoute.title }]}
+    >
+      <ToolsListItem tool={tool} />
+    </Page>
   );
 }
 

@@ -7,6 +7,7 @@ import {
 } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "CIBC",
   client: "CIBC",
   blurbShort:
     "Built platform features and applications used by traders, settlements and other teams in the bank.",
@@ -69,7 +70,7 @@ export const meta: WorkMeta = {
   ],
   images: [
     {
-      src: "reconstruction-screenshot-001.jpg",
+      src: "/images/works/cibc/reconstruction-screenshot-001.jpg",
       alt: "Partial reconstruction of filtering interface",
     },
   ],

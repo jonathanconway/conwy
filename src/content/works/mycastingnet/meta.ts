@@ -1,6 +1,7 @@
 import { SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "MyCastingNet",
   client: "MyCastingNet",
   blurbShort:
     "Rebuilt a TV talent management system using modern web frameworks.",
@@ -13,15 +14,15 @@ export const meta: WorkMeta = {
   feedbacks: [],
   images: [
     {
-      src: "mycastingnet-02.png",
+      src: "/images/works/mycastingnet/mycastingnet-02.png",
       title: "My Shows screen",
     },
     {
-      src: "mycastingnet-01.png",
+      src: "/images/works/mycastingnet/mycastingnet-01.png",
       title: "My Cast screen",
     },
     {
-      src: "mycastingnet-03.png",
+      src: "/images/works/mycastingnet/mycastingnet-03.png",
       title: "My Cast screen - Adding a cast member",
     },
   ],

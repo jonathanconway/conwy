@@ -1,6 +1,7 @@
 import { ContentTypes, SocialLinkTypes, WorkMeta } from "@/framework";
 
 export const meta: WorkMeta = {
+  title: "COIN Software",
   client: "COIN Software",
   blurbShort:
     "Built a Mortgage tool and work on superannuation software used by financial advisors.",

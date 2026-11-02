@@ -1,9 +1,8 @@
 import { kebabCase } from "lodash";
 
-import { SpacingSizes } from "@/components/spacing/spacing-sizes";
-
 import { Heading, SectionHeading } from "../../../heading";
 import { ItemsCount } from "../../../items-count";
+import { SpacingSizes } from "../../../spacing";
 import { SpacingContainer } from "../../../spacing";
 
 import { ChecklistSectionHeadingProps } from "./checklist-section-heading-props";

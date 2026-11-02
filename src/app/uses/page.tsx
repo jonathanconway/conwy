@@ -1,7 +1,7 @@
 import {
   Breakpoints,
   MdxContainer,
-  PageLayout,
+  Page,
   ResponsiveStack,
   Stack,
   StackDirections,
@@ -10,33 +10,32 @@ import {
 } from "@/components";
 import { site, toolsFragment, toolsSidebarFragment } from "@/content";
 
-export default function Page() {
+import { toolsRoute } from "../routes";
+
+export default function ToolsPage() {
   return (
-    <PageLayout
-      selectedNavPath="/uses"
-      main={
-        <Stack gap={2}>
-          <ResponsiveStack
-            direction={{
-              [Breakpoints.Small]: StackDirections.ColumnReverse,
-              [Breakpoints.Medium]: StackDirections.ColumnReverse,
-              [Breakpoints.Large]: StackDirections.Row,
-            }}
-            alignItems="start"
-          >
-            <Stack>
-              <MdxContainer>{toolsFragment.content}</MdxContainer>
+    <Page title={toolsRoute.title}>
+      <Stack gap={2}>
+        <ResponsiveStack
+          direction={{
+            [Breakpoints.Small]: StackDirections.ColumnReverse,
+            [Breakpoints.Medium]: StackDirections.ColumnReverse,
+            [Breakpoints.Large]: StackDirections.Row,
+          }}
+          alignItems="start"
+        >
+          <Stack>
+            <MdxContainer>{toolsFragment.content}</MdxContainer>
 
-              <ToolsSections />
-            </Stack>
+            <ToolsSections />
+          </Stack>
 
-            <MdxContainer>{toolsSidebarFragment.content}</MdxContainer>
-          </ResponsiveStack>
+          <MdxContainer>{toolsSidebarFragment.content}</MdxContainer>
+        </ResponsiveStack>
 
-          <ToolsList />
-        </Stack>
-      }
-    />
+        <ToolsList />
+      </Stack>
+    </Page>
   );
 }
 

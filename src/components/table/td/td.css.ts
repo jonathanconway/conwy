@@ -1,4 +1,6 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
+
+import { tr } from "../tr/tr.css";
 
 import * as tdMixins from "./td.mixins";
 
@@ -10,3 +12,5 @@ export const td = style({
     },
   },
 });
+
+globalStyle(`${tr}:first-child ${td}`, tdMixins.tdInTrFirst);

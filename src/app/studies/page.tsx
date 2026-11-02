@@ -2,28 +2,29 @@ import { Suspense } from "react";
 
 import {
   MdxContainer,
-  PageLayout,
+  Page,
   ResponsiveMdHalf,
   Stack,
   StudiesList,
 } from "@/components";
 import { site, studiesFragment } from "@/content";
 
-export default function Page() {
+import { studiesRoute } from "../routes";
+
+export default function StudiesPage() {
   return (
     <Suspense>
-      <PageLayout
-        selectedNavPath="/studies"
-        main={
-          <Stack gap={1}>
-            <ResponsiveMdHalf>
-              <MdxContainer>{studiesFragment.content}</MdxContainer>
-            </ResponsiveMdHalf>
+      <Page title={studiesRoute.title}>
+        <Stack gap={1}>
+          <ResponsiveMdHalf>
+            <MdxContainer>{studiesFragment.content}</MdxContainer>
+          </ResponsiveMdHalf>
 
+          <ResponsiveMdHalf>
             <StudiesList />
-          </Stack>
-        }
-      />
+          </ResponsiveMdHalf>
+        </Stack>
+      </Page>
     </Suspense>
   );
 }

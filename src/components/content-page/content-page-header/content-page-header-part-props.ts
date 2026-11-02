@@ -1,9 +1,0 @@
-import { ContentBase, ContentType, MetaBase } from "@/framework";
-
-export interface ContentPageHeaderPartProps<
-  T extends ContentType,
-  U extends MetaBase<TMetaExtensions>,
-  TMetaExtensions extends object = object,
-> {
-  readonly content: ContentBase<T, U>;
-}

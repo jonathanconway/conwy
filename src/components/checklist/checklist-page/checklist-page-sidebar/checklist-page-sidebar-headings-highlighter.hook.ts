@@ -3,8 +3,10 @@
 import { kebabCase, memoize } from "lodash";
 import { useEffect, useState } from "react";
 
-import { isNotNil } from "@/framework";
+import { checkIsNotNil } from "@/framework";
 import { isClient, querySelector } from "@/framework/client";
+
+import { SCROLL_TO_TOP_ANCHOR_ID } from "../../../scroll-to-top";
 
 function getIsElementInViewport(el?: Element | null) {
   if (!isClient) {
@@ -33,7 +35,7 @@ function getHeadingElements(headingIds: readonly string[]): readonly Element[] {
 
   const headingElements = headingIds
     .map((id) => document.getElementById(id))
-    .filter(isNotNil);
+    .filter(checkIsNotNil);
 
   const articleTitleElement = querySelector("h2")!;
 
@@ -60,7 +62,9 @@ export function useChecklistPageSidebarHeadingsHighlighter(
 ) {
   const checklistHeadingIds = sidebarHeadings.map(kebabCase);
 
-  const [selectedHeadingId, setSelectedHeadingId] = useState("top");
+  const [selectedHeadingId, setSelectedHeadingId] = useState(
+    SCROLL_TO_TOP_ANCHOR_ID,
+  );
 
   const handleScroll = () => {
     const elements = getHeadingElementsMemoized(checklistHeadingIds);
