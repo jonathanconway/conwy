@@ -1,5 +1,6 @@
 export * from "./a-life-of-happiness-and-fulfillment";
 export * from "./algorithms-specialization-stanford-university-via-coursera";
+export * from "./aws-certified-developer-associate";
 export * from "./calculus-coursera";
 export * from "./chat-gpt-prompt-engineering-for-developers-deep-learning-ai";
 export * from "./decentralized-finance-de-fi-the-future-of-finance-specialization-duke-university-via-coursera";
