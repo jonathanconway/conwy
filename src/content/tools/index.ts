@@ -30,6 +30,7 @@ export * from "./go-full-page";
 export * from "./grifiti-band-wallet";
 export * from "./grunten-hanwag";
 export * from "./hand-brake";
+export * from "./hatteker-beard-trimmer";
 export * from "./html-color-picker";
 export * from "./i-fun-box";
 export * from "./idea";
