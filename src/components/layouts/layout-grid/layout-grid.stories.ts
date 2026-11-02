@@ -4,7 +4,7 @@ import { LayoutGrid } from "./layout-grid";
 import { createLayoutGridPropsMock } from "./layout-grid.mocks";
 
 const meta = {
-  title: "Components/",
+  title: "Components/Layouts/LayoutGrid",
   component: LayoutGrid,
   argTypes: {},
 } satisfies Meta<typeof LayoutGrid>;

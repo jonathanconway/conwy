@@ -24,8 +24,10 @@ function usePageFind() {
   const [pageFind, setPageFind] = useState<any>(null);
   useEffect(() => {
     async function importPageFind() {
+      // Path is built at runtime so Vite doesn't reject importing from /public.
+      const pageFindPath = "/pagefind/pagefind.js";
       const newPageFind = await import(
-        /* webpackIgnore: true */ "/pagefind/pagefind.js" as any
+        /* webpackIgnore: true */ /* @vite-ignore */ pageFindPath
       );
       setPageFind(newPageFind);
     }
