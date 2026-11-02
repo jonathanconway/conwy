@@ -2,6 +2,10 @@ export const body = {
   fontWeight: 500,
 };
 
+export const blurb = {
+  fontWeight: 500,
+};
+
 export const heading1 = {
   fontWeight: 600,
 };

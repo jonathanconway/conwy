@@ -5,6 +5,9 @@ import * as textMixins from "./text.mixins";
 export const bodyInner = style(textMixins.bodyInner);
 export const body = style(textMixins.body);
 
+export const blurbInner = style(textMixins.blurbInner);
+export const blurb = style(textMixins.blurb);
+
 export const collapsibleTitleInner = style(textMixins.collapsibleTitleInner);
 export const collapsibleTitle = style(textMixins.collapsibleTitle);
 

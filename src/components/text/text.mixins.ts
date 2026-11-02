@@ -20,6 +20,19 @@ export const body: ComplexStyleRule = {
   ...textSpacingMixins.bodySpacingFirstChild,
 };
 
+// blurb
+
+export const blurbInner: ComplexStyleRule = {
+  color: vars.text.body.color,
+  ...textSizeMixins.blurb,
+  ...textWeightMixins.blurb,
+};
+
+export const blurb: ComplexStyleRule = {
+  ...blurbInner,
+  ...textSpacingMixins.blurbSpacingFirstChild,
+};
+
 // collapsibleTitle
 
 export const collapsibleTitleInner: ComplexStyleRule = {

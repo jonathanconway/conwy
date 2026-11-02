@@ -8,6 +8,7 @@ interface TextTypeDetails {
 
 export const TEXT_TYPES_DETAILS: Record<TextType, TextTypeDetails> = {
   [TextTypes.Body]: { element: "div" },
+  [TextTypes.Blurb]: { element: "div" },
   [TextTypes.CollapsibleTitle]: { element: "span" },
   [TextTypes.Heading1]: { element: "h1" },
   [TextTypes.Heading2]: { element: "h2" },

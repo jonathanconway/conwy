@@ -9,6 +9,11 @@ export const body = {
   lineHeight: rems(textSizeConsts.lineHeightRems.s),
 };
 
+export const blurb = {
+  fontSize: rems(textSizeConsts.fontSizeRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.s),
+};
+
 export const collapsibleTitle = {
   fontSize: rems(textSizeConsts.fontSizeRems.s),
   lineHeight: rems(textSizeConsts.lineHeightRems.s),
@@ -56,7 +61,7 @@ export const linkBoxTitleSmall = {
 
 export const paragraph = {
   fontSize: rems(textSizeConsts.fontSizeRems.s),
-  lineHeight: rems(textSizeConsts.lineHeightRems.s),
+  lineHeight: rems(textSizeConsts.lineHeightRems.m),
 };
 
 export const preFormatted = {

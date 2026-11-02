@@ -32,9 +32,8 @@ export function ProjectsListItem(props: ProjectsListItemProps) {
 
             <Stack gap={0.5}>
               <Text
-                type={TextTypes.Paragraph}
+                type={TextTypes.Blurb}
                 spacingStrategy={TextSpacingStrategies.Exclude}
-                as="div"
               >
                 {blurb}
               </Text>

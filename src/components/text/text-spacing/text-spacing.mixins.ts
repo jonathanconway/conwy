@@ -13,6 +13,9 @@ export const bodySpacingFirstChild = {
   ...createSpacingNotFirstChildStyle(bodySpacing),
 };
 
+export const blurbSpacing = {};
+export const blurbSpacingFirstChild = {};
+
 export const collapsibleTitleSpacing = {};
 export const collapsibleTitleSpacingFirstChild = {
   ...createSpacingNotFirstChildStyle(collapsibleTitleSpacing),

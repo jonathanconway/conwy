@@ -30,9 +30,8 @@ export function CommentariesListItem(props: CommentariesListItemProps) {
             />
 
             <Text
-              type={TextTypes.Paragraph}
+              type={TextTypes.Blurb}
               spacingStrategy={TextSpacingStrategies.Exclude}
-              as="div"
             >
               {shortBlurb}
             </Text>

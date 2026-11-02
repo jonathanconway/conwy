@@ -9,9 +9,8 @@ interface ContentListItemBlurbProps {
 export function ContentListItemBlurb(props: ContentListItemBlurbProps) {
   return (
     <Text
-      type={TextTypes.Paragraph}
+      type={TextTypes.Blurb}
       spacingStrategy={TextSpacingStrategies.Exclude}
-      as="div"
     >
       {props.children}
     </Text>

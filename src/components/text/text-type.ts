@@ -2,6 +2,7 @@ import { TypeOfConst } from "@/framework";
 
 export const TextTypes = {
   Body: "body",
+  Blurb: "blurb",
   CollapsibleTitle: "collapsibleTitle",
   Heading1: "heading1",
   Heading2: "heading2",
