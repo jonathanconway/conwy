@@ -1,4 +1,5 @@
-import { nowPage } from "@/content";
+// todo: figure out a better way
+import { meta as nowMeta } from "@/content/pages/now/meta";
 import {
   Article,
   Book,
@@ -110,7 +111,7 @@ export function createMicrosMicroRoute(micro: Micro) {
 }
 
 export const nowRoute = {
-  title: nowPage.meta.title,
+  title: nowMeta.title,
   url: "/now",
 };
 
