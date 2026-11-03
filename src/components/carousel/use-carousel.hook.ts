@@ -1,7 +1,14 @@
 "use client";
 
 import { max, min } from "lodash";
-import { useState } from "react";
+import {
+  KeyboardEvent,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  useState,
+} from "react";
+
+import { KeyboardKeys } from "@/framework";
 
 import { CarouselItem } from "./carousel-item";
 
@@ -19,9 +26,16 @@ export interface UseCarouselResult<
   readonly selectedItem: TCarouselItem;
   readonly canGoPrevious: boolean;
   readonly canGoNext: boolean;
-  readonly handlePreviousClick: VoidFunction;
-  readonly handleNextClick: VoidFunction;
-  readonly handleTabClick: (newSelectedItem: TCarouselItem) => () => void;
+
+  readonly handlePreviousClick: MouseEventHandler;
+  readonly handleNextClick: MouseEventHandler;
+  readonly handleTabClick: (
+    newSelectedItem: TCarouselItem,
+  ) => MouseEventHandler;
+  readonly handleKeyDown: KeyboardEventHandler;
+
+  readonly goPrevious: VoidFunction;
+  readonly goNext: VoidFunction;
 }
 
 interface UseCarouselState {
@@ -30,7 +44,7 @@ interface UseCarouselState {
 
 export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
   params: UseCarouselParams<TCarouselItem>,
-) {
+): UseCarouselResult<TCarouselItem> {
   const { items, onTabSelect } = params;
 
   const [state, setState] = useState<UseCarouselState>({
@@ -44,7 +58,7 @@ export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
   const canGoPrevious = selectedIndex > 0;
   const canGoNext = selectedIndex < params.items.length - 1;
 
-  const handlePreviousClick = () => {
+  function goPrevious() {
     const newSelectedIndex = max([selectedIndex - 1, 0]) ?? 0;
 
     setState({
@@ -52,9 +66,9 @@ export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
     });
 
     onTabSelect?.(items[newSelectedIndex]);
-  };
+  }
 
-  const handleNextClick = () => {
+  function goNext() {
     const newSelectedIndex =
       min([selectedIndex + 1, params.items.length - 1]) ??
       params.items.length - 1;
@@ -64,7 +78,15 @@ export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
     });
 
     onTabSelect?.(items[newSelectedIndex]);
+  }
+
+  const handlePreviousClick = () => {
+    goPrevious();
   };
+
+  function handleNextClick() {
+    goNext();
+  }
 
   const handleTabClick = (newSelectedItem: TCarouselItem) => () => {
     const newSelectedIndex = params.items.indexOf(newSelectedItem);
@@ -76,13 +98,29 @@ export function useCarousel<TCarouselItem extends CarouselItem = CarouselItem>(
     onTabSelect?.(items[newSelectedIndex]);
   };
 
+  function handleKeyDown(event: KeyboardEvent) {
+    switch (event.key) {
+      case KeyboardKeys.ArrowLeft:
+        goPrevious();
+        break;
+      case KeyboardKeys.ArrowRight:
+        goNext();
+        break;
+    }
+  }
+
   return {
     items,
     selectedItem,
     canGoPrevious,
     canGoNext,
+
     handlePreviousClick,
     handleNextClick,
     handleTabClick,
+    handleKeyDown,
+
+    goNext,
+    goPrevious,
   };
 }

@@ -21,10 +21,11 @@ export function ImageModal(props: ImageModalProps) {
 
   return (
     <Modal
+      className={styles.imageModal}
       title={title ?? alt ?? sentenceCase(getUrlFilename(src))}
       toolbar={<CarouselNav carousel={carousel} />}
+      triggerRef={props.triggerRef}
       onClose={props.onClose}
-      className={styles.imageModal}
     >
       <div className={styles.imageModalMain}>
         <div className={styles.imageContainer}>

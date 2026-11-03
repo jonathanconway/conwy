@@ -9,7 +9,5 @@ export interface EngagementPageImageCascadeProps {
 export function EngagementPageImageCascade(
   props: EngagementPageImageCascadeProps,
 ) {
-  return (
-    <ImageCascade images={props.engagement.meta.images} isUrlAddressable />
-  );
+  return <ImageCascade images={props.engagement.meta.images} />;
 }

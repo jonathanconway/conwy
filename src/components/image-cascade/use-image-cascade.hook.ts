@@ -1,131 +1,96 @@
 "use client";
 
-import { KeyboardEvent, useState } from "react";
+import {
+  KeyboardEvent,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  useState,
+} from "react";
+
+import { Image, KeyboardKeys } from "@/framework";
+
+import { UseCarouselResult, useCarousel } from "../carousel";
 
 import { useImageCascadeUrl } from "./use-image-cascade-url.hook";
 
-interface UseImageCascadeParams<T> {
-  readonly items: readonly T[];
-  readonly defaultSelectedItem?: T;
+interface UseImageCascadeParams {
+  readonly images: readonly Image[];
+  readonly defaultSelectedImage?: Image;
   readonly isUrlAddressable?: boolean;
 }
 
-export interface UseImageCascadeResult<T> {
-  readonly items: readonly T[];
-  readonly selectedItem: T;
-  readonly openedItem?: T;
-  readonly canGoPrevious: boolean;
-  readonly canGoNext: boolean;
-  readonly handlePreviousClick: VoidFunction;
-  readonly handleNextClick: VoidFunction;
-  readonly handleTabClick: (newSelectedItem: T) => () => void;
+export interface UseImageCascadeResult {
+  readonly images: readonly Image[];
+  readonly selectedImage: Image;
+  readonly openedImage?: Image;
+  readonly isCascade: boolean;
+  readonly carousel: UseCarouselResult<Image>;
+  readonly handleImageClick: (image: Image) => MouseEventHandler;
+  readonly handleImageModalCloseClick: VoidFunction;
+  readonly handleSelectedImageClick: (image: Image) => MouseEventHandler;
+  readonly handleSelectedImageKeyDown: (image: Image) => KeyboardEventHandler;
 }
 
-interface UseImageCascadeState<T> {
-  readonly selectedItem: T;
-  readonly openedItem?: T;
+interface UseImageCascadeState {
+  readonly openedImage?: Image;
 }
 
-export function useImageCascade<T>(params: UseImageCascadeParams<T>) {
-  const sourceItems = params.items;
+export function useImageCascade(
+  params: UseImageCascadeParams,
+): UseImageCascadeResult {
+  const { images } = params;
+  const isCascade = images.length > 1;
+
+  const carousel = useCarousel({
+    items: images,
+  });
+  const { selectedItem: selectedImage } = carousel;
 
   const imageCascadeUrl = useImageCascadeUrl(params);
 
-  const [state, setState] = useState<UseImageCascadeState<T>>({
-    selectedItem: sourceItems[0],
-    openedItem: imageCascadeUrl.defaultOpenedItem,
+  const [state, setState] = useState<UseImageCascadeState>({
+    openedImage: imageCascadeUrl.defaultOpenedItem,
   });
-
-  const { selectedItem, openedItem } = state;
-
-  const items = sourceItems;
-
-  const handlePreviousClick = () => {
-    const selectedItemIndex = sourceItems.indexOf(state.selectedItem);
-
-    const newIndex =
-      selectedItemIndex === 0 ? sourceItems.length - 1 : selectedItemIndex - 1;
-
-    const newSelectedItem = sourceItems[newIndex];
-
-    setState({
-      selectedItem: newSelectedItem,
-    });
-  };
-
-  const handleNextClick = () => {
-    const selectedItemIndex = sourceItems.indexOf(state.selectedItem);
-
-    const newIndex =
-      selectedItemIndex === sourceItems.length - 1 ? 0 : selectedItemIndex + 1;
-
-    const newSelectedItem = sourceItems[newIndex];
-
-    setState({
-      selectedItem: newSelectedItem,
-    });
-  };
-
-  const handleTabClick = (newSelectedItem: T) => () => {
-    setState({
-      selectedItem: newSelectedItem,
-    });
-  };
+  const { openedImage } = state;
 
   const handleImageModalCloseClick = () => {
     setState((previousState) => ({
       ...previousState,
-      openedItem: undefined,
+      openedImage: undefined,
     }));
 
     imageCascadeUrl.handleClose();
   };
 
-  const handleImageClick = (selectedItem: T) => () => {
-    setState((previousState) => ({
-      ...previousState,
-      selectedItem,
-    }));
+  const handleImageClick = (newSelectedImage: Image) => () => {
+    console.log("handleImageClick", newSelectedImage);
+    carousel.handleTabClick(newSelectedImage);
   };
 
-  const handleImageKeyDown = (selectedItem: T) => (event: KeyboardEvent) => {
-    if (event.key === "ENTER") {
-      setState((previousState) => ({
-        ...previousState,
-        selectedItem,
-      }));
-    }
-  };
-
-  const handleSelectedImageClick = (openedItem: T) => () => {
+  const handleSelectedImageClick = (openedItem: Image) => () => {
     setState((previousState) => ({
       ...previousState,
-      openedItem,
+      openedImage: openedItem,
     }));
   };
 
   const handleSelectedImageKeyDown =
-    (openedItem: T) => (event: KeyboardEvent) => {
-      if (event.key === "ENTER") {
+    (openedItem: Image) => (event: KeyboardEvent) => {
+      if (event.key === KeyboardKeys.Enter) {
         setState((previousState) => ({
           ...previousState,
-          openedItem,
+          openedImage: openedItem,
         }));
       }
     };
 
-  const isCascade = params.items.length > 1;
-
   return {
-    items,
-    selectedItem,
-    openedItem,
+    carousel,
+    images,
+    selectedImage,
+    openedImage,
     isCascade,
-    handlePreviousClick,
-    handleNextClick,
-    handleTabClick,
     handleImageClick,
-    handleImageKeyDown,
     handleImageModalCloseClick,
     handleSelectedImageClick,
     handleSelectedImageKeyDown,

@@ -1,15 +1,16 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
+import { Image } from "@/framework";
 import { clearSearchParams } from "@/framework/client";
 
-interface UseImageCascadeUrlParams<T> {
-  readonly items: readonly T[];
-  readonly defaultSelectedItem?: T;
+interface UseImageCascadeUrlParams {
+  readonly images: readonly Image[];
+  readonly defaultSelectedItem?: Image;
   readonly isUrlAddressable?: boolean;
 }
 
-export function useImageCascadeUrl<T>(params: UseImageCascadeUrlParams<T>) {
+export function useImageCascadeUrl(params: UseImageCascadeUrlParams) {
   const searchParams = useSearchParams();
 
   const defaultOpenedItem = useMemo(() => {
@@ -18,7 +19,7 @@ export function useImageCascadeUrl<T>(params: UseImageCascadeUrlParams<T>) {
     }
 
     if (searchParams.get("image")) {
-      return params.items[
+      return params.images[
         parseInt(searchParams.get("image")?.toString() ?? "0")
       ];
     }

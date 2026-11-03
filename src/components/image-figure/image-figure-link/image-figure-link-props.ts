@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, Ref } from "react";
 
 import { ImageSize } from "../../image";
 

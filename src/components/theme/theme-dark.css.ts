@@ -30,6 +30,7 @@ import { linkBoxTitleThemeDark } from "../link-box/link-box-title/link-box-title
 import { linkBoxThemeDark } from "../link-box/link-box.css-theme";
 import { linkThemeDark } from "../link/link.css-theme";
 import { microsListItemThemeDark } from "../micros/micros-page/micros-page-list/micros-page-list-item/micros-page-list-item.css-theme";
+import { storyBoxThemeDark } from "../story/story-box/story-box.css-theme";
 import { switchThemeDark } from "../switch/switch.css-theme";
 import { textBoxThemeDark } from "../text-box/text-box.css-theme";
 import { textThemeDark } from "../text/text.css-theme";
@@ -42,8 +43,8 @@ export const themeDarkClass = createTheme(vars, {
   articlesTagFilters: articlesTagFiltersThemeDark,
   aside: asideThemeDark,
   blockQuote: blockQuoteThemeDark,
-  blockQuoteSummary: blockQuoteSummaryThemeDark,
   blockQuoteDisclaimer: blockQuoteDisclaimerThemeDark,
+  blockQuoteSummary: blockQuoteSummaryThemeDark,
   box: boxThemeDark,
   button: buttonThemeDark,
   checkbox: checkboxThemeDark,
@@ -68,6 +69,7 @@ export const themeDarkClass = createTheme(vars, {
   linkBox: linkBoxThemeDark,
   linkBoxTitle: linkBoxTitleThemeDark,
   microsListItem: microsListItemThemeDark,
+  storyBox: storyBoxThemeDark,
   switch: switchThemeDark,
   text: textThemeDark,
   textBox: textBoxThemeDark,

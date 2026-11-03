@@ -28,6 +28,7 @@ import { linkBoxTitleThemeBase } from "../link-box/link-box-title/link-box-title
 import { linkBoxThemeBase } from "../link-box/link-box.css-theme";
 import { linkThemeBase } from "../link/link.css-theme";
 import { microsListItemThemeBase } from "../micros/micros-page/micros-page-list/micros-page-list-item/micros-page-list-item.css-theme";
+import { storyBoxThemeBase } from "../story/story-box/story-box.css-theme";
 import { switchThemeBase } from "../switch/switch.css-theme";
 import { textBoxThemeBase } from "../text-box/text-box.css-theme";
 import { textThemeBase } from "../text/text.css-theme";
@@ -38,8 +39,8 @@ export const themeBase = {
   articlesTagFilters: articlesTagFiltersThemeBase,
   aside: asideThemeBase,
   blockQuote: blockQuoteThemeBase,
-  blockQuoteSummary: blockQuoteSummaryThemeBase,
   blockQuoteDisclaimer: blockQuoteDisclaimerThemeBase,
+  blockQuoteSummary: blockQuoteSummaryThemeBase,
   box: boxThemeBase,
   button: buttonThemeBase,
   checkbox: checkboxThemeBase,
@@ -64,6 +65,7 @@ export const themeBase = {
   linkBox: linkBoxThemeBase,
   linkBoxTitle: linkBoxTitleThemeBase,
   microsListItem: microsListItemThemeBase,
+  storyBox: storyBoxThemeBase,
   switch: switchThemeBase,
   text: textThemeBase,
   textBox: textBoxThemeBase,

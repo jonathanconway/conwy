@@ -2,6 +2,9 @@
 
 import { useEffect } from "react";
 
+// todo: investigate why build breaks when "@/framework" is used here
+import { KeyboardKeys } from "@/framework/utils/keyboard";
+
 import * as styles from "./focus-outline-theme.css";
 
 function setFocusOutline(isEnabled: boolean) {
@@ -25,10 +28,10 @@ export function useFocusOutline() {
 
   const handleWindowKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
-      case "Tab":
+      case KeyboardKeys.Tab:
         setFocusOutline(true);
         break;
-      case "Escape":
+      case KeyboardKeys.Escape:
         setFocusOutline(false);
         break;
     }

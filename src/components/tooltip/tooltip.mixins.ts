@@ -18,3 +18,10 @@ export const tooltip: CSSProperties = {
   zIndex: 10_000,
   userSelect: "none",
 };
+
+export const childrenContainer = {
+  display: "inline-flex",
+  flex: 1,
+  justifyContent: "center",
+  alignItems: "center",
+};

@@ -1,6 +1,14 @@
 "use client";
 
-import { MouseEvent, useCallback, useEffect, useRef } from "react";
+import {
+  MouseEvent,
+  MouseEventHandler,
+  RefObject,
+  useCallback,
+  useEffect,
+} from "react";
+
+import { KeyboardKeys } from "@/framework";
 
 import { isBackdrop } from "../backdrop";
 
@@ -9,19 +17,30 @@ import { ModalProps } from "./modal-props";
 
 type UseModalParams = ModalProps;
 
-export function useModal(params: UseModalParams) {
+interface UseModalResult {
+  readonly modalRef: RefObject<HTMLDialogElement | null>;
+
+  readonly handleTrapInputFocus: VoidFunction;
+  readonly handleBackdropClick: MouseEventHandler;
+
+  readonly closeModal: VoidFunction;
+}
+
+export function useModal(params: UseModalParams): UseModalResult {
   const { modalRef, handleTrapInputFocus } = useModalFocusTrap();
 
   const handleWindowKeyDown = useCallback((event: KeyboardEvent) => {
     switch (event.key) {
-      case "Escape":
+      case KeyboardKeys.Escape:
         event.preventDefault();
-        params.onClose?.();
+        closeModal();
         break;
     }
   }, []);
 
   useEffect(() => {
+    modalRef.current?.focus();
+
     window.addEventListener("keydown", handleWindowKeyDown);
 
     return () => {
@@ -31,19 +50,27 @@ export function useModal(params: UseModalParams) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  function closeModal() {
+    params.onClose?.();
+
+    params.triggerRef?.current?.focus();
+  }
+
   const handleBackdropClick = (event: MouseEvent<HTMLElement>) => {
     const target = event.target as HTMLElement;
     if (!isBackdrop(target)) {
       return;
     }
 
-    params.onClose?.();
+    closeModal();
   };
 
   return {
     modalRef,
-    handleTrapInputFocus,
 
+    handleTrapInputFocus,
     handleBackdropClick,
+
+    closeModal,
   };
 }

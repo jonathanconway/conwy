@@ -8,5 +8,6 @@ export interface ProjectPageImageCascadeProps {
 
 export function ProjectPageImageCascade(props: ProjectPageImageCascadeProps) {
   const { project } = props;
+
   return <EngagementPageImageCascade engagement={project} />;
 }

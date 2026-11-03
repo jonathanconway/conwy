@@ -1,6 +1,7 @@
 "use client";
 
 import { isString } from "lodash";
+import { useRef } from "react";
 
 import {
   checkIsNotNil,
@@ -17,7 +18,11 @@ import * as styles from "./image-figure.css";
 import { useImageFigure } from "./use-image-figure.hook";
 
 export function ImageFigure(props: ImageFigureProps) {
-  const { isModalOpen, handleImageLinkClick, onModalClose } = useImageFigure();
+  const { isModalOpen, handleImageLinkClick, onModalClose } =
+    useImageFigure(props);
+
+  const imageFigureLinkRef = useRef(null);
+
   const { size } = props;
   const { width = props.width, height = props.height } =
     getImageWidthHeightFromSize(props);
@@ -34,6 +39,7 @@ export function ImageFigure(props: ImageFigureProps) {
 
   const image = (
     <ImageFigureLink
+      ref={imageFigureLinkRef}
       src={src}
       alt={altWithoutNewlines}
       title={titleOrAltEscaped}
@@ -58,9 +64,10 @@ export function ImageFigure(props: ImageFigureProps) {
         image
       )}
 
-      {isModalOpen && (
+      {!props.onClick && isModalOpen && (
         <ImageModal
           images={[props?.image ?? { src, alt: altWithoutNewlines, notes: [] }]}
+          triggerRef={imageFigureLinkRef}
           onClose={onModalClose}
         />
       )}

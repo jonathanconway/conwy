@@ -22,7 +22,7 @@ export function Carousel<T extends CarouselItem = CarouselItem>(
   });
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onKeyDown={carousel.handleKeyDown}>
       <CarouselBody carousel={carousel} renderBody={props.renderBody} />
 
       <CarouselNav carousel={carousel} />

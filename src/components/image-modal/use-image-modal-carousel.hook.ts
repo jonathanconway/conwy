@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 
-import { Image as Image_ } from "@/framework";
+import { Image as Image_, KeyboardKeys } from "@/framework";
 
 import { UseCarouselResult, useCarousel } from "../carousel";
 
@@ -43,21 +43,13 @@ export function useImageModalCarousel({
   const handleWindowKeyDown = useCallback(
     (event: KeyboardEvent) => {
       switch (event.key) {
-        case "ArrowLeft":
+        case KeyboardKeys.ArrowLeft:
           event.preventDefault();
-          carousel.handlePreviousClick();
+          carousel.goPrevious();
           break;
-        case "ArrowRight":
+        case KeyboardKeys.ArrowRight:
           event.preventDefault();
-          carousel.handleNextClick();
-          break;
-        case "ArrowUp":
-          event.preventDefault();
-          carousel.handlePreviousClick();
-          break;
-        case "ArrowDown":
-          event.preventDefault();
-          carousel.handleNextClick();
+          carousel.goNext();
           break;
       }
     },

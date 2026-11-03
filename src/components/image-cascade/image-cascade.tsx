@@ -1,135 +1,109 @@
 "use client";
 
-import Image from "next/image";
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 
-import { IconTypes } from "../icon";
-import { IconButton } from "../icon-button";
+import { CarouselNav } from "../carousel";
+import { Image } from "../image";
 import { ImageModal } from "../image-modal";
+import { LayoutCascade, LayoutCentered } from "../layouts";
 import { Tooltip } from "../tooltip";
 
-import {
-  IMAGE_CASCADE_IMAGE_SIZE_PX,
-  IMAGE_CASCADE_SIZE_PX,
-} from "./image-cascade-size";
+import { ImageCascadeProps } from "./image-cascade-props";
+import { IMAGE_CASCADE_IMAGE_SIZE_PX } from "./image-cascade-size";
 import * as styles from "./image-cascade.css";
-import * as inlineStyles from "./image-cascade.css-inline";
-import { ImageCascadeProps } from "./image-cascade.types";
 import { useImageCascade } from "./use-image-cascade.hook";
 
 function ImageCascade_(props: ImageCascadeProps) {
-  const { images, isUrlAddressable } = props;
+  const { images, isUrlAddressable = true } = props;
 
   const {
     isCascade,
-    items,
-    selectedItem,
-    openedItem,
-    handleNextClick,
-    handlePreviousClick,
-    handleImageClick,
-    handleImageKeyDown,
+    selectedImage,
+    openedImage,
     handleImageModalCloseClick,
     handleSelectedImageClick,
     handleSelectedImageKeyDown,
+    carousel,
   } = useImageCascade({
-    items: images,
+    images,
     isUrlAddressable,
   });
+
+  const selectedImageContainerRef = useRef(null);
 
   if (images.length === 0) {
     return;
   }
 
+  const children = images?.map((image) => (
+    <div
+      key={`image-cascade-item-${image.src}`}
+      className={styles.imageContainer}
+      onClick={carousel.handleTabClick(image)}
+    >
+      <span className={styles.imageNumber}>{images.indexOf(image) + 1}</span>
+
+      <div className={styles.imageInner}>
+        <Image
+          image={image}
+          className={styles.image}
+          width={IMAGE_CASCADE_IMAGE_SIZE_PX.width}
+          height={IMAGE_CASCADE_IMAGE_SIZE_PX.height}
+        />
+      </div>
+    </div>
+  ));
+
   return (
     <div className={styles.container}>
       {images.length > 1 && (
-        <div className={styles.cascadeContainer} style={IMAGE_CASCADE_SIZE_PX}>
-          {items?.map((image, imageIndex) => (
+        <LayoutCascade
+          frontChild={children[images.indexOf(selectedImage)]}
+          renderChildWrapper={(child, childIndex) => (
             <Tooltip
-              key={`image-cascade-item-${image.src}`}
-              contents={image.alt ?? image.title ?? `Image #${imageIndex}`}
+              key={`image-cascade-item-${images[childIndex].src}`}
+              contents={
+                images[childIndex].alt ??
+                images[childIndex].title ??
+                `Image #${childIndex + 1}`
+              }
             >
-              <button
-                tabIndex={0}
-                type="button"
-                className={styles.imageContainer}
-                style={inlineStyles.imageContainer({
-                  images,
-                  imageIndex,
-                  isSelected: selectedItem === image,
-                })}
-                onClick={handleImageClick(image)}
-                onKeyDown={handleImageKeyDown(image)}
-              >
-                {isCascade && (
-                  <span className={styles.imageNumber}>
-                    {images.indexOf(image) + 1}
-                  </span>
-                )}
-
-                <div className={styles.imageInner}>
-                  <Image
-                    className={styles.image}
-                    src={image.src}
-                    alt={image.src}
-                    width={IMAGE_CASCADE_IMAGE_SIZE_PX.width}
-                    height={IMAGE_CASCADE_IMAGE_SIZE_PX.height}
-                  />
-                </div>
-              </button>
+              {child}
             </Tooltip>
-          ))}
-        </div>
+          )}
+        >
+          {children}
+        </LayoutCascade>
       )}
 
-      {selectedItem && (
+      {selectedImage && (
         <button
+          ref={selectedImageContainerRef}
           tabIndex={0}
           type="button"
           className={styles.selectedImageContainer}
-          onClick={handleSelectedImageClick(selectedItem)}
-          onKeyDown={handleSelectedImageKeyDown(selectedItem)}
+          onClick={handleSelectedImageClick(selectedImage)}
+          onKeyDown={handleSelectedImageKeyDown(selectedImage)}
         >
           <Image
             className={styles.selectedImage}
-            src={selectedItem.src}
-            alt={selectedItem.src}
+            image={selectedImage}
             width={IMAGE_CASCADE_IMAGE_SIZE_PX.width * 2}
             height={IMAGE_CASCADE_IMAGE_SIZE_PX.height * 2}
           />
         </button>
       )}
 
-      {isCascade && (
-        <div className={styles.nav}>
-          <IconButton
-            icon={IconTypes.ArrowChevronLeft}
-            tooltip={{
-              key: "previous",
-              contents: "Previous",
-              responsiveVisibility: { sm: false },
-            }}
-            onClick={handlePreviousClick}
-          />
+      <LayoutCentered>
+        {isCascade && <CarouselNav carousel={carousel} />}
+      </LayoutCentered>
 
-          <IconButton
-            icon={IconTypes.ArrowChevronRight}
-            tooltip={{
-              key: "next",
-              contents: "Next",
-              responsiveVisibility: { sm: false },
-            }}
-            onClick={handleNextClick}
-          />
-        </div>
-      )}
-
-      {openedItem && (
+      {openedImage && (
         <ImageModal
           images={props.images}
-          defaultImage={openedItem}
+          defaultImage={openedImage}
           isUrlAddressable={isUrlAddressable}
+          triggerRef={selectedImageContainerRef}
           onClose={handleImageModalCloseClick}
         />
       )}

@@ -5,6 +5,7 @@ export * from "./class-names";
 export * from "./hashing";
 export * from "./hoc";
 export * from "./json";
+export * from "./keyboard";
 export * from "./logic";
 export * from "./math";
 export * from "./mutable";

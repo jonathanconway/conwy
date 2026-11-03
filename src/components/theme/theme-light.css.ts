@@ -30,6 +30,7 @@ import { linkBoxTitleThemeLight } from "../link-box/link-box-title/link-box-titl
 import { linkBoxThemeLight } from "../link-box/link-box.css-theme";
 import { linkThemeLight } from "../link/link.css-theme";
 import { microsListItemThemeLight } from "../micros/micros-page/micros-page-list/micros-page-list-item/micros-page-list-item.css-theme";
+import { storyBoxThemeLight } from "../story/story-box/story-box.css-theme";
 import { switchThemeLight } from "../switch/switch.css-theme";
 import { textBoxThemeLight } from "../text-box/text-box.css-theme";
 import { textThemeLight } from "../text/text.css-theme";
@@ -42,8 +43,8 @@ export const themeLightClass = createTheme(vars, {
   articlesTagFilters: articlesTagFiltersThemeLight,
   aside: asideThemeLight,
   blockQuote: blockQuoteThemeLight,
-  blockQuoteSummary: blockQuoteSummaryThemeLight,
   blockQuoteDisclaimer: blockQuoteDisclaimerThemeLight,
+  blockQuoteSummary: blockQuoteSummaryThemeLight,
   box: boxThemeLight,
   button: buttonThemeLight,
   checkbox: checkboxThemeLight,
@@ -68,6 +69,7 @@ export const themeLightClass = createTheme(vars, {
   linkBox: linkBoxThemeLight,
   linkBoxTitle: linkBoxTitleThemeLight,
   microsListItem: microsListItemThemeLight,
+  storyBox: storyBoxThemeLight,
   switch: switchThemeLight,
   text: textThemeLight,
   textBox: textBoxThemeLight,

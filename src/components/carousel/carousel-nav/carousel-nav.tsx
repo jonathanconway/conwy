@@ -1,7 +1,5 @@
 import { IconTypes } from "../../icon";
 import { IconButton } from "../../icon-button";
-import { Responsive } from "../../responsive";
-import { Breakpoints } from "../../styling";
 import { CarouselItem } from "../carousel-item";
 import { UseCarouselResult } from "../use-carousel.hook";
 
@@ -19,7 +17,10 @@ export function CarouselNav<T extends CarouselItem = CarouselItem>(
   }
 
   return (
-    <div className={styles.switchButtonsContainer}>
+    <div
+      className={styles.switchButtonsContainer}
+      onKeyDown={props.carousel.handleKeyDown}
+    >
       <IconButton
         icon={IconTypes.ArrowChevronLeft}
         tooltip={
@@ -37,27 +38,24 @@ export function CarouselNav<T extends CarouselItem = CarouselItem>(
         onClick={props.carousel.handlePreviousClick}
       />
 
-      <Responsive minWidth={Breakpoints.Large}>
-        {props.carousel.items.map((carouselItem, carouselItemIndex) => (
-          <IconButton
-            key={`carousel-item-${carouselItemIndex}`}
-            isSelected={carouselItem === props.carousel.selectedItem}
-            tooltip={{
-              key:
-                carouselItem.tooltip?.key ??
-                `carousel-item-tooltip-${carouselItemIndex}`,
-              contents:
-                carouselItem.tooltip?.contents ??
-                `Item ${carouselItemIndex + 1}`,
-              responsiveVisibility: {
-                sm: false,
-              },
-              ...carouselItem.tooltip,
-            }}
-            onClick={props.carousel.handleTabClick(carouselItem)}
-          />
-        ))}
-      </Responsive>
+      {props.carousel.items.map((carouselItem, carouselItemIndex) => (
+        <IconButton
+          key={`carousel-item-${carouselItemIndex}`}
+          isSelected={carouselItem === props.carousel.selectedItem}
+          tooltip={{
+            key:
+              carouselItem.tooltip?.key ??
+              `carousel-item-tooltip-${carouselItemIndex}`,
+            contents:
+              carouselItem.tooltip?.contents ?? `Item ${carouselItemIndex + 1}`,
+            responsiveVisibility: {
+              sm: false,
+            },
+            ...carouselItem.tooltip,
+          }}
+          onClick={props.carousel.handleTabClick(carouselItem)}
+        />
+      ))}
 
       <IconButton
         icon={IconTypes.ArrowChevronRight}

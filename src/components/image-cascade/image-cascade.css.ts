@@ -20,7 +20,6 @@ export const cascadeContainer = style({
   position: "relative",
   margin: "auto",
   backgroundColor: vars.imageCascade.background.color,
-  overflow: "hidden",
 });
 
 const imageBorder = {
@@ -35,39 +34,37 @@ const imageContainerBase = {
 };
 
 export const imageContainerSingle = style({
+  ...imageContainerBase,
   position: "relative",
   height: "10rem",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  ...imageContainerBase,
 });
 
 export const imageContainer = style({
+  position: "relative",
+  width: "100%",
+  height: "100%",
+});
+
+export const imageInner = style({
+  ...imageContainerBase,
   position: "absolute",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  padding: "0.375rem",
   cursor: "pointer",
   backgroundColor: vars.layout.body.background.color,
-  ...imageContainerBase,
-});
-
-export const imageInner = style({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
   overflow: "hidden",
   width: "100%",
   height: "100%",
-  pointerEvents: "none",
 });
 
 export const imageNumber = style({
   position: "absolute",
-  right: "-0.5rem",
-  top: "-0.5rem",
+  right: rems(-0.75),
+  top: rems(-0.75),
   backgroundColor: vars.tooltip.background.color,
   color: vars.tooltip.color,
   width: "1.5rem",
@@ -76,14 +73,13 @@ export const imageNumber = style({
   display: "inline-flex",
   justifyContent: "center",
   alignItems: "center",
-  pointerEvents: "none",
   ...imageBorder,
   ...rounded.full,
+  zIndex: 1,
 });
 
 export const image = style({
   ...rounded.regular,
-  pointerEvents: "none",
   margin: "0.25rem",
   maxHeight: "100%",
   width: "auto",
@@ -103,7 +99,6 @@ export const selectedImageContainer = style({
 
 export const selectedImage = style({
   ...rounded.regular,
-  pointerEvents: "none",
   margin: "auto",
   maxHeight: "100%",
   maxWidth: "100%",
