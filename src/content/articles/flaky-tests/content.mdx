@@ -315,9 +315,11 @@ Note that the flaky test itself might not be the culprit here, but rather, some 
 
 ### Increase timeouts
 
-Most test frameworks provide allow timeouts to be configured.
+**Problem:** Some tests are necessarily long running and need longer timeouts than the default.
 
-Increasing the timeout allows tests to run longer without failing, which may solve flakiness.
+**Solution:** Increase the timeout for long running tests.
+
+Most test frameworks provide allow timeouts to be configured. Increasing the timeout allows tests to run longer without failing, which may solve flakiness.
 
 - Jest has [testTimeout](https://jestjs.io/docs/configuration#testtimeout-number) configuration and the [timeout](https://jestjs.io/docs/api#testname-fn-timeout) parameter
 - Playwright has [timeout configuration](https://playwright.dev/docs/test-timeouts) and [test.slow()](https://playwright.dev/docs/api/class-test#test-slow) (called within a test)
@@ -373,7 +375,7 @@ These might be used temporarily as an emergency resort or permanently if conside
 
 **Problem:** Some features of our application may be resource-intensive, causing flakiness, while not offering much value in an automated testing context.
 
-Mitigation: Disable resource-intensive features for test environment only.
+**Mitigation:** Disable resource-intensive features for test environment only.
 
 Certain application features may be inherently resource intensive and not needed to verify correctness for a given automated test.
 
@@ -388,7 +390,7 @@ These features can be disabled only for test execution, via, say, feature flags.
 
 **Problem:** Flakiness produced by resource-constrained environments is not worth the cost savings of the resource constraints.
 
-Mitigation: Increase resources to get better value for investment, such as higher developer productivity during a critical period.
+**Mitigation:** Increase resources to get better value for investment, such as higher developer productivity during a critical period.
 
 Depending on the cause, test flakiness might be drastically reduced in the short-term by simply beefing up resources on the test runners. Depending on the organisation, business context, timeframe, etc. this might be an optimal approach.
 
@@ -400,7 +402,7 @@ Or suppose the business context is seasonally sensitive, such as an online retai
 
 **Problem:** Flaky tests block the whole pipeline, interfering with delivery velocity.
 
-Mitigation: Separate flaky tests from non-flaky tests, to ensure that they run correctly or at least do not disrupt other tests.
+**Mitigation:** Separate flaky tests from non-flaky tests, to ensure that they run correctly or at least do not disrupt other tests.
 
 Many test frameworks allow tags to be applied to tests, allowing those tests to be grouped and treated as a unit, for separate execution, separate configuration, or some other kind of separation.
 
@@ -433,6 +435,10 @@ Once separated, flaky tests might be treated in various ways:
 
 ### Use a different kind of test
 
+**Problem:** The kind of test(s) being used just aren't suitable for reliably verifying the specific behaviour being tested.
+
+**Mitigation:** Use a more reliable kind of test to verify the behaviour, such as a faster integration-style unit test.
+
 Full end-to-end browser tests are known to be more flaky than traditional unit or unit-style integration tests. This is due to the performance overhead of loading a whole browser, loading the whole application at once, triggering interactions with whole DOM elements and waiting for feedback.
 
 We could instead shift some of these tests to integration-style unit tests. Described in Kent C. Dodd's famous article [Static vs Unit vs Integration vs E2E Testing for Frontend Apps](https://kentcdodds.com/blog/static-vs-unit-vs-integration-vs-e2e-tests#integration), these tests can cover entire user flows (such as logging in) while mocking the calls that could otherwise call flakiness, such as server-side API calls.
@@ -457,16 +463,21 @@ Another option, for tests target intermittent but approximately deterministic be
 
 ### Use a different method of verification
 
+**Problem:** Automated testing in general just isn't suitable for reliably verifying the specific behaviour being tested.
+
+**Mitigation:** Use an alternative means of verifying the behaviour, such as monitoring, manual testing, visual diff testing or others.
+
 If our automated test is trying to exercise something that is inherently prone to intermittent failure, within no acceptable margin of error, perhaps we need a different method of verification altogether.
 
 For example, there is probably no good way to write an automated test for generating the next Bitcoin hash on the official fork. (Until/unless we get quantum computing in the cloud, in which case, any crypto-based business model might be in jeopardy!) For this case, we would probably need to wait until we have a large and engaged enough user base and then apply observability.
 
 Various methods of verification that might fit the scenario:
 
-- **Local browser tests:** tests that are run locally and manually by engineers, not in CI.
-- **Monitoring / observability:** simply provide observability into a feature without necessarily testing it. Failures can be surfaced in a dashboard or alert. Downside of this method: we risk catching a failure too late, after it has already affected a significant number of users before being discovered.
-- **Manual testing:** periodically manually test a feature in a prod-like environment.
-- **Visual diff testing:** automatically capture screenshots of the application or component, raising alerts when differences are detected. Causes of differences can be sought by, say, comparing versions of the code base (using [`git bisect`](https://git-scm.com/docs/git-bisect) or similar).
+- **Local browser tests.** Tests that are run locally and manually by engineers, not in CI.
+- **Monitoring / observability.** Simply build observability into a feature, so failures can be discovered in production. Metrics that indicate failure could be gathered and surfaced in a dashboard or via an alert. Downside of this method: we risk catching a failure too late, after it has already affected a significant number of users before being discovered.
+- **Manual testing.** Periodically manually test a feature in a prod-like environment.
+- **Hybrid or "human-in-the-loop" testing.** Automate as much of the test as possible, but isolate the flaky / non-deterministic part and add a manual verification checkpoint. The checkpoint might be, say, log output in a unit test that is manually inspected in CI by an engineer and checked off via a button. Or it might be an email or alert sent to the team on each CI build which contains a sample of test outputs and button to click for approval.
+- **Visual diff testing.** Automatically capture screenshots of the application or component, raising alerts when differences are detected. Causes of differences can be sought by, say, comparing versions of the code base (using [`git bisect`](https://git-scm.com/docs/git-bisect) or similar).
 
 ## Preventing flakiness
 
